@@ -1,0 +1,79 @@
+<!--
+  BlockML Core — type reference as Entity
+
+  FQN: org.blockml.bml.type.TypeReferenceEntity
+  See docs/17_type_system_bml.md — TypeReferenceEntity · Empty child sugar
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>TypeReferenceEntity</name>
+  <type>type:TypeReferenceEntity</type>
+  <baseType>core:PrimitiveEntity(type:TypeReference(B))</baseType>
+  <is>A type name reference as an Entity</is>
+
+  <documentation>Open generic Entity wrapping a TypeReference (FQN / TypeExpression) primitive.
+    Forwards B from org.blockml.bml.type.TypeReference onto org.blockml.bml.core.PrimitiveEntity via
+    baseType — inherits the value property automatically as value : TypeReference(B).
+
+    Use on aggregation type attributes when children are type references stored as Entity instances:
+    • type:TypeReferenceEntity(core:Block)[] — contracts, Library blocks
+    • type:TypeReferenceEntity(core:Group)[] — StructuralDefinition.groups (narrowed on subtypes)
+    • type:TypeReferenceEntity(group:MemberGroup)[] — MemberDefinition.groups
+    • type:TypeReferenceEntity(group:BlockGroup)[] — BlockDefinition.groups
+    • type:TypeReferenceEntity(lang:NaturalLanguage) — language (singular, 0..1)
+    • type:TypeReferenceEntity(core:ReadMe)[1..1] — Library readMe
+    • type:TypeReferenceEntity(core:Bootstrap) — Library bootstrap (0..1 SPOE)
+    • type:TypeReferenceEntity(core:BlockLibrary)[] — dependencies, subLibraries
+
+    Authored empty child whose element QName is not TypeReferenceEntity is syntactic sugar for a
+    TypeReferenceEntity instance with value set to that QName (resolved to FQN) — for example
+    &lt;foo:Bar /&gt; expands to &lt;type:TypeReferenceEntity value="foo:Bar" /&gt; (B bound by the
+    aggregation type). Optional bml:version on the sugar child is an exact-version assert against
+    the referenced type (value), not against TypeReferenceEntity itself — e.g.
+    &lt;blockml:Library bml:version="3.0.0" /&gt;. Explicit TypeReferenceEntity authoring is always
+    valid and equivalent.
+
+    Contrast with scalar TypeReference(B) on properties (identity type / baseType, member type
+    attributes) — those remain plain text, not Entity instances. Member path references use
+    MemberReference / PropertyReference / … — not this Entity.
+
+    Replaces the former abstract org.blockml.bml.core.TypeReference aggregation marker and
+    FullyQualifiedNameEntity.</documentation>
+
+  <references>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      TypeReferenceEntity and empty-child sugar.
+    </see>
+    <see type="doc:CompositionModel" relation="AuthoringGuide">
+      TypeReferenceEntity aggregation composition.
+    </see>
+    <see type="type:TypeReference" relation="SeeAlso">
+      Scalar FQN / TypeExpression ValueType wrapped by this Entity.
+    </see>
+    <see type="core:PrimitiveEntity" relation="SeeAlso">
+      Abstract generic base — value property inherited after binding T.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      contracts and language aggregations.
+    </see>
+    <see type="core:BlockLibrary" relation="SeeAlso">
+      readMe, bootstrap, dependencies, subLibraries, blocks aggregations.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block">
+      <documentation>Block branch constraint for the referenced type. Mirrored from
+        TypeReference.B — each instance value must name a type that satisfies
+        satisfiesTypeBound(resolve(value), B).</documentation>
+    </B>
+  </genericTypes>
+</block>

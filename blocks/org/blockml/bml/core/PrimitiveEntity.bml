@@ -1,0 +1,49 @@
+<!--
+  BlockML Core — primitive value as Entity
+
+  FQN: org.blockml.bml.core.PrimitiveEntity
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PrimitiveEntity</name>
+  <type>core:PrimitiveEntity</type>
+  <baseType>core:Entity</baseType>
+  <is>A primitive value as an Entity</is>
+
+  <documentation>Abstract generic Entity for primitive values that must appear as Block instances
+    inside a composition or aggregation. Follows the general generic resolution rule: T belongs
+    exclusively to this Block and is never inherited. Derived Blocks bind or forward T explicitly
+    through baseType (for example baseType = PrimitiveEntity(Integer) binds T = Integer and yields
+    value : Integer).
+
+    Cannot be instantiated directly — concrete specializations (IntegerEntity, TextEntity,
+    DecimalEntity, …) bind all generic parameters and become normal, instantiable Blocks.
+
+    Properties continue to store primitive values directly — PrimitiveEntity exists only when the
+    primitive value itself must become an Entity with identity, documentation, or metadata.</documentation>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      PrimitiveEntity and generic resolution.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <T baseType="type:PrimitiveType" />
+  </genericTypes>
+
+  <properties>
+    <value type="T">
+      <documentation>The primitive value owned by this Entity instance.</documentation>
+    </value>
+  </properties>
+</block>

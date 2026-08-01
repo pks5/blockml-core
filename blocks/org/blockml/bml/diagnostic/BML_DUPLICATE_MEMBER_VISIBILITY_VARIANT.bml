@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT</name>
+  <type>diag:BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate visibility-variant diagnostic</is>
+
+  <summary>Emitted when members or Sub-Blocks differ only by visibility prefix (myVar / _myVar / __myVar).</summary>
+
+  <keywords>BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT</keywords>
+
+  <documentation>
+    Collision checking uses normalizedLogicalName with visibility prefixes stripped. A logical member or Sub-Block exists exactly once with exactly one visibility.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Naming convention and normalizedLogicalName.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      Same rule applies to Sub-Block names.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Resolve duplicate visibility variants.
+    </see>
+  </references>
+
+</block>

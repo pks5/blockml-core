@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_FUNCTION_DUPLICATE_MAIN diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_FUNCTION_DUPLICATE_MAIN
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_FUNCTION_DUPLICATE_MAIN</name>
+  <type>diag:BML_FUNCTION_DUPLICATE_MAIN</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate-main-function diagnostic</is>
+
+  <summary>Emitted when an OpenSCAD utility implementation declares more than one main function matching the Capability name.</summary>
+
+  <keywords>BML_FUNCTION_DUPLICATE_MAIN</keywords>
+
+  <documentation>
+    Emitted when an OpenSCAD utility implementation declares more than one main function matching
+    the Capability name. Remedy: Keep exactly one main function named like the Capability.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      utility Sub-Blocks.
+    </see>
+  </references>
+
+</block>

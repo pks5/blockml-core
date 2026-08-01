@@ -1,0 +1,51 @@
+<!--
+  BlockML Core — primitive type branch
+
+  FQN: org.blockml.bml.type.PrimitiveType
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PrimitiveType</name>
+  <type>type:PrimitiveType</type>
+  <baseType>core:ValueType</baseType>
+  <is>An atomic scalar ValueType</is>
+
+  <documentation>Abstract branch for built-in scalar ValueTypes. PrimitiveTypes describe semantics
+    only — they never store concrete values. All values are stored exclusively in Properties.
+
+    Numeric branch: Number (Integer, Decimal, Float). Textual branch: Text (TypeReference,
+    MemberReference / PropertyReference / …, Version, URL, URI, FilePath, MimeType, …). Boolean is
+    its own branch — neither textual nor numeric.
+
+    When a primitive value must exist as an Entity inside a composition or aggregation, use a
+    concrete Entity specialization (for example IntegerEntity) — not by adding a value member to
+    the PrimitiveType.
+
+    Invalid: &lt;type:Integer value="5"/&gt; — PrimitiveTypes cannot carry values.
+    Valid: &lt;property name="count" type="Integer"&gt;&lt;value&gt;5&lt;/value&gt;&lt;/property&gt;</documentation>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      PrimitiveType branch.
+    </see>
+    <see type="type:Number" relation="SeeAlso">
+      Numeric primitive branch.
+    </see>
+    <see type="type:Text" relation="SeeAlso">
+      Textual primitive branch.
+    </see>
+    <see type="type:IntegerEntity" relation="SeeAlso">
+      Example concrete Entity wrapper for primitive values.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — then-continue-with relation
+
+  FQN: org.blockml.bml.relation.ThenContinueWith
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>ThenContinueWith</name>
+  <type>relation:ThenContinueWith</type>
+  <baseType>core:TypeRelation(core:Bootstrap)</baseType>
+  <is>A after-reading-continue Relation</is>
+
+  <documentation>TypeRelation(core:Bootstrap) — use on concrete Library &lt;see type="…"&gt; entries
+    to point at the library's Bootstrap SPOE after the human/LLM reading entry. Target must be a
+    type reference whose resolved type satisfies satisfiesTypeBound(…, core:Bootstrap); file/url/
+    instance/member targets are forbidden (TypeRelation rule).
+
+    Sequence on Library.bml: ReadFirst → ReadMe (required), then ThenContinueWith → Bootstrap when
+    the library declares a bootstrap aggregation. Distinct from ReadNext (narrative learning chain)
+    and from TaskIndex / TaskStep (task catalog). Signals: after reading, continue with the
+    automation entry.</documentation>
+
+  <references>
+    <see type="core:TypeRelation" relation="Extends">
+      Type-target Relation — ThenContinueWith binds T = core:Bootstrap.
+    </see>
+    <see type="relation:ReadFirst" relation="SeeAlso">
+      Required Library reading-entry edge — precedes ThenContinueWith.
+    </see>
+    <see type="core:Bootstrap" relation="Requires">
+      Required see type= target branch (T).
+    </see>
+    <see type="core:BlockLibrary" relation="SeeAlso">
+      Concrete Library references rule — at most ReadFirst + ThenContinueWith.
+    </see>
+  </references>
+
+</block>

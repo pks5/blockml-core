@@ -1,0 +1,37 @@
+<!--
+  BlockML Core — BML_MISSING_DOCUMENTATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_DOCUMENTATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_DOCUMENTATION</name>
+  <type>diag:BML_MISSING_DOCUMENTATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-documentation diagnostic</is>
+
+  <summary>Emitted when a Block definition omits required default-namespace documentation.</summary>
+
+  <keywords>BML_MISSING_DOCUMENTATION</keywords>
+
+  <documentation>
+    Emitted when a Block definition omits required default-namespace documentation. Remedy: Every
+    Block definition (root and Sub-Blocks) requires ≥1 default-namespace documentation entry.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      Required documentation model.
+    </see>
+  </references>
+
+</block>

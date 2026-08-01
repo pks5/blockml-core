@@ -1,0 +1,26 @@
+<!--
+  BlockML Group — block group branch
+
+  FQN: org.blockml.bml.group.BlockGroup
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:group="org.blockml.bml.group">
+
+  <name>BlockGroup</name>
+  <type>group:BlockGroup</type>
+  <baseType>core:Group</baseType>
+  <is>A Block grouping category</is>
+
+  <documentation>Abstract Group branch for block groups — named categories that organize Blocks
+    for editors and tooling. Intentionally empty — no properties, aggregations, or Sub-Blocks.
+    Concrete group kinds extend this branch. BlockDefinition.groups overrides
+    StructuralDefinition.groups to TypeReferenceEntity(group:BlockGroup)[].</documentation>
+
+  <abstract>true</abstract>
+
+</block>

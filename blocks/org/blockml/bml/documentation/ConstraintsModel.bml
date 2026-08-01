@@ -1,0 +1,99 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ConstraintsModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:validation="org.blockml.bml.validation">
+
+  <name>ConstraintsModel</name>
+  <type>doc:ConstraintsModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to constraints and suggestions</is>
+
+  <documentation>
+    Constraints are reusable validation rules attached via a single &lt;constraints&gt; container on
+    ConstrainableDefinition elements (Blocks and members). There is no target= property — the
+    embedding context binds the constraint automatically. Constraint branches declare genericTypes;
+    the compiler binds T from context (never authored):
+    • ValueConstraint on Property → T = effective ValueType
+    • PropertyConstraint → T = PropertyDefinition
+    • AggregationConstraint / AssociationConstraint / CapabilityConstraint → corresponding Definition
+    • BlockConstraint → BlockDefinition (incl. Sub-/Root-)
+    Wrong branch for context → BML_CONSTRAINT_TARGET_MISMATCH. Unknown constraint type →
+    BML_CONSTRAINT_UNKNOWN. Generic T incompatible → BML_CONSTRAINT_TYPE_MISMATCH. Instance property
+    incompatible with T → BML_CONSTRAINT_VALUE_MISMATCH.
+
+    Validation property (optional) references org.blockml.bml.validation.*:
+    • Error → BML_CONSTRAINT_VIOLATION (fail compile)
+    • Warning → BML_CONSTRAINT_WARNING
+    • Information → BML_CONSTRAINT_INFORMATION
+    Omitted validation → constraint is metadata only (not value-enforced by the BlockML validator).
+
+    Standard value constraints include Min, Max, MinLength, MaxLength, MinItems, MaxItems, Pattern,
+    ValuePresent. Structural examples: RequiresMember, AllowedChildType, NoSelfReference,
+    MustBeReadOnly, RequiresImplementation. Prefer ValueType instance configuration for
+    type-intrinsic thresholds (Text{maxLength: 100}); keep Constraints for contextual/composable
+    rules (doc:ValueTypeConfiguration).
+
+    Suggestions — Property-only metadata: Block instances compatible with the property type for
+    editors/renderers. Not validation. Forbidden on EnumType properties → BML_SUGGESTIONS_ON_ENUM.
+    Incompatible suggestion instance → BML_SUGGESTION_TYPE_MISMATCH (PrimitiveType properties use
+    matching *Entity wrappers).
+
+    Procedure: task:AddConstraint.
+  </documentation>
+
+  <references>
+    <see type="def:ConstrainableDefinition" relation="Defines">
+      Shared constraints container on Blocks and members.
+    </see>
+    <see type="core:Constraint" relation="Extends">
+      Constraint branch root.
+    </see>
+    <see type="core:Validation" relation="Defines">
+      Error / Warning / Information enforcement markers.
+    </see>
+    <see type="constraint:Min" relation="SeeAlso">
+      Example scalar constraint.
+    </see>
+    <see type="constraint:Pattern" relation="SeeAlso">
+      Example textual constraint.
+    </see>
+    <see type="def:PropertyDefinition" relation="SeeAlso">
+      suggestions aggregation and property constraints.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      Prefer inline configuration for type-intrinsic thresholds.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Constraint generic binding from embedding context.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      When to use constraints in modeling.
+    </see>
+    <see type="task:AddConstraint" relation="SeeAlso">
+      Procedural how-to for attaching constraints.
+    </see>
+    <see type="diag:BML_CONSTRAINT_TARGET_MISMATCH" relation="SeeAlso">
+      Branch ↔ context incompatibility.
+    </see>
+    <see type="diag:BML_SUGGESTIONS_ON_ENUM" relation="SeeAlso">
+      Suggestions forbidden on EnumType properties.
+    </see>
+    <see type="doc:MemberVisibility" relation="ReadNext">
+      Next — member and Sub-Block visibility (README learning order).
+    </see>
+  </references>
+
+</block>

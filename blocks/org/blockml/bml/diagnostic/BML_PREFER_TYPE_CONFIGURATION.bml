@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_PREFER_TYPE_CONFIGURATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PREFER_TYPE_CONFIGURATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_PREFER_TYPE_CONFIGURATION</name>
+  <type>diag:BML_PREFER_TYPE_CONFIGURATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A prefer-type-configuration diagnostic</is>
+
+  <summary>Warning: prefer ValueType {...} configuration over equivalent Constraints for type-intrinsic thresholds.</summary>
+
+  <keywords>BML_PREFER_TYPE_CONFIGURATION</keywords>
+
+  <documentation>
+    Warning: prefer ValueType {...} configuration over equivalent Constraints for type-intrinsic
+    thresholds. E.g. Text{maxLength: 100} instead of MaxLength constraint when intrinsic.
+  </documentation>
+
+  <references>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      What belongs where.
+    </see>
+    <see type="doc:ConstraintsModel" relation="SeeAlso">
+      Constraints vs configuration.
+    </see>
+  </references>
+
+</block>

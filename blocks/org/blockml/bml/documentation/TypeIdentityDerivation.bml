@@ -1,0 +1,96 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.TypeIdentityDerivation
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>TypeIdentityDerivation</name>
+  <type>doc:TypeIdentityDerivation</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to type references and Block identity</is>
+
+  <documentation>
+    Every type reference in BML — composition tags, type / baseType on definitions, member type
+    attributes — may be written in one of four forms. All normalize to a canonical FQN during
+    resolution:
+    1. Fully qualified name — com.foo.Bar
+    2. QName (xmlns prefix) — foo:Bar with xmlns:foo="com.foo"
+    3. Unqualified fallback — Integer at a context-bound site (doc:ImplicitNamespaceResolution)
+    4. Sub-Block-relative name — MySubBlock or foo:Bar.MySubBlock
+
+    General block references (baseType, aggregation type, composition tags outside specialized
+    sites) require an explicit FQN or xmlns prefix — no implicit fallback. Unresolvable →
+    BML_UNKNOWN_TYPE. Ambiguous unqualified → BML_AMBIGUOUS_TYPE. Undeclared QName prefix →
+    BML_UNKNOWN_NAMESPACE_PREFIX.
+
+    Sub-Block type references — Java static nested classes: own FQN prefix, optional own
+    genericTypes, no enclosing-instance and no outer type-parameter scope (forward explicitly, e.g.
+    Item(T)). Reference unqualified when in scope, as FQN, or as QName. The local part of a QName may
+    include a relative Sub-Block path (foo:Bar.MySubBlock).
+
+    Unqualified nested type resolution (innermost scope first, then enclosing chain):
+    On the current Block, in order: (1) own Block name, (2) own genericTypes, (3) own direct
+    Sub-Blocks. Then repeat for the immediate enclosing Block up to the document root. Grandchildren
+    are never unqualified — from Grid, Range does not resolve to Grid.Selector.Range; write
+    Selector.Range or Grid.Selector.Range. After the nested walk fails, context-bound implicit
+    namespace / FQN / xmlns rules apply. Generic / Sub-Block name collisions on the same declaring
+    Block remain errors (BML_GENERIC_*_COLLISION).
+
+    Root Block identity:
+    • type — required (BML_MISSING_BLOCK_TYPE); canonical identity
+    • name — optional; when omitted effectiveName = lastSegment(resolve(type)); when present must
+      equal lastSegment(resolve(type)) → else BML_BLOCK_NAME_TYPE_MISMATCH
+    • definition — optional; default RootBlockDefinition; unqualified via org.blockml.bml.definition.*
+
+    Sub-Block identity (opposite convention):
+    • name — required (BML_MISSING_SUBBLOCK_NAME)
+    • type — normally omitted; expectedType = resolve(parent.type) + "." + name; when present must
+      equal expectedType (full parent path check, not last segment alone) →
+      BML_SUBBLOCK_TYPE_MISMATCH
+    • definition — default SubBlockDefinition
+    • genericTypes / subBlocks — allowed; embeddedBlocks — forbidden
+      (BML_EMBEDDED_BLOCKS_ON_SUBBLOCK)
+
+    Canonical derivation summary:
+    • Root: canonicalType = resolve(type); effectiveName = name ?? lastSegment(canonicalType);
+      if name present → name == lastSegment(canonicalType)
+    • Sub-Block: effectiveName = name; expectedType = canonicalParentType + "." + name;
+      canonicalType = type ? resolve(type) : expectedType; canonicalType == expectedType
+
+    See also doc:SubBlockModel (visibility, embeds, reference scope) and doc:BlockNameConvention.
+  </documentation>
+
+  <references>
+    <see type="type:TypeReference" relation="Defines">
+      ValueType for FQN / TypeExpression text on type and baseType.
+    </see>
+    <see type="def:RootBlockDefinition" relation="Defines">
+      Document-root identity — type required; name optional short form.
+    </see>
+    <see type="def:SubBlockDefinition" relation="Defines">
+      Sub-Block identity — name required; type derived from parent.
+    </see>
+    <see type="def:EmbeddedBlockDefinition" relation="SeeAlso">
+      Embedded virtual files — FQN from mandatory fully qualified type.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      Context-bound unqualified fallback at specialized sites.
+    </see>
+    <see type="doc:SubBlockModel" relation="ReadNext">
+      Next — Sub-Block visibility, embeds, and composition reference scope.
+    </see>
+    <see type="doc:BlockNameConvention" relation="SeeAlso">
+      PascalCase rules for &lt;name&gt;.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_DUPLICATE_FUNCTION_PARAMETER diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_FUNCTION_PARAMETER
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_DUPLICATE_FUNCTION_PARAMETER</name>
+  <type>diag:BML_DUPLICATE_FUNCTION_PARAMETER</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate function-parameter diagnostic</is>
+
+  <summary>Emitted when a named call argument is supplied more than once.</summary>
+
+  <keywords>BML_DUPLICATE_FUNCTION_PARAMETER</keywords>
+
+  <documentation>
+    Emitted when a named call argument is supplied more than once. Remedy: Each inputType field
+    may appear at most once in named form.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Named call form.
+    </see>
+  </references>
+
+</block>

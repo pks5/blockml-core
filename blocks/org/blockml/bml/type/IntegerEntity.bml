@@ -1,0 +1,17 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>IntegerEntity</name>
+  <type>type:IntegerEntity</type>
+  <baseType>core:PrimitiveEntity(type:Integer)</baseType>
+  <is>A whole number as an Entity</is>
+
+  <documentation>Concrete Entity wrapping an Integer primitive. Binds T = Integer on
+    org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
+    Use when an integer must appear as an identifiable Block instance.</documentation>
+</block>

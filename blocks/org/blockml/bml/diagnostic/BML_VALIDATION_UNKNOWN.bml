@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_VALIDATION_UNKNOWN diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_VALIDATION_UNKNOWN
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_VALIDATION_UNKNOWN</name>
+  <type>diag:BML_VALIDATION_UNKNOWN</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-validation diagnostic</is>
+
+  <summary>Emitted when constraint validation= does not resolve to a Validation block.</summary>
+
+  <keywords>BML_VALIDATION_UNKNOWN</keywords>
+
+  <documentation>
+    Emitted when constraint validation= does not resolve to a Validation block. Remedy: Use Error,
+    Warning, or Information.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstraintsModel" relation="AuthoringGuide">
+      Validation property.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      validation implicit NS.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_INVALID_SINCE_VERSION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_SINCE_VERSION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_INVALID_SINCE_VERSION</name>
+  <type>diag:BML_INVALID_SINCE_VERSION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-since-version diagnostic</is>
+
+  <summary>Emitted when since is not a valid Version value.</summary>
+
+  <keywords>BML_INVALID_SINCE_VERSION</keywords>
+
+  <documentation>
+    Emitted when since is not a valid Version value. Remedy: Use org.blockml.bml.type.Version
+    format.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      since.
+    </see>
+  </references>
+
+</block>

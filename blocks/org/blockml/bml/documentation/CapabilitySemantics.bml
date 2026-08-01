@@ -1,0 +1,91 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.CapabilitySemantics
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>CapabilitySemantics</name>
+  <type>doc:CapabilitySemantics</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Capability meaning</is>
+
+  <documentation>
+    BlockML describes semantics only. There are no special language concepts for constructor,
+    getter, setter, or render — all behaviour is expressed as ordinary Capabilities: init(),
+    getValue(), setValue(), render(), and domain-specific operations. Package:
+    org.blockml.bml.capability.* (base org.blockml.bml.core.Capability).
+
+    Capability kinds describe intent — they are not compiler rules or runtime objects:
+    • Inbound — receives input from outside (setValue, configure); requires inputType; no outputType
+    • Outbound — produces output to outside (getValue, emit); requires outputType; no inputType
+    • Transformation — maps input to output (compute, format, render); requires both
+    Async reply via replyTo is a runtime/message pattern — not modeled on the Capability.
+
+    Unqualified Capability type resolves to org.blockml.bml.capability.*; unqualified inputType /
+    outputType resolve to org.blockml.bml.type.* (doc:ImplicitNamespaceResolution). General block
+    references (aggregation type, association type, baseType) have no implicit namespace.
+
+    Authoring: declare under &lt;capabilities&gt; with a camelCase name (visibility prefixes apply —
+    doc:MemberVisibility). In a Composition the Capability value is the address or binding —
+    attribute on the child Block instance, like a Property value. Private Capabilities (__name)
+    cannot be bound from outside the declaring Block; protected (_name) follow the formal access
+    rule including derived Blocks and the direct composition owner.
+
+    Each Capability may carry an implementation whose language attribute references a Language FQN
+    (org.blockml.bml.language.*). utility Sub-Blocks (baseType Entity) commonly host Transformation
+    implementations — doc:SubBlockModel. Preferred semantic dialect: PseudoCode
+    (doc:PseudoCode). The renderer decides how to realise each Capability in the target system:
+
+    init()     → Java constructor · UI5 onInit() · React useEffect()
+    getValue() → direct field access · generated getter · reflection
+    setValue() → direct field assignment · generated setter
+    render()   → SCAD module · JSX component · may be ignored
+
+    Interpretation happens only in the renderer — by reading Capability definitions and member
+    values from the immutable BOM. The BOM never contains implementation concepts such as
+    constructors, getters, setters, runtime values, or executable behaviour.
+
+    A Block's public surface is Capabilities — internal structure (Properties, Aggregations)
+    is not the outward API; the renderer decides concrete manifestation.
+  </documentation>
+
+  <references>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      Unqualified Capability type vs inputType / outputType sites.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      utility Sub-Blocks hosting Transformation implementations.
+    </see>
+    <see type="doc:PseudoCode" relation="SeeAlso">
+      Preferred Capability implementation dialect for semantic prose.
+    </see>
+    <see type="core:Capability" relation="Extends">
+      Capability branch — implementation member and input/output type rules.
+    </see>
+    <see type="cap:Inbound" relation="Defines">
+      Inbound capability kind — receives external input.
+    </see>
+    <see type="cap:Outbound" relation="Defines">
+      Outbound capability kind — produces external output.
+    </see>
+    <see type="cap:Transformation" relation="Defines">
+      Transformation capability kind — maps input to output.
+    </see>
+    <see type="lang:PseudoCode" relation="SeeAlso">
+      Free-form pseudocode — preferred for semantic descriptions readable by LLMs.
+    </see>
+    <see type="doc:Expressions" relation="ReadNext">
+      Next reading step — dynamic values and bean calls in expressions.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,82 @@
+<!--
+  BlockML Core — constant (singleton) value type
+
+  FQN: org.blockml.bml.type.Constant
+  See docs/21_constant_value_type.md
+       docs/20_value_type_instance_configuration.md
+       docs/17_type_system_bml.md — Unions · Generics
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:validation="org.blockml.bml.validation">
+
+  <name>Constant</name>
+  <type>type:Constant</type>
+  <baseType>type:ConstantType</baseType>
+  <is>A single allowed literal value</is>
+
+  <documentation>
+    Standard ConstantType implementation for singleton (constant) values in type expressions —
+    without a dedicated literal-type language feature. Unqualified name Constant resolves to
+    org.blockml.bml.type.Constant.
+
+    Constant(T) binds the generic parameter T to any ValueType. Instance configuration supplies
+    the single allowed value via the value Property — for example Constant(Text){value: "auto"} or
+    Constant(Integer){value: 5}. The generic type argument is mandatory; bare Constant or
+    Constant{value: "auto"} without (T) is invalid.
+
+    The configured value Property belongs to the internal ValueType instance on the Property
+    definition. The external representation is always identical to the representation of the
+    underlying generic type T — Constant(Text){value: "auto"} accepts the external value "auto",
+    not { value: "auto" }.
+
+    Validation proceeds in two steps: first against the bound type T, then equality with the
+    configured constant value. No type inference is required — T is always authored explicitly
+    at the reference site.
+
+    Used primarily as a union alternative alongside ordinary ValueTypes:
+
+    Boolean | Constant(Text){value: "auto"}
+
+    Future literal union syntax (Boolean | "auto") desugars to this form. See
+    doc:ConstantValueType.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstantValueType" relation="AuthoringGuide">
+      Constant singleton domains — syntax, unions, Boolean shortcuts.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      ValueType instance configuration via {…} on type references.
+    </see>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      Union type expressions and obsolete wrapper migration.
+    </see>
+    <see type="type:ConstantType" relation="Extends">
+      ConstantType branch — singleton value domain semantics.
+    </see>
+  </references>
+
+  <genericTypes>
+    <T baseType="core:ValueType" />
+  </genericTypes>
+
+  <properties>
+    <value type="T">
+      <documentation>The single allowed value. Required on every Constant(T) reference via
+        instance configuration — Constant(T){value: …}. Validated against the bound type T at
+        compile time. This Property configures the internal ValueType instance — it does not
+        define the external representation of property values.</documentation>
+      <constraints>
+        <constraint:ValuePresent validation="Error"/>
+      </constraints>
+    </value>
+  </properties>
+</block>

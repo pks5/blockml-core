@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_UNREACHABLE_UNION_ALTERNATIVE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNREACHABLE_UNION_ALTERNATIVE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNREACHABLE_UNION_ALTERNATIVE</name>
+  <type>diag:BML_UNREACHABLE_UNION_ALTERNATIVE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unreachable-union-alternative diagnostic</is>
+
+  <summary>Warning: a later union alternative cannot win under left-to-right first-hit matching.</summary>
+
+  <keywords>BML_UNREACHABLE_UNION_ALTERNATIVE</keywords>
+
+  <documentation>
+    Warning: a later union alternative cannot win under left-to-right first-hit matching. Prefer
+    narrower/sentinel alternatives on the left. Advisory like unreachable code — compile succeeds.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      Union match order and unreachable alternatives.
+    </see>
+  </references>
+
+</block>

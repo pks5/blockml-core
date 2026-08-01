@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_PROTECTED_MEMBER_ACCESS diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PROTECTED_MEMBER_ACCESS
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_PROTECTED_MEMBER_ACCESS</name>
+  <type>diag:BML_PROTECTED_MEMBER_ACCESS</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A protected-member access diagnostic</is>
+
+  <summary>Emitted when a protected member is used outside declaring Block, inheritance, or immediate composition-owner context.</summary>
+
+  <keywords>BML_PROTECTED_MEMBER_ACCESS</keywords>
+
+  <documentation>
+    Protected members (_name) allow access when C=D, C inherits from D, C is the immediate composition owner O, or C inherits from instance type I. Outer composition ancestors do not receive protected configuration access.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Protected access and composition-owner rule.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Fix private/protected member or Sub-Block access.
+    </see>
+  </references>
+
+</block>

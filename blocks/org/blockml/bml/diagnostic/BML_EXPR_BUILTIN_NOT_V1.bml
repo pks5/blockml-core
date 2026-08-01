@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_EXPR_BUILTIN_NOT_V1 diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_BUILTIN_NOT_V1
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_BUILTIN_NOT_V1</name>
+  <type>diag:BML_EXPR_BUILTIN_NOT_V1</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A builtin-not-in-V1 diagnostic</is>
+
+  <summary>Emitted when a built-in outside the V1 supported set is called.</summary>
+
+  <keywords>BML_EXPR_BUILTIN_NOT_V1</keywords>
+
+  <documentation>
+    Emitted when a built-in outside the V1 supported set is called. Remedy: V1 includes a focused
+    #math / #numbers / #strings / #lists subset — see doc:Expressions V1 scope.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      V1 supported builtins.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Replace with a V1 builtin or defer.
+    </see>
+  </references>
+
+</block>

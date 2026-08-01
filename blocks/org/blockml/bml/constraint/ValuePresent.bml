@@ -1,0 +1,29 @@
+<!--
+  BlockML Core — value present constraint
+
+  FQN: org.blockml.bml.constraint.ValuePresent
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core">
+
+  <name>ValuePresent</name>
+  <type>constraint:ValuePresent</type>
+  <baseType>constraint:ValueConstraint</baseType>
+  <is>A rule that a value must be set</is>
+
+  <documentation>Scalar constraint: T binds to the property type. The property value must be present
+    after all model resolution is complete — inheritance, contracts, default values, and instance
+    value binding. Only authored values count; expression evaluation does not satisfy ValuePresent
+    (Stage 2 does not evaluate expressions). Enforced by validateConstraints() at Stage 2 only when
+    validation references an understood Validation block (typically validation:Error). Declares no
+    own properties beyond the inherited validation reference.</documentation>
+  <genericTypes>
+    <T baseType="core:ValueType"/>
+  </genericTypes>
+
+</block>

@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_UNKNOWN_NAMESPACE_PREFIX diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_NAMESPACE_PREFIX
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNKNOWN_NAMESPACE_PREFIX</name>
+  <type>diag:BML_UNKNOWN_NAMESPACE_PREFIX</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-namespace-prefix diagnostic</is>
+
+  <summary>Emitted when a QName uses an xmlns prefix that is not declared on the document.</summary>
+
+  <keywords>BML_UNKNOWN_NAMESPACE_PREFIX</keywords>
+
+  <documentation>
+    Declare xmlns:prefix for Packages (type addressing) or Annotations (directives/facets). Prefixes are authoring aliases — BOM stores canonical FQNs/namespaces.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlNamespace" relation="AuthoringGuide">
+      xmlns Package vs Annotation.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      QName type reference form.
+    </see>
+    <see type="task:DebugUnknownType" relation="Resolves">
+      Related unknown-type debugging steps.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — semantic version primitive type
+
+  FQN: org.blockml.bml.type.Version
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Version</name>
+  <type>type:Version</type>
+  <baseType>type:Text</baseType>
+  <is>A version number</is>
+
+  <documentation>Textual primitive subtype for semantic version numbers (semver). Values use
+    MAJOR.MINOR.PATCH form (for example 1.0.0, 1.3.2). Unqualified name Version resolves to
+    org.blockml.bml.type.Version.
+
+    Used wherever BlockML tracks or compares definition and reference versions: &lt;version&gt; on
+    Block and Library definitions, &lt;since&gt; on members, changelog entries, and bml:version on
+    composition instances. Concrete version strings are stored in Properties — not on the Version
+    type itself.</documentation>
+
+  <references>
+    <see type="doc:LibrarySystem" relation="AuthoringGuide">
+      Version on Block and Library definitions.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,25 @@
+<!--
+  BlockML Core — group branch
+
+  FQN: org.blockml.bml.core.Group
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Group</name>
+  <type>core:Group</type>
+  <baseType>core:Block</baseType>
+  <is>A named grouping category</is>
+
+  <documentation>Abstract base type for groups — named categories that organize related elements
+    for editors and tooling. Intentionally empty — no properties, aggregations, or Sub-Blocks.
+    Concrete group kinds extend this branch (e.g. org.blockml.bml.group.MemberGroup for Block
+    members, org.blockml.bml.group.BlockGroup for Blocks).</documentation>
+
+  <abstract>true</abstract>
+
+</block>

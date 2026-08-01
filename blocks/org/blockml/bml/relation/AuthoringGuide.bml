@@ -1,0 +1,23 @@
+<!--
+  BlockML Core — authoring-guide relation
+
+  FQN: org.blockml.bml.relation.AuthoringGuide
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>AuthoringGuide</name>
+  <type>relation:AuthoringGuide</type>
+  <baseType>core:Relation</baseType>
+  <is>A how-to-author Relation</is>
+
+  <documentation>Typical file= targets — repository markdown with authoring rules, examples, or
+    migration notes. Use when the link is procedural (&quot;how to write…&quot;) rather than structural
+    (Extends) or optional background (SeeAlso).</documentation>
+
+</block>

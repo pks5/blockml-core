@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_NO_TARGET diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_NO_TARGET
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_NO_TARGET</name>
+  <type>diag:BML_NO_TARGET</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A no-render-target diagnostic</is>
+
+  <summary>Emitted when compilation is requested with no configured render target.</summary>
+
+  <keywords>BML_NO_TARGET</keywords>
+
+  <documentation>
+    Emitted when compilation is requested with no configured render target. Remedy: Configure
+    targets[] in bom.config / CLI.
+  </documentation>
+
+  <references>
+    <see type="doc:CompilerArchitecture" relation="AuthoringGuide">
+      Pipeline overview.
+    </see>
+  </references>
+
+</block>

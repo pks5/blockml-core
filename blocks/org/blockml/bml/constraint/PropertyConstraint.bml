@@ -1,0 +1,32 @@
+<!--
+  BlockML Constraint — property structural constraint branch
+
+  FQN: org.blockml.bml.constraint.PropertyConstraint
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>PropertyConstraint</name>
+  <type>constraint:PropertyConstraint</type>
+  <baseType>constraint:MemberConstraint</baseType>
+  <is>A rule for a Property</is>
+
+  <documentation>Abstract branch for constraints on Property definitions (not property values —
+    see ValueConstraint for value rules). Generic T binds to the effective PropertyDefinition of
+    the enclosing Property. Valid only under a Property's &lt;constraints&gt; container when the
+    constraint extends PropertyConstraint (not ValueConstraint).</documentation>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <T baseType="def:PropertyDefinition">
+      <documentation>Bound to the effective PropertyDefinition of the enclosing Property member.</documentation>
+    </T>
+  </genericTypes>
+
+</block>

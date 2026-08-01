@@ -1,0 +1,20 @@
+<!--
+  BlockML Core — meter length unit
+
+  FQN: org.blockml.bml.unit.Meter
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Meter</name>
+  <type>unit:Meter</type>
+  <baseType>core:Unit</baseType>
+  <is>Meter (m)</is>
+
+  <documentation>Length unit — meter (m).</documentation>
+</block>

@@ -1,0 +1,68 @@
+<!--
+  BlockML Definition — generic type parameter meta-model type
+
+  FQN: org.blockml.bml.definition.GenericTypeDefinition
+  See docs/16_framework_base_types.md — genericTypes · 12_bom_object_model.md — GenericType.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>GenericTypeDefinition</name>
+  <type>def:GenericTypeDefinition</type>
+  <baseType>core:Definition</baseType>
+  <is>A generic type parameter</is>
+
+  <documentation>Declares one generic type parameter on a root Block definition. Rendered inside
+    the genericTypes container as an element whose local name is the parameter identifier (root
+    block only). Maps to BOM GenericType { name, baseType, defaultType? } — name is derived from
+    the XML element name, not from a child or attribute. The name is substituted in type references
+    within this Block (e.g. type="T" → GenericParameterReference). baseType is the FQN constraint —
+    each concrete type argument at reference sites must inherit from that branch
+    (BML_GENERIC_CONSTRAINT_VIOLATION on mismatch). Optional defaultType supplies the binding when
+    a generic application omits the corresponding type argument: a concrete TypeExpression, or the
+    name of an earlier sibling generic parameter (declaration-order only; cycles and forward
+    references forbidden). Must satisfy baseType after resolution. See 17_type_system_bml.md —
+    defaultType. Parameter name must differ from the Block name and every Sub-Block name.</documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      Generics — inheritance binding, defaultType, attribute syntax.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Generic application as a type expression.
+    </see>
+  </references>
+
+  <bml:xml>${ #this.name }</bml:xml>
+
+  <properties>
+    <name type="Text">
+      <documentation>Parameter identifier — derived from the XML element name at parse time (e.g.
+        &lt;T baseType="…"/&gt; → name = "T"). Must not collide with the Block name or any
+        Sub-Block name in the same document. Not authored as an attribute or child element.</documentation>
+    </name>
+    <baseType type="TypeReference(core:Block)" bml:xml="attribute">
+      <documentation>FQN constraint for concrete type arguments. Each supplied type argument at
+        reference sites (e.g. Box(Integer)) must inherit from this baseType branch.</documentation>
+    </baseType>
+    <defaultType type="TypeReference(core:Block)" bml:xml="attribute">
+      <documentation>Optional default when a generic application omits this parameter's type
+        argument. Either a concrete TypeExpression (FQN / configured type) that satisfies baseType,
+        or the bare name of an earlier sibling generic parameter (e.g. defaultType="N"). Sibling
+        references are declaration-order only — forward refs and cycles are errors
+        (BML_GENERIC_DEFAULT_FORWARD_REF / BML_GENERIC_DEFAULT_CYCLE). After resolution the
+        effective binding must satisfy baseType. Authored as the defaultType attribute on the
+        genericTypes entry element (e.g. &lt;Q baseType="core:ValueType" defaultType="N"/&gt;).
+        See 17_type_system_bml.md — defaultType. Omitted when every reference site must supply an
+        explicit type argument.</documentation>
+    </defaultType>
+  </properties>
+</block>

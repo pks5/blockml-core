@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_UNKNOWN_VERSION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_VERSION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNKNOWN_VERSION</name>
+  <type>diag:BML_UNKNOWN_VERSION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-version diagnostic</is>
+
+  <summary>Emitted when bml:version pins a type/library reference to a version that is not available.</summary>
+
+  <keywords>BML_UNKNOWN_VERSION</keywords>
+
+  <documentation>
+    Omitted bml:version resolves from TypeRegistry / library context. Present value is an exact-version assert — no match fails validation.
+  </documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="AuthoringGuide">
+      bml:version on composition/library refs.
+    </see>
+    <see type="doc:LibrarySystem" relation="SeeAlso">
+      Library version resolution.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      bml:version directive.
+    </see>
+  </references>
+
+</block>

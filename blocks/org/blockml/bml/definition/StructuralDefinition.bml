@@ -1,0 +1,380 @@
+<!--
+  BlockML Definition — structural definition metadata
+
+  FQN: org.blockml.bml.definition.StructuralDefinition
+
+  Abstract base type for BlockML definition elements that describe block structure.
+  Defines the common documentation model shared by blocks,
+  properties, aggregations, associations, capabilities, and
+  future structural definition elements.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>StructuralDefinition</name>
+  <type>def:StructuralDefinition</type>
+  <baseType>core:Definition</baseType>
+  <is>A reusable structural definition</is>
+
+  <documentation>
+    Abstract base type for BlockML structural definition elements. It provides the common
+    documentation model consisting of summaries[], keywords, groups, documentations[] (i18n via
+    language= and optional QName facets — facets are not for locales), version information, change
+    history, examples, and references, plus local declaration properties (abstract, final) for block
+    definitions. Concrete structural definition types inherit these members to describe themselves
+    consistently. Member declarations declare abstract, final, and override locally via
+    org.blockml.bml.definition.MemberDefinition. BlockDefinition and MemberDefinition override
+    groups to narrow the Group branch (BlockGroup and MemberGroup respectively).
+  </documentation>
+  <abstract>true</abstract>
+
+  <!--
+  Property definitions are grouped inside the <properties> element.
+  Each property is rendered as a direct XML child element named after the
+  property itself (for example <since>, <status>, <summary>, <documentation>, <abstract>, or <final>).
+  Keyword and Alias entries live in <keywords> and <aliases> aggregations — not as scalar properties.
+-->
+  <properties>
+    <since type="Version" bml:xml="element">
+      <documentation>The version in which this definition became available.</documentation>
+    </since>
+    <status type="core:Status" bml:xml="element">
+      <documentation>The status of the definition.</documentation>
+    </status>
+    <summary type="Text" bml:xml="element">
+      <documentation>Short prose expansion of semantic meaning — typically three to five sentences
+        between is and full documentation. Primary input for LLM context bundles and quick human
+        orientation; is names the Idea (Urbild), summary adds scope and boundaries without full technical
+        detail. May repeat for i18n (language=) and optional QName facets (e.g. scad:summary) —
+        facet namespaces resolve to Annotations (not NaturalLanguage). Required: default-namespace entry when canonical
+        documentation is too long; optional only when that documentation alone remains easy to read.
+        Missing when required → BML_MISSING_SUMMARY. Duplicate (namespace, languageFqn) →
+        BML_DUPLICATE_SUMMARY. Stored in BOM summaries[] as DocumentationProseEntry. Primary path
+        com.foo.Bar.summary (default NS + effective language); collection com.foo.Bar.summaries.</documentation>
+    </summary>
+    <documentation type="Documentation" bml:xml="element">
+      <documentation>Technical documentation prose for this definition element. May repeat for i18n
+        (language= NaturalLanguage) and optional QName facets (e.g. scad:document) — facet
+        namespaces resolve to Annotations (org.blockml.bml.core.Annotation), not locales. Always required: ≥1 default-namespace documentation on every
+        Block definition (root and Sub-Blocks). Omitted → BML_MISSING_DOCUMENTATION. When canonical
+        prose grows too long for a quick scan, authors must also supply default-namespace summary.
+        Duplicate (namespace, languageFqn) → BML_DUPLICATE_DOCUMENTATION. See 02_mbml.md —
+        Documentation facets and i18n · Annotations.</documentation>
+    </documentation>
+    <abstract type="Boolean" bml:xml="element">
+      <value>false</value>
+      <documentation>Local declaration property — not inherited. Describes only the block or member on
+        which it is declared. Semantic effects (implementation obligations) propagate to descendants.
+
+        When true on a block definition, the type is abstract — not usable as a composition instance
+        type. Abstract block types create implementation obligations for concrete descendants. A child
+        block of an abstract type is concrete by default unless it explicitly declares
+        &lt;abstract&gt;true&lt;/abstract&gt;.
+
+        When true on a member declaration, the member is semantically incomplete and must be implemented
+        by a descendant before the enclosing block can be concrete. See
+        org.blockml.bml.definition.MemberDefinition for member placement.
+
+        Boolean property with explicit true or false. Empty elements (&lt;abstract/&gt;) and attribute
+        shorthand without value are not permitted. Default false when omitted — do not write false
+        explicitly unless documenting intent. On block definitions rendered as a child element
+        (&lt;abstract&gt;true&lt;/abstract&gt;). On member declarations rendered as element or attribute
+        — see org.blockml.bml.definition.MemberDefinition.</documentation>
+    </abstract>
+    <final type="Boolean" bml:xml="element">
+      <value>false</value>
+      <documentation>Local declaration property — not inherited. Describes only the block or member on
+        which it is declared. Semantic effects (extension and override prohibitions) are enforced by
+        the validator across the inheritance chain.
+
+        When true on a block definition, the type is final — cannot be used as baseType on other
+        definitions.
+
+        When true on a member declaration, child blocks cannot redeclare this member (regardless of
+        whether they would change type, constraints, documentation, or implementation).
+
+        An abstract member must not be final, because it would become impossible to implement it
+        (abstract="true" &amp;&amp; final="true" is invalid).
+
+        Boolean property with explicit true or false. Empty elements (&lt;final/&gt;) and attribute
+        shorthand without value are not permitted. Default false when omitted. On block definitions
+        rendered as a child element (&lt;final&gt;true&lt;/final&gt;). On member declarations rendered
+        as element or attribute — see org.blockml.bml.definition.MemberDefinition.</documentation>
+    </final>
+  </properties>
+
+  <!--
+  Aggregation definitions are grouped inside the <aggregations> element.
+  Each aggregation is rendered as a direct XML child element named after the
+  aggregation itself (for example <keywords>, <groups>, <changelog>, <references>).
+-->
+  <aggregations>
+    <keywords type="core:Keyword[]">
+      <documentation>Optional search and discovery tags for RAG indexing. Each child is a
+        org.blockml.bml.core.Keyword Entity instance — domain catalogue blocks extending
+        org.blockml.bml.meta.FixedKeyword (fixed block reference, for example
+        &lt;vocab:Inheritance /&gt;), or org.blockml.bml.meta.FreeTextKeyword for ad-hoc terms
+        (for example &lt;meta:FreeTextKeyword term="inheritance" /&gt;). Comma-separated plain text on
+        &lt;keywords&gt; is shorthand that expands to FreeTextKeyword instances only — one term per
+        trimmed token. Addressable as com.foo.Bar.keywords on blocks and
+        com.foo.Bar.properties.width.keywords on members.</documentation>
+    </keywords>
+    <groups type="type:TypeReferenceEntity(core:Group)[]" bml:xml="element">
+      <documentation>Optional Group references that organize this definition element for editors and
+        tooling — a definition may belong to several groups at once. Each child is a
+        TypeReferenceEntity instance — empty children whose element QName is not TypeReferenceEntity
+        are sugar, e.g. &lt;mbgroup:Body /&gt; expands to
+        &lt;type:TypeReferenceEntity value="mbgroup:Body" /&gt;. Document order preserved in BOM
+        groups[]. Bound to org.blockml.bml.core.Group; BlockDefinition overrides to
+        group:BlockGroup and MemberDefinition overrides to group:MemberGroup.</documentation>
+    </groups>
+    <changelog type="Change[]">
+      <documentation>The changelog of the definition.</documentation>
+    </changelog>
+    <examples type="Example[]">
+      <documentation>Usage examples for this definition. Default-namespace &lt;examples&gt; is the
+        canonical container. Children may be unprefixed &lt;example&gt; (StructuralDefinition.Example)
+        or Annotation-prefixed entries such as scad:example (Annotation.Example) — siblings in the
+        same container, paired by title. Optional Annotation container facets (e.g. scad:examples)
+        hold independent target-specific sample sets beside the canonical slot. Facet namespaces
+        resolve to Annotations, not locales. Facet containers never replace the canonical examples
+        aggregation.</documentation>
+    </examples>
+    <references type="Reference[]">
+      <documentation>Documentation cross-references of the definition. Connects types to types or
+        types to instances (also definition members, files, URLs) — documentation metadata only,
+        not instance-to-instance model links. For instance graph edges use Association members
+        instead.</documentation>
+    </references>
+  </aggregations>
+
+  <subBlocks>
+    <block>
+      <name>Documentation</name>
+      <baseType>type:StructType</baseType>
+      <is>A documentation prose field</is>
+
+      <documentation>Describes one documentation prose entry on any
+        org.blockml.bml.definition.StructuralDefinition (block, property, aggregation, …). Rendered
+        as a documentation element (optionally QName-prefixed for Annotation facets) with optional language
+        attribute and a trimmed text body. Authors may place multiple siblings: i18n via language=
+        (NaturalLanguage); facets via annotation element namespace (e.g. scad:document from
+        Annotation.Document). Facet namespaces are Annotations, not locales. Maps to BOM documentations[] DocumentationProseEntry
+        { namespace, text, languageFqn }. Identity (namespace, languageFqn) within documentations[] —
+        duplicate → BML_DUPLICATE_DOCUMENTATION. Declared as a repeatable property shape on
+        org.blockml.bml.definition.StructuralDefinition.</documentation>
+
+      <bml:xml>documentation</bml:xml>
+
+      <properties>
+        <language type="TypeReference(lang:NaturalLanguage)" bml:xml="attribute">
+          <documentation>Optional NaturalLanguage when this documentation text is written in a
+            language other than the effective language of the enclosing definition element. Unqualified
+            names resolve via implicit namespace org.blockml.bml.language.*. Omitted = inherit
+            effective language from Block or Library.</documentation>
+        </language>
+        <content type="Text" bml:xml="text">
+          <documentation>Technical description text. Stored as trimmed body in BOM
+            DocumentationProseEntry.text on the enclosing definition element's documentations[].</documentation>
+        </content>
+      </properties>
+    
+</block>
+
+    <block>
+      <name>Change</name>
+      <baseType>core:Entity</baseType>
+      <is>A single changelog entry</is>
+
+      <documentation>Describes a single changelog entry in a changelog container on any definition
+        element (block, property, aggregation, …). Rendered as a change element with a required
+        version attribute and a trimmed text body describing what changed. Maps to BOM
+        ChangelogEntry { version, text, languageFqn? }. Entries must be ordered chronologically by
+        version — oldest first (BML_CHANGELOG_VERSION_ORDER when out of order). Optional language
+        attribute overrides the effective natural language for this entry's text body.</documentation>
+
+      <bml:xml>change</bml:xml>
+
+      <properties>
+        <version type="Version" bml:xml="attribute">
+          <documentation>Semantic version this change applies to. Required attribute on every change
+            entry.</documentation>
+        </version>
+        <language type="TypeReference(lang:NaturalLanguage)" bml:xml="attribute">
+          <documentation>Optional NaturalLanguage when this change description is written in a
+            language other than the effective language of the enclosing definition element. Unqualified
+            names resolve via implicit namespace org.blockml.bml.language.*. Omitted = inherit
+            effective language from Block or Library.</documentation>
+        </language>
+        <description type="Text" bml:xml="text">
+          <documentation>Human-readable description of what changed at this version. Stored as trimmed
+            text body in BOM ChangelogEntry.text.</documentation>
+        </description>
+      </properties>
+    
+</block>
+
+    <block>
+      <name>Example</name>
+      <baseType>core:Entity</baseType>
+      <is>A titled usage example</is>
+
+      <documentation>Describes one usage example in an examples container on any definition element
+        (block, property, aggregation, …). Rendered as an example element with a required title
+        attribute and a character-data body (bml:xml="text" — Text node or CDATA equally valid;
+        serializer chooses CDATA vs text per escape policy, 19 D8). The enclosing container may be
+        default-namespace &lt;examples&gt; or an Annotation facet (e.g. scad:examples). Paired
+        target-language samples use Annotation.Example as a sibling under the same &lt;examples&gt;
+        (e.g. scad:example with matching title) — preferred over a parallel scad:examples container.
+        Maps to BOM DocumentationExample { title, content, contentLanguageFqn?, namespace?, snippet }.
+        Empty body → BML_EXAMPLE_EMPTY_BODY. The title is always written in the effective natural
+        language of the enclosing block definition. An optional language attribute on the example
+        element references a Language FQN — implementation languages (OpenSCAD, TypeScript, …) for
+        code samples, or NaturalLanguage (English, German, …) for prose bodies. Optional snippet
+        marks illustrative fragments that are not complete / not to be syntax-checked.</documentation>
+
+      <bml:xml>example</bml:xml>
+
+      <properties>
+        <title type="Text" bml:xml="attribute">
+          <documentation>Short title identifying this example. Required attribute on every example
+            element (BML_EXAMPLE_MISSING_TITLE when omitted). Always written in the effective natural
+            language of the enclosing block definition — no separate language attribute on title.
+            Annotation Example siblings (e.g. scad:example) use the same title to form a pair.</documentation>
+        </title>
+        <language type="TypeReference(core:Language)" bml:xml="attribute">
+          <documentation>Optional Language for the CDATA body. Unqualified names resolve via implicit
+            namespace org.blockml.bml.language.*. Use an implementation Language (OpenSCAD, TypeScript,
+            …) for code samples, or a NaturalLanguage (English, German, …) for prose. Omitted when
+            content is BML/MBML source. Applies to content only — titles always use the enclosing
+            block's natural language.</documentation>
+        </language>
+        <snippet type="Boolean" bml:xml="attribute">
+          <value>false</value>
+          <documentation>When true, the body is an illustrative fragment — incomplete, with ellipsis,
+            or otherwise not a complete artifact in the declared language. Validators and tooling
+            must not require well-formed / parseable syntax. Applies to code samples
+            (language="OpenSCAD") and prose (language="English") alike. Default false when omitted
+            — do not write false explicitly unless documenting intent. Boolean with explicit true or
+            false; empty elements and attribute shorthand without value are not permitted.</documentation>
+        </snippet>
+        <content type="Text" bml:xml="text">
+          <documentation>BML, MBML, target-language source, or prose demonstrating usage. Stored as
+            character data on the host element (BOM DocumentationExample.content). Text node and
+            CDATA both accepted; authored form stored (authoredCharacterDataForm). Serializer emits
+            CDATA when escape requires it or when authored as CDATA (19 D8). When snippet is true,
+            content need not be complete or syntactically valid.</documentation>
+        </content>
+      </properties>
+    
+</block>
+
+    <block>
+      <name>Reference</name>
+      <baseType>core:Entity</baseType>
+      <is>A documentation cross-reference</is>
+
+      <documentation>Records a documentation link from the current definition to another Block type,
+        Block instance, definition element, repository markdown file, or external URL. References
+        connect types to types or types to instances for documentation purposes — they are not
+        instance-to-instance model links (those are Associations / AssociationDefinition). Rendered
+        as a see element inside the references container on any
+        org.blockml.bml.definition.StructuralDefinition (alongside changelog and examples). Maps to
+        BOM DocumentationReference { type?, instance?, file?, url?, property?, aggregation?,
+        association?, capability?, relationFqn?, context, languageFqn? }. Optional relation attribute
+        references org.blockml.bml.relation.* — default org.blockml.bml.relation.SeeAlso when omitted.
+        Optional language attribute overrides the effective natural language for the relationship
+        text body.
+
+        Eight mutually exclusive target attributes (type, instance, file, url, property, aggregation,
+        association, capability) instead of one generic target. Type targets use TypeReference;
+        instance targets use InstanceReference; member targets use typed MemberReference
+        specializations — property : PropertyReference, aggregation : AggregationReference,
+        association : AssociationReference, capability : CapabilityReference — and store the
+        canonical definition path in the BOM (for example com.foo.Bar.properties.width).
+        Split authoring type="com.foo.Bar" property="width" resolves to that path — type qualifies
+        the member name and is not stored as a separate type target. Split authoring
+        type="com.foo.Bar" instance="myId" resolves to com.foo.Bar::myId.
+        The attribute name encodes the target kind at the read site — see type (TypeReference),
+        see instance (InstanceReference), see property (PropertyReference), see file (repository
+        documentation), see url (web address). Humans and LLMs classify each reference from element
+        shape alone without inferring kind from value syntax. See 02_mbml.md — Associations vs
+        References · references — Why separate target attributes.</documentation>
+
+      <bml:xml>see</bml:xml>
+
+      <properties>
+        <type type="TypeReference(core:Block)" bml:xml="attribute">
+          <documentation>Block type reference via xmlns prefix (e.g. core:Block) — or Block FQN
+            qualifier when paired with property, aggregation, association, capability, or instance.
+            Standalone type= resolves to FQN at parse time. With a member attribute, type= supplies
+            the enclosing Block FQN and is not stored as a separate type target. With instance=,
+            type= qualifies the local id into {FQN}::{id}. Mutually exclusive with file, url, and
+            standalone member/instance targets — exactly one target kind must be set.</documentation>
+        </type>
+        <instance type="InstanceReference" bml:xml="attribute">
+          <documentation>Block instance pointer (InstanceReference) — local id (myId), qualified
+            {FQN}::{id}, or xmlns form (foo:Bar::myId). When paired with type=, type= supplies the
+            enclosing Block FQN and the value is stored as FQN::id. Mutually exclusive with file,
+            url, type (standalone), and member targets.</documentation>
+        </instance>
+        <file type="Text" bml:xml="attribute">
+          <documentation>Repository documentation file (e.g. 02_mbml.md). Mutually exclusive with all
+            other target attributes.</documentation>
+        </file>
+        <url type="Text" bml:xml="attribute">
+          <documentation>External URL. Mutually exclusive with all other target attributes.</documentation>
+        </url>
+        <property type="PropertyReference" bml:xml="attribute">
+          <documentation>PropertyDefinition path (PropertyReference) — canonical path (e.g.
+            com.foo.Bar.properties.width) or local member name when paired with type= (type
+            property="width" → com.foo.Bar.properties.width). Stored in BOM as canonical definition
+            path. Mutually exclusive with file, url, type (standalone), instance, aggregation,
+            association, and capability.</documentation>
+        </property>
+        <aggregation type="AggregationReference" bml:xml="attribute">
+          <documentation>AggregationDefinition path (AggregationReference) — canonical path (e.g.
+            com.foo.Bar.aggregations.children) or local member name when paired with type=. Stored
+            in BOM as canonical definition path. Mutually exclusive with all other target kinds.
+          </documentation>
+        </aggregation>
+        <association type="AssociationReference" bml:xml="attribute">
+          <documentation>AssociationDefinition path (AssociationReference) — canonical path (e.g.
+            com.foo.Bar.associations.basePresets) or local member name when paired with type=.
+            Stored in BOM as canonical definition path. Mutually exclusive with all other target
+            kinds.</documentation>
+        </association>
+        <capability type="CapabilityReference" bml:xml="attribute">
+          <documentation>CapabilityDefinition path (CapabilityReference) — canonical path (e.g.
+            com.foo.Bar.capabilities.render) or local member name when paired with type=. Stored in
+            BOM as canonical definition path. Mutually exclusive with all other target kinds.
+          </documentation>
+        </capability>
+        <relation type="TypeReference(core:Relation)" bml:xml="attribute">
+          <documentation>Relation block describing how the target relates to the current definition.
+            Block reference to org.blockml.bml.relation.* — unqualified names resolve via implicit
+            namespace org.blockml.bml.relation.*. Omitted = org.blockml.bml.relation.SeeAlso.</documentation>
+        </relation>
+        <language type="TypeReference(lang:NaturalLanguage)" bml:xml="attribute">
+          <documentation>Optional NaturalLanguage when the relationship text is written in a language
+            other than the effective language of the enclosing definition element. Unqualified names
+            resolve via implicit namespace org.blockml.bml.language.*. Omitted = inherit effective
+            language from Block or Library.</documentation>
+        </language>
+        <context type="Text" bml:xml="text">
+          <documentation>Human-readable explanation of why or how the referenced element relates to
+            this definition. Required on every see entry.</documentation>
+        </context>
+      </properties>
+    
+</block>
+  </subBlocks>
+</block>

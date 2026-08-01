@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED</name>
+  <type>diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unimplemented abstract-member diagnostic</is>
+
+  <summary>Emitted when a concrete Block still has an abstract member obligation from the inheritance/contract merge.</summary>
+
+  <keywords>BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED</keywords>
+
+  <documentation>
+    Implement with override=&quot;true&quot; and a locally complete declaration (abstract defaults to false). To keep abstract, redeclare with abstract=&quot;true&quot;.
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      Abstract → implementation.
+    </see>
+    <see type="task:FixMemberOverride" relation="Resolves">
+      Complete or re-abstract the inherited member.
+    </see>
+  </references>
+
+</block>

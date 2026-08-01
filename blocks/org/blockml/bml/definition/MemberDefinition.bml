@@ -1,0 +1,169 @@
+<!--
+  BlockML Definition — block member meta-model base type
+
+  FQN: org.blockml.bml.definition.MemberDefinition
+  See docs/12_bom_object_model.md — MemberDefinitionBase · 02_mbml.md — Members.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:group="org.blockml.bml.group"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MemberDefinition</name>
+  <type>def:MemberDefinition</type>
+  <baseType>def:ConstrainableDefinition</baseType>
+  <is>A declared Block member</is>
+
+  <documentation>Abstract base type for Block member declarations — properties, aggregations,
+    associations, and capabilities. Rendered as a child element inside the corresponding member
+    container on BlockDefinition; the XML element name is the member name (bml:xml="${ #this.name }").
+    An optional XML prefix on the element name supplies the member namespace — resolved via xmlns to
+    BOM namespace; unprefixed elements use the default namespace (empty string). Member identity is
+    (resolvedNamespace, normalizedLogicalName) — visibility prefixes (_ / __) are stripped from the
+    element localName before match or collision checks. Declaration properties abstract, final, and
+    override are local to each member declaration — not inherited. Only their semantic effects
+    propagate (implementation obligations, override prohibitions).
+
+    Member value placement (scalar members on PropertyDefinition, CapabilityDefinition, and shared
+    MemberDefinition fields):
+    • On member declarations (Block definition documents): each member field may render as a child
+      element or as an attribute on the member element — both are valid; element form is preferred
+      when serializing definitions (e.g. &lt;type&gt;Integer&lt;/type&gt; over type="Integer").
+    • On Block instances (composition): the same fields may also render as element or attribute —
+      both are valid; attribute form is preferred when serializing instances (e.g. width="50" over
+      &lt;width&gt;50&lt;/width&gt;).
+    Structured children (constraints, groups, suggestions, composition, implementation) remain
+    elements.
+
+    Member declaration modes are orthogonal:
+    • new — introduces a new member; must not set override="true"
+    • override="true" — refines an inherited member of the same identity (namespace +
+      normalizedLogicalName). Required on every local redeclaration that merges with an existing
+      member from the baseType chain or from contracts[] — including contract member completion. Each
+      redeclaration layer must set override="true" again — override is not inherited. Omission when a
+      parent member exists → BML_OVERRIDE_REQUIRED. Visibility may widen on override (e.g. protected
+      `_name` → public `name`); narrowing → BML_VISIBILITY_NARROWING. Member-level bml:xml may change
+      on the same override. Private members cannot be overridden → BML_FINAL_MEMBER_OVERRIDE.
+
+    Declaration properties abstract, final, and override are boolean properties local to the current
+    declaration (default false). They are never inherited; only semantic effects apply across layers:
+    - abstract="true" creates an implementation obligation for concrete descendants
+    - final="true" prevents redeclaration in child blocks (validator checks all declaring layers)
+    - override="true" confirms a deliberate redefinition of an inherited member
+
+    A locally concrete redeclaration (abstract=false, the default) with override="true" satisfies an
+    inherited implementation obligation when it is complete for the member kind (Property: type;
+    Aggregation: type; Association: type; Capability: type + implementation). To keep a member
+    abstract in a child block, explicitly declare abstract="true" on that redeclaration.
+
+    Maps to BOM MemberDefinitionBase fields shared by all member kinds — including visibility and
+    readOnly attributes, plus the groups aggregation (MemberGroup type references).</documentation>
+
+  <references>
+    <see type="core:Block" property="language" relation="Defines">
+      Example property member reference — split form resolves to
+      org.blockml.bml.core.Block.properties.language.
+    </see>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Visibility naming convention, access rules, and aggregation ID reachability.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      Partial overrides — merge semantics, abstract/final/override, readOnly.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      Parent block shape — properties, aggregations, associations, capabilities containers.
+    </see>
+    <see type="def:ConstrainableDefinition" relation="SeeAlso">
+      Shared constraints container for Block and member definitions.
+    </see>
+    <see type="group:MemberGroup" relation="Defines">
+      Narrows inherited StructuralDefinition.groups to MemberGroup references.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+  <bml:xml>${ #this.name }</bml:xml>
+
+  <properties>
+    <abstract type="Boolean" bml:xml="element|attribute">
+      <value>false</value>
+      <documentation>Local declaration property — not inherited. When true, this member declaration is
+        semantically incomplete and creates an implementation obligation for concrete descendants.
+        bml:xml="element|attribute" — on definitions, element form is preferred; on Block instances,
+        attribute form is preferred. Boolean with explicit true or false; empty elements and attribute
+        shorthand without value are not permitted. Default false when omitted.</documentation>
+    </abstract>
+    <final type="Boolean" bml:xml="element|attribute">
+      <value>false</value>
+      <documentation>Local declaration property — not inherited. When true on this declaration, child
+        blocks cannot redeclare this member. The validator enforces this effect regardless of whether
+        final is set on descendant declarations. bml:xml="element|attribute" — on definitions, element
+        form is preferred; on Block instances, attribute form is preferred. Boolean with explicit true
+        or false; empty elements and attribute shorthand without value are not permitted. Default false
+        when omitted.</documentation>
+    </final>
+    <override type="Boolean" bml:xml="element|attribute">
+      <value>false</value>
+      <documentation>Local declaration property — not inherited. When true, this member declaration
+        deliberately redefines an inherited member of the same identity (namespace +
+        normalizedLogicalName; visibility prefixes stripped) from the baseType chain or from a merged
+        contract. Required on every local redeclaration that merges with such a parent member —
+        including contract member completion. Each redeclaration in the chain must set
+        override="true" again. Omission when a parent member exists → BML_OVERRIDE_REQUIRED.
+        bml:xml="element|attribute" — on definitions, element form is preferred; on Block instances,
+        attribute form is preferred. The validator requires a matching parent member in the
+        accumulated effective set (baseType chain and contracts, before local declarations). A new
+        member must not set override="true" → BML_OVERRIDE_WITHOUT_PARENT. Boolean with explicit true
+        or false; empty elements and attribute shorthand without value are not permitted. Default
+        false when omitted.
+
+        Visibility may widen on override (e.g. protected `_name` → public `name`); narrowing →
+        BML_VISIBILITY_NARROWING. Member-level bml:xml may change on the same override. Unchanged
+        type should be omitted (inherited) — restate type only when refining it. Private members
+        cannot be overridden → BML_FINAL_MEMBER_OVERRIDE. override does not modify abstract or final
+        on other layers. It may be used to change documentation or other optional metadata without
+        implementing an abstract member.</documentation>
+    </override>
+    <visibility bml:xml="element|attribute">
+      <documentation>Optional BlockML access visibility — private, protected, or public. Omitted =
+        derived from the member element name: __ prefix → private, _ prefix → protected, otherwise
+        public (BML_VISIBILITY_MISMATCH when explicit visibility does not match the naming
+        convention). On override, visibility may widen (protected → public) but not narrow
+        (BML_VISIBILITY_NARROWING). bml:xml="element|attribute" — on definitions, element form is
+        preferred; on Block instances, attribute form is preferred. Controls BlockML authoring access
+        — not renderer BOM access. On aggregations, visibility additionally controls composition
+        instance ID reachability: public — bml:id values referencable via {EnclosingBlockFQN}::{id}
+        from other documents; protected — ids reachable within the declaring Block and its child
+        Blocks only; private — ids reachable within the declaring Block only. Maps to BOM
+        MemberDefinitionBase.visibility.</documentation>
+    </visibility>
+    <readOnly bml:xml="element|attribute">
+      <value>false</value>
+      <documentation>When true, Block instances must not set this member (BML_READONLY_MEMBER_WRITE).
+        Default false. bml:xml="element|attribute" — on definitions, element form is preferred; on
+        Block instances, attribute form is preferred. Definition and child override may still supply
+        values on the member declaration; readOnly forbids instance authoring only. Maps to BOM
+        MemberDefinitionBase.readOnly.</documentation>
+    </readOnly>
+  </properties>
+
+  <aggregations>
+    <groups override="true" type="type:TypeReferenceEntity(group:MemberGroup)[]" bml:xml="element">
+      <documentation>Optional MemberGroup references that organize this member for editors and
+        tooling — a member may belong to several groups at once (e.g. a UI category and a usage
+        facet). Overrides StructuralDefinition.groups, narrowing the Group branch to
+        org.blockml.bml.group.MemberGroup. Each child is a TypeReferenceEntity instance — empty
+        children whose element QName is not TypeReferenceEntity are sugar, e.g.
+        &lt;mbgroup:Body /&gt; expands to &lt;type:TypeReferenceEntity value="mbgroup:Body" /&gt;.
+        Document order preserved in BOM groups[]. Maps to BOM MemberDefinitionBase.groups.</documentation>
+    </groups>
+  </aggregations>
+
+</block>

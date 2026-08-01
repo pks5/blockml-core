@@ -1,0 +1,62 @@
+<!--
+  BlockML Core — fixed catalogue keyword entity
+
+  FQN: org.blockml.bml.meta.FixedKeyword
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:meta="org.blockml.bml.meta"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>FixedKeyword</name>
+  <type>meta:FixedKeyword</type>
+  <baseType>core:Keyword</baseType>
+  <is>A catalogue-fixed search tag</is>
+
+  <documentation>Protected base for domain catalogue Keyword blocks. Extends org.blockml.bml.core.Keyword
+    for controlled vocabulary tags whose payload is authored once on the keyword Block definition —
+    not at each &lt;keywords&gt; reference site. Domain libraries declare concrete keyword blocks
+    extending FixedKeyword and set protected members in &lt;properties&gt; (for example
+    &lt;_term&gt;inheritance&lt;/_term&gt;). References in &lt;keywords&gt; are empty fixed blocks
+    (for example &lt;vocab:Inheritance /&gt;) — type FQN is the catalogue identity; term, language,
+    and weight resolve from the keyword definition.
+
+    org.blockml.bml.meta.FreeTextKeyword extends FixedKeyword and widens the same members to public
+    attributes (`_term` → `term`, …) for ad-hoc tags configured per &lt;keywords&gt; reference —
+    visibility widening on override; see doc:MemberVisibility.
+    FixedKeyword members use the protected naming convention (_*) and are set only on derived keyword
+    block definitions — not on composition instances in &lt;keywords&gt;. Comma-separated shorthand on
+    &lt;keywords&gt; does not expand to FixedKeyword instances.</documentation>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <_term type="Text" bml:xml="element">
+      <abstract>true</abstract>
+      <documentation>Required search tag text — set on each concrete keyword block definition. Stored
+        in BOM KeywordEntry.term when resolved from a FixedKeyword descendant. Protected member (_
+        prefix) — configurable only on derived keyword block definitions, not at &lt;keywords&gt;
+        reference sites.</documentation>
+      <constraints>
+        <constraint:ValuePresent validation="Error"/>
+      </constraints>
+    </_term>
+    <_language type="TypeReference(lang:NaturalLanguage)" bml:xml="element">
+      <documentation>Optional NaturalLanguage when this tag is written in a language other than the
+        effective language of blocks that reference it. Set on the keyword block definition.
+        Unqualified names resolve via org.blockml.bml.language.*. Omitted = inherit effective
+        language at resolution time.</documentation>
+    </_language>
+    <_weight type="Integer" bml:xml="element">
+      <documentation>Optional RAG ranking hint — higher values rank stronger in discovery indexes.
+        Set on the keyword block definition. Omitted = default weight.</documentation>
+    </_weight>
+  </properties>
+</block>

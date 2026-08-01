@@ -1,0 +1,189 @@
+<!--
+  BlockML Core Services
+
+  Name: Math Service
+  Filename: Math.bml
+  FQN: org.blockml.bml.service.Math
+  Expression prefix: #math.*
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:service="org.blockml.bml.service"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Math</name>
+  <type>service:Math</type>
+  <baseType>core:Entity</baseType>
+  <is>A numeric expression service</is>
+
+  <documentation>Built-in math service. Expression prefix #math.* — min, max, abs, floor,
+    round, and related numeric utilities.</documentation>
+  <capabilities>
+
+    <!-- #math.min(a, b) — SCAD: native min(a, b) -->
+    <min
+      type="Transformation"
+      inputType="{ a: Float, b: Float }"
+      outputType="Float">
+      <documentation>
+        Returns the smaller of two numbers.
+        Examples:
+        #math.min(3, 5) → 3
+        #math.min(size.x, 10) → min(size.x, 10)
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (a: number, b: number): number => Math.min(a, b)
+      ]]></implementation>
+    </min>
+
+    <!-- #math.max(a, b) — SCAD: native max(a, b) -->
+    <max
+      type="Transformation"
+      inputType="{ a: Float, b: Float }"
+      outputType="Float">
+      <documentation>
+        Returns the larger of two numbers.
+        Examples:
+        #math.max(3, 5) → 5
+        #math.max(size.x, 10) → max(size.x, 10)
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (a: number, b: number): number => Math.max(a, b)
+      ]]></implementation>
+    </max>
+
+    <!-- #math.abs(x) — SCAD: native abs(x) -->
+    <abs
+      type="Transformation"
+      inputType="Float"
+      outputType="Float">
+      <documentation>
+        Returns the absolute value of x.
+        Examples:
+        #math.abs(-3) → 3
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number): number => Math.abs(x)
+      ]]></implementation>
+    </abs>
+
+    <!-- #math.floor(x) — SCAD: native floor(x) -->
+    <floor
+      type="Transformation"
+      inputType="Float"
+      outputType="Integer">
+      <documentation>
+        Rounds x down to the nearest integer.
+        Examples:
+        #math.floor(3.7) → 3
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number): number => Math.floor(x)
+      ]]></implementation>
+    </floor>
+
+    <!-- #math.ceil(x) — SCAD: native ceil(x) -->
+    <ceil
+      type="Transformation"
+      inputType="Float"
+      outputType="Integer">
+      <documentation>
+        Rounds x up to the nearest integer.
+        Examples:
+        #math.ceil(3.2) → 4
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number): number => Math.ceil(x)
+      ]]></implementation>
+    </ceil>
+
+    <!-- #math.round(x) — SCAD: native round(x) -->
+    <round
+      type="Transformation"
+      inputType="Float"
+      outputType="Integer">
+      <documentation>
+        Rounds x to the nearest integer.
+        Examples:
+        #math.round(3.4) → 3
+        #math.round(3.6) → 4
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number): number => Math.round(x)
+      ]]></implementation>
+    </round>
+
+    <!-- #math.round_n(x, n) — SCAD: round(x * pow(10, n)) / pow(10, n) -->
+    <round_n
+      type="Transformation"
+      inputType="{ x: Float, n: Integer }"
+      outputType="Float">
+      <documentation>
+        Rounds x to n decimal places.
+        Examples:
+        #math.round_n(3.14159, 2) → 3.14
+        #math.round_n(0.1 + 0.2, 1) → 0.3
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number, n: number): number =>
+            Math.round(x * Math.pow(10, n)) / Math.pow(10, n)
+      ]]></implementation>
+    </round_n>
+
+    <!-- #math.pow(base, exp) — SCAD: native pow(base, exp) -->
+    <pow
+      type="Transformation"
+      inputType="{ base: Float, exp: Float }"
+      outputType="Float">
+      <documentation>
+        Returns base raised to the power of exp.
+        Examples:
+        #math.pow(2, 10) → 1024
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (base: number, exp: number): number => Math.pow(base, exp)
+      ]]></implementation>
+    </pow>
+
+    <!-- #math.sqrt(x) — SCAD: native sqrt(x) -->
+    <sqrt
+      type="Transformation"
+      inputType="Float"
+      outputType="Float">
+      <documentation>
+        Returns the square root of x.
+        Examples:
+        #math.sqrt(9) → 3
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number): number => Math.sqrt(x)
+      ]]></implementation>
+    </sqrt>
+
+    <!-- #math.clamp(x, lo, hi) — SCAD: min(max(x, lo), hi) -->
+    <clamp
+      type="Transformation"
+      inputType="{ x: Float, lo: Float, hi: Float }"
+      outputType="Float">
+      <documentation>
+        Clamps x to the range [lo, hi].
+        Examples:
+        #math.clamp(5, 0, 3) → 3
+        #math.clamp(-1, 0, 1) → 0
+        #math.clamp(0.5, 0, 1) → 0.5
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number, lo: number, hi: number): number =>
+            Math.min(Math.max(x, lo), hi)
+      ]]></implementation>
+    </clamp>
+
+  </capabilities>
+
+</block>

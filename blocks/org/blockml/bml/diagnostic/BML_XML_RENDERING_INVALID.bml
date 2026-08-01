@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_XML_RENDERING_INVALID diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_XML_RENDERING_INVALID
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_XML_RENDERING_INVALID</name>
+  <type>diag:BML_XML_RENDERING_INVALID</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid bml:xml-recipe diagnostic</is>
+
+  <summary>Emitted when a &lt;bml:xml&gt; body is not a literal local name, ${ bml:Self }, or ${ #this.name }.</summary>
+
+  <keywords>BML_XML_RENDERING_INVALID</keywords>
+
+  <documentation>
+    In this context ${ … } forms are fixed tag recipes, not open Expression Language. Other roots, calls, or operators are invalid.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      Allowed bml:xml recipes.
+    </see>
+  </references>
+
+</block>

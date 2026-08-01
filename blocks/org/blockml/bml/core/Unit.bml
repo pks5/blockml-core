@@ -1,0 +1,34 @@
+<!--
+  BlockML Core — measurement unit branch
+
+  FQN: org.blockml.bml.core.Unit
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Unit</name>
+  <type>core:Unit</type>
+  <baseType>core:Block</baseType>
+  <is>A measurement unit</is>
+
+  <documentation>Abstract Block branch for measurement units — a taxonomy/catalog like Language
+    or Status, not a ValueType. Unit blocks describe a unit of measure; they never store concrete
+    magnitudes and are not valid as Property type or Capability inputType/outputType. They appear
+    as generic type arguments on Number (and domain types such as MultiAxis) — e.g.
+    Decimal(unit:Millimeter), Float(unit:Degree). Standard implementations live in
+    org.blockml.bml.unit.*; domain libraries may define additional unit blocks.</documentation>
+  <abstract>true</abstract>
+
+  <references>
+    <see type="core:Language" relation="SeeAlso">
+      Parallel non-ValueType Block branch used as type/reference catalog.
+    </see>
+    <see type="core:ValueType" relation="ContrastsWith">
+      ValueType is for property payloads; Unit constrains numeric generics only.
+    </see>
+  </references>
+</block>

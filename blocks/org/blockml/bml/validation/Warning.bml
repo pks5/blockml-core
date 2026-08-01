@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — warning validation
+
+  FQN: org.blockml.bml.validation.Warning
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:validation="org.blockml.bml.validation">
+
+  <name>Warning</name>
+  <type>validation:Warning</type>
+  <baseType>core:Validation</baseType>
+  <is>A warning Validation severity</is>
+
+  <documentation>When a constraint with validation="Warning" is violated, the BlockML
+    validator emits BML_CONSTRAINT_WARNING. Compilation continues.</documentation>
+</block>

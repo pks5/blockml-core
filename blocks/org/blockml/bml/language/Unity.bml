@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — Unity implementation language
+
+  FQN: org.blockml.bml.language.Unity
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>Unity</name>
+  <type>lang:Unity</type>
+  <baseType>lang:CSharp</baseType>
+  <is>The Unity C# programming language</is>
+
+  <documentation>C# dialect for Unity script implementations on Capabilities — MonoBehaviour methods,
+    UnityEngine APIs, and game-logic code.</documentation>
+</block>

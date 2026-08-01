@@ -1,0 +1,37 @@
+<!--
+  BlockML Core — BML_EXAMPLE_MISSING_TITLE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXAMPLE_MISSING_TITLE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_EXAMPLE_MISSING_TITLE</name>
+  <type>diag:BML_EXAMPLE_MISSING_TITLE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-example-title diagnostic</is>
+
+  <summary>Emitted when an example omits the required title.</summary>
+
+  <keywords>BML_EXAMPLE_MISSING_TITLE</keywords>
+
+  <documentation>
+    Emitted when an example omits the required title. Remedy: Add title= on the example entry.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      examples.
+    </see>
+  </references>
+
+</block>

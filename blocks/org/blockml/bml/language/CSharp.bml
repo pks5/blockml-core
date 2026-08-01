@@ -1,0 +1,20 @@
+<!--
+  BlockML Core — C# implementation language
+
+  FQN: org.blockml.bml.language.CSharp
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>CSharp</name>
+  <type>lang:CSharp</type>
+  <baseType>lang:ProgrammingLanguage</baseType>
+  <is>The C# programming language</is>
+
+  <documentation>ProgrammingLanguage for C# method implementations on Capabilities.</documentation>
+</block>

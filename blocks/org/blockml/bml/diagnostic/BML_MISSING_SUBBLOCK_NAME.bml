@@ -1,0 +1,43 @@
+<!--
+  BlockML Core — BML_MISSING_SUBBLOCK_NAME diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_SUBBLOCK_NAME
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_SUBBLOCK_NAME</name>
+  <type>diag:BML_MISSING_SUBBLOCK_NAME</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing Sub-Block-name diagnostic</is>
+
+  <summary>Emitted when a Sub-Block omits the required name element.</summary>
+
+  <keywords>BML_MISSING_SUBBLOCK_NAME</keywords>
+
+  <documentation>
+    Emitted when a Sub-Block omits the required name element. Remedy: Sub-Blocks use the opposite
+    identity convention from roots: name is required; type is normally derived.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Sub-Block identity.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      Sub-Block format.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Add Sub-Block name.
+    </see>
+  </references>
+
+</block>

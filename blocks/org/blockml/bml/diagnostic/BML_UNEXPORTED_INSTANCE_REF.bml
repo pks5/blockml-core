@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNEXPORTED_INSTANCE_REF diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNEXPORTED_INSTANCE_REF
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNEXPORTED_INSTANCE_REF</name>
+  <type>diag:BML_UNEXPORTED_INSTANCE_REF</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unexported-instance-ref diagnostic</is>
+
+  <summary>Emitted when an instance id is referenced outside the aggregation visibility export rules.</summary>
+
+  <keywords>BML_UNEXPORTED_INSTANCE_REF</keywords>
+
+  <documentation>
+    Emitted when an instance id is referenced outside the aggregation visibility export rules.
+    Remedy: Use a public aggregation for cross-document ids, or reference from an allowed scope.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Instance ID reachability.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      bml:id.
+    </see>
+  </references>
+
+</block>

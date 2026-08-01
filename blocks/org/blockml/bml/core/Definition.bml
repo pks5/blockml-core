@@ -1,0 +1,35 @@
+<!--
+  BlockML Core — Definition base type
+
+  FQN: org.blockml.bml.core.Definition
+
+  Abstract base type for all BlockML definition elements.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Definition</name>
+  <type>core:Definition</type>
+  <baseType>core:Block</baseType>
+  <is>A meta-model definition marker</is>
+
+  <documentation>
+    Abstract identification marker for the Definition branch under org.blockml.bml.core.Block.
+    Intentionally empty — no properties, aggregations, or Sub-Blocks. Any block whose baseType
+    chain includes org.blockml.bml.core.Definition is a Definition meta-model block
+    (org.blockml.bml.definition.*). Concrete grammar lives on subtypes such as
+    org.blockml.bml.definition.StructuralDefinition and org.blockml.bml.definition.BlockDefinition.
+
+    Used as a generic constraint and branch marker for definition-element references. Member path
+    ValueTypes (org.blockml.bml.type.MemberReference and children) constrain D to
+    org.blockml.bml.definition.MemberDefinition. Framework core branch types remain baseType markers;
+    domain interface-style type bounds use contracts and satisfiesTypeBound — see 17_type_system_bml.md.</documentation>
+
+  <abstract>true</abstract>
+
+</block>

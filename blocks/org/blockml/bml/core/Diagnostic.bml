@@ -1,0 +1,32 @@
+<!--
+  BlockML Core — validator diagnostic base type
+
+  FQN: org.blockml.bml.core.Diagnostic
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Diagnostic</name>
+  <type>core:Diagnostic</type>
+  <baseType>core:Block</baseType>
+  <is>A validator diagnostic code</is>
+
+  <documentation>Abstract branch for org.blockml.bml.diagnostic.* blocks. Each concrete diagnostic
+    block documents one validator or parser code (for example BML_UNKNOWN_TYPE) with is, summary,
+    keywords, and references. Use relation=Resolves on &lt;see&gt; to link to a TaskGuide that
+    walks through the fix. Enables agents and humans to navigate from a reported error to a
+    procedural resolution path without searching documentation prose.</documentation>
+
+  <references>
+    <see type="core:TaskGuide" relation="SeeAlso">
+      Procedural fix guides linked via relation=Resolves.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

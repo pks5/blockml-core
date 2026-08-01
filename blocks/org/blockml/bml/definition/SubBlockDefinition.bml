@@ -1,0 +1,82 @@
+<!--
+  BlockML Definition — Sub-Block definition meta-model type
+
+  FQN: org.blockml.bml.definition.SubBlockDefinition
+  Describes the parse-time shape of nested Sub-Block <block> documents.
+  See docs/12_bom_object_model.md — BlockDefinition.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
+
+  <name>SubBlockDefinition</name>
+  <type>def:SubBlockDefinition</type>
+  <baseType>def:BlockDefinition</baseType>
+  <is>The shape of a nested Sub-Block</is>
+
+  <documentation>Meta-model type for nested Sub-Block documents within a BomDocument. Extends
+    org.blockml.bml.definition.BlockDefinition and overrides definition (default SubBlockDefinition).
+    Shared identity, members, and subBlocks are inherited from BlockDefinition — Sub-Block-specific
+    identity rules live here.
+
+    Block identity conventions for Sub-Blocks (see 02_mbml.md — Type References and Block Identity):
+    • Sub-Block: semantically nested type within the same BomDocument as the root block — does not
+      open its own document or library scope. Analogous to a Java static nested class: may declare
+      own &lt;genericTypes&gt;; does not see enclosing Block generics (forward with applications).
+      Uses org.blockml.bml.definition.SubBlockDefinition
+      as definition meta-model — default org.blockml.bml.definition.SubBlockDefinition when
+      &lt;definition&gt; is omitted. name is the local identity (required). type is normally
+      omitted and derived recursively from the immediate enclosing block as
+      resolve(parent.type) + "." + name (BML_SUBBLOCK_TYPE_MISMATCH when an explicit type does not
+      match). Sub-Blocks may declare further Sub-Blocks to any depth (for example
+      com.foo.Vehicle.Engine.Cylinder). Unqualified nested names resolve enclosing-chain first
+      (02_mbml.md — Unqualified nested type resolution). Sub-Blocks must not declare embeddedBlocks
+      (BML_EMBEDDED_BLOCKS_ON_SUBBLOCK).
+
+    Root blocks use org.blockml.bml.definition.RootBlockDefinition; embedded virtual files use
+    org.blockml.bml.definition.EmbeddedBlockDefinition — sibling specializations of
+    BlockDefinition.</documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Sub-Block visibility, embeds distinction, and reference scope.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Sub-Block identity — name required; type derived from parent.
+    </see>
+    <see type="def:BlockDefinition" relation="Extends">
+      Shared block definition shape — identity, members, definition, and subBlocks.
+    </see>
+    <see type="def:RootBlockDefinition" relation="SeeAlso">
+      Document root shape — sibling specialization; adds embeddedBlocks.
+    </see>
+    <see type="def:EmbeddedBlockDefinition" relation="SeeAlso">
+      Virtual .bml entries under root embeddedBlocks — sibling specialization.
+    </see>
+  </references>
+
+  <properties>
+    <definition override="true" type="TypeReference(def:SubBlockDefinition)">
+      <value>def:SubBlockDefinition</value>
+      <documentation>Definition meta-model type for this Sub-Block's definition document. Selects
+        which fields exist when accessing the definition via bml:Self in definition reflection —
+        for example com.foo.Bar.Engine.is. Omitted on Sub-Blocks =
+        org.blockml.bml.definition.SubBlockDefinition.
+
+        Authored as FQN, xmlns QName, or unqualified name — unqualified names at this site resolve
+        via implicit namespace org.blockml.bml.definition.* (for example SubBlockDefinition or
+        definition:SubBlockDefinition). The referenced type must extend
+        org.blockml.bml.definition.SubBlockDefinition and must not extend
+        org.blockml.bml.definition.RootBlockDefinition or
+        org.blockml.bml.definition.EmbeddedBlockDefinition (BML_DEFINITION_TYPE_MISMATCH). Addressable
+        as com.foo.Bar.Engine.definition.</documentation>
+    </definition>
+  </properties>
+
+</block>

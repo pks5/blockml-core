@@ -1,0 +1,92 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.AnnotationModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:ann="org.blockml.bml.annotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>AnnotationModel</name>
+  <type>doc:AnnotationModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Annotation namespaces and facets</is>
+
+  <documentation>
+    Annotations formalize directive namespaces. They are orthogonal to the Definition meta-model
+    (org.blockml.bml.definition.*) — they do not describe block structure, members, or constraints.
+    Naming overlap (Property, Aggregation, …) classifies directive form only;
+    Annotation.Property is not def:PropertyDefinition.
+
+    Every BML-semantic xmlns prefix resolves to either a Package (type addressing) or a concrete
+    Annotation (directives). preferredAlias is authoring convention only (bml, scad) — the BOM
+    stores the Annotation FQN, never the XML prefix. Document default xmlns and xsi:schemaLocation
+    use http://blockml.org/bml (→ bml.xsd); legacy schema URIs are obsolete. BML-semantic xmlns:bml
+    must target ann:BmlAnnotation — never a schema URL.
+
+    Branch shape (core:Annotation):
+    • preferredAlias : Text
+    • directives : Directive[]
+    • Directive — name = local name
+      · Member (name="*") → Property | Aggregation | Association | Capability
+      · Element → Document | Summary | Examples | Example | Value (fixed names)
+      · Attribute — fixed names (id, each, with, …)
+
+    Concrete annotations:
+    • org.blockml.bml.annotation.BmlAnnotation (bml) — language directives; see doc:BmlDirectives
+    • Domain annotations (e.g. com.machineblocks.bml.annotation.ScadAnnotation, scad) — members,
+      value facets, prose facets, example facets
+
+    Directive match:
+    • Attribute / Element (incl. fixed Document, Summary, Examples, Example, Value) —
+      localName == directive.name
+    • Member subtypes — name="*"; any local name under the annotation; kind from the Member subtype
+
+    Parent context for *:value:
+    • Direct child of &lt;properties&gt; → Member (Annotation.Property) when declared
+    • Nested under a property element → Value facet (Annotation.Value) — same property identity,
+      not member scad:myProp
+    Never means a renamed member QName.
+
+    Parent context for *:example:
+    • Prefixed child of &lt;examples&gt; → Annotation.Example (sibling of canonical &lt;example&gt;)
+    • Unprefixed &lt;example&gt; → StructuralDefinition.Example
+    Prefer sibling *:example for 1:1 BML↔target pairs; use *:examples for independent target-only
+    sets. Annotation facets never replace required canonical documentation / value / examples slots.
+
+    Property value facets multiply PropertyDefinition.value along the Annotation namespace axis
+    ("" | Annotation FQN). Cross-namespace faceting is valid; same-namespace self-faceting is
+    forbidden. Duplicate namespace on one property → BML_DUPLICATE_PROPERTY_VALUE. Facets do not
+    satisfy or replace the canonical &lt;value&gt; for BML instance semantics unless a renderer
+    explicitly prefers an Annotation facet.
+  </documentation>
+
+  <references>
+    <see type="core:Annotation" relation="Defines">
+      Annotation branch — Directive taxonomy and preferredAlias.
+    </see>
+    <see type="ann:BmlAnnotation" relation="SeeAlso">
+      Concrete language Annotation (preferredAlias bml).
+    </see>
+    <see type="def:PropertyDefinition" relation="SeeAlso">
+      Value-field Annotation facets on properties.
+    </see>
+    <see type="doc:BmlNamespace" relation="SeeAlso">
+      Package vs Annotation xmlns targets and domain.bml.* layout.
+    </see>
+    <see type="doc:BmlDirectives" relation="ReadNext">
+      Next — bml: language directive placement and semantics.
+    </see>
+    <see type="diag:BML_DUPLICATE_PROPERTY_VALUE" relation="SeeAlso">
+      Duplicate value facet on the same Annotation namespace.
+    </see>
+  </references>
+
+</block>

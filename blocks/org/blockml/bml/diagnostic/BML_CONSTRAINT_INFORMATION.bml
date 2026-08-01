@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_CONSTRAINT_INFORMATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONSTRAINT_INFORMATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CONSTRAINT_INFORMATION</name>
+  <type>diag:BML_CONSTRAINT_INFORMATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A constraint-information diagnostic</is>
+
+  <summary>Emitted when a constraint fails with validation=Information.</summary>
+
+  <keywords>BML_CONSTRAINT_INFORMATION</keywords>
+
+  <documentation>
+    Emitted when a constraint fails with validation=Information. Remedy: Informational only —
+    compilation continues.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstraintsModel" relation="AuthoringGuide">
+      Validation severity.
+    </see>
+    <see type="task:AddConstraint" relation="Resolves">
+      Adjust constraint or value.
+    </see>
+  </references>
+
+</block>

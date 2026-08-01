@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — draft status
+
+  FQN: org.blockml.bml.status.Draft
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:status="org.blockml.bml.status">
+
+  <name>Draft</name>
+  <type>status:Draft</type>
+  <baseType>core:Status</baseType>
+  <is>An incomplete-work Status</is>
+
+  <documentation>Declared in BML but not yet fully implemented, validated, or mapped. May change
+    without deprecation notice. Use when a known gap exists between target and canonical form —
+    add an explicit note in &lt;documentation&gt; or sibling prose.</documentation>
+</block>

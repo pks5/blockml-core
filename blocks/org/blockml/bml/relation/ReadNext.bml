@@ -1,0 +1,25 @@
+<!--
+  BlockML Core — read-next relation
+
+  FQN: org.blockml.bml.relation.ReadNext
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>ReadNext</name>
+  <type>relation:ReadNext</type>
+  <baseType>core:Relation</baseType>
+  <is>A continue-reading Relation</is>
+
+  <documentation>Use on &lt;see&gt; entries in documentation blocks (org.blockml.bml.documentation.*)
+    to point to the next topic in a learning chain — typically body text starting with
+    &quot;Next reading step&quot;. Distinct from ReadFirst (README curated entry points), Prerequisite
+    (task-scoped do-this-first), and SeeAlso (optional peer link). ReadNext is a single forward
+    edge between narrative documentation blocks, not a library-wide ordered catalog.</documentation>
+
+</block>

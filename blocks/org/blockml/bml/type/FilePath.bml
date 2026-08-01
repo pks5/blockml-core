@@ -1,0 +1,15 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:type="org.blockml.bml.type">
+
+  <name>FilePath</name>
+  <type>type:FilePath</type>
+  <baseType>type:Text</baseType>
+  <is>A filesystem path string</is>
+
+  <documentation>Textual primitive subtype for file path values. Unqualified name FilePath resolves
+    to org.blockml.bml.type.FilePath.</documentation>
+</block>

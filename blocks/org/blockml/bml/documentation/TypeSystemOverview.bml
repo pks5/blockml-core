@@ -1,0 +1,92 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.TypeSystemOverview
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>TypeSystemOverview</name>
+  <type>doc:TypeSystemOverview</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to the type system</is>
+
+  <documentation>
+    BlockML knows four ValueType kinds at language level — each names a semantic meaning.
+    They are sibling branches under ValueType (not subtypes of each other):
+
+    PrimitiveType — atomic scalar semantics; no stored values on the type itself.
+    Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, Version,
+    TypeReference.
+
+    StructType — custom value objects; structure via properties.
+    Examples: Size3D, Address, Transform. Parameterized types (Box(T)) are StructTypes
+    with genericTypes — not a separate branch.
+
+    EnumType — closed set of named members; own ValueType branch (not a StructType). Allowed
+    members live in the values aggregation; BOM stores id + typeFqn only.
+    Examples: Direction, Face, StudType.
+
+    ConstantType — singleton value domain; one configured literal.
+    Example: Constant(Text){value: "auto"} for union alternatives.
+
+    Type expressions combine named types — they are not new BlockML type classes:
+    • Multiplicity: Integer[], Integer[3], Text[0..n]
+    • Unions: Boolean | Integer, Constant(Text){value: "auto"} | Float
+    • Generic application: Box(Integer) — round parentheses in type attributes
+    • Instance configuration: Text{maxLength: 100}, Decimal{precision: 10, scale: 2}
+    • bml:Self — resolves to effective current Block type after inheritance
+    • T — generic parameter reference from declaring Block's genericTypes
+
+    Only ValueTypes may appear where a bare type name is required (Property type,
+    Capability inputType/outputType). Any Block FQN is valid in aggregation and association
+    type attributes. ValueTypes never store data — Properties own all concrete values.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      Multiplicity, unions, obsolete wrappers — type expressions.
+    </see>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      Generic declarations, inheritance binding, defaultType.
+    </see>
+    <see type="core:ValueType" relation="Extends">
+      Abstract base for all value blocks used in Property and Capability types.
+    </see>
+    <see type="type:PrimitiveType" relation="SeeAlso">
+      Branch base for atomic scalar types.
+    </see>
+    <see type="type:StructType" relation="SeeAlso">
+      Branch base for custom value objects.
+    </see>
+    <see type="type:EnumType" relation="SeeAlso">
+      Branch base for finite value sets — sibling of StructType under ValueType.
+    </see>
+    <see type="type:ConstantType" relation="SeeAlso">
+      Branch base for singleton value domains.
+    </see>
+    <see type="type:Constant" relation="SeeAlso">
+      Generic Constant(T){value: …} for union singleton alternatives.
+    </see>
+    <see type="type:Color" relation="SeeAlso">
+      Textual primitive subtype — not a StructType.
+    </see>
+    <see type="type:Decimal" relation="SeeAlso">
+      Default primitive for non-integer numeric values.
+    </see>
+    <see type="doc:TypeExpressions" relation="ReadNext">
+      Next reading step — multiplicity, unions, and type-expression forms.
+    </see>
+    <see type="doc:ContractsModel" relation="SeeAlso">
+      contracts merge and satisfiesTypeBound — baseType vs implements.
+    </see>
+  </references>
+
+</block>

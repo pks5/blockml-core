@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — abstract documentation block base type
+
+  FQN: org.blockml.bml.core.Documentation
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>Documentation</name>
+  <type>core:Documentation</type>
+  <baseType>core:Block</baseType>
+  <is>A narrative documentation Block</is>
+
+  <documentation>
+    Abstract base for org.blockml.bml.documentation.* blocks — curated reading material that
+    explains BlockML concepts in mental learning order. Each concrete documentation block
+    carries is, documentation, and references; cross-links belong in references, not in
+    documentation prose. Listed via relation=ReadFirst on README and other ReadMe blocks.
+    Procedural how-to blocks extend org.blockml.bml.core.TaskGuide instead.
+  </documentation>
+
+  <references>
+    <see type="core:ReadMe" relation="SeeAlso">
+      Library reading entry — ReadFirst and TaskIndex on references.
+    </see>
+    <see type="core:TaskGuide" relation="SeeAlso">
+      Procedural task guides — org.blockml.bml.task.* blocks.
+    </see>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      Block documentation model.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

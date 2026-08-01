@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_UNCLOSED_EMBEDDED_EXPRESSION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNCLOSED_EMBEDDED_EXPRESSION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNCLOSED_EMBEDDED_EXPRESSION</name>
+  <type>diag:BML_UNCLOSED_EMBEDDED_EXPRESSION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unclosed-embedded-expression diagnostic</is>
+
+  <summary>Emitted when an implementation body has &lt;$ without a matching $&gt;.</summary>
+
+  <keywords>BML_UNCLOSED_EMBEDDED_EXPRESSION</keywords>
+
+  <documentation>
+    Emitted when an implementation body has &lt;$ without a matching $&gt;. Remedy: Every opening
+    &lt;$ must close with $&gt;. Nested embeds are forbidden.
+  </documentation>
+
+  <references>
+    <see type="doc:EmbeddedExpressions" relation="AuthoringGuide">
+      Delimiter rules.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Close or remove the embed region.
+    </see>
+  </references>
+
+</block>

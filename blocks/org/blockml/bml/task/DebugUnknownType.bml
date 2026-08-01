@@ -1,0 +1,58 @@
+<!--
+  BlockML Core — debug unknown type task
+
+  FQN: org.blockml.bml.task.DebugUnknownType
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:blockml="org.blockml.bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:relation="org.blockml.bml.relation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>DebugUnknownType</name>
+  <type>task:DebugUnknownType</type>
+  <baseType>core:TaskGuide</baseType>
+  <is>A how-to for fixing unknown types</is>
+
+  <summary>Verify FQN spelling, xmlns prefix resolution, Library blocks membership, and bootstrap
+    load order so the referenced type is registered in TypeRegistry before validation.</summary>
+
+  <keywords>BML_UNKNOWN_TYPE, unknown type, unresolved FQN, TypeRegistry, bootstrap</keywords>
+
+  <documentation>
+    Procedure when the validator reports BML_UNKNOWN_TYPE:
+    1. Locate the failing type reference site (type, baseType, member type, contract, language).
+    2. Confirm the expanded FQN matches a registered BlockDefinition.
+    3. Check xmlns prefix maps to the intended namespace on this document.
+    4. Confirm the defining block is listed in Library blocks when loaded via a library.
+    5. Verify dependency libraries and bootstrap order load the defining catalogue first.
+  </documentation>
+
+  <references>
+    <see type="diag:BML_UNKNOWN_TYPE" relation="SeeAlso">
+      Diagnostic block for this error code — entry point from validator output.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="TaskStep">
+      Step 1 — verify xmlns prefix and implicit namespace resolution at the reference site.
+    </see>
+    <see type="doc:LibrarySystem" relation="TaskStep">
+      Step 2 — confirm Library blocks exports the defining type.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="TaskStep">
+      Step 3 — check type reference forms (FQN, QName, Sub-Block-relative, nested resolution).
+    </see>
+    <see type="doc:BootstrapModel" relation="TaskStep">
+      Step 4 — confirm TypeRegistry bootstrap loaded dependencies before this document.
+    </see>
+    <see type="task:FixTypeIdentity" relation="SeeAlso">
+      Related — identity mismatches when the type exists but the form is wrong.
+    </see>
+  </references>
+
+</block>

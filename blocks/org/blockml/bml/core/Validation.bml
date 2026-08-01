@@ -1,0 +1,28 @@
+<!--
+  BlockML Core — validation semantics branch
+
+  FQN: org.blockml.bml.core.Validation
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Validation</name>
+  <type>core:Validation</type>
+  <baseType>core:Block</baseType>
+  <is>A constraint-violation severity</is>
+
+  <documentation>Abstract branch for validation semantics. A Validation block describes whether and
+    how BlockML itself should enforce an attached constraint. Constraints reference Validation via
+    the optional validation property on org.blockml.bml.core.Constraint. When validation is omitted,
+    the BlockML validator ignores the constraint — it remains metadata for renderers, editors,
+    runtimes, and custom validators. Standard implementations live in org.blockml.bml.validation.*;
+    domain libraries may define additional Validation blocks (for example
+    com.machineblocks.bml.validation.ManufacturingWarning). The BlockML validator only interprets
+    Validation types it understands; other tools may interpret additional Validation blocks.</documentation>
+  <abstract>true</abstract>
+
+</block>

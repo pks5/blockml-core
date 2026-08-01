@@ -1,0 +1,43 @@
+<!--
+  BlockML Core — PropertyDefinition path reference
+
+  FQN: org.blockml.bml.type.PropertyReference
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PropertyReference</name>
+  <type>type:PropertyReference</type>
+  <baseType>type:MemberReference(B, def:PropertyDefinition)</baseType>
+  <is>A path to a Property member</is>
+
+  <documentation>Concrete MemberReference binding D = PropertyDefinition. Value is a canonical
+    property path (com.foo.Bar.properties.width) or a local property name when paired with a Block
+    qualifier. Used as the type of see property= and other PropertyDefinition reference sites.
+  </documentation>
+
+  <references>
+    <see type="type:MemberReference" relation="SeeAlso">
+      Abstract member path ValueType.
+    </see>
+    <see type="def:PropertyDefinition" relation="Defines">
+      Target member meta-model type.
+    </see>
+    <see type="def:StructuralDefinition" relation="SeeAlso">
+      see property attribute.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Owning Block branch. Defaults to core:Block — bare PropertyReference is valid.
+      </documentation>
+    </B>
+  </genericTypes>
+</block>

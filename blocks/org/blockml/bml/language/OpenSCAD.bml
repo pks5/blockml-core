@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — OpenSCAD implementation language
+
+  FQN: org.blockml.bml.language.OpenSCAD
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>OpenSCAD</name>
+  <type>lang:OpenSCAD</type>
+  <baseType>lang:ProgrammingLanguage</baseType>
+  <is>The OpenSCAD programming language</is>
+
+  <documentation>ProgrammingLanguage for OpenSCAD function implementations on Capabilities.
+    Emitted by the MachineBlocks SCAD renderer with FQN-prefixed function names.</documentation>
+</block>

@@ -1,0 +1,34 @@
+<!--
+  BlockML Constraint — block-level structural constraint branch
+
+  FQN: org.blockml.bml.constraint.BlockConstraint
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>BlockConstraint</name>
+  <type>constraint:BlockConstraint</type>
+  <baseType>constraint:StructuralConstraint</baseType>
+  <is>A rule for a whole Block</is>
+
+  <documentation>Abstract branch for Block-level structural constraints. May express cross-member
+    rules (RequiresMember, MutuallyExclusive, …). Generic T binds to the effective
+    org.blockml.bml.definition.BlockDefinition type of the enclosing Block (including
+    SubBlockDefinition, RootBlockDefinition, and EmbeddedBlockDefinition subtypes). Valid only under a Block's
+    &lt;constraints&gt; container (BML_CONSTRAINT_TARGET_MISMATCH otherwise).</documentation>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <T baseType="def:BlockDefinition">
+      <documentation>Bound to the effective block definition meta-model type (BlockDefinition and its
+        SubBlockDefinition, RootBlockDefinition, or EmbeddedBlockDefinition subtypes).</documentation>
+    </T>
+  </genericTypes>
+
+</block>

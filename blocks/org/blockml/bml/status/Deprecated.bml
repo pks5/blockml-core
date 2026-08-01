@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — deprecated status
+
+  FQN: org.blockml.bml.status.Deprecated
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:status="org.blockml.bml.status">
+
+  <name>Deprecated</name>
+  <type>status:Deprecated</type>
+  <baseType>core:Status</baseType>
+  <is>A retained-but-legacy Status</is>
+
+  <documentation>Superseded by another definition. Existing references may remain during migration;
+    validators and editors should warn on new usage. Document the replacement in
+    &lt;documentation&gt;.</documentation>
+</block>

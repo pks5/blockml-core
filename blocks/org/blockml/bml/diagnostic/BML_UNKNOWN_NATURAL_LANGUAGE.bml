@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNKNOWN_NATURAL_LANGUAGE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_NATURAL_LANGUAGE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNKNOWN_NATURAL_LANGUAGE</name>
+  <type>diag:BML_UNKNOWN_NATURAL_LANGUAGE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-natural-language diagnostic</is>
+
+  <summary>Emitted when a NaturalLanguage reference does not resolve.</summary>
+
+  <keywords>BML_UNKNOWN_NATURAL_LANGUAGE</keywords>
+
+  <documentation>
+    Emitted when a NaturalLanguage reference does not resolve. Remedy: Use org.blockml.bml.language.*
+    NaturalLanguage blocks (English, German, …).
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      language inheritance.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      NaturalLanguage sites.
+    </see>
+  </references>
+
+</block>

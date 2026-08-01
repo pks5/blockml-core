@@ -1,0 +1,32 @@
+<!--
+  BlockML Core — BML_PRESET_CYCLE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PRESET_CYCLE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_PRESET_CYCLE</name>
+  <type>diag:BML_PRESET_CYCLE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A preset-cycle diagnostic</is>
+
+  <summary>Domain: preset references form a cycle.</summary>
+
+  <keywords>BML_PRESET_CYCLE</keywords>
+
+  <documentation>
+    Domain: preset references form a cycle. Break the preset dependency cycle in domain presets.
+    This diagnostic is emitted by domain validators; Core only catalogues the code.
+  </documentation>
+
+</block>

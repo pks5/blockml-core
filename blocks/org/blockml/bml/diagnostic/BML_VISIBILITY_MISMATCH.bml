@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_VISIBILITY_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_VISIBILITY_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_VISIBILITY_MISMATCH</name>
+  <type>diag:BML_VISIBILITY_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A visibility mismatch diagnostic</is>
+
+  <summary>Emitted when an explicit visibility property does not match the naming-convention prefix on the name.</summary>
+
+  <keywords>BML_VISIBILITY_MISMATCH</keywords>
+
+  <documentation>
+    Optional visibility on members and Sub-Blocks must agree with public / _protected / __private naming. When omitted, visibility is derived from the name.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Optional visibility must match name.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      Sub-Block root-level visibility.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Align visibility attribute with name prefix.
+    </see>
+  </references>
+
+</block>

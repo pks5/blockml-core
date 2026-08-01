@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_PRIVATE_SUBBLOCK_ACCESS diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PRIVATE_SUBBLOCK_ACCESS
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_PRIVATE_SUBBLOCK_ACCESS</name>
+  <type>diag:BML_PRIVATE_SUBBLOCK_ACCESS</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A private Sub-Block access diagnostic</is>
+
+  <summary>Emitted when a private Sub-Block is referenced outside the immediately declaring Block definition.</summary>
+
+  <keywords>BML_PRIVATE_SUBBLOCK_ACCESS</keywords>
+
+  <documentation>
+    Emitted when a private Sub-Block is referenced outside the immediately declaring Block definition.
+    Remedy: Private Sub-Blocks (__Name) follow the same access model as private members — declaring
+    Block only.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Sub-Block visibility and access diagnostics.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Qualify access or widen Sub-Block visibility.
+    </see>
+  </references>
+
+</block>

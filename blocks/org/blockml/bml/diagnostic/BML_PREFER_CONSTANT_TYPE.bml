@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_PREFER_CONSTANT_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PREFER_CONSTANT_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_PREFER_CONSTANT_TYPE</name>
+  <type>diag:BML_PREFER_CONSTANT_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A prefer-Constant diagnostic</is>
+
+  <summary>Warning: prefer Constant(T){value: …} over obsolete wrapper/literal union forms.</summary>
+
+  <keywords>BML_PREFER_CONSTANT_TYPE</keywords>
+
+  <documentation>
+    Warning: prefer Constant(T){value: …} over obsolete wrapper/literal union forms. Migrate
+    AutoOr/FalseOr/NoneOr and bare literal unions to Constant form.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstantValueType" relation="AuthoringGuide">
+      Constant form.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Obsolete wrappers.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_EXPR_UNKNOWN_PROPERTY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_UNKNOWN_PROPERTY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_UNKNOWN_PROPERTY</name>
+  <type>diag:BML_EXPR_UNKNOWN_PROPERTY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-property-in-expression diagnostic</is>
+
+  <summary>Emitted when an identifier is not found in scope, or index access is used on a StructType field.</summary>
+
+  <keywords>BML_EXPR_UNKNOWN_PROPERTY</keywords>
+
+  <documentation>
+    Emitted when an identifier is not found in scope, or index access is used on a StructType
+    field. Remedy: Bare property access is current Block only. StructType members are addressed
+    by name (size.x), not size[0].
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Property access and scope rules.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Correct property path or scope.
+    </see>
+  </references>
+
+</block>

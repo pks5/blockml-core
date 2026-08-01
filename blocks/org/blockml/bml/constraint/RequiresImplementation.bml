@@ -1,0 +1,28 @@
+<!--
+  BlockML Core — requires implementation capability constraint
+
+  FQN: org.blockml.bml.constraint.RequiresImplementation
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>RequiresImplementation</name>
+  <type>constraint:RequiresImplementation</type>
+  <baseType>constraint:CapabilityConstraint</baseType>
+  <is>A rule that a Capability is implemented</is>
+
+  <documentation>Capability-level structural constraint. T binds to the effective
+    CapabilityDefinition. When validation is set, the Capability must declare an implementation
+    binding on concrete Blocks. Reference implementation for CapabilityConstraint branch.</documentation>
+
+  <genericTypes>
+    <T baseType="def:CapabilityDefinition"/>
+  </genericTypes>
+
+</block>

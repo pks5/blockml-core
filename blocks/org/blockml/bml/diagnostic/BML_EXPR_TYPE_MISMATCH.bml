@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_EXPR_TYPE_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_TYPE_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_TYPE_MISMATCH</name>
+  <type>diag:BML_EXPR_TYPE_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An expression type-mismatch diagnostic</is>
+
+  <summary>Emitted when the expression result type is incompatible with the target member type.</summary>
+
+  <keywords>BML_EXPR_TYPE_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when the expression result type is incompatible with the target member type. Remedy:
+    Align operators/calls with the Property or Capability payload type after inference.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Validation vs evaluation.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Allowed ValueType expressions.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Fix expression result type.
+    </see>
+  </references>
+
+</block>

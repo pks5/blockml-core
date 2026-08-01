@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNKNOWN_CONTRACT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_CONTRACT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNKNOWN_CONTRACT</name>
+  <type>diag:BML_UNKNOWN_CONTRACT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-contract diagnostic</is>
+
+  <summary>Emitted when a &lt;contracts&gt; entry does not resolve to a BlockDefinition.</summary>
+
+  <keywords>BML_UNKNOWN_CONTRACT</keywords>
+
+  <documentation>
+    Emitted when a &lt;contracts&gt; entry does not resolve to a BlockDefinition. Remedy: Export
+    the contract Block and fix the FQN/QName.
+  </documentation>
+
+  <references>
+    <see type="doc:ContractsModel" relation="AuthoringGuide">
+      contracts.
+    </see>
+    <see type="task:DebugUnknownType" relation="Resolves">
+      Unresolved type debugging.
+    </see>
+  </references>
+
+</block>

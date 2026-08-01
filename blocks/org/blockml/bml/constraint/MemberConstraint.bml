@@ -1,0 +1,31 @@
+<!--
+  BlockML Constraint — member structural constraint branch
+
+  FQN: org.blockml.bml.constraint.MemberConstraint
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>MemberConstraint</name>
+  <type>constraint:MemberConstraint</type>
+  <baseType>constraint:StructuralConstraint</baseType>
+  <is>A rule for a Block member</is>
+
+  <documentation>Abstract branch for member-level structural constraints. Generic T binds to the
+    effective MemberDefinition subtype of the embedding context. Specialized by PropertyConstraint,
+    AggregationConstraint, AssociationConstraint, and CapabilityConstraint.</documentation>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <T baseType="def:MemberDefinition">
+      <documentation>Bound to the effective member definition type of the enclosing member.</documentation>
+    </T>
+  </genericTypes>
+
+</block>

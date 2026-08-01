@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — stable status
+
+  FQN: org.blockml.bml.status.Stable
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:status="org.blockml.bml.status">
+
+  <name>Stable</name>
+  <type>status:Stable</type>
+  <baseType>core:Status</baseType>
+  <is>A complete-and-reliable Status</is>
+
+  <documentation>Implemented, validated, and mapping complete. Behavior is reliable and may be
+    depended on by downstream definitions and tooling. Implicit default when no status is declared
+    on an element — omit &lt;status&gt; and bml:status on Stable content.</documentation>
+</block>

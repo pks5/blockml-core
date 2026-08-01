@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_TOO_MANY_FUNCTION_PARAMETERS diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_TOO_MANY_FUNCTION_PARAMETERS
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_TOO_MANY_FUNCTION_PARAMETERS</name>
+  <type>diag:BML_TOO_MANY_FUNCTION_PARAMETERS</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A too-many function-parameters diagnostic</is>
+
+  <summary>Emitted when a call supplies more positional arguments than the inputType arity allows.</summary>
+
+  <keywords>BML_TOO_MANY_FUNCTION_PARAMETERS</keywords>
+
+  <documentation>
+    Emitted when a call supplies more positional arguments than the inputType arity allows. Remedy:
+    Trim excess arguments or adjust inputType / FunctionMapping.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Positional arity rules.
+    </see>
+  </references>
+
+</block>

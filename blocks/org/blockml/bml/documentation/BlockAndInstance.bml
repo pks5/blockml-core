@@ -1,0 +1,82 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.BlockAndInstance
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>BlockAndInstance</name>
+  <type>doc:BlockAndInstance</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Block vs instance</is>
+
+  <documentation>
+    The closest familiar model: a Block is a declarative semantic Class; a Block Instance is an
+    Object. This is a semantic analogy — not a mandate for runtime OOP. The compiler may represent
+    definitions and instances as plain data; the parser nonetheless distinguishes block documents
+    (classes) from composition children (objects).
+
+    Block (definition):
+    • .bml file · BlockDefinition
+    • FQN · members · composition schema
+    • Describes shape and behaviour
+    • No runtime · no address
+
+    Block Instance (in composition):
+    • Element such as ac:Wall with bml:id and member values
+    • typeFqn + bml:id + member values
+    • One concrete occurrence
+    • May become a Thing in Runtime (WOT vocabulary)
+
+    Composition:
+    • Aggregations hold Block Instances as children
+    • Instance identity uses bml:id (not the type FQN)
+    • Nested paths compose with :: (wall::bottom::inner)
+    • bml:version pins external references to exact library versions
+
+    Instance serialization (authoring):
+    • On Block definitions — &lt;composition&gt; nested inside the aggregation member fills defaults
+    • On Block instances — aggregations are filled directly by member name (no composition wrapper);
+      property/capability values as attributes or child elements; Aggregation children as nested
+      elements (or bml:container for shared directives)
+    • readOnly effective members must not be authored on instances → BML_READONLY_MEMBER_WRITE
+    • Empty child meaning depends on aggregation type (instance vs TypeReferenceEntity sugar) —
+      doc:CompositionModel / doc:SubBlockModel
+
+    Context-dependent interpretation:
+    • ValueTypes as type-classes for Property values and Capability input/output
+    • Languages as meta-classes for implementation contracts
+    • Sub-Blocks in the same .bml file as nested classes (derived types, inner scope)
+    • Presets as named default bindings on a class
+
+    Relationships: Library contains Blocks; Block has Members, Presets, Compositions; Catalog
+    contains top-level composite Blocks.
+  </documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Aggregation fill — definition composition vs instance children.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      readOnly — instance authoring forbidden.
+    </see>
+    <see type="core:Block" relation="Extends">
+      Root type — abstract definition; not used directly as composition instance type.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      Meta-model for block definition documents.
+    </see>
+    <see type="doc:DefinitionModel" relation="ReadNext">
+      Next reading step — how definitions describe types and support reflection.
+    </see>
+  </references>
+
+</block>

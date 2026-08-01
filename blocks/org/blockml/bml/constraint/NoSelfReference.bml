@@ -1,0 +1,28 @@
+<!--
+  BlockML Core — no self-reference association constraint
+
+  FQN: org.blockml.bml.constraint.NoSelfReference
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>NoSelfReference</name>
+  <type>constraint:NoSelfReference</type>
+  <baseType>constraint:AssociationConstraint</baseType>
+  <is>A rule against self-reference</is>
+
+  <documentation>Association-level structural constraint. T binds to the effective
+    AssociationDefinition. When validation is set, association targets must not reference the
+    enclosing Block's own type. Reference implementation for AssociationConstraint branch.</documentation>
+
+  <genericTypes>
+    <T baseType="def:AssociationDefinition"/>
+  </genericTypes>
+
+</block>

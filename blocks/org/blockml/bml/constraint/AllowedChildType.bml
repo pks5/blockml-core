@@ -1,0 +1,34 @@
+<!--
+  BlockML Core — allowed child type aggregation constraint
+
+  FQN: org.blockml.bml.constraint.AllowedChildType
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>AllowedChildType</name>
+  <type>constraint:AllowedChildType</type>
+  <baseType>constraint:AggregationConstraint</baseType>
+  <is>A rule for allowed child types</is>
+
+  <documentation>Aggregation-level structural constraint. T binds to the effective
+    AggregationDefinition. When validation is set, each composition child under the aggregation must
+    resolve to the given Block type FQN. Reference implementation for AggregationConstraint branch.</documentation>
+
+  <genericTypes>
+    <T baseType="def:AggregationDefinition"/>
+  </genericTypes>
+
+  <properties>
+    <type type="TypeReference(core:Block)">
+      <documentation>Allowed Block type FQN for composition children.</documentation>
+    </type>
+  </properties>
+
+</block>

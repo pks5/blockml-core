@@ -1,0 +1,23 @@
+<!--
+  BlockML Core — stub status
+
+  FQN: org.blockml.bml.status.Stub
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:status="org.blockml.bml.status">
+
+  <name>Stub</name>
+  <type>status:Stub</type>
+  <baseType>core:Status</baseType>
+  <is>A placeholder-only Status</is>
+
+  <documentation>Structural placeholder only. Documents intent or reserves a member slot without
+    committing to behaviour, types, or mapping. Stronger signal than Draft for incomplete ideas.
+    Toolchain: Stage 2 validation accepts Stub; each Render Target may emit stubs (e.g. empty
+    methods with logs), omit, or abort — policy is target-specific.</documentation>
+</block>

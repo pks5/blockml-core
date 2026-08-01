@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_OVERRIDE_REQUIRED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_OVERRIDE_REQUIRED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_OVERRIDE_REQUIRED</name>
+  <type>diag:BML_OVERRIDE_REQUIRED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An override-required diagnostic</is>
+
+  <summary>Emitted when a local member redeclaration merges with a baseType or contracts member without override=&quot;true&quot;.</summary>
+
+  <keywords>BML_OVERRIDE_REQUIRED</keywords>
+
+  <documentation>
+    Every redeclaration layer that merges with an inherited or contract member must set override=&quot;true&quot; again — including contract completion. Override is not inherited.
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      override=&quot;true&quot; required on merge.
+    </see>
+    <see type="doc:ContractsModel" relation="SeeAlso">
+      Contract member completion.
+    </see>
+    <see type="task:FixMemberOverride" relation="Resolves">
+      Add override=&quot;true&quot; or rename as a new member.
+    </see>
+  </references>
+
+</block>

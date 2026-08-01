@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_NON_STATIC_INSTANCE_REF diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_NON_STATIC_INSTANCE_REF
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_NON_STATIC_INSTANCE_REF</name>
+  <type>diag:BML_NON_STATIC_INSTANCE_REF</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A non-static-instance-ref diagnostic</is>
+
+  <summary>Emitted when a qualified instance reference requires a static literal bml:id but got a dynamic id.</summary>
+
+  <keywords>BML_NON_STATIC_INSTANCE_REF</keywords>
+
+  <documentation>
+    Emitted when a qualified instance reference requires a static literal bml:id but got a dynamic
+    id. Remedy: Use a literal static bml:id for cross-document {FQN}::{id} references.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Composition instance ID reachability.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      bml:id rules.
+    </see>
+  </references>
+
+</block>

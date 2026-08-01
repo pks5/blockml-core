@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_MISSING_BASE_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_BASE_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_BASE_TYPE</name>
+  <type>diag:BML_MISSING_BASE_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-baseType diagnostic</is>
+
+  <summary>Emitted when a Block other than org.blockml.bml.core.Block omits baseType.</summary>
+
+  <keywords>BML_MISSING_BASE_TYPE</keywords>
+
+  <documentation>
+    Emitted when a Block other than org.blockml.bml.core.Block omits baseType. Remedy: Single
+    inheritance is mandatory except on the sole root org.blockml.bml.core.Block.
+  </documentation>
+
+  <references>
+    <see type="doc:ModelingGuidelines" relation="AuthoringGuide">
+      baseType inheritance.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      Identity fields.
+    </see>
+  </references>
+
+</block>

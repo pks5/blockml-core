@@ -1,0 +1,40 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Decimal</name>
+  <type>type:Decimal</type>
+  <baseType>type:Number(N)</baseType>
+  <is>A fixed-precision decimal number</is>
+
+  <documentation>BOM Core primitive ValueType for decimal numbers — the default type for all
+    non-integer numeric values (3.5, 12.75, 0.1). Unqualified name Decimal resolves to
+    org.blockml.bml.type.Decimal. Extends org.blockml.bml.type.Number. Represents mathematical decimal
+    numbers; the renderer decides target representation (BigDecimal, decimal, number, …).
+    Payload values are stored on Properties — not on the Decimal type itself.
+
+    Generic parameter N (Unit, default unit:None) is forwarded from Number — e.g.
+    Decimal(unit:Meter). Bare Decimal is dimensionless.
+
+    Optional configuration Properties (precision, scale) configure a Property's owned Decimal
+    instance via inline type syntax — Decimal{precision: 10, scale: 2} or Decimal{10, 2}.
+    Positional order: precision, scale. See 20_value_type_instance_configuration.md.</documentation>
+
+  <genericTypes>
+    <N baseType="core:Unit" defaultType="unit:None"/>
+  </genericTypes>
+
+  <properties>
+    <precision type="Integer">
+      <documentation>Total number of significant digits. Configured via Decimal{precision: n}.</documentation>
+    </precision>
+    <scale type="Integer">
+      <documentation>Number of digits after the decimal point. Configured via Decimal{scale: n}.</documentation>
+    </scale>
+  </properties>
+</block>

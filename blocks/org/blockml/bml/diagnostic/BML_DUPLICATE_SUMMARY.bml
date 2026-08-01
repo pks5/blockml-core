@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_DUPLICATE_SUMMARY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_SUMMARY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_DUPLICATE_SUMMARY</name>
+  <type>diag:BML_DUPLICATE_SUMMARY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate-summary diagnostic</is>
+
+  <summary>Emitted when summary entries collide on (namespace, languageFqn).</summary>
+
+  <keywords>BML_DUPLICATE_SUMMARY</keywords>
+
+  <documentation>
+    Emitted when summary entries collide on (namespace, languageFqn). Remedy: Keep one summary
+    per namespace/language pair.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      summary rules.
+    </see>
+  </references>
+
+</block>

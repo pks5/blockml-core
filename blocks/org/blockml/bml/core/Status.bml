@@ -1,0 +1,25 @@
+<!--
+  BlockML Core — maturity / lifecycle status branch
+
+  FQN: org.blockml.bml.core.Status
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Status</name>
+  <type>core:Status</type>
+  <baseType>core:Block</baseType>
+  <is>A lifecycle maturity marker</is>
+
+  <documentation>Abstract branch for status blocks. Status values are Block references following the
+    Everything-is-a-Block principle. Standard implementations live in org.blockml.bml.status.*;
+    domain libraries may define additional status blocks. Implicit default when omitted:
+    org.blockml.bml.status.Stable. Status is inherited downward — declare &lt;status&gt; or bml:status
+    only when deviating from the effective inherited status.</documentation>
+  <abstract>true</abstract>
+
+</block>

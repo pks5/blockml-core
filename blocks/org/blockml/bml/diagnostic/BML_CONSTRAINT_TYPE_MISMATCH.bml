@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_CONSTRAINT_TYPE_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONSTRAINT_TYPE_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CONSTRAINT_TYPE_MISMATCH</name>
+  <type>diag:BML_CONSTRAINT_TYPE_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A constraint-type mismatch diagnostic</is>
+
+  <summary>Emitted when constraint generic T is incompatible with the bound target type.</summary>
+
+  <keywords>BML_CONSTRAINT_TYPE_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when constraint generic T is incompatible with the bound target type. Remedy: Choose
+    a constraint whose T binds from the embedding context type.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstraintsModel" relation="AuthoringGuide">
+      Constraint generics.
+    </see>
+    <see type="task:AddConstraint" relation="Resolves">
+      Pick a compatible constraint.
+    </see>
+  </references>
+
+</block>

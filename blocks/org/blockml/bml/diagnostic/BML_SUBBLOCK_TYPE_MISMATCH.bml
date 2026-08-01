@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_SUBBLOCK_TYPE_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_SUBBLOCK_TYPE_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_SUBBLOCK_TYPE_MISMATCH</name>
+  <type>diag:BML_SUBBLOCK_TYPE_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A Sub-Block type-mismatch diagnostic</is>
+
+  <summary>Emitted when an explicit Sub-Block type does not equal resolve(parent.type) + &quot;.&quot; + name.</summary>
+
+  <keywords>BML_SUBBLOCK_TYPE_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when an explicit Sub-Block type does not equal resolve(parent.type) + &quot;.&quot;
+    + name. Remedy: The validator checks the full expected type from the immediate enclosing
+    block — not the last segment alone.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Sub-Block expectedType derivation.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Omit type or match parent-qualified expected type.
+    </see>
+  </references>
+
+</block>

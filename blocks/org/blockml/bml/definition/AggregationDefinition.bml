@@ -1,0 +1,114 @@
+<!--
+  BlockML Definition — aggregation member meta-model type
+
+  FQN: org.blockml.bml.definition.AggregationDefinition
+  See docs/12_bom_object_model.md — AggregationDefinition · 02_mbml.md — Aggregations.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>AggregationDefinition</name>
+  <type>def:AggregationDefinition</type>
+  <baseType>def:MemberDefinition</baseType>
+  <is>An owned collection member</is>
+
+  <documentation>Describes a Block member representing an owned collection. Children are always
+    Block instances; the aggregation type attribute selects the payload type:
+
+    • Plain Block type (for example core:Block[], bricks:Brick[]) — composition ownership of those
+      Block types. Children may carry nested composition, member values, and bml:id.
+    • TypeReferenceEntity application (for example type:TypeReferenceEntity(core:Block)[]) —
+      owned TypeReferenceEntity instances whose value holds an FQN / TypeExpression. Empty children
+      whose element QName is not TypeReferenceEntity are syntactic sugar for
+      &lt;type:TypeReferenceEntity value="…QName…" /&gt; (B/D bound by the aggregation type).
+
+    Rendered as a child element inside the aggregations container; the XML element name is the
+    aggregation name (bml:xml="${ #this.name }"). An optional XML prefix on the element name supplies
+    the member namespace — resolved via xmlns to BOM namespace; unprefixed elements use the default
+    namespace (empty string). Member identity is (resolvedNamespace, localName). Maps to BOM
+    AggregationDefinition (kind: "aggregation") with type expression, cardinality (from type
+    multiplicity), optional default flag, and optional nested composition template. When exactly one
+    aggregation on a Block is marked default="true", bare top-level composition on the Block
+    definition is sugar for filling that aggregation. Scalar member fields (type, default) follow
+    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
+    attribute preferred on Block instances. Structured composition remains a child element.
+    Composition instance ID reachability for bml:id references is controlled by this aggregation
+    member's visibility (inherited from org.blockml.bml.definition.MemberDefinition) — public
+    aggregations export ids for cross-document {EnclosingBlockFQN}::{id} references; protected
+    limits reach to the declaring Block and its child Blocks; private limits reach to the declaring
+    Block only. Service binding on composition children uses bml:bean and bml:scope on Block
+    instances — not aggregation member fields.</documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="AuthoringGuide">
+      Composition placement, recursion, and instance ID reachability.
+    </see>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Aggregation visibility controls which bml:id values may be referenced.
+    </see>
+    <see type="core:Block" relation="Requires">
+      Required branch for aggregation payload types.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="Requires">
+      Entity payload for type-reference aggregations (contracts, Library lists).
+    </see>
+  </references>
+
+  <properties>
+    <type type="TypeReference(core:Block)" bml:xml="element|attribute">
+      <documentation>Aggregation payload type (TypeExpression). Collections of domain Blocks use a
+        plain Block FQN with multiplicity — for example core:Block[], core:Block[0..n],
+        bricks:Brick[1..1]. Type-reference collections use a TypeReferenceEntity application — for
+        example type:TypeReferenceEntity(core:Block)[],
+        type:TypeReferenceEntity(core:Language)[1..1]. Each child is a TypeReferenceEntity instance
+        (or empty-QName sugar); value must satisfy satisfiesTypeBound(resolve(value), B). Required on
+        new aggregation declarations; may be omitted when filling an inherited aggregation (partial
+        override). On definitions, element form is preferred; on Block instances, attribute form is
+        preferred.</documentation>
+    </type>
+    <default bml:xml="element|attribute">
+      <value>false</value>
+      <documentation>When true, marks this aggregation as the primary/default composition target for
+        the enclosing Block. Tooling and render targets may use it when composition placement is
+        ambiguous. At most one default="true" aggregation per Block. Maps to BOM
+        AggregationDefinition.default. Default false.</documentation>
+    </default>
+    <composition type="Composition" bml:xml="element">
+      <documentation>Optional nested composition template filling this aggregation on the Block
+        definition. Rendered as a composition child element inside the aggregation member element.
+        Maps to BOM AggregationDefinition.composition (CompositionTemplate). May be omitted on
+        override declarations that only refine metadata. On Block instances, aggregation content is
+        opened inline without a composition wrapper — see doc:CompositionModel.
+        </documentation>
+    </composition>
+  </properties>
+
+  <subBlocks>
+    <block>
+      <name>Composition</name>
+      <baseType>core:Entity</baseType>
+      <is>A nested composition template</is>
+
+      <documentation>Describes the composition element on an aggregation member declaration.
+        Rendered as composition with optional bml:with directives and a tree of composition child
+        nodes (Block instances and bml:container virtual containers). Maps to BOM
+        CompositionTemplate { aggregationName (from enclosing aggregation member name), directives,
+        children }. Instance ID reachability is determined by the enclosing aggregation member's
+        visibility — not by attributes on the composition element. Standalone composition outside an
+        aggregation member element is invalid (BML_STANDALONE_COMPOSITION). Declared as the
+        composition property on org.blockml.bml.definition.AggregationDefinition.</documentation>
+
+      <bml:xml>composition</bml:xml>
+    
+</block>
+  </subBlocks>
+
+</block>

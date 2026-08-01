@@ -1,0 +1,242 @@
+<!--
+  BlockML — language annotation (bml: directives)
+
+  FQN: org.blockml.bml.annotation.BmlAnnotation
+
+  Preferred authoring binding:
+    xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:ann="org.blockml.bml.annotation"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>BmlAnnotation</name>
+  <type>ann:BmlAnnotation</type>
+  <baseType>core:Annotation</baseType>
+  <is>The BlockML language annotation namespace</is>
+
+  <documentation>
+    Concrete Annotation for BlockML language directives. preferredAlias is bml. Authoring documents
+    bind xmlns:bml to this FQN. Directives control composition structure, instance identity, service
+    beans, and serialization shape — they are not Block properties and not Definition members.
+
+    Attribute directives: id, version, bean, scope, status, each, if, unless, with, xml.
+    Element directives: container.
+
+    The legacy schema URI http://blockml.org/schema/bml remains an XSD/catalog identifier only —
+    BML-semantic xmlns:bml must target this Annotation.
+  </documentation>
+
+  <references>
+    <see type="core:Annotation" relation="Extends">
+      Annotation branch — Package vs Annotation xmlns rule.
+    </see>
+    <see type="doc:AnnotationModel" relation="SeeAlso">
+      Annotation branch — facets and Package vs Annotation xmlns rule.
+    </see>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      Normative placement and semantics for all bml: directives.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Composition and bml:container as directive hosts.
+    </see>
+  </references>
+
+  <properties>
+    <preferredAlias override="true" type="Text">
+      <value>bml</value>
+      <documentation>Preferred xmlns prefix for BlockML language directives.</documentation>
+    </preferredAlias>
+  </properties>
+
+  <aggregations>
+    <directives override="true">
+      <ann:BmlAnnotation.Id />
+      <ann:BmlAnnotation.Version />
+      <ann:BmlAnnotation.Bean />
+      <ann:BmlAnnotation.Scope />
+      <ann:BmlAnnotation.Status />
+      <ann:BmlAnnotation.Each />
+      <ann:BmlAnnotation.If />
+      <ann:BmlAnnotation.Unless />
+      <ann:BmlAnnotation.With />
+      <ann:BmlAnnotation.Xml />
+      <ann:BmlAnnotation.Container />
+    </directives>
+  </aggregations>
+
+  <subBlocks>
+    <block>
+      <name>Id</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A composition instance identity directive</is>
+
+      <documentation>Attribute directive bml:id — instance identity within a composition tree.
+        Required when the instance is referenced or carries bml:each.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>id</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Version</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>An external type version pin directive</is>
+
+      <documentation>Attribute directive bml:version — optional exact-version assert when a
+        composition reference targets an external block type.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>version</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Bean</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A service bean registration directive</is>
+
+      <documentation>Attribute directive bml:bean — registers the instance as a named service bean
+        for expression access via @beanName.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>bean</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Scope</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A service bean visibility scope directive</is>
+
+      <documentation>Attribute directive bml:scope — "local" or "context" for service bean
+        visibility. Default local when omitted.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>scope</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Status</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A lifecycle status attribute directive</is>
+
+      <documentation>Attribute directive bml:status — shorthand status reference; unqualified
+        values resolve via org.blockml.bml.status.*.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>status</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Each</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A composition loop directive</is>
+
+      <documentation>Attribute directive bml:each — expands the element once per loop iteration
+        (numeric or collection). See doc:BmlDirectives.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>each</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>If</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A conditional include directive</is>
+
+      <documentation>Attribute directive bml:if — includes the element only when the expression
+        evaluates to true.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>if</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Unless</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A conditional exclude directive</is>
+
+      <documentation>Attribute directive bml:unless — includes the element only when the expression
+        evaluates to false. Negation of bml:if.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>unless</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>With</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A local variable scope directive</is>
+
+      <documentation>Attribute directive bml:with — defines local variables visible within the
+        element and its descendants. See doc:BmlDirectives.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>with</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Xml</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A serialization shape directive</is>
+
+      <documentation>Attribute or member-level directive bml:xml — declares how a definition or
+        member maps to XML when rendering BML from the BOM. Complements flow-control directives;
+        does not expand composition. See doc:BmlDirectives · 19_definition_blocks_and_bml_xml.md.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>xml</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Container</name>
+      <baseType>core:Annotation.Element</baseType>
+      <is>A virtual composition grouping element</is>
+
+      <documentation>Element directive bml:container — virtual container that produces no Block
+        output but applies directives to a group of children.</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>container</value>
+        </name>
+      </properties>
+    </block>
+  </subBlocks>
+
+</block>

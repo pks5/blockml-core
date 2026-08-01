@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — Russian implementation language
+
+  FQN: org.blockml.bml.language.Russian
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>Russian</name>
+  <type>lang:Russian</type>
+  <baseType>lang:NaturalLanguage</baseType>
+  <is>The Russian natural language</is>
+
+  <documentation>Natural language for documentation prose, example titles, and Russian
+    natural-language capability implementations.</documentation>
+</block>

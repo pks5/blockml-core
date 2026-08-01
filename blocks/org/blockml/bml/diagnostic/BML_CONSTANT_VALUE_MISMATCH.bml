@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_CONSTANT_VALUE_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONSTANT_VALUE_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CONSTANT_VALUE_MISMATCH</name>
+  <type>diag:BML_CONSTANT_VALUE_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A constant-value mismatch diagnostic</is>
+
+  <summary>Emitted when a value does not equal the configured Constant(T){value: …} literal after type checks.</summary>
+
+  <keywords>BML_CONSTANT_VALUE_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when a value does not equal the configured Constant(T){value: …} literal after type
+    checks. Remedy: Use the exact singleton literal allowed by the Constant configuration.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstantValueType" relation="AuthoringGuide">
+      Constant validation.
+    </see>
+  </references>
+
+</block>

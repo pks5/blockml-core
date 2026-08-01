@@ -1,0 +1,247 @@
+<!--
+  BlockML Definition — block definition meta-model base type
+
+  FQN: org.blockml.bml.definition.BlockDefinition
+  Describes the shared parse-time shape of all <block>
+
+ definition documents.
+  See docs/12_bom_object_model.md — BlockDefinition · 16_framework_base_types.md — Definition Branch.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:group="org.blockml.bml.group"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
+  <name>BlockDefinition</name>
+  <type>def:BlockDefinition</type>
+  <baseType>def:ConstrainableDefinition</baseType>
+  <is>The shape of a Block document</is>
+
+  <documentation>Abstract meta-model base for all Block definition documents — root blocks,
+    Sub-Blocks, and embedded virtual files. Semantically a Class: declarative type shape without instance
+    state. Parsed into BomDocument.block and nested block definition trees. Generic type parameter B
+    binds this definition to the Block type it describes — conceptually BlockDefinition of
+    com.foo.Bar when B resolves to com.foo.Bar.
+
+    Declares identity first (name, type, baseType, version), then semantic and discovery fields
+    (is, isnot, aliases), generic parameters, contracts, and
+    member declaration containers (properties, aggregations, associations, capabilities). Inherits
+    summary and keywords aggregation (core.Keyword[]) from
+    org.blockml.bml.definition.StructuralDefinition. isnot is block-level only; aliases aggregation
+    (core.Alias[]) lists domain Alias blocks or org.blockml.bml.meta.FreeTextAlias instances. Omitted when unnecessary. Type modifiers abstract and final are inherited from
+    org.blockml.bml.definition.StructuralDefinition. Every definition element is addressable via
+    its canonical structural path within the Block FQN (for example com.foo.Bar.properties.width).
+    Member declaration order in BML is preserved in BOM and is significant for StructType
+    positional mapping and render targets.
+
+    Declares definition (meta-model role selector) and subBlocks (recursive nested type hierarchy).
+    Specialized as three sibling kinds that each override definition with a tighter TypeReference and
+    default: SubBlockDefinition (nested), RootBlockDefinition (document root + embeddedBlocks),
+    EmbeddedBlockDefinition (virtual .bml under root embeddedBlocks). Identity properties type and
+    baseType are TypeReference strings (not TypeReferenceEntity aggregations) — type names the Block
+    being declared; baseType carries the parent TypeExpression including generic applications. Other
+    type references (composition tags, member type attributes, contracts) accept FQN, xmlns QName,
+    context-bound unqualified fallback, or Sub-Block-relative names — all normalized to a canonical
+    FQN during resolution (BML_UNKNOWN_TYPE, BML_AMBIGUOUS_TYPE, BML_UNKNOWN_NAMESPACE_PREFIX).
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Type references and root / Sub-Block identity derivation.
+    </see>
+    <see type="doc:ContractsModel" relation="AuthoringGuide">
+      contracts aggregation — merge order and type bounds.
+    </see>
+    <see type="doc:BlockNameConvention" relation="AuthoringGuide">
+      PascalCase &lt;name&gt; rules.
+    </see>
+    <see type="core:Block" relation="Extends">
+      Sole inheritance root — empty &lt;baseType /&gt; only (org.blockml.bml.core.Block).
+    </see>
+    <see type="def:SubBlockDefinition" relation="Extends">
+      Nested Sub-Block definition shape — overrides definition.
+    </see>
+    <see type="def:RootBlockDefinition" relation="Extends">
+      Document root — overrides definition; adds embeddedBlocks.
+    </see>
+    <see type="def:EmbeddedBlockDefinition" relation="Extends">
+      Virtual .bml under root embeddedBlocks — overrides definition.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="Defines">
+      Entity payload for contracts and language aggregations — not
+      type/baseType (those stay scalar TypeReference text).
+    </see>
+    <see type="type:TypeReference" relation="Defines">
+      ValueType for identity type and baseType properties (FQN / TypeExpression text).
+    </see>
+    <see type="group:BlockGroup" relation="Defines">
+      Narrows inherited StructuralDefinition.groups to BlockGroup references.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <!-- Block definitions render as the root <block> element. -->
+  <bml:xml>block</bml:xml>
+
+  <!--
+    Type parameter of BlockDefinition itself — not the described Block's genericTypes aggregation.
+    Binds this definition to the Block type it describes. Defaults to org.blockml.bml.core.Block.
+  -->
+  <genericTypes>
+    <B baseType="core:Block">
+      <documentation>The Block type this BlockDefinition describes. Conceptually BlockDefinition of
+        com.foo.Bar when B binds to com.foo.Bar.</documentation>
+    </B>
+  </genericTypes>
+
+  <!--
+    Scalar Block metadata. Each property renders as a direct XML child element
+    named after the property. Authored document order (mandatory):
+    name → type → baseType first (definition identity, before is), then is / isnot / version
+    and the rest of the document.
+  -->
+  <properties>
+    <name type="Text" bml:xml="element">
+      <documentation>Short class name (PascalCase). Required on Sub-Blocks. Optional on root blocks —
+        when omitted, derived as lastSegment(resolve(type)). When present on a root block, must
+        equal lastSegment(resolve(type)) (BML_BLOCK_NAME_TYPE_MISMATCH). Format: [A-Z][a-zA-Z0-9]*
+        (BML_INVALID_BLOCK_NAME). First child of every Block definition document (with type /
+        baseType) — definition identity comes before is.</documentation>
+    </name>
+    <type type="TypeReference(core:Block)" bml:xml="element">
+      <documentation>Canonical Block type identity — scalar TypeReference (FQN) text, not a
+        TypeReferenceEntity aggregation. Required on root blocks (BML_MISSING_BLOCK_TYPE). Authored
+        as element text — FQN, xmlns QName, or Sub-Block-relative name (for example foo:MyBlock or
+        com.foo.MyBlock). The named type need not exist yet — this property declares identity for the
+        Block being defined. Optional on Sub-Blocks — when omitted, derived as
+        resolve(parent.type) + "." + name; when present, must equal that expected value
+        (BML_SUBBLOCK_TYPE_MISMATCH). Stored in BOM as block.type (FQN string). Immediately after
+        name, before is.</documentation>
+    </type>
+    <baseType type="TypeReference(core:Block)" bml:xml="element">
+      <documentation>Parent type TypeReference / TypeExpression. Required on all definitions
+        except the sole inheritance root (org.blockml.bml.core.Block), which omits &lt;baseType&gt;
+        entirely (BML_MISSING_BASE_TYPE elsewhere). Authored as element text — FQN or xmlns QName,
+        including generic applications that bind type parameters (for example core:Entity or
+        core:PrimitiveEntity(type:Integer)). This is the site where generic applications on the
+        parent are resolved. Stored in BOM as block.baseType (FQN string). Immediately after type,
+        before is.</documentation>
+    </baseType>
+    <is type="Text" bml:xml="element">
+      <documentation>Required: names the Idea (Urbild) — what this Block semantically represents.
+        Noun phrase that clearly conveys meaning; may be several words and must say more than bare
+        name or type when those alone are ambiguous (for example &quot;A version number&quot;, not merely
+        &quot;A version&quot;). Not a purpose clause and not full technical detail — use summary and
+        documentation for those. Required on every Block definition (root blocks and Sub-Blocks).
+        Follows definition identity (name / type / baseType) — never before them. Stored in BOM
+        block.is. Addressable as com.foo.Bar.is. Definition reflection: bml:Self.is. The Block itself
+        is the WOT Idea (Urbild); &lt;is&gt; names that Idea (Urbild) in prose for humans and LLMs —
+        see 02_mbml.md § Terminology — Urbild. Omitted → BML_MISSING_IS.</documentation>
+    </is>
+    <isnot type="Text" bml:xml="element">
+      <documentation>What this Block is not — explicit disambiguation from easily confused concepts
+        (for example Sub-Block vs embedded Block, contract vs baseType, Alias vs Keyword). Required
+        when confusion risk exists; optional only when no realistic nearby concept invites
+        misreading. Block-level only — not declared on member definitions. Plain trimmed text body
+        stored in BOM block.isnot. Addressable as com.foo.Bar.isnot. Definition reflection:
+        bml:Self.isnot. Prefer relation=ContrastsWith on references when pointing at a specific
+        confusing type; isnot states the negation inline on the current definition. Missing when
+        required → BML_MISSING_ISNOT.</documentation>
+    </isnot>
+    <version type="Version" bml:xml="element">
+      <documentation>Semantic version of this Block definition. Required on root blocks.
+        Addressable as com.foo.Bar.version.</documentation>
+    </version>
+    <definition abstract="true" type="TypeReference(def:BlockDefinition)">
+      <documentation>Definition meta-model type for this Block document. Selects which fields exist
+        when accessing the definition via bml:Self. Abstract on BlockDefinition — each concrete
+        specialization (SubBlockDefinition, RootBlockDefinition, EmbeddedBlockDefinition) must
+        override with a tighter TypeReference bound and a default value. Authored as FQN, xmlns
+        QName, or unqualified name — unqualified names resolve via implicit namespace
+        org.blockml.bml.definition.*. Addressable as &lt;blockFQN&gt;.definition.</documentation>
+    </definition>
+  </properties>
+
+  <!--
+    Block-level collections and member declaration containers. Each aggregation
+    renders as a direct XML child element named after the aggregation
+    (for example <genericTypes>, <properties>, or <subBlocks>).
+  -->
+  <aggregations>
+    <aliases type="core:Alias[]">
+      <documentation>Alternative names for this Block type. Each child is a org.blockml.bml.core.Alias
+        Entity instance — domain catalogue blocks extending org.blockml.bml.meta.FixedAlias (fixed
+        block reference, for example &lt;vocab:SubBlockAlias /&gt;), or org.blockml.bml.meta.FreeTextAlias
+        for ad-hoc names (for example &lt;meta:FreeTextAlias name="Sub-Block" /&gt;). Block-level only.
+        Comma-separated plain text
+        on &lt;aliases&gt; is shorthand that expands to FreeTextAlias instances only. Addressable as
+        com.foo.Bar.aliases.</documentation>
+    </aliases>
+    <language type="type:TypeReferenceEntity(lang:NaturalLanguage)">
+      <documentation>Natural language for documentation prose on this Block definition and its
+        members. Singular TypeReferenceEntity aggregation — one child (for example &lt;German/&gt;
+        sugar for &lt;type:TypeReferenceEntity value="lang:German" /&gt;). Omitted = inherit from
+        enclosing Library, then org.blockml.bml.core.Block default (English). Unqualified child
+        names resolve via implicit namespace org.blockml.bml.language.*. Stored in BOM as
+        block.language (TypeReferenceEntity instance); languageFqn is the resolved value string.
+        Bare TypeReferenceEntity(T) = optional single (0..1).</documentation>
+    </language>
+    <genericTypes type="def:GenericTypeDefinition[]">
+      <documentation>Generic type parameters declared on this Block (root, Sub-Block, or embedded —
+        Java static nested model). Each entry has a name and a baseType constraint for concrete type
+        arguments at reference sites. Sub-Blocks do not see enclosing generics — forward explicitly
+        (e.g. type="Selector(T)"). Name must not equal this Block's name or a direct Sub-Block name
+        (BML_GENERIC_BLOCK_NAME_COLLISION / BML_GENERIC_SUBBLOCK_NAME_COLLISION).</documentation>
+    </genericTypes>
+    <contracts type="type:TypeReferenceEntity(core:Block)[]">
+      <documentation>Contract Block references merged into this Block after the baseType chain
+      (root block only). Each child is a TypeReferenceEntity instance — for example
+      &lt;ac:Wall /&gt; expands to &lt;type:TypeReferenceEntity value="ac:Wall" /&gt;. Declaration
+      order is significant — later contracts override earlier ones; local Block declarations
+      override all contracts. Stored in BOM as block.contracts[].</documentation>
+    </contracts>
+    <groups override="true" type="type:TypeReferenceEntity(group:BlockGroup)[]" bml:xml="element">
+      <documentation>Optional BlockGroup references that organize this Block for editors and
+        tooling — a Block may belong to several groups at once. Overrides
+        StructuralDefinition.groups, narrowing the Group branch to
+        org.blockml.bml.group.BlockGroup. Each child is a TypeReferenceEntity instance — empty
+        children whose element QName is not TypeReferenceEntity are sugar, e.g.
+        &lt;mbgroup:SomeBlockGroup /&gt; expands to
+        &lt;type:TypeReferenceEntity value="mbgroup:SomeBlockGroup" /&gt;. Document order preserved
+        in BOM groups[].</documentation>
+    </groups>
+    <properties type="def:PropertyDefinition[]">
+      <documentation>Property member declarations. Mapped to members[] in XML document order.
+        Order is significant for StructType field indices and positional array literals.</documentation>
+    </properties>
+    <aggregations type="def:AggregationDefinition[]">
+      <documentation>Aggregation member declarations — owned collections that may hold composition
+        children. Mapped to members[] in XML document order.</documentation>
+    </aggregations>
+    <associations type="def:AssociationDefinition[]">
+      <documentation>Association member declarations — instance-to-instance links without
+        composition ownership. Distinct from documentation References (type↔type / type↔instance).
+        Mapped to members[] in XML document order.</documentation>
+    </associations>
+    <capabilities type="def:CapabilityDefinition[]">
+      <documentation>Capability member declarations — communication endpoints (inbound, outbound,
+        transformation). Mapped to members[] in XML document order.</documentation>
+    </capabilities>
+    <subBlocks type="def:SubBlockDefinition[]">
+      <documentation>Sub-Block definitions nested under this block. Each Sub-Block is a
+        SubBlockDefinition that may declare its own subBlocks to arbitrary depth. Canonical type is
+        derived from resolve(parent.type) + "." + name when type is omitted; explicit type must match
+        (BML_SUBBLOCK_TYPE_MISMATCH). Sub-Block name is required (BML_MISSING_SUBBLOCK_NAME).
+        Sub-Blocks must not declare embeddedBlocks (BML_EMBEDDED_BLOCKS_ON_SUBBLOCK). Allowed on
+        root blocks, embedded blocks, and nested Sub-Blocks.</documentation>
+    </subBlocks>
+  </aggregations>
+</block>

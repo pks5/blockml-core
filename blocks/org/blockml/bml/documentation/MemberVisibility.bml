@@ -1,0 +1,98 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.MemberVisibility
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>MemberVisibility</name>
+  <type>doc:MemberVisibility</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to member and Sub-Block visibility</is>
+
+  <documentation>
+    Member and Sub-Block visibility controls BlockML access only — which definitions may reference,
+    read, or set a member or Sub-Block. It does not prescribe how a renderer manifests visibility.
+    Renderers always see the entire Canonical BOM (public, protected, and private). Visibility
+    restricts authoring access, not technical BOM access.
+
+    Naming convention (primary signal):
+    • myVar — public
+    • _myVar — protected
+    • __myVar — private
+
+    The prefix is BlockML visibility, not logical member identity. Collision checking uses the
+    normalizedLogicalName with visibility prefixes stripped (myVar / _myVar / __myVar → myVar).
+    Members that differ only by visibility prefix must not coexist in the same Block →
+    BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT. A logical member exists exactly once with exactly one
+    visibility.
+
+    Override matching uses normalizedLogicalName. A child may redeclare with a different visibility
+    prefix only when the change widens access:
+    • protected → public — allowed
+    • private → any — forbidden (BML_FINAL_MEMBER_OVERRIDE)
+    • public → protected/private, or protected → private — forbidden (BML_VISIBILITY_NARROWING)
+    Effective visibility and authored name come from the child declaration. Member-level bml:xml may
+    change on the same override.
+
+    Formal access (D = declaring Block, C = Block whose definition contains the access, I = instance
+    type, O = immediate composition owner of that instance):
+    • public — always
+    • private — only when C = D (owning composite does not gain access to private members of
+      contained Sub-Block instances)
+    • protected — when C = D, or C inherits from D, or C = O, or C inherits from I.
+      Only the immediate composition owner grants protected configuration access on children — not
+      the entire outer composition hierarchy.
+
+    Aggregation members: visibility also controls which bml:id values may be referenced
+    (basePresets, Step.part, {BlockFQN}::{id}, …):
+    • public — cross-document {EnclosingBlockFQN}::{id}; unqualified ids within permitted access
+    • protected — declaring Block and its child Blocks (derived / Sub-Blocks in the same tree)
+    • private — declaring Block definition only
+    No separate export flag on composition or bml:container — reachability follows the aggregation
+    member's visibility. Qualified cross-document references require a public target aggregation and
+    a literal static bml:id.
+
+    Optional visibility property on members (and optional root-level visibility on Sub-Blocks) must
+    match the naming convention → mismatch BML_VISIBILITY_MISMATCH. Root Blocks must not declare
+    root-level visibility.
+
+    Validator diagnostics (access checks do not alter the Canonical BOM):
+    BML_PRIVATE_MEMBER_ACCESS, BML_PROTECTED_MEMBER_ACCESS,
+    BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT, BML_VISIBILITY_MISMATCH, BML_VISIBILITY_NARROWING,
+    BML_FINAL_MEMBER_OVERRIDE (private cannot be overridden).
+
+    Declared on org.blockml.bml.definition.MemberDefinition as visibility (and related override
+    rules). Sub-Block visibility uses the same naming convention — see also Sub-Block authoring
+    rules on org.blockml.bml.definition.SubBlockDefinition.
+  </documentation>
+
+  <references>
+    <see type="def:MemberDefinition" relation="Defines">
+      Member visibility property and override widening rules.
+    </see>
+    <see type="def:AggregationDefinition" relation="SeeAlso">
+      Aggregation visibility controls composition instance ID reachability.
+    </see>
+    <see type="def:SubBlockDefinition" relation="SeeAlso">
+      Sub-Blocks share the same naming-convention visibility rules.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="ReadNext">
+      Next — merge semantics when overriding inherited members.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Composition placement; ID reachability follows aggregation visibility.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      Inheritance, contracts, and member modeling patterns.
+    </see>
+  </references>
+
+</block>

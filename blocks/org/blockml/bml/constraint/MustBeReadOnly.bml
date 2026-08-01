@@ -1,0 +1,28 @@
+<!--
+  BlockML Core — must be read-only property constraint
+
+  FQN: org.blockml.bml.constraint.MustBeReadOnly
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>MustBeReadOnly</name>
+  <type>constraint:MustBeReadOnly</type>
+  <baseType>constraint:PropertyConstraint</baseType>
+  <is>A rule that a Property is read-only</is>
+
+  <documentation>Property-level structural constraint. T binds to the effective PropertyDefinition.
+    When validation is set, the validator requires readOnly=true on the Property (authored or
+    derived). Reference implementation for PropertyConstraint branch.</documentation>
+
+  <genericTypes>
+    <T baseType="def:PropertyDefinition"/>
+  </genericTypes>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_INVALID_PROPERTY_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_PROPERTY_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_INVALID_PROPERTY_TYPE</name>
+  <type>diag:BML_INVALID_PROPERTY_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid property-type diagnostic</is>
+
+  <summary>Emitted when a Property or Capability payload type does not resolve to a ValueType branch.</summary>
+
+  <keywords>BML_INVALID_PROPERTY_TYPE</keywords>
+
+  <documentation>
+    Bare type sites (Property type, Capability inputType/outputType) require ValueTypes. Aggregation and association types may use any Block FQN.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      Where ValueTypes are required.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="SeeAlso">
+      Four ValueType kinds.
+    </see>
+  </references>
+
+</block>

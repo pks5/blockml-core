@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_GENERIC_CONSTRAINT_VIOLATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERIC_CONSTRAINT_VIOLATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_GENERIC_CONSTRAINT_VIOLATION</name>
+  <type>diag:BML_GENERIC_CONSTRAINT_VIOLATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A generic constraint-violation diagnostic</is>
+
+  <summary>Emitted when a type argument or defaultType fails the parameter's baseType via satisfiesTypeBound.</summary>
+
+  <keywords>BML_GENERIC_CONSTRAINT_VIOLATION</keywords>
+
+  <documentation>
+    Emitted when a type argument or defaultType fails the parameter's baseType via satisfiesTypeBound.
+    Remedy: Union arguments must satisfy the bound per alternative.
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      satisfiesTypeBound on generic arguments.
+    </see>
+    <see type="doc:ContractsModel" relation="SeeAlso">
+      satisfiesTypeBound definition.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Union arguments in generics.
+    </see>
+  </references>
+
+</block>

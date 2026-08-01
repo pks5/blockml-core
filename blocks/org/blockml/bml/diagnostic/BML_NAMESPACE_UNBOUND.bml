@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_NAMESPACE_UNBOUND diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_NAMESPACE_UNBOUND
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_NAMESPACE_UNBOUND</name>
+  <type>diag:BML_NAMESPACE_UNBOUND</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A namespace-unbound diagnostic</is>
+
+  <summary>Emitted when emit/QName mode needs a prefix for a namespace missing from authored bindings.</summary>
+
+  <keywords>BML_NAMESPACE_UNBOUND</keywords>
+
+  <documentation>
+    Emitted when emit/QName mode needs a prefix for a namespace missing from authored bindings.
+    Remedy: Declare xmlns for that namespace; do not invent prefixes at emit time.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      bml:xml namespace bindings.
+    </see>
+    <see type="doc:BmlNamespace" relation="SeeAlso">
+      xmlns rules.
+    </see>
+  </references>
+
+</block>

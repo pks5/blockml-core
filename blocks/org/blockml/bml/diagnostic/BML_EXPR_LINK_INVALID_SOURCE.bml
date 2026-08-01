@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_EXPR_LINK_INVALID_SOURCE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_LINK_INVALID_SOURCE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_LINK_INVALID_SOURCE</name>
+  <type>diag:BML_EXPR_LINK_INVALID_SOURCE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid capability-link source diagnostic</is>
+
+  <summary>Emitted when @bean.capa (no parentheses) is used on a non-Outbound Capability.</summary>
+
+  <keywords>BML_EXPR_LINK_INVALID_SOURCE</keywords>
+
+  <documentation>
+    Emitted when @bean.capa (no parentheses) is used on a non-Outbound Capability. Remedy: Capability
+    linking without call parentheses requires an Outbound source.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Call vs link.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Outbound capabilities.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Use Outbound source or a call form.
+    </see>
+  </references>
+
+</block>

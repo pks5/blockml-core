@@ -1,0 +1,82 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.EmbeddedExpressions
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>EmbeddedExpressions</name>
+  <type>doc:EmbeddedExpressions</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to embedded expressions in implementations</is>
+
+  <documentation>
+    BML Embedded Expressions are language-neutral Capability references inside a Capability
+    &lt;implementation&gt; body. Delimiters: opening &lt;$ · closing $&gt;.
+
+    The implementation CDATA is source text of the language named by language= (OpenSCAD,
+    TypeScript, …). Regions wrapped in &lt;$ … $&gt; are BlockML Expression Language fragments. The
+    renderer replaces each embedded region (including delimiters) with equivalent target-language
+    syntax; surrounding text is copied unchanged. Embedded Expressions are not a separate
+    implementation language and not a replacement for &lt;implementation&gt;.
+
+    Supported call forms inside embeds (at least):
+    • #this.someCapability(...) — own Block Capability (required for self-refs; bare foo(...) not
+      supported here)
+    • #math.max(...) / #strings.concat(...) — built-in services (same registry as ${ })
+    • @bean.someCapability(...) — Transformation Capability on a bound bean
+
+    Property access, operators, literals, and nested calls follow the same rules as ${ }
+    expressions unless noted otherwise.
+
+    Delimiter rules:
+    • Zero, one, or many regions per implementation body; multiline OK
+    • Whitespace immediately after &lt;$ and before $&gt; is ignored
+    • Nested delimiters forbidden
+    • Unclosed &lt;$ → BML_UNCLOSED_EMBEDDED_EXPRESSION
+    • Invalid embed content → BML_INVALID_EMBEDDED_EXPRESSION
+    • Literal &lt;$ or $&gt; in implementation source must not appear outside a valid pair
+
+    Contrast with ${ } (member values):
+    • Host: BML attributes / &lt;value&gt; / directives vs implementation CDATA
+    • Own Capability: myCapa(...) or link vs #this.myCapa(...) only
+    • BOM: ExpressionValue.raw on members vs EmbeddedExpression { raw, start, end } on
+      ImplementationBlock
+
+    See doc:Expressions for ${ } language, layers, V1 scope, and scope rules; doc:SubBlockModel
+    for utility Sub-Block implementations that commonly host embeds.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="SeeAlso">
+      ${ } expression language — shared grammar and V1 scope.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capabilities and implementation contracts.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      utility Sub-Blocks — OpenSCAD/TypeScript implementations.
+    </see>
+    <see type="lang:OpenSCAD" relation="SeeAlso">
+      Common V1 implementation language for embeds.
+    </see>
+    <see type="diag:BML_UNCLOSED_EMBEDDED_EXPRESSION" relation="SeeAlso">
+      Unclosed &lt;$ delimiter.
+    </see>
+    <see type="diag:BML_INVALID_EMBEDDED_EXPRESSION" relation="SeeAlso">
+      Invalid embedded expression content.
+    </see>
+    <see type="doc:CompilerArchitecture" relation="ReadNext">
+      Next — parser / validator / renderer pipeline.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,151 @@
+<!--
+  BlockML Core — abstract library descriptor base type
+
+  FQN: org.blockml.bml.core.BlockLibrary
+
+  Framework base type — lives in core, not exported via any Library blocks catalog.
+  Concrete Library blocks (Library.bml) inherit from BlockLibrary.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:relation="org.blockml.bml.relation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BlockLibrary</name>
+  <type>core:BlockLibrary</type>
+  <baseType>core:Block</baseType>
+  <is>A publishable Block catalog type</is>
+
+  <documentation>
+    Abstract publishable library unit — groups exported Block and ValueType definitions,
+    optional XSD schemas, dependencies on other libraries, and nested sub-libraries.
+    Replaces the legacy library.xml descriptor.
+
+    Framework base type in org.blockml.bml.core — not exported via Library blocks.
+    Concrete Library.bml files inherit from BlockLibrary and declare aggregations explicitly.
+
+    Catalog aggregations are public and readOnly: foreign Blocks and tools may inspect a library
+    descriptor (e.g. list exports or dependencies) in expressions; only the Library definition
+    (and child overrides) may author the catalog. Instances must not rewrite these members.
+
+    Aggregations (each aggregation member is opened by name; none is default):
+    • readMe — required human/LLM reading entry (ReadMe block, 1..1)
+    • bootstrap — optional automation SPOE (Bootstrap block, 0..1)
+    • dependencies — other Library blocks this library depends on (typical: inner library
+      depends on outer)
+    • subLibraries — nested child Library blocks grouped under this library
+    • schemas — optional legacy XSD paths as FilePathEntity instances
+    • blocks — exported Block and ValueType definitions (membership SSOT)
+
+    readMe and bootstrap hold TypeReferenceEntity children — empty QName sugar sets value to
+    that FQN. dependencies, subLibraries, and blocks use the same pattern. Optional bml:version on
+    sugar (or explicit TypeReferenceEntity) children is an exact-version assert against the
+    referenced type (value) — same semantics as external composition references; omitted → resolve
+    from TypeRegistry / library context; no match → BML_UNKNOWN_VERSION. schemas holds
+    FilePathEntity composition children; value is the relative .xsd path from the library package
+    root (directory containing Library.bml).
+
+    Concrete Library.bml &lt;references&gt; rule — at most two &lt;see&gt; entries:
+    1. Required: relation=ReadFirst targeting the same ReadMe named in readMe.
+    2. Optional: relation=ThenContinueWith targeting the Bootstrap named in bootstrap, only when
+       bootstrap is present. Signals: after reading, continue by executing the automation SPOE.
+    No AuthoringGuide / DeepDive / Extends / SeeAlso (or other) entries on concrete Libraries —
+    those belong on documentation blocks, not on the catalog descriptor.
+  </documentation>
+
+  <references>
+    <see type="doc:LibrarySystem" relation="AuthoringGuide">
+      Library format — structure and blocks membership.
+    </see>
+    <see type="doc:LibrarySystem" relation="SeeAlso">
+      Libraries, packages, namespaces, versioning, and imports.
+    </see>
+    <see type="type:FilePathEntity" relation="SeeAlso">
+      Entity wrapper used for schemas entries.
+    </see>
+    <see type="core:ReadMe" relation="Requires">
+      Required readMe target — human/LLM reading entry.
+    </see>
+    <see type="core:Bootstrap" relation="SeeAlso">
+      Optional bootstrap target — automation SPOE (0..1).
+    </see>
+    <see type="relation:ThenContinueWith" relation="SeeAlso">
+      Optional Library &lt;see&gt; after ReadFirst when bootstrap is present.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="Requires">
+      Entity payload for readMe, bootstrap, dependencies, subLibraries, and blocks.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <description type="Text" readOnly="true">
+      <documentation>Human-readable summary of what this library provides. Public readOnly —
+        inspectable from foreign Blocks; authored on the Library definition only.</documentation>
+    </description>
+  </properties>
+
+  <aggregations>
+    <language type="type:TypeReferenceEntity(lang:NaturalLanguage)" readOnly="true">
+      <documentation>Default natural language for documentation prose on all blocks exported
+        from this library catalogue. Singular TypeReferenceEntity aggregation — one child (for
+        example &lt;English/&gt;). Inherited by block definitions unless overridden. Unqualified
+        child names resolve via implicit namespace org.blockml.bml.language.*. Public readOnly —
+        inspectable from foreign Blocks; authored on the Library definition only. Optional
+        bml:version on the sugar child is an exact-version assert against the referenced
+        language type.</documentation>
+    </language>
+    <readMe type="type:TypeReferenceEntity(core:ReadMe)[1..1]" readOnly="true">
+      <documentation>Required human/LLM reading entry for this library. Exactly one ReadMe
+        TypeReferenceEntity — empty QName sugar or explicit value. Typically
+        &lt;blockml:README /&gt; on the core library. Missing or duplicate →
+        BML_TYPE_REFERENCE_MULTIPLICITY. Optional bml:version is an exact-version assert against
+        the referenced ReadMe type. Public readOnly — inspectable from foreign Blocks; authored on
+        the Library definition only.</documentation>
+    </readMe>
+    <bootstrap type="type:TypeReferenceEntity(core:Bootstrap)" readOnly="true">
+      <documentation>Optional single point of entry (SPOE) for automated startup — tasks, agents,
+        CI pipelines. Bare TypeReferenceEntity = 0..1. At most one Bootstrap; omit when the library
+        has no automation entry. Not the human reading entry (use readMe). Optional bml:version
+        is an exact-version assert against the referenced Bootstrap type. Public readOnly —
+        inspectable from foreign Blocks; authored on the Library definition only.</documentation>
+    </bootstrap>
+    <dependencies type="type:TypeReferenceEntity(core:BlockLibrary)[]" readOnly="true">
+      <documentation>Other Library blocks this library depends on. Typical pattern: an inner
+      library lists the outer library here. TypeReferenceEntity instances (QName sugar or explicit
+      value). Optional bml:version pins or asserts an exact Library version (e.g.
+      &lt;blockml:Library bml:version="3.0.0" /&gt;). Public readOnly — foreign tools may read
+      the dependency list; only the Library definition may author it.</documentation>
+    </dependencies>
+    <subLibraries type="type:TypeReferenceEntity(core:BlockLibrary)[]" readOnly="true">
+      <documentation>Nested child Library blocks grouped under this library. A library may declare
+      sub-libraries alongside blocks. TypeReferenceEntity instances. Optional bml:version is an
+      exact-version assert against the referenced Library. The outer library must not re-export
+      inner library blocks in blocks — consumers depend on the inner library directly. Public
+      readOnly — inspectable from foreign Blocks; authored on the Library definition only.</documentation>
+    </subLibraries>
+    <schemas type="type:FilePathEntity[]" readOnly="true">
+      <documentation>Optional legacy XSD schema paths during migration. Each entry is a
+        FilePathEntity composition child; value is the relative .xsd path from the library package
+        root. Omit when all types are exported via blocks. Public readOnly — inspectable from
+        foreign Blocks; authored on the Library definition only.</documentation>
+    </schemas>
+    <blocks type="type:TypeReferenceEntity(core:Block)[]" readOnly="true">
+      <documentation>Exported Block and ValueType definitions. Membership is defined exclusively by
+      this list — not by directory layout. TypeReferenceEntity instances naming each export.
+      Optional bml:version is an exact-version assert against the exported type when that type
+      declares its own version. Public readOnly — the publishable catalog is inspectable from
+      foreign Blocks (e.g. library-management tools); only the Library definition may author
+      membership.</documentation>
+    </blocks>
+  </aggregations>
+
+</block>

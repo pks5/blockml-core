@@ -1,0 +1,51 @@
+<!--
+  BlockML Core — free-text alias entity
+
+  FQN: org.blockml.bml.meta.FreeTextAlias
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:meta="org.blockml.bml.meta">
+
+  <name>FreeTextAlias</name>
+  <type>meta:FreeTextAlias</type>
+  <baseType>meta:FixedAlias</baseType>
+  <is>An ad-hoc alternative type name</is>
+
+  <documentation>Standard free-text specialization of org.blockml.bml.meta.FixedAlias for colloquial or
+    legacy alternative names on Block definitions. Extends FixedAlias and widens protected catalogue
+    members to public attributes via visibility widening (`_name` → `name`, same for language and
+    legacy) — see doc:MemberVisibility. Types are inherited from
+    FixedAlias and omitted on these overrides. Rendered as a direct child inside &lt;aliases&gt; (for
+    example &lt;meta:FreeTextAlias name="Sub-Block" /&gt;). Comma-separated plain text on
+    &lt;aliases&gt; is shorthand that expands to FreeTextAlias instances only. For catalogue-controlled
+    alternative names, domain libraries define concrete Alias blocks extending FixedAlias (members
+    stay protected on the definition) or org.blockml.bml.core.Alias directly for empty identity-only
+    aliases.
+
+    Instance configuration: FreeTextAlias{name: "Sub-Block"}. Block-level only — members do not carry
+    aliases. Not XML namespace prefix aliases.</documentation>
+
+  <properties>
+    <name override="true" bml:xml="attribute">
+      <documentation>Required alternative name text — public override of FixedAlias._name. Stored in
+        BOM AliasEntry.name when typeFqn is org.blockml.bml.meta.FreeTextAlias — Entity property name,
+        not Block definition &lt;name&gt;. Authored as attribute on &lt;aliases&gt; reference sites.</documentation>
+    </name>
+    <language override="true" bml:xml="attribute">
+      <documentation>Optional NaturalLanguage — public override of FixedAlias._language. When this
+        alias is written in a language other than the effective language of the enclosing block
+        definition. Unqualified names resolve via org.blockml.bml.language.*. Omitted = inherit
+        effective language.</documentation>
+    </language>
+    <legacy override="true" bml:xml="attribute">
+      <documentation>When true, marks a deprecated or legacy name — public override of
+        FixedAlias._legacy. Prefer the canonical Block name and &lt;is&gt; in new prose. Default false when
+        omitted.</documentation>
+    </legacy>
+  </properties>
+</block>

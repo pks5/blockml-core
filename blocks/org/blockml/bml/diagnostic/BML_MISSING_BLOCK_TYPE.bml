@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_MISSING_BLOCK_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_BLOCK_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_BLOCK_TYPE</name>
+  <type>diag:BML_MISSING_BLOCK_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing root-type diagnostic</is>
+
+  <summary>Emitted when the document-root Block omits the required type element.</summary>
+
+  <keywords>BML_MISSING_BLOCK_TYPE</keywords>
+
+  <documentation>
+    On root blocks, type is the canonical identity. name is optional and must match lastSegment(resolve(type)) when present.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Root Block identity.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Add or correct root type.
+    </see>
+  </references>
+
+</block>

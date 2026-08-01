@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_CONSTRAINT_WARNING diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONSTRAINT_WARNING
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CONSTRAINT_WARNING</name>
+  <type>diag:BML_CONSTRAINT_WARNING</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A constraint-warning diagnostic</is>
+
+  <summary>Emitted when a constraint fails with validation=Warning.</summary>
+
+  <keywords>BML_CONSTRAINT_WARNING</keywords>
+
+  <documentation>
+    Emitted when a constraint fails with validation=Warning. Remedy: Warning only — compilation
+    continues unless elevated by policy.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstraintsModel" relation="AuthoringGuide">
+      Warning severity.
+    </see>
+    <see type="task:AddConstraint" relation="Resolves">
+      Address the warning.
+    </see>
+  </references>
+
+</block>

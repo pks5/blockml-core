@@ -1,0 +1,38 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Integer</name>
+  <type>type:Integer</type>
+  <baseType>type:Number(N)</baseType>
+  <is>A whole number</is>
+
+  <documentation>BOM Core primitive ValueType for whole numbers. Unqualified name Integer resolves
+    to org.blockml.bml.type.Integer. Extends org.blockml.bml.type.Number. Payload values are stored on
+    Properties — not on the Integer type itself.
+
+    Generic parameter N (Unit, default unit:None) is forwarded from Number — e.g.
+    Integer(unit:Millimeter). Bare Integer is dimensionless.
+
+    Optional configuration Properties (min, max) configure a Property's owned Integer instance via
+    inline type syntax — Integer{min: 0, max: 100}. Positional order: min, max. See
+    20_value_type_instance_configuration.md.</documentation>
+
+  <genericTypes>
+    <N baseType="core:Unit" defaultType="unit:None"/>
+  </genericTypes>
+
+  <properties>
+    <min type="Integer">
+      <documentation>Minimum allowed value (inclusive). Configured via Integer{min: n}.</documentation>
+    </min>
+    <max type="Integer">
+      <documentation>Maximum allowed value (inclusive). Configured via Integer{max: n}.</documentation>
+    </max>
+  </properties>
+</block>

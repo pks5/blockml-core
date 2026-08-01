@@ -1,0 +1,55 @@
+<!--
+  BlockML Core — fix visibility access task
+
+  FQN: org.blockml.bml.task.FixVisibilityAccess
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>FixVisibilityAccess</name>
+  <type>task:FixVisibilityAccess</type>
+  <baseType>core:TaskGuide</baseType>
+  <is>A how-to for fixing visibility errors</is>
+
+  <summary>Resolve private/protected member or Sub-Block access errors, visibility mismatches,
+    narrowing on override, and duplicate visibility-prefix variants.</summary>
+
+  <keywords>visibility, private, protected, BML_PRIVATE_MEMBER_ACCESS, BML_VISIBILITY_NARROWING</keywords>
+
+  <documentation>
+    Procedure when the validator reports a visibility-related BML_* code:
+    1. Identify whether the site is a member or a Sub-Block (same naming convention).
+    2. Confirm the intended visibility via name prefix: public / _protected / __private.
+    3. For access errors — move the use into an allowed context (declaring Block, inheritance,
+       immediate composition owner for protected) or widen the declaration if appropriate.
+    4. For override narrowing — keep or widen visibility; never narrow; private cannot be overridden.
+    5. For duplicate variants — keep exactly one normalizedLogicalName with one visibility.
+    6. For root-level &lt;visibility&gt; on a root Block — remove it (Sub-Blocks only).
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="TaskStep">
+      Step 1 — member access rules and formal D/C/I/O table.
+    </see>
+    <see type="doc:SubBlockModel" relation="TaskStep">
+      Step 2 — Sub-Block visibility and reference scope.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="TaskStep">
+      Step 3 — visibility widening on override.
+    </see>
+    <see type="diag:BML_PRIVATE_MEMBER_ACCESS" relation="SeeAlso">
+      Example diagnostic resolved by this task.
+    </see>
+    <see type="diag:BML_VISIBILITY_NARROWING" relation="SeeAlso">
+      Narrowing on override.
+    </see>
+  </references>
+
+</block>

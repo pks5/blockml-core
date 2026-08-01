@@ -1,0 +1,31 @@
+<!--
+  BlockML Core — maximum length constraint
+
+  FQN: org.blockml.bml.constraint.MaxLength
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MaxLength</name>
+  <type>constraint:MaxLength</type>
+  <baseType>constraint:ValueConstraint</baseType>
+  <is>An upper bound on length</is>
+
+  <documentation>T binds to the property type for scalar String properties, or to the element type when the property is a collection (e.g. String[]). The value property is always Integer — the maximum length threshold.</documentation>
+  <genericTypes>
+    <T baseType="core:ValueType"/>
+  </genericTypes>
+
+  <properties>
+    <value type="Integer">
+      <documentation>Maximum length (inclusive).</documentation>
+    </value>
+  </properties>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_DEPRECATED_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DEPRECATED_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_DEPRECATED_TYPE</name>
+  <type>diag:BML_DEPRECATED_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A deprecated-type diagnostic</is>
+
+  <summary>Emitted when a referenced type is marked deprecated/status Deprecated.</summary>
+
+  <keywords>BML_DEPRECATED_TYPE</keywords>
+
+  <documentation>
+    Emitted when a referenced type is marked deprecated/status Deprecated. Remedy: Prefer the
+    replacement type; status may be warning-level depending on policy.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="SeeAlso">
+      status markers.
+    </see>
+  </references>
+
+</block>

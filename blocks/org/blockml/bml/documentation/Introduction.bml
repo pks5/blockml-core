@@ -1,0 +1,49 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.Introduction
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>Introduction</name>
+  <type>doc:Introduction</type>
+  <baseType>core:Documentation</baseType>
+  <is>A short introduction to BlockML</is>
+
+  <documentation>
+    BlockML is a universal declarative language for describing parametric, composable semantic
+    units called Blocks. BML (Block Markup Language) is the human- and editor-friendly authoring
+    format; the BOM (Block Object Model) is its canonical, immutable, lossless representation.
+
+    The BOM Compiler is domain-agnostic. It understands BML and the BOM object model. Domain-specific
+    knowledge lives exclusively in Render Targets — MachineBlocks (SCAD) is the reference
+    implementation, not the only possible World.
+
+    Key goals:
+    • One grammar for types, domain blocks, languages, services, and documentation
+    • Semantics in BML — behaviour as Capabilities, not compiler special cases
+    • Lossless BML ↔ BOM — the parser makes no semantic decisions
+    • Renderer freedom — each target decides how to manifest Blocks in its output
+    • Self-hosting bootstrap — the compiler loads framework BML before user content
+
+    BML file extension is .bml. XML is the sole BML serialization for V1 and V2 — a JSON
+    authoring form is not planned as an equivalent format. Every document uses one root
+    element: &lt;block&gt; (legacy roots such as device / sign / game are withdrawn).
+  </documentation>
+
+  <references>
+    <see type="core:Block" relation="Extends">
+      Universal semantic unit — sole inheritance root of the BlockML grammar.
+    </see>
+    <see type="doc:EverythingIsABlock" relation="ReadNext">
+      Next reading step — the central ontological principle of BlockML.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_UNKNOWN_TYPE_CONFIGURATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_TYPE_CONFIGURATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNKNOWN_TYPE_CONFIGURATION</name>
+  <type>diag:BML_UNKNOWN_TYPE_CONFIGURATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown type-configuration diagnostic</is>
+
+  <summary>Emitted when {...} instance configuration names a property that is not on the ValueType.</summary>
+
+  <keywords>BML_UNKNOWN_TYPE_CONFIGURATION</keywords>
+
+  <documentation>
+    Emitted when {...} instance configuration names a property that is not on the ValueType.
+    Remedy: Configuration keys must match effective Properties of the referenced ValueType.
+  </documentation>
+
+  <references>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      Instance configuration property names.
+    </see>
+  </references>
+
+</block>

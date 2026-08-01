@@ -1,0 +1,81 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ContractsModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>ContractsModel</name>
+  <type>doc:ContractsModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to contracts and type bounds</is>
+
+  <documentation>
+    Blocks may declare &lt;contracts&gt; at root level to compose one or more contract Blocks —
+    reusable partial definitions whose member fragments merge into the effective Block definition.
+    Declared only on the document root (not on nested Sub-Blocks). Child elements are direct Block
+    references (TypeReferenceEntity sugar — empty element is not an instance of the named Block).
+
+    baseType vs contracts:
+    • baseType — framework taxonomy and branch detection (extends); single inheritance; inBranch()
+      uses the baseType chain only
+    • contracts — domain cross-cutting member mixins and type-bound identifiers (implements) via
+      satisfiesTypeBound
+    Framework core branch types (ValueType, Entity, Language, Constraint, …) remain baseType markers
+    only — not duplicated as interface contracts in org.blockml.bml.*.
+
+    Semantics:
+    • Role — reusable partial Block definition (replaces interfaces / traits / mixins) plus type-bound
+      identifier
+    • Scope — Properties, Aggregations, Associations, Capabilities, Constraints, Suggestions,
+      documentation, examples, references, optional Capability defaults
+    • Ignored on contract types — subBlocks, embeddedBlocks, and compositions
+    • Partial members — contracts may declare incomplete members; the concrete Block completes them
+      with override="true" (same rule as baseType refinement) → omission BML_OVERRIDE_REQUIRED
+    • Merge order — baseType chain → contracts (declaration order) → local Block declarations
+    • Conflict — later contract wins; Block overrides all contracts
+    • Override — only explicitly specified attributes replace merged values; final members from any
+      layer cannot be overridden → BML_FINAL_MEMBER_OVERRIDE
+    • Validation — resolveEffectiveMembers() and satisfiesTypeBound() at Stage 2
+
+    Type bounds — satisfiesTypeBound(T, G) is true when G is on T's baseType chain OR G appears
+    directly in T.contracts[] (V1: no transitive closure through a contract's own contracts[]).
+    Used for generic bounds and polymorphic reference checks. Branch rules (inBranch) ignore
+    contracts.
+
+    Authoring tip: keep contract Blocks abstract with focused member fragments; complete defaults,
+    constraints, and documentation on the concrete Block with override="true". See
+    doc:PartialMemberOverrides for merge details and doc:ModelingGuidelines for when to prefer
+    baseType vs contracts.
+  </documentation>
+
+  <references>
+    <see type="def:BlockDefinition" relation="Defines">
+      contracts aggregation — TypeReferenceEntity(core:Block)[]; root only.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="Defines">
+      Empty-child sugar for contract references.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      When to use baseType vs contracts in modeling.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      override="true" required for contract member completion.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="SeeAlso">
+      baseType vs contracts in the type system overview.
+    </see>
+    <see type="doc:BlockNameConvention" relation="ReadNext">
+      Next — PascalCase Block name rules.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_GENERIC_BLOCK_NAME_COLLISION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERIC_BLOCK_NAME_COLLISION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_GENERIC_BLOCK_NAME_COLLISION</name>
+  <type>diag:BML_GENERIC_BLOCK_NAME_COLLISION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A generic/block-name collision diagnostic</is>
+
+  <summary>Emitted when a genericTypes parameter name equals the declaring Block's name.</summary>
+
+  <keywords>BML_GENERIC_BLOCK_NAME_COLLISION</keywords>
+
+  <documentation>
+    Emitted when a genericTypes parameter name equals the declaring Block's name. Remedy: On
+    the same declaring Block, generic parameter names must not collide with the Block name or
+    a direct Sub-Block name.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Nested resolution and collision errors.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="SeeAlso">
+      Generics overview.
+    </see>
+  </references>
+
+</block>

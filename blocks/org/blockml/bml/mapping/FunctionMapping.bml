@@ -1,0 +1,83 @@
+<!--
+  BlockML Core — function parameter mapping
+
+  FQN: org.blockml.bml.mapping.FunctionMapping
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:mapping="org.blockml.bml.mapping"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>FunctionMapping</name>
+  <type>mapping:FunctionMapping</type>
+  <baseType>core:Mapping</baseType>
+  <is>A function-call to Capability Mapping</is>
+
+  <documentation>
+    Concrete Mapping for function-like call syntax. Describes translation between a
+    function-parameter list and a Capability inputType or outputType.
+
+    Two application sites (opposite directions):
+    1. Expression calls — function syntax → FunctionMapping → Capability inputType
+    2. Capability implementation — Capability inputType → FunctionMapping → target-language
+       function parameters (and reverse for return values)
+
+    Canonical call form passes a value matching inputType directly, using JSON-like syntax:
+    • Primitive → primitive literal
+    • StructType → object literal
+    • Collection → array literal
+
+    Helper syntax (when supported by this mapping):
+    • Named parameters — mapped by StructType property names; order irrelevant
+    • Positional parameters — mapped by property declaration order (mapping config only;
+      does not create general StructType index semantics)
+
+    Default FunctionMapping (used when no explicit mapping is declared on an implementation):
+    • Primitive inputType — exactly one positional or named parameter
+    • StructType inputType — object literal (canonical), named parameters, or positional
+      parameters by declaration order
+    • Primitive collection — positional parameters → array literal
+    • StructType collection — one outer parameter per struct instance → array literal
+    • Mixed positional and named arguments — not supported (BML_MIXED_FUNCTION_ARGUMENTS)
+
+    Capability implementations that require a target-language function signature must declare an
+    explicit FunctionMapping child when the default rules are insufficient.
+
+    Validation errors: BML_UNKNOWN_FUNCTION_PARAMETER, BML_DUPLICATE_FUNCTION_PARAMETER,
+    BML_MISSING_FUNCTION_PARAMETER, BML_TOO_MANY_FUNCTION_PARAMETERS,
+    BML_MIXED_FUNCTION_ARGUMENTS, BML_MISSING_FUNCTION_MAPPING,     BML_AMBIGUOUS_FUNCTION_MAPPING.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Normative FunctionMapping rules and call forms.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      Shared declaration-order principle for positional {…}.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Expression call sites.
+    </see>
+  </references>
+
+  <properties>
+    <supportsPositional type="Boolean">
+      <value>true</value>
+      <documentation>Allow positional function parameters mapped by property declaration order.</documentation>
+    </supportsPositional>
+    <supportsNamed type="Boolean">
+      <value>true</value>
+      <documentation>Allow named function parameters mapped by StructType property names.</documentation>
+    </supportsNamed>
+    <supportsMixed type="Boolean">
+      <value>false</value>
+      <documentation>Allow mixing positional and named parameters in one call. Default false.</documentation>
+    </supportsMixed>
+  </properties>
+
+</block>

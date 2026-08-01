@@ -1,0 +1,20 @@
+<!--
+  BlockML Core — centimeter length unit
+
+  FQN: org.blockml.bml.unit.Centimeter
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Centimeter</name>
+  <type>unit:Centimeter</type>
+  <baseType>core:Unit</baseType>
+  <is>Centimeter (cm)</is>
+
+  <documentation>Length unit — centimeter (cm).</documentation>
+</block>

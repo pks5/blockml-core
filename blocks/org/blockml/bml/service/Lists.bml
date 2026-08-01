@@ -1,0 +1,170 @@
+<!--
+  BlockML Core Services
+
+  Name: Lists Service
+  Filename: Lists.bml
+  FQN: org.blockml.bml.service.Lists
+  Expression prefix: #lists.*
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:service="org.blockml.bml.service"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Lists</name>
+  <type>service:Lists</type>
+  <baseType>core:Entity</baseType>
+  <is>A list expression service</is>
+
+  <documentation>Built-in lists service. Expression prefix #lists.* — list construction,
+    indexing, and aggregation utilities.</documentation>
+  <capabilities>
+
+    <!-- #lists.size(list) -->
+    <size
+      type="Transformation"
+      inputType="Object[]"
+      outputType="Integer">
+      <documentation>
+        Returns the number of elements in list.
+        Examples:
+        #lists.size([1, 2, 3]) → 3
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (list: unknown[]): number => list.length
+      ]]></implementation>
+    </size>
+
+    <!-- #lists.isEmpty(list) -->
+    <isEmpty
+      type="Transformation"
+      inputType="Object[]"
+      outputType="Boolean">
+      <documentation>
+        Returns true if list has no elements.
+        Examples:
+        #lists.isEmpty([]) → true
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (list: unknown[]): boolean => list.length === 0
+      ]]></implementation>
+    </isEmpty>
+
+    <!-- #lists.contains(list, element) -->
+    <contains
+      type="Transformation"
+      inputType="{ list: Object[], element: Object }"
+      outputType="Boolean">
+      <documentation>
+        Returns true if list contains element.
+        Examples:
+        #lists.contains([1, 2, 3], 2) → true
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (list: unknown[], element: unknown): boolean => list.includes(element)
+      ]]></implementation>
+    </contains>
+
+    <!-- #lists.first(list) -->
+    <first
+      type="Transformation"
+      inputType="Object[]"
+      outputType="Float">
+      <documentation>
+        Returns the first element of list.
+        Return type follows list element type at runtime.
+        Examples:
+        #lists.first([10, 20, 30]) → 10
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (list: unknown[]): unknown => list[0]
+      ]]></implementation>
+    </first>
+
+    <!-- #lists.last(list) -->
+    <last
+      type="Transformation"
+      inputType="Object[]"
+      outputType="Float">
+      <documentation>
+        Returns the last element of list.
+        Return type follows list element type at runtime.
+        Examples:
+        #lists.last([10, 20, 30]) → 30
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (list: unknown[]): unknown => list[list.length - 1]
+      ]]></implementation>
+    </last>
+
+    <!-- #lists.get(list, index) -->
+    <get
+      type="Transformation"
+      inputType="{ list: Object[], index: Integer }"
+      outputType="Float">
+      <documentation>
+        Returns the element at index in list.
+        Return type follows list element type at runtime.
+        Examples:
+        #lists.get([10, 20, 30], 1) → 20
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (list: unknown[], index: number): unknown => list[index]
+      ]]></implementation>
+    </get>
+
+    <!-- #lists.concat(a, b, ...) -->
+    <concat
+      type="Transformation"
+      inputType="(Object[])[]"
+      outputType="Object[]">
+      <documentation>
+        Concatenates all list arguments into a single list.
+        Examples:
+        #lists.concat([1, 2], [3, 4]) → [1, 2, 3, 4]
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (...lists: unknown[][]): unknown[] => lists.flat()
+      ]]></implementation>
+    </concat>
+
+    <!--
+      #lists.sequence(start, end)  or  #lists.sequence(start, end, step)
+      Generates a numeric sequence from start to end (inclusive) with optional step.
+      When step is omitted, defaults to 1 (or -1 when start &gt; end).
+    -->
+    <sequence
+      type="Transformation"
+      inputType="{ start: Integer, end: Integer, step: Integer }"
+      outputType="Integer[]">
+      <documentation>
+        Generates a sequence of integers from start to end (inclusive).
+        step defaults to 1 when start &lt;= end, -1 when start &gt; end.
+        Examples:
+        #lists.sequence(1, 5) → [1, 2, 3, 4, 5]
+        #lists.sequence(0, 10, 2) → [0, 2, 4, 6, 8, 10]
+        #lists.sequence(5, 1) → [5, 4, 3, 2, 1]
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (start: number, end: number, step?: number): number[] => {
+          const s = step ?? (start <= end ? 1 : -1);
+          const result: number[] = [];
+          if (s > 0) {
+            for (let i = start; i <= end; i += s) result.push(i);
+          } else if (s < 0) {
+            for (let i = start; i >= end; i += s) result.push(i);
+          }
+          return result;
+        }
+      ]]></implementation>
+    </sequence>
+
+  </capabilities>
+
+</block>

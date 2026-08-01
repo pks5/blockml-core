@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_MISSING_FUNCTION_PARAMETER diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_FUNCTION_PARAMETER
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_FUNCTION_PARAMETER</name>
+  <type>diag:BML_MISSING_FUNCTION_PARAMETER</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing function-parameter diagnostic</is>
+
+  <summary>Emitted when a required inputType field is absent after FunctionMapping.</summary>
+
+  <keywords>BML_MISSING_FUNCTION_PARAMETER</keywords>
+
+  <documentation>
+    Emitted when a required inputType field is absent after FunctionMapping. Remedy: Supply the
+    missing positional or named argument, or an object literal with all required fields.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Default mapping arity rules.
+    </see>
+  </references>
+
+</block>

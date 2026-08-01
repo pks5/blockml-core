@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_VISIBILITY_ON_ROOT_BLOCK diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_VISIBILITY_ON_ROOT_BLOCK
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_VISIBILITY_ON_ROOT_BLOCK</name>
+  <type>diag:BML_VISIBILITY_ON_ROOT_BLOCK</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A root-block visibility diagnostic</is>
+
+  <summary>Emitted when a document-root Block declares root-level visibility — only Sub-Blocks may do so.</summary>
+
+  <keywords>BML_VISIBILITY_ON_ROOT_BLOCK</keywords>
+
+  <documentation>
+    Root Blocks must not declare &lt;visibility&gt;. Sub-Blocks inside &lt;subBlocks&gt; may declare optional visibility matching their name prefix.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Visibility is Sub-Block-only at root-level element.
+    </see>
+    <see type="doc:MemberVisibility" relation="SeeAlso">
+      Member vs Sub-Block visibility.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Remove root visibility or move to Sub-Block.
+    </see>
+  </references>
+
+</block>

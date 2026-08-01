@@ -1,0 +1,23 @@
+<!--
+  BlockML Core — defines relation
+
+  FQN: org.blockml.bml.relation.Defines
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>Defines</name>
+  <type>relation:Defines</type>
+  <baseType>core:Relation</baseType>
+  <is>A defines-the-shape Relation</is>
+
+  <documentation>Use when the referenced Block or Definition element is the formal specification
+    the current type conforms to — for example def:PropertyDefinition on a property member, or
+    core:Bootstrap on a README block.</documentation>
+
+</block>

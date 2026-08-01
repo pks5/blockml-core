@@ -1,0 +1,16 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>URLEntity</name>
+  <type>type:URLEntity</type>
+  <baseType>core:PrimitiveEntity(type:URL)</baseType>
+  <is>A web address as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a URL primitive. Binds T = URL on
+    org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.</documentation>
+</block>

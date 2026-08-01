@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — BML_CAPABILITY_LINK_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CAPABILITY_LINK_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CAPABILITY_LINK_MISMATCH</name>
+  <type>diag:BML_CAPABILITY_LINK_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A capability-link mismatch diagnostic</is>
+
+  <summary>Emitted when capability linking pairs incompatible Capability kinds or payloads.</summary>
+
+  <keywords>BML_CAPABILITY_LINK_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when capability linking pairs incompatible Capability kinds or payloads. Remedy:
+    Use Outbound→Inbound (or valid Transformation pairing) with compatible inputType/outputType.
+  </documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      Capability kinds.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Call vs link.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Fix linking.
+    </see>
+  </references>
+
+</block>

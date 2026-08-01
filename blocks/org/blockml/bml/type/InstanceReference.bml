@@ -1,0 +1,79 @@
+<!--
+  BlockML Core — Block instance pointer value type
+
+  FQN: org.blockml.bml.type.InstanceReference
+  See docs/01_bom_core.md — Qualified Block Instance References
+       docs/17_type_system_bml.md — TypeReference · InstanceReference · MemberReference
+       docs/02_mbml.md — Associations · references
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>InstanceReference</name>
+  <type>type:InstanceReference</type>
+  <baseType>type:Text</baseType>
+  <is>A Block instance pointer</is>
+
+  <documentation>
+    ValueType for non-owning pointers to concrete Block instances identified by bml:id.
+    Unqualified name InstanceReference resolves to org.blockml.bml.type.InstanceReference.
+
+    Lexical forms:
+    • Local id — myId (visibility-scoped within the enclosing composition)
+    • Qualified — {EnclosingBlockFQN}::{instanceId} (e.g. com.foo.Bar::myId)
+    • Prefixed qualified — foo:Bar::myId (xmlns QName of the enclosing Block document, then :: and id)
+
+    Not a Block type FQN (use TypeReference), not a member definition path (use MemberReference /
+    AssociationReference), and not a resource URI (use URI).
+
+    Generic parameter:
+    • T (baseType core:Block) — target instance must satisfy T
+
+    In type="..." attributes, write generic applications with round parentheses:
+    • InstanceReference(core:Block) → 0..1 pointer to a core:Block instance
+    • InstanceReference(bml:Self)[] → 0..n pointers to instances of the effective Block type
+
+    Primary use — AssociationDefinition type (associations may only declare InstanceReference(T)
+    or InstanceReference(T)[] — instance-to-instance model links). Also the type of see instance=
+    on StructuralDefinition.Reference (documentation type→instance links — not Associations).
+
+    Resolution and visibility rules: docs/01_bom_core.md — Qualified Block Instance References
+    (public aggregation, static authored bml:id, BML_UNRESOLVABLE_INSTANCE_REF, …).
+  </documentation>
+
+  <references>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      TypeReference · InstanceReference · MemberReference.
+    </see>
+    <see type="doc:BlockAndInstance" relation="AuthoringGuide">
+      Associations and see instance= targets.
+    </see>
+    <see type="type:TypeReference" relation="SeeAlso">
+      Sibling ValueType for Block type FQNs — not instance pointers.
+    </see>
+    <see type="type:AssociationReference" relation="ContrastsWith">
+      Path to an AssociationDefinition — not an instance pointer.
+    </see>
+    <see type="def:AssociationDefinition" relation="SeeAlso">
+      Association member type must be InstanceReference(T) or InstanceReference(T)[].
+    </see>
+    <see type="def:StructuralDefinition" relation="SeeAlso">
+      see instance attribute typed as InstanceReference.
+    </see>
+  </references>
+
+  <genericTypes>
+    <T baseType="core:Block">
+      <documentation>Target instance branch constraint. Concrete association arguments must satisfy
+        satisfiesTypeBound(resolve(targetInstance.typeFqn), T).</documentation>
+    </T>
+  </genericTypes>
+</block>

@@ -1,0 +1,39 @@
+<!--
+  BlockML Definition — constrainable definition base type
+
+  FQN: org.blockml.bml.definition.ConstrainableDefinition
+  See docs/18_constraints_and_suggestions.md — Constraint placement.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>ConstrainableDefinition</name>
+  <type>def:ConstrainableDefinition</type>
+  <baseType>def:StructuralDefinition</baseType>
+  <is>A definition that can carry Constraints</is>
+
+  <documentation>Abstract base for Block and member definitions that support a &lt;constraints&gt;
+    container. The embedding context determines the constraint target and binds the generic type
+    parameter automatically — no target property in BML. Validator checks branch compatibility via
+    the constraint baseType chain (BML_CONSTRAINT_TARGET_MISMATCH). Constraint order in BML is
+    preserved in BOM. Target binding and generic resolution are not stored in the Canonical BOM.</documentation>
+
+  <abstract>true</abstract>
+
+  <aggregations>
+    <constraints type="core:Constraint[]" bml:xml="element">
+      <documentation>Constraint Block instances attached to this definition element. Each child is a
+        direct Constraint reference (element name = FQN via xmlns prefix). The embedding context
+        (Block, Property, Aggregation, Association, or Capability) determines the constraint target
+        and automatic generic binding. Without validation on the constraint instance, the validator
+        does not enforce the rule — the instance remains semantic metadata.</documentation>
+    </constraints>
+  </aggregations>
+
+</block>

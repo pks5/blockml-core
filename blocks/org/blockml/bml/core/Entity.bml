@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — type Block branch (property / payload types)
+
+  FQN: org.blockml.bml.core.Entity
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Entity</name>
+  <type>core:Entity</type>
+  <baseType>core:Block</baseType>
+  <is>A composable Block instance kind</is>
+
+  <documentation>Abstract branch for Entities — Blocks that represent instances with identity in
+    composition or aggregation. Domain blocks, built-in services, and PrimitiveEntity wrappers extend
+    Entity. Entity is not a ValueType; use Property with a ValueType for typed payloads.</documentation>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      Entity branch and PrimitiveEntity wrappers.
+    </see>
+    <see type="doc:BlockAndInstance" relation="SeeAlso">
+      Entity instances in composition vs Block definitions.
+    </see>
+    <see type="core:PrimitiveEntity" relation="SeeAlso">
+      Primitive value wrappers as Entity instances.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="SeeAlso">
+      TypeReference value as Entity — used for contracts and Library lists.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

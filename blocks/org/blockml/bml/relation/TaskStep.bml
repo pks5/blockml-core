@@ -1,0 +1,24 @@
+<!--
+  BlockML Core — task step relation
+
+  FQN: org.blockml.bml.relation.TaskStep
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>TaskStep</name>
+  <type>relation:TaskStep</type>
+  <baseType>core:Relation</baseType>
+  <is>A next-step Relation</is>
+
+  <documentation>Use on &lt;see&gt; entries inside org.blockml.bml.task.* TaskGuide blocks.
+    Document order in &lt;references&gt; is step order — same convention as ReadFirst on README.
+    Target may be a Block, repository markdown file, or external URL. Distinct from Prerequisite
+    (before starting the task) and Requires (hard dependency on the current definition).</documentation>
+
+</block>

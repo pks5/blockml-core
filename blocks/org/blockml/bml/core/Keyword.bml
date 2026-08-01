@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — keyword branch
+
+  FQN: org.blockml.bml.core.Keyword
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Keyword</name>
+  <type>core:Keyword</type>
+  <baseType>core:Entity</baseType>
+  <is>A search and discovery tag</is>
+
+  <documentation>Abstract branch marker for keyword Entity instances in a keywords aggregation on
+    org.blockml.bml.definition.StructuralDefinition elements. Follows Everything-is-a-Block —
+    domain libraries define concrete keyword blocks extending this branch for controlled vocabulary
+    tags (for example org.example.keyword.Inheritance extending org.blockml.bml.meta.FixedKeyword).
+    The core library provides org.blockml.bml.meta.FreeTextKeyword for ad-hoc text tags and
+    org.blockml.bml.meta.FixedKeyword as the protected base for catalogue keywords whose members are
+    set on derived keyword block definitions; comma-separated shorthand on &lt;keywords&gt; expands
+    to FreeTextKeyword instances only — not to domain or FixedKeyword catalogue blocks.
+    Distinct from org.blockml.bml.core.Alias (alternative Block type names on BlockDefinition).</documentation>
+
+  <references>
+    <see type="core:Entity" relation="SeeAlso">
+      Keyword instances are Entity children inside keywords aggregations.
+    </see>
+    <see type="core:Alias" relation="ContrastsWith">
+      Parallel branch for alternative Block type names — not search tags.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

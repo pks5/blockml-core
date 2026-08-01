@@ -1,0 +1,57 @@
+<!--
+  BlockML Core — fix member override task
+
+  FQN: org.blockml.bml.task.FixMemberOverride
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>FixMemberOverride</name>
+  <type>task:FixMemberOverride</type>
+  <baseType>core:TaskGuide</baseType>
+  <is>A how-to for fixing member override errors</is>
+
+  <summary>Resolve override-required / without-parent, abstract-not-implemented, final override,
+    readOnly instance writes, and redundant aggregation type warnings.</summary>
+
+  <keywords>override, abstract, final, readOnly, BML_OVERRIDE_REQUIRED</keywords>
+
+  <documentation>
+    Procedure when the validator reports an override/merge-related BML_* code:
+    1. Determine whether the local member is new or merges with baseType/contracts identity
+       (resolvedNamespace + normalizedLogicalName).
+    2. Merging redeclaration → set override="true" on every layer (including contract completion).
+    3. New member → do not set override="true".
+    4. Abstract obligation on a concrete Block → complete locally (type/value/implementation) with
+       override="true", or keep abstract="true" on the redeclaration.
+    5. final or private parent → do not override; change modeling approach.
+    6. readOnly → set values on definitions/overrides only, not on Block instances.
+    7. Aggregation fill-only override → omit unchanged type (BML_REDUNDANT_AGGREGATION_TYPE).
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="TaskStep">
+      Step 1 — merge semantics and abstract/final/override.
+    </see>
+    <see type="doc:ContractsModel" relation="TaskStep">
+      Step 2 — contract member completion requires override.
+    </see>
+    <see type="doc:MemberVisibility" relation="TaskStep">
+      Step 3 — private/final interaction with overrides.
+    </see>
+    <see type="diag:BML_OVERRIDE_REQUIRED" relation="SeeAlso">
+      Example diagnostic resolved by this task.
+    </see>
+    <see type="diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED" relation="SeeAlso">
+      Abstract obligation on concrete Block.
+    </see>
+  </references>
+
+</block>

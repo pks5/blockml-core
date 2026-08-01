@@ -1,0 +1,113 @@
+<!--
+  BlockML Core — bootstrap / ReadMe documentation
+
+  FQN: org.blockml.bml.documentation.BootstrapModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:blockml="org.blockml.bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>BootstrapModel</name>
+  <type>doc:BootstrapModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to library bootstrap</is>
+
+  <documentation>
+    Self-hosting bootstrap: the compiler loads framework BML from @blockml/core (and domain
+    packages) before user content — TypeRegistry bootstrap, not special-cased type semantics
+    in code.
+
+    Bootstrap order (summary):
+    1. Core branches — Block, ValueType, Language, Status, Relation, Constraint, Capability, Definition
+    2. Concrete types — Integer, Decimal, languages, services, constraints, relations
+    3. BlockLibrary — library descriptor base (readMe, bootstrap, dependencies, subLibraries,
+       schemas, blocks)
+    4. org.blockml.bml.Library — published catalog via blocks; readMe → README
+    5. Domain framework BML (e.g. com.machineblocks.bml.core.*)
+
+    Two library entry roles (do not conflate):
+    • org.blockml.bml.core.ReadMe — human/LLM reading entry. Required on every Library via
+      readMe (exactly one TypeReferenceEntity(ReadMe)). org.blockml.bml.README is the standard
+      core-library ReadMe.
+    • org.blockml.bml.core.Bootstrap — optional automation SPOE (tasks, agents, CI). At most one
+      per Library via bootstrap (0..1). Empty abstract branch; concrete subtypes supply process logic.
+
+    Concrete Library.bml &lt;references&gt; — at most two &lt;see&gt; entries on the catalog
+    descriptor (not on documentation blocks):
+    1. Required relation=ReadFirst → the ReadMe named in readMe
+    2. Optional relation=ThenContinueWith → the Bootstrap named in bootstrap (only when present)
+    Signals: after reading, continue by executing the automation SPOE. No AuthoringGuide /
+    DeepDive / Extends / SeeAlso on concrete Libraries.
+
+    Curated reading order lives in &lt;references&gt; on the ReadMe block — each entry uses
+    relation=ReadFirst with a context note. Available tasks use relation=TaskIndex on the same
+    references container. One mechanism for all cross-links; tooling filters by relation. No
+    separate reading-order aggregation on ReadMe itself.
+
+    Task-oriented paths:
+    • org.blockml.bml.core.TaskGuide — procedural org.blockml.bml.task.* blocks
+    • relation=TaskStep — ordered steps inside a TaskGuide (document order)
+    • relation=Prerequisite — before starting a task
+    • org.blockml.bml.core.Diagnostic — org.blockml.bml.diagnostic.* validator codes
+    • relation=Resolves — Diagnostic → TaskGuide fix procedure
+
+    Interpretation context:
+    • Framework BML defines what types ARE — TypeRegistry SSOT
+    • Renderers interpret what types MEAN for their target — free manifestation
+    • README references with ReadFirst establish shared vocabulary before diving into definitions
+    • After the first ten ReadFirst documentation blocks, most of the core library can be derived
+      directly from Block definitions themselves
+
+    Each registered BlockDefinition from TypeRegistry bootstrap is an immutable BomDocument parse
+    result.
+  </documentation>
+
+  <references>
+    <see type="doc:CompilerArchitecture" relation="SeeAlso">
+      TypeRegistry bootstrap and BML registration.
+    </see>
+    <see type="doc:CompilerArchitecture" relation="SeeAlso">
+      CLI bootstrap — framework BML before user projects.
+    </see>
+    <see type="core:BlockLibrary" relation="Defines">
+      Library descriptor — readMe (ReadMe, 1..1) and bootstrap (Bootstrap, 0..1).
+    </see>
+    <see type="core:ReadMe" relation="Defines">
+      Abstract ReadMe role — required Library reading entry.
+    </see>
+    <see type="core:Bootstrap" relation="Defines">
+      Abstract Bootstrap role — optional automation SPOE.
+    </see>
+    <see type="relation:ThenContinueWith" relation="SeeAlso">
+      Library &lt;see&gt; after ReadFirst when bootstrap is present.
+    </see>
+    <see type="blockml:README" relation="SeeAlso">
+      Standard human/LLM library ReadMe — ReadFirst references in mental learning order.
+    </see>
+    <see type="core:Documentation" relation="Defines">
+      Base type for documentation blocks listed with relation=ReadFirst.
+    </see>
+    <see type="relation:ReadFirst" relation="Defines">
+      Relation block for curated reading path entries on ReadMe references.
+    </see>
+    <see type="relation:TaskIndex" relation="Defines">
+      Relation block for task catalog entries on ReadMe blocks.
+    </see>
+    <see type="doc:TaskGuideModel" relation="SeeAlso">
+      TaskGuide blocks, task relations, and diagnostic fix paths.
+    </see>
+    <see type="doc:Introduction" relation="ReadFirst">
+      First ReadFirst entry on org.blockml.bml.README — BlockML goals and overview.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="ReadNext">
+      Next — recommended patterns for modeling Blocks.
+    </see>
+  </references>
+
+</block>

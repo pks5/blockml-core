@@ -1,0 +1,37 @@
+<!--
+  BlockML Core — BML_TYPE_CONFIGURATION_VIOLATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_TYPE_CONFIGURATION_VIOLATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_TYPE_CONFIGURATION_VIOLATION</name>
+  <type>diag:BML_TYPE_CONFIGURATION_VIOLATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A type-configuration value diagnostic</is>
+
+  <summary>Emitted when a {...} configuration value does not satisfy the configuration Property's type.</summary>
+
+  <keywords>BML_TYPE_CONFIGURATION_VIOLATION</keywords>
+
+  <documentation>
+    Emitted when a {...} configuration value does not satisfy the configuration Property's type.
+    Remedy: Configured instances are checked against the configured type — not bare ValueType
+    defaults.
+  </documentation>
+
+  <references>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      Semantic model for configured ValueType instances.
+    </see>
+  </references>
+
+</block>

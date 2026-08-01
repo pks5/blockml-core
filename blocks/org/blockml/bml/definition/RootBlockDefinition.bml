@@ -1,0 +1,90 @@
+<!--
+  BlockML Definition — root block definition meta-model type
+
+  FQN: org.blockml.bml.definition.RootBlockDefinition
+  Describes the parse-time shape of root <block> documents.
+  See docs/12_bom_object_model.md — BlockDefinition.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
+
+  <name>RootBlockDefinition</name>
+  <type>def:RootBlockDefinition</type>
+  <baseType>def:BlockDefinition</baseType>
+  <is>The shape of a root Block document</is>
+
+  <documentation>Meta-model type for document-root block documents. Extends
+    org.blockml.bml.definition.BlockDefinition, overrides definition (default RootBlockDefinition),
+    and adds the embeddedBlocks aggregation (Inline Library — virtual .bml files co-located in one
+    BomDocument). subBlocks is inherited from BlockDefinition.
+
+    The definition property defaults to org.blockml.bml.definition.RootBlockDefinition when
+    &lt;definition&gt; is omitted on the document root. Embedded entries use
+    org.blockml.bml.definition.EmbeddedBlockDefinition (see EmbeddedBlockDefinition) — they are not
+    RootBlockDefinition instances. Sub-Blocks use SubBlockDefinition — sibling specialization.
+
+    embeddedBlocks is allowed only on the document root. Each child is an EmbeddedBlockDefinition
+    (virtual file): own FQN from mandatory &lt;type&gt;, own members and subBlocks, no nested
+    embeddedBlocks. Nested embeds are forbidden (BML_NESTED_EMBEDDED_BLOCKS). Within this document,
+    embedded FQNs shadow library/file definitions; duplicate embed FQNs →
+    BML_DUPLICATE_EMBEDDED_BLOCK; externally embeds remain invisible.</documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Embedded Blocks (Inline Library) and Sub-Block nesting.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Root Block identity — type required; name optional short form.
+    </see>
+    <see type="def:BlockDefinition" relation="Extends">
+      Shared block definition shape — identity, members, definition, and subBlocks.
+    </see>
+    <see type="def:SubBlockDefinition" relation="SeeAlso">
+      Nested Sub-Block shape — sibling specialization.
+    </see>
+    <see type="def:EmbeddedBlockDefinition" relation="SeeAlso">
+      Virtual .bml entries in embeddedBlocks — no nested embeds.
+    </see>
+  </references>
+
+  <properties>
+    <definition override="true" type="TypeReference(def:RootBlockDefinition)">
+      <value>def:RootBlockDefinition</value>
+      <documentation>Definition meta-model type for the document-root Block. Selects which fields
+        exist when accessing the definition via bml:Self. Omitted on the document root =
+        org.blockml.bml.definition.RootBlockDefinition.
+
+        Authored as FQN, xmlns QName, or unqualified name — unqualified names resolve via
+        org.blockml.bml.definition.* (for example RootBlockDefinition). The referenced type must
+        extend org.blockml.bml.definition.RootBlockDefinition (BML_DEFINITION_TYPE_MISMATCH when
+        declared on a Sub-Block, EmbeddedBlock, or when the type does not extend
+        RootBlockDefinition). Addressable as com.foo.Bar.definition.</documentation>
+    </definition>
+  </properties>
+
+  <aggregations>
+    <embeddedBlocks type="def:EmbeddedBlockDefinition[]">
+      <documentation>Inline Library — virtual .bml files embedded in this BomDocument. Allowed only
+        on the document root (RootBlockDefinition). Forbidden on Sub-Blocks
+        (BML_EMBEDDED_BLOCKS_ON_SUBBLOCK) and on EmbeddedBlockDefinition children
+        (BML_NESTED_EMBEDDED_BLOCKS).
+
+        Gedankenstütze: each entry is a virtual file — multiple BML documents in one source,
+        including packages outside the root's namespace. Child type is EmbeddedBlockDefinition with
+        mandatory fully qualified &lt;type&gt; (BML_MISSING_EMBEDDED_BLOCK_TYPE,
+        BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE). FQN = resolve(type), not nested under the root FQN.
+        Sub-Blocks on an embedded block derive FQNs from the embedded type. Embeds may declare
+        subBlocks and generics; they must not declare embeddedBlocks. Duplicate FQNs among embeds
+        → BML_DUPLICATE_EMBEDDED_BLOCK. Within this document, embeds shadow library/file
+        definitions; externally invisible. Composition references must use fully qualified Block
+        types. Addressable as &lt;embeddedFQN&gt;.* .</documentation>
+    </embeddedBlocks>
+  </aggregations>
+</block>

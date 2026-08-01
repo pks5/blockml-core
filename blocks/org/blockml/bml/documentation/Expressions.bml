@@ -1,0 +1,109 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.Expressions
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:mapping="org.blockml.bml.mapping"
+  xmlns:service="org.blockml.bml.service"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>Expressions</name>
+  <type>doc:Expressions</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to BlockML expressions</is>
+
+  <documentation>
+    The BML Expression Language is extended JSON inside ${ } delimiters. It appears wherever a
+    Block member value needs to be dynamic — derived, computed, or bound to a service. Capability
+    &lt;implementation&gt; bodies use the same language inside &lt;$ $&gt; embeds
+    (doc:EmbeddedExpressions).
+
+    Four additions beyond JSON:
+    • Property references — myProp, myProp.x (StructType members by name only; no size[0] on structs)
+    • Model bindings — @model:/path, @model:relativeAttr
+    • Bean calls — @bean.capa(...) (call) · @bean.capa (capability linking, no parentheses)
+    • Built-in calls — #math.min(a, b), #strings.trim(s)
+
+    Everything else follows a JSON subset: double-quoted strings, numbers, booleans (true/True/TRUE
+    accepted; BOM stores lowercase), arrays [...], objects {...}. null is not a BML literal —
+    absent/empty is not typed as null.
+
+    Expression vs BOM data layer (separate):
+    • BOM stores LiteralValue and ExpressionValue.raw — immutable authored form
+    • parseExpression() → AST + type inference — utility output, not BOM mutation
+    • evaluateExpression() — renderer working model only (Stage 3)
+    Validator checks correctness (members, visibility, types, capabilities) but never executes.
+
+    Scope rules:
+    • Bare property access — current Block instance only (no parent/sibling climb); top-down
+    • @bean — walk composition hierarchy; bml:scope=context visible to descendants; local = declaring
+      Block only
+    • #built-ins — always available; cannot be overridden
+    • @model: relative paths need binding context from nearest parent Model-bound Aggregation
+    • bml:each / bml:with variables — element + descendants; shadow outer same names
+      (doc:BmlDirectives)
+    • &lt;value&gt; expressions — own Properties and #built-ins; topological resolve; cycles →
+      BML_PROPERTY_CYCLE
+
+    FunctionMapping maps call arguments to Capability inputType (doc:FunctionMappingModel). Named
+    and positional must not be mixed under default mapping.
+
+    V1 supported: literals; operators + - * / % == != &lt; &gt; &lt;= &gt;= &amp;&amp; || ! ?:;
+    property access myProp / myProp.x / myProp[i] (index only where valid — not StructType fields);
+    #math.min/max/abs/floor/ceil/round/pow/sqrt/clamp; #numbers.formatDecimal; #strings.concat/length;
+    #lists.size/get/first/last/sequence; bml:each/if/unless/container/with.
+    V1 deferred: @bean execution, model bindings, capability linking, most #strings/#bools,
+    TypeScript service transpilation.
+
+    Diagnostics (selection): BML_EXPR_SYNTAX_ERROR, BML_EXPR_UNKNOWN_PROPERTY,
+    BML_EXPR_UNKNOWN_BEAN, BML_EXPR_UNKNOWN_BUILTIN, BML_EXPR_TYPE_MISMATCH,
+    BML_EXPR_PAYLOAD_MISMATCH, BML_EXPR_LINK_*, BML_EXPR_MODEL_NO_CONTEXT,
+    BML_EXPR_BUILTIN_NOT_V1, BML_EXPR_DIVISION_BY_ZERO — plus FunctionMapping codes.
+    Formal EBNF / AST shapes remain DeepDive in 10_expression_language.md (parser utility contract).
+  </documentation>
+
+  <references>
+    <see type="doc:EmbeddedExpressions" relation="ReadNext">
+      Next — &lt;$ $&gt; embeds inside Capability implementations.
+    </see>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Call argument mapping to Capability inputType.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      bml:each / bml:with scopes that host expression variables.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Expressions in composition member values.
+    </see>
+    <see type="mapping:FunctionMapping" relation="SeeAlso">
+      Default function mapping block.
+    </see>
+    <see type="service:Math" relation="SeeAlso">
+      Built-in #math.* utilities.
+    </see>
+    <see type="service:Strings" relation="SeeAlso">
+      Built-in #strings.* utilities.
+    </see>
+    <see type="service:Lists" relation="SeeAlso">
+      Built-in #lists.* utilities.
+    </see>
+    <see type="core:Capability" relation="SeeAlso">
+      Bean calls target Capability definitions.
+    </see>
+    <see type="task:FixExpressionErrors" relation="SeeAlso">
+      Cluster task for expression diagnostics.
+    </see>
+    <see type="diag:BML_EXPR_SYNTAX_ERROR" relation="SeeAlso">
+      Expression parse failure.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_NATIVE_BLOCK_CUSTOM_PROPERTY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_NATIVE_BLOCK_CUSTOM_PROPERTY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_NATIVE_BLOCK_CUSTOM_PROPERTY</name>
+  <type>diag:BML_NATIVE_BLOCK_CUSTOM_PROPERTY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A NativeBlock-custom-property diagnostic</is>
+
+  <summary>Domain/policy: unexpected custom property on NativeBlock chain.</summary>
+
+  <keywords>BML_NATIVE_BLOCK_CUSTOM_PROPERTY</keywords>
+
+  <documentation>
+    Domain/policy: unexpected custom property on NativeBlock chain. Prefer declared NativeBlock
+    properties; domain-specific.
+  </documentation>
+
+  <references>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      Modeling patterns.
+    </see>
+  </references>
+
+</block>

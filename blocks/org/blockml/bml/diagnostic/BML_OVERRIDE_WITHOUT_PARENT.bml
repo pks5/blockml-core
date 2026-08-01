@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_OVERRIDE_WITHOUT_PARENT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_OVERRIDE_WITHOUT_PARENT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_OVERRIDE_WITHOUT_PARENT</name>
+  <type>diag:BML_OVERRIDE_WITHOUT_PARENT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An override-without-parent diagnostic</is>
+
+  <summary>Emitted when override=&quot;true&quot; is set but no matching parent member exists in the baseType chain or contracts[].</summary>
+
+  <keywords>BML_OVERRIDE_WITHOUT_PARENT</keywords>
+
+  <documentation>
+    A genuinely new member must not set override=&quot;true&quot;. Check namespace + normalizedLogicalName identity and contract merge order.
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      new vs override modes.
+    </see>
+    <see type="task:FixMemberOverride" relation="Resolves">
+      Remove override or fix inherited member identity.
+    </see>
+  </references>
+
+</block>

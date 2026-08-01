@@ -1,0 +1,20 @@
+<!--
+  BlockML Core — millimeter length unit
+
+  FQN: org.blockml.bml.unit.Millimeter
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Millimeter</name>
+  <type>unit:Millimeter</type>
+  <baseType>core:Unit</baseType>
+  <is>Millimeter (mm)</is>
+
+  <documentation>Length unit — millimeter (mm).</documentation>
+</block>

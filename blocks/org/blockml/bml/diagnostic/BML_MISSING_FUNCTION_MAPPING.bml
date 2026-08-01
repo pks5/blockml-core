@@ -1,0 +1,37 @@
+<!--
+  BlockML Core — BML_MISSING_FUNCTION_MAPPING diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_FUNCTION_MAPPING
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_FUNCTION_MAPPING</name>
+  <type>diag:BML_MISSING_FUNCTION_MAPPING</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing FunctionMapping diagnostic</is>
+
+  <summary>Reserved: emitted when an implementation requires a non-default FunctionMapping but none is declared.</summary>
+
+  <keywords>BML_MISSING_FUNCTION_MAPPING</keywords>
+
+  <documentation>
+    Reserved: emitted when an implementation requires a non-default FunctionMapping but none
+    is declared. Until custom mappings ship, treat as reserved. Default FunctionMapping covers
+    V1 built-ins.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Custom FunctionMapping (optional).
+    </see>
+  </references>
+
+</block>

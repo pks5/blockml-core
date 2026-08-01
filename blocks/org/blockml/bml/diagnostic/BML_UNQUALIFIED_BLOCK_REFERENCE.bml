@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — BML_UNQUALIFIED_BLOCK_REFERENCE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNQUALIFIED_BLOCK_REFERENCE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNQUALIFIED_BLOCK_REFERENCE</name>
+  <type>diag:BML_UNQUALIFIED_BLOCK_REFERENCE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unqualified-block-reference diagnostic</is>
+
+  <summary>Emitted when a composition/type site uses an unqualified Block name outside Sub-Block parent context or a specialized implicit-namespace site.</summary>
+
+  <keywords>BML_UNQUALIFIED_BLOCK_REFERENCE</keywords>
+
+  <documentation>
+    Emitted when a composition/type site uses an unqualified Block name outside Sub-Block parent
+    context or a specialized implicit-namespace site. Remedy: Inside the declaring root's composition,
+    Sub-Blocks may use local names. Elsewhere require FQN / xmlns-qualified names.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Composition Block reference scope.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      Four type-reference forms.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Qualify the Block reference.
+    </see>
+  </references>
+
+</block>

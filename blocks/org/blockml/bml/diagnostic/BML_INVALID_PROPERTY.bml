@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_INVALID_PROPERTY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_PROPERTY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_INVALID_PROPERTY</name>
+  <type>diag:BML_INVALID_PROPERTY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-property diagnostic</is>
+
+  <summary>Emitted when a property declaration or instance value is structurally invalid.</summary>
+
+  <keywords>BML_INVALID_PROPERTY</keywords>
+
+  <documentation>
+    Emitted when a property declaration or instance value is structurally invalid. Remedy: Check
+    property type, value placement, and facets.
+  </documentation>
+
+  <references>
+    <see type="def:PropertyDefinition" relation="Defines">
+      Property rules.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      Configured types.
+    </see>
+  </references>
+
+</block>

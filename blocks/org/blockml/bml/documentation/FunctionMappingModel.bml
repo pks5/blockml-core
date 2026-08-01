@@ -1,0 +1,83 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.FunctionMappingModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:mapping="org.blockml.bml.mapping">
+
+  <name>FunctionMappingModel</name>
+  <type>doc:FunctionMappingModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to FunctionMapping</is>
+
+  <documentation>
+    FunctionMapping translates between function-parameter lists and Capability inputType /
+    outputType. Concrete Mapping: org.blockml.bml.mapping.FunctionMapping.
+
+    Two application sites (opposite directions):
+    1. Expression calls — function syntax → FunctionMapping → Capability inputType
+    2. Capability implementation — inputType → FunctionMapping → target-language parameters
+       (and reverse for returns)
+
+    Capabilities have no separate parameter list — only inputType / outputType. FunctionMapping
+    matters when a Capability is invoked as a function (built-ins, utility Sub-Blocks, expression
+    calls). Messaging transport ignores struct shape.
+
+    inputType shapes:
+    • Primitive → single positional or named argument
+    • Named StructType / anonymous struct { a: Float, b: Float } → arity = field count; names =
+      declaration order
+    • Collection field { values: T[0..n] } → exactly one positional sequence argument — not
+      fixed-arity multi-arg expansion
+
+    Canonical call forms normalize to the same logical input value (positional, named name=expr,
+    or object literal). Default FunctionMapping (when no explicit mapping is declared):
+    • Positional-only — arg i → field i in declaration order
+    • Named-only / object literal — keys = field names
+    • Mixed positional + named → BML_MIXED_FUNCTION_ARGUMENTS
+    • Too few / too many / unknown / duplicate → BML_MISSING_FUNCTION_PARAMETER,
+      BML_TOO_MANY_FUNCTION_PARAMETERS, BML_UNKNOWN_FUNCTION_PARAMETER,
+      BML_DUPLICATE_FUNCTION_PARAMETER
+
+    Declaration order — same contract as StructType positional literals and ValueType instance
+    configuration {…} positional args (doc:ValueTypeConfiguration). Member access in expressions
+    remains by name (point.x) — not numeric index on StructTypes.
+
+    Custom FunctionMapping on an implementation may reorder/rename parameters or reject forms.
+    Required custom mapping absent → BML_MISSING_FUNCTION_MAPPING (reserved until custom mappings
+    ship). Ambiguous custom mapping → BML_AMBIGUOUS_FUNCTION_MAPPING.
+
+    Default mapping properties on mapping:FunctionMapping: supportsPositional=true,
+    supportsNamed=true, supportsMixed=false.
+  </documentation>
+
+  <references>
+    <see type="mapping:FunctionMapping" relation="Defines">
+      Default function-parameter mapping block and flags.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Expression call sites that use FunctionMapping.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      Shared declaration-order rule for positional {…} configuration.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="ReadNext">
+      Next — Capability kinds and public behavioural surface.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      utility Sub-Blocks — common FunctionMapping call targets.
+    </see>
+    <see type="diag:BML_MIXED_FUNCTION_ARGUMENTS" relation="SeeAlso">
+      Mixed positional and named arguments.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_VERSION_MINOR_DRIFT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_VERSION_MINOR_DRIFT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_VERSION_MINOR_DRIFT</name>
+  <type>diag:BML_VERSION_MINOR_DRIFT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A version-minor-drift diagnostic</is>
+
+  <summary>Warning: Block version drifts from library.version in a minor/patch policy sense.</summary>
+
+  <keywords>BML_VERSION_MINOR_DRIFT</keywords>
+
+  <documentation>
+    Warning: Block version drifts from library.version in a minor/patch policy sense. Align versions
+    per library convention (framework often versions only Library.bml).
+  </documentation>
+
+  <references>
+    <see type="doc:LibrarySystem" relation="AuthoringGuide">
+      effectiveBlockVersion.
+    </see>
+  </references>
+
+</block>

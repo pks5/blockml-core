@@ -1,0 +1,34 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Text</name>
+  <type>type:Text</type>
+  <baseType>type:PrimitiveType</baseType>
+  <is>A text string</is>
+
+  <documentation>BOM Core primitive ValueType for text. Unqualified name Text resolves to
+    org.blockml.bml.type.Text. Replaces the former String type — BlockML describes semantic types, not
+    implementation data structures. Renderers may map Text to Java String, TypeScript string,
+    Python str, C# string, or any target representation.
+
+    Semantic subtypes extend Text: TypeReference (and MemberReference / PropertyReference / …),
+    Version, URL, URI, FilePath, MimeType, …
+    Concrete payload values are stored on Properties — not on the Text type itself.
+
+    Optional configuration Properties (minLength, maxLength) configure a Property's owned Text
+    instance via inline type syntax — Text{maxLength: 100}. Positional order: minLength, maxLength.
+    See 20_value_type_instance_configuration.md.</documentation>
+  <properties>
+    <minLength type="Integer">
+      <documentation>Minimum allowed text length (inclusive). Configured via Text{minLength: n}.</documentation>
+    </minLength>
+    <maxLength type="Integer">
+      <documentation>Maximum allowed text length (inclusive). Configured via Text{maxLength: n}.</documentation>
+    </maxLength>
+  </properties>
+</block>

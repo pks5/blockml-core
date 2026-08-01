@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_DEFINITION_TYPE_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DEFINITION_TYPE_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_DEFINITION_TYPE_MISMATCH</name>
+  <type>diag:BML_DEFINITION_TYPE_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A definition-role mismatch diagnostic</is>
+
+  <summary>Emitted when the definition meta-model type is incompatible with the block role (root / Sub-Block / embedded).</summary>
+
+  <keywords>BML_DEFINITION_TYPE_MISMATCH</keywords>
+
+  <documentation>
+    Defaults: RootBlockDefinition, SubBlockDefinition, EmbeddedBlockDefinition. Unqualified names resolve via org.blockml.bml.definition.*.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      definition property by role.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      Root vs Sub vs Embedded distinction.
+    </see>
+    <see type="doc:DefinitionModel" relation="SeeAlso">
+      Definition branch overview.
+    </see>
+  </references>
+
+</block>

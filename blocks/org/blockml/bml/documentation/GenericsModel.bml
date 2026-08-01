@@ -1,0 +1,89 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.GenericsModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>GenericsModel</name>
+  <type>doc:GenericsModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to generics</is>
+
+  <documentation>
+    Generic parameters belong exclusively to the Block that declares them — never inherited
+    implicitly. When a generic Block is used as baseType, the derived Block must account for every
+    base parameter by either binding it to a concrete TypeExpression in baseType or forwarding it
+    to a parameter declared on the derived Block. All bound → concrete; any forwarded → remains
+    generic. Resolution runs during inheritance: bound parameters are substituted throughout the
+    inherited definition. Validator checks: every base parameter accounted for, argument count
+    matches, each bound argument satisfies the parameter baseType (satisfiesTypeBound), forwarded
+    parameters are declared locally.
+
+    Abstract generic Blocks cannot be instantiated until a derived Block binds all open parameters
+    (PrimitiveEntity(T) → IntegerEntity with baseType PrimitiveEntity(Integer), etc.).
+
+    Declaration — on the Block via &lt;genericTypes&gt; (meta-model GenericTypeDefinition). Parameter
+    name = XML element local name (&lt;T baseType="…"/&gt;). Optional defaultType when an application
+    omits the argument:
+    1. Concrete TypeExpression (e.g. type:Decimal)
+    2. Earlier sibling parameter name only (declaration-order DAG; no forward refs/cycles)
+    Resolution: authored args win → unbound params get defaults in declaration order → every
+    parameter must ground to a concrete TypeExpression → each binding satisfies baseType.
+    Diagnostics: BML_GENERIC_DEFAULT_FORWARD_REF, BML_GENERIC_DEFAULT_CYCLE,
+    BML_GENERIC_DEFAULT_UNRESOLVED, BML_GENERIC_CONSTRAINT_VIOLATION.
+
+    BML attribute syntax — round parentheses: Box(Integer), TypeReference(core:Block),
+    SelectiveGrid(Boolean | type:HoleType). Each (…) argument is a TypeExpression. With multiple
+    parameters, labels match generic parameter names. At validate time placeholders (T) are
+    substituted; mismatch → BML_GENERIC_CONSTRAINT_VIOLATION.
+
+    Orthogonal to {…} ValueType instance configuration (doc:ValueTypeConfiguration) and to
+    multiplicity brackets (doc:TypeExpressions).
+
+    Sub-Blocks / embeds may declare own genericTypes (Java static nested class model) — they do not
+    see enclosing generics; forward explicitly (Item(T)). Name collisions on the same declaring
+    Block with Block name or direct Sub-Block → BML_GENERIC_BLOCK_NAME_COLLISION /
+    BML_GENERIC_SUBBLOCK_NAME_COLLISION.
+
+    Constraint generics — Constraint branches declare genericTypes but arguments are never authored;
+    the compiler binds T from the &lt;constraints&gt; embedding context (Property → ValueType,
+    Aggregation → AggregationDefinition, Block → BlockDefinition, …). Branch ↔ context mismatch →
+    BML_CONSTRAINT_TARGET_MISMATCH. Validation property (Error/Warning/Information) controls
+    enforcement; omitted → metadata only.
+  </documentation>
+
+  <references>
+    <see type="def:GenericTypeDefinition" relation="Defines">
+      Meta-model for one &lt;genericTypes&gt; parameter entry.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      genericTypes aggregation on block documents.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Generic application as a type expression; union arguments.
+    </see>
+    <see type="doc:ContractsModel" relation="SeeAlso">
+      satisfiesTypeBound for bounds — baseType chain or direct contracts.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="ReadNext">
+      Next — orthogonal {…} instance configuration.
+    </see>
+    <see type="type:TypeReference" relation="SeeAlso">
+      Example open generic TypeReference(B).
+    </see>
+    <see type="diag:BML_GENERIC_CONSTRAINT_VIOLATION" relation="SeeAlso">
+      Type argument fails parameter baseType.
+    </see>
+  </references>
+
+</block>

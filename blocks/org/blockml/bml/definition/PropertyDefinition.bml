@@ -1,0 +1,96 @@
+<!--
+  BlockML Definition — property member meta-model type
+
+  FQN: org.blockml.bml.definition.PropertyDefinition
+  See docs/12_bom_object_model.md — PropertyDefinition · 02_mbml.md — Members.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PropertyDefinition</name>
+  <type>def:PropertyDefinition</type>
+  <baseType>def:MemberDefinition</baseType>
+  <is>A typed value member</is>
+
+  <documentation>Describes a Block member that carries a scalar or structured value. Rendered as a
+    child element inside the properties container; the XML element name is the property name
+    (bml:xml="${ #this.name }"). An optional XML prefix on the element name supplies the member
+    namespace — for example ui5:width resolves via xmlns:ui5 to the canonical namespace stored in
+    BOM namespace; unprefixed elements belong to the default namespace (empty string). The prefix
+    itself is never stored. Member identity is (resolvedNamespace, localName). Maps to BOM
+    PropertyDefinition (kind: "property") with typeFqn, values[] (value-field entries with
+    namespace), optional groups (inherited from MemberDefinition), and optional constraints (via
+    ConstrainableDefinition) and suggestions. Convenience path value is the default-namespace entry.
+    Property type must resolve to a ValueType branch. Scalar member fields (type, value) follow
+    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on
+    definitions, attribute preferred on Block instances. Structured children (groups, suggestions)
+    remain elements. Every Property behaves as Optional — it has a value or has no value; there
+    is no null. Declaration order among properties is significant for StructType positional mapping
+    and Capability parameter order.
+
+    Value-field Annotation facets: nested under this property element, an Annotation-prefixed
+    value element (e.g. scad:value from Annotation.Value) multiplies the value field along the
+    Annotation namespace axis — same property identity, not a member QName and not scad:myProp.
+    Parent context disambiguates from top-level &lt;properties&gt;&lt;scad:value/&gt; members.
+    See doc:AnnotationModel — Property value facets.</documentation>
+
+  <references>
+    <see type="doc:AnnotationModel" relation="AuthoringGuide">
+      Annotation value facets, parent-context rules, duplicate-namespace diagnostics.
+    </see>
+    <see type="core:ValueType" relation="Requires">
+      Required branch for property payload types.
+    </see>
+    <see type="doc:ConstraintsModel" relation="SeeAlso">
+      Constraints and suggestions on properties.
+    </see>
+  </references>
+
+  <properties>
+    <type type="TypeReference(core:ValueType)" bml:xml="element|attribute">
+      <documentation>FQN of the property's ValueType (TypeExpression). Non-ValueType FQNs are invalid
+        (BML_INVALID_PROPERTY_TYPE). Multiplicity, unions, generic applications, and instance
+        configuration are expressed in the type string — e.g. Text{maxLength: 100}. On definitions,
+        element form is preferred (&lt;type&gt;Integer&lt;/type&gt;); on Block instances, attribute
+        form is preferred (type="Integer" on the property element).</documentation>
+    </type>
+    <value type="Text" bml:xml="element|attribute">
+      <documentation>Default or computed value on the Block definition, or inline value on Block
+        instances. May be a literal or a ${ … } expression. On definitions, element form is
+        preferred (&lt;value&gt;…&lt;/value&gt;); on Block instances, attribute form is preferred
+        (value="…" on the property element). Absent value means Optional.empty — not null.
+
+        Multiplicity: the value field may repeat along the Annotation namespace axis — canonical
+        &lt;value&gt; (default namespace) plus optional Annotation Element facets such as
+        &lt;scad:value&gt;…&lt;/scad:value&gt; (Annotation.Value, name="value") nested under this
+        property element. Stored in BOM values[] as PropertyValueEntry { namespace, value };
+        convenience path value is the default-namespace entry. Facets do not change member
+        identity (still this property's name) and are not the same as a top-level member
+        &lt;scad:value/&gt; under &lt;properties&gt;. Cross-namespace faceting is valid; same-namespace
+        self-faceting is forbidden. Duplicate (namespace) → BML_DUPLICATE_PROPERTY_VALUE.
+        See 02_mbml.md — Property value facets.</documentation>
+    </value>
+  </properties>
+
+  <aggregations>
+    <suggestions type="core:Block[]" bml:xml="element">
+      <documentation>Property-only metadata — suggested values for editors and renderers. Each child
+        is a Block instance compatible with this property's typeFqn (Stage [8] —
+        BML_SUGGESTION_TYPE_MISMATCH). Coarse aggregation bound is Block[] (BOM BlockInstance[]);
+        exact compatibility is contextual: StructType / EnumType-adjacent instances use the
+        ValueType itself (e.g. SizeXYZ); PrimitiveType properties use the matching *Entity wrapper
+        (e.g. TextEntity for Text). Document order preserved in BOM suggestions[]. Must not appear
+        on properties typed with an EnumType (BML_SUGGESTIONS_ON_ENUM). Suggestions are not
+        enforced — authors may enter any compatible value. Always rendered as a suggestions child
+        element; children use their declared type tag (same pattern as composition instances).
+      </documentation>
+    </suggestions>
+  </aggregations>
+</block>

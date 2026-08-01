@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — information validation
+
+  FQN: org.blockml.bml.validation.Information
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:validation="org.blockml.bml.validation">
+
+  <name>Information</name>
+  <type>validation:Information</type>
+  <baseType>core:Validation</baseType>
+  <is>An informational Validation severity</is>
+
+  <documentation>When a constraint with validation="Information" is violated, the BlockML
+    validator emits BML_CONSTRAINT_INFORMATION. Compilation continues.</documentation>
+</block>

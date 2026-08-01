@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_READONLY_MEMBER_WRITE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_READONLY_MEMBER_WRITE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_READONLY_MEMBER_WRITE</name>
+  <type>diag:BML_READONLY_MEMBER_WRITE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A readOnly instance-write diagnostic</is>
+
+  <summary>Emitted when a Block instance sets a member whose effective definition has readOnly=true.</summary>
+
+  <keywords>BML_READONLY_MEMBER_WRITE</keywords>
+
+  <documentation>
+    Definition authoring and child definition overrides may set readOnly member values/composition; instances must not. Expressions may still read subject to visibility.
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      readOnly vs instance authoring.
+    </see>
+    <see type="task:FixMemberOverride" relation="Resolves">
+      Remove instance write or adjust readOnly on definition.
+    </see>
+  </references>
+
+</block>

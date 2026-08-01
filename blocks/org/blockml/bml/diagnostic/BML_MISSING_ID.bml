@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_MISSING_ID diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_ID
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_MISSING_ID</name>
+  <type>diag:BML_MISSING_ID</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-instance-id diagnostic</is>
+
+  <summary>Emitted when bml:id is required (referenced instance or bml:each) but absent.</summary>
+
+  <keywords>BML_MISSING_ID</keywords>
+
+  <documentation>
+    Emitted when bml:id is required (referenced instance or bml:each) but absent. Remedy: Add
+    bml:id (literal or expression).
+  </documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="AuthoringGuide">
+      Instance identity.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      bml:id / each.
+    </see>
+  </references>
+
+</block>

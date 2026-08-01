@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_EXPR_UNKNOWN_BEAN diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_UNKNOWN_BEAN
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_UNKNOWN_BEAN</name>
+  <type>diag:BML_EXPR_UNKNOWN_BEAN</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-bean diagnostic</is>
+
+  <summary>Emitted when @bean refers to a name not declared as a service bean Aggregation.</summary>
+
+  <keywords>BML_EXPR_UNKNOWN_BEAN</keywords>
+
+  <documentation>
+    Emitted when @bean refers to a name not declared as a service bean Aggregation. Remedy: Register
+    the instance with bml:bean (and optional bml:scope). V1 defers bean execution.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Bean call scope.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      bml:bean / bml:scope.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Declare or rename the bean.
+    </see>
+  </references>
+
+</block>

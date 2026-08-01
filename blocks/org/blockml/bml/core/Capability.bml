@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — capbility type branch (capability implementation contract)
+
+  FQN: org.blockml.bml.core.Capability
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Capability</name>
+  <type>core:Capability</type>
+  <baseType>core:Block</baseType>
+  <is>A behaviour endpoint</is>
+
+  <documentation>Capability branch of BlockML. Declares a capability type. Every capability may
+    carry an implementation whose language attribute references a Language FQN.</documentation>
+  <abstract>true</abstract>
+
+  <properties>
+    <_hasInput type="Boolean" readOnly="true">
+      <value>false</value>
+      <documentation>Whether the capabality has an input and thus requires a specified inputType.</documentation>
+    </_hasInput>
+    <_hasOutput type="Boolean" readOnly="true">
+      <value>false</value>
+      <documentation>Whether the capabality has an output and thus requires a specified outputType.</documentation>
+    </_hasOutput>
+    <implementation>
+      <language type="TypeReference(core:Language)" bml:xml="attribute">
+        <documentation>Language (org.blockml.bml.language.*). Required on every implementation
+          element. Unqualified names resolve via implicit namespace org.blockml.bml.language.*.</documentation>
+      </language>
+      <documentation>Capability implementation body. The language attribute must reference a
+        Language from org.blockml.bml.language.* — unqualified names permitted.</documentation>
+    </implementation>
+  </properties>
+</block>

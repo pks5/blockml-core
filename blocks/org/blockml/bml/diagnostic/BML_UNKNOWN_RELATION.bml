@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNKNOWN_RELATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_RELATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNKNOWN_RELATION</name>
+  <type>diag:BML_UNKNOWN_RELATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-relation diagnostic</is>
+
+  <summary>Emitted when see relation= does not resolve to org.blockml.bml.relation.*.</summary>
+
+  <keywords>BML_UNKNOWN_RELATION</keywords>
+
+  <documentation>
+    Emitted when see relation= does not resolve to org.blockml.bml.relation.*. Remedy: Use standard
+    Relation blocks (SeeAlso, ReadFirst, …).
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      relation attribute.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      relation implicit NS.
+    </see>
+  </references>
+
+</block>

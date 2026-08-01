@@ -1,0 +1,25 @@
+<!--
+  BlockML Core — capbility type branch (capability implementation contract)
+
+  FQN: org.blockml.bml.core.Capability
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Outbound</name>
+  <type>cap:Outbound</type>
+  <baseType>core:Capability</baseType>
+  <is>An outbound behaviour endpoint</is>
+
+  <documentation>Outbound capability.</documentation>
+  <properties>
+    <_hasOutput override="true">
+      <value>true</value>
+    </_hasOutput>
+  </properties>
+</block>

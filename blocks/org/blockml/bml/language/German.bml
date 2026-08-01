@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — German implementation language
+
+  FQN: org.blockml.bml.language.German
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>German</name>
+  <type>lang:German</type>
+  <baseType>lang:NaturalLanguage</baseType>
+  <is>The German natural language</is>
+
+  <documentation>Natural language for documentation prose, example titles, and German
+    natural-language capability implementations.</documentation>
+</block>

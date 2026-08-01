@@ -1,0 +1,57 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.RendererFreedom
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>RendererFreedom</name>
+  <type>doc:RendererFreedom</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to renderer freedom</is>
+
+  <documentation>
+    The Render Target is free in what it produces and how it maps BML to output. No global rule
+    requires output to be blocks in the target language, 1:1 mapping input Block → one output
+    artifact, or any files at all (side-effects-only targets are valid).
+
+    Cardinality, format, and semantics are target-defined. The framework provides utilities;
+    each renderer decides which to use and in what sequence:
+
+    SCAD Renderer: resolveInheritance → evaluateExpression → expandComposition → renderSCAD
+    Java Renderer: resolveInheritance → resolveContracts → renderJava
+    Documentation Renderer: renderRawBOM() → Markdown / HTML
+
+    Each renderer owns an internal working model — optimised, cacheable, freely mutable:
+    SCAD: Modules, Parameters, GeometryGraph
+    Java: Classes, Fields, Methods
+    React: Components, Props, JSX Tree
+
+    The working model belongs exclusively to the renderer. The Canonical BOM remains unchanged.
+
+    MachineBlocks SCAD re-creates Blocks in the target language via mb_block() — a common pattern,
+    not a platform obligation. ScreenMachine may emit React JSX; EBOM may emit KiCad symbols.
+    The renderer reads BML Blocks; it does not need to preserve Block as a runtime concept in
+    its internal pipeline — only to emit correct target output.
+
+    Platonic mapping: BML holds the Idea (Urbild) stable. The compiler is Manifestor tooling —
+    it may represent the Idea internally as it chooses. Full Manifestation is the renderer's and
+    runtime's job in a specific World.
+  </documentation>
+
+  <references>
+    <see type="doc:EverythingIsABlock" relation="SeeAlso">
+      Semantic layer vs compiler; renderer freedom.
+    </see>
+    <see type="doc:LibrarySystem" relation="ReadNext">
+      Next reading step — libraries, packages, namespaces, versioning.
+    </see>
+  </references>
+
+</block>

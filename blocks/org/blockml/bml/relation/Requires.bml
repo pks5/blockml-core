@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — requires relation
+
+  FQN: org.blockml.bml.relation.Requires
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>Requires</name>
+  <type>relation:Requires</type>
+  <baseType>core:Relation</baseType>
+  <is>A must-understand Relation</is>
+
+  <documentation>Use for hard dependencies — types, documentation, or external resources the reader
+    or runtime must know first. Distinct from ReadFirst (curated path) and SeeAlso (optional peer link).</documentation>
+
+</block>

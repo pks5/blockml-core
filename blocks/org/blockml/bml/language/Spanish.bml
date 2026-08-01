@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — Spanish implementation language
+
+  FQN: org.blockml.bml.language.Spanish
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>Spanish</name>
+  <type>lang:Spanish</type>
+  <baseType>lang:NaturalLanguage</baseType>
+  <is>The Spanish natural language</is>
+
+  <documentation>Natural language for documentation prose, example titles, and Spanish
+    natural-language capability implementations.</documentation>
+</block>

@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_EXPR_MODEL_NO_CONTEXT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_MODEL_NO_CONTEXT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_MODEL_NO_CONTEXT</name>
+  <type>diag:BML_EXPR_MODEL_NO_CONTEXT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A model-binding-without-context diagnostic</is>
+
+  <summary>Emitted when a relative @model: path is used without a binding context.</summary>
+
+  <keywords>BML_EXPR_MODEL_NO_CONTEXT</keywords>
+
+  <documentation>
+    Emitted when a relative @model: path is used without a binding context. Remedy: Absolute
+    paths start with /. Relative paths require a nearest parent Model-bound Aggregation. V1 defers
+    model runtime.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Model binding scope.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Provide binding context or use an absolute path.
+    </see>
+  </references>
+
+</block>

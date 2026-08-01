@@ -1,0 +1,43 @@
+<!--
+  BlockML Core — BML_EXPR_SYNTAX_ERROR diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_SYNTAX_ERROR
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_SYNTAX_ERROR</name>
+  <type>diag:BML_EXPR_SYNTAX_ERROR</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An expression syntax-error diagnostic</is>
+
+  <summary>Emitted when expression raw text fails to parse (parseExpression utility).</summary>
+
+  <keywords>BML_EXPR_SYNTAX_ERROR</keywords>
+
+  <documentation>
+    Emitted when expression raw text fails to parse (parseExpression utility). Remedy: Check
+    ${ } / &lt;$ $&gt; delimiters, quotes, operators, and balanced brackets. Nested embed delimiters
+    are invalid.
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Expression language overview.
+    </see>
+    <see type="doc:EmbeddedExpressions" relation="SeeAlso">
+      Embed delimiter rules.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Fix expression syntax and references.
+    </see>
+  </references>
+
+</block>

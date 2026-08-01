@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_INVALID_DEFINITION_BRANCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_DEFINITION_BRANCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_INVALID_DEFINITION_BRANCH</name>
+  <type>diag:BML_INVALID_DEFINITION_BRANCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-definition-branch diagnostic</is>
+
+  <summary>Emitted when a definition meta-model type is used outside the Definition branch expectations.</summary>
+
+  <keywords>BML_INVALID_DEFINITION_BRANCH</keywords>
+
+  <documentation>
+    Emitted when a definition meta-model type is used outside the Definition branch expectations.
+    Remedy: Use Root/Sub/Embedded/Member definition types appropriately.
+  </documentation>
+
+  <references>
+    <see type="doc:DefinitionModel" relation="AuthoringGuide">
+      Definition branch.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      definition property.
+    </see>
+  </references>
+
+</block>

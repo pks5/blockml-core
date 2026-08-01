@@ -1,0 +1,69 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.WOTFoundation
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>WOTFoundation</name>
+  <type>doc:WOTFoundation</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to the WOT foundation</is>
+
+  <documentation>
+    The Web of Things (WOT) provides the philosophical foundation for BlockML. Optional reading
+    for context — not required to use the compiler or author BML.
+
+    Idea (Plato):
+    The only true constant. Exists independently of Universes, Worlds, Technologies, and
+    Manifestations. An Idea does not change. In BlockML: Block, ValueType, Language, FQN —
+    describable without any render target. BML holds the Idea stable. The Block definition
+    itself is the Idea; the authoring field &lt;is&gt; (BOM block.is, reflection bml:Self.is)
+    names that Idea in an ultra-short noun phrase for humans and LLMs — it is not the Idea.
+
+    Manifestation:
+    The entire process from Idea to Thing — not a single step. Manifestor (compiler) produces
+    preconditions; Runtime completes Manifestation in a World the Manifestor cannot fully know.
+    In BlockML: renderer working model, target output, runtime behaviour. The renderer decides
+    interpretation — SCAD mb_block(), React components, KiCad symbols are different Manifestations
+    of the same Ideas.
+
+    Grammar (BlockML / BOM):
+    How Things are structured. Blocks are the grammar of a World. Types, Languages, Services,
+    and Capabilities are part of that grammar — not implementation detail. stud:// is how Things
+    communicate; BOM Core is how Things are structured.
+
+    World:
+    Delivers interpretation. An Idea carries no properties of its own — no substance, material,
+    or weight. The World assigns meaning. MachineBlocks is one World (physical geometry → SCAD);
+    other Worlds (ScreenMachine → React, EBOM → electronics) share type FQNs with different
+    render mappings.
+
+    WOT alignment at language layer: ontological unity in BML; engineering freedom in compiler
+    internals and renderer output. Without adoption, there is no WOT — and without internal
+    freedom, there is no maintainable compiler.
+  </documentation>
+
+  <references>
+    <see type="doc:EverythingIsABlock" relation="SeeAlso">
+      WOT alignment and Idea vs Manifestation.
+    </see>
+    <see type="core:Block" relation="SeeAlso">
+      Universal semantic unit — grammar element of a World.
+    </see>
+    <see type="doc:RendererFreedom" relation="SeeAlso">
+      Renderer freedom — Manifestation is target-defined, not prescribed by BlockML.
+    </see>
+    <see type="doc:EverythingIsABlock" relation="SeeAlso">
+      Everything is a Block — grammar includes types, languages, and documentation.
+    </see>
+  </references>
+
+</block>

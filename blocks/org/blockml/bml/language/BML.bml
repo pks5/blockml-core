@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — BML implementation language
+
+  FQN: org.blockml.bml.language.BML
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>BML</name>
+  <type>lang:XML</type>
+  <baseType>lang:MarkupLanguage</baseType>
+  <is>The BlockML markup language</is>
+
+  <documentation>MarkupLanguage for BlockML (BML) document implementations on Capabilities — block
+    definitions, library catalogs, and other structured BML markup. Inherits MarkupLanguage.L
+    (NaturalLanguage, default English) for the content/text language inside the BML body.</documentation>
+</block>

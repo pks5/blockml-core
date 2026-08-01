@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_OUTSIDE_BML_NAMESPACE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_OUTSIDE_BML_NAMESPACE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_OUTSIDE_BML_NAMESPACE</name>
+  <type>diag:BML_OUTSIDE_BML_NAMESPACE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An outside-bml-namespace diagnostic</is>
+
+  <summary>Emitted when a BML definition FQN does not reside under the domain's bml package (domain.bml.*).</summary>
+
+  <keywords>BML_OUTSIDE_BML_NAMESPACE</keywords>
+
+  <documentation>
+    Emitted when a BML definition FQN does not reside under the domain's bml package (domain.bml.*).
+    Remedy: Every BlockML definition must live under &lt;domain&gt;.bml.* — e.g. org.blockml.bml.*,
+    com.machineblocks.bml.*.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlNamespace" relation="AuthoringGuide">
+      Mandatory domain.bml namespace.
+    </see>
+  </references>
+
+</block>

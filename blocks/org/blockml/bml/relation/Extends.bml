@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — extends relation
+
+  FQN: org.blockml.bml.relation.Extends
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>Extends</name>
+  <type>relation:Extends</type>
+  <baseType>core:Relation</baseType>
+  <is>An inheritance Relation</is>
+
+  <documentation>Use when the referenced Block is in the baseType chain or represents a branch the
+    current type belongs to. Typical type= targets only — not for file or url references.</documentation>
+
+</block>

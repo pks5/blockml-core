@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_TYPE_BOUND_NOT_SATISFIED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_TYPE_BOUND_NOT_SATISFIED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_TYPE_BOUND_NOT_SATISFIED</name>
+  <type>diag:BML_TYPE_BOUND_NOT_SATISFIED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A type-bound-not-satisfied diagnostic</is>
+
+  <summary>Emitted when satisfiesTypeBound(T, G) fails for a generic/contract bound.</summary>
+
+  <keywords>BML_TYPE_BOUND_NOT_SATISFIED</keywords>
+
+  <documentation>
+    Emitted when satisfiesTypeBound(T, G) fails for a generic/contract bound. Remedy: Ensure
+    T extends G via baseType chain or lists G in contracts[].
+  </documentation>
+
+  <references>
+    <see type="doc:ContractsModel" relation="AuthoringGuide">
+      satisfiesTypeBound.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Generic bounds.
+    </see>
+  </references>
+
+</block>

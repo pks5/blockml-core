@@ -1,0 +1,103 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.BmlDirectives
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:ann="org.blockml.bml.annotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>BmlDirectives</name>
+  <type>doc:BmlDirectives</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to BML language directives</is>
+
+  <documentation>
+    BML Directives are attributes and elements in the bml: namespace, formalized by
+    org.blockml.bml.annotation.BmlAnnotation (preferredAlias bml). Bind with
+    xmlns:bml="org.blockml.bml.annotation.BmlAnnotation". Directives are not Block properties and not
+    Definition members. Flow-control directives structure composition; serialization directives
+    (bml:xml) declare how Definition blocks map to canonical BML XML.
+
+    Flow-control follows the Thymeleaf model — attributes on the element they apply to. Whether a
+    directive is pre-processed at compile time or translated into target constructs is the
+    BlockProcessor's decision.
+
+    Placement:
+    • bml:id — Block instances; composition identity (literal or ${ expr }); required when
+      referenced or on bml:each
+    • bml:version — Block instances; external type version pin
+    • bml:bean — Block instances; service bean name for @bean expressions
+    • bml:scope — Block instances; bean visibility "local" (default) or "context"
+    • bml:with — composition, bml:container, Block instances; local variable scope
+    • bml:each — bml:container, Block instances; loop
+    • bml:if / bml:unless — bml:container, Block instances; conditional include / exclude
+    • &lt;bml:xml&gt;…&lt;/bml:xml&gt; — core:Block and Definition-branch blocks; root XML element recipe
+    • bml:xml="…" on members — Definition-branch member serialization shape
+    Bare id= / version= on instances are ordinary member values — use bml:id / bml:version for
+    composition meta. Do not bind xmlns:bml to a Package or use bml: as a member Annotation prefix.
+
+    bml:each — expands the element once per iteration (numeric or collection). Forms:
+    i : ${ n } · i, stat : ${ n } · item, stat : ${ collection }. Stat fields: index, count, size,
+    first, last, even, odd (0-based index/even/odd). For numeric loops i equals stat.index.
+
+    bml:if / bml:unless — include when expression is true / false respectively.
+
+    bml:container — virtual element; produces no Block output; groups children for shared directives
+    (each, if, with).
+
+    bml:with — defines local variables on the element and descendants. Comma-separated assignments;
+    evaluated left-to-right; later variables may reference earlier ones; shadows outer names of the
+    same name; may reference Properties of the current Block and override Properties within local
+    scope. Primary mechanism for sharing values between sibling composition children.
+
+    Dynamic instance IDs: combine bml:each with bml:id="${ 'prefix_' + i }" (or equivalent).
+
+    bml:xml (serialization — orthogonal to flow control):
+    • Element form on core:Block / Definition branch: literal local name, ${ bml:Self }, or
+      ${ #this.name } only — other recipes → BML_XML_RENDERING_INVALID
+    • Ordinary composable / ValueType blocks must not redeclare block-level &lt;bml:xml&gt; →
+      BML_XML_DIRECTIVE_NOT_ALLOWED (Stage 2)
+    • Member attribute form selects node kind (element | attribute | text | cdata, including
+      element|attribute alternatives). May change on override="true"
+    Shared XML grammar metadata for serializer, FatBlock, XSD, and similar targets — not a
+    serializer-private detail. Meta-driven emit is WIP; Definition blocks already declare shapes.
+
+    Catalogue of directive Sub-Blocks: ann:BmlAnnotation.Id, Version, Bean, Scope, Status, Each, If,
+    Unless, With, Xml, Container. Composition usage: doc:CompositionModel.
+  </documentation>
+
+  <references>
+    <see type="ann:BmlAnnotation" relation="Defines">
+      Concrete Annotation — directive catalogue and preferredAlias bml.
+    </see>
+    <see type="doc:AnnotationModel" relation="SeeAlso">
+      Annotation branch — facets, match rules, Package vs Annotation.
+    </see>
+    <see type="core:Annotation" relation="Extends">
+      Annotation branch — Package vs Annotation xmlns rule.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Where composition and bml:container host flow-control directives.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Expression language inside directive attributes and member values.
+    </see>
+    <see type="def:MemberDefinition" relation="SeeAlso">
+      Member-level bml:xml on Definition declarations.
+    </see>
+    <see type="doc:DefinitionModel" relation="SeeAlso">
+      Definition branch that carries bml:xml serialization metadata.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="ReadNext">
+      Next — type references and Block identity derivation.
+    </see>
+  </references>
+
+</block>

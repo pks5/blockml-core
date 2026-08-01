@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_VERSION_BELOW_LIBRARY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_VERSION_BELOW_LIBRARY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_VERSION_BELOW_LIBRARY</name>
+  <type>diag:BML_VERSION_BELOW_LIBRARY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A version-below-library diagnostic</is>
+
+  <summary>Emitted when a Block version is below its exporting library.version policy.</summary>
+
+  <keywords>BML_VERSION_BELOW_LIBRARY</keywords>
+
+  <documentation>
+    Emitted when a Block version is below its exporting library.version policy. Remedy: Raise
+    the Block version or align with library versioning conventions.
+  </documentation>
+
+  <references>
+    <see type="doc:LibrarySystem" relation="AuthoringGuide">
+      Version resolution.
+    </see>
+  </references>
+
+</block>

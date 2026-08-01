@@ -1,0 +1,15 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:type="org.blockml.bml.type">
+
+  <name>URI</name>
+  <type>type:URI</type>
+  <baseType>type:Text</baseType>
+  <is>A resource identifier string</is>
+
+  <documentation>Textual primitive subtype for URI values. Unqualified name URI resolves to
+    org.blockml.bml.type.URI.</documentation>
+</block>

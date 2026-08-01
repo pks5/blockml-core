@@ -1,0 +1,37 @@
+<!--
+  BlockML Core — BML_MISSING_SUMMARY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_SUMMARY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_SUMMARY</name>
+  <type>diag:BML_MISSING_SUMMARY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-summary diagnostic</is>
+
+  <summary>Warning when documentation is too long for a quick scan and default-namespace summary is omitted.</summary>
+
+  <keywords>BML_MISSING_SUMMARY</keywords>
+
+  <documentation>
+    Warning when documentation is too long for a quick scan and default-namespace summary is
+    omitted. summary sits between is and documentation for LLM/human orientation.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      summary requirements.
+    </see>
+  </references>
+
+</block>

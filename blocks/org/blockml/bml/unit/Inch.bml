@@ -1,0 +1,20 @@
+<!--
+  BlockML Core — inch length unit
+
+  FQN: org.blockml.bml.unit.Inch
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Inch</name>
+  <type>unit:Inch</type>
+  <baseType>core:Unit</baseType>
+  <is>Inch (in)</is>
+
+  <documentation>Length unit — inch (in).</documentation>
+</block>

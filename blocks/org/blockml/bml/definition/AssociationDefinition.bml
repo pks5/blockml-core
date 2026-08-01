@@ -1,0 +1,73 @@
+<!--
+  BlockML Definition — association member meta-model type
+
+  FQN: org.blockml.bml.definition.AssociationDefinition
+  See docs/12_bom_object_model.md — AssociationDefinition · 02_mbml.md — Associations.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>AssociationDefinition</name>
+  <type>def:AssociationDefinition</type>
+  <baseType>def:MemberDefinition</baseType>
+  <is>An instance-to-instance link member</is>
+
+  <documentation>Describes a Block member that connects instances to instances — non-owning model
+    links between concrete Block instances, without lifecycle ownership. Distinct from documentation
+    References (&lt;see&gt; on StructuralDefinition.references), which connect types to types or
+    types to instances for documentation only. Rendered as a child element inside the associations
+    container; the XML element name is the association name (bml:xml="${ #this.name }"). An optional
+    XML prefix on the element name supplies the member namespace — resolved via xmlns to BOM
+    namespace; unprefixed elements use the default namespace (empty string). Member identity is
+    (resolvedNamespace, localName). Maps to BOM AssociationDefinition (kind: "association") with
+    type (InstanceReference TypeExpression) and cardinality (from type multiplicity). Association
+    type must be InstanceReference(T) or InstanceReference(T)[] with T extending core:Block — bare
+    Block FQNs (e.g. core:Block, bml:Self[]) are invalid. Instance values are authored on Block
+    instances as member attributes or elements (space-separated InstanceReference tokens, or
+    expressions). Associations do not own composition children. Scalar member field type follows
+    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
+    attribute preferred on Block instances. Domain examples include basePresets on MachineBlocks
+    Block types (type InstanceReference(bml:Self)[]).</documentation>
+
+  <references>
+    <see type="doc:BlockAndInstance" relation="AuthoringGuide">
+      Associations vs references; instance links.
+    </see>
+    <see type="type:InstanceReference" relation="Requires">
+      Required type shape for association payload — InstanceReference(T) or InstanceReference(T)[].
+    </see>
+    <see type="core:Block" relation="Requires">
+      Required branch for InstanceReference type argument T.
+    </see>
+    <see type="def:StructuralDefinition" relation="ContrastsWith">
+      Documentation References (&lt;see&gt;) connect types to types or types to instances — not
+      instance-to-instance Association edges.
+    </see>
+  </references>
+
+  <properties>
+    <type type="TypeReference(type:InstanceReference)" bml:xml="element|attribute">
+      <documentation>TypeExpression InstanceReference(T) or InstanceReference(T)[] where T extends
+        core:Block. Multiplicity in the type string defines cardinality — 0..1 (single optional,
+        e.g. InstanceReference(core:Block)) or 0..n (collection, e.g.
+        InstanceReference(bml:Self)[]). Association cardinality is limited to 0..1 and 0..n —
+        required-single notations (1..1, 1..n) are invalid on associations. Bare Block FQNs
+        without InstanceReference wrapper are invalid. Required on new association declarations;
+        may be omitted when overriding an inherited association (partial override — type inherited
+        from baseType chain). On definitions, element form is preferred
+        (&lt;type&gt;InstanceReference(bml:Self)[]&lt;/type&gt;); on Block instances, attribute
+        form is preferred (type="InstanceReference(bml:Self)[]" on the association element).
+        General type arguments require FQN or xmlns prefix — no implicit namespace fallback.
+      </documentation>
+    </type>
+  </properties>
+
+</block>

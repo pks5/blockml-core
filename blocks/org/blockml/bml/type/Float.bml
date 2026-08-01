@@ -1,0 +1,26 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type"
+  xmlns:unit="org.blockml.bml.unit">
+
+  <name>Float</name>
+  <type>type:Float</type>
+  <baseType>type:Number(N)</baseType>
+  <is>A binary floating-point number</is>
+
+  <documentation>BOM Core primitive ValueType for binary floating-point numbers. Not the default
+    floating-point type — use Decimal unless binary IEEE754 semantics are explicitly required
+    (GPU, OpenGL, native C APIs, binary protocols). Unqualified name Float resolves to
+    org.blockml.bml.type.Float. Extends org.blockml.bml.type.Number. Values are stored in Properties.
+
+    Generic parameter N (Unit, default unit:None) is forwarded from Number — e.g.
+    Float(unit:Millimeter). Bare Float is dimensionless.</documentation>
+
+  <genericTypes>
+    <N baseType="core:Unit" defaultType="unit:None"/>
+  </genericTypes>
+</block>

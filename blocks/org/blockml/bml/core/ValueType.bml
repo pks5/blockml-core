@@ -1,0 +1,24 @@
+<!--
+  BlockML Core — value type branch (property / payload types)
+
+  FQN: org.blockml.bml.core.ValueType
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>ValueType</name>
+  <type>core:ValueType</type>
+  <baseType>core:Block</baseType>
+  <is>A typed value domain</is>
+
+  <documentation>ValueType branch of BlockML. Semantic unit for property and Capability types
+    (primitives, structs, enums). A ValueType never stores data — it describes the nature of a
+    value. All concrete values are stored exclusively in Properties. Only ValueTypes may appear as
+    property type or Capability inputType/outputType.</documentation>
+  <abstract>true</abstract>
+
+</block>

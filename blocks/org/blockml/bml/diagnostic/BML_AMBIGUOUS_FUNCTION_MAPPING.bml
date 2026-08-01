@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_AMBIGUOUS_FUNCTION_MAPPING diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_AMBIGUOUS_FUNCTION_MAPPING
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_AMBIGUOUS_FUNCTION_MAPPING</name>
+  <type>diag:BML_AMBIGUOUS_FUNCTION_MAPPING</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An ambiguous FunctionMapping diagnostic</is>
+
+  <summary>Reserved: emitted when a call maps ambiguously under a custom FunctionMapping.</summary>
+
+  <keywords>BML_AMBIGUOUS_FUNCTION_MAPPING</keywords>
+
+  <documentation>
+    Reserved: emitted when a call maps ambiguously under a custom FunctionMapping. Until custom
+    mappings ship, treat as reserved.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Custom FunctionMapping (optional).
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_STANDALONE_COMPOSITION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_STANDALONE_COMPOSITION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_STANDALONE_COMPOSITION</name>
+  <type>diag:BML_STANDALONE_COMPOSITION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A standalone-composition diagnostic</is>
+
+  <summary>Emitted when &lt;composition&gt; appears outside an aggregation member element.</summary>
+
+  <keywords>BML_STANDALONE_COMPOSITION</keywords>
+
+  <documentation>
+    &lt;composition&gt; must always be nested inside an aggregation member on Block definitions. On instances, open aggregations directly without a composition wrapper.
+  </documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="AuthoringGuide">
+      Placement rules for composition.
+    </see>
+    <see type="task:FixCompositionPlacement" relation="Resolves">
+      Nest composition under an aggregation member.
+    </see>
+  </references>
+
+</block>

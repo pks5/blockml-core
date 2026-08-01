@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_MIXED_FUNCTION_ARGUMENTS diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MIXED_FUNCTION_ARGUMENTS
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MIXED_FUNCTION_ARGUMENTS</name>
+  <type>diag:BML_MIXED_FUNCTION_ARGUMENTS</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A mixed function-arguments diagnostic</is>
+
+  <summary>Emitted when a Capability/function call mixes positional and named arguments under default FunctionMapping.</summary>
+
+  <keywords>BML_MIXED_FUNCTION_ARGUMENTS</keywords>
+
+  <documentation>
+    Emitted when a Capability/function call mixes positional and named arguments under default
+    FunctionMapping. Remedy: Use positional-only, named-only, or a single object literal — not
+    mixed forms.
+  </documentation>
+
+  <references>
+    <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
+      Default FunctionMapping rules.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Expression call sites.
+    </see>
+  </references>
+
+</block>

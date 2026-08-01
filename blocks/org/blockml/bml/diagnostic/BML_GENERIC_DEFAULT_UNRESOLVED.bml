@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_GENERIC_DEFAULT_UNRESOLVED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERIC_DEFAULT_UNRESOLVED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_GENERIC_DEFAULT_UNRESOLVED</name>
+  <type>diag:BML_GENERIC_DEFAULT_UNRESOLVED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unresolved generic default diagnostic</is>
+
+  <summary>Emitted when a defaultType chain does not ground to a concrete TypeExpression.</summary>
+
+  <keywords>BML_GENERIC_DEFAULT_UNRESOLVED</keywords>
+
+  <documentation>
+    Emitted when a defaultType chain does not ground to a concrete TypeExpression. Remedy: Every
+    unbound parameter at a reference site must resolve via authored args or defaults.
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      defaultType grounding.
+    </see>
+  </references>
+
+</block>

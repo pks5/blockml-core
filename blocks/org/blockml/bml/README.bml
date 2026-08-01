@@ -1,0 +1,220 @@
+<!--
+  BlockML Core — README / library reading entry point
+
+  FQN: org.blockml.bml.README
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:blockml="org.blockml.bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:relation="org.blockml.bml.relation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>README</name>
+  <type>blockml:README</type>
+  <baseType>core:ReadMe</baseType>
+  <is>A library reading entry point</is>
+
+  <documentation>
+    README block for the BlockML core library. Start with references marked relation=ReadFirst —
+    thirty-three documentation blocks in mental learning order. The early entries form the BlockML
+    conceptual core — including the type system and expression language (${ } and &lt;$ $&gt;).
+    Later entries cover conventions, authoring rules (visibility, overrides, composition,
+    annotations, directives, type identity, Sub-Blocks, contracts, constraints), organisation, and
+    background knowledge.
+
+    Library.bml points here via the required readMe aggregation (&lt;blockml:README /&gt;).
+    Tooling filters references where relation=ReadFirst to build a curated learning context bundle;
+    relation=TaskIndex lists accomplishable procedural tasks for humans, agents, and CI. Automated
+    process SPOE uses Library.bootstrap (core:Bootstrap) — not this ReadMe.
+  </documentation>
+
+  <references>
+
+    <see type="doc:Introduction" relation="ReadFirst">
+      Start here — BlockML goals and overview.
+    </see>
+
+    <see type="doc:EverythingIsABlock" relation="ReadFirst">
+      Core principle — one root, one registry, one parser; everything is a Block.
+    </see>
+
+    <see type="doc:BlockAndInstance" relation="ReadFirst">
+      Definition, Block, Block instance, and composition — the core mental model.
+    </see>
+
+    <see type="doc:DefinitionModel" relation="ReadFirst">
+      Definition meta-model — is, members, documentation extensions on block definitions.
+    </see>
+
+    <see type="doc:TypeSystemOverview" relation="ReadFirst">
+      ValueTypes — four kinds; overview of type expressions.
+    </see>
+
+    <see type="doc:TypeExpressions" relation="ReadFirst">
+      Multiplicity, unions, obsolete wrappers, match order.
+    </see>
+
+    <see type="doc:GenericsModel" relation="ReadFirst">
+      Generics — declarations, inheritance binding, defaultType, constraints.
+    </see>
+
+    <see type="doc:ValueTypeConfiguration" relation="ReadFirst">
+      ValueType instance configuration on Property type references.
+    </see>
+
+    <see type="doc:ConstantValueType" relation="ReadFirst">
+      Constant(T){value: …} singleton domains for unions.
+    </see>
+
+    <see type="doc:FunctionMappingModel" relation="ReadFirst">
+      FunctionMapping — positional/named Capability call arguments.
+    </see>
+
+    <see type="doc:CapabilitySemantics" relation="ReadFirst">
+      Inbound, Outbound, Transformation — all behaviour as Capabilities.
+    </see>
+
+    <see type="doc:Expressions" relation="ReadFirst">
+      Expression language — ${ }, scope, V1 builtins, FunctionMapping.
+    </see>
+
+    <see type="doc:EmbeddedExpressions" relation="ReadFirst">
+      &lt;$ $&gt; embeds inside Capability implementations.
+    </see>
+
+    <see type="doc:CompilerArchitecture" relation="ReadFirst">
+      Parser, validator, renderer pipeline — stages and responsibilities.
+    </see>
+
+    <see type="doc:RendererFreedom" relation="ReadFirst">
+      Manifestation is target-defined — BlockML prescribes grammar, not output.
+    </see>
+
+    <see type="doc:LibrarySystem" relation="ReadFirst">
+      Libraries, packages, namespaces, versioning, and blocks membership.
+    </see>
+
+    <see type="doc:BmlNamespace" relation="ReadFirst">
+      org.blockml.bml.* namespace layout and domain package conventions.
+    </see>
+
+    <see type="doc:ImplicitNamespaceResolution" relation="ReadFirst">
+      Context-bound implicit namespaces for unqualified references.
+    </see>
+
+    <see type="doc:DocumentationModel" relation="ReadFirst">
+      is, documentation, references, examples — the block documentation model.
+    </see>
+
+    <see type="doc:BootstrapModel" relation="ReadFirst">
+      README / ReadMe, Bootstrap SPOE, TypeRegistry bootstrap, and interpretation context.
+    </see>
+
+    <see type="doc:ModelingGuidelines" relation="ReadFirst">
+      Recommended patterns — baseType, contracts, capabilities, constraints.
+    </see>
+
+    <see type="doc:ConstraintsModel" relation="ReadFirst">
+      Constraints and suggestions — binding, validation severity, Enum rules.
+    </see>
+
+    <see type="doc:MemberVisibility" relation="ReadFirst">
+      Member and Sub-Block visibility — naming convention, access rules, aggregation IDs.
+    </see>
+
+    <see type="doc:PartialMemberOverrides" relation="ReadFirst">
+      Partial member overrides — merge semantics, abstract/final/override, readOnly.
+    </see>
+
+    <see type="doc:CompositionModel" relation="ReadFirst">
+      Composition — aggregation fill, placement, recursion, sibling sharing.
+    </see>
+
+    <see type="doc:AnnotationModel" relation="ReadFirst">
+      Annotation namespaces — Package vs Annotation, facets, directive taxonomy.
+    </see>
+
+    <see type="doc:BmlDirectives" relation="ReadFirst">
+      BML directives — bml:each, bml:if, bml:container, bml:with, bml:xml.
+    </see>
+
+    <see type="doc:TypeIdentityDerivation" relation="ReadFirst">
+      Type references and Block identity — FQN forms, root vs Sub-Block derivation.
+    </see>
+
+    <see type="doc:SubBlockModel" relation="ReadFirst">
+      Sub-Blocks, visibility, embedded Blocks, composition reference scope.
+    </see>
+
+    <see type="doc:ContractsModel" relation="ReadFirst">
+      Contracts — member merge, type bounds, baseType vs implements.
+    </see>
+
+    <see type="doc:BlockNameConvention" relation="ReadFirst">
+      Block &lt;name&gt; PascalCase rules and relation to type identity.
+    </see>
+
+    <see type="doc:PseudoCode" relation="ReadFirst">
+      PseudoCode as semantic capability implementation dialect.
+    </see>
+
+    <see type="doc:WOTFoundation" relation="ReadFirst">
+      Optional background — Idea, Manifestation, Grammar, World (Web of Things).
+    </see>
+
+    <see type="task:AuthorNewBlock" relation="TaskIndex">
+      Author a new Block definition from scratch.
+    </see>
+
+    <see type="task:AddConstraint" relation="TaskIndex">
+      Attach a Constraint to a Block or member definition.
+    </see>
+
+    <see type="task:DebugUnknownType" relation="TaskIndex">
+      Fix BML_UNKNOWN_TYPE — unresolved type reference.
+    </see>
+
+    <see type="task:FixVisibilityAccess" relation="TaskIndex">
+      Fix visibility — private/protected access, narrowing, mismatches.
+    </see>
+
+    <see type="task:FixMemberOverride" relation="TaskIndex">
+      Fix member overrides — override/abstract/final/readOnly.
+    </see>
+
+    <see type="task:FixCompositionPlacement" relation="TaskIndex">
+      Fix composition placement — nest under aggregation members.
+    </see>
+
+    <see type="task:FixTypeIdentity" relation="TaskIndex">
+      Fix type identity — root/Sub-Block/embedded and unqualified refs.
+    </see>
+
+    <see type="task:FixExpressionErrors" relation="TaskIndex">
+      Fix expression errors — ${ }, embeds, beans, builtins, linking.
+    </see>
+
+    <see type="doc:TaskGuideModel" relation="SeeAlso">
+      TaskGuide blocks, task relations, and error-driven fix paths.
+    </see>
+
+    <see type="core:ReadMe" relation="Defines">
+      Abstract ReadMe role marker — README is the core-library reading entry.
+    </see>
+
+    <see type="core:Bootstrap" relation="ContrastsWith">
+      Automation SPOE branch — Library.bootstrap, not readMe.
+    </see>
+
+    <see type="blockml:Library" relation="SeeAlso">
+      Published catalog of exported framework blocks, types, and services.
+    </see>
+
+  </references>
+
+</block>

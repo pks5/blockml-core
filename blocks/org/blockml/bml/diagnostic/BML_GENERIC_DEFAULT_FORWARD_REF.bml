@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_GENERIC_DEFAULT_FORWARD_REF diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERIC_DEFAULT_FORWARD_REF
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_GENERIC_DEFAULT_FORWARD_REF</name>
+  <type>diag:BML_GENERIC_DEFAULT_FORWARD_REF</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A generic defaultType forward-ref diagnostic</is>
+
+  <summary>Emitted when defaultType names a later or unknown sibling generic parameter.</summary>
+
+  <keywords>BML_GENERIC_DEFAULT_FORWARD_REF</keywords>
+
+  <documentation>
+    Emitted when defaultType names a later or unknown sibling generic parameter. Remedy: Sibling-parameter
+    defaults may reference only earlier parameters (declaration-order DAG).
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      defaultType resolution rules.
+    </see>
+  </references>
+
+</block>

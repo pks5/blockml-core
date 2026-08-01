@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_TYPE_REFERENCE_CONSTRAINT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_TYPE_REFERENCE_CONSTRAINT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_TYPE_REFERENCE_CONSTRAINT</name>
+  <type>diag:BML_TYPE_REFERENCE_CONSTRAINT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A TypeReference constraint diagnostic</is>
+
+  <summary>Emitted when a TypeReference(B)/MemberReference bound is not satisfied by the referenced type.</summary>
+
+  <keywords>BML_TYPE_REFERENCE_CONSTRAINT</keywords>
+
+  <documentation>
+    Emitted when a TypeReference(B)/MemberReference bound is not satisfied by the referenced
+    type. Remedy: Referenced type must satisfy the branch bound B (and D for MemberReference).
+  </documentation>
+
+  <references>
+    <see type="type:TypeReference" relation="Defines">
+      TypeReference bounds.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      satisfiesTypeBound.
+    </see>
+  </references>
+
+</block>

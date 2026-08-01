@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNRESOLVABLE_INSTANCE_REF diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNRESOLVABLE_INSTANCE_REF
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNRESOLVABLE_INSTANCE_REF</name>
+  <type>diag:BML_UNRESOLVABLE_INSTANCE_REF</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unresolvable-instance-ref diagnostic</is>
+
+  <summary>Emitted when an InstanceReference cannot be resolved to an instance id in scope.</summary>
+
+  <keywords>BML_UNRESOLVABLE_INSTANCE_REF</keywords>
+
+  <documentation>
+    Emitted when an InstanceReference cannot be resolved to an instance id in scope. Remedy:
+    Fix bml:id, aggregation visibility, or the reference path.
+  </documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="AuthoringGuide">
+      Instance references.
+    </see>
+    <see type="doc:MemberVisibility" relation="SeeAlso">
+      ID reachability.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,87 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ModelingGuidelines
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>ModelingGuidelines</name>
+  <type>doc:ModelingGuidelines</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to modeling patterns</is>
+
+  <documentation>
+    Inheritance (baseType):
+    • Single inheritance — each Block has exactly one baseType (mandatory except org.blockml.bml.core.Block)
+    • Use for branch membership (ValueType, Language, domain base) and shared member fragments
+    • Framework branches inherit via org.blockml.bml.core.ValueType, Language, or domain bases
+    • final on Block or member prevents further override → BML_FINAL_BASE_TYPE / BML_FINAL_MEMBER_OVERRIDE
+
+    Contracts:
+    • Reusable partial Block definitions — not pure interfaces; may include default implementations
+    • Use when multiple Blocks share a member fragment without sharing a common baseType ancestor
+    • Declared on root block only via contracts aggregation — direct Block references
+    • Merge order: baseType chain → contracts (declaration order) → local declarations
+    • Contract may supply partial members (e.g. id type only); concrete Block completes defaults,
+      constraints, and documentation
+    • subBlocks and compositions on contract types are ignored
+
+    Capabilities:
+    • All behaviour — init, get/set, render, domain operations — express as Capabilities
+    • Prefer PseudoCode or natural language implementations for semantic descriptions
+    • Use Inbound/Outbound/Transformation kinds to describe intent, not compiler behaviour
+    • Public surface of a Block is Capabilities — Properties are internal configuration
+
+    Constraints:
+    • Declare on Properties via constraints aggregation — Constraint Block instances
+    • Generic binding is automatic: Min/Max bind T from property type; MinItems/MaxItems from
+      collection element type; MinLength/MaxLength from Text element type
+    • Use for validation rules expressible as reusable Constraint blocks (Min, Max, Pattern, …)
+    • Suggestions (optional Block instances of property type) guide editors — not validation
+
+    General: keep &lt;is&gt; stable; put cross-links in references; prefer explicit baseType over
+    implicit defaults; document partial members in contracts clearly.
+  </documentation>
+
+  <references>
+    <see type="doc:ContractsModel" relation="AuthoringGuide">
+      Contracts and validation by branch.
+    </see>
+    <see type="doc:ConstraintsModel" relation="AuthoringGuide">
+      Property constraints and suggestions.
+    </see>
+    <see type="core:Capability" relation="Extends">
+      Capability branch — behaviour as the public semantic surface.
+    </see>
+    <see type="core:Constraint" relation="Extends">
+      Constraint branch — reusable validation rules on Properties.
+    </see>
+    <see type="cap:Inbound" relation="Defines">
+      Inbound capability — when external input is received.
+    </see>
+    <see type="constraint:Min" relation="SeeAlso">
+      Example scalar constraint — binds T from enclosing property type.
+    </see>
+    <see type="doc:ConstraintsModel" relation="ReadNext">
+      Next reading step — constraints and suggestions.
+    </see>
+    <see type="doc:MemberVisibility" relation="SeeAlso">
+      Member and Sub-Block visibility rules.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      Partial overrides and abstract/final merge semantics.
+    </see>
+    <see type="doc:ContractsModel" relation="SeeAlso">
+      Contracts merge order and satisfiesTypeBound.
+    </see>
+  </references>
+
+</block>

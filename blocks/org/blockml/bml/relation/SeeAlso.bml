@@ -1,0 +1,23 @@
+<!--
+  BlockML Core — see-also relation
+
+  FQN: org.blockml.bml.relation.SeeAlso
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>SeeAlso</name>
+  <type>relation:SeeAlso</type>
+  <baseType>core:Relation</baseType>
+  <is>A related-peer Relation</is>
+
+  <documentation>Default relation when relation is omitted on &lt;see&gt;. Use for related Blocks,
+    documentation files, or URLs that help understand the current definition but do not extend,
+    require, or define it. Omitted relation= on &lt;see&gt; resolves to this block.</documentation>
+
+</block>

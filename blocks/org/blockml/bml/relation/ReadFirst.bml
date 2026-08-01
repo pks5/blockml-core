@@ -1,0 +1,29 @@
+<!--
+  BlockML Core — read-first relation
+
+  FQN: org.blockml.bml.relation.ReadFirst
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>ReadFirst</name>
+  <type>relation:ReadFirst</type>
+  <baseType>core:Relation</baseType>
+  <is>A read-this-first Relation</is>
+
+  <documentation>Two uses:
+    1. Concrete Library.bml — required single ReadFirst &lt;see&gt; targeting the ReadMe named in
+       the readMe aggregation (catalog entry point). May be followed by ThenContinueWith → Bootstrap
+       when bootstrap is present; no other &lt;see&gt; relations on concrete Libraries.
+    2. README / ReadMe blocks — curated mental learning order. ReadFirst entries should appear
+       first in &lt;references&gt;, in reading order.
+
+    Distinct from Library.readMe (aggregation that names the ReadMe block) and from ReadNext
+    (forward edge between documentation blocks outside the README catalog).</documentation>
+
+</block>

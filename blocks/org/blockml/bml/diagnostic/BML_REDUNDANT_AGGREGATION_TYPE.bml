@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_REDUNDANT_AGGREGATION_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_REDUNDANT_AGGREGATION_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_REDUNDANT_AGGREGATION_TYPE</name>
+  <type>diag:BML_REDUNDANT_AGGREGATION_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A redundant aggregation-type diagnostic</is>
+
+  <summary>Warning (V1): restating an identical type on an inherited aggregation override that only fills composition/metadata.</summary>
+
+  <keywords>BML_REDUNDANT_AGGREGATION_TYPE</keywords>
+
+  <documentation>
+    Omit unchanged type on aggregation overrides. Declare type only when refining or replacing the inherited type. Authored redundant type is ignored.
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      Omit unchanged type on overrides.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Inherited aggregation fill.
+    </see>
+    <see type="task:FixMemberOverride" relation="Resolves">
+      Drop redundant type attribute.
+    </see>
+  </references>
+
+</block>

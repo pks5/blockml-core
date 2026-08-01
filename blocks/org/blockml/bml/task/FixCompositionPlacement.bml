@@ -1,0 +1,51 @@
+<!--
+  BlockML Core — fix composition placement task
+
+  FQN: org.blockml.bml.task.FixCompositionPlacement
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>FixCompositionPlacement</name>
+  <type>task:FixCompositionPlacement</type>
+  <baseType>core:TaskGuide</baseType>
+  <is>A how-to for fixing composition placement</is>
+
+  <summary>Resolve standalone composition errors and clarify definition vs instance aggregation
+    fill, including bml:container and bml:with usage.</summary>
+
+  <keywords>composition, aggregation, BML_STANDALONE_COMPOSITION, bml:container</keywords>
+
+  <documentation>
+    Procedure when composition placement fails validation:
+    1. On Block definitions — nest &lt;composition&gt; inside an aggregation member element; never
+       leave it standalone (BML_STANDALONE_COMPOSITION).
+    2. On Block instances — open aggregations by member name directly; no composition wrapper.
+    3. Inherited aggregation fill — use override="true"; omit unchanged type.
+    4. Shared sibling values — bml:with on composition or bml:container (see doc:BmlDirectives).
+    5. Instance ID reachability — follows aggregation member visibility (doc:MemberVisibility).
+  </documentation>
+
+  <references>
+    <see type="doc:CompositionModel" relation="TaskStep">
+      Step 1 — unified container concept and placement rules.
+    </see>
+    <see type="doc:BmlDirectives" relation="TaskStep">
+      Step 2 — bml:container, bml:with, bml:each on composition.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="TaskStep">
+      Step 3 — inherited aggregation overrides.
+    </see>
+    <see type="diag:BML_STANDALONE_COMPOSITION" relation="SeeAlso">
+      Diagnostic for composition outside an aggregation member.
+    </see>
+  </references>
+
+</block>

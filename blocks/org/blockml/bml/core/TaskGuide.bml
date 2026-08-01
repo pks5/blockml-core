@@ -1,0 +1,37 @@
+<!--
+  BlockML Core — procedural task guide base type
+
+  FQN: org.blockml.bml.core.TaskGuide
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>TaskGuide</name>
+  <type>core:TaskGuide</type>
+  <baseType>core:Documentation</baseType>
+  <is>A how-to task procedure</is>
+
+  <documentation>Abstract branch for org.blockml.bml.task.* blocks — step-by-step procedures
+    distinct from org.blockml.bml.documentation.* concept blocks. TaskGuide blocks carry the normal
+    documentation model (is, summary, keywords, documentation, references). Ordered procedure
+    steps use relation=TaskStep on &lt;see&gt; entries; prerequisites use relation=Prerequisite.
+    Task catalogs on README / ReadMe blocks list available tasks via relation=TaskIndex.
+    Tooling filters by relation to build learn paths (ReadFirst), task paths (TaskStep), or error
+    fix paths (Diagnostic blocks with relation=Resolves).</documentation>
+
+  <references>
+    <see type="core:Documentation" relation="SeeAlso">
+      Concept documentation blocks — mental model; TaskGuide blocks are procedural complements.
+    </see>
+    <see type="core:ReadMe" relation="SeeAlso">
+      Library reading entry — TaskIndex entries on README list available tasks.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

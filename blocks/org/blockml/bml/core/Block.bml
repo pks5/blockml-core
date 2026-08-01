@@ -1,0 +1,121 @@
+<!--
+  BlockML Core — root Block type
+
+  FQN: org.blockml.bml.core.Block
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>Block</name>
+  <type>core:Block</type>
+  <is>A semantic building block</is>
+
+  <language>
+    <English />
+  </language>
+  <documentation>
+    Root semantic unit of BlockML — the sole inheritance root for all Block definitions.
+    Every concept in the grammar is a Block: composable domain types, ValueTypes, Languages,
+    Status values, Constraints, Capabilities, Services, Libraries, and Definition meta-model
+    types. Unqualified name Block resolves to this type.
+
+    Role and constraints:
+    • Sole inheritance root — omits &lt;baseType&gt;; all other definitions must declare a non-empty parent FQN
+    • Declares language (NaturalLanguage) — default English for documentation prose
+    • Abstract — not used directly as a composition instance type
+    • Further members defined by sub-types — Properties, Aggregations,
+      Associations, and Capabilities via the baseType chain
+    • Composition instance identity uses bml:id and bml:version (not member attributes)
+
+    Type reference rules:
+    • Aggregation member types may be any Block FQN
+    • Association member types must be InstanceReference(T) or InstanceReference(T)[]
+    • Property and Capability payload types must resolve to a ValueType
+    • Capability implementation language attributes reference org.blockml.bml.language.* — unqualified names permitted
+
+    Documentation model (on every root block definition):
+    • Definition identity first — &lt;name&gt;, &lt;type&gt;, &lt;baseType&gt; (baseType omitted only here)
+    • &lt;is&gt; — always required after identity; clear Urbild designation (what the Block semantically represents)
+    • &lt;summary&gt; — required when documentation is too long for a quick scan
+    • &lt;language&gt; — optional; natural language for documentation prose (inherits from Library,
+      then org.blockml.bml.core.Block default English)
+    • &lt;documentation&gt; — always required; technical description; optional language
+      attribute when prose deviates from effective block language
+    • &lt;isnot&gt; — required when confusion risk exists
+    • Optional extensions: &lt;since&gt;, &lt;changelog&gt;, &lt;examples&gt;, &lt;references&gt;
+    Omitted is or documentation → BML_MISSING_IS / BML_MISSING_DOCUMENTATION; missing isnot or
+    summary when required → BML_MISSING_ISNOT / BML_MISSING_SUMMARY (warning V1).
+
+    Serialization:
+    • bml:xml ${ bml:Self } — composable instances render under their declared type tag
+      (for example &lt;core:Block&gt;, &lt;myns:Wall&gt;)
+    • Definition branch types describe block structure and carry their own bml:xml rules
+  </documentation>
+
+  <references>
+    <see type="core:ValueType" relation="Extends">
+      Property and capability payload types.
+    </see>
+    <see type="core:Language" relation="Extends">
+      Implementation language bindings and NaturalLanguage branch.
+    </see>
+    <see type="core:Status" relation="Extends">
+      Lifecycle status references.
+    </see>
+    <see type="core:Relation" relation="Extends">
+      Cross-reference relationship categories on see entries.
+    </see>
+    <see type="core:Constraint" relation="Extends">
+      Property validation constraints.
+    </see>
+    <see type="core:Capability" relation="Extends">
+      Capability implementation contracts.
+    </see>
+    <see type="core:Definition" relation="Extends">
+      Meta-model for block structure (WIP).
+    </see>
+    <see type="core:Block" property="language" relation="Defines">
+      NaturalLanguage property — documentation prose default on every block.
+    </see>
+    <see type="def:StructuralDefinition" relation="Defines">
+      Shared documentation model for structural definition elements.
+    </see>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      Block documentation model — is, documentation, extensions.
+    </see>
+    <see type="doc:DefinitionModel" relation="AuthoringGuide">
+      Root type exception and Definition branch.
+    </see>
+    <see type="doc:EverythingIsABlock" relation="AuthoringGuide">
+      Everything is a Block — type system overview.
+    </see>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      Definition branch bml:xml serialization rules.
+    </see>
+  </references>
+
+  <!-- Blocks are rendered as xml elements with the name of the block type -->
+  <bml:xml>${ bml:Self }</bml:xml>
+  
+  <!-- Root block is abstract -->
+  <abstract>true</abstract>
+
+  <properties>
+    <language type="lang:NaturalLanguage">
+      <documentation>Effective natural language for documentation prose on this Block definition
+        and its members. Inherited downward unless a child documentation element or nested
+        definition declares a deviation via its own language attribute or element. Root default on
+        org.blockml.bml.core.Block is English. Unqualified child names resolve via implicit
+        namespace org.blockml.bml.language.*.</documentation>
+    </language>
+  </properties>
+
+</block>

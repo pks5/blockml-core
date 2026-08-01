@@ -1,0 +1,16 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>VersionEntity</name>
+  <type>type:VersionEntity</type>
+  <baseType>core:PrimitiveEntity(type:Version)</baseType>
+  <is>A version number as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a Version primitive. Binds T = Version on
+    org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.</documentation>
+</block>

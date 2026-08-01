@@ -1,0 +1,145 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.DocumentationModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:blockml="org.blockml.bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>DocumentationModel</name>
+  <type>doc:DocumentationModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Block documentation</is>
+
+  <documentation>
+    Every root block definition carries a documentation model at the definition site — single
+    source of truth inside BML files:
+
+    Definition identity first (required at top of every Block document):
+    name / type / baseType — FQN identity before prose (baseType omitted only on org.blockml.bml.core.Block).
+
+    is (always required, after identity) — names the Idea (Urbild): what this Block semantically
+      represents. Noun phrase; several words when name/type alone is too thin — not purpose and not
+      full technical detail. Urbild is a fixed BlockML term (keep German explicit in meta-prose):
+      English/French gloss + (Urbild); German docs may use Urbild alone. WOT: the Block itself is
+      the Idea (Urbild); &lt;is&gt; names it in prose. Reflection: bml:Self.is. Omitted →
+      BML_MISSING_IS. Motto: as simple as Lego at the designation; as powerful as SAP beneath.
+    summary (required when documentation is too long) — short prose expansion between is and
+      documentation; inherited from StructuralDefinition on blocks and members. Missing when
+      required → BML_MISSING_SUMMARY.
+    keywords aggregation (optional) — core.Keyword[]; domain FixedKeyword catalogue blocks, meta.FreeTextKeyword; shorthand → FreeTextKeyword only.
+    language (optional) — natural language for documentation prose; inherits Library → Block
+      default (English on org.blockml.bml.core.Block).
+    documentation (always required on every Block definition) — technical description of the Block
+      definition itself; optional language attribute when prose deviates from effective block
+      language. Omitted → BML_MISSING_DOCUMENTATION.
+    isnot (required when confusion risk exists, blocks only) — what this Block is not; block-level
+      disambiguation. Reflection: bml:Self.isnot. Missing when required → BML_MISSING_ISNOT.
+    aliases aggregation (optional, blocks only) — core.Alias[]; domain FixedAlias catalogue blocks, meta.FreeTextAlias; shorthand → FreeTextAlias only.
+    Member elements carry their own summary, keywords, and documentation for individual Properties, Aggregations, etc.
+
+    Optional extensions (wherever documentation is permitted):
+    since — version from which the element is available
+    changelog — container of change entries (oldest first)
+    examples — container of example entries (title in block natural language + CDATA body)
+    references — container of see entries (type, instance, file, url, or member path + relationship text)
+
+    Natural language inheritance (documentation prose and example titles):
+    Library.language → Block.language → documentation / change / see language attribute
+    Unqualified names inside &lt;language&gt; and on documentation, change, and see language=
+    resolve via org.blockml.bml.language.*. Authors declare language only when deviating from
+    the effective inherited language. Example title language always follows the enclosing block — example
+    language attribute applies to CDATA content only (implementation dialect: OpenSCAD,
+    TypeScript, …) and also resolves via org.blockml.bml.language.*.
+
+    Authoring split:
+    • documentation carries technical prose only
+    • references carries all documentation cross-links — types to types or types to instances
+      (also Definition members, repository markdown files, and external URLs) — each with an
+      explicit relationship note
+    • Associations connect instances to instances (model links); References do not form the
+      instance graph — use associations for that
+    • Do not repeat cross-links in documentation prose
+
+    see target attributes — exactly one target kind:
+    type="core:ValueType" — Block or Definition type via xmlns prefix (TypeReference)
+    instance="myId" / instance="foo:Bar::myId" — Block instance pointer (InstanceReference)
+    file="guide.md" — optional companion markdown in the consuming repository (not Core SSOT)
+    url="https://…" — external URL
+    property="com.foo.Bar.properties.width" — PropertyDefinition canonical path
+    aggregation="com.foo.Bar.aggregations.parts" — AggregationDefinition canonical path
+    association="com.foo.Bar.associations.parent" — AssociationDefinition canonical path
+    capability="com.foo.Bar.capabilities.render" — CapabilityDefinition canonical path
+    Split forms (still one target): type="com.foo.Bar" property="width" →
+    com.foo.Bar.properties.width in BOM; type="com.foo.Bar" instance="myId" → com.foo.Bar::myId.
+    (Retired attribute name: block= — use type=.)
+
+    relation attribute (optional) — Block reference to org.blockml.bml.relation.*; unqualified
+    names resolve via implicit namespace org.blockml.bml.relation.*. Omitted =
+    org.blockml.bml.relation.SeeAlso. Standard blocks: SeeAlso, ReadFirst, ReadNext,
+    ThenContinueWith, Extends, Requires, ContrastsWith, AuthoringGuide, Defines, DeepDive,
+    TaskIndex, TaskStep, Prerequisite, Resolves. README curates with ReadFirst; documentation
+    blocks chain with ReadNext.
+
+    README / ReadMe blocks (baseType org.blockml.bml.core.ReadMe) are library reading entry points
+    for humans and LLMs (Library.readMe). Curated reading order is expressed via references with
+    relation=ReadFirst; available tasks via relation=TaskIndex — not via separate aggregations on
+    ReadMe. Documentation blocks (org.blockml.bml.documentation.*) inherit from
+    org.blockml.bml.core.Documentation. TaskGuide blocks (org.blockml.bml.task.*) inherit from
+    org.blockml.bml.core.TaskGuide. Diagnostic blocks (org.blockml.bml.diagnostic.*) inherit from
+    org.blockml.bml.core.Diagnostic.
+  </documentation>
+
+  <references>
+    <see type="doc:DefinitionModel" relation="SeeAlso">
+      StructuralDefinition documentation model.
+    </see>
+    <see type="lang:NaturalLanguage" relation="Extends">
+      Natural language branch — documentation prose and example titles.
+    </see>
+    <see type="core:Block" relation="SeeAlso">
+      Root block — documents is, language, documentation, references on every definition.
+    </see>
+    <see type="core:Definition" relation="Extends">
+      Definition branch — shared documentation aggregations.
+    </see>
+    <see type="def:StructuralDefinition" relation="Defines">
+      Documentation property and Change, Example, Reference sub-blocks on StructuralDefinition.
+    </see>
+    <see type="core:Relation" relation="Defines">
+      Relation branch — optional relation attribute on see entries.
+    </see>
+    <see type="core:Documentation" relation="Extends">
+      Abstract base for narrative documentation blocks in readMe lists.
+    </see>
+    <see type="core:Bootstrap" relation="ContrastsWith">
+      Abstract bootstrap role marker — ReadFirst lives on references, not on Bootstrap.
+    </see>
+    <see type="blockml:README" relation="SeeAlso">
+      Standard README entry point — references with relation=ReadFirst in learning order.
+    </see>
+    <see type="relation:ReadFirst" relation="Defines">
+      Relation block for curated README reading path entries.
+    </see>
+    <see type="relation:ReadNext" relation="Defines">
+      Relation block for forward links between documentation blocks (Next reading step).
+    </see>
+    <see type="doc:BootstrapModel" relation="ReadNext">
+      Next reading step — README.bml, ReadFirst, TaskIndex, bootstrap context.
+    </see>
+    <see type="doc:TaskGuideModel" relation="SeeAlso">
+      Task-oriented paths — TaskGuide blocks and task relations.
+    </see>
+  </references>
+
+</block>

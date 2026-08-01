@@ -1,0 +1,31 @@
+<!--
+  BlockML Constraint — capability structural constraint branch
+
+  FQN: org.blockml.bml.constraint.CapabilityConstraint
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:def="org.blockml.bml.definition">
+
+  <name>CapabilityConstraint</name>
+  <type>constraint:CapabilityConstraint</type>
+  <baseType>constraint:MemberConstraint</baseType>
+  <is>A rule for a Capability</is>
+
+  <documentation>Abstract branch for constraints on Capability members. Generic T binds to the
+    effective CapabilityDefinition. Valid only under a Capability's &lt;constraints&gt; container
+    (BML_CONSTRAINT_TARGET_MISMATCH otherwise).</documentation>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <T baseType="def:CapabilityDefinition">
+      <documentation>Bound to the effective CapabilityDefinition of the enclosing Capability member.</documentation>
+    </T>
+  </genericTypes>
+
+</block>

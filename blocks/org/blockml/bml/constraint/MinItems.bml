@@ -1,0 +1,31 @@
+<!--
+  BlockML Core — minimum items constraint
+
+  FQN: org.blockml.bml.constraint.MinItems
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MinItems</name>
+  <type>constraint:MinItems</type>
+  <baseType>constraint:ValueConstraint</baseType>
+  <is>A lower bound on item count</is>
+
+  <documentation>T binds to the property collection type (e.g. String[]). The value property is Integer — the minimum item count.</documentation>
+  <genericTypes>
+    <T baseType="core:ValueType"/>
+  </genericTypes>
+
+  <properties>
+    <value type="Integer">
+      <documentation>Minimum number of items (inclusive).</documentation>
+    </value>
+  </properties>
+
+</block>

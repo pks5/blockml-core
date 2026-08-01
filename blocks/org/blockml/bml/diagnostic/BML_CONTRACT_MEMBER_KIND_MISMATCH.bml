@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — BML_CONTRACT_MEMBER_KIND_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONTRACT_MEMBER_KIND_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CONTRACT_MEMBER_KIND_MISMATCH</name>
+  <type>diag:BML_CONTRACT_MEMBER_KIND_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A contract member-kind mismatch diagnostic</is>
+
+  <summary>Emitted when a contract member kind does not match the merging member kind.</summary>
+
+  <keywords>BML_CONTRACT_MEMBER_KIND_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when a contract member kind does not match the merging member kind. Remedy: Property
+    overrides property, aggregation overrides aggregation, etc.
+  </documentation>
+
+  <references>
+    <see type="doc:ContractsModel" relation="AuthoringGuide">
+      Contract merge.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      Same kind required.
+    </see>
+    <see type="task:FixMemberOverride" relation="Resolves">
+      Align member kinds.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_DIRECTIVE_NOT_ALLOWED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DIRECTIVE_NOT_ALLOWED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_DIRECTIVE_NOT_ALLOWED</name>
+  <type>diag:BML_DIRECTIVE_NOT_ALLOWED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A directive-not-allowed diagnostic</is>
+
+  <summary>Emitted when a bml: directive appears on an element where it is not permitted.</summary>
+
+  <keywords>BML_DIRECTIVE_NOT_ALLOWED</keywords>
+
+  <documentation>
+    Emitted when a bml: directive appears on an element where it is not permitted. Remedy: See
+    placement rules for each directive.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      Directive placement.
+    </see>
+  </references>
+
+</block>

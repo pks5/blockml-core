@@ -1,0 +1,82 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ValueTypeConfiguration
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:mapping="org.blockml.bml.mapping"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>ValueTypeConfiguration</name>
+  <type>doc:ValueTypeConfiguration</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to ValueType configuration</is>
+
+  <documentation>
+    Curly braces configure the Property's owned ValueType instance — orthogonal to generic (...)
+    binding. The configuration applies to the type instance associated with a Property, not to
+    the ValueType definition block itself. Both may coexist: Box(Integer){minItems: 1}.
+    Multiplicity brackets apply after configuration: Text{maxLength: 50}[0..n].
+
+    Syntax examples:
+    • Text{maxLength: 100} — named configuration property (JSON-like key: value)
+    • Decimal{precision: 10, scale: 2} — named precision and scale
+    • Decimal{10, 2} — positional by ValueType property declaration order (precision, scale)
+    • Constant(SizeXY){value: {x: 1, y: 2}} — nested object literals for StructType config values
+
+    Rules:
+    • Named and positional configuration must not be mixed in one {...} block →
+      BML_MIXED_TYPE_CONFIGURATION
+    • Positional mapping follows declaration order — same principle as FunctionMapping
+    • Do not use key=value inside {...} (that is expression call syntax, not type configuration)
+    • Unknown config property → BML_UNKNOWN_TYPE_CONFIGURATION; value mismatch →
+      BML_TYPE_CONFIGURATION_VIOLATION
+    • Generic application uses round parentheses: Box(Integer), TypeReference(core:Block)
+    • Constant(T){value: …} — generic (...) binds T; {value: …} supplies the singleton literal
+
+    Prefer multiplicity on the type reference for collection bounds (Text[1..10]) over List{…}
+    wrappers. Prefer inline configuration for type-intrinsic thresholds (Text{maxLength: 100});
+    keep Constraints for contextual/composable/business rules (Pattern, cross-property, …).
+
+    ValueType definitions declare configuration Properties on the type block (e.g. precision and
+    scale on Decimal). Values live on Properties of Block instances — never on the ValueType
+    definition. There is no new Integer(5) in BlockML; the Property owns value 5 with type Integer.
+
+    Decimal is the default for non-integer numerics (3.5, 12.75). Float is special-purpose only
+    when binary floating-point semantics are explicitly required.
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Orthogonal (...) generic binding.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Multiplicity brackets and type-expression composition.
+    </see>
+    <see type="doc:ConstantValueType" relation="ReadNext">
+      Next — Constant(T){value: …} singleton domains.
+    </see>
+    <see type="doc:FunctionMappingModel" relation="SeeAlso">
+      Shared declaration-order rule for positional mapping.
+    </see>
+    <see type="mapping:FunctionMapping" relation="SeeAlso">
+      Function call argument mapping.
+    </see>
+    <see type="type:Decimal" relation="SeeAlso">
+      Primitive with precision and scale configuration Properties.
+    </see>
+    <see type="type:Constant" relation="SeeAlso">
+      Constant(T){value: …} — configured singleton for union alternatives.
+    </see>
+    <see type="core:ValueType" relation="Extends">
+      ValueType branch — types describe nature; Properties own values.
+    </see>
+  </references>
+
+</block>

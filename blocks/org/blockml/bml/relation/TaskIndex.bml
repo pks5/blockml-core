@@ -1,0 +1,24 @@
+<!--
+  BlockML Core — task index relation
+
+  FQN: org.blockml.bml.relation.TaskIndex
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>TaskIndex</name>
+  <type>relation:TaskIndex</type>
+  <baseType>core:Relation</baseType>
+  <is>A listed-task Relation</is>
+
+  <documentation>Use on &lt;see&gt; entries in README / ReadMe blocks to list accomplishable tasks.
+    Distinct from ReadFirst (mental learning order) and SeeAlso (optional peer link). Tooling
+    filters relation=TaskIndex to build a task menu for humans, agents, or CI. Target should
+    reference an org.blockml.bml.task.* TaskGuide block.</documentation>
+
+</block>

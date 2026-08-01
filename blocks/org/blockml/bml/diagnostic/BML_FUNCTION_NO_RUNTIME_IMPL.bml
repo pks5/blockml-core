@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_FUNCTION_NO_RUNTIME_IMPL diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_FUNCTION_NO_RUNTIME_IMPL
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_FUNCTION_NO_RUNTIME_IMPL</name>
+  <type>diag:BML_FUNCTION_NO_RUNTIME_IMPL</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-runtime-implementation diagnostic</is>
+
+  <summary>Emitted when a Capability requires a runtime implementation that is not provided for the target.</summary>
+
+  <keywords>BML_FUNCTION_NO_RUNTIME_IMPL</keywords>
+
+  <documentation>
+    Emitted when a Capability requires a runtime implementation that is not provided for the
+    target. Remedy: Supply an implementation language/body supported by the renderer, or mark
+    appropriately.
+  </documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      Implementations.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      utility implementations.
+    </see>
+  </references>
+
+</block>

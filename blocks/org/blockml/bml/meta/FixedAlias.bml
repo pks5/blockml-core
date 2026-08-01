@@ -1,0 +1,64 @@
+<!--
+  BlockML Core — fixed catalogue alias entity
+
+  FQN: org.blockml.bml.meta.FixedAlias
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:meta="org.blockml.bml.meta"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>FixedAlias</name>
+  <type>meta:FixedAlias</type>
+  <baseType>core:Alias</baseType>
+  <is>A catalogue-fixed alternative name</is>
+
+  <documentation>Protected base for domain catalogue Alias blocks. Extends org.blockml.bml.core.Alias
+    for controlled alternative names whose payload is authored once on the alias Block definition —
+    not at each &lt;aliases&gt; reference site. Domain libraries declare concrete alias blocks
+    extending FixedAlias and set protected members in &lt;properties&gt; (for example
+    &lt;_name&gt;Sub-Block&lt;/_name&gt;). References in &lt;aliases&gt; are empty fixed blocks
+    (for example &lt;vocab:SubBlockAlias /&gt;) — type FQN is the catalogue identity; name,
+    language, and legacy resolve from the alias definition.
+
+    org.blockml.bml.meta.FreeTextAlias extends FixedAlias and widens the same members to public
+    attributes (`_name` → `name`, …) for ad-hoc names configured per &lt;aliases&gt; reference —
+    visibility widening on override; see doc:MemberVisibility.
+    FixedAlias members use the protected naming convention (_*) and are set only on derived alias
+    block definitions — not on composition instances in &lt;aliases&gt;. Comma-separated shorthand on
+    &lt;aliases&gt; does not expand to FixedAlias instances.</documentation>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <_name type="Text" bml:xml="element">
+      <abstract>true</abstract>
+      <documentation>Required alternative name text — set on each concrete alias block definition.
+        Stored in BOM AliasEntry.name when resolved from a FixedAlias descendant. Protected member
+        (_ prefix) — configurable only on derived alias block definitions, not at &lt;aliases&gt;
+        reference sites.</documentation>
+      <constraints>
+        <constraint:ValuePresent validation="Error"/>
+      </constraints>
+    </_name>
+    <_language type="TypeReference(lang:NaturalLanguage)" bml:xml="element">
+      <documentation>Optional NaturalLanguage when this alias is written in a language other than the
+        effective language of blocks that reference it. Set on the alias block definition. Unqualified
+        names resolve via org.blockml.bml.language.*. Omitted = inherit effective language at
+        resolution time.</documentation>
+    </_language>
+    <_legacy type="Boolean" bml:xml="element">
+      <value>false</value>
+      <documentation>When true, marks a deprecated or legacy catalogue name — prefer the canonical
+        Block name and &lt;is&gt; in new prose. Set on the alias block definition. Default false when
+        omitted.</documentation>
+    </_legacy>
+  </properties>
+</block>

@@ -1,0 +1,45 @@
+<!--
+  BlockML Core — library/process automation SPOE role
+
+  FQN: org.blockml.bml.core.Bootstrap
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>Bootstrap</name>
+  <type>core:Bootstrap</type>
+  <baseType>core:Block</baseType>
+  <is>An automated library start entry</is>
+
+  <documentation>Abstract empty branch for Bootstrap blocks — the optional single point of entry
+    (SPOE) for automated startup: tasks, agents, CI pipelines, and similar process logic. Intentionally
+    empty — no properties or aggregations. Concrete subtypes add scenario-specific members when
+    needed.
+
+    Distinct from org.blockml.bml.core.ReadMe, which is the required human/LLM reading entry on a
+    Library (readMe aggregation). A Library may omit bootstrap (0..1) when it has no automated
+    startup SPOE; it must never declare more than one Bootstrap.
+
+    Human/LLM orientation (curated ReadFirst reading order, TaskIndex catalog) lives on ReadMe
+    blocks — not on Bootstrap.</documentation>
+
+  <references>
+    <see type="core:ReadMe" relation="ContrastsWith">
+      Human/LLM reading entry — Library.readMe, not bootstrap.
+    </see>
+    <see type="core:BlockLibrary" relation="SeeAlso">
+      Optional bootstrap aggregation (0..1 SPOE).
+    </see>
+    <see type="doc:BootstrapModel" relation="ContrastsWith">
+      TypeRegistry bootstrap vs library ReadMe / Bootstrap roles.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

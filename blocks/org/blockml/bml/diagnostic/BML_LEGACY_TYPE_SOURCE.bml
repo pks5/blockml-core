@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_LEGACY_TYPE_SOURCE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_LEGACY_TYPE_SOURCE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_LEGACY_TYPE_SOURCE</name>
+  <type>diag:BML_LEGACY_TYPE_SOURCE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A legacy-type-source diagnostic</is>
+
+  <summary>Emitted when a type still comes from a legacy XSD/YAML source during migration.</summary>
+
+  <keywords>BML_LEGACY_TYPE_SOURCE</keywords>
+
+  <documentation>
+    Emitted when a type still comes from a legacy XSD/YAML source during migration. Remedy: Migrate
+    to BML TypeRegistry definitions.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      BML type SSOT.
+    </see>
+    <see type="doc:BootstrapModel" relation="SeeAlso">
+      TypeRegistry bootstrap.
+    </see>
+  </references>
+
+</block>

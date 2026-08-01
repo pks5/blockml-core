@@ -1,0 +1,20 @@
+<!--
+  BlockML Core — Java implementation language
+
+  FQN: org.blockml.bml.language.Java
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>Java</name>
+  <type>lang:Java</type>
+  <baseType>lang:ProgrammingLanguage</baseType>
+  <is>The Java programming language</is>
+
+  <documentation>ProgrammingLanguage for Java method implementations on Capabilities.</documentation>
+</block>

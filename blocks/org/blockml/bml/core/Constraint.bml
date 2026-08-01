@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — constraint branch root
+
+  FQN: org.blockml.bml.core.Constraint
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Constraint</name>
+  <type>core:Constraint</type>
+  <baseType>core:Block</baseType>
+  <is>A semantic validation rule</is>
+
+  <documentation>Abstract universal root for all constraint types. Specialized by
+    org.blockml.bml.constraint.ValueConstraint (property value rules) and
+    org.blockml.bml.constraint.StructuralConstraint (definition-shape rules on Blocks and members).
+    Every concrete constraint extends one of the branch types; the &lt;constraints&gt; embedding
+    context determines the target and automatic generic binding — authors never specify target or
+    type arguments in BML. Constraints describe the condition only. Whether BlockML enforces a
+    constraint is controlled by the optional validation property, which references an
+    org.blockml.bml.core.Validation block. When validation is omitted, validateConstraints() does not
+    enforce the rule — the constraint remains metadata for renderers, editors, runtimes, and custom
+    validators. The constraint instance itself is still validated (type, properties, generic
+    binding, branch compatibility).</documentation>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <validation type="core:Validation">
+      <documentation>How the BlockML validator should report a violation of this constraint.
+        When omitted, the validator ignores the constraint rule — the instance remains part of the
+        BOM as semantic metadata.</documentation>
+    </validation>
+  </properties>
+
+</block>

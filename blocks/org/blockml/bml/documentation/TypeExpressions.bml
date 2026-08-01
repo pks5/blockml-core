@@ -1,0 +1,90 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.TypeExpressions
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>TypeExpressions</name>
+  <type>doc:TypeExpressions</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to type expressions</is>
+
+  <documentation>
+    Everything beyond the four ValueType kinds is a type expression — a use or combination of named
+    types, not a new BlockML type class.
+
+    ValueType = named semantic meaning (Primitive · Enum · Struct · Constant)
+    TypeExpression = usage or combination (multiplicity · union · generic application · instance
+    configuration · bml:Self · T)
+
+    Examples: Integer[] · Integer[3] · Integer[0..n] · Boolean | Integer · Box(Integer) ·
+    SelectiveGrid(Boolean | HoleType) · Text{maxLength: 100} · bml:Self · T
+
+    In type="…" XML attributes, generic applications use round parentheses (not angle brackets) so
+    values stay valid XML. Generic type arguments may be full type expressions — unions,
+    multiplicity, nested generics, and {…} configuration. Parentheses bind the argument:
+    SelectiveGrid(Boolean | HoleType) means T = Boolean | HoleType, not SelectiveGrid(Boolean) | HoleType.
+    When a parameter constrains baseType to ValueType (or another branch), every union alternative
+    must satisfy satisfiesTypeBound → else BML_GENERIC_CONSTRAINT_VIOLATION.
+
+    Obsolete wrappers → write unions directly:
+    • AutoOr&lt;T&gt; → Constant(Text){value: "auto"} | T
+    • FalseOr&lt;T&gt; → Boolean.False | T
+    • NoneOr&lt;T&gt; → Constant(Text){value: "none"} | T
+    • BooleanOr&lt;T&gt; → Boolean | T
+    • Array&lt;T&gt; → T[]
+    Boolean.True / Boolean.False are Sub-Block shortcuts for Constant(Boolean){value: true/false}.
+
+    Multiplicity — no separate Array type. Bracket notation is metadata on the type reference; the
+    FQN is unchanged. Prefer Collection / Multiplicity terminology (not Array). Semantics only —
+    ordered vs unordered and concrete storage are renderer-defined.
+    • Integer → exactly one
+    • Integer[] ≡ Integer[0..n]
+    • Integer[3] · Integer[1..5] · Integer[1..]
+    Applies commonly on aggregation/association types and capability input fields; bare properties
+    are usually exactly one value.
+
+    Unions — alternatives with |. Match order is left to right, first hit wins (no best-match).
+    Prefer narrower / sentinel alternatives on the left (Boolean | Text, not Text | Boolean).
+    Later alternatives that can never win → BML_UNREACHABLE_UNION_ALTERNATIVE (warning). Singleton
+    alternatives use Constant(T){value: …} (doc:ConstantValueType). Future literal shorthand
+    Boolean | "auto" desugars to Constant form.
+
+    Bare type name sites (Property type, Capability inputType/outputType) require ValueTypes (plus
+    type expressions over them). Aggregation/association type may be any Block FQN.
+    Non-ValueType on a property → BML_INVALID_PROPERTY_TYPE.
+
+    Compiler-internal descriptors (UnionTypeDescriptor, …) are not BML Block classes.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="SeeAlso">
+      Four ValueType kinds — named semantic meanings.
+    </see>
+    <see type="doc:GenericsModel" relation="ReadNext">
+      Next — generic declarations, inheritance binding, and attribute syntax.
+    </see>
+    <see type="doc:ConstantValueType" relation="SeeAlso">
+      Singleton union alternatives via Constant(T){value: …}.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      Orthogonal {…} instance configuration on type references.
+    </see>
+    <see type="type:Constant" relation="SeeAlso">
+      Standard ConstantType implementation.
+    </see>
+    <see type="diag:BML_INVALID_PROPERTY_TYPE" relation="SeeAlso">
+      Non-ValueType used where a ValueType is required.
+    </see>
+  </references>
+
+</block>

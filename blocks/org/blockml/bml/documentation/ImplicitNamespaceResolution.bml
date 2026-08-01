@@ -1,0 +1,70 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ImplicitNamespaceResolution
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>ImplicitNamespaceResolution</name>
+  <type>doc:ImplicitNamespaceResolution</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to implicit namespaces</is>
+
+  <documentation>
+    Unqualified block references are supported only at specialized, semantically unambiguous
+    reference sites. Each site defines exactly one implicit namespace. The name expands directly:
+
+    &lt;Name&gt; → &lt;implicitNamespace&gt;.&lt;Name&gt;
+
+    There is no multi-stage search, no global TypeRegistry fallback, and no document-scope
+    heuristics. If the expanded FQN does not exist or the Block does not satisfy the expected
+    base type for that site, the compiler emits an error.
+
+    Reference sites and implicit namespaces:
+    • Property type → org.blockml.bml.type.*
+    • Capability inputType / outputType → org.blockml.bml.type.*
+    • Implementation language attribute → org.blockml.bml.language.*
+    • language element child → org.blockml.bml.language.* (NaturalLanguage)
+    • language attribute on documentation → org.blockml.bml.language.* (NaturalLanguage)
+    • language attribute on change → org.blockml.bml.language.* (NaturalLanguage)
+    • language attribute on see → org.blockml.bml.language.* (NaturalLanguage)
+    • relation attribute on see → org.blockml.bml.relation.* (Relation)
+    • language attribute on example → org.blockml.bml.language.* (Language)
+    • status element content · bml:status attribute → org.blockml.bml.status.*
+    • Capability type → org.blockml.bml.capability.*
+    • Constraint validation attribute → org.blockml.bml.validation.*
+
+    Examples:
+    • &lt;width type="Integer" /&gt; → org.blockml.bml.type.Integer
+    • &lt;implementation language="TypeScript"&gt; → org.blockml.bml.language.TypeScript
+    • &lt;language&gt;&lt;English /&gt;&lt;/language&gt; → org.blockml.bml.language.English
+    • &lt;documentation language="German"&gt; → org.blockml.bml.language.German
+    • &lt;change version="2.0.0" language="German"&gt; → org.blockml.bml.language.German
+    • &lt;see file="guide.md" language="English"&gt; → org.blockml.bml.language.English
+    • &lt;see type="core:Block" relation="Extends"&gt; → org.blockml.bml.relation.Extends
+    • &lt;example language="OpenSCAD"&gt; → org.blockml.bml.language.OpenSCAD
+    • &lt;status&gt;Draft&lt;/status&gt; → org.blockml.bml.status.Draft
+    • type="Transformation" on Capability → org.blockml.bml.capability.Transformation
+    • validation="Error" on constraint → org.blockml.bml.validation.Error
+
+    General block references have no implicit namespace — baseType, aggregation type,
+    InstanceReference type arguments, and composition instance tags require a full FQN or xmlns prefix.
+    Explicit FQNs and xmlns prefixes remain valid everywhere, including at specialized sites.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlNamespace" relation="SeeAlso">
+      Mandatory domain.bml namespace — FQN layout.
+    </see>
+    <see type="doc:DocumentationModel" relation="ReadNext">
+      Next — is, documentation, references on Block definitions.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,49 @@
+<!--
+  BlockML Core — color primitive type
+
+  FQN: org.blockml.bml.type.Color
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Color</name>
+  <type>type:Color</type>
+  <baseType>type:Text</baseType>
+  <is>A color value string</is>
+
+  <documentation>Textual primitive subtype for color values. Unqualified name Color resolves to
+    org.blockml.bml.type.Color.
+
+    Accepted forms (case-insensitive for function names and named colors):
+    • Hex — CSS lengths #RGB, #RGBA, #RRGGBB, #RRGGBBAA (for example #afafaf, #a3d4e200)
+    • rgb / RGB — rgb(255,12,230)
+    • rgba / RGBA — rgba(34,54,21,0.5) with alpha in the CSS 0–1 range
+    • Named color — free-text name in language L (for example red, Blue); the base Color type
+      does not validate named colors against a catalogue. A subtype may later constrain L to a
+      fixed set of names.
+
+    Generic parameter L (NaturalLanguage, default English) names the language of free-text color
+    names. Bare Color resolves to English; supply Color(lang:German) only when named colors are
+    expected in another language.</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
+
+  <references>
+    <see type="lang:NaturalLanguage" relation="Defines">
+      L bound — language of free-text color names (default English).
+    </see>
+    <see type="lang:English" relation="Defines">
+      DefaultType for L when the color-name language is omitted.
+    </see>
+    <see type="type:Text" relation="Extends">
+      Color is a textual primitive subtype.
+    </see>
+  </references>
+</block>

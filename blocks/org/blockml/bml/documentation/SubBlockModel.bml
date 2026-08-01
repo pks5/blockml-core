@@ -1,0 +1,95 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.SubBlockModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>SubBlockModel</name>
+  <type>doc:SubBlockModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Sub-Blocks and embedded blocks</is>
+
+  <documentation>
+    Sub-Blocks are Block definitions nested inside a parent Block — Java static nested classes: they
+    share the parent's FQN prefix, may declare own genericTypes, and have no enclosing-instance /
+    outer-generic scope (forward type parameters explicitly). Declared in &lt;subBlocks&gt; on a root
+    block, parent Sub-Block, or embedded block; may nest to arbitrary depth. Identity and FQN
+    derivation: doc:TypeIdentityDerivation. Unqualified nested names: innermost scope first.
+
+    Format: same fields as root Blocks; prefer omitting &lt;type&gt; (derived). baseType is required.
+    Must not declare embeddedBlocks → BML_EMBEDDED_BLOCKS_ON_SUBBLOCK.
+
+    Visibility — same naming convention and access model as members (doc:MemberVisibility):
+    • SubBlock — public (inside and outside enclosing definition)
+    • _SubBlock — protected (enclosing definition and derived Blocks)
+    • __SubBlock — private (immediately declaring Block only)
+    Differing only by visibility prefix → BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT. Optional
+    root-level &lt;visibility&gt; on Sub-Blocks must match the name → else BML_VISIBILITY_MISMATCH;
+    when omitted, derive from name. Root Blocks must not declare &lt;visibility&gt; →
+    BML_VISIBILITY_ON_ROOT_BLOCK. Access diagnostics: BML_PRIVATE_SUBBLOCK_ACCESS,
+    BML_PROTECTED_SUBBLOCK_ACCESS.
+
+    Embedded Blocks (Inline Library) — virtual .bml files under root &lt;embeddedBlocks&gt;. Meta-model
+    EmbeddedBlockDefinition. Each embed is a full Block document; FQN = resolve(type), not nested
+    under the root. Root-only: forbidden on Sub-Blocks and on embeds themselves
+    (BML_NESTED_EMBEDDED_BLOCKS). type required and fully qualified
+    (BML_MISSING_EMBEDDED_BLOCK_TYPE / BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE). Within the document,
+    embed FQNs shadow library/file definitions; duplicates → BML_DUPLICATE_EMBEDDED_BLOCK;
+    externally invisible. Composition refs to embeds must use fully qualified Block types.
+
+    Central distinction:
+    • SubBlockDefinition — semantically nested type
+    • EmbeddedBlockDefinition — virtual .bml in root embeddedBlocks
+    • RootBlockDefinition — document root; sole owner of embeddedBlocks
+
+    Composition Block references: empty child meaning depends on aggregation type (instance vs
+    TypeReferenceEntity sugar). Domain types need FQN or xmlns. Sub-Blocks of the enclosing root may
+    use unqualified local name inside that Block's composition; outside → qualified name / FQN else
+    BML_UNQUALIFIED_BLOCK_REFERENCE.
+
+    Naming vs parent: a Sub-Block should not share the root Block's name (…Calibrator.Calibrator);
+    bare short tags become ambiguous → BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED.
+
+    utility Sub-Blocks — baseType org.blockml.bml.core.Entity bind Transformation Capability
+    implementations (language = org.blockml.bml.language.*). V1: OpenSCAD (main function name =
+    Capability name; helpers allowed; compiler prefixes with block FQN) and TypeScript (compile-time
+    literal eval when args are literals). One implementation child per Capability; language required.
+    CDATA may use BML Embedded Expression (&lt;$ … $&gt;).
+  </documentation>
+
+  <references>
+    <see type="def:SubBlockDefinition" relation="Defines">
+      Nested Sub-Block definition shape.
+    </see>
+    <see type="def:RootBlockDefinition" relation="Defines">
+      Document root — subBlocks and embeddedBlocks owner.
+    </see>
+    <see type="def:EmbeddedBlockDefinition" relation="Defines">
+      Virtual .bml entries under embeddedBlocks.
+    </see>
+    <see type="core:Entity" relation="SeeAlso">
+      Typical baseType for utility Sub-Blocks.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      FQN derivation and unqualified nested resolution.
+    </see>
+    <see type="doc:MemberVisibility" relation="SeeAlso">
+      Naming-convention visibility shared with Sub-Blocks.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Composition children and aggregation fill.
+    </see>
+    <see type="doc:ContractsModel" relation="ReadNext">
+      Next — contracts merge and type bounds (root only; not on Sub-Blocks).
+    </see>
+  </references>
+
+</block>

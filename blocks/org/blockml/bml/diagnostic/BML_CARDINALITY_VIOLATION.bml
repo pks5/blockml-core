@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_CARDINALITY_VIOLATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CARDINALITY_VIOLATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CARDINALITY_VIOLATION</name>
+  <type>diag:BML_CARDINALITY_VIOLATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A cardinality-violation diagnostic</is>
+
+  <summary>Emitted when the number of aggregation/association children violates the type multiplicity.</summary>
+
+  <keywords>BML_CARDINALITY_VIOLATION</keywords>
+
+  <documentation>
+    Emitted when the number of aggregation/association children violates the type multiplicity.
+    Remedy: Adjust children count or the member multiplicity (e.g. [1..n]).
+  </documentation>
+
+  <references>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      Multiplicity.
+    </see>
+    <see type="doc:CompositionModel" relation="SeeAlso">
+      Aggregation fill.
+    </see>
+  </references>
+
+</block>

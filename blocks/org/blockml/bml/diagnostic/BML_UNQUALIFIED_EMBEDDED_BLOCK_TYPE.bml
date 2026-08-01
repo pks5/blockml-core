@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE</name>
+  <type>diag:BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unqualified-embedded-type diagnostic</is>
+
+  <summary>Emitted when an embedded Block type is not fully qualified.</summary>
+
+  <keywords>BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE</keywords>
+
+  <documentation>
+    Embedded type must be an FQN (or resolvable QName to a full FQN). Unqualified / relative Sub-Block forms are invalid for embeds.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Fully qualified embedded type.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Qualify the embedded type.
+    </see>
+  </references>
+
+</block>

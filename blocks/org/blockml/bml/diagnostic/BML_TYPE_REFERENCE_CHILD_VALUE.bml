@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_TYPE_REFERENCE_CHILD_VALUE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_TYPE_REFERENCE_CHILD_VALUE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_TYPE_REFERENCE_CHILD_VALUE</name>
+  <type>diag:BML_TYPE_REFERENCE_CHILD_VALUE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A TypeReferenceEntity child-value diagnostic</is>
+
+  <summary>Emitted when TypeReferenceEntity sugar/children violate value authoring rules.</summary>
+
+  <keywords>BML_TYPE_REFERENCE_CHILD_VALUE</keywords>
+
+  <documentation>
+    Emitted when TypeReferenceEntity sugar/children violate value authoring rules. Remedy: Empty
+    QName children expand to value=; do not mix illegal child shapes.
+  </documentation>
+
+  <references>
+    <see type="type:TypeReferenceEntity" relation="Defines">
+      Empty child sugar.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Type references.
+    </see>
+  </references>
+
+</block>

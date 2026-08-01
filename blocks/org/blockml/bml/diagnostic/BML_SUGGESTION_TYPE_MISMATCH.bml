@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_SUGGESTION_TYPE_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_SUGGESTION_TYPE_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_SUGGESTION_TYPE_MISMATCH</name>
+  <type>diag:BML_SUGGESTION_TYPE_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A suggestion-type-mismatch diagnostic</is>
+
+  <summary>Emitted when a suggestion instance is incompatible with the property type.</summary>
+
+  <keywords>BML_SUGGESTION_TYPE_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when a suggestion instance is incompatible with the property type. Remedy: Use compatible
+    ValueType/Entity instances; primitives need matching *Entity wrappers.
+  </documentation>
+
+  <references>
+    <see type="doc:ConstraintsModel" relation="AuthoringGuide">
+      Suggestion compatibility.
+    </see>
+    <see type="def:PropertyDefinition" relation="Defines">
+      suggestions.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — alias branch
+
+  FQN: org.blockml.bml.core.Alias
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Alias</name>
+  <type>core:Alias</type>
+  <baseType>core:Entity</baseType>
+  <is>An alternative Block type name</is>
+
+  <documentation>Abstract branch marker for alias Entity instances in an aliases aggregation on
+    org.blockml.bml.definition.BlockDefinition only (root blocks and Sub-Blocks). Domain libraries
+    define concrete alias blocks extending this branch for catalogue-controlled alternative names.
+    The core library provides org.blockml.bml.meta.FreeTextAlias for ad-hoc text names and
+    org.blockml.bml.meta.FixedAlias as the protected base for catalogue aliases whose members are
+    set on derived alias block definitions; comma-separated shorthand on &lt;aliases&gt; expands to
+    FreeTextAlias instances only. Not XML
+    namespace prefix aliases. Not search tags — use org.blockml.bml.core.Keyword branch for those.</documentation>
+
+  <references>
+    <see type="core:Entity" relation="SeeAlso">
+      Alias instances are Entity children inside aliases aggregations.
+    </see>
+    <see type="core:Keyword" relation="ContrastsWith">
+      Parallel branch for search and discovery tags — not alternative type names.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+</block>

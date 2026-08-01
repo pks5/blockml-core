@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_PROTECTED_SUBBLOCK_ACCESS diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PROTECTED_SUBBLOCK_ACCESS
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_PROTECTED_SUBBLOCK_ACCESS</name>
+  <type>diag:BML_PROTECTED_SUBBLOCK_ACCESS</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A protected Sub-Block access diagnostic</is>
+
+  <summary>Emitted when a protected Sub-Block is referenced outside the enclosing definition and its derived Blocks.</summary>
+
+  <keywords>BML_PROTECTED_SUBBLOCK_ACCESS</keywords>
+
+  <documentation>
+    Protected Sub-Blocks (_Name) are visible inside the enclosing Block definition and derived Blocks — not from arbitrary external documents.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Protected Sub-Block reference scope.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Use a public Sub-Block or reference from allowed context.
+    </see>
+  </references>
+
+</block>

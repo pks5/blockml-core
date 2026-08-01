@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_CONSTRAINT_TARGET_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONSTRAINT_TARGET_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_CONSTRAINT_TARGET_MISMATCH</name>
+  <type>diag:BML_CONSTRAINT_TARGET_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A constraint-target mismatch diagnostic</is>
+
+  <summary>Emitted when a Constraint branch is placed in an incompatible embedding context.</summary>
+
+  <keywords>BML_CONSTRAINT_TARGET_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when a Constraint branch is placed in an incompatible embedding context. Remedy:
+    Constraint generics are compiler-bound from context (Property → ValueType, Aggregation →
+    AggregationDefinition, …).
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      Constraint generic binding from context.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      Constraint placement patterns.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_DUPLICATE_TYPE_CONFIGURATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_TYPE_CONFIGURATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_DUPLICATE_TYPE_CONFIGURATION</name>
+  <type>diag:BML_DUPLICATE_TYPE_CONFIGURATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate type-configuration diagnostic</is>
+
+  <summary>Emitted when the same configuration property is supplied twice in {...}.</summary>
+
+  <keywords>BML_DUPLICATE_TYPE_CONFIGURATION</keywords>
+
+  <documentation>
+    Emitted when the same configuration property is supplied twice in {...}. Remedy: Provide
+    each configuration key once.
+  </documentation>
+
+  <references>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      Instance configuration.
+    </see>
+  </references>
+
+</block>

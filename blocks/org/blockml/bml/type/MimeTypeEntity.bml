@@ -1,0 +1,16 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MimeTypeEntity</name>
+  <type>type:MimeTypeEntity</type>
+  <baseType>core:PrimitiveEntity(type:MimeType)</baseType>
+  <is>A MIME type as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a MimeType primitive. Binds T = MimeType on
+    org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.</documentation>
+</block>

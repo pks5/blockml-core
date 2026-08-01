@@ -1,0 +1,102 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.PartialMemberOverrides
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>PartialMemberOverrides</name>
+  <type>doc:PartialMemberOverrides</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to partial member overrides</is>
+
+  <documentation>
+    Child Blocks override inherited members with override="true", or satisfy abstract implementation
+    obligations with a locally complete override. The flag is required whenever a local member
+    redeclaration merges with an existing member from the baseType chain or from contracts[] —
+    contract completion uses the same rule as baseType refinement.
+
+    Local declaration properties (never inherited; only effects propagate):
+    • abstract="true" — incomplete declaration; creates an implementation obligation
+    • final="true" — seals the declaration; descendants cannot override
+    • override="true" — confirms deliberate redefinition of an inherited member
+    Boolean properties require an explicit true or false — empty elements and bare attributes are
+    invalid. Preferred literals: lowercase true / false.
+
+    Modes:
+    • new — introduces a member; must not set override="true" → else BML_OVERRIDE_WITHOUT_PARENT
+    • override — refines an inherited member; omit override when merging → BML_OVERRIDE_REQUIRED
+    Each redeclaration layer must set override="true" again — override is not inherited.
+
+    Partial authoring: only the member name, override mode, and changed attributes need to be
+    specified — all other attributes are inherited from the parent definition. Omit unchanged type
+    (and other unchanged attributes such as bml:xml or defaults). On aggregations, restating an
+    identical type when only filling an inherited member → BML_REDUNDANT_AGGREGATION_TYPE (warning
+    V1). Declare type on an override only when refining or replacing the inherited type.
+
+    Abstract → implementation:
+    • Parent may omit required parts (e.g. property without type or value) when abstract="true"
+    • Child implements with override="true" and a locally complete declaration (abstract defaults
+      to false → locally concrete)
+    • To keep a member abstract in a child, redeclare with override="true" abstract="true"
+    • Abstract member left unimplemented on a concrete block → BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED
+    Capability overrides supply a full implementation child element (not a boolean attribute).
+
+    Merge rules (resolveEffectiveMembers — baseType chain → contracts declaration order → local):
+    • Same member kind required (property overrides property, …)
+    • Only specified attrs replaced; unspecified attrs inherited
+    • Override matching key: (resolvedNamespace, normalizedLogicalName) — visibility prefixes
+      stripped; xmlns prefix aliases may differ if they resolve to the same namespace
+    • Visibility may widen (protected → public); narrowing → BML_VISIBILITY_NARROWING
+    • Member-level bml:xml may change on the same override
+    • Private members cannot be overridden → BML_FINAL_MEMBER_OVERRIDE
+    • final="true" on parent prevents override → BML_FINAL_MEMBER_OVERRIDE
+
+    readOnly is orthogonal to final / abstract / override: it controls instance authoring only.
+    • Block definition — may declare and set readOnly members via value, composition, or partial
+      override
+    • Child Block definition — may override an inherited readOnly member (value/composition only;
+      cannot override a final member at all)
+    • Block instance — must not set a member whose effective definition has readOnly=true →
+      BML_READONLY_MEMBER_WRITE (after resolveEffectiveMembers on every BlockInstance)
+    • Expressions — may read readOnly members subject to visibility; renderers may read the BOM
+    A public readOnly member remains publicly readable. final blocks value overrides entirely;
+    readOnly does not.
+
+    Declared on org.blockml.bml.definition.MemberDefinition (abstract, final, override, readOnly,
+    visibility) and specialized on PropertyDefinition, AggregationDefinition, AssociationDefinition,
+    and CapabilityDefinition.
+  </documentation>
+
+  <references>
+    <see type="def:MemberDefinition" relation="Defines">
+      abstract, final, override, readOnly, visibility — local declaration properties.
+    </see>
+    <see type="def:PropertyDefinition" relation="SeeAlso">
+      Property override completeness — type and value.
+    </see>
+    <see type="def:AggregationDefinition" relation="SeeAlso">
+      Aggregation overrides — omit unchanged type; composition fill.
+    </see>
+    <see type="def:CapabilityDefinition" relation="SeeAlso">
+      Capability overrides — implementation child element.
+    </see>
+    <see type="doc:MemberVisibility" relation="SeeAlso">
+      Visibility widening and private override prohibition.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      Contracts merge order and abstract/final patterns.
+    </see>
+    <see type="doc:CompositionModel" relation="ReadNext">
+      Next — filling aggregations with composition instances.
+    </see>
+  </references>
+
+</block>

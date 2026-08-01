@@ -1,0 +1,121 @@
+<!--
+  BlockML Definition — capability member meta-model type
+
+  FQN: org.blockml.bml.definition.CapabilityDefinition
+  See docs/12_bom_object_model.md — CapabilityDefinition · 02_mbml.md — Capabilities.
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>CapabilityDefinition</name>
+  <type>def:CapabilityDefinition</type>
+  <baseType>def:MemberDefinition</baseType>
+  <is>A Capability member declaration</is>
+
+  <documentation>Describes a Block member defining how the Block communicates. Rendered as a child
+    element inside the capabilities container; the XML element name is the capability name
+    (bml:xml="${ #this.name }"). An optional XML prefix on the element name supplies the member
+    namespace — resolved via xmlns to BOM namespace; unprefixed elements use the default namespace
+    (empty string). Member identity is (resolvedNamespace, localName). Maps to BOM
+    CapabilityDefinition (kind: "capability") with typeFqn, inputType, outputType, and optional
+    implementation binding. Inbound requires inputType; Outbound requires
+    outputType; Transformation requires both. inputType and outputType use TypeExpression syntax and
+    must resolve to ValueTypes. Scalar capability fields (type, inputType, outputType) follow
+    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
+    attribute preferred on Block instances. Structured implementation remains a child element.</documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      Capabilities authoring rules.
+    </see>
+    <see type="cap:Inbound" relation="Requires">
+      Capability typeFqn — requires inputType.
+    </see>
+    <see type="cap:Outbound" relation="Requires">
+      Capability typeFqn — requires outputType.
+    </see>
+    <see type="cap:Transformation" relation="Requires">
+      Capability typeFqn — requires inputType and outputType.
+    </see>
+    <see type="core:Language" relation="SeeAlso">
+      Implementation language bindings.
+    </see>
+    <see type="core:ValueType" relation="SeeAlso">
+      inputType and outputType payload types.
+    </see>
+    <see type="core:Entity" relation="ContrastsWith">
+      Implementation sub-block branch — structured language binding, not a ValueType.
+    </see>
+    <see type="def:MemberDefinition" relation="Extends">
+      Parent type — override/abstract/final are local declaration properties on MemberDefinition;
+      capability adds an optional implementation binding element.
+    </see>
+  </references>
+
+  <properties>
+    <type type="TypeReference(core:Capability)" bml:xml="element|attribute">
+      <documentation>Capability kind FQN — Inbound, Outbound, or Transformation. Unqualified names
+        resolve via org.blockml.bml.capability.*. On definitions, element preferred; on Block
+        instances, attribute preferred.</documentation>
+    </type>
+    <inputType type="TypeReference(core:ValueType)" bml:xml="element|attribute">
+      <documentation>TypeExpression for the inbound payload. Required on Inbound and Transformation;
+        forbidden on Outbound. Must resolve to a ValueType branch. On definitions, element preferred;
+        on Block instances, attribute preferred.</documentation>
+    </inputType>
+    <outputType type="TypeReference(core:ValueType)" bml:xml="element|attribute">
+      <documentation>TypeExpression for the outbound payload. Required on Outbound and Transformation;
+        forbidden on Inbound. Must resolve to a ValueType branch. On definitions, element preferred;
+        on Block instances, attribute preferred.</documentation>
+    </outputType>
+    <implementation type="Implementation" bml:xml="element">
+      <documentation>Optional target-language implementation binding for this capability. Rendered as
+        an implementation child element with required language attribute and CDATA body. Maps to BOM
+        ImplementationBlock.</documentation>
+    </implementation>
+  </properties>
+
+  <subBlocks>
+    <block>
+      <name>Implementation</name>
+      <baseType>core:Entity</baseType>
+      <is>A Capability code body</is>
+
+      <documentation>Describes the implementation element on a capability member. Rendered as
+        implementation with a required language attribute referencing org.blockml.bml.language.*
+        and a CDATA source body. Maps to BOM ImplementationBlock { languageFqn, source,
+        embeddedExpressions }. Not a ValueType — structured metadata on the Entity branch. Capability
+        references inside the body use BML Embedded Expression syntax (&lt;$ … $&gt;). Declared as
+        the implementation property on org.blockml.bml.definition.CapabilityDefinition.</documentation>
+
+      <bml:xml>implementation</bml:xml>
+
+      <properties>
+        <language type="TypeReference(core:Language)" bml:xml="attribute">
+          <documentation>Required implementation Language FQN (org.blockml.bml.language.TypeScript,
+            OpenSCAD, …). Unqualified names resolve via implicit namespace org.blockml.bml.language.*.
+            Must resolve to a registered Language type; the active Target/renderer must support it.</documentation>
+        </language>
+        <content type="Text" bml:xml="text">
+          <documentation>Target-language source body. Stored as character data on the host
+            &lt;implementation&gt; element (BOM ImplementationBlock.source). Text node and CDATA
+            both accepted; authored form stored (authoredCharacterDataForm). Serializer emits CDATA
+            when escape requires it or when authored as CDATA (19 D8). May contain embedded BlockML
+            expressions between &lt;$ and $&gt; delimiters.</documentation>
+        </content>
+      </properties>
+    
+</block>
+  </subBlocks>
+
+</block>

@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_MISSING_GENERIC_TYPE_ARGUMENT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_GENERIC_TYPE_ARGUMENT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_MISSING_GENERIC_TYPE_ARGUMENT</name>
+  <type>diag:BML_MISSING_GENERIC_TYPE_ARGUMENT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-generic-type-argument diagnostic</is>
+
+  <summary>Emitted when a generic application omits a required type argument with no resolvable defaultType.</summary>
+
+  <keywords>BML_MISSING_GENERIC_TYPE_ARGUMENT</keywords>
+
+  <documentation>
+    Emitted when a generic application omits a required type argument with no resolvable defaultType.
+    Remedy: Supply the argument or declare defaultType.
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      defaultType and applications.
+    </see>
+  </references>
+
+</block>

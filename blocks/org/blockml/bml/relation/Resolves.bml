@@ -1,0 +1,24 @@
+<!--
+  BlockML Core — resolves relation
+
+  FQN: org.blockml.bml.relation.Resolves
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>Resolves</name>
+  <type>relation:Resolves</type>
+  <baseType>core:Relation</baseType>
+  <is>A fixes-this-diagnostic Relation</is>
+
+  <documentation>Use on &lt;see&gt; entries in org.blockml.bml.diagnostic.* blocks to link a
+    validator code to a procedural fix guide. Target should reference an org.blockml.bml.task.*
+    TaskGuide block. Enables error-driven navigation: reported BML_* code → Diagnostic block →
+    Resolves → TaskGuide with TaskStep entries.</documentation>
+
+</block>

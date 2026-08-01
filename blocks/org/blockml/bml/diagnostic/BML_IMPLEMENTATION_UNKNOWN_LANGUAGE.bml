@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_IMPLEMENTATION_UNKNOWN_LANGUAGE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_IMPLEMENTATION_UNKNOWN_LANGUAGE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_IMPLEMENTATION_UNKNOWN_LANGUAGE</name>
+  <type>diag:BML_IMPLEMENTATION_UNKNOWN_LANGUAGE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-implementation-language diagnostic</is>
+
+  <summary>Emitted when implementation language= does not resolve to org.blockml.bml.language.*.</summary>
+
+  <keywords>BML_IMPLEMENTATION_UNKNOWN_LANGUAGE</keywords>
+
+  <documentation>
+    Emitted when implementation language= does not resolve to org.blockml.bml.language.*. Remedy:
+    Use a Language FQN or unqualified name at the language attribute site.
+  </documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      implementation language.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      language implicit NS.
+    </see>
+  </references>
+
+</block>

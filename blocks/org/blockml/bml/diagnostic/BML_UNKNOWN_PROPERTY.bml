@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNKNOWN_PROPERTY diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_PROPERTY
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNKNOWN_PROPERTY</name>
+  <type>diag:BML_UNKNOWN_PROPERTY</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-property diagnostic</is>
+
+  <summary>Emitted when a property name cannot be resolved on the Block (non-expression site).</summary>
+
+  <keywords>BML_UNKNOWN_PROPERTY</keywords>
+
+  <documentation>
+    Emitted when a property name cannot be resolved on the Block (non-expression site). Remedy:
+    Check member name, namespace, and effective members after merge.
+  </documentation>
+
+  <references>
+    <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
+      Effective members.
+    </see>
+    <see type="task:FixMemberOverride" relation="SeeAlso">
+      Merge issues.
+    </see>
+  </references>
+
+</block>

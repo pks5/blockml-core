@@ -1,0 +1,23 @@
+<!--
+  BlockML Core — prerequisite relation
+
+  FQN: org.blockml.bml.relation.Prerequisite
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>Prerequisite</name>
+  <type>relation:Prerequisite</type>
+  <baseType>core:Relation</baseType>
+  <is>A do-this-first Relation</is>
+
+  <documentation>Use on &lt;see&gt; entries at the start of a TaskGuide &lt;references&gt; container
+    — before TaskStep entries. Distinct from Requires (dependency of the current definition) and
+    ReadFirst (library-wide learning path). Prerequisite scopes to one task procedure.</documentation>
+
+</block>

@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_EXPR_LINK_PAYLOAD_MISMATCH diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_LINK_PAYLOAD_MISMATCH
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_LINK_PAYLOAD_MISMATCH</name>
+  <type>diag:BML_EXPR_LINK_PAYLOAD_MISMATCH</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A capability-link payload-mismatch diagnostic</is>
+
+  <summary>Emitted when linked Capabilities have incompatible inputType/outputType.</summary>
+
+  <keywords>BML_EXPR_LINK_PAYLOAD_MISMATCH</keywords>
+
+  <documentation>
+    Emitted when linked Capabilities have incompatible inputType/outputType. Remedy: Ensure linked
+    Outbound/Inbound (or Transformation) payloads are compatible.
+  </documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      Capability surface.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Align linked payload types.
+    </see>
+  </references>
+
+</block>

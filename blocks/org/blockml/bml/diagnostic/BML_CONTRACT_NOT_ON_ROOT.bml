@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_CONTRACT_NOT_ON_ROOT diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_CONTRACT_NOT_ON_ROOT
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_CONTRACT_NOT_ON_ROOT</name>
+  <type>diag:BML_CONTRACT_NOT_ON_ROOT</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A contract-not-on-root diagnostic</is>
+
+  <summary>Emitted when &lt;contracts&gt; is declared on a Sub-Block or non-root definition.</summary>
+
+  <keywords>BML_CONTRACT_NOT_ON_ROOT</keywords>
+
+  <documentation>
+    Emitted when &lt;contracts&gt; is declared on a Sub-Block or non-root definition. Remedy:
+    Contracts are root-block only.
+  </documentation>
+
+  <references>
+    <see type="doc:ContractsModel" relation="AuthoringGuide">
+      Root-only contracts.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      Sub-Block limitations.
+    </see>
+  </references>
+
+</block>

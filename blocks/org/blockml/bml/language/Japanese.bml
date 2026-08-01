@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — Japanese implementation language
+
+  FQN: org.blockml.bml.language.Japanese
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>Japanese</name>
+  <type>lang:Japanese</type>
+  <baseType>lang:NaturalLanguage</baseType>
+  <is>The Japanese natural language</is>
+
+  <documentation>Natural language for documentation prose, example titles, and Japanese
+    natural-language capability implementations.</documentation>
+</block>

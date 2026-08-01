@@ -1,0 +1,80 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.EverythingIsABlock
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>EverythingIsABlock</name>
+  <type>doc:EverythingIsABlock</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Everything-is-a-Block</is>
+
+  <documentation>
+    BlockML describes everything that belongs to a World's grammar as Blocks. There is one root
+    (org.blockml.bml.core.Block), one parser, and one TypeRegistry bootstrap path — branch-specific
+    rules come from the baseType chain, not from parallel ontologies.
+
+    Everything is a Block means:
+    • Composable domain types (Wall, StandardBrick, Set) are Blocks
+    • ValueTypes (Integer, Size3D, Decimal) are Blocks — type definitions, not runtime values
+    • Languages (TypeScript, OpenSCAD, PseudoCode) are Blocks — capability implementation contracts
+    • Definition meta-model types (PropertyDefinition, StructuralDefinition sub-blocks) are Blocks
+    • Documentation blocks (this branch) are Blocks
+    • Libraries, Services, Constraints, Capabilities — all Blocks
+
+    Two layers must be distinguished:
+    • Authoring ontology (BML / WOT): Block = named definable unit with FQN and baseType chain
+    • Compiler internals: free representation — plain data, split indexes; no mandatory uniform
+      runtime Block class hierarchy
+
+    One root · one registry · one parser. ValueTypes never store data — Properties own all concrete
+    values. The type describes nature; the Property owns the value.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      Type system layers.
+    </see>
+    <see type="doc:DefinitionModel" relation="AuthoringGuide">
+      Definition branch meta-model.
+    </see>
+    <see type="core:Block" relation="Extends">
+      Sole inheritance root for all Block definitions.
+    </see>
+    <see type="core:ValueType" relation="Extends">
+      ValueType branch — Property and Capability payload types.
+    </see>
+    <see type="core:Language" relation="Extends">
+      Language branch — implementation language bindings for Capabilities.
+    </see>
+    <see type="core:Definition" relation="Extends">
+      Definition branch — blocks that describe block structure in BlockML's own language.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      Meta-model shape of every block document.
+    </see>
+    <see type="core:Documentation" relation="Extends">
+      Abstract base for narrative documentation blocks.
+    </see>
+    <see type="type:Integer" relation="SeeAlso">
+      Example ValueType block — primitive type definition.
+    </see>
+    <see type="lang:TypeScript" relation="SeeAlso">
+      Example Language block — programming language implementation contract.
+    </see>
+    <see type="doc:BlockAndInstance" relation="ReadNext">
+      Next reading step — definition vs instance vs composition.
+    </see>
+  </references>
+
+</block>

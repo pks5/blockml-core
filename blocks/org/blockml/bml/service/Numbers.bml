@@ -1,0 +1,60 @@
+<!--
+  BlockML Core Services
+
+  Name: Numbers Service
+  Filename: Numbers.bml
+  FQN: org.blockml.bml.service.Numbers
+  Expression prefix: #numbers.*
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:service="org.blockml.bml.service"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Numbers</name>
+  <type>service:Numbers</type>
+  <baseType>core:Entity</baseType>
+  <is>A number-format expression service</is>
+
+  <documentation>Built-in numbers service. Expression prefix #numbers.* — sequence,
+    formatting, and numeric conversion utilities.</documentation>
+  <capabilities>
+
+    <!--
+      #numbers.formatDecimal(x, minInt, decPoint, minFrac)
+      Formats a number as a decimal string with locale-style rules.
+      SCAD: no native — Processor emits custom formatting logic.
+    -->
+    <formatDecimal
+      type="Transformation"
+      inputType="{ x: Float, minInt: Integer, decPoint: String, minFrac: Integer }"
+      outputType="String">
+      <documentation>
+        Formats x as a decimal string.
+        minInt: minimum integer digits (0 omits leading zero before decimal point).
+        decPoint: decimal separator character (e.g. "." or ",").
+        minFrac: minimum fractional digits (also controls rounding).
+        Examples:
+        #numbers.formatDecimal(0.1, 0, '.', 1) → ".1"
+        #numbers.formatDecimal(3.14159, 1, '.', 2) → "3.14"
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: number, minInt: number, decPoint: string, minFrac: number): string => {
+          const rounded = Math.round(x * Math.pow(10, minFrac)) / Math.pow(10, minFrac);
+          let s = rounded.toFixed(minFrac);
+          if (minInt === 0 && s.startsWith('0.')) s = s.slice(1);
+          if (minInt === 0 && s.startsWith('-0.')) s = '-' + s.slice(2);
+          return decPoint === '.' ? s : s.replace('.', decPoint);
+        }
+      ]]></implementation>
+    </formatDecimal>
+
+  </capabilities>
+
+</block>

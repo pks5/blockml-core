@@ -1,0 +1,28 @@
+<!--
+  BlockML Group — member group branch
+
+  FQN: org.blockml.bml.group.MemberGroup
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:group="org.blockml.bml.group">
+
+  <name>MemberGroup</name>
+  <type>group:MemberGroup</type>
+  <baseType>core:Group</baseType>
+  <is>A member grouping category</is>
+
+  <documentation>Abstract Group branch for member groups — named categories that organize Block
+    members (properties, aggregations, associations, capabilities) for editors and tooling.
+    A member may reference several groups via MemberDefinition.groups (e.g. UI category and usage
+    facet). Intentionally empty — no properties, aggregations, or Sub-Blocks. Concrete group kinds
+    extend this branch. MemberDefinition.groups overrides StructuralDefinition.groups to
+    TypeReferenceEntity(group:MemberGroup)[].</documentation>
+
+  <abstract>true</abstract>
+
+</block>

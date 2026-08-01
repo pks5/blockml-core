@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_PRIVATE_MEMBER_ACCESS diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_PRIVATE_MEMBER_ACCESS
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_PRIVATE_MEMBER_ACCESS</name>
+  <type>diag:BML_PRIVATE_MEMBER_ACCESS</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A private-member access diagnostic</is>
+
+  <summary>Emitted when a private member is read or set outside the Block definition that declares it.</summary>
+
+  <keywords>BML_PRIVATE_MEMBER_ACCESS</keywords>
+
+  <documentation>
+    Private members (__name) are usable only within the declaring Block's definition — including instances of the declaring type in that same definition. Composition ownership does not lift private encapsulation of contained Sub-Block instances.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Private access rules and formal D/C/I/O table.
+    </see>
+    <see type="task:FixVisibilityAccess" relation="Resolves">
+      Fix private/protected member or Sub-Block access.
+    </see>
+  </references>
+
+</block>

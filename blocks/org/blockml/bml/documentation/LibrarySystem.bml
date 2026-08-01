@@ -1,0 +1,87 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.LibrarySystem
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:blockml="org.blockml.bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>LibrarySystem</name>
+  <type>doc:LibrarySystem</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to libraries and packages</is>
+
+  <documentation>
+    A Library groups related Block and ValueType definitions into a publishable unit. Concrete
+    libraries use name Library, filename Library.bml, baseType org.blockml.bml.core.BlockLibrary.
+    FQN = {package}.Library from the file's package path.
+
+    Membership is defined exclusively by Library.bml blocks — not by directory layout. A .bml
+    file is a library member only if listed in that library's blocks. Without a Library block,
+    all .bml source files in the directory are public.
+
+    Structure (catalog aggregations are public and readOnly — inspectable from foreign Blocks;
+    authored only on the Library definition):
+    • readMe — required human/LLM reading entry (ReadMe, 1..1; typically README)
+    • bootstrap — optional automation SPOE (Bootstrap, 0..1)
+    • dependencies — other Library blocks (typical: inner library depends on outer)
+    • subLibraries — nested child Library blocks grouped under this library
+    • blocks — exported Block and ValueType definitions
+    • schemas — optional legacy XSD paths as FilePathEntity instances during migration
+    • version on Library.bml — framework convention: version only on Library for org.blockml.bml.*
+
+    Concrete Library.bml &lt;references&gt; — at most two &lt;see&gt; entries:
+    1. Required relation=ReadFirst → the ReadMe named in readMe
+    2. Optional relation=ThenContinueWith → the Bootstrap named in bootstrap (only when present)
+    No other relations on the catalog descriptor; deep links belong on documentation blocks.
+
+    Nested libraries may coexist at different package levels (org.blockml.bml.Library and
+    org.blockml.bml.compiler.Library are separate units). Typical pattern: inner library lists
+    outer in dependencies; outer lists inner in subLibraries. Violation: outer blocks
+    referencing a Block exported by an inner library → BML_LIBRARY_NESTING_VIOLATION.
+
+    Namespaces: xmlns prefixes map to FQN package prefixes. BOM stores canonical FQNs only —
+    prefixes are authoring convenience. Every BML definition must reside under
+    &lt;domain&gt;.bml.* — no Block, Library, or other BlockML definition may exist outside
+    the domain's bml namespace. See doc:BmlNamespace.
+
+    Version resolution:
+    effectiveBlockVersion = own version if present, else library.version if exported via blocks,
+    else error BML_MISSING_VERSION. bml:version on TypeReferenceEntity sugar (readMe, bootstrap,
+    dependencies, subLibraries, blocks) is an optional exact-version assert against the referenced
+    type (value); omitted → TypeRegistry / library context; no match → BML_UNKNOWN_VERSION.
+  </documentation>
+
+  <references>
+    <see type="doc:CompilerArchitecture" relation="SeeAlso">
+      Library discovery and TypeRegistry bootstrap.
+    </see>
+    <see type="blockml:Library" relation="SeeAlso">
+      Published catalog of the BlockML core library.
+    </see>
+    <see type="core:BlockLibrary" relation="Extends">
+      Abstract base for publishable library descriptors — not exported via blocks.
+    </see>
+    <see type="core:ReadMe" relation="Requires">
+      Required readMe target branch.
+    </see>
+    <see type="core:Bootstrap" relation="SeeAlso">
+      Optional bootstrap SPOE branch.
+    </see>
+    <see type="relation:ThenContinueWith" relation="SeeAlso">
+      Library &lt;see&gt; after ReadFirst when bootstrap is present.
+    </see>
+    <see type="doc:BmlNamespace" relation="ReadNext">
+      Next — mandatory domain.bml namespace for all BML definitions.
+    </see>
+  </references>
+
+</block>

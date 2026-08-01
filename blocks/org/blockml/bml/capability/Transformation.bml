@@ -1,0 +1,29 @@
+<!--
+  BlockML Core — capbility type branch (capability implementation contract)
+
+  FQN: org.blockml.bml.core.Capability
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Transformation</name>
+  <type>cap:Transformation</type>
+  <baseType>core:Capability</baseType>
+  <is>A value-transforming Capability</is>
+
+  <documentation>Transformation capability.</documentation>
+  <properties>
+    <_hasInput override="true">
+      <value>true</value>
+    </_hasInput>
+    <_hasOutput override="true">
+      <value>true</value>
+    </_hasOutput>
+  </properties>
+
+</block>

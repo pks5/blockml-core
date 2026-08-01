@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_INVALID_EMBEDDED_EXPRESSION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_EMBEDDED_EXPRESSION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_INVALID_EMBEDDED_EXPRESSION</name>
+  <type>diag:BML_INVALID_EMBEDDED_EXPRESSION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-embedded-expression diagnostic</is>
+
+  <summary>Emitted when an &lt;$ $&gt; region contains invalid BlockML Expression content.</summary>
+
+  <keywords>BML_INVALID_EMBEDDED_EXPRESSION</keywords>
+
+  <documentation>
+    Emitted when an &lt;$ $&gt; region contains invalid BlockML Expression content. Remedy: Use
+    #this.capa(...), #built-ins, @bean calls, and the shared expression grammar inside embeds.
+  </documentation>
+
+  <references>
+    <see type="doc:EmbeddedExpressions" relation="AuthoringGuide">
+      Supported embed references.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Shared expression grammar.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Fix embed expression content.
+    </see>
+  </references>
+
+</block>

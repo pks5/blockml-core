@@ -1,0 +1,48 @@
+<!--
+  BlockML Core — MarkupLanguage branch (structured markup languages)
+
+  FQN: org.blockml.bml.language.MarkupLanguage
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>MarkupLanguage</name>
+  <type>lang:MarkupLanguage</type>
+  <baseType>core:Language</baseType>
+  <is>A structured markup language</is>
+
+  <documentation>Abstract branch for markup languages — XML and other structured document formats
+    used as capability implementation bodies. Generic parameter L (NaturalLanguage, default English)
+    names the optional content/text language inside the markup (element text, comments, human-facing
+    labels). Bare MarkupLanguage and concrete sub-types (XML, JSON, YML, Markdown, BML) omit L and
+    resolve to English; declare MarkupLanguage(German) or baseType MarkupLanguage(lang:German) only
+    when the content language matters.</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
+
+  <abstract>true</abstract>
+
+  <references>
+    <see type="lang:NaturalLanguage" relation="Defines">
+      L bound — content/text language inside markup (default English).
+    </see>
+    <see type="lang:English" relation="Defines">
+      DefaultType for L when the content language is omitted.
+    </see>
+    <see type="lang:ProgrammingLanguage" relation="SeeAlso">
+      Parallel formal-language branch with the same L parameter.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      Language branch and generics.
+    </see>
+  </references>
+
+</block>

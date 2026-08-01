@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_MISSING_VERSION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_VERSION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_MISSING_VERSION</name>
+  <type>diag:BML_MISSING_VERSION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A missing-version diagnostic</is>
+
+  <summary>Emitted when a Block has no effective version (own version and library.version both absent for an exported block).</summary>
+
+  <keywords>BML_MISSING_VERSION</keywords>
+
+  <documentation>
+    Emitted when a Block has no effective version (own version and library.version both absent
+    for an exported block). Remedy: Framework convention: version often only on Library.bml for
+    org.blockml.bml.* exports.
+  </documentation>
+
+  <references>
+    <see type="doc:LibrarySystem" relation="AuthoringGuide">
+      effectiveBlockVersion resolution.
+    </see>
+  </references>
+
+</block>

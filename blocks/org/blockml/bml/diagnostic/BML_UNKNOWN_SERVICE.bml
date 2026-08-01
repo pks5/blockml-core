@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_UNKNOWN_SERVICE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_SERVICE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_UNKNOWN_SERVICE</name>
+  <type>diag:BML_UNKNOWN_SERVICE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-service diagnostic</is>
+
+  <summary>Emitted when a #service builtin namespace is unknown.</summary>
+
+  <keywords>BML_UNKNOWN_SERVICE</keywords>
+
+  <documentation>
+    Emitted when a #service builtin namespace is unknown. Remedy: Use registered services (#math,
+    #strings, #lists, #numbers, #bools).
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Built-ins.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Fix builtin service name.
+    </see>
+  </references>
+
+</block>

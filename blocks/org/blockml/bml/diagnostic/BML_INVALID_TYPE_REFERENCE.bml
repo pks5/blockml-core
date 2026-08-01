@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_INVALID_TYPE_REFERENCE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_TYPE_REFERENCE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_INVALID_TYPE_REFERENCE</name>
+  <type>diag:BML_INVALID_TYPE_REFERENCE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-type-reference diagnostic</is>
+
+  <summary>Emitted when a TypeReference / TypeExpression cannot be parsed or is ill-formed.</summary>
+
+  <keywords>BML_INVALID_TYPE_REFERENCE</keywords>
+
+  <documentation>
+    Emitted when a TypeReference / TypeExpression cannot be parsed or is ill-formed. Remedy:
+    Fix FQN/QName/generic/configuration syntax.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Type reference forms.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Type expressions.
+    </see>
+  </references>
+
+</block>

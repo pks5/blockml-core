@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_LIBRARY_NESTING_VIOLATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_LIBRARY_NESTING_VIOLATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_LIBRARY_NESTING_VIOLATION</name>
+  <type>diag:BML_LIBRARY_NESTING_VIOLATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A library-nesting diagnostic</is>
+
+  <summary>Emitted when outer library blocks reference a Block exported only by an inner nested library incorrectly.</summary>
+
+  <keywords>BML_LIBRARY_NESTING_VIOLATION</keywords>
+
+  <documentation>
+    Typical pattern: inner lists outer in dependencies; outer lists inner in subLibraries. Membership is defined by Library.blocks.
+  </documentation>
+
+  <references>
+    <see type="doc:LibrarySystem" relation="AuthoringGuide">
+      Nested libraries and membership.
+    </see>
+  </references>
+
+</block>

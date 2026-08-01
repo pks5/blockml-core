@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — AggregationDefinition path reference
+
+  FQN: org.blockml.bml.type.AggregationReference
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>AggregationReference</name>
+  <type>type:AggregationReference</type>
+  <baseType>type:MemberReference(B, def:AggregationDefinition)</baseType>
+  <is>A path to an Aggregation member</is>
+
+  <documentation>Concrete MemberReference binding D = AggregationDefinition. Value is a canonical
+    aggregation path (com.foo.Bar.aggregations.children) or a local aggregation name when paired
+    with a type qualifier. Used as the type of see aggregation=.</documentation>
+
+  <references>
+    <see type="type:MemberReference" relation="SeeAlso">
+      Abstract member path ValueType.
+    </see>
+    <see type="def:AggregationDefinition" relation="Defines">
+      Target member meta-model type.
+    </see>
+    <see type="def:StructuralDefinition" relation="SeeAlso">
+      see aggregation attribute.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Owning Block branch. Defaults to core:Block.</documentation>
+    </B>
+  </genericTypes>
+</block>

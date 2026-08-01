@@ -1,0 +1,21 @@
+<!--
+  BlockML Core — TypeScript implementation language
+
+  FQN: org.blockml.bml.language.TypeScript
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>TypeScript</name>
+  <type>lang:TypeScript</type>
+  <baseType>lang:ProgrammingLanguage</baseType>
+  <is>The TypeScript programming language</is>
+
+  <documentation>ProgrammingLanguage for TypeScript arrow-function implementations on Capabilities.
+    V1: compile-time execution when all arguments are literals.</documentation>
+</block>

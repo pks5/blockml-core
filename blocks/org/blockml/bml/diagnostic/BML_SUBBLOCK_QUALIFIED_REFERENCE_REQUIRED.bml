@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED</name>
+  <type>diag:BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An ambiguous Sub-Block short-name diagnostic</is>
+
+  <summary>Emitted when a Sub-Block shares the root Block name and a bare short tag is ambiguous.</summary>
+
+  <keywords>BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED</keywords>
+
+  <documentation>
+    Emitted when a Sub-Block shares the root Block name and a bare short tag is ambiguous. Remedy:
+    Prefer distinctive Sub-Block names. If names collide with the root, use Root.SubBlock / FQN
+    forms.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Naming vs parent Block name.
+    </see>
+    <see type="doc:BlockNameConvention" relation="SeeAlso">
+      Name formatting.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Rename Sub-Block or use qualified reference.
+    </see>
+  </references>
+
+</block>

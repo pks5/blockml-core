@@ -1,0 +1,26 @@
+<!--
+  BlockML Core — Language branch (capability implementation contract)
+
+  FQN: org.blockml.bml.core.Language
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Language</name>
+  <type>core:Language</type>
+  <baseType>core:Block</baseType>
+  <is>An implementation language</is>
+
+  <documentation>Language branch of BlockML. Declares an implementation language permitted on
+    Capability implementations (OpenSCAD, TypeScript, English, …). Natural languages for
+    documentation prose extend org.blockml.bml.language.NaturalLanguage; formal code and markup
+    languages extend ProgrammingLanguage and MarkupLanguage. ProgrammingLanguage and MarkupLanguage
+    declare optional generic L (NaturalLanguage, default English) for the content/text language of
+    formal bodies — omit L unless the content language must be declared.</documentation>
+  <abstract>true</abstract>
+
+</block>

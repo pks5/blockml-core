@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_XML_DIRECTIVE_NOT_ALLOWED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_XML_DIRECTIVE_NOT_ALLOWED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_XML_DIRECTIVE_NOT_ALLOWED</name>
+  <type>diag:BML_XML_DIRECTIVE_NOT_ALLOWED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A disallowed bml:xml diagnostic</is>
+
+  <summary>Emitted when bml:xml is authored where the grammar/branch does not allow it (e.g. block-level on ordinary ValueType).</summary>
+
+  <keywords>BML_XML_DIRECTIVE_NOT_ALLOWED</keywords>
+
+  <documentation>
+    Block-level &lt;bml:xml&gt; is for core:Block and Definition-branch types. Member bml:xml belongs on Definition-branch member declarations. Hybrid Stage 1/2 checks apply.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      bml:xml placement rules.
+    </see>
+    <see type="doc:DefinitionModel" relation="SeeAlso">
+      Definition branch serialization metadata.
+    </see>
+  </references>
+
+</block>

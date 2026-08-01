@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_DUPLICATE_MEMBER_NAME diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_MEMBER_NAME
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_DUPLICATE_MEMBER_NAME</name>
+  <type>diag:BML_DUPLICATE_MEMBER_NAME</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate-member-name diagnostic</is>
+
+  <summary>Emitted when two members share the same (namespace, normalizedLogicalName) identity.</summary>
+
+  <keywords>BML_DUPLICATE_MEMBER_NAME</keywords>
+
+  <documentation>
+    Emitted when two members share the same (namespace, normalizedLogicalName) identity. Remedy:
+    Rename one member or fix visibility-prefix duplicates.
+  </documentation>
+
+  <references>
+    <see type="doc:MemberVisibility" relation="AuthoringGuide">
+      Member identity.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      Override vs new.
+    </see>
+  </references>
+
+</block>

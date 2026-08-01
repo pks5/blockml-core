@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_DUPLICATE_EMBEDDED_BLOCK diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_EMBEDDED_BLOCK
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_DUPLICATE_EMBEDDED_BLOCK</name>
+  <type>diag:BML_DUPLICATE_EMBEDDED_BLOCK</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A duplicate-embedded-block diagnostic</is>
+
+  <summary>Emitted when two embedded Blocks in the same document share the same FQN.</summary>
+
+  <keywords>BML_DUPLICATE_EMBEDDED_BLOCK</keywords>
+
+  <documentation>
+    Emitted when two embedded Blocks in the same document share the same FQN. Remedy: Within
+    the BomDocument, embed FQNs must be unique. Externally, embeds remain invisible.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Embedded FQN uniqueness.
+    </see>
+    <see type="def:RootBlockDefinition" relation="SeeAlso">
+      embeddedBlocks aggregation.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,102 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.CompositionModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:ann="org.blockml.bml.annotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>CompositionModel</name>
+  <type>doc:CompositionModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to composition and aggregation fill</is>
+
+  <documentation>
+    A Composition fills an Aggregation with concrete child Block instances. On Block definitions,
+    &lt;composition&gt; is nested inside the aggregation member. On Block instances, aggregations are
+    filled directly by member name — no &lt;composition&gt; wrapper. The composition aggregation="…"
+    attribute is removed.
+
+    Unified container concept — one idea, two forms:
+    • composition — initial fill of an aggregation inside a Block definition only
+    • bml:container — general virtual container everywhere else (Block instances)
+    Both support the same flow-control directives: bml:if, bml:each, bml:with (and future container
+    directives). See doc:BmlDirectives.
+
+    Placement rules:
+    • &lt;composition&gt; must always be nested inside an aggregation member — never standalone →
+      BML_STANDALONE_COMPOSITION
+    • New aggregation declaration → type required
+    • Inherited aggregation override → override="true" required; type may be omitted (identical
+      restated type → BML_REDUNDANT_AGGREGATION_TYPE)
+    • When exactly one aggregation is default="true", bare top-level composition sugar may fill that
+      aggregation (tooling / targets)
+    • Block instances open aggregations directly — recursive nested structure is first-class
+
+    Child elements inside composition (or instance aggregation content) are Block instances:
+    • Tag name — Block type (FQN / xmlns QName)
+    • bml:id — composition instance identity; required when referenced or on bml:each (literal or
+      Expression). Omitted on anonymous static children → auto-ID after directive expansion
+    • bml:version — optional exact-version assert on external type references; omitted → TypeRegistry
+      / library context; no match → BML_UNKNOWN_VERSION. Same-document Sub-Block refs omit version
+    • bml:bean / bml:scope — optional service bean registration (local | context; default local)
+    • Member attributes / child elements — property and nested aggregation values (literals or
+      ${ … } expressions)
+
+    Instance ID reachability is controlled by the aggregation member's visibility — not by flags on
+    composition or bml:container. Public aggregations export ids for cross-document
+    {EnclosingBlockFQN}::{id}; protected and private narrow reach as in doc:MemberVisibility.
+    Qualified cross-document references require a public target aggregation and a literal static
+    bml:id.
+
+    Recursive composition: every Block instance may contain aggregation members directly — complex
+    object structures nest wherever instances appear.
+
+    Sibling value sharing: use bml:with on a common ancestor (composition or bml:container). Variables
+    are visible to the element and all descendants — no separate registry. Full expression grammar
+    lives in doc:Expressions; V1 implements property references, #built-in calls, and bml: directives
+    (including bml:with). @bean / @model: / capability linking are specified but not V1-implemented.
+
+    Meta-model: AggregationDefinition.composition (Sub-Block Composition) maps to BOM
+    CompositionTemplate. Service binding uses bml:bean and bml:scope on instances — not aggregation
+    member fields.
+  </documentation>
+
+  <references>
+    <see type="def:AggregationDefinition" relation="Defines">
+      Aggregation member — composition property and default flag.
+    </see>
+    <see type="def:AggregationDefinition" property="composition" relation="Defines">
+      Nested composition template on aggregation declarations.
+    </see>
+    <see type="ann:BmlAnnotation" relation="SeeAlso">
+      Language directives used on composition and instances.
+    </see>
+    <see type="doc:MemberVisibility" relation="SeeAlso">
+      Aggregation visibility controls bml:id reachability.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      Inherited aggregation overrides — omit unchanged type.
+    </see>
+    <see type="doc:BlockAndInstance" relation="SeeAlso">
+      Definition vs instance mental model.
+    </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Expression language used in composition member values.
+    </see>
+    <see type="doc:AnnotationModel" relation="ReadNext">
+      Next — Annotation namespaces and facets (then bml: directives).
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      bml:each, bml:if, bml:container, bml:with, bml:xml on composition hosts.
+    </see>
+  </references>
+
+</block>

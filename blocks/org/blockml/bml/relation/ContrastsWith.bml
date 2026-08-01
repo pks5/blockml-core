@@ -1,0 +1,23 @@
+<!--
+  BlockML Core — contrasts-with relation
+
+  FQN: org.blockml.bml.relation.ContrastsWith
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <name>ContrastsWith</name>
+  <type>relation:ContrastsWith</type>
+  <baseType>core:Relation</baseType>
+  <is>A do-not-confuse Relation</is>
+
+  <documentation>Use to disambiguate easily confused concepts — for example Sub-Block vs embedded Block,
+    contract vs baseType, Inbound vs Outbound capability. The context text body must explain the
+    difference explicitly.</documentation>
+
+</block>

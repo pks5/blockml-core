@@ -1,0 +1,72 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ConstantValueType
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>ConstantValueType</name>
+  <type>doc:ConstantValueType</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to Constant singleton types</is>
+
+  <documentation>
+    Constant provides singleton (constant) value domains in type expressions without a dedicated
+    literal-type language feature. Branch: ConstantType. Standard implementation:
+    org.blockml.bml.type.Constant.
+
+    Surface syntax — Constant(T){value: …}:
+    • (…) binds generic T to any ValueType (mandatory — bare Constant or Constant{value: …}
+      without (T) is invalid)
+    • {value: …} configures the single allowed literal on the internal ValueType instance
+
+    External representation equals the representation of T — Constant(Text){value: "auto"} accepts
+    the external value "auto", not { value: "auto" }. Validation: first against bound type T, then
+    equality with the configured constant. No type inference — T is always authored explicitly.
+
+    Primary use — union alternatives:
+    Boolean | Constant(Text){value: "auto"}
+    Float | Constant(Text){value: "auto"}
+
+    Future literal shorthand Boolean | "auto" desugars to the Constant form; until enabled, author
+    Constant explicitly. Legacy literal unions remain parseable; normalize to Constant at map time.
+
+    Boolean.True / Boolean.False — Sub-Blocks of org.blockml.bml.type.Boolean; prefer these shortcuts
+    over spelling Constant(Boolean){value: true/false} in type expressions.
+
+    Obsolete wrappers migrate to Constant unions (doc:TypeExpressions): AutoOr&lt;T&gt; →
+    Constant(Text){value: "auto"} | T, FalseOr&lt;T&gt; → Boolean.False | T, etc.
+
+    Orthogonal mechanisms on one reference: Constant(SizeXY){value: {x: 1, y: 2}} — generic bind +
+    instance configuration (doc:ValueTypeConfiguration). value is required (ValuePresent).
+  </documentation>
+
+  <references>
+    <see type="type:Constant" relation="Defines">
+      Standard Constant(T){value: …} implementation.
+    </see>
+    <see type="type:ConstantType" relation="Extends">
+      ConstantType branch — singleton value domain semantics.
+    </see>
+    <see type="type:Boolean" relation="SeeAlso">
+      Boolean.True / Boolean.False shortcuts.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Unions, match order, obsolete wrapper migration.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      {value: …} instance configuration rules.
+    </see>
+    <see type="doc:FunctionMappingModel" relation="ReadNext">
+      Next — positional/named mapping sharing declaration-order rules.
+    </see>
+  </references>
+
+</block>

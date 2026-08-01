@@ -1,0 +1,86 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.DefinitionModel
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>DefinitionModel</name>
+  <type>doc:DefinitionModel</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to the Definition branch</is>
+
+  <documentation>
+    Block definitions describe types. The Definition branch (org.blockml.bml.core.Definition) is the
+    meta-model for describing block structure in BlockML's own language — definitions are normal
+    Blocks that inherit from org.blockml.bml.core.Block like everything else.
+
+    Definition branch hierarchy:
+    • org.blockml.bml.core.Definition — abstract base of the Definition branch
+    • org.blockml.bml.definition.StructuralDefinition — shared documentation model for structural definitions
+    • org.blockml.bml.definition.BlockDefinition — shape of every block document
+    • org.blockml.bml.definition.MemberDefinition — abstract base for block member declarations;
+      override and boolean implementation; CapabilityDefinition overrides implementation
+    • AssociationDefinition — instance-to-instance model links (not documentation References)
+    • PropertyDefinition, AggregationDefinition, CapabilityDefinition
+    • GenericTypeDefinition
+
+    org.blockml.bml.definition.StructuralDefinition declares:
+    • Properties: documentation, since, status, abstract, final
+    • Aggregations: changelog, examples, references
+      (References connect types to types or types to instances for documentation —
+      distinct from Associations)
+
+    Definition addressing uses canonical structural paths within the Block FQN:
+    com.foo.Bar.properties.width → PropertyDefinition
+    com.foo.Bar.capabilities.render → CapabilityDefinition
+    com.foo.Bar.references → Reference entries
+
+    Reflection resolves these paths via structural containers at query time — no special
+    definition-reference syntax. Definition blocks may declare bml:xml for how instances
+    serialize to canonical BML XML.
+
+    Definitions as Blocks means the same parser, TypeRegistry, and validation rules apply.
+    Domain-specific definition types can extend the branch with additional Capabilities
+    (validateDefinition(), generateDocumentation()) without core changes.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      bml:xml self-description rules.
+    </see>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      is, documentation, references, examples.
+    </see>
+    <see type="core:Definition" relation="Extends">
+      Abstract base of the Definition branch.
+    </see>
+    <see type="def:StructuralDefinition" relation="Defines">
+      Shared documentation model; sub-blocks Documentation, Change, Example, and Reference.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      Generic meta-model for block definition documents.
+    </see>
+    <see type="def:MemberDefinition" relation="Extends">
+      Abstract base for property, aggregation, association, and capability declarations.
+    </see>
+    <see type="def:PropertyDefinition" relation="Defines">
+      Meta-model member shape for property declarations.
+    </see>
+    <see type="core:Block" relation="Extends">
+      Sole inheritance root — definitions inherit like all other Blocks.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="ReadNext">
+      Next reading step — ValueType kinds and type expressions.
+    </see>
+  </references>
+
+</block>

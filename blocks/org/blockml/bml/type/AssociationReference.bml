@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — AssociationDefinition path reference
+
+  FQN: org.blockml.bml.type.AssociationReference
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>AssociationReference</name>
+  <type>type:AssociationReference</type>
+  <baseType>type:MemberReference(B, def:AssociationDefinition)</baseType>
+  <is>A path to an Association member</is>
+
+  <documentation>Concrete MemberReference binding D = AssociationDefinition. Value is a canonical
+    association path (com.foo.Bar.associations.basePresets) or a local association name when paired
+    with a type qualifier. Used as the type of see association=.</documentation>
+
+  <references>
+    <see type="type:MemberReference" relation="SeeAlso">
+      Abstract member path ValueType.
+    </see>
+    <see type="def:AssociationDefinition" relation="Defines">
+      Target member meta-model type.
+    </see>
+    <see type="def:StructuralDefinition" relation="SeeAlso">
+      see association attribute.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Owning Block branch. Defaults to core:Block.</documentation>
+    </B>
+  </genericTypes>
+</block>

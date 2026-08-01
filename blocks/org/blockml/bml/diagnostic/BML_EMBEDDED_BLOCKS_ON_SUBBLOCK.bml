@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_EMBEDDED_BLOCKS_ON_SUBBLOCK diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EMBEDDED_BLOCKS_ON_SUBBLOCK
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EMBEDDED_BLOCKS_ON_SUBBLOCK</name>
+  <type>diag:BML_EMBEDDED_BLOCKS_ON_SUBBLOCK</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An embeddedBlocks-on-Sub-Block diagnostic</is>
+
+  <summary>Emitted when a Sub-Block declares embeddedBlocks — only the document root may own that aggregation.</summary>
+
+  <keywords>BML_EMBEDDED_BLOCKS_ON_SUBBLOCK</keywords>
+
+  <documentation>
+    Emitted when a Sub-Block declares embeddedBlocks — only the document root may own that aggregation.
+    Remedy: Sub-Blocks may nest subBlocks but must not declare embeddedBlocks. Flat root embeddedBlocks
+    compose fat artifacts.
+  </documentation>
+
+  <references>
+    <see type="doc:SubBlockModel" relation="AuthoringGuide">
+      Embedded Blocks root-only.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Move embeds to the document root.
+    </see>
+  </references>
+
+</block>

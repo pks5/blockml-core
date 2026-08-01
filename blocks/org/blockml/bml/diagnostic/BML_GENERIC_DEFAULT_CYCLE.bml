@@ -1,0 +1,36 @@
+<!--
+  BlockML Core — BML_GENERIC_DEFAULT_CYCLE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERIC_DEFAULT_CYCLE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_GENERIC_DEFAULT_CYCLE</name>
+  <type>diag:BML_GENERIC_DEFAULT_CYCLE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A generic defaultType cycle diagnostic</is>
+
+  <summary>Emitted when defaultType bindings form a cycle.</summary>
+
+  <keywords>BML_GENERIC_DEFAULT_CYCLE</keywords>
+
+  <documentation>
+    Emitted when defaultType bindings form a cycle. Remedy: Declaration-order sibling defaults
+    already prevent most cycles; this is defense in depth.
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      defaultType DAG rules.
+    </see>
+  </references>
+
+</block>

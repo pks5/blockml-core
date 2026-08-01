@@ -1,0 +1,46 @@
+<!--
+  BlockML Core — BML_UNKNOWN_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:relation="org.blockml.bml.relation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_UNKNOWN_TYPE</name>
+  <type>diag:BML_UNKNOWN_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unresolved-type diagnostic</is>
+
+  <summary>Emitted when type, baseType, contract, language, or member type references an unknown or
+    misspelled FQN — or when bootstrap order has not yet loaded the library that defines the type.</summary>
+
+  <keywords>BML_UNKNOWN_TYPE, unknown type, unresolved FQN, TypeRegistry</keywords>
+
+  <documentation>
+    The validator expands the authored type reference to a canonical FQN and looks up the
+    BlockDefinition in TypeRegistry. Failure means the type is not registered at validation time.
+    Common causes: typo in FQN or xmlns prefix, missing Library blocks entry, unloaded dependency
+    library, or reference to a Sub-Block type without the full parent-qualified path where required.
+  </documentation>
+
+  <references>
+    <see type="task:DebugUnknownType" relation="Resolves">
+      Step-by-step fix — namespace, Library blocks, bootstrap order.
+    </see>
+    <see type="doc:LibrarySystem" relation="Prerequisite">
+      How libraries register blocks in TypeRegistry.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      Type resolution and unknown-type diagnostics.
+    </see>
+  </references>
+
+</block>

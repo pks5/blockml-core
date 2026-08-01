@@ -1,0 +1,38 @@
+<!--
+  BlockML Core — BML_INVALID_NAMESPACE_TARGET diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_NAMESPACE_TARGET
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_INVALID_NAMESPACE_TARGET</name>
+  <type>diag:BML_INVALID_NAMESPACE_TARGET</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-namespace-target diagnostic</is>
+
+  <summary>Emitted when xmlns targets neither a Package nor an Annotation.</summary>
+
+  <keywords>BML_INVALID_NAMESPACE_TARGET</keywords>
+
+  <documentation>
+    Emitted when xmlns targets neither a Package nor an Annotation. Remedy: Bind prefixes to
+    package FQNs or Annotation FQNs only.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlNamespace" relation="AuthoringGuide">
+      Package vs Annotation xmlns.
+    </see>
+  </references>
+
+</block>

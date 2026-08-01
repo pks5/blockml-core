@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — BML_AMBIGUOUS_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_AMBIGUOUS_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_AMBIGUOUS_TYPE</name>
+  <type>diag:BML_AMBIGUOUS_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An ambiguous-type diagnostic</is>
+
+  <summary>Emitted when an unqualified type name matches more than one candidate in nested or context-bound resolution.</summary>
+
+  <keywords>BML_AMBIGUOUS_TYPE</keywords>
+
+  <documentation>
+    Emitted when an unqualified type name matches more than one candidate in nested or context-bound
+    resolution. Remedy: Qualify with xmlns QName, FQN, or Sub-Block-relative path. Grandchildren
+    are never unqualified.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Unqualified nested resolution.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      Context-bound sites.
+    </see>
+    <see type="task:FixTypeIdentity" relation="Resolves">
+      Disambiguate the type reference.
+    </see>
+  </references>
+
+</block>

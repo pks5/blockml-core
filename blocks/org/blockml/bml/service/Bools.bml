@@ -1,0 +1,63 @@
+<!--
+  BlockML Core Services
+
+  Name: Bools Service
+  Filename: Bools.bml
+  FQN: org.blockml.bml.service.Bools
+  Expression prefix: #bools.*
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:service="org.blockml.bml.service"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Bools</name>
+  <type>service:Bools</type>
+  <baseType>core:Entity</baseType>
+  <is>A boolean expression service</is>
+
+  <documentation>Built-in booleans service. Expression prefix #bools.* — logical and boolean
+    conversion utilities.</documentation>
+  <capabilities>
+
+    <!-- #bools.isTrue(x) -->
+    <isTrue
+      type="Transformation"
+      inputType="Boolean"
+      outputType="Boolean">
+      <documentation>
+        Returns true if x is strictly true.
+        Examples:
+        #bools.isTrue(true) → true
+        #bools.isTrue(1) → false
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: boolean): boolean => x === true
+      ]]></implementation>
+    </isTrue>
+
+    <!-- #bools.isFalse(x) -->
+    <isFalse
+      type="Transformation"
+      inputType="Boolean"
+      outputType="Boolean">
+      <documentation>
+        Returns true if x is strictly false.
+        Examples:
+        #bools.isFalse(false) → true
+        #bools.isFalse(0) → false
+      </documentation>
+      <implementation language="TypeScript"><![CDATA[
+        (x: boolean): boolean => x === false
+      ]]></implementation>
+    </isFalse>
+
+  </capabilities>
+
+</block>

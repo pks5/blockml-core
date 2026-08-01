@@ -1,0 +1,39 @@
+<!--
+  BlockML Core — BML_FINAL_BASE_TYPE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_FINAL_BASE_TYPE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_FINAL_BASE_TYPE</name>
+  <type>diag:BML_FINAL_BASE_TYPE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A final-baseType diagnostic</is>
+
+  <summary>Emitted when a Block uses a final type as baseType.</summary>
+
+  <keywords>BML_FINAL_BASE_TYPE</keywords>
+
+  <documentation>
+    final=&quot;true&quot; on a block definition prevents other definitions from extending it. Choose a non-final base or unseal the parent if you control it.
+  </documentation>
+
+  <references>
+    <see type="doc:ModelingGuidelines" relation="AuthoringGuide">
+      final on Block definitions.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      Local declaration properties.
+    </see>
+  </references>
+
+</block>

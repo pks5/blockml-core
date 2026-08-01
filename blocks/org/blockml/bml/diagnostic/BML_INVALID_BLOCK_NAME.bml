@@ -1,0 +1,40 @@
+<!--
+  BlockML Core — BML_INVALID_BLOCK_NAME diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_BLOCK_NAME
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_INVALID_BLOCK_NAME</name>
+  <type>diag:BML_INVALID_BLOCK_NAME</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid Block-name diagnostic</is>
+
+  <summary>Emitted when &lt;name&gt; is not PascalCase letters-and-digits ([A-Z][a-zA-Z0-9]*).</summary>
+
+  <keywords>BML_INVALID_BLOCK_NAME</keywords>
+
+  <documentation>
+    Emitted when &lt;name&gt; is not PascalCase letters-and-digits ([A-Z][a-zA-Z0-9]*). Remedy:
+    PascalCase keeps composition tags with xmlns prefixes unambiguous — member names use camelCase.
+  </documentation>
+
+  <references>
+    <see type="doc:BlockNameConvention" relation="AuthoringGuide">
+      Block name format.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      name vs type identity.
+    </see>
+  </references>
+
+</block>

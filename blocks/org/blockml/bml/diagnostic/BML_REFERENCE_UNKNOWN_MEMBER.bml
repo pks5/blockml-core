@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_REFERENCE_UNKNOWN_MEMBER diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_REFERENCE_UNKNOWN_MEMBER
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_REFERENCE_UNKNOWN_MEMBER</name>
+  <type>diag:BML_REFERENCE_UNKNOWN_MEMBER</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unknown-reference-member diagnostic</is>
+
+  <summary>Emitted when a see member path (property/aggregation/…) cannot be resolved.</summary>
+
+  <keywords>BML_REFERENCE_UNKNOWN_MEMBER</keywords>
+
+  <documentation>
+    Emitted when a see member path (property/aggregation/…) cannot be resolved. Remedy: Fix the
+    canonical member path or owning type.
+  </documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      member path targets.
+    </see>
+    <see type="task:DebugUnknownType" relation="SeeAlso">
+      Related unresolved refs.
+    </see>
+  </references>
+
+</block>

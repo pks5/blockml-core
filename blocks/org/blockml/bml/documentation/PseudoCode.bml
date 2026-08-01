@@ -1,0 +1,72 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.PseudoCode
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>PseudoCode</name>
+  <type>doc:PseudoCode</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to PseudoCode semantics</is>
+
+  <documentation>
+    PseudoCode (org.blockml.bml.language.PseudoCode) is a ProgrammingLanguage for free-form
+    pseudocode Capability implementations. The code must be internally consistent but is
+    otherwise unconstrained — an LLM may interpret it. Content/text language follows
+    ProgrammingLanguage.L (NaturalLanguage, default English) — declare L only when the prose
+    is not English.
+
+    Why PseudoCode exists:
+    • BlockML describes semantics, not a single target language
+    • Capability implementations need human- and LLM-readable bodies before renderers map them
+    • PseudoCode avoids premature binding to Java, TypeScript, SCAD, or Python syntax
+    • Semantic descriptions in PseudoCode stay stable across Worlds and render targets
+
+    When to use PseudoCode:
+    • Documenting intended behaviour on Capabilities during design
+    • Framework and domain blocks where the semantic contract matters more than executable code
+    • Blocks read by LLMs for code generation — PseudoCode is the preferred semantic layer
+
+    When to use concrete languages:
+    • org.blockml.bml.language.TypeScript, OpenSCAD, Python, … when a target renderer transpiles
+      or emits the implementation directly
+    • Block definitions may restrict permitted languages via the languages aggregation
+
+    Prefer describing semantics in Capability implementation bodies (PseudoCode or natural
+    language blocks like English/German) rather than encoding behaviour in compiler special cases.
+    The renderer interprets; BlockML declares intent.
+  </documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capability implementation languages.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      languages aggregation on Block definitions.
+    </see>
+    <see type="lang:PseudoCode" relation="SeeAlso">
+      Free-form pseudocode implementation language block.
+    </see>
+    <see type="lang:ProgrammingLanguage" relation="Extends">
+      Abstract base for programming language implementations.
+    </see>
+    <see type="core:Capability" relation="Extends">
+      Capability branch — implementation member references Language FQN.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capability semantics — behaviour expressed as Capabilities, interpreted by renderers.
+    </see>
+    <see type="doc:WOTFoundation" relation="ReadNext">
+      Next reading step — optional philosophical foundation (Idea, Manifestation, Grammar, World).
+    </see>
+  </references>
+
+</block>

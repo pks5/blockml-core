@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — BML_GENERIC_SUBBLOCK_NAME_COLLISION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERIC_SUBBLOCK_NAME_COLLISION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_GENERIC_SUBBLOCK_NAME_COLLISION</name>
+  <type>diag:BML_GENERIC_SUBBLOCK_NAME_COLLISION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A generic/Sub-Block-name collision diagnostic</is>
+
+  <summary>Emitted when a genericTypes parameter name equals a direct Sub-Block local name on the same Block.</summary>
+
+  <keywords>BML_GENERIC_SUBBLOCK_NAME_COLLISION</keywords>
+
+  <documentation>
+    Emitted when a genericTypes parameter name equals a direct Sub-Block local name on the same
+    Block. Remedy: Rename the generic parameter or the Sub-Block so nested unqualified resolution
+    remains unambiguous.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Generic vs Sub-Block name collisions.
+    </see>
+    <see type="doc:SubBlockModel" relation="SeeAlso">
+      Sub-Block naming.
+    </see>
+  </references>
+
+</block>
