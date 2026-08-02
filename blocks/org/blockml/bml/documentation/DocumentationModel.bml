@@ -38,8 +38,9 @@
       documentation; inherited from StructuralDefinition on blocks and members. Missing when
       required → BML_MISSING_SUMMARY.
     keywords aggregation (optional) — core.Keyword[]; domain FixedKeyword catalogue blocks, meta.FreeTextKeyword; shorthand → FreeTextKeyword only.
-    language (optional) — natural language for documentation prose; inherits Library → Block
-      default (English on org.blockml.bml.core.Block).
+    language (optional Definition meta — def:BlockDefinition.language) — natural language for
+      documentation prose; inherits enclosing Library document language, then the English default
+      authored on org.blockml.bml.core.Block.
     documentation (always required on every Block definition) — technical description of the Block
       definition itself; optional language attribute when prose deviates from effective block
       language. Omitted → BML_MISSING_DOCUMENTATION.
@@ -54,13 +55,14 @@
     examples — container of example entries (title in block natural language + CDATA body)
     references — container of see entries (type, instance, file, url, or member path + relationship text)
 
-    Natural language inheritance (documentation prose and example titles):
-    Library.language → Block.language → documentation / change / see language attribute
-    Unqualified names inside &lt;language&gt; and on documentation, change, and see language=
-    resolve via org.blockml.bml.language.*. Authors declare language only when deviating from
-    the effective inherited language. Example title language always follows the enclosing block — example
-    language attribute applies to CDATA content only (implementation dialect: OpenSCAD,
-    TypeScript, …) and also resolves via org.blockml.bml.language.*.
+    Natural language inheritance (documentation prose and example titles) — Definition meta only,
+    not a core:Block / BlockLibrary member:
+    Library document &lt;language&gt; → Block document &lt;language&gt; → documentation / change / see
+    language attribute. Unqualified names inside &lt;language&gt; and on documentation, change, and
+    see language= resolve via org.blockml.bml.language.*. Authors declare language only when
+    deviating from the effective inherited language. Example title language always follows the
+    enclosing block — example language attribute applies to CDATA content only (implementation
+    dialect: OpenSCAD, TypeScript, …) and also resolves via org.blockml.bml.language.*.
 
     Authoring split:
     • documentation carries technical prose only

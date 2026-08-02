@@ -13,8 +13,8 @@
                       "
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:lang="org.blockml.bml.language"
   xmlns:relation="org.blockml.bml.relation"
   xmlns:type="org.blockml.bml.type">
 
@@ -34,6 +34,10 @@
     Catalog aggregations are public and readOnly: foreign Blocks and tools may inspect a library
     descriptor (e.g. list exports or dependencies) in expressions; only the Library definition
     (and child overrides) may author the catalog. Instances must not rewrite these members.
+
+    Documentation prose language is Definition meta (def:BlockDefinition.language) on the Library
+    document — not a catalog aggregation. Exported blocks inherit that document language unless
+    they declare their own &lt;language&gt;.
 
     Aggregations (each aggregation member is opened by name; none is default):
     • readMe — required human/LLM reading entry (ReadMe block, 1..1)
@@ -79,6 +83,9 @@
     <see type="relation:ThenContinueWith" relation="SeeAlso">
       Optional Library &lt;see&gt; after ReadFirst when bootstrap is present.
     </see>
+    <see type="def:BlockDefinition" aggregation="language" relation="SeeAlso">
+      Definition meta — Library document language; default for exported blocks.
+    </see>
     <see type="type:TypeReferenceEntity" relation="Requires">
       Entity payload for readMe, bootstrap, dependencies, subLibraries, and blocks.
     </see>
@@ -94,15 +101,6 @@
   </properties>
 
   <aggregations>
-    <language type="type:TypeReferenceEntity(lang:NaturalLanguage)" readOnly="true">
-      <documentation>Default natural language for documentation prose on all blocks exported
-        from this library catalogue. Singular TypeReferenceEntity aggregation — one child (for
-        example &lt;English/&gt;). Inherited by block definitions unless overridden. Unqualified
-        child names resolve via implicit namespace org.blockml.bml.language.*. Public readOnly —
-        inspectable from foreign Blocks; authored on the Library definition only. Optional
-        bml:version on the sugar child is an exact-version assert against the referenced
-        language type.</documentation>
-    </language>
     <readMe type="type:TypeReferenceEntity(core:ReadMe)[1..1]" readOnly="true">
       <documentation>Required human/LLM reading entry for this library. Exactly one ReadMe
         TypeReferenceEntity — empty QName sugar or explicit value. Typically

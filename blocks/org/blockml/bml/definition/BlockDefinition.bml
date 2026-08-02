@@ -186,13 +186,15 @@
         com.foo.Bar.aliases.</documentation>
     </aliases>
     <language type="type:TypeReferenceEntity(lang:NaturalLanguage)">
-      <documentation>Natural language for documentation prose on this Block definition and its
-        members. Singular TypeReferenceEntity aggregation — one child (for example &lt;German/&gt;
-        sugar for &lt;type:TypeReferenceEntity value="lang:German" /&gt;). Omitted = inherit from
-        enclosing Library, then org.blockml.bml.core.Block default (English). Unqualified child
-        names resolve via implicit namespace org.blockml.bml.language.*. Stored in BOM as
-        block.language (TypeReferenceEntity instance); languageFqn is the resolved value string.
-        Bare TypeReferenceEntity(T) = optional single (0..1).</documentation>
+      <documentation>Definition meta — natural language for documentation prose on this Block
+        document and its members (not a core:Block / BlockLibrary catalog member). Singular
+        TypeReferenceEntity aggregation — one child (for example &lt;German/&gt; sugar for
+        &lt;type:TypeReferenceEntity value="lang:German" /&gt;). Omitted = inherit from enclosing
+        Library document &lt;language&gt;, then the English default authored on
+        org.blockml.bml.core.Block. Unqualified child names resolve via implicit namespace
+        org.blockml.bml.language.*. Stored in BOM as block.language (TypeReferenceEntity instance);
+        languageFqn is the resolved value string. Bare TypeReferenceEntity(T) = optional single
+        (0..1). Authored at document root — not inside &lt;aggregations&gt; / &lt;composition&gt;.</documentation>
     </language>
     <genericTypes type="def:GenericTypeDefinition[]">
       <documentation>Generic type parameters declared on this Block (root, Sub-Block, or embedded —

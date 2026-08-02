@@ -11,8 +11,7 @@
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:def="org.blockml.bml.definition"
-  xmlns:lang="org.blockml.bml.language">
+  xmlns:def="org.blockml.bml.definition">
 
   <name>Block</name>
   <type>core:Block</type>
@@ -29,11 +28,13 @@
 
     Role and constraints:
     • Sole inheritance root — omits &lt;baseType&gt;; all other definitions must declare a non-empty parent FQN
-    • Declares language (NaturalLanguage) — default English for documentation prose
     • Abstract — not used directly as a composition instance type
     • Further members defined by sub-types — Properties, Aggregations,
       Associations, and Capabilities via the baseType chain
     • Composition instance identity uses bml:id and bml:version (not member attributes)
+    • Documentation prose language is Definition meta (def:BlockDefinition.language), not a
+      member of this type — this document authors &lt;language&gt;&lt;English/&gt;&lt;/language&gt; as the
+      framework default for inheritance
 
     Type reference rules:
     • Aggregation member types may be any Block FQN
@@ -41,12 +42,13 @@
     • Property and Capability payload types must resolve to a ValueType
     • Capability implementation language attributes reference org.blockml.bml.language.* — unqualified names permitted
 
-    Documentation model (on every root block definition):
+    Documentation model (on every root block definition — see def:BlockDefinition /
+    doc:DocumentationModel):
     • Definition identity first — &lt;name&gt;, &lt;type&gt;, &lt;baseType&gt; (baseType omitted only here)
     • &lt;is&gt; — always required after identity; clear Urbild designation (what the Block semantically represents)
     • &lt;summary&gt; — required when documentation is too long for a quick scan
-    • &lt;language&gt; — optional; natural language for documentation prose (inherits from Library,
-      then org.blockml.bml.core.Block default English)
+    • &lt;language&gt; — optional Definition meta; natural language for documentation prose
+      (inherits from enclosing Library document, then this Block document's English default)
     • &lt;documentation&gt; — always required; technical description; optional language
       attribute when prose deviates from effective block language
     • &lt;isnot&gt; — required when confusion risk exists
@@ -82,8 +84,8 @@
     <see type="core:Definition" relation="Extends">
       Meta-model for block structure (WIP).
     </see>
-    <see type="core:Block" property="language" relation="Defines">
-      NaturalLanguage property — documentation prose default on every block.
+    <see type="def:BlockDefinition" aggregation="language" relation="Defines">
+      Definition meta — documentation prose language on every Block document.
     </see>
     <see type="def:StructuralDefinition" relation="Defines">
       Shared documentation model for structural definition elements.
@@ -107,15 +109,5 @@
   
   <!-- Root block is abstract -->
   <abstract>true</abstract>
-
-  <properties>
-    <language type="lang:NaturalLanguage">
-      <documentation>Effective natural language for documentation prose on this Block definition
-        and its members. Inherited downward unless a child documentation element or nested
-        definition declares a deviation via its own language attribute or element. Root default on
-        org.blockml.bml.core.Block is English. Unqualified child names resolve via implicit
-        namespace org.blockml.bml.language.*.</documentation>
-    </language>
-  </properties>
 
 </block>

@@ -67,9 +67,9 @@
     readOnly attributes, plus the groups aggregation (MemberGroup type references).</documentation>
 
   <references>
-    <see type="core:Block" property="language" relation="Defines">
+    <see type="def:BlockDefinition" property="name" relation="Defines">
       Example property member reference — split form resolves to
-      org.blockml.bml.core.Block.properties.language.
+      org.blockml.bml.definition.BlockDefinition.properties.name.
     </see>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">
       Visibility naming convention, access rules, and aggregation ID reachability.
