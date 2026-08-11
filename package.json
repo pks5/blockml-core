@@ -1,0 +1,18 @@
+{
+    "name": "@blockml/core",
+    "version": "1.0.1",
+    "description": "The BlockML Core Library",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/pks5/blockml-core.git"
+    },
+    "files": [
+      "blocks",
+      "README.md",
+      "LICENSE"
+    ],
+    "publishConfig": {
+      "access": "public"
+    }
+  }
