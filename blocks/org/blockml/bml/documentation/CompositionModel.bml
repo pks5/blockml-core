@@ -36,8 +36,6 @@
     • New aggregation declaration → type required
     • Inherited aggregation override → override="true" required; type may be omitted (identical
       restated type → BML_REDUNDANT_AGGREGATION_TYPE)
-    • When exactly one aggregation is default="true", bare top-level composition sugar may fill that
-      aggregation (tooling / targets)
     • Block instances open aggregations directly — recursive nested structure is first-class
 
     Child elements inside composition (or instance aggregation content) are Block instances:

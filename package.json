@@ -1,6 +1,6 @@
 {
     "name": "@blockml/core",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "The BlockML Core Library",
     "license": "Apache-2.0",
     "blockml": {

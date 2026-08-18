@@ -35,9 +35,9 @@
     the member namespace — resolved via xmlns to BOM namespace; unprefixed elements use the default
     namespace (empty string). Member identity is (resolvedNamespace, localName). Maps to BOM
     AggregationDefinition (kind: "aggregation") with type expression, cardinality (from type
-    multiplicity), optional default flag, and optional nested composition template. When exactly one
-    aggregation on a Block is marked default="true", bare top-level composition on the Block
-    definition is sugar for filling that aggregation. Scalar member fields (type, default) follow
+    multiplicity), optional default flag, and optional nested composition template. Standalone
+    composition is never allowed — &lt;composition&gt; must be nested inside the aggregation member
+    (BML_STANDALONE_COMPOSITION). Scalar member fields (type, default) follow
     org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
     attribute preferred on Block instances. Structured composition remains a child element.
     Composition instance ID reachability for bml:id references is controlled by this aggregation
@@ -76,10 +76,11 @@
     </type>
     <default bml:xml="element|attribute">
       <value>false</value>
-      <documentation>When true, marks this aggregation as the primary/default composition target for
-        the enclosing Block. Tooling and render targets may use it when composition placement is
-        ambiguous. At most one default="true" aggregation per Block. Maps to BOM
-        AggregationDefinition.default. Default false.</documentation>
+      <documentation>When true, marks this aggregation as the primary aggregation of the enclosing
+        Block for tooling and render targets. Does not change composition placement —
+        &lt;composition&gt; remains nested inside the aggregation member. At most one
+        default="true" aggregation per Block. Maps to BOM AggregationDefinition.default. Default
+        false.</documentation>
     </default>
     <composition type="Composition" bml:xml="element">
       <documentation>Optional nested composition template filling this aggregation on the Block
