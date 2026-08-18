@@ -19,7 +19,7 @@
   <type>doc:MemberAuthoring</type>
   <baseType>core:Documentation</baseType>
   <is>A guide to definition versus instance member syntax</is>
-  <isnot>A general-purpose XML value or container wrapper</isnot>
+  <isNot>A general-purpose XML value or container wrapper</isNot>
 
   <summary>
     &lt;value&gt; and &lt;composition&gt; belong only to member declarations. On a Block instance

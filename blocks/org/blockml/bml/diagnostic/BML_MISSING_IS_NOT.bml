@@ -1,7 +1,7 @@
 <!--
-  BlockML Core — BML_MISSING_ISNOT diagnostic
+  BlockML Core — BML_MISSING_IS_NOT diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_ISNOT
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_IS_NOT
 -->
 <block
   xmlns="http://blockml.org/bml"
@@ -14,23 +14,23 @@
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MISSING_ISNOT</name>
-  <type>diag:BML_MISSING_ISNOT</type>
+  <name>BML_MISSING_IS_NOT</name>
+  <type>diag:BML_MISSING_IS_NOT</type>
   <baseType>core:Diagnostic</baseType>
-  <is>A missing-isnot diagnostic</is>
+  <is>A missing-isNot diagnostic</is>
 
-  <summary>Warning/required when confusion risk exists and isnot is omitted on a Block.</summary>
+  <summary>Warning/required when confusion risk exists and isNot is omitted on a Block.</summary>
 
-  <keywords>BML_MISSING_ISNOT</keywords>
+  <keywords>BML_MISSING_IS_NOT</keywords>
 
   <documentation>
-    Warning/required when confusion risk exists and isnot is omitted on a Block. isnot is block-level
+    Warning/required when confusion risk exists and isNot is omitted on a Block. isNot is block-level
     negative space for disambiguation. Missing when required → this code.
   </documentation>
 
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
-      isnot rules.
+      isNot rules.
     </see>
   </references>
 

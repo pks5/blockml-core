@@ -44,8 +44,8 @@
     documentation (always required on every Block definition) — technical description of the Block
       definition itself; optional language attribute when prose deviates from effective block
       language. Omitted → BML_MISSING_DOCUMENTATION.
-    isnot (required when confusion risk exists, blocks only) — what this Block is not; block-level
-      disambiguation. Reflection: bml:Self.isnot. Missing when required → BML_MISSING_ISNOT.
+    isNot (required when confusion risk exists, blocks only) — what this Block is not; block-level
+      disambiguation. Reflection: bml:Self.isNot. Missing when required → BML_MISSING_IS_NOT.
     aliases aggregation (optional, blocks only) — core.Alias[]; domain FixedAlias catalogue blocks, meta.FreeTextAlias; shorthand → FreeTextAlias only.
     Member elements carry their own summary, keywords, and documentation for individual Properties, Aggregations, etc.
 

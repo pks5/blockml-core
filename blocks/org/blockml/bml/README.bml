@@ -108,7 +108,7 @@
     </see>
 
     <see type="doc:DocumentationModel" relation="ReadFirst">
-      is, documentation, references, examples — the block documentation model.
+      is, isNot, documentation, references, examples — the block documentation model.
     </see>
 
     <see type="doc:BootstrapModel" relation="ReadFirst">

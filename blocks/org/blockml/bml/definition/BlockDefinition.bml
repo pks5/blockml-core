@@ -31,10 +31,10 @@
     com.foo.Bar when B resolves to com.foo.Bar.
 
     Declares identity first (name, type, baseType, version), then semantic and discovery fields
-    (is, isnot, aliases), generic parameters, contracts, and
+    (is, isNot, aliases), generic parameters, contracts, and
     member declaration containers (properties, aggregations, associations, capabilities). Inherits
     summary and keywords aggregation (core.Keyword[]) from
-    org.blockml.bml.definition.StructuralDefinition. isnot is block-level only; aliases aggregation
+    org.blockml.bml.definition.StructuralDefinition. isNot is block-level only; aliases aggregation
     (core.Alias[]) lists domain Alias blocks or org.blockml.bml.meta.FreeTextAlias instances. Omitted when unnecessary. Type modifiers abstract and final are inherited from
     org.blockml.bml.definition.StructuralDefinition. Every definition element is addressable via
     its canonical structural path within the Block FQN (for example com.foo.Bar.properties.width).
@@ -105,7 +105,7 @@
   <!--
     Scalar Block metadata. Each property renders as a direct XML child element
     named after the property. Authored document order (mandatory):
-    name → type → baseType first (definition identity, before is), then is / isnot / version
+    name → type → baseType first (definition identity, before is), then is / isNot / version
     and the rest of the document.
   -->
   <properties>
@@ -146,16 +146,16 @@
         is the WOT Idea (Urbild); &lt;is&gt; names that Idea (Urbild) in prose for humans and LLMs —
         see 02_mbml.md § Terminology — Urbild. Omitted → BML_MISSING_IS.</documentation>
     </is>
-    <isnot type="Text" bml:xml="element">
+    <isNot type="Text" bml:xml="element">
       <documentation>What this Block is not — explicit disambiguation from easily confused concepts
         (for example Sub-Block vs embedded Block, contract vs baseType, Alias vs Keyword). Required
         when confusion risk exists; optional only when no realistic nearby concept invites
         misreading. Block-level only — not declared on member definitions. Plain trimmed text body
-        stored in BOM block.isnot. Addressable as com.foo.Bar.isnot. Definition reflection:
-        bml:Self.isnot. Prefer relation=ContrastsWith on references when pointing at a specific
-        confusing type; isnot states the negation inline on the current definition. Missing when
-        required → BML_MISSING_ISNOT.</documentation>
-    </isnot>
+        stored in BOM block.isNot. Addressable as com.foo.Bar.isNot. Definition reflection:
+        bml:Self.isNot. Prefer relation=ContrastsWith on references when pointing at a specific
+        confusing type; isNot states the negation inline on the current definition. Missing when
+        required → BML_MISSING_IS_NOT.</documentation>
+    </isNot>
     <version type="Version" bml:xml="element">
       <documentation>Semantic version of this Block definition. Required on root blocks.
         Addressable as com.foo.Bar.version.</documentation>

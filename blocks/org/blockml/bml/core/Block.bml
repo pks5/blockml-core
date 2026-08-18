@@ -51,10 +51,10 @@
       (inherits from enclosing Library document, then this Block document's English default)
     • &lt;documentation&gt; — always required; technical description; optional language
       attribute when prose deviates from effective block language
-    • &lt;isnot&gt; — required when confusion risk exists
+    • &lt;isNot&gt; — required when confusion risk exists
     • Optional extensions: &lt;since&gt;, &lt;changelog&gt;, &lt;examples&gt;, &lt;references&gt;
-    Omitted is or documentation → BML_MISSING_IS / BML_MISSING_DOCUMENTATION; missing isnot or
-    summary when required → BML_MISSING_ISNOT / BML_MISSING_SUMMARY (warning V1).
+    Omitted is or documentation → BML_MISSING_IS / BML_MISSING_DOCUMENTATION; missing isNot or
+    summary when required → BML_MISSING_IS_NOT / BML_MISSING_SUMMARY (warning V1).
 
     Serialization:
     • bml:xml ${ bml:Self } — composable instances render under their declared type tag

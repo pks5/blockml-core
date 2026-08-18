@@ -313,7 +313,7 @@
         <diag:BML_MISSING_DOCUMENTATION />
         <diag:BML_MISSING_EMBEDDED_BLOCK_TYPE />
         <diag:BML_MISSING_IS />
-        <diag:BML_MISSING_ISNOT />
+        <diag:BML_MISSING_IS_NOT />
         <diag:BML_MISSING_SUBBLOCK_NAME />
         <diag:BML_MISSING_SUMMARY />
         <diag:BML_MISSING_VERSION />
