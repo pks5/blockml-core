@@ -33,12 +33,16 @@
 
     Member value placement (scalar members on PropertyDefinition, CapabilityDefinition, and shared
     MemberDefinition fields):
-    • On member declarations (Block definition documents): each member field may render as a child
-      element or as an attribute on the member element — both are valid; element form is preferred
-      when serializing definitions (e.g. &lt;type&gt;Integer&lt;/type&gt; over type="Integer").
-    • On Block instances (composition): the same fields may also render as element or attribute —
-      both are valid; attribute form is preferred when serializing instances (e.g. width="50" over
-      &lt;width&gt;50&lt;/width&gt;).
+    • On member declarations (Block definition documents): each declaration field may render as a
+      child element or as an attribute on the member element — both are valid; element form is
+      preferred when serializing definitions (e.g. &lt;type&gt;Integer&lt;/type&gt; over
+      type="Integer"; &lt;value&gt;…&lt;/value&gt; over value="…").
+    • On Block instances (composition): the member itself renders as an attribute or child element
+      of the Block — both are valid; attribute form is preferred (e.g. width="50" over
+      &lt;width&gt;50&lt;/width&gt;). Do not wrap the payload in &lt;value&gt; or &lt;composition&gt;
+      — those are PropertyDefinition / AggregationDefinition declaration fields only. Exception: a
+      member whose name is value uses value="…" / &lt;value&gt; as the member itself. See
+      doc:MemberAuthoring.
     Structured children (constraints, groups, suggestions, composition, implementation) remain
     elements.
 
@@ -70,6 +74,10 @@
     <see type="def:BlockDefinition" property="name" relation="Defines">
       Example property member reference — split form resolves to
       org.blockml.bml.definition.BlockDefinition.properties.name.
+    </see>
+    <see type="doc:MemberAuthoring" relation="AuthoringGuide">
+      Definition fields vs instance payloads — no &lt;value&gt; / &lt;composition&gt; wrappers on
+      instances.
     </see>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">
       Visibility naming convention, access rules, and aggregation ID reachability.

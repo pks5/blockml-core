@@ -28,12 +28,16 @@
     1. On Block definitions — nest &lt;composition&gt; inside an aggregation member element; never
        leave it standalone (BML_STANDALONE_COMPOSITION).
     2. On Block instances — open aggregations by member name directly; no composition wrapper.
+       Same rule as Properties: do not wrap instance values in &lt;value&gt; (doc:MemberAuthoring).
     3. Inherited aggregation fill — use override="true"; omit unchanged type.
     4. Shared sibling values — bml:with on composition or bml:container (see doc:BmlDirectives).
     5. Instance ID reachability — follows aggregation member visibility (doc:MemberVisibility).
   </documentation>
 
   <references>
+    <see type="doc:MemberAuthoring" relation="TaskStep">
+      Step 0 — definition fields vs instance payloads for Properties and Aggregations.
+    </see>
     <see type="doc:CompositionModel" relation="TaskStep">
       Step 1 — unified container concept and placement rules.
     </see>

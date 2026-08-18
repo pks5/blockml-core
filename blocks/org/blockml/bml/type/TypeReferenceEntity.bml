@@ -61,6 +61,9 @@
     <see type="core:PrimitiveEntity" relation="SeeAlso">
       Abstract generic base — value property inherited after binding T.
     </see>
+    <see type="doc:MemberAuthoring" relation="SeeAlso">
+      value="…" on this Entity is the member named value — not a PropertyDefinition wrapper.
+    </see>
     <see type="def:BlockDefinition" relation="Defines">
       contracts and language aggregations.
     </see>

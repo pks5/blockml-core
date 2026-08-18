@@ -1,0 +1,160 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.MemberAuthoring
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MemberAuthoring</name>
+  <type>doc:MemberAuthoring</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to definition versus instance member syntax</is>
+  <isnot>A general-purpose XML value or container wrapper</isnot>
+
+  <summary>
+    &lt;value&gt; and &lt;composition&gt; belong only to member declarations. On a Block instance
+    the Property element or attribute is already the value; the Aggregation element already holds
+    the child Blocks. Do not wrap instance payloads in those definition fields.
+  </summary>
+
+  <keywords>value, composition, property, aggregation, instance, definition, member authoring</keywords>
+
+  <documentation>
+    LLMs repeatedly confuse member-declaration syntax with the syntax used when assigning members
+    on Block instances. The two most common mistakes are wrapping an instance Property in
+    &lt;value&gt; and wrapping instance Aggregation children in &lt;composition&gt;.
+
+    Incorrect on a Block instance:
+    &lt;myns:MyBlock&gt;&lt;myProperty&gt;&lt;value&gt;Hello!&lt;/value&gt;&lt;/myProperty&gt;&lt;/myns:MyBlock&gt;
+    &lt;myns:MyBlock&gt;&lt;content&gt;&lt;composition&gt;…&lt;/composition&gt;&lt;/content&gt;&lt;/myns:MyBlock&gt;
+
+    Two contexts, never mixed:
+
+    1. Definition context — a Property or Aggregation is being declared inside &lt;properties&gt;
+       or &lt;aggregations&gt; (or an inherited member is filled on a Block definition).
+    2. Instance context — a concrete Block instance receives Property values or Aggregation
+       children.
+
+    &lt;value&gt; is the value field of def:PropertyDefinition. &lt;composition&gt; is the
+    composition field of def:AggregationDefinition. Both are definition-context fields. They are
+    not general-purpose wrappers around instance payloads.
+
+    Critical authoring rule — inside a Block instance:
+    • NEVER introduce &lt;value&gt; as a wrapper around a Property assignment
+    • NEVER introduce &lt;composition&gt; as a wrapper around Aggregation children
+    Instead: the Property element (or Block attribute) contains the value; the Aggregation element
+    contains the child Blocks. Group instance children with bml:container, not composition.
+
+    PROPERTIES — definition. Inside &lt;properties&gt; the child element is a PropertyDefinition.
+    Its default value is the value field of that declaration. Element form is preferred when
+    serializing definitions:
+    &lt;properties&gt;&lt;description&gt;&lt;value&gt;BlockML core library&lt;/value&gt;&lt;/description&gt;&lt;/properties&gt;
+    Compact attribute form on the declaration is also valid:
+    &lt;properties&gt;&lt;description value="BlockML core library"/&gt;&lt;/properties&gt;
+    Do not specify both forms on the same declaration (conflicting payloads). Other declaration
+    fields (type, readOnly, override, constraints, suggestions) stay on this PropertyDefinition
+    element — they are not authored on domain instances.
+
+    PROPERTIES — Block instance. The instance is not a PropertyDefinition. It only supplies the
+    payload. Attribute form is preferred:
+    &lt;myns:MyBlock myProperty="Hello!"/&gt;
+    Element form is the Property element with direct character content — the element itself is
+    already the value container:
+    &lt;myns:MyBlock&gt;&lt;myProperty&gt;Hello!&lt;/myProperty&gt;&lt;/myns:MyBlock&gt;
+    Incorrect — definition value field used as an instance wrapper:
+    &lt;myns:MyBlock&gt;&lt;myProperty&gt;&lt;value&gt;Hello!&lt;/value&gt;&lt;/myProperty&gt;&lt;/myns:MyBlock&gt;
+    Also incorrect as a wrapper (same category error):
+    &lt;myns:MyBlock&gt;&lt;myProperty value="Hello!"/&gt;&lt;/myns:MyBlock&gt;
+    unless myProperty is actually named value (see exception below).
+
+    Exception — member whose name is value. PrimitiveEntity, TypeReferenceEntity, FilePathEntity
+    and similar types declare a Property named value. Then value="…" or &lt;value&gt;…&lt;/value&gt;
+    on the Block instance is ordinary instance syntax for that member, not a PropertyDefinition
+    wrapper:
+    &lt;type:FilePathEntity value="blockml-library.xsd"/&gt;
+    Annotation value facets (e.g. &lt;scad:value&gt; under a property declaration) are a separate
+    namespace axis on PropertyDefinition.value — not instance wrappers. See doc:AnnotationModel.
+
+    AGGREGATIONS — definition. Inside &lt;aggregations&gt; the child element is an
+    AggregationDefinition. Its initial/default child structure is the composition field:
+    &lt;aggregations&gt;&lt;content&gt;&lt;composition&gt;&lt;myns:Child/&gt;&lt;/composition&gt;&lt;/content&gt;&lt;/aggregations&gt;
+    &lt;composition&gt; is allowed only as that definition field, nested inside the aggregation
+    member — never standalone (BML_STANDALONE_COMPOSITION).
+
+    AGGREGATIONS — Block instance. Child Block instances are placed directly inside the
+    Aggregation element. There is no composition wrapper:
+    &lt;myns:MyBlock&gt;&lt;content&gt;&lt;myns:Child/&gt;&lt;/content&gt;&lt;/myns:MyBlock&gt;
+    Incorrect:
+    &lt;myns:MyBlock&gt;&lt;content&gt;&lt;composition&gt;&lt;myns:Child/&gt;&lt;/composition&gt;&lt;/content&gt;&lt;/myns:MyBlock&gt;
+    The same rule applies recursively — a Block instance nested inside a definition composition
+    still fills its own aggregations without a composition wrapper:
+    &lt;aggregations&gt;&lt;myAggr&gt;&lt;composition&gt;
+      &lt;myns:MyBlock&gt;&lt;content&gt;&lt;myns:Child/&gt;&lt;/content&gt;&lt;/myns:MyBlock&gt;
+    &lt;/composition&gt;&lt;/myAggr&gt;&lt;/aggregations&gt;
+    Outer &lt;composition&gt; is valid (myAggr is an Aggregation definition). Inner
+    &lt;composition&gt; under content is invalid (content is populated on a Block instance).
+
+    On instances, the virtual grouping element is bml:container — not composition. Both
+    composition (definitions) and bml:container (instances) host bml:if, bml:each, and bml:with.
+
+    Unified pattern:
+    Definition Property → value attribute or &lt;value&gt; wrapper on the PropertyDefinition
+    Definition Aggregation → &lt;composition&gt; wrapper on the AggregationDefinition
+    Instance Property → attribute on the Block, or direct Property element content
+    Instance Aggregation → direct child Block instances (bml:container for grouping)
+
+    Capabilities on instances follow the Property pattern: attribute or child element, no extra
+    wrapper. readOnly effective members must not be authored on instances
+    (BML_READONLY_MEMBER_WRITE).
+  </documentation>
+
+  <references>
+    <see type="doc:BlockAndInstance" relation="SeeAlso">
+      Definition vs instance mental model.
+    </see>
+    <see type="def:PropertyDefinition" property="value" relation="Defines">
+      Definition-only value field on a Property declaration.
+    </see>
+    <see type="def:AggregationDefinition" property="composition" relation="Defines">
+      Definition-only composition field on an Aggregation declaration.
+    </see>
+    <see type="def:MemberDefinition" relation="SeeAlso">
+      Element preferred on declarations; member name as attribute preferred on instances.
+    </see>
+    <see type="doc:CompositionModel" relation="ReadNext">
+      Next — composition placement, recursion, bml:container, and instance IDs.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      bml:container, bml:with, bml:each, bml:if on composition and instances.
+    </see>
+    <see type="doc:AnnotationModel" relation="SeeAlso">
+      Annotation value facets — not instance value wrappers.
+    </see>
+    <see type="core:PrimitiveEntity" relation="SeeAlso">
+      Entity whose instance member is actually named value.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="SeeAlso">
+      Instance value="…" because the member name is value — not a wrapper.
+    </see>
+    <see type="diag:BML_STANDALONE_COMPOSITION" relation="SeeAlso">
+      composition outside an aggregation member on a definition.
+    </see>
+    <see type="task:FixCompositionPlacement" relation="SeeAlso">
+      Procedure when composition is placed on an instance or left standalone.
+    </see>
+    <see type="doc:PartialMemberOverrides" relation="SeeAlso">
+      Filling inherited members on definitions; readOnly forbids instance writes.
+    </see>
+  </references>
+
+</block>

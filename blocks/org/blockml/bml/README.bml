@@ -21,11 +21,11 @@
 
   <documentation>
     README block for the BlockML core library. Start with references marked relation=ReadFirst —
-    thirty-three documentation blocks in mental learning order. The early entries form the BlockML
+    thirty-four documentation blocks in mental learning order. The early entries form the BlockML
     conceptual core — including the type system and expression language (${ } and &lt;$ $&gt;).
-    Later entries cover conventions, authoring rules (visibility, overrides, composition,
-    annotations, directives, type identity, Sub-Blocks, contracts, constraints), organisation, and
-    background knowledge.
+    Later entries cover conventions, authoring rules (visibility, overrides, member authoring,
+    composition, annotations, directives, type identity, Sub-Blocks, contracts, constraints),
+    organisation, and background knowledge.
 
     Library.bml points here via the required readMe aggregation (&lt;blockml:README /&gt;).
     Tooling filters references where relation=ReadFirst to build a curated learning context bundle;
@@ -129,6 +129,11 @@
 
     <see type="doc:PartialMemberOverrides" relation="ReadFirst">
       Partial member overrides — merge semantics, abstract/final/override, readOnly.
+    </see>
+
+    <see type="doc:MemberAuthoring" relation="ReadFirst">
+      Property and Aggregation syntax — definition fields vs instance payloads; never wrap
+      instances in &lt;value&gt; or &lt;composition&gt;.
     </see>
 
     <see type="doc:CompositionModel" relation="ReadFirst">

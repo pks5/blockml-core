@@ -42,14 +42,18 @@
     • Nested paths compose with :: (wall::bottom::inner)
     • bml:version pins external references to exact library versions
 
-    Instance serialization (authoring):
-    • On Block definitions — &lt;composition&gt; nested inside the aggregation member fills defaults
-    • On Block instances — aggregations are filled directly by member name (no composition wrapper);
-      property/capability values as attributes or child elements; Aggregation children as nested
-      elements (or bml:container for shared directives)
+    Instance serialization (authoring) — definition fields are not instance wrappers:
+    • On Block definitions — Property default uses the value field (&lt;value&gt; preferred);
+      Aggregation default uses &lt;composition&gt; nested inside the aggregation member
+    • On Block instances — NEVER wrap a Property in &lt;value&gt; and NEVER wrap Aggregation
+      children in &lt;composition&gt;. The Property is a Block attribute or the Property element's
+      direct content (myProperty="…" or &lt;myProperty&gt;…&lt;/myProperty&gt;). Aggregation children
+      sit directly inside the aggregation element (or bml:container for shared directives)
+    • Exception: a member whose name is value (PrimitiveEntity, TypeReferenceEntity, …) uses
+      value="…" as ordinary instance syntax for that member — not as a PropertyDefinition wrapper
     • readOnly effective members must not be authored on instances → BML_READONLY_MEMBER_WRITE
     • Empty child meaning depends on aggregation type (instance vs TypeReferenceEntity sugar) —
-      doc:CompositionModel / doc:SubBlockModel
+      doc:MemberAuthoring / doc:CompositionModel / doc:SubBlockModel
 
     Context-dependent interpretation:
     • ValueTypes as type-classes for Property values and Capability input/output
@@ -62,6 +66,10 @@
   </documentation>
 
   <references>
+    <see type="doc:MemberAuthoring" relation="AuthoringGuide">
+      Definition vs instance member syntax — no &lt;value&gt; / &lt;composition&gt; wrappers on
+      instances.
+    </see>
     <see type="doc:CompositionModel" relation="SeeAlso">
       Aggregation fill — definition composition vs instance children.
     </see>

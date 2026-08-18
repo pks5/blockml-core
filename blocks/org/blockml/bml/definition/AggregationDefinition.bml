@@ -24,7 +24,8 @@
     Block instances; the aggregation type attribute selects the payload type:
 
     • Plain Block type (for example core:Block[], bricks:Brick[]) — composition ownership of those
-      Block types. Children may carry nested composition, member values, and bml:id.
+      Block types. Children are Block instances: member values, nested aggregations filled without
+      a composition wrapper, and bml:id.
     • TypeReferenceEntity application (for example type:TypeReferenceEntity(core:Block)[]) —
       owned TypeReferenceEntity instances whose value holds an FQN / TypeExpression. Empty children
       whose element QName is not TypeReferenceEntity are syntactic sugar for
@@ -38,8 +39,8 @@
     multiplicity), optional default flag, and optional nested composition template. Standalone
     composition is never allowed — &lt;composition&gt; must be nested inside the aggregation member
     (BML_STANDALONE_COMPOSITION). Scalar member fields (type, default) follow
-    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
-    attribute preferred on Block instances. Structured composition remains a child element.
+    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on aggregation
+    declarations. Structured composition remains a child element.
     Composition instance ID reachability for bml:id references is controlled by this aggregation
     member's visibility (inherited from org.blockml.bml.definition.MemberDefinition) — public
     aggregations export ids for cross-document {EnclosingBlockFQN}::{id} references; protected
@@ -48,6 +49,9 @@
     instances — not aggregation member fields.</documentation>
 
   <references>
+    <see type="doc:MemberAuthoring" relation="AuthoringGuide">
+      Definition vs instance — composition wrapper only on Aggregation declarations.
+    </see>
     <see type="doc:CompositionModel" relation="AuthoringGuide">
       Composition placement, recursion, and instance ID reachability.
     </see>
@@ -84,10 +88,12 @@
     </default>
     <composition type="Composition" bml:xml="element">
       <documentation>Optional nested composition template filling this aggregation on the Block
-        definition. Rendered as a composition child element inside the aggregation member element.
-        Maps to BOM AggregationDefinition.composition (CompositionTemplate). May be omitted on
-        override declarations that only refine metadata. On Block instances, aggregation content is
-        opened inline without a composition wrapper — see doc:CompositionModel.
+        definition only. Rendered as a composition child element inside the aggregation member
+        element. Maps to BOM AggregationDefinition.composition (CompositionTemplate). May be omitted
+        on override declarations that only refine metadata. Not an instance wrapper — on Block
+        instances, aggregation children sit directly inside the aggregation element with no
+        composition wrapper, including when that instance is nested inside another composition.
+        See doc:MemberAuthoring and doc:CompositionModel.
         </documentation>
     </composition>
   </properties>
@@ -98,9 +104,11 @@
       <baseType>core:Entity</baseType>
       <is>A nested composition template</is>
 
-      <documentation>Describes the composition element on an aggregation member declaration.
+      <documentation>Describes the composition element on an aggregation member declaration only.
         Rendered as composition with optional bml:with directives and a tree of composition child
-        nodes (Block instances and bml:container virtual containers). Maps to BOM
+        nodes (Block instances and bml:container virtual containers). Not an instance wrapper —
+        nested Block instances in this tree fill their own aggregations directly, without a nested
+        composition element. Maps to BOM
         CompositionTemplate { aggregationName (from enclosing aggregation member name), directives,
         children }. Instance ID reachability is determined by the enclosing aggregation member's
         visibility — not by attributes on the composition element. Standalone composition outside an

@@ -12,6 +12,7 @@
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
   <name>PropertyDefinition</name>
@@ -29,11 +30,14 @@
     namespace), optional groups (inherited from MemberDefinition), and optional constraints (via
     ConstrainableDefinition) and suggestions. Convenience path value is the default-namespace entry.
     Property type must resolve to a ValueType branch. Scalar member fields (type, value) follow
-    org.blockml.bml.definition.MemberDefinition placement rules — element preferred on
-    definitions, attribute preferred on Block instances. Structured children (groups, suggestions)
-    remain elements. Every Property behaves as Optional — it has a value or has no value; there
-    is no null. Declaration order among properties is significant for StructType positional mapping
-    and Capability parameter order.
+    org.blockml.bml.definition.MemberDefinition placement rules on the PropertyDefinition
+    declaration — element preferred on definitions. The value field is definition syntax only;
+    it is not a wrapper around a Property assignment on a domain Block instance. On instances the
+    Property is a Block attribute or the Property element's direct content
+    (myProperty="…" / &lt;myProperty&gt;…&lt;/myProperty&gt;) — see doc:MemberAuthoring. Structured
+    children (groups, suggestions) remain elements. Every Property behaves as Optional — it has a
+    value or has no value; there is no null. Declaration order among properties is significant for
+    StructType positional mapping and Capability parameter order.
 
     Value-field Annotation facets: nested under this property element, an Annotation-prefixed
     value element (e.g. scad:value from Annotation.Value) multiplies the value field along the
@@ -42,6 +46,9 @@
     See doc:AnnotationModel — Property value facets.</documentation>
 
   <references>
+    <see type="doc:MemberAuthoring" relation="AuthoringGuide">
+      Definition value field vs instance Property payload — do not wrap instances in &lt;value&gt;.
+    </see>
     <see type="doc:AnnotationModel" relation="AuthoringGuide">
       Annotation value facets, parent-context rules, duplicate-namespace diagnostics.
     </see>
@@ -57,15 +64,23 @@
     <type type="TypeReference(core:ValueType)" bml:xml="element|attribute">
       <documentation>FQN of the property's ValueType (TypeExpression). Non-ValueType FQNs are invalid
         (BML_INVALID_PROPERTY_TYPE). Multiplicity, unions, generic applications, and instance
-        configuration are expressed in the type string — e.g. Text{maxLength: 100}. On definitions,
-        element form is preferred (&lt;type&gt;Integer&lt;/type&gt;); on Block instances, attribute
-        form is preferred (type="Integer" on the property element).</documentation>
+        configuration are expressed in the type string — e.g. Text{maxLength: 100}. On the
+        PropertyDefinition declaration, element form is preferred (&lt;type&gt;Integer&lt;/type&gt;);
+        attribute form is also valid (type="Integer" on the property declaration element).</documentation>
     </type>
     <value type="Text" bml:xml="element|attribute">
-      <documentation>Default or computed value on the Block definition, or inline value on Block
-        instances. May be a literal or a ${ … } expression. On definitions, element form is
-        preferred (&lt;value&gt;…&lt;/value&gt;); on Block instances, attribute form is preferred
-        (value="…" on the property element). Absent value means Optional.empty — not null.
+      <documentation>Default or computed value on the PropertyDefinition declaration inside
+        &lt;properties&gt; — definition syntax only. May be a literal or a ${ … } expression.
+        Element form is preferred (&lt;value&gt;…&lt;/value&gt;); compact attribute form on the
+        declaration is also valid (value="…"). Do not specify both on the same declaration.
+        Absent value means Optional.empty — not null.
+
+        This field is not a wrapper used when assigning the Property on a domain Block instance.
+        Instances use the member name as a Block attribute or as the Property element's direct
+        content (width="50" or &lt;width&gt;50&lt;/width&gt;) — never
+        &lt;width&gt;&lt;value&gt;50&lt;/value&gt;&lt;/width&gt; and never &lt;width value="50"/&gt;
+        unless the member itself is named value (e.g. PrimitiveEntity.value,
+        TypeReferenceEntity.value). See doc:MemberAuthoring.
 
         Multiplicity: the value field may repeat along the Annotation namespace axis — canonical
         &lt;value&gt; (default namespace) plus optional Annotation Element facets such as

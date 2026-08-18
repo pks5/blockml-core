@@ -21,7 +21,10 @@
     inside a composition or aggregation. Follows the general generic resolution rule: T belongs
     exclusively to this Block and is never inherited. Derived Blocks bind or forward T explicitly
     through baseType (for example baseType = PrimitiveEntity(Integer) binds T = Integer and yields
-    value : Integer).
+    value : Integer). On instances that member is authored as value="…" (or &lt;value&gt;…&lt;/value&gt;
+    as the member itself) because the Property is named value — not because of the
+    PropertyDefinition value field. Do not wrap other instance Properties in &lt;value&gt;; see
+    doc:MemberAuthoring.
 
     Cannot be instantiated directly — concrete specializations (IntegerEntity, TextEntity,
     DecimalEntity, …) bind all generic parameters and become normal, instantiable Blocks.
@@ -33,6 +36,9 @@
     <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
       PrimitiveEntity and generic resolution.
     </see>
+    <see type="doc:MemberAuthoring" relation="SeeAlso">
+      Member named value on instances vs PropertyDefinition value wrapper.
+    </see>
   </references>
 
   <abstract>true</abstract>
@@ -43,7 +49,10 @@
 
   <properties>
     <value type="T">
-      <documentation>The primitive value owned by this Entity instance.</documentation>
+      <documentation>The primitive value owned by this Entity instance. Instance syntax is
+        value="…" or &lt;value&gt;…&lt;/value&gt; on the Entity because this member's name is value
+        — that is ordinary instance authoring, not a PropertyDefinition wrapper. See
+        doc:MemberAuthoring.</documentation>
     </value>
   </properties>
 </block>

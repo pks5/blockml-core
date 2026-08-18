@@ -94,8 +94,8 @@
     <see type="doc:ModelingGuidelines" relation="SeeAlso">
       Contracts merge order and abstract/final patterns.
     </see>
-    <see type="doc:CompositionModel" relation="ReadNext">
-      Next — filling aggregations with composition instances.
+    <see type="doc:MemberAuthoring" relation="ReadNext">
+      Next — definition fields vs instance payloads (&lt;value&gt; / &lt;composition&gt;).
     </see>
   </references>
 

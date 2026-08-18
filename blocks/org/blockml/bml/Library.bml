@@ -275,6 +275,7 @@
         <doc:ConstraintsModel />
         <doc:MemberVisibility />
         <doc:PartialMemberOverrides />
+        <doc:MemberAuthoring />
         <doc:CompositionModel />
         <doc:AnnotationModel />
         <doc:BmlDirectives />

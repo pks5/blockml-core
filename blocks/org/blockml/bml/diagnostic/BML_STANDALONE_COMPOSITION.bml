@@ -24,10 +24,13 @@
   <keywords>BML_STANDALONE_COMPOSITION</keywords>
 
   <documentation>
-    &lt;composition&gt; must always be nested inside an aggregation member on Block definitions. On instances, open aggregations directly without a composition wrapper.
+    &lt;composition&gt; must always be nested inside an aggregation member on Block definitions. On instances, open aggregations directly without a composition wrapper. Do not use &lt;value&gt; as a parallel wrapper on instance Properties — both are definition fields (doc:MemberAuthoring).
   </documentation>
 
   <references>
+    <see type="doc:MemberAuthoring" relation="AuthoringGuide">
+      Definition vs instance member syntax — composition and value are declaration fields only.
+    </see>
     <see type="doc:CompositionModel" relation="AuthoringGuide">
       Placement rules for composition.
     </see>
