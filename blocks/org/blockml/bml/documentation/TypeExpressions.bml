@@ -27,7 +27,8 @@
     configuration · bml:Self · T)
 
     Examples: Integer[] · Integer[3] · Integer[0..n] · Boolean | Integer · Box(Integer) ·
-    SelectiveGrid(Boolean | HoleType) · Text{maxLength: 100} · bml:Self · T
+    InstanceReference(core:Block) · SelectiveGrid(Boolean | HoleType) · Text{maxLength: 100} ·
+    bml:Self · T
 
     In type="…" XML attributes, generic applications use round parentheses (not angle brackets) so
     values stay valid XML. Generic type arguments may be full type expressions — unions,
@@ -60,7 +61,9 @@
     Boolean | "auto" desugars to Constant form.
 
     Bare type name sites (Property type, Capability inputType/outputType) require ValueTypes (plus
-    type expressions over them). Aggregation/association type may be any Block FQN.
+    type expressions over them). Aggregation type may be any Block FQN (plain composition or
+    TypeReferenceEntity application). Association type must be InstanceReference(T) or
+    InstanceReference(T)[] with T extending core:Block — bare Block FQNs are invalid.
     Non-ValueType on a property → BML_INVALID_PROPERTY_TYPE.
 
     Compiler-internal descriptors (UnionTypeDescriptor, …) are not BML Block classes.
@@ -84,6 +87,9 @@
     </see>
     <see type="diag:BML_INVALID_PROPERTY_TYPE" relation="SeeAlso">
       Non-ValueType used where a ValueType is required.
+    </see>
+    <see type="type:InstanceReference" relation="SeeAlso">
+      Association member types — InstanceReference(T) or InstanceReference(T)[].
     </see>
   </references>
 

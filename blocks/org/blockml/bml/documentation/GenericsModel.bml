@@ -43,9 +43,9 @@
     BML_GENERIC_DEFAULT_UNRESOLVED, BML_GENERIC_CONSTRAINT_VIOLATION.
 
     BML attribute syntax — round parentheses: Box(Integer), TypeReference(core:Block),
-    SelectiveGrid(Boolean | type:HoleType). Each (…) argument is a TypeExpression. With multiple
-    parameters, labels match generic parameter names. At validate time placeholders (T) are
-    substituted; mismatch → BML_GENERIC_CONSTRAINT_VIOLATION.
+    InstanceReference(core:Block), SelectiveGrid(Boolean | type:HoleType). Each (…) argument is a
+    TypeExpression. With multiple parameters, labels match generic parameter names. At validate
+    time placeholders (T) are substituted; mismatch → BML_GENERIC_CONSTRAINT_VIOLATION.
 
     Orthogonal to {…} ValueType instance configuration (doc:ValueTypeConfiguration) and to
     multiplicity brackets (doc:TypeExpressions).

@@ -11,7 +11,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
 
   <name>BML_INVALID_PROPERTY_TYPE</name>
   <type>diag:BML_INVALID_PROPERTY_TYPE</type>
@@ -23,7 +24,7 @@
   <keywords>BML_INVALID_PROPERTY_TYPE</keywords>
 
   <documentation>
-    Bare type sites (Property type, Capability inputType/outputType) require ValueTypes. Aggregation and association types may use any Block FQN.
+    Bare type sites (Property type, Capability inputType/outputType) require ValueTypes. Aggregation type may be any Block FQN. Association type must be InstanceReference(T) or InstanceReference(T)[].
   </documentation>
 
   <references>
@@ -32,6 +33,9 @@
     </see>
     <see type="doc:TypeSystemOverview" relation="SeeAlso">
       Four ValueType kinds.
+    </see>
+    <see type="type:InstanceReference" relation="SeeAlso">
+      Association member types — InstanceReference(T) or InstanceReference(T)[].
     </see>
   </references>
 

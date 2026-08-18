@@ -20,13 +20,15 @@
   <baseType>core:Diagnostic</baseType>
   <is>A cardinality-violation diagnostic</is>
 
-  <summary>Emitted when the number of aggregation/association children violates the type multiplicity.</summary>
+  <summary>Emitted when an aggregation child count or association InstanceReference token count violates the type multiplicity.</summary>
 
   <keywords>BML_CARDINALITY_VIOLATION</keywords>
 
   <documentation>
-    Emitted when the number of aggregation/association children violates the type multiplicity.
-    Remedy: Adjust children count or the member multiplicity (e.g. [1..n]).
+    Emitted when an aggregation child count or association InstanceReference token count violates
+    the type multiplicity. Remedy: Adjust the number of aggregation children or association pointer
+    tokens, or the member multiplicity. Association cardinality is limited to 0..1 and 0..n —
+    required-single notations (1..1, 1..n) are invalid on associations.
   </documentation>
 
   <references>
@@ -35,6 +37,9 @@
     </see>
     <see type="doc:CompositionModel" relation="SeeAlso">
       Aggregation fill.
+    </see>
+    <see type="type:InstanceReference" relation="SeeAlso">
+      Association payload — pointer tokens, not composition children.
     </see>
   </references>
 

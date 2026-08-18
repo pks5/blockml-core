@@ -24,7 +24,7 @@
 
     PrimitiveType — atomic scalar semantics; no stored values on the type itself.
     Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, Version,
-    TypeReference.
+    TypeReference, InstanceReference.
 
     StructType — custom value objects; structure via properties.
     Examples: Size3D, Address, Transform. Parameterized types (Box(T)) are StructTypes
@@ -40,14 +40,15 @@
     Type expressions combine named types — they are not new BlockML type classes:
     • Multiplicity: Integer[], Integer[3], Text[0..n]
     • Unions: Boolean | Integer, Constant(Text){value: "auto"} | Float
-    • Generic application: Box(Integer) — round parentheses in type attributes
+    • Generic application: Box(Integer) · InstanceReference(core:Block) — round parentheses in type attributes
     • Instance configuration: Text{maxLength: 100}, Decimal{precision: 10, scale: 2}
     • bml:Self — resolves to effective current Block type after inheritance
     • T — generic parameter reference from declaring Block's genericTypes
 
     Only ValueTypes may appear where a bare type name is required (Property type,
-    Capability inputType/outputType). Any Block FQN is valid in aggregation and association
-    type attributes. ValueTypes never store data — Properties own all concrete values.
+    Capability inputType/outputType). Aggregation type may be any Block FQN. Association type
+    must be InstanceReference(T) or InstanceReference(T)[] — bare Block FQNs are invalid.
+    ValueTypes never store data — Properties own all concrete values.
   </documentation>
 
   <references>
@@ -74,6 +75,9 @@
     </see>
     <see type="type:Constant" relation="SeeAlso">
       Generic Constant(T){value: …} for union singleton alternatives.
+    </see>
+    <see type="type:InstanceReference" relation="SeeAlso">
+      Association member types — instance pointers, not owned Block instances.
     </see>
     <see type="type:Color" relation="SeeAlso">
       Textual primitive subtype — not a StructType.
