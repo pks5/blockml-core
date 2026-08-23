@@ -46,14 +46,36 @@
     • Array&lt;T&gt; → T[]
     Boolean.True / Boolean.False are Sub-Block shortcuts for Constant(Boolean){value: true/false}.
 
-    Multiplicity — no separate Array type. Bracket notation is metadata on the type reference; the
-    FQN is unchanged. Prefer Collection / Multiplicity terminology (not Array). Semantics only —
-    ordered vs unordered and concrete storage are renderer-defined.
+    Multiplicity — no separate Array type. Bracket notation is a postfix operation on a
+    TypeExpression, not an intrinsic property of a named ValueType; it is metadata on the type
+    reference and the FQN is unchanged. Prefer Collection / Multiplicity terminology (not Array).
+    Semantics only — ordered vs unordered and concrete storage are renderer-defined.
     • Integer → exactly one
     • Integer[] ≡ Integer[0..n]
     • Integer[3] · Integer[1..5] · Integer[1..]
     Applies commonly on aggregation/association types and capability input fields; bare properties
     are usually exactly one value.
+
+    Nested multiplicities — multiplicity may be applied to any TypeExpression, including one that
+    already carries a multiplicity. Parentheses group the inner TypeExpression before the outer
+    multiplicity is applied, so nested collections need no separate Array or collection type:
+    • Integer[] → collection of Integer
+    • (Integer[])[] → collection of collections of Integer
+    • (Integer[3])[] → collection of fixed-size Integer collections
+    • (Integer[])[2] → fixed-size collection containing two Integer collections
+    Integer[][] is intentionally not supported — nested multiplicities must use explicit grouping
+    ((Integer[])[]), which keeps the binding of each multiplicity unambiguous. Ungrouped stacked
+    brackets are ill-formed → BML_INVALID_TYPE_REFERENCE.
+
+    Nested collections nest their rules too: compatibility, element-wise validation, and
+    multiplicity bounds are applied recursively, outer collection first. (core:ValueType[])[]
+    accepts [[1, 2], [3, 4], ["a"]] — three elements against the outer multiplicity, each element
+    validated against core:ValueType[]; (Integer[])[2] rejects [[1], [2], [3]] with
+    BML_CARDINALITY_VIOLATION on the outer collection. For Capability inputs the ordinary collection
+    FunctionMapping rule applies to the outermost collection, so service:Lists concat with
+    inputType="(core:ValueType[])[]" maps #lists.concat([1, 2], [3, 4], ["a"]) to
+    [[1, 2], [3, 4], ["a"]] — one function argument per outer element, inner collections remaining
+    ordinary typed values (doc:FunctionMappingModel).
 
     Collection compatibility — for a type reference with multiplicity, compatibility is evaluated
     against the referenced element type. If S is assignable to T (S &lt;: T), then a collection of S
@@ -102,6 +124,7 @@
     and nested anonymous StructTypes are all valid field types:
     • { list: core:ValueType[], index: Integer } — qualified reference with multiplicity
     • { values: foo:Thing[1..n] } · { value: Integer | Text } · { nested: { x: Integer, y: Integer } }
+    • { lists: (core:ValueType[])[] } — nested multiplicity as a field type
 
     The colon separating a field name from its type and the colon inside a qualified type reference
     belong to different grammar levels and are unambiguous:
@@ -166,13 +189,18 @@
       Per-field name resolution inside anonymous StructTypes — implicit namespace vs xmlns vs FQN.
     </see>
     <see type="doc:FunctionMappingModel" relation="SeeAlso">
-      Anonymous StructType field order — call arity and named argument keys.
+      Anonymous StructType field order — call arity and named argument keys; nested collection
+      inputs map on the outermost multiplicity.
     </see>
     <see type="diag:BML_CARDINALITY_VIOLATION" relation="SeeAlso">
       Element count outside the multiplicity bounds.
     </see>
+    <see type="diag:BML_INVALID_TYPE_REFERENCE" relation="SeeAlso">
+      Ill-formed type expressions — ungrouped stacked brackets such as Integer[][].
+    </see>
     <see type="service:Lists" relation="SeeAlso">
-      core:ValueType[] capability inputs — worked examples of collection compatibility.
+      core:ValueType[] capability inputs — worked examples of collection compatibility and of the
+      nested (core:ValueType[])[] input on concat.
     </see>
     <see type="type:InstanceReference" relation="SeeAlso">
       Association member types — InstanceReference(T) or InstanceReference(T)[].

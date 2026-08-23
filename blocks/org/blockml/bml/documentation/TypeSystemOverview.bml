@@ -38,7 +38,8 @@
     Example: Constant(Text){value: "auto"} for union alternatives.
 
     Type expressions combine named types — they are not new BlockML type classes:
-    • Multiplicity: Integer[], Integer[3], Text[0..n]
+    • Multiplicity: Integer[], Integer[3], Text[0..n] — postfix on a TypeExpression, so it nests via
+      explicit grouping: (Integer[])[] (never Integer[][])
     • Unions: Boolean | Integer, Constant(Text){value: "auto"} | Float
     • Generic application: Box(Integer) · InstanceReference(core:Block) — round parentheses in type attributes
     • Instance configuration: Text{maxLength: 100}, Decimal{precision: 10, scale: 2}

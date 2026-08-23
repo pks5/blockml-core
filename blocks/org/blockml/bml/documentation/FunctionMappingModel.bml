@@ -42,6 +42,17 @@
     and named keys come from the field list; the field types themselves do not change the mapping
     (doc:TypeExpressions — Anonymous StructTypes).
 
+    Nested collection inputType — for a grouped, nested multiplicity such as (core:ValueType[])[]
+    (doc:TypeExpressions — Nested multiplicities) the collection rule above applies to the outermost
+    collection. A positional/variadic function representation may therefore map each function
+    argument to one element of the outer collection:
+
+      inputType="(core:ValueType[])[]"
+      #lists.concat([1, 2], [3, 4], ["a"])  →  [[1, 2], [3, 4], ["a"]]
+
+    The inner collections stay ordinary typed values and are validated recursively against
+    core:ValueType[] — nesting changes the shape of the logical input value, not the mapping rules.
+
     Canonical call forms normalize to the same logical input value (positional, named name=expr,
     or object literal). Default FunctionMapping (when no explicit mapping is declared):
     • Positional-only — arg i → field i in declaration order
@@ -72,6 +83,9 @@
     </see>
     <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
       Shared declaration-order rule for positional {…} configuration.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      inputType shapes — anonymous StructTypes, multiplicity, and nested multiplicities.
     </see>
     <see type="doc:CapabilitySemantics" relation="ReadNext">
       Next — Capability kinds and public behavioural surface.

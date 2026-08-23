@@ -37,9 +37,11 @@
 
     Multi-argument capabilities use an anonymous StructType whose field types are full
     TypeExpressions — { list: core:ValueType[], index: Integer } on get is one anonymous StructType
-    with a qualified, multiplicity-carrying list field and an unqualified index field.
+    with a qualified, multiplicity-carrying list field and an unqualified index field. concat takes a
+    nested multiplicity instead — (core:ValueType[])[], a collection of lists, where every call
+    argument becomes one element of the outer collection.
     See doc:TypeExpressions — Collection compatibility · Heterogeneous collections ·
-    Anonymous StructTypes.</documentation>
+    Nested multiplicities · Anonymous StructTypes.</documentation>
   <capabilities>
 
     <!-- #lists.size(list) -->
@@ -148,6 +150,12 @@
       outputType="core:ValueType[]">
       <documentation>
         Concatenates all list arguments into a single list.
+        The input is a nested multiplicity — (core:ValueType[])[] is a collection of
+        core:ValueType[] collections, written with explicit grouping because multiplicity is a
+        postfix operation on a TypeExpression (Integer[][] is not valid notation). The collection
+        FunctionMapping rule applies to the outer collection, so each argument of the call is one
+        outer element and the inner lists are validated recursively against core:ValueType[]:
+        #lists.concat([1, 2], [3, 4], ["a"]) → input value [[1, 2], [3, 4], ["a"]]
         Argument element types need not match — the result element type is core:ValueType.
         Examples:
         #lists.concat([1, 2], [3, 4]) → [1, 2, 3, 4]
