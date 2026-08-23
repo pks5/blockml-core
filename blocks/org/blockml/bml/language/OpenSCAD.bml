@@ -13,9 +13,15 @@
 
   <name>OpenSCAD</name>
   <type>lang:OpenSCAD</type>
-  <baseType>lang:ProgrammingLanguage</baseType>
+  <baseType>lang:ProgrammingLanguage(L)</baseType>
   <is>The OpenSCAD programming language</is>
 
   <documentation>ProgrammingLanguage for OpenSCAD function implementations on Capabilities.
-    Emitted by the MachineBlocks SCAD renderer with FQN-prefixed function names.</documentation>
+    Emitted by the MachineBlocks SCAD renderer with FQN-prefixed function names. Forwards
+    ProgrammingLanguage.L (NaturalLanguage, default English) for the content language of identifiers
+    and comments — bare OpenSCAD is OpenSCAD(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

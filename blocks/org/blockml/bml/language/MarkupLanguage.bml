@@ -18,11 +18,15 @@
   <is>A structured markup language</is>
 
   <documentation>Abstract branch for markup languages — XML and other structured document formats
-    used as capability implementation bodies. Generic parameter L (NaturalLanguage, default English)
-    names the optional content/text language inside the markup (element text, comments, human-facing
-    labels). Bare MarkupLanguage and concrete sub-types (XML, JSON, YML, Markdown, BML) omit L and
-    resolve to English; declare MarkupLanguage(German) or baseType MarkupLanguage(lang:German) only
-    when the content language matters.</documentation>
+    used as capability implementation bodies and, for Markdown, as documentation prose. Generic
+    parameter L (NaturalLanguage, default English) names the content/text language inside the markup
+    (element text, comments, human-facing labels, prose).
+
+    Concrete sub-types forward L via baseType MarkupLanguage(L) and redeclare it locally, so the
+    parameter stays open on the sub-type — Markdown(German) is authorable and Markdown(NaturalLanguage)
+    is usable as a type bound. Because L defaults to English, a bare sub-type name needs no argument:
+    Markdown ≡ Markdown(English). Binding L in baseType instead (MarkupLanguage(lang:German)) fixes
+    the content language for that sub-type and closes the parameter.</documentation>
 
   <genericTypes>
     <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>

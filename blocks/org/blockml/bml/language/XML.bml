@@ -13,9 +13,14 @@
 
   <name>XML</name>
   <type>lang:XML</type>
-  <baseType>lang:MarkupLanguage</baseType>
+  <baseType>lang:MarkupLanguage(L)</baseType>
   <is>The XML markup language</is>
 
   <documentation>MarkupLanguage for XML document implementations on Capabilities — templates,
-    configuration, or structured markup.</documentation>
+    configuration, or structured markup. Forwards MarkupLanguage.L (NaturalLanguage, default English)
+    for the content/text language inside the markup — bare XML is XML(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

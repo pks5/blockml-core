@@ -13,9 +13,15 @@
 
   <name>Unity</name>
   <type>lang:Unity</type>
-  <baseType>lang:CSharp</baseType>
+  <baseType>lang:CSharp(L)</baseType>
   <is>The Unity C# programming language</is>
 
   <documentation>C# dialect for Unity script implementations on Capabilities — MonoBehaviour methods,
-    UnityEngine APIs, and game-logic code.</documentation>
+    UnityEngine APIs, and game-logic code. Forwards L on through CSharp (NaturalLanguage, default
+    English) for the content language of identifiers and comments — bare Unity is
+    Unity(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

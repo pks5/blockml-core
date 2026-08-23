@@ -49,6 +49,11 @@
 
     General: keep &lt;is&gt; stable; put cross-links in references; prefer explicit baseType over
     implicit defaults; document partial members in contracts clearly.
+
+    Documentation formatting: block documentation is Markdown(English) by default — structure longer
+    prose with paragraphs, headings, lists, and inline code instead of one unbroken text; keep
+    summary plain text. Human-friendly formatting is a central part of BlockML
+    (doc:DocumentationModel).
   </documentation>
 
   <references>

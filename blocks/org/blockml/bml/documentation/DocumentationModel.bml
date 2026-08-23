@@ -21,7 +21,7 @@
   <baseType>core:Documentation</baseType>
   <is>A guide to Block documentation</is>
 
-  <documentation>
+  <documentation><![CDATA[
     Every root block definition carries a documentation model at the definition site — single
     source of truth inside BML files:
 
@@ -32,7 +32,7 @@
       represents. Noun phrase; several words when name/type alone is too thin — not purpose and not
       full technical detail. Urbild is a fixed BlockML term (keep German explicit in meta-prose):
       English/French gloss + (Urbild); German docs may use Urbild alone. WOT: the Block itself is
-      the Idea (Urbild); &lt;is&gt; names it in prose. Reflection: bml:Self.is. Omitted →
+      the Idea (Urbild); <is> names it in prose. Reflection: bml:Self.is. Omitted →
       BML_MISSING_IS. Motto: as simple as Lego at the designation; as powerful as SAP beneath.
     summary (required when documentation is too long) — short prose expansion between is and
       documentation; inherited from StructuralDefinition on blocks and members. Missing when
@@ -42,8 +42,9 @@
       documentation prose; inherits enclosing Library document language, then the English default
       authored on org.blockml.bml.core.Block.
     documentation (always required on every Block definition) — technical description of the Block
-      definition itself; optional language attribute when prose deviates from effective block
-      language. Omitted → BML_MISSING_DOCUMENTATION.
+      definition itself; Markdown(English) by default, with an optional language attribute
+      (Markdown(NaturalLanguage) or a bare NaturalLanguage) when prose deviates from the effective
+      block language. Omitted → BML_MISSING_DOCUMENTATION.
     isNot (required when confusion risk exists, blocks only) — what this Block is not; block-level
       disambiguation. Reflection: bml:Self.isNot. Missing when required → BML_MISSING_IS_NOT.
     aliases aggregation (optional, blocks only) — core.Alias[]; domain FixedAlias catalogue blocks, meta.FreeTextAlias; shorthand → FreeTextAlias only.
@@ -57,12 +58,95 @@
 
     Natural language inheritance (documentation prose and example titles) — Definition meta only,
     not a core:Block / BlockLibrary member:
-    Library document &lt;language&gt; → Block document &lt;language&gt; → documentation / change / see
-    language attribute. Unqualified names inside &lt;language&gt; and on documentation, change, and
-    see language= resolve via org.blockml.bml.language.*. Authors declare language only when
-    deviating from the effective inherited language. Example title language always follows the
+    Library document <language> → Block document <language> → documentation / change / see
+    language attribute. Unqualified names inside <language> and on documentation, change, and
+    see language= resolve via org.blockml.bml.language.*. On documentation the natural language is
+    either the generic argument of Markdown (Markdown(German)) or the bare shorthand (German); on
+    change and see language= it is always the NaturalLanguage itself, since those bodies carry no
+    markup. Authors declare language only when deviating from the effective inherited language. Example title language always follows the
     enclosing block — example language attribute applies to CDATA content only (implementation
     dialect: OpenSCAD, TypeScript, …) and also resolves via org.blockml.bml.language.*.
+
+    ## Documentation, Summary, Markdown and CDATA
+
+    `summary` and `documentation` serve different purposes and therefore use different content
+    models:
+
+        summary         → plain text
+        documentation   → Markdown(English) by default
+
+    ### Summary
+
+    `summary` is a short, presentation-independent description for contexts such as lists, search
+    results, explorers, tooltips, and IDE tooling. It is **plain text** and does not support
+    Markdown:
+
+        <summary>A generic block for describing a reusable component.</summary>
+
+    ### Documentation
+
+    `documentation` is rich textual content and uses Markdown by default. The default is declared by
+    the documentation definition itself as `Markdown(English)`
+    (def:StructuralDefinition.Documentation.language), so authors normally **do not** write the
+    `language` attribute:
+
+        <documentation>
+        A **Block** is the fundamental unit of BlockML.
+        </documentation>
+
+    is semantically equivalent to:
+
+        <documentation language="Markdown(English)">
+        A **Block** is the fundamental unit of BlockML.
+        </documentation>
+
+    The explicit `language` attribute is only necessary when overriding the default. It is bound to
+    `Markdown(NaturalLanguage) | NaturalLanguage`: `Markdown` forwards `MarkupLanguage.L`
+    (NaturalLanguage, default English), so the natural language travels as the generic argument —
+    `language="Markdown(German)"` for German prose, `language="Markdown"` being the same as
+    `Markdown(English)`. A bare natural language stays valid as shorthand: `language="German"` means
+    `Markdown(German)`. Both forms denote the same i18n entry, so do not author them side by side on
+    one definition element.
+
+    ### CDATA usage
+
+    Markdown itself does **not** require CDATA. CDATA is purely an XML serialization mechanism and
+    has no semantic meaning for documentation. The serialization rule is:
+
+        no XML escaping required   → ordinary XML text
+        XML escaping required      → prefer CDATA over entity escaping
+
+    Documentation should be ordinary XML text when nothing needs escaping. When the content contains
+    characters that would require escaping — especially `<` and `&` — the body is wrapped in a
+    `<![CDATA[` … section, because that keeps the authored Markdown readable. Preferred payload:
+
+        Returns `true` when `value < maximum && enabled`.
+
+    Avoid entity escaping when CDATA can preserve the original content verbatim — the same payload
+    written as `value &lt; maximum &amp;&amp; enabled` is the form to avoid. This block itself is
+    serialized as CDATA for exactly that reason.
+
+    ### CDATA terminators inside CDATA
+
+    XML CDATA sections cannot be nested: the sequence `]]` followed by `>` terminates the current
+    section. This occurs when Markdown documentation contains XML or BML examples that themselves
+    contain CDATA. A serializer must therefore split the CDATA section around such a sequence so
+    that the original text is preserved losslessly.
+
+    This is purely a serialization concern. Ordinary XML text, a single CDATA section, and split
+    CDATA sections all represent the same documentation content after parsing.
+
+    **Principle:** `Markdown(English)` is the default semantics of `documentation`; CDATA is only an
+    XML representation detail, used when necessary to keep BML readable.
+
+    ### Human-friendly formatting
+
+    Block documentation is Markdown and should be written as such — in particular the main
+    documentation of a Block, and in particular for longer texts. Use paragraphs, headings, lists,
+    and inline code to make the structure visible. Long block documentation without paragraph breaks
+    is to be avoided; readable formatting for humans and LLMs is a central part of BlockML, not
+    decoration. `summary` stays a single plain-text paragraph — when documentation grows long enough
+    to need structure, that is exactly when summary becomes required.
 
     Authoring split:
     • documentation carries technical prose only
@@ -100,7 +184,7 @@
     org.blockml.bml.core.Documentation. TaskGuide blocks (org.blockml.bml.task.*) inherit from
     org.blockml.bml.core.TaskGuide. Diagnostic blocks (org.blockml.bml.diagnostic.*) inherit from
     org.blockml.bml.core.Diagnostic.
-  </documentation>
+  ]]></documentation>
 
   <references>
     <see type="doc:DefinitionModel" relation="SeeAlso">
@@ -108,6 +192,9 @@
     </see>
     <see type="lang:NaturalLanguage" relation="Extends">
       Natural language branch — documentation prose and example titles.
+    </see>
+    <see type="lang:Markdown" relation="Defines">
+      Default content language of documentation — Markdown(English) unless overridden.
     </see>
     <see type="core:Block" relation="SeeAlso">
       Root block — documents is, language, documentation, references on every definition.

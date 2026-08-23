@@ -19,11 +19,15 @@
 
   <documentation>Abstract branch for programming languages — TypeScript, OpenSCAD, PseudoCode, and
     other languages with defined or interpretable syntax. Generic parameter L (NaturalLanguage,
-    default English) names the optional content/text language of the formal code — for example
-    Pseudocode prose, identifiers, or LLM-oriented wording. Bare ProgrammingLanguage and concrete
-    sub-types (TypeScript, PseudoCode, …) omit L and resolve to English; declare
-    ProgrammingLanguage(German) or baseType ProgrammingLanguage(lang:German) only when the content
-    language matters.</documentation>
+    default English) names the content/text language of the formal code — for example pseudocode
+    prose, identifiers, or LLM-oriented wording.
+
+    Concrete sub-types forward L via baseType ProgrammingLanguage(L) and redeclare it locally, so the
+    parameter stays open on the sub-type — PseudoCode(German) is authorable and
+    PseudoCode(NaturalLanguage) is usable as a type bound. Because L defaults to English, a bare
+    sub-type name needs no argument: TypeScript ≡ TypeScript(English). Binding L in baseType instead
+    (ProgrammingLanguage(lang:German)) fixes the content language for that sub-type and closes the
+    parameter.</documentation>
 
   <genericTypes>
     <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>

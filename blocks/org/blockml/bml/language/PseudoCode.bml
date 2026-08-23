@@ -13,12 +13,16 @@
 
   <name>PseudoCode</name>
   <type>lang:PseudoCode</type>
-  <baseType>lang:ProgrammingLanguage</baseType>
+  <baseType>lang:ProgrammingLanguage(L)</baseType>
   <is>The PseudoCode programming language</is>
 
   <documentation>ProgrammingLanguage for free-form pseudocode implementations. The code must be
-    internally consistent but is otherwise unconstrained — an LLM may interpret it. Inherits
+    internally consistent but is otherwise unconstrained — an LLM may interpret it. Forwards
     ProgrammingLanguage.L (NaturalLanguage, default English) — declare a content language only when
-    the pseudocode prose is not English (for example a specialised block with baseType
-    ProgrammingLanguage(lang:German)).</documentation>
+    the pseudocode prose is not English, directly on this language (PseudoCode(German)); bare
+    PseudoCode is PseudoCode(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

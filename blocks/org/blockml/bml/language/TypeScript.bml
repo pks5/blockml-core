@@ -13,9 +13,15 @@
 
   <name>TypeScript</name>
   <type>lang:TypeScript</type>
-  <baseType>lang:ProgrammingLanguage</baseType>
+  <baseType>lang:ProgrammingLanguage(L)</baseType>
   <is>The TypeScript programming language</is>
 
   <documentation>ProgrammingLanguage for TypeScript arrow-function implementations on Capabilities.
-    V1: compile-time execution when all arguments are literals.</documentation>
+    V1: compile-time execution when all arguments are literals. Forwards ProgrammingLanguage.L
+    (NaturalLanguage, default English) for the content language of identifiers and comments — bare
+    TypeScript is TypeScript(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

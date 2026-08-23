@@ -13,8 +13,14 @@
 
   <name>CSharp</name>
   <type>lang:CSharp</type>
-  <baseType>lang:ProgrammingLanguage</baseType>
+  <baseType>lang:ProgrammingLanguage(L)</baseType>
   <is>The C# programming language</is>
 
-  <documentation>ProgrammingLanguage for C# method implementations on Capabilities.</documentation>
+  <documentation>ProgrammingLanguage for C# method implementations on Capabilities. Forwards
+    ProgrammingLanguage.L (NaturalLanguage, default English) for the content language of identifiers
+    and comments — bare CSharp is CSharp(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

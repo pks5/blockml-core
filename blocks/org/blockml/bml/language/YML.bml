@@ -13,9 +13,14 @@
 
   <name>YML</name>
   <type>lang:YML</type>
-  <baseType>lang:MarkupLanguage</baseType>
+  <baseType>lang:MarkupLanguage(L)</baseType>
   <is>The YAML markup language</is>
 
   <documentation>MarkupLanguage for YAML document implementations on Capabilities — configuration,
-    structured data, or templates.</documentation>
+    structured data, or templates. Forwards MarkupLanguage.L (NaturalLanguage, default English) for
+    the content/text language inside the document — bare YML is YML(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

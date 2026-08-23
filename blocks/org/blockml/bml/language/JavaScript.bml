@@ -13,8 +13,14 @@
 
   <name>JavaScript</name>
   <type>lang:JavaScript</type>
-  <baseType>lang:ProgrammingLanguage</baseType>
+  <baseType>lang:ProgrammingLanguage(L)</baseType>
   <is>The JavaScript programming language</is>
 
-  <documentation>ProgrammingLanguage for JavaScript function implementations on Capabilities.</documentation>
+  <documentation>ProgrammingLanguage for JavaScript function implementations on Capabilities. Forwards
+    ProgrammingLanguage.L (NaturalLanguage, default English) for the content language of identifiers
+    and comments — bare JavaScript is JavaScript(English).</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+  </genericTypes>
 </block>

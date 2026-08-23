@@ -16,6 +16,7 @@
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language"
   xmlns:type="org.blockml.bml.type">
 
@@ -53,7 +54,15 @@
       <documentation>Short prose expansion of semantic meaning — typically three to five sentences
         between is and full documentation. Primary input for LLM context bundles and quick human
         orientation; is names the Idea (Urbild), summary adds scope and boundaries without full technical
-        detail. May repeat for i18n (language=) and optional QName facets (e.g. scad:summary) —
+        detail.
+
+        Content model: plain text. summary carries no markup language and does not support Markdown —
+        it is presentation-independent so that lists, search results, explorers, tooltips, and IDE
+        tooling can render it verbatim. Keep it to one short paragraph; structure belongs in
+        documentation. Its language= names a NaturalLanguage only — there is no markup default to
+        override (contrast documentation, whose default is Markdown(English)).
+
+        May repeat for i18n (language=) and optional QName facets (e.g. scad:summary) —
         facet namespaces resolve to Annotations (not NaturalLanguage). Required: default-namespace entry when canonical
         documentation is too long; optional only when that documentation alone remains easy to read.
         Missing when required → BML_MISSING_SUMMARY. Duplicate (namespace, languageFqn) →
@@ -61,8 +70,18 @@
         com.foo.Bar.summary (default NS + effective language); collection com.foo.Bar.summaries.</documentation>
     </summary>
     <documentation type="Documentation" bml:xml="element">
-      <documentation>Technical documentation prose for this definition element. May repeat for i18n
-        (language= NaturalLanguage) and optional QName facets (e.g. scad:document) — facet
+      <documentation>Technical documentation prose for this definition element.
+
+        Content model: Markdown by default — the effective default is Markdown(English), declared as
+        the default value of the language property on the Documentation Sub-Block. Authors therefore
+        do not write language= for ordinary Markdown prose; the attribute is only needed to name a
+        different natural language — as the generic argument of Markdown (Markdown(German)) or by the
+        bare-language shorthand (German), which means the same thing. Markdown
+        is expected to be used: give longer prose headings, paragraphs, lists, and inline code
+        instead of one unbroken block of text — human-friendly formatting is part of BlockML, not
+        decoration.
+
+        May repeat for i18n (language=) and optional QName facets (e.g. scad:document) — facet
         namespaces resolve to Annotations (org.blockml.bml.core.Annotation), not locales. Always required: ≥1 default-namespace documentation on every
         Block definition (root and Sub-Blocks). Omitted → BML_MISSING_DOCUMENTATION. When canonical
         prose grows too long for a quick scan, authors must also supply default-namespace summary.
@@ -165,8 +184,11 @@
       <documentation>Describes one documentation prose entry on any
         org.blockml.bml.definition.StructuralDefinition (block, property, aggregation, …). Rendered
         as a documentation element (optionally QName-prefixed for Annotation facets) with optional language
-        attribute and a trimmed text body. Authors may place multiple siblings: i18n via language=
-        (NaturalLanguage); facets via annotation element namespace (e.g. scad:document from
+        attribute and a trimmed text body. The body is Markdown(English) by default — see the
+        language and content properties for the content model and the CDATA serialization rules.
+        Authors may place multiple siblings: i18n via language=
+        (Markdown(NaturalLanguage) or a bare NaturalLanguage); facets via annotation element namespace
+        (e.g. scad:document from
         Annotation.Document). Facet namespaces are Annotations, not locales. Maps to BOM documentations[] DocumentationProseEntry
         { namespace, text, languageFqn }. Identity (namespace, languageFqn) within documentations[] —
         duplicate → BML_DUPLICATE_DOCUMENTATION. Declared as a repeatable property shape on
@@ -175,15 +197,44 @@
       <bml:xml>documentation</bml:xml>
 
       <properties>
-        <language type="TypeReference(lang:NaturalLanguage)" bml:xml="attribute">
-          <documentation>Optional NaturalLanguage when this documentation text is written in a
-            language other than the effective language of the enclosing definition element. Unqualified
-            names resolve via implicit namespace org.blockml.bml.language.*. Omitted = inherit
-            effective language from Block or Library.</documentation>
+        <language type="TypeReference(lang:Markdown(lang:NaturalLanguage) | lang:NaturalLanguage)" bml:xml="attribute">
+          <value>lang:Markdown(lang:English)</value>
+          <documentation>Content language of this documentation text — Markdown carrying its natural
+            language as the generic argument L. Default Markdown(English): documentation prose is
+            Markdown unless stated otherwise, so authors normally omit this attribute.
+            &lt;documentation&gt;A **Block** is …&lt;/documentation&gt; is semantically equivalent to
+            &lt;documentation language="Markdown(English)"&gt;A **Block** is …&lt;/documentation&gt;.
+
+            Bound to Markdown(NaturalLanguage) | NaturalLanguage —
+            org.blockml.bml.language.Markdown forwards MarkupLanguage.L (NaturalLanguage, default
+            English), so the first alternative admits Markdown with any natural language argument,
+            while the second keeps the bare-language shorthand:
+            • omitted — Markdown in the effective natural language of the enclosing definition
+              element (Block, then Library, then the English default)
+            • language="Markdown" — same as Markdown(English) via the L defaultType
+            • language="Markdown(German)" — German Markdown prose
+            • language="German" — shorthand for Markdown(German): a NaturalLanguage names the prose
+              language and keeps the Markdown default
+
+            Unqualified names resolve via implicit namespace org.blockml.bml.language.*, generic
+            argument included. Identity is the resolved natural language, stored as
+            DocumentationProseEntry.languageFqn: German and Markdown(German) denote the same entry —
+            authoring both on one definition element is a duplicate
+            (BML_DUPLICATE_DOCUMENTATION) — whereas Markdown(German) beside Markdown(English) are
+            two distinct i18n entries.</documentation>
         </language>
         <content type="Text" bml:xml="text">
           <documentation>Technical description text. Stored as trimmed body in BOM
-            DocumentationProseEntry.text on the enclosing definition element's documentations[].</documentation>
+            DocumentationProseEntry.text on the enclosing definition element's documentations[].
+
+            Markdown needs no CDATA — CDATA is an XML serialization mechanism with no semantic
+            meaning for documentation. Serialize as ordinary XML text when no escaping is required,
+            and prefer CDATA over entity escaping when the text contains characters that would
+            otherwise be escaped (notably &lt; and &amp;), because CDATA keeps the authored Markdown
+            readable. Ordinary text, one CDATA section, and split CDATA sections all parse to the
+            same content. A serializer must split CDATA when the text itself contains the terminator
+            sequence, since CDATA sections cannot nest. See doc:DocumentationModel — Documentation,
+            Summary, Markdown and CDATA.</documentation>
         </content>
       </properties>
     

@@ -31,7 +31,9 @@
     • Capability inputType / outputType → org.blockml.bml.type.*
     • Implementation language attribute → org.blockml.bml.language.*
     • language element child → org.blockml.bml.language.* (NaturalLanguage)
-    • language attribute on documentation → org.blockml.bml.language.* (NaturalLanguage)
+    • language attribute on documentation → org.blockml.bml.language.*
+      (Markdown(NaturalLanguage) | NaturalLanguage — the generic argument resolves in the same
+      namespace)
     • language attribute on change → org.blockml.bml.language.* (NaturalLanguage)
     • language attribute on see → org.blockml.bml.language.* (NaturalLanguage)
     • relation attribute on see → org.blockml.bml.relation.* (Relation)
@@ -44,7 +46,9 @@
     • &lt;width type="Integer" /&gt; → org.blockml.bml.type.Integer
     • &lt;implementation language="TypeScript"&gt; → org.blockml.bml.language.TypeScript
     • &lt;language&gt;&lt;English /&gt;&lt;/language&gt; → org.blockml.bml.language.English
-    • &lt;documentation language="German"&gt; → org.blockml.bml.language.German
+    • &lt;documentation language="Markdown(German)"&gt; → org.blockml.bml.language.Markdown with
+      L = org.blockml.bml.language.German (shorthand &lt;documentation language="German"&gt; resolves
+      to the same entry)
     • &lt;change version="2.0.0" language="German"&gt; → org.blockml.bml.language.German
     • &lt;see file="guide.md" language="English"&gt; → org.blockml.bml.language.English
     • &lt;see type="core:Block" relation="Extends"&gt; → org.blockml.bml.relation.Extends

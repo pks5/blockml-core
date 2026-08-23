@@ -9,14 +9,48 @@
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
   xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language">
 
   <name>Markdown</name>
   <type>lang:Markdown</type>
-  <baseType>lang:MarkupLanguage</baseType>
+  <baseType>lang:MarkupLanguage(L)</baseType>
   <is>The Markdown markup language</is>
 
-  <documentation>MarkupLanguage for Markdown document implementations on Capabilities — prose
-    with lightweight structure (headings, lists, links, code fences). Inherits MarkupLanguage.L
-    (NaturalLanguage, default English) for the content/text language of the Markdown body.</documentation>
+  <documentation>MarkupLanguage for Markdown prose — documentation bodies and Markdown document
+    implementations on Capabilities — with lightweight structure (headings, lists, links, code
+    fences).
+
+    Generic parameter L (NaturalLanguage, default English) is forwarded from MarkupLanguage and names
+    the content language of the Markdown body: Markdown = Markdown(English), Markdown(German) for
+    German prose. Because L is forwarded rather than bound, Markdown(NaturalLanguage) is a usable
+    type bound — def:StructuralDefinition.Documentation.language binds
+    Markdown(NaturalLanguage) | NaturalLanguage, where the bare-language alternative is shorthand for
+    Markdown in that language.
+
+    Also the default content language of documentation prose: Markdown(English) is the default value
+    of language on def:StructuralDefinition.Documentation, so every &lt;documentation&gt; body is
+    Markdown unless it declares otherwise. summary is plain text and never Markdown. CDATA is an XML
+    serialization detail — Markdown itself never requires it. See doc:DocumentationModel —
+    Documentation, Summary, Markdown and CDATA.</documentation>
+
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="lang:English">
+      <documentation>Content language of the Markdown body. Forwarded from
+        org.blockml.bml.language.MarkupLanguage — bare Markdown is Markdown(English).</documentation>
+    </L>
+  </genericTypes>
+
+  <references>
+    <see type="def:StructuralDefinition" relation="Defines">
+      Documentation.language default Markdown(English) — documentation content model.
+    </see>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      summary vs documentation content models, CDATA serialization, formatting expectations.
+    </see>
+    <see type="lang:MarkupLanguage" relation="Extends">
+      Markup branch — generic L names the natural language of the Markdown body.
+    </see>
+  </references>
 </block>
