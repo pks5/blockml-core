@@ -53,6 +53,12 @@
     • type="Transformation" on Capability → org.blockml.bml.capability.Transformation
     • validation="Error" on constraint → org.blockml.bml.validation.Error
 
+    Resolution applies per type reference, including inside composed type expressions. In an
+    anonymous StructType on inputType / outputType, every field type is resolved on its own —
+    { list: core:ValueType[], index: Integer } resolves list via the xmlns prefix core and index via
+    the site's implicit namespace to org.blockml.bml.type.Integer. A qualified field type is never
+    ambiguous with the field-name separator (doc:TypeExpressions — Anonymous StructTypes).
+
     General block references have no implicit namespace — baseType, aggregation type,
     InstanceReference type arguments, and composition instance tags require a full FQN or xmlns prefix.
     Explicit FQNs and xmlns prefixes remain valid everywhere, including at specialized sites.
@@ -61,6 +67,9 @@
   <references>
     <see type="doc:BmlNamespace" relation="SeeAlso">
       Mandatory domain.bml namespace — FQN layout.
+    </see>
+    <see type="doc:TypeExpressions" relation="SeeAlso">
+      Per-field resolution inside anonymous StructTypes and other composed type expressions.
     </see>
     <see type="doc:DocumentationModel" relation="ReadNext">
       Next — is, documentation, references on Block definitions.

@@ -13,6 +13,7 @@
                       "
   xmlns:cap="org.blockml.bml.capability"
   xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language"
   xmlns:service="org.blockml.bml.service"
   xmlns:type="org.blockml.bml.type">
@@ -23,18 +24,35 @@
   <is>A list expression service</is>
 
   <documentation>Built-in lists service. Expression prefix #lists.* — list construction,
-    indexing, and aggregation utilities.</documentation>
+    indexing, and aggregation utilities.
+
+    Inputs typed core:ValueType[] are compatible with a collection of any element type, because
+    collections are compared per element type and every ValueType is assignable to ValueType:
+    Integer[] &lt;: Number[] &lt;: PrimitiveType[] &lt;: ValueType[], Text[] &lt;: ValueType[]. Elements are
+    validated independently, so heterogeneous collections such as [1, "text", true] are accepted
+    here. Capabilities declaring a narrower element type are homogeneous by that element type —
+    sequence returns Integer[], where [1, "text", 3] would be invalid. Element access (first, last,
+    get) declares core:ValueType as output — the element type of its core:ValueType[] input; the
+    concrete ValueType of the returned element follows the list element at runtime.
+
+    Multi-argument capabilities use an anonymous StructType whose field types are full
+    TypeExpressions — { list: core:ValueType[], index: Integer } on get is one anonymous StructType
+    with a qualified, multiplicity-carrying list field and an unqualified index field.
+    See doc:TypeExpressions — Collection compatibility · Heterogeneous collections ·
+    Anonymous StructTypes.</documentation>
   <capabilities>
 
     <!-- #lists.size(list) -->
     <size
       type="Transformation"
-      inputType="Object[]"
+      inputType="core:ValueType[]"
       outputType="Integer">
       <documentation>
         Returns the number of elements in list.
+        core:ValueType[] accepts Integer[], Text[], … and heterogeneous element types alike.
         Examples:
         #lists.size([1, 2, 3]) → 3
+        #lists.size([1, "text", true]) → 3
       </documentation>
       <implementation language="TypeScript"><![CDATA[
         (list: unknown[]): number => list.length
@@ -44,7 +62,7 @@
     <!-- #lists.isEmpty(list) -->
     <isEmpty
       type="Transformation"
-      inputType="Object[]"
+      inputType="core:ValueType[]"
       outputType="Boolean">
       <documentation>
         Returns true if list has no elements.
@@ -59,7 +77,7 @@
     <!-- #lists.contains(list, element) -->
     <contains
       type="Transformation"
-      inputType="{ list: Object[], element: Object }"
+      inputType="{ list: core:ValueType[], element: core:ValueType }"
       outputType="Boolean">
       <documentation>
         Returns true if list contains element.
@@ -74,13 +92,15 @@
     <!-- #lists.first(list) -->
     <first
       type="Transformation"
-      inputType="Object[]"
-      outputType="Float">
+      inputType="core:ValueType[]"
+      outputType="core:ValueType">
       <documentation>
         Returns the first element of list.
-        Return type follows list element type at runtime.
+        The declared output type is the input's element type — the concrete ValueType of the
+        returned element follows the list element at runtime.
         Examples:
         #lists.first([10, 20, 30]) → 10
+        #lists.first(["a", "b"]) → "a"
       </documentation>
       <implementation language="TypeScript"><![CDATA[
         (list: unknown[]): unknown => list[0]
@@ -90,11 +110,12 @@
     <!-- #lists.last(list) -->
     <last
       type="Transformation"
-      inputType="Object[]"
-      outputType="Float">
+      inputType="core:ValueType[]"
+      outputType="core:ValueType">
       <documentation>
         Returns the last element of list.
-        Return type follows list element type at runtime.
+        The declared output type is the input's element type — the concrete ValueType of the
+        returned element follows the list element at runtime.
         Examples:
         #lists.last([10, 20, 30]) → 30
       </documentation>
@@ -106,11 +127,12 @@
     <!-- #lists.get(list, index) -->
     <get
       type="Transformation"
-      inputType="{ list: Object[], index: Integer }"
-      outputType="Float">
+      inputType="{ list: core:ValueType[], index: Integer }"
+      outputType="core:ValueType">
       <documentation>
         Returns the element at index in list.
-        Return type follows list element type at runtime.
+        The declared output type is the list's element type — the concrete ValueType of the
+        returned element follows the list element at runtime.
         Examples:
         #lists.get([10, 20, 30], 1) → 20
       </documentation>
@@ -122,12 +144,14 @@
     <!-- #lists.concat(a, b, ...) -->
     <concat
       type="Transformation"
-      inputType="(Object[])[]"
-      outputType="Object[]">
+      inputType="(core:ValueType[])[]"
+      outputType="core:ValueType[]">
       <documentation>
         Concatenates all list arguments into a single list.
+        Argument element types need not match — the result element type is core:ValueType.
         Examples:
         #lists.concat([1, 2], [3, 4]) → [1, 2, 3, 4]
+        #lists.concat([1, 2], ["a"]) → [1, 2, "a"]
       </documentation>
       <implementation language="TypeScript"><![CDATA[
         (...lists: unknown[][]): unknown[] => lists.flat()
@@ -146,6 +170,8 @@
       <documentation>
         Generates a sequence of integers from start to end (inclusive).
         step defaults to 1 when start &lt;= end, -1 when start &gt; end.
+        The Integer[] result is assignable to Number[] and core:ValueType[] — collections are
+        compatible per element type.
         Examples:
         #lists.sequence(1, 5) → [1, 2, 3, 4, 5]
         #lists.sequence(0, 10, 2) → [0, 2, 4, 6, 8, 10]

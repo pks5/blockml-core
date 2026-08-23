@@ -8,7 +8,8 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
-  xmlns:core="org.blockml.bml.core">
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation">
 
   <name>ValueType</name>
   <type>core:ValueType</type>
@@ -18,7 +19,14 @@
   <documentation>ValueType branch of BlockML. Semantic unit for property and Capability types
     (primitives, structs, enums). A ValueType never stores data — it describes the nature of a
     value. All concrete values are stored exclusively in Properties. Only ValueTypes may appear as
-    property type or Capability inputType/outputType.</documentation>
+    property type or Capability inputType/outputType.
+
+    Top of the value assignability hierarchy — every PrimitiveType, StructType, EnumType, and
+    ConstantType is assignable to ValueType. With multiplicity, compatibility is evaluated against
+    the referenced element type: ValueType[] accepts zero or more values whose concrete ValueType is
+    assignable to ValueType, each element validated independently, so element types may differ
+    within one collection. See doc:TypeExpressions — Collection compatibility ·
+    Heterogeneous collections.</documentation>
   <abstract>true</abstract>
 
 </block>

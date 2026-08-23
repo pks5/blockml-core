@@ -19,7 +19,7 @@
 
   <documentation>T binds to org.blockml.bml.type.Text. The value property holds the regex pattern.</documentation>
   <genericTypes>
-    <T baseType="String"/>
+    <T baseType="type:Text"/>
   </genericTypes>
 
   <properties>

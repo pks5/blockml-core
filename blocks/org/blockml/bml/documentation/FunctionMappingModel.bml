@@ -37,6 +37,10 @@
       declaration order
     • Collection field { values: T[0..n] } → exactly one positional sequence argument — not
       fixed-arity multi-arg expansion
+    Anonymous struct field types are full TypeExpressions — qualified references, multiplicity,
+    unions, and nested anonymous structs included ({ list: core:ValueType[], index: Integer }). Arity
+    and named keys come from the field list; the field types themselves do not change the mapping
+    (doc:TypeExpressions — Anonymous StructTypes).
 
     Canonical call forms normalize to the same logical input value (positional, named name=expr,
     or object literal). Default FunctionMapping (when no explicit mapping is declared):

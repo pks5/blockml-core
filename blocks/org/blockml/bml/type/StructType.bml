@@ -52,6 +52,19 @@
     Named object literals (size="{ x: 4, y: 2, z: 3 }") and attribute syntax on StructType
     instances (&lt;Size3d x="4" y="2" z="3"/&gt;) are type-equivalent authoring forms.
 
+    Anonymous StructTypes — { field: Type, … } is a StructType without a declared name, written
+    directly in a type expression; it is the mechanism for structured Capability inputs. Each field
+    is Identifier ":" TypeExpression, so a field type is a full type expression and not merely an
+    unqualified type name: qualified references, multiplicity, generics, unions, instance
+    configuration, and nested anonymous StructTypes are all valid.
+    • { list: core:ValueType[], index: Integer } — qualified reference with multiplicity
+    • { values: foo:Thing[1..n] } · { value: Integer | Text } · { nested: { x: Integer, y: Integer } }
+    The field-name separator and the prefix colon of a qualified reference sit at different grammar
+    levels (list : core:ValueType[]) — unambiguous, not a naming conflict. Field declaration order is
+    significant exactly as for named StructTypes. Rejecting a qualified field type while accepting an
+    unqualified one is a parser / mapper limitation, not a type-expression ambiguity.
+    See doc:TypeExpressions — Anonymous StructTypes.
+
     Used wherever BlockML declares or validates structured values:
     • Property &lt;type&gt; references (for example type="com.machineblocks.bml.type.Size3d")
     • Block instances of the StructType as composition children or property payloads

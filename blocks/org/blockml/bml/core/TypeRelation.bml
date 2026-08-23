@@ -9,7 +9,8 @@
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
   xmlns:core="org.blockml.bml.core"
-  xmlns:relation="org.blockml.bml.relation">
+  xmlns:relation="org.blockml.bml.relation"
+  xmlns:type="org.blockml.bml.type">
 
   <name>TypeRelation</name>
   <type>core:TypeRelation</type>

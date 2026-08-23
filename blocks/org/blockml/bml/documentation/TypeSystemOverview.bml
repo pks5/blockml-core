@@ -45,6 +45,13 @@
     • bml:Self — resolves to effective current Block type after inheritance
     • T — generic parameter reference from declaring Block's genericTypes
 
+    Assignability follows the branch hierarchy — a value of a subtype is accepted wherever a
+    supertype is required, with ValueType as the top of the value hierarchy:
+    Integer &lt;: Number &lt;: PrimitiveType &lt;: ValueType. A type reference with multiplicity is
+    compatible per element type: Integer[] &lt;: Number[] &lt;: ValueType[], and each element of a
+    collection is validated independently, so ValueType[] also accepts mixed element types
+    (doc:TypeExpressions — Collection compatibility · Heterogeneous collections).
+
     Only ValueTypes may appear where a bare type name is required (Property type,
     Capability inputType/outputType). Aggregation type may be any Block FQN. Association type
     must be InstanceReference(T) or InstanceReference(T)[] — bare Block FQNs are invalid.

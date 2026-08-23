@@ -11,6 +11,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:service="org.blockml.bml.service"
   xmlns:type="org.blockml.bml.type">
 
   <name>TypeExpressions</name>
@@ -24,11 +25,11 @@
 
     ValueType = named semantic meaning (Primitive · Enum · Struct · Constant)
     TypeExpression = usage or combination (multiplicity · union · generic application · instance
-    configuration · bml:Self · T)
+    configuration · anonymous StructType · bml:Self · T)
 
     Examples: Integer[] · Integer[3] · Integer[0..n] · Boolean | Integer · Box(Integer) ·
     InstanceReference(core:Block) · SelectiveGrid(Boolean | HoleType) · Text{maxLength: 100} ·
-    bml:Self · T
+    { x: Integer, y: Integer } · bml:Self · T
 
     In type="…" XML attributes, generic applications use round parentheses (not angle brackets) so
     values stay valid XML. Generic type arguments may be full type expressions — unions,
@@ -54,11 +55,78 @@
     Applies commonly on aggregation/association types and capability input fields; bare properties
     are usually exactly one value.
 
+    Collection compatibility — for a type reference with multiplicity, compatibility is evaluated
+    against the referenced element type. If S is assignable to T (S &lt;: T), then a collection of S
+    values is assignable to a collection of T values, provided the source multiplicity is compatible
+    with the target multiplicity — collections are covariant in their element type:
+
+      S &lt;: T
+      ---------------
+      S[] &lt;: T[]
+
+    With Integer &lt;: Number &lt;: PrimitiveType &lt;: ValueType:
+    • Integer[] &lt;: Number[] · Integer[] &lt;: PrimitiveType[] · Integer[] &lt;: ValueType[]
+    • Text[] &lt;: ValueType[] · SomeStruct[] &lt;: ValueType[]
+    • Integer[3] &lt;: Number[] — but Integer[] is not assignable to Number[1..2] (bounds do not fit)
+
+    A value assigned to a collection type is validated element by element against the referenced
+    element type. core:ValueType[] accepts zero or more values where every element's concrete
+    ValueType is assignable to ValueType — therefore:
+    • [1, 2, 3] → valid as Integer[], as Number[], and as ValueType[]
+    • ["a", "b"] → valid as Text[] and as ValueType[]
+
+    Heterogeneous collections — a collection type does not require all elements to have the same
+    concrete subtype. Each element is validated independently against the declared element type:
+    • ValueType[] : [1, "text", true] is valid, because Integer &lt;: ValueType, Text &lt;: ValueType,
+      and Boolean &lt;: ValueType
+    • Integer[] : [1, 2, 3] is valid — [1, "text", 3] is invalid, because Text is not assignable to
+      Integer
+    An element whose type is not assignable to the declared element type is rejected
+    (BML_INVALID_PROPERTY on authored member values, BML_EXPR_TYPE_MISMATCH on expression payloads);
+    an element count outside the multiplicity bounds → BML_CARDINALITY_VIOLATION.
+
     Unions — alternatives with |. Match order is left to right, first hit wins (no best-match).
     Prefer narrower / sentinel alternatives on the left (Boolean | Text, not Text | Boolean).
     Later alternatives that can never win → BML_UNREACHABLE_UNION_ALTERNATIVE (warning). Singleton
     alternatives use Constant(T){value: …} (doc:ConstantValueType). Future literal shorthand
     Boolean | "auto" desugars to Constant form.
+
+    Anonymous StructTypes — { field: Type, … } is the type-expression form of a StructType without a
+    declared name, and the mechanism for structured Capability inputs. The grammar is recursive:
+
+      AnonymousStruct := "{" StructField ("," StructField)* "}"
+      StructField     := Identifier ":" TypeExpression
+
+    Because the right side of a field is a full TypeExpression — not merely an unqualified type name
+    — qualified type references, multiplicity, generic applications, unions, instance configuration,
+    and nested anonymous StructTypes are all valid field types:
+    • { list: core:ValueType[], index: Integer } — qualified reference with multiplicity
+    • { values: foo:Thing[1..n] } · { value: Integer | Text } · { nested: { x: Integer, y: Integer } }
+
+    The colon separating a field name from its type and the colon inside a qualified type reference
+    belong to different grammar levels and are unambiguous:
+
+      list : core:ValueType[]
+           ^     ^
+           |     +-- prefix colon of a qualified TypeReference (xmlns prefix + local name)
+           +-- field name / type separator
+
+    So { list: core:ValueType[], index: Integer } is one anonymous StructType with field list of type
+    core:ValueType[] and field index of type Integer. Field declaration order is significant — same
+    contract as named StructTypes (doc:FunctionMappingModel).
+
+    Braces are disambiguated by position: a { opening a type expression starts an anonymous
+    StructType whose field values are TypeExpressions; a { directly following a type reference is
+    ValueType instance configuration whose field values are literals — Text{maxLength: 100}
+    (doc:ValueTypeConfiguration). Each field type resolves like any other type reference at that
+    site: unqualified names via the site's implicit namespace (Integer → org.blockml.bml.type.Integer
+    on inputType / outputType), prefixed names via xmlns, full FQNs always
+    (doc:ImplicitNamespaceResolution).
+
+    Conformance note — an implementation that accepts { list: Integer[], index: Integer } but rejects
+    { list: core:ValueType[], index: Integer } is missing support for qualified type references
+    inside anonymous StructType fields. That is a parser / mapper limitation, not a semantic
+    ambiguity in the type expression.
 
     Bare type name sites (Property type, Capability inputType/outputType) require ValueTypes (plus
     type expressions over them). Aggregation type may be any Block FQN (plain composition or
@@ -87,6 +155,24 @@
     </see>
     <see type="diag:BML_INVALID_PROPERTY_TYPE" relation="SeeAlso">
       Non-ValueType used where a ValueType is required.
+    </see>
+    <see type="core:ValueType" relation="SeeAlso">
+      Top of the assignability hierarchy — ValueType[] accepts any collection of values.
+    </see>
+    <see type="type:StructType" relation="SeeAlso">
+      Named StructType branch — anonymous { field: Type } is its unnamed type-expression form.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      Per-field name resolution inside anonymous StructTypes — implicit namespace vs xmlns vs FQN.
+    </see>
+    <see type="doc:FunctionMappingModel" relation="SeeAlso">
+      Anonymous StructType field order — call arity and named argument keys.
+    </see>
+    <see type="diag:BML_CARDINALITY_VIOLATION" relation="SeeAlso">
+      Element count outside the multiplicity bounds.
+    </see>
+    <see type="service:Lists" relation="SeeAlso">
+      core:ValueType[] capability inputs — worked examples of collection compatibility.
     </see>
     <see type="type:InstanceReference" relation="SeeAlso">
       Association member types — InstanceReference(T) or InstanceReference(T)[].
