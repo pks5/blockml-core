@@ -1,0 +1,5 @@
+{
+    "srcDir": "blocks",
+    "libraries": ["./blocks/org/blockml/bml/Library.bml"],
+    "xsdValidation": false
+  }

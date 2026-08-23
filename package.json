@@ -17,5 +17,11 @@
     ],
     "publishConfig": {
       "access": "public"
+    },
+    "scripts": {
+      "validate": "blockml validate --all"
+    },
+    "devDependencies": {
+      "@blockml/cli": "^0.1.0"
     }
   }
