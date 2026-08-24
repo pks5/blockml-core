@@ -1,0 +1,169 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.CoreUseCases
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:lang="org.blockml.bml.language">
+
+  <name>CoreUseCases</name>
+  <type>doc:CoreUseCases</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to the three core BlockML use cases</is>
+
+  <summary>The three core use cases BlockML is designed around — structured project documentation,
+    general-purpose domain modeling, and AI workspaces — all built on one principle: information is
+    represented as a structured semantic model instead of unstructured text.</summary>
+
+  <documentation>
+    BlockML is designed around three core use cases. They build on the same principle:
+    **information is represented as a structured, semantic model instead of unstructured text or
+    implementation-specific data.**
+
+    ## 1. Structured Project Documentation
+
+    BlockML can be used as a structured alternative to Markdown for project documentation.
+
+    Traditional documentation is primarily written for humans. Markdown improves readability and
+    portability, but its structure remains largely implicit. BlockML makes that structure explicit
+    while preserving human-readable content such as Markdown inside documentation blocks.
+
+    A BlockML document can therefore serve simultaneously as:
+
+    • documentation for humans,
+    • context for AI systems,
+    • structured input for software tools,
+    • and a machine-processable source for generated documentation.
+
+    Because BlockML has a defined object model and can be processed by parsers, validators,
+    compilers, and renderers, documentation is no longer merely text attached to a project. It
+    becomes part of the project's structured model.
+
+        BML Documentation
+              │
+              ├──→ Human / AI
+              ├──→ Markdown
+              ├──→ HTML
+              ├──→ BlockDoc
+              └──→ other representations
+
+    The important distinction is that the generated documentation is not the source of truth.
+    **The BlockML model is.**
+
+    ## 2. General-Purpose Domain Modeling
+
+    BlockML can describe arbitrary domains.
+
+    A domain defines its vocabulary as Blocks, types, properties, relationships, capabilities,
+    constraints, and compositions. Concrete models can then be expressed using that vocabulary.
+
+    BlockML itself does not prescribe what these models represent. They may describe software
+    systems, infrastructure, IAM configurations, physical objects, user interfaces, business
+    processes, documentation structures, or entirely new domains.
+
+    Renderers interpret these semantic models for a particular target. The same BlockML model may
+    therefore have multiple manifestations.
+
+        Domain Model
+             │
+             ▼
+            BML
+             │
+             ├──→ Renderer A → Code
+             ├──→ Renderer B → Configuration
+             ├──→ Renderer C → Documentation
+             ├──→ Renderer D → UI
+             └──→ Renderer E → Domain-specific output
+
+    The renderer determines the output format and interpretation; the model remains independent of
+    any particular target. This separation is fundamental to BlockML's renderer architecture.
+
+    **BlockML describes what something is. Renderers decide how that description manifests in a
+    particular environment.**
+
+    ## 3. AI Workspaces
+
+    BlockML can serve as the persistent model of an AI workspace.
+
+    Instead of giving an AI a collection of documents and repeatedly asking it to produce new text,
+    the AI works directly on a structured BlockML model.
+
+    The model represents the current state of the work. The AI can inspect it, validate it, extend
+    it, and transform it while preserving explicit structure and semantics.
+
+    This makes it possible to represent not only the final result, but also intermediate states of a
+    process:
+
+        Initial Model
+             │
+             ▼
+          Analysis
+             │
+             ▼
+        Planning Model
+             │
+             ▼
+        Transformation
+             │
+             ▼
+        Refined Model
+             │
+             ▼
+         Validation
+             │
+             ▼
+         Final Model
+             │
+             ├──→ Renderer
+             ├──→ Compiler
+             └──→ further AI transformation
+
+    Stages, tasks, decisions, constraints, intermediate results, and final artifacts can all become
+    explicit parts of the workspace rather than disappearing into prompts and conversation history.
+
+    The AI is therefore no longer primarily generating isolated outputs. **It is operating on and
+    evolving a persistent model.**
+
+    This turns BlockML from a representation format into a foundation for model-driven AI workflows:
+
+    > **The model is the workspace. The AI works on the model. Renderers manifest its current
+    > state.**
+  </documentation>
+
+  <references>
+    <see type="doc:Introduction" relation="Prerequisite">
+      BlockML goals, BML vs BOM, and the domain-agnostic compiler — read before the use cases.
+    </see>
+    <see type="core:Documentation" relation="Extends">
+      Documentation as Blocks — the mechanism behind use case 1 (structured project documentation).
+    </see>
+    <see type="lang:Markdown" relation="SeeAlso">
+      Markdown as documentation content language — human-readable prose inside a structured model.
+    </see>
+    <see type="doc:DocumentationModel" relation="DeepDive">
+      Block documentation model — is, summary, documentation, references, examples.
+    </see>
+    <see type="doc:RendererFreedom" relation="DeepDive">
+      Renderer freedom — the target decides how a model manifests (use case 2).
+    </see>
+    <see type="doc:CompilerArchitecture" relation="SeeAlso">
+      Parser, validator, renderer pipeline that processes the model in all three use cases.
+    </see>
+    <see type="doc:BootstrapModel" relation="SeeAlso">
+      Reading entry and context bundles — how humans and AI enter a BlockML model (use case 3).
+    </see>
+    <see type="doc:WOTFoundation" relation="SeeAlso">
+      Optional background — Idea, Manifestation, and World behind the model/renderer split.
+    </see>
+    <see type="doc:EverythingIsABlock" relation="ReadNext">
+      Next reading step — the central ontological principle these use cases rest on.
+    </see>
+  </references>
+
+</block>

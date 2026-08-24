@@ -223,6 +223,9 @@
     <see type="relation:ReadNext" relation="Defines">
       Relation block for forward links between documentation blocks (Next reading step).
     </see>
+    <see type="doc:CoreUseCases" relation="SeeAlso">
+      Structured project documentation use case — BlockML as structured alternative to Markdown.
+    </see>
     <see type="doc:BootstrapModel" relation="ReadNext">
       Next reading step — README.bml, ReadFirst, TaskIndex, bootstrap context.
     </see>

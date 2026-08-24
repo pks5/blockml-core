@@ -49,6 +49,9 @@
     <see type="doc:EverythingIsABlock" relation="SeeAlso">
       Semantic layer vs compiler; renderer freedom.
     </see>
+    <see type="doc:CoreUseCases" relation="SeeAlso">
+      Domain modeling use case — one model, many renderer manifestations.
+    </see>
     <see type="doc:LibrarySystem" relation="ReadNext">
       Next reading step — libraries, packages, namespaces, versioning.
     </see>

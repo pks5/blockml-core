@@ -64,6 +64,9 @@
     <see type="doc:EverythingIsABlock" relation="SeeAlso">
       Everything is a Block — grammar includes types, languages, and documentation.
     </see>
+    <see type="doc:CoreUseCases" relation="SeeAlso">
+      Applied Idea vs Manifestation — documentation, domain modeling, and AI workspaces.
+    </see>
   </references>
 
 </block>

@@ -41,8 +41,11 @@
     <see type="core:Block" relation="Extends">
       Universal semantic unit — sole inheritance root of the BlockML grammar.
     </see>
-    <see type="doc:EverythingIsABlock" relation="ReadNext">
-      Next reading step — the central ontological principle of BlockML.
+    <see type="doc:CoreUseCases" relation="ReadNext">
+      Next reading step — structured documentation, domain modeling, and AI workspaces.
+    </see>
+    <see type="doc:EverythingIsABlock" relation="SeeAlso">
+      The central ontological principle of BlockML.
     </see>
   </references>
 

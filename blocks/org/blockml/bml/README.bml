@@ -21,8 +21,9 @@
 
   <documentation>
     README block for the BlockML core library. Start with references marked relation=ReadFirst —
-    thirty-four documentation blocks in mental learning order. The early entries form the BlockML
-    conceptual core — including the type system and expression language (${ } and &lt;$ $&gt;).
+    thirty-five documentation blocks in mental learning order. The early entries form the BlockML
+    conceptual core — the core use cases, the type system, and the expression language
+    (${ } and &lt;$ $&gt;).
     Later entries cover conventions, authoring rules (visibility, overrides, member authoring,
     composition, annotations, directives, type identity, Sub-Blocks, contracts, constraints),
     organisation, and background knowledge.
@@ -37,6 +38,10 @@
 
     <see type="doc:Introduction" relation="ReadFirst">
       Start here — BlockML goals and overview.
+    </see>
+
+    <see type="doc:CoreUseCases" relation="ReadFirst">
+      Why BlockML exists — structured documentation, domain modeling, AI workspaces.
     </see>
 
     <see type="doc:EverythingIsABlock" relation="ReadFirst">

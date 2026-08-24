@@ -252,6 +252,7 @@
         <unit:Inch />
         <unit:Degree />
         <doc:Introduction />
+        <doc:CoreUseCases />
         <doc:EverythingIsABlock />
         <doc:BlockAndInstance />
         <doc:DefinitionModel />

@@ -72,6 +72,9 @@
     <see type="lang:TypeScript" relation="SeeAlso">
       Example Language block — programming language implementation contract.
     </see>
+    <see type="doc:CoreUseCases" relation="SeeAlso">
+      What the principle is used for — structured documentation, domain modeling, AI workspaces.
+    </see>
     <see type="doc:BlockAndInstance" relation="ReadNext">
       Next reading step — definition vs instance vs composition.
     </see>
