@@ -33,8 +33,8 @@
     -->
     <formatDecimal
       type="Transformation"
-      inputType="{ x: Float, minInt: Integer, decPoint: String, minFrac: Integer }"
-      outputType="String">
+      inputType="{ x: Float, minInt: Integer, decPoint: Text, minFrac: Integer }"
+      outputType="Text">
       <documentation>
         Formats x as a decimal string.
         minInt: minimum integer digits (0 omits leading zero before decimal point).

@@ -71,7 +71,7 @@
   </language>
 
   <properties>
-    <description>
+    <description override="true">
       <value>BlockML core library</value>
     </description>
   </properties>

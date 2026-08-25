@@ -29,8 +29,8 @@
     <!-- #strings.trim(s) -->
     <trim
       type="Transformation"
-      inputType="String"
-      outputType="String">
+      inputType="Text"
+      outputType="Text">
       <documentation>
         Removes leading and trailing whitespace from s.
         Examples:
@@ -44,8 +44,8 @@
     <!-- #strings.toUpperCase(s) -->
     <toUpperCase
       type="Transformation"
-      inputType="String"
-      outputType="String">
+      inputType="Text"
+      outputType="Text">
       <documentation>
         Converts s to uppercase.
         Examples:
@@ -59,8 +59,8 @@
     <!-- #strings.toLowerCase(s) -->
     <toLowerCase
       type="Transformation"
-      inputType="String"
-      outputType="String">
+      inputType="Text"
+      outputType="Text">
       <documentation>
         Converts s to lowercase.
         Examples:
@@ -74,8 +74,8 @@
     <!-- #strings.concat(a, b, ...) -->
     <concat
       type="Transformation"
-      inputType="String[]"
-      outputType="String">
+      inputType="Text[]"
+      outputType="Text">
       <documentation>
         Concatenates all string arguments.
         Examples:
@@ -89,7 +89,7 @@
     <!-- #strings.length(s) -->
     <length
       type="Transformation"
-      inputType="String"
+      inputType="Text"
       outputType="Integer">
       <documentation>
         Returns the length of s.
@@ -104,7 +104,7 @@
     <!-- #strings.contains(s, fragment) -->
     <contains
       type="Transformation"
-      inputType="{ s: String, fragment: String }"
+      inputType="{ s: Text, fragment: Text }"
       outputType="Boolean">
       <documentation>
         Returns true if s contains fragment.
@@ -119,7 +119,7 @@
     <!-- #strings.startsWith(s, prefix) -->
     <startsWith
       type="Transformation"
-      inputType="{ s: String, prefix: String }"
+      inputType="{ s: Text, prefix: Text }"
       outputType="Boolean">
       <documentation>
         Returns true if s starts with prefix.
@@ -134,7 +134,7 @@
     <!-- #strings.endsWith(s, suffix) -->
     <endsWith
       type="Transformation"
-      inputType="{ s: String, suffix: String }"
+      inputType="{ s: Text, suffix: Text }"
       outputType="Boolean">
       <documentation>
         Returns true if s ends with suffix.
@@ -149,7 +149,7 @@
     <!-- #strings.indexOf(s, fragment) -->
     <indexOf
       type="Transformation"
-      inputType="{ s: String, fragment: String }"
+      inputType="{ s: Text, fragment: Text }"
       outputType="Integer">
       <documentation>
         Returns the index of fragment in s, or -1 if not found.
@@ -164,8 +164,8 @@
     <!-- #strings.substring(s, start, end) -->
     <substring
       type="Transformation"
-      inputType="{ s: String, start: Integer, end: Integer }"
-      outputType="String">
+      inputType="{ s: Text, start: Integer, end: Integer }"
+      outputType="Text">
       <documentation>
         Returns the substring of s from start (inclusive) to end (exclusive).
         Examples:
@@ -179,8 +179,8 @@
     <!-- #strings.replace(s, target, replacement) -->
     <replace
       type="Transformation"
-      inputType="{ s: String, target: String, replacement: String }"
-      outputType="String">
+      inputType="{ s: Text, target: Text, replacement: Text }"
+      outputType="Text">
       <documentation>
         Replaces the first occurrence of target in s with replacement.
         Examples:
@@ -195,8 +195,8 @@
     <!-- #strings.replaceAll(s, target, replacement) -->
     <replaceAll
       type="Transformation"
-      inputType="{ s: String, target: String, replacement: String }"
-      outputType="String">
+      inputType="{ s: Text, target: Text, replacement: Text }"
+      outputType="Text">
       <documentation>
         Replaces all occurrences of target in s with replacement.
         Examples:
