@@ -19,10 +19,11 @@
       "access": "public"
     },
     "scripts": {
-      "validate": "blockml validate --all",
-      "compile:fatblock": "blockml compile blocks/org/blockml/bml/Library.bml fatblock --src blocks/org/blockml/bml --out fat"
+      "validate": "blockml validate",
+      "compile:fatblock": "blockml compile fatblock",
+      "compile:blockdoc": "blockml compile blockdoc"
     },
     "devDependencies": {
-      "@blockml/cli": "^0.7.1"
+      "@blockml/cli": "^0.8.0"
     }
   }
