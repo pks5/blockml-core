@@ -23,6 +23,6 @@
       "compile:fatblock": "blockml compile blocks/org/blockml/bml/Library.bml fatblock --src blocks/org/blockml/bml --out fat"
     },
     "devDependencies": {
-      "@blockml/cli": "^0.7.0"
+      "@blockml/cli": "^0.7.1"
     }
   }
