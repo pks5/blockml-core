@@ -33,12 +33,14 @@ Full details: [`documentation/CoreUseCases.bml`](blocks/org/blockml/bml/document
 
 Start with `README.bml`; the library descriptor points there via the `readMe` aggregation.
 
-Validate the sources in this repository with the [BlockML CLI](https://www.npmjs.com/package/@blockml/cli):
+Install dependencies, then validate the sources with the [BlockML CLI](https://www.npmjs.com/package/@blockml/cli):
 
 ```bash
 npm install
-npm run validate
+npx blockml validate
 ```
+
+The same CLI commands apply to this repository and to any custom BlockML project (see [BlockML CLI](#3-blockml-cli)).
 
 ## Creating your own library
 
@@ -49,7 +51,6 @@ mypackage/
 ├── blocks/
 │   └── com/mydomain/bml/
 │       └── Library.bml
-├── bom.config.json
 ├── package.json
 └── README.md
 ```
@@ -61,10 +62,10 @@ The directory structure under `blocks/` follows the Block FQN namespace, and `Li
 ```bash
 npm init
 npm install @blockml/core
-npm install --save-dev @blockml/cli
+npm i -D @blockml/cli
 ```
 
-`@blockml/core` is a regular dependency when your library builds on core definitions; the CLI is only needed for development and validation.
+`@blockml/core` is a regular dependency when your library builds on core definitions. `@blockml/cli` is a development dependency; after installing it, run the tools with `npx blockml …`.
 
 ### 2. Declare the library in `package.json`
 
@@ -73,36 +74,34 @@ npm install --save-dev @blockml/cli
   "blockml": {
     "library": "./blocks/com/mydomain/bml/Library.bml"
   },
-  "files": ["blocks", "README.md", "LICENSE"],
-  "scripts": {
-    "validate": "blockml validate --all"
-  }
+  "files": ["blocks", "README.md", "LICENSE"]
 }
 ```
 
 * `blockml.library` gives tooling a deterministic entry point into the installed package, instead of scanning it for a library definition.
 * `files` must include `blocks` — otherwise consumers install the package without the BML definitions.
 
-### 3. Add `bom.config.json`
+### 3. BlockML CLI
 
-```json
-{
-  "srcDir": "blocks",
-  "libraries": ["./blocks/com/mydomain/bml/Library.bml"],
-  "xsdValidation": false
-}
-```
-
-While `package.json` exposes the library to *consumers of the npm package*, `bom.config.json` configures the *local BlockML project and tooling*: `srcDir` is the root of the BML sources, and `libraries` lists the libraries belonging to the project.
-
-### 4. Validate and publish
+The [BlockML CLI](https://www.npmjs.com/package/@blockml/cli) is the same tooling for every BlockML project that includes it — this repository and any custom library.
 
 ```bash
-npm run validate
-npm publish
+npx blockml validate                 # validate project-owned BML
+npx blockml validate --all           # validate all BML, including node_modules
+npx blockml compile blockdoc         # generate BlockDoc from the project library
+npx blockml compile fatblock         # generate FatBlock from the project library
+npx blockml search "search terms"    # search BML files, including node_modules
+npx blockml search index             # build the search index
 ```
 
-`validate --all` runs the configured validation stages on all BML sources without producing renderer output — rendering is a separate, target-specific operation. Run it during development and in CI before publishing.
+Validation does not produce renderer output — rendering is a separate, target-specific operation (`compile`). Run `validate` during development and in CI before publishing.
+
+### 4. Publish
+
+```bash
+npx blockml validate
+npm publish
+```
 
 ## License
 

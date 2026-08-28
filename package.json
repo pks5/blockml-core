@@ -1,6 +1,6 @@
 {
     "name": "@blockml/core",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "The BlockML Core Library",
     "license": "Apache-2.0",
     "blockml": {
@@ -17,11 +17,6 @@
     ],
     "publishConfig": {
       "access": "public"
-    },
-    "scripts": {
-      "validate": "blockml validate",
-      "compile:fatblock": "blockml compile fatblock",
-      "compile:blockdoc": "blockml compile blockdoc"
     },
     "devDependencies": {
       "@blockml/cli": "^0.8.1"
