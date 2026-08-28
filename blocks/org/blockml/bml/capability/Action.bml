@@ -1,0 +1,22 @@
+<!--
+  BlockML Core — capbility type branch (capability implementation contract)
+
+  FQN: org.blockml.bml.core.Capability
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:cap="org.blockml.bml.capability"
+  xmlns:core="org.blockml.bml.core">
+
+  <name>Action</name>
+  <type>cap:Action</type>
+  <baseType>core:Capability</baseType>
+  <is>A side-effecting behaviour endpoint</is>
+
+  <documentation>Action capability. Behaviour that neither consumes an external payload nor
+    produces one — a pure side effect or command (trigger, reset, refresh, invalidate).
+    Inherits _hasInput=false and _hasOutput=false; inputType and outputType are forbidden.</documentation>
+</block>

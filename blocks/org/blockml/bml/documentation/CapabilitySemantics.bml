@@ -28,6 +28,7 @@
     • Inbound — receives input from outside (setValue, configure); requires inputType; no outputType
     • Outbound — produces output to outside (getValue, emit); requires outputType; no inputType
     • Transformation — maps input to output (compute, format, render); requires both
+    • Action — performs a side effect or command (trigger, reset, refresh); no inputType, no outputType
     Async reply via replyTo is a runtime/message pattern — not modeled on the Capability.
 
     Unqualified Capability type resolves to org.blockml.bml.capability.*; unqualified inputType /
@@ -79,6 +80,9 @@
     </see>
     <see type="cap:Transformation" relation="Defines">
       Transformation capability kind — maps input to output.
+    </see>
+    <see type="cap:Action" relation="Defines">
+      Action capability kind — side effect, no payload in or out.
     </see>
     <see type="lang:PseudoCode" relation="SeeAlso">
       Free-form pseudocode — preferred for semantic descriptions readable by LLMs.

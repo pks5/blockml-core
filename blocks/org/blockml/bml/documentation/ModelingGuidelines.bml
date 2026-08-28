@@ -37,7 +37,7 @@
     Capabilities:
     • All behaviour — init, get/set, render, domain operations — express as Capabilities
     • Prefer PseudoCode or natural language implementations for semantic descriptions
-    • Use Inbound/Outbound/Transformation kinds to describe intent, not compiler behaviour
+    • Use Inbound/Outbound/Transformation/Action kinds to describe intent, not compiler behaviour
     • Public surface of a Block is Capabilities — Properties are internal configuration
 
     Constraints:

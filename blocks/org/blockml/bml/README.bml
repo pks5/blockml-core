@@ -81,7 +81,7 @@
     </see>
 
     <see type="doc:CapabilitySemantics" relation="ReadFirst">
-      Inbound, Outbound, Transformation — all behaviour as Capabilities.
+      Inbound, Outbound, Transformation, Action — all behaviour as Capabilities.
     </see>
 
     <see type="doc:Expressions" relation="ReadFirst">

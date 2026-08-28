@@ -132,6 +132,7 @@
         <cap:Inbound />
         <cap:Outbound />
         <cap:Transformation />
+        <cap:Action />
         <constraint:AllowedChildType />
         <constraint:AggregationConstraint />
         <constraint:AssociationConstraint />

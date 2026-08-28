@@ -29,7 +29,7 @@
     (empty string). Member identity is (resolvedNamespace, localName). Maps to BOM
     CapabilityDefinition (kind: "capability") with typeFqn, inputType, outputType, and optional
     implementation binding. Inbound requires inputType; Outbound requires
-    outputType; Transformation requires both. inputType and outputType use TypeExpression syntax and
+    outputType; Transformation requires both; Action requires neither. inputType and outputType use TypeExpression syntax and
     must resolve to ValueTypes. Scalar capability fields (type, inputType, outputType) follow
     org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
     attribute preferred on Block instances. Structured implementation remains a child element.</documentation>
@@ -46,6 +46,9 @@
     </see>
     <see type="cap:Transformation" relation="Requires">
       Capability typeFqn — requires inputType and outputType.
+    </see>
+    <see type="cap:Action" relation="SeeAlso">
+      Capability typeFqn — forbids inputType and outputType.
     </see>
     <see type="core:Language" relation="SeeAlso">
       Implementation language bindings.
@@ -64,19 +67,19 @@
 
   <properties>
     <type type="TypeReference(core:Capability)" bml:xml="element|attribute">
-      <documentation>Capability kind FQN — Inbound, Outbound, or Transformation. Unqualified names
-        resolve via org.blockml.bml.capability.*. On definitions, element preferred; on Block
+      <documentation>Capability kind FQN — Inbound, Outbound, Transformation, or Action. Unqualified
+        names resolve via org.blockml.bml.capability.*. On definitions, element preferred; on Block
         instances, attribute preferred.</documentation>
     </type>
     <inputType type="TypeReference(core:ValueType)" bml:xml="element|attribute">
       <documentation>TypeExpression for the inbound payload. Required on Inbound and Transformation;
-        forbidden on Outbound. Must resolve to a ValueType branch. On definitions, element preferred;
-        on Block instances, attribute preferred.</documentation>
+        forbidden on Outbound and Action. Must resolve to a ValueType branch. On definitions, element
+        preferred; on Block instances, attribute preferred.</documentation>
     </inputType>
     <outputType type="TypeReference(core:ValueType)" bml:xml="element|attribute">
       <documentation>TypeExpression for the outbound payload. Required on Outbound and Transformation;
-        forbidden on Inbound. Must resolve to a ValueType branch. On definitions, element preferred;
-        on Block instances, attribute preferred.</documentation>
+        forbidden on Inbound and Action. Must resolve to a ValueType branch. On definitions, element
+        preferred; on Block instances, attribute preferred.</documentation>
     </outputType>
     <implementation type="Implementation" bml:xml="element">
       <documentation>Optional target-language implementation binding for this capability. Rendered as
