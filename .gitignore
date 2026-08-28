@@ -21,6 +21,6 @@ Temporary Items
 node_modules
 
 # BlockML
-.fat.bml
+*.fat.bml
 blockdoc
 .blockml
