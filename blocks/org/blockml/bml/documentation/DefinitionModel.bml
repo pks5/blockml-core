@@ -31,6 +31,8 @@
       override and boolean implementation; CapabilityDefinition overrides implementation
     • AssociationDefinition — instance-to-instance model links (not documentation References)
     • PropertyDefinition, AggregationDefinition, CapabilityDefinition
+      (CapabilityDefinition.throws lists Exception types the Capability may raise —
+      type:TypeReferenceEntity(core:Exception)[], analogous to a Java method throws clause)
     • GenericTypeDefinition
 
     org.blockml.bml.definition.StructuralDefinition declares:
@@ -74,6 +76,9 @@
     </see>
     <see type="def:PropertyDefinition" relation="Defines">
       Meta-model member shape for property declarations.
+    </see>
+    <see type="def:CapabilityDefinition" relation="Defines">
+      Capability member shape — inputType, outputType, throws, implementation.
     </see>
     <see type="core:Block" relation="Extends">
       Sole inheritance root — definitions inherit like all other Blocks.

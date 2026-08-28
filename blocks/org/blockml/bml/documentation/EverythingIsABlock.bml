@@ -30,7 +30,7 @@
     • Languages (TypeScript, OpenSCAD, PseudoCode) are Blocks — capability implementation contracts
     • Definition meta-model types (PropertyDefinition, StructuralDefinition sub-blocks) are Blocks
     • Documentation blocks (this branch) are Blocks
-    • Libraries, Services, Constraints, Capabilities — all Blocks
+    • Libraries, Services, Constraints, Capabilities, Exceptions — all Blocks
 
     Two layers must be distinguished:
     • Authoring ontology (BML / WOT): Block = named definable unit with FQN and baseType chain

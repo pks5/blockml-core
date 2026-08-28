@@ -22,17 +22,26 @@
   <baseType>def:MemberDefinition</baseType>
   <is>A Capability member declaration</is>
 
-  <documentation>Describes a Block member defining how the Block communicates. Rendered as a child
+  <documentation>
+    Describes a Block member defining how the Block communicates. Rendered as a child
     element inside the capabilities container; the XML element name is the capability name
     (bml:xml="${ #this.name }"). An optional XML prefix on the element name supplies the member
     namespace — resolved via xmlns to BOM namespace; unprefixed elements use the default namespace
-    (empty string). Member identity is (resolvedNamespace, localName). Maps to BOM
-    CapabilityDefinition (kind: "capability") with typeFqn, inputType, outputType, and optional
-    implementation binding. Inbound requires inputType; Outbound requires
-    outputType; Transformation requires both; Action requires neither. inputType and outputType use TypeExpression syntax and
-    must resolve to ValueTypes. Scalar capability fields (type, inputType, outputType) follow
+    (empty string). Member identity is (resolvedNamespace, localName).
+
+    Maps to BOM CapabilityDefinition (kind: "capability") with typeFqn, inputType, outputType,
+    optional throws, and optional implementation binding. Inbound requires inputType; Outbound
+    requires outputType; Transformation requires both; Action requires neither. inputType and
+    outputType use TypeExpression syntax and must resolve to ValueTypes.
+
+    throws lists Exception types this Capability may raise — the BlockML equivalent of a Java
+    method throws clause (type:TypeReferenceEntity(core:Exception)[]).
+
+    Scalar capability fields (type, inputType, outputType) follow
     org.blockml.bml.definition.MemberDefinition placement rules — element preferred on definitions,
-    attribute preferred on Block instances. Structured implementation remains a child element.</documentation>
+    attribute preferred on Block instances. Structured implementation remains a child element;
+    throws is an aggregation of TypeReferenceEntity children.
+  </documentation>
 
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
@@ -56,12 +65,18 @@
     <see type="core:ValueType" relation="SeeAlso">
       inputType and outputType payload types.
     </see>
+    <see type="core:Exception" relation="Requires">
+      throws aggregation — Exception types this Capability may raise.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="Requires">
+      Entity payload for throws type-reference children.
+    </see>
     <see type="core:Entity" relation="ContrastsWith">
       Implementation sub-block branch — structured language binding, not a ValueType.
     </see>
     <see type="def:MemberDefinition" relation="Extends">
       Parent type — override/abstract/final are local declaration properties on MemberDefinition;
-      capability adds an optional implementation binding element.
+      capability adds throws and an optional implementation binding element.
     </see>
   </references>
 
@@ -87,6 +102,18 @@
         ImplementationBlock.</documentation>
     </implementation>
   </properties>
+
+  <aggregations>
+    <throws type="type:TypeReferenceEntity(core:Exception)[]" bml:xml="element">
+      <documentation>Exception types this Capability may raise. Corresponds to a Java method
+        throws clause — the signature lists types, not Exception instances. Each child is a
+        TypeReferenceEntity instance whose value names a type that satisfies
+        satisfiesTypeBound(resolve(value), core:Exception). Empty children whose element QName is
+        not TypeReferenceEntity are sugar, e.g. &lt;io:FileNotFound /&gt; expands to
+        &lt;type:TypeReferenceEntity value="io:FileNotFound" /&gt;. Omitted or empty means no
+        declared exceptions. Document order preserved. On definitions, element form is required.</documentation>
+    </throws>
+  </aggregations>
 
   <subBlocks>
     <block>

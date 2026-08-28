@@ -41,7 +41,7 @@
 
   <documentation>
     Publishable BlockML core library (org.blockml.bml.Library). Exports the framework grammar:
-    core branches (Block, Annotation, ValueType, Language, Status, Relation, Constraint, Validation, Capability, Definition, Group),
+    core branches (Block, Annotation, ValueType, Language, Status, Relation, Constraint, Validation, Capability, Exception, Definition, Group),
     group branch (org.blockml.bml.group.MemberGroup, org.blockml.bml.group.BlockGroup),
     concrete value types and constraints, implementation languages, built-in services, lifecycle
     status blocks, the Definition meta-model branch (org.blockml.bml.definition.*), the language
@@ -100,6 +100,7 @@
         <core:Alias />
         <core:TaskGuide />
         <core:Diagnostic />
+        <core:Exception />
         <core:Capability />
         <core:Constraint />
         <core:Definition />

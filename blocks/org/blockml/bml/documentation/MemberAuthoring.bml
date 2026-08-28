@@ -115,7 +115,9 @@
 
     Capabilities on instances follow the Property pattern: attribute or child element, no extra
     wrapper. readOnly effective members must not be authored on instances
-    (BML_READONLY_MEMBER_WRITE).
+    (BML_READONLY_MEMBER_WRITE). Declared exception types are the throws aggregation on the Capability
+    declaration — TypeReferenceEntity children (empty-QName sugar), not instance wrappers
+    (doc:CapabilitySemantics).
   </documentation>
 
   <references>
@@ -128,8 +130,11 @@
     <see type="def:AggregationDefinition" property="composition" relation="Defines">
       Definition-only composition field on an Aggregation declaration.
     </see>
-    <see type="def:MemberDefinition" relation="SeeAlso">
-      Element preferred on declarations; member name as attribute preferred on instances.
+    <see type="def:CapabilityDefinition" aggregation="throws" relation="SeeAlso">
+      throws aggregation — TypeReferenceEntity children, not instance wrappers.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capability throws authoring — Java-style exception signatures.
     </see>
     <see type="doc:CompositionModel" relation="ReadNext">
       Next — composition placement, recursion, bml:container, and instance IDs.

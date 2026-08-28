@@ -23,7 +23,7 @@
   <documentation>
     Root semantic unit of BlockML — the sole inheritance root for all Block definitions.
     Every concept in the grammar is a Block: composable domain types, ValueTypes, Languages,
-    Status values, Constraints, Capabilities, Services, Libraries, and Definition meta-model
+    Status values, Constraints, Capabilities, Exceptions, Services, Libraries, and Definition meta-model
     types. Unqualified name Block resolves to this type.
 
     Role and constraints:
@@ -40,6 +40,7 @@
     • Aggregation member types may be any Block FQN
     • Association member types must be InstanceReference(T) or InstanceReference(T)[]
     • Property and Capability payload types must resolve to a ValueType
+    • Capability throws lists Exception types via TypeReferenceEntity — not ValueType payloads
     • Capability implementation language attributes reference org.blockml.bml.language.* — unqualified names permitted
 
     Documentation model (on every root block definition — see def:BlockDefinition /
@@ -80,6 +81,9 @@
     </see>
     <see type="core:Capability" relation="Extends">
       Capability implementation contracts.
+    </see>
+    <see type="core:Exception" relation="Extends">
+      Capability-thrown exception types listed on throws.
     </see>
     <see type="core:Definition" relation="Extends">
       Meta-model for block structure (WIP).

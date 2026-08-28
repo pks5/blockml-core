@@ -10,6 +10,7 @@
                       "
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
   <name>Capability</name>
@@ -17,8 +18,24 @@
   <baseType>core:Block</baseType>
   <is>A behaviour endpoint</is>
 
-  <documentation>Capability branch of BlockML. Declares a capability type. Every capability may
-    carry an implementation whose language attribute references a Language FQN.</documentation>
+  <documentation>
+    Capability branch of BlockML. Declares a capability type. Every capability may
+    carry an implementation whose language attribute references a Language FQN.
+
+    Exception types a capability may raise are declared on
+    org.blockml.bml.definition.CapabilityDefinition.throws
+    (type:TypeReferenceEntity(core:Exception)[]) — not on this branch type.
+  </documentation>
+
+  <references>
+    <see type="def:CapabilityDefinition" relation="Defines">
+      Capability member shape — inputType, outputType, throws, implementation.
+    </see>
+    <see type="core:Exception" relation="SeeAlso">
+      Exception types listed on Capability throws.
+    </see>
+  </references>
+
   <abstract>true</abstract>
 
   <properties>

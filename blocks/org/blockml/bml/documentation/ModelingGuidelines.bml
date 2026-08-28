@@ -39,6 +39,8 @@
     • Prefer PseudoCode or natural language implementations for semantic descriptions
     • Use Inbound/Outbound/Transformation/Action kinds to describe intent, not compiler behaviour
     • Public surface of a Block is Capabilities — Properties are internal configuration
+    • Declare throws for Exception types the Capability may raise
+      (type:TypeReferenceEntity(core:Exception)[] — Java-style method throws; omit when none)
 
     Constraints:
     • Declare on Properties via constraints aggregation — Constraint Block instances
@@ -65,6 +67,9 @@
     </see>
     <see type="core:Capability" relation="Extends">
       Capability branch — behaviour as the public semantic surface.
+    </see>
+    <see type="core:Exception" relation="SeeAlso">
+      Exception branch — types listed on Capability throws.
     </see>
     <see type="core:Constraint" relation="Extends">
       Constraint branch — reusable validation rules on Properties.

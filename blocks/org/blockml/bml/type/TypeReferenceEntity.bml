@@ -26,6 +26,7 @@
 
     Use on aggregation type attributes when children are type references stored as Entity instances:
     • type:TypeReferenceEntity(core:Block)[] — contracts, Library blocks
+    • type:TypeReferenceEntity(core:Exception)[] — CapabilityDefinition.throws
     • type:TypeReferenceEntity(core:Group)[] — StructuralDefinition.groups (narrowed on subtypes)
     • type:TypeReferenceEntity(group:MemberGroup)[] — MemberDefinition.groups
     • type:TypeReferenceEntity(group:BlockGroup)[] — BlockDefinition.groups
@@ -67,6 +68,9 @@
     </see>
     <see type="def:BlockDefinition" relation="Defines">
       contracts and language aggregations.
+    </see>
+    <see type="def:CapabilityDefinition" relation="Defines">
+      throws aggregation — TypeReferenceEntity(core:Exception)[].
     </see>
     <see type="core:BlockLibrary" relation="SeeAlso">
       readMe, bootstrap, dependencies, subLibraries, blocks aggregations.

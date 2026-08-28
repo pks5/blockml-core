@@ -29,7 +29,9 @@
 
     Capabilities have no separate parameter list — only inputType / outputType. FunctionMapping
     matters when a Capability is invoked as a function (built-ins, utility Sub-Blocks, expression
-    calls). Messaging transport ignores struct shape.
+    calls). Messaging transport ignores struct shape. Declared exception types live on
+    CapabilityDefinition.throws (type:TypeReferenceEntity(core:Exception)[]) and are not part of
+    FunctionMapping.
 
     inputType shapes:
     • Primitive → single positional or named argument

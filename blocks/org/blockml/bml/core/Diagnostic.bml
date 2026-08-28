@@ -25,6 +25,9 @@
     <see type="core:TaskGuide" relation="SeeAlso">
       Procedural fix guides linked via relation=Resolves.
     </see>
+    <see type="core:Exception" relation="ContrastsWith">
+      Capability-thrown exception types — not validator diagnostic codes.
+    </see>
   </references>
 
   <abstract>true</abstract>

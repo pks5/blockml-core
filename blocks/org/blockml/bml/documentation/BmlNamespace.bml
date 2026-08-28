@@ -33,7 +33,7 @@
     blocks/org/blockml/bml/core/Block.bml defines org.blockml.bml.core.Block.
 
     Typical BlockML branches (all under org.blockml.bml.*):
-    • org.blockml.bml.core.* — framework base types (Block, Annotation, ValueType, Status, Library, …)
+    • org.blockml.bml.core.* — framework base types (Block, Annotation, ValueType, Status, Capability, Exception, Library, …)
     • org.blockml.bml.annotation.* — concrete Annotations (BmlAnnotation)
     • org.blockml.bml.type.* — bootstrap ValueTypes
     • org.blockml.bml.service.* — built-in expression services (#math, #strings, …)

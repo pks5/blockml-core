@@ -1,0 +1,61 @@
+<!--
+  BlockML Core — capability exception branch
+
+  FQN: org.blockml.bml.core.Exception
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>Exception</name>
+  <type>core:Exception</type>
+  <baseType>core:Entity</baseType>
+  <is>A thrown exceptional condition</is>
+  <isNot>A validator diagnostic code</isNot>
+
+  <documentation><![CDATA[
+    Abstract branch for exception types that a Capability may declare it can raise.
+
+    Corresponds to Java exception classes used in a method `throws` clause: the type is listed
+    on the Capability signature; instances carry a human-readable message.
+
+    Domain libraries define concrete exception types extending this branch (for example
+    `com.example.bml.FileNotFound`). Capability members list those types on
+    `org.blockml.bml.definition.CapabilityDefinition.throws` via
+    `type:TypeReferenceEntity(core:Exception)[]` — empty-QName sugar such as `<io:FileNotFound />`.
+
+    Distinct from `org.blockml.bml.core.Diagnostic`, which catalogues validator and parser codes
+    rather than Capability-thrown failures.
+  ]]></documentation>
+
+  <references>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      throws on Capability members — Java-style exception signatures.
+    </see>
+    <see type="def:CapabilityDefinition" relation="Requires">
+      throws aggregation lists Exception types on a Capability member.
+    </see>
+    <see type="core:Diagnostic" relation="ContrastsWith">
+      Validator and parser diagnostic codes — not Capability-thrown exceptions.
+    </see>
+    <see type="core:Entity" relation="Extends">
+      Exception instances are Entities with identity and a message payload.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <properties>
+    <message type="Text">
+      <documentation>Human-readable explanation of the exceptional condition. Corresponds to the
+        message on a Java Exception instance (constructor argument / getMessage()). Owned by the
+        Exception instance — not by the Exception type definition.</documentation>
+    </message>
+  </properties>
+
+</block>
