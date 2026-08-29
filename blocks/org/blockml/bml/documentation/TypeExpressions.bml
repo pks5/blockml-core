@@ -90,6 +90,7 @@
     • Integer[] &lt;: Number[] · Integer[] &lt;: PrimitiveType[] · Integer[] &lt;: ValueType[]
     • Text[] &lt;: ValueType[] · SomeStruct[] &lt;: ValueType[]
     • Integer[3] &lt;: Number[] — but Integer[] is not assignable to Number[1..2] (bounds do not fit)
+    • Date[] &lt;: Temporal[] · DateTime[] &lt;: Temporal[] — Duration[] is not assignable to Temporal[]
 
     A value assigned to a collection type is validated element by element against the referenced
     element type. core:ValueType[] accepts zero or more values where every element's concrete

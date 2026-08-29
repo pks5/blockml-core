@@ -1,0 +1,50 @@
+<!--
+  BlockML Core — temporal primitive branch
+
+  FQN: org.blockml.bml.type.Temporal
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Temporal</name>
+  <type>type:Temporal</type>
+  <baseType>type:PrimitiveType</baseType>
+  <is>A calendar or clock position</is>
+
+  <documentation>Abstract temporal primitive branch under org.blockml.bml.type.PrimitiveType.
+    Concrete types: Date (calendar day), Time (time of day), DateTime (instant combining date and
+    time). Temporal types name a position on a calendar or clock — not a length of elapsed time.
+    Abstract temporal branch — not resolvable via Property.type implicit namespace; use Date, Time,
+    or DateTime explicitly.
+    Temporal types describe semantics only; values are stored in Properties.
+
+    Duration is a sibling primitive under PrimitiveType, not a Temporal subtype. DateTime minus
+    DateTime yields Duration; DateTime plus Duration yields DateTime; DateTime plus DateTime is
+    invalid.</documentation>
+  <abstract>true</abstract>
+
+  <references>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      PrimitiveType branches including Temporal.
+    </see>
+    <see type="type:Date" relation="SeeAlso">
+      Calendar-day subtype.
+    </see>
+    <see type="type:Time" relation="SeeAlso">
+      Time-of-day subtype.
+    </see>
+    <see type="type:DateTime" relation="SeeAlso">
+      Combined date-and-time subtype.
+    </see>
+    <see type="type:Duration" relation="ContrastsWith">
+      Elapsed-time magnitude — not a Temporal position.
+    </see>
+  </references>
+
+</block>

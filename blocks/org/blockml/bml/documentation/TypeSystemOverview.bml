@@ -24,7 +24,7 @@
 
     PrimitiveType — atomic scalar semantics; no stored values on the type itself.
     Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, Version,
-    TypeReference, InstanceReference.
+    TypeReference, InstanceReference, Date, Time, DateTime, Duration.
 
     StructType — custom value objects; structure via properties.
     Examples: Size3D, Address, Transform. Parameterized types (Box(T)) are StructTypes
@@ -48,10 +48,12 @@
 
     Assignability follows the branch hierarchy — a value of a subtype is accepted wherever a
     supertype is required, with ValueType as the top of the value hierarchy:
-    Integer &lt;: Number &lt;: PrimitiveType &lt;: ValueType. A type reference with multiplicity is
-    compatible per element type: Integer[] &lt;: Number[] &lt;: ValueType[], and each element of a
-    collection is validated independently, so ValueType[] also accepts mixed element types
-    (doc:TypeExpressions — Collection compatibility · Heterogeneous collections).
+    Integer &lt;: Number &lt;: PrimitiveType &lt;: ValueType. Date &lt;: Temporal &lt;:
+    PrimitiveType. Duration is a sibling of Temporal under PrimitiveType — not a Temporal subtype.
+    A type reference with multiplicity is compatible per element type: Integer[] &lt;: Number[]
+    &lt;: ValueType[], and each element of a collection is validated independently, so ValueType[]
+    also accepts mixed element types (doc:TypeExpressions — Collection compatibility · Heterogeneous
+    collections).
 
     Only ValueTypes may appear where a bare type name is required (Property type,
     Capability inputType/outputType). Aggregation type may be any Block FQN. Association type
@@ -92,6 +94,12 @@
     </see>
     <see type="type:Decimal" relation="SeeAlso">
       Default primitive for non-integer numeric values.
+    </see>
+    <see type="type:Temporal" relation="SeeAlso">
+      Temporal position branch — Date, Time, DateTime.
+    </see>
+    <see type="type:Duration" relation="SeeAlso">
+      Elapsed-time magnitude — not a Temporal subtype.
     </see>
     <see type="doc:TypeExpressions" relation="ReadNext">
       Next reading step — multiplicity, unions, and type-expression forms.

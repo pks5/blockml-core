@@ -1,0 +1,60 @@
+<!--
+  BlockML Core — calendar date primitive type
+
+  FQN: org.blockml.bml.type.Date
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Date</name>
+  <type>type:Date</type>
+  <baseType>type:Temporal</baseType>
+  <is>A calendar date</is>
+
+  <documentation>BOM Core primitive ValueType for a calendar day without a time of day. Unqualified
+    name Date resolves to org.blockml.bml.type.Date. Extends org.blockml.bml.type.Temporal. Payload
+    values are stored on Properties — not on the Date type itself.
+
+    Authored values use ISO 8601 calendar-date form YYYY-MM-DD (for example 2024-08-29). Date is a
+    position on the calendar, not an elapsed span — use Duration for lengths of time.
+
+    Optional configuration Properties (min, max) configure a Property's owned Date instance via
+    inline type syntax — Date{min: "2020-01-01", max: "2030-12-31"}. Positional order: min, max.</documentation>
+
+  <properties>
+    <min type="Date">
+      <documentation>Minimum allowed date (inclusive). Configured via Date{min: d}.</documentation>
+    </min>
+    <max type="Date">
+      <documentation>Maximum allowed date (inclusive). Configured via Date{max: d}.</documentation>
+    </max>
+  </properties>
+
+  <references>
+    <see type="type:Temporal" relation="Extends">
+      Abstract temporal position branch.
+    </see>
+    <see type="type:Time" relation="SeeAlso">
+      Time of day without a date.
+    </see>
+    <see type="type:DateTime" relation="SeeAlso">
+      Combined date and time.
+    </see>
+    <see type="type:Duration" relation="ContrastsWith">
+      Elapsed-time magnitude.
+    </see>
+    <see type="type:DateEntity" relation="SeeAlso">
+      Entity wrapper for Date values in composition or aggregation.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      min / max instance configuration.
+    </see>
+  </references>
+
+</block>

@@ -1,0 +1,61 @@
+<!--
+  BlockML Core — time-of-day primitive type
+
+  FQN: org.blockml.bml.type.Time
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Time</name>
+  <type>type:Time</type>
+  <baseType>type:Temporal</baseType>
+  <is>A time of day</is>
+
+  <documentation>BOM Core primitive ValueType for a time of day without a calendar date. Unqualified
+    name Time resolves to org.blockml.bml.type.Time. Extends org.blockml.bml.type.Temporal. Payload
+    values are stored on Properties — not on the Time type itself.
+
+    Authored values use ISO 8601 time-of-day form HH:MM:SS with optional fractional seconds (for
+    example 14:30:00, 09:15:30.5). Time is a clock position, not an elapsed span — use Duration for
+    lengths of time. Timezone offset belongs on DateTime, not on Time.
+
+    Optional configuration Properties (min, max) configure a Property's owned Time instance via
+    inline type syntax — Time{min: "09:00:00", max: "17:00:00"}. Positional order: min, max.</documentation>
+
+  <properties>
+    <min type="Time">
+      <documentation>Minimum allowed time of day (inclusive). Configured via Time{min: t}.</documentation>
+    </min>
+    <max type="Time">
+      <documentation>Maximum allowed time of day (inclusive). Configured via Time{max: t}.</documentation>
+    </max>
+  </properties>
+
+  <references>
+    <see type="type:Temporal" relation="Extends">
+      Abstract temporal position branch.
+    </see>
+    <see type="type:Date" relation="SeeAlso">
+      Calendar day without a time of day.
+    </see>
+    <see type="type:DateTime" relation="SeeAlso">
+      Combined date and time.
+    </see>
+    <see type="type:Duration" relation="ContrastsWith">
+      Elapsed-time magnitude — not a clock reading.
+    </see>
+    <see type="type:TimeEntity" relation="SeeAlso">
+      Entity wrapper for Time values in composition or aggregation.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      min / max instance configuration.
+    </see>
+  </references>
+
+</block>

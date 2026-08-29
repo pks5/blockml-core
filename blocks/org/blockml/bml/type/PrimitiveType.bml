@@ -21,8 +21,10 @@
     only — they never store concrete values. All values are stored exclusively in Properties.
 
     Numeric branch: Number (Integer, Decimal, Float). Textual branch: Text (TypeReference,
-    MemberReference / PropertyReference / …, Version, URL, URI, FilePath, MimeType, …). Boolean is
-    its own branch — neither textual nor numeric.
+    MemberReference / PropertyReference / …, Version, URL, URI, FilePath, MimeType, …). Temporal
+    branch: Temporal (Date, Time, DateTime) — calendar or clock positions. Boolean is its own
+    branch — neither textual nor numeric. Duration is its own branch — an elapsed-time magnitude,
+    not a Temporal subtype.
 
     When a primitive value must exist as an Entity inside a composition or aggregation, use a
     concrete Entity specialization (for example IntegerEntity) — not by adding a value member to
@@ -40,6 +42,12 @@
     </see>
     <see type="type:Text" relation="SeeAlso">
       Textual primitive branch.
+    </see>
+    <see type="type:Temporal" relation="SeeAlso">
+      Temporal position branch — Date, Time, DateTime.
+    </see>
+    <see type="type:Duration" relation="SeeAlso">
+      Elapsed-time magnitude — sibling of Temporal under PrimitiveType.
     </see>
     <see type="type:IntegerEntity" relation="SeeAlso">
       Example concrete Entity wrapper for primitive values.

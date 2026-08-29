@@ -1,0 +1,17 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>DateTimeEntity</name>
+  <type>type:DateTimeEntity</type>
+  <baseType>core:PrimitiveEntity(type:DateTime)</baseType>
+  <is>A date and time as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a DateTime primitive. Binds T = DateTime on
+    org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
+    Use when a date-time must appear as an identifiable Block instance.</documentation>
+</block>

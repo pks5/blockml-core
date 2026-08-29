@@ -1,0 +1,63 @@
+<!--
+  BlockML Core — duration primitive type
+
+  FQN: org.blockml.bml.type.Duration
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>Duration</name>
+  <type>type:Duration</type>
+  <baseType>type:PrimitiveType</baseType>
+  <is>A length of time</is>
+
+  <documentation>BOM Core primitive ValueType for an elapsed length of time. Unqualified name
+    Duration resolves to org.blockml.bml.type.Duration. Duration is its own primitive branch under
+    PrimitiveType — not a Temporal subtype. Temporal types name a position (Date, Time, DateTime);
+    Duration names a magnitude. Payload values are stored on Properties — not on the Duration type
+    itself.
+
+    Authored values use ISO 8601 duration form PnYnMnDTnHnMnS, with optional week form PnW (for
+    example P3D, PT1H30M, P1Y2M3DT4H5M6S, P2W). DateTime minus DateTime yields Duration; DateTime
+    plus Duration yields DateTime.
+
+    Duration is not a Number subtype. Calendar components such as years and months do not have a
+    fixed SI length.
+
+    Optional configuration Properties (min, max) configure a Property's owned Duration instance via
+    inline type syntax — Duration{min: "PT0S", max: "P1Y"}. Positional order: min, max.</documentation>
+
+  <properties>
+    <min type="Duration">
+      <documentation>Minimum allowed duration (inclusive). Configured via Duration{min: d}.</documentation>
+    </min>
+    <max type="Duration">
+      <documentation>Maximum allowed duration (inclusive). Configured via Duration{max: d}.</documentation>
+    </max>
+  </properties>
+
+  <references>
+    <see type="type:Temporal" relation="ContrastsWith">
+      Calendar or clock position — Date, Time, and DateTime.
+    </see>
+    <see type="type:DateTime" relation="SeeAlso">
+      Timeline position that Duration offsets.
+    </see>
+    <see type="type:Number" relation="ContrastsWith">
+      Numeric magnitudes; Duration is not a Number subtype.
+    </see>
+    <see type="type:DurationEntity" relation="SeeAlso">
+      Entity wrapper for Duration values in composition or aggregation.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      min / max instance configuration.
+    </see>
+  </references>
+
+</block>

@@ -217,8 +217,14 @@
         <type:ColorEntity />
         <type:Constant />
         <type:ConstantType />
+        <type:Date />
+        <type:DateEntity />
+        <type:DateTime />
+        <type:DateTimeEntity />
         <type:Decimal />
         <type:DecimalEntity />
+        <type:Duration />
+        <type:DurationEntity />
         <type:EnumType />
         <type:FilePath />
         <type:FilePathEntity />
@@ -239,8 +245,11 @@
         <type:Number />
         <type:PrimitiveType />
         <type:StructType />
+        <type:Temporal />
         <type:Text />
         <type:TextEntity />
+        <type:Time />
+        <type:TimeEntity />
         <type:URI />
         <type:URIEntity />
         <type:URL />

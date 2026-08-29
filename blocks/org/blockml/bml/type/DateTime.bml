@@ -1,0 +1,63 @@
+<!--
+  BlockML Core — date-and-time primitive type
+
+  FQN: org.blockml.bml.type.DateTime
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>DateTime</name>
+  <type>type:DateTime</type>
+  <baseType>type:Temporal</baseType>
+  <is>A date and time</is>
+
+  <documentation>BOM Core primitive ValueType for a combined date and time of day. Unqualified name
+    DateTime resolves to org.blockml.bml.type.DateTime. Extends org.blockml.bml.type.Temporal. Payload
+    values are stored on Properties — not on the DateTime type itself.
+
+    Authored values use ISO 8601 combined date-and-time form (for example 2024-08-29T14:30:00,
+    2024-08-29T14:30:00Z, 2024-08-29T16:30:00+02:00). A trailing Z denotes UTC; a numeric offset
+    denotes a local civil time with that offset. DateTime is a position on the timeline, not an
+    elapsed span — use Duration for lengths of time.
+
+    Optional configuration Properties (min, max) configure a Property's owned DateTime instance via
+    inline type syntax — DateTime{min: "2024-01-01T00:00:00Z", max: "2024-12-31T23:59:59Z"}.
+    Positional order: min, max.</documentation>
+
+  <properties>
+    <min type="DateTime">
+      <documentation>Minimum allowed date-time (inclusive). Configured via DateTime{min: dt}.</documentation>
+    </min>
+    <max type="DateTime">
+      <documentation>Maximum allowed date-time (inclusive). Configured via DateTime{max: dt}.</documentation>
+    </max>
+  </properties>
+
+  <references>
+    <see type="type:Temporal" relation="Extends">
+      Abstract temporal position branch.
+    </see>
+    <see type="type:Date" relation="SeeAlso">
+      Calendar day without a time of day.
+    </see>
+    <see type="type:Time" relation="SeeAlso">
+      Time of day without a date.
+    </see>
+    <see type="type:Duration" relation="ContrastsWith">
+      Elapsed-time magnitude.
+    </see>
+    <see type="type:DateTimeEntity" relation="SeeAlso">
+      Entity wrapper for DateTime values in composition or aggregation.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
+      min / max instance configuration.
+    </see>
+  </references>
+
+</block>

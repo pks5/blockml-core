@@ -1,0 +1,17 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>TimeEntity</name>
+  <type>type:TimeEntity</type>
+  <baseType>core:PrimitiveEntity(type:Time)</baseType>
+  <is>A time of day as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a Time primitive. Binds T = Time on
+    org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
+    Use when a time of day must appear as an identifiable Block instance.</documentation>
+</block>
