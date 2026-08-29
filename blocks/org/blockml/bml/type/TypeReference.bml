@@ -55,8 +55,9 @@
     appear as an Entity in composition or aggregation, use org.blockml.bml.type.TypeReferenceEntity.
 
     Instance pointers (bml:id / FQN::id) use org.blockml.bml.type.InstanceReference — not
-    TypeReference. Member definition paths (property, aggregation, association, capability) use the
-    org.blockml.bml.type.MemberReference branch — not TypeReference.
+    TypeReference. Package strings without a class segment use org.blockml.bml.type.PackageReference
+    — not TypeReference. Member definition paths (property, aggregation, association, capability)
+    use the org.blockml.bml.type.MemberReference branch — not TypeReference.
   </documentation>
 
   <references>
@@ -77,6 +78,9 @@
     </see>
     <see type="def:GenericTypeDefinition" relation="Defines">
       parameter baseType constraint attribute.
+    </see>
+    <see type="type:PackageReference" relation="ContrastsWith">
+      Sibling ValueType for package strings — no class segment.
     </see>
     <see type="type:InstanceReference" relation="SeeAlso">
       Sibling ValueType for Block instance pointers — association types and see instance=.

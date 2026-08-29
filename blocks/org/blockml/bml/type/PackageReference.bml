@@ -1,0 +1,64 @@
+<!--
+  BlockML Core — package reference value type (package string, no type segment)
+
+  FQN: org.blockml.bml.type.PackageReference
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PackageReference</name>
+  <type>type:PackageReference</type>
+  <baseType>type:Text</baseType>
+  <is>A Block package name reference</is>
+
+  <documentation>
+    ValueType for package references — reverse-domain package strings without a type (class)
+    segment. Unqualified name PackageReference resolves to org.blockml.bml.type.PackageReference.
+    Sibling of TypeReference under Text — not a TypeReference subtype. No generic parameters.
+
+    Package format (Java-style reverse-domain, dot-separated, all lowercase):
+    • Package segments — lowercase (for example org.blockml.bml.core, com.machineblocks.bml.type)
+    • No class segment — PascalCase type names belong on TypeReference (org.blockml.bml.type.Integer
+      is a type FQN, not a package)
+    • Valid: org.blockml.bml.type · com.example.bml
+    • Invalid as PackageReference: org.blockml.bml.type.Integer · core:Block · Integer
+
+    Namespace prefixes in BML (core:, type:, def:, …) bind to packages; a prefix that targets a
+    Package resolves to that package string (core → org.blockml.bml.core). A prefix that targets an
+    Annotation is not a PackageReference.
+
+    Primary use — documentation see package= on StructuralDefinition.Reference, and any property
+    that names a package rather than a Block type. When a package reference must appear as an Entity
+    in composition or aggregation, use org.blockml.bml.type.PackageReferenceEntity.
+
+    Block type FQNs and TypeExpressions use org.blockml.bml.type.TypeReference — not
+    PackageReference. Instance pointers use InstanceReference. Member definition paths use the
+    MemberReference branch.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlNamespace" relation="AuthoringGuide">
+      Package vs Annotation xmlns targets and domain.bml.* layout.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Namespace resolution — packages vs type FQNs.
+    </see>
+    <see type="type:TypeReference" relation="ContrastsWith">
+      Sibling ValueType for Block type FQNs / TypeExpressions — includes the class segment.
+    </see>
+    <see type="def:StructuralDefinition" relation="SeeAlso">
+      see package attribute typed as PackageReference.
+    </see>
+    <see type="type:PackageReferenceEntity" relation="SeeAlso">
+      Entity wrapper for PackageReference values in composition or aggregation.
+    </see>
+  </references>
+
+</block>

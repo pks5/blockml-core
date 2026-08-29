@@ -24,7 +24,7 @@
 
     PrimitiveType — atomic scalar semantics; no stored values on the type itself.
     Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, Version,
-    TypeReference, InstanceReference, Date, Time, DateTime, Duration.
+    TypeReference, PackageReference, InstanceReference, Date, Time, DateTime, Duration.
 
     StructType — custom value objects; structure via properties.
     Examples: Size3D, Address, Transform. Parameterized types (Box(T)) are StructTypes

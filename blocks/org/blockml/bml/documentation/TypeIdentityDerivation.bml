@@ -73,6 +73,9 @@
     <see type="type:TypeReference" relation="Defines">
       ValueType for FQN / TypeExpression text on type and baseType.
     </see>
+    <see type="type:PackageReference" relation="SeeAlso">
+      Package strings without a class segment — not type FQNs.
+    </see>
     <see type="def:RootBlockDefinition" relation="Defines">
       Document-root identity — type required; name optional short form.
     </see>

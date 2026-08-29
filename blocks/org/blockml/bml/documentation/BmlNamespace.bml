@@ -9,7 +9,8 @@
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
   xmlns:core="org.blockml.bml.core"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
 
   <name>BmlNamespace</name>
   <type>doc:BmlNamespace</type>
@@ -84,6 +85,9 @@
     </see>
     <see type="doc:ImplicitNamespaceResolution" relation="ReadNext">
       Next — context-bound implicit namespace for unqualified references.
+    </see>
+    <see type="type:PackageReference" relation="Defines">
+      ValueType for package strings without a type segment.
     </see>
   </references>
 

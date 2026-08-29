@@ -31,8 +31,9 @@
     • Qualified — {EnclosingBlockFQN}::{instanceId} (e.g. com.foo.Bar::myId)
     • Prefixed qualified — foo:Bar::myId (xmlns QName of the enclosing Block document, then :: and id)
 
-    Not a Block type FQN (use TypeReference), not a member definition path (use MemberReference /
-    AssociationReference), and not a resource URI (use URI).
+    Not a Block type FQN (use TypeReference), not a package string (use PackageReference), not a
+    member definition path (use MemberReference / AssociationReference), and not a resource URI
+    (use URI).
 
     Generic parameter:
     • T (baseType core:Block) — target instance must satisfy T

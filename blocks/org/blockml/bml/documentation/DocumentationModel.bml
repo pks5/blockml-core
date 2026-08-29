@@ -150,7 +150,7 @@
 
     Authoring split:
     • documentation carries technical prose only
-    • references carries all documentation cross-links — types to types or types to instances
+    • references carries all documentation cross-links — types to types, types to packages, or types to instances
       (also Definition members, repository markdown files, and external URLs) — each with an
       explicit relationship note
     • Associations connect instances to instances (model links); References do not form the
@@ -159,6 +159,7 @@
 
     see target attributes — exactly one target kind:
     type="core:ValueType" — Block or Definition type via xmlns prefix (TypeReference)
+    package="org.blockml.bml.type" — package string without a type segment (PackageReference)
     instance="myId" / instance="foo:Bar::myId" — Block instance pointer (InstanceReference)
     file="guide.md" — optional companion markdown in the consuming repository (not Core SSOT)
     url="https://…" — external URL

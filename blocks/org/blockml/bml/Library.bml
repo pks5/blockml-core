@@ -232,6 +232,8 @@
         <type:FloatEntity />
         <type:TypeReference />
         <type:TypeReferenceEntity />
+        <type:PackageReference />
+        <type:PackageReferenceEntity />
         <type:InstanceReference />
         <type:MemberReference />
         <type:PropertyReference />

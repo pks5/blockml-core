@@ -17,7 +17,7 @@
     Python str, C# string, or any target representation.
 
     Semantic subtypes extend Text: TypeReference (and MemberReference / PropertyReference / …),
-    Version, URL, URI, FilePath, MimeType, …
+    PackageReference, Version, URL, URI, FilePath, MimeType, …
     Concrete payload values are stored on Properties — not on the Text type itself.
 
     Optional configuration Properties (minLength, maxLength) configure a Property's owned Text

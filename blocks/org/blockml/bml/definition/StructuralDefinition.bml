@@ -334,20 +334,20 @@
       <is>A documentation cross-reference</is>
 
       <documentation>Records a documentation link from the current definition to another Block type,
-        Block instance, definition element, repository markdown file, or external URL. References
+        package, Block instance, definition element, repository markdown file, or external URL. References
         connect types to types or types to instances for documentation purposes — they are not
         instance-to-instance model links (those are Associations / AssociationDefinition). Rendered
         as a see element inside the references container on any
         org.blockml.bml.definition.StructuralDefinition (alongside changelog and examples). Maps to
-        BOM DocumentationReference { type?, instance?, file?, url?, property?, aggregation?,
+        BOM DocumentationReference { type?, package?, instance?, file?, url?, property?, aggregation?,
         association?, capability?, relationFqn?, context, languageFqn? }. Optional relation attribute
         references org.blockml.bml.relation.* — default org.blockml.bml.relation.SeeAlso when omitted.
         Optional language attribute overrides the effective natural language for the relationship
         text body.
 
-        Eight mutually exclusive target attributes (type, instance, file, url, property, aggregation,
+        Nine mutually exclusive target attributes (type, package, instance, file, url, property, aggregation,
         association, capability) instead of one generic target. Type targets use TypeReference;
-        instance targets use InstanceReference; member targets use typed MemberReference
+        package targets use PackageReference; instance targets use InstanceReference; member targets use typed MemberReference
         specializations — property : PropertyReference, aggregation : AggregationReference,
         association : AssociationReference, capability : CapabilityReference — and store the
         canonical definition path in the BOM (for example com.foo.Bar.properties.width).
@@ -355,10 +355,11 @@
         the member name and is not stored as a separate type target. Split authoring
         type="com.foo.Bar" instance="myId" resolves to com.foo.Bar::myId.
         The attribute name encodes the target kind at the read site — see type (TypeReference),
-        see instance (InstanceReference), see property (PropertyReference), see file (repository
-        documentation), see url (web address). Humans and LLMs classify each reference from element
-        shape alone without inferring kind from value syntax. See 02_mbml.md — Associations vs
-        References · references — Why separate target attributes.</documentation>
+        see package (PackageReference), see instance (InstanceReference), see property
+        (PropertyReference), see file (repository documentation), see url (web address). Humans and
+        LLMs classify each reference from element shape alone without inferring kind from value
+        syntax. See 02_mbml.md — Associations vs References · references — Why separate target
+        attributes.</documentation>
 
       <bml:xml>see</bml:xml>
 
@@ -368,14 +369,20 @@
             qualifier when paired with property, aggregation, association, capability, or instance.
             Standalone type= resolves to FQN at parse time. With a member attribute, type= supplies
             the enclosing Block FQN and is not stored as a separate type target. With instance=,
-            type= qualifies the local id into {FQN}::{id}. Mutually exclusive with file, url, and
+            type= qualifies the local id into {FQN}::{id}. Mutually exclusive with package, file, url, and
             standalone member/instance targets — exactly one target kind must be set.</documentation>
         </type>
+        <package type="PackageReference" bml:xml="attribute">
+          <documentation>Package reference (PackageReference) — reverse-domain package string without
+            a type segment (e.g. org.blockml.bml.type, core via xmlns). Not a Block FQN (use type=)
+            and not a member path. Mutually exclusive with type, instance, file, url, and member
+            targets — exactly one target kind must be set.</documentation>
+        </package>
         <instance type="InstanceReference" bml:xml="attribute">
           <documentation>Block instance pointer (InstanceReference) — local id (myId), qualified
             {FQN}::{id}, or xmlns form (foo:Bar::myId). When paired with type=, type= supplies the
             enclosing Block FQN and the value is stored as FQN::id. Mutually exclusive with file,
-            url, type (standalone), and member targets.</documentation>
+            url, type (standalone), package, and member targets.</documentation>
         </instance>
         <file type="Text" bml:xml="attribute">
           <documentation>Repository documentation file (e.g. 02_mbml.md). Mutually exclusive with all
@@ -388,7 +395,7 @@
           <documentation>PropertyDefinition path (PropertyReference) — canonical path (e.g.
             com.foo.Bar.properties.width) or local member name when paired with type= (type
             property="width" → com.foo.Bar.properties.width). Stored in BOM as canonical definition
-            path. Mutually exclusive with file, url, type (standalone), instance, aggregation,
+            path. Mutually exclusive with file, url, type (standalone), package, instance, aggregation,
             association, and capability.</documentation>
         </property>
         <aggregation type="AggregationReference" bml:xml="attribute">
