@@ -62,6 +62,7 @@
       <ann:BmlAnnotation.Bean />
       <ann:BmlAnnotation.Scope />
       <ann:BmlAnnotation.Status />
+      <ann:BmlAnnotation.Generics />
       <ann:BmlAnnotation.Each />
       <ann:BmlAnnotation.If />
       <ann:BmlAnnotation.Unless />
@@ -143,6 +144,20 @@
       <properties>
         <name override="true" final="true" type="Text">
           <value>status</value>
+        </name>
+      </properties>
+    </block>
+
+    <block>
+      <name>Generics</name>
+      <baseType>core:Annotation.Attribute</baseType>
+      <is>A lifecycle generics attribute directive</is>
+
+      <documentation>Attribute directive bml:generics</documentation>
+
+      <properties>
+        <name override="true" final="true" type="Text">
+          <value>generics</value>
         </name>
       </properties>
     </block>
