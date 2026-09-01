@@ -199,9 +199,12 @@
     <genericTypes type="def:GenericTypeDefinition[]">
       <documentation>Generic type parameters declared on this Block (root, Sub-Block, or embedded —
         Java static nested model). Each entry has a name and a baseType constraint for concrete type
-        arguments at reference sites. Sub-Blocks do not see enclosing generics — forward explicitly
-        (e.g. type="Selector(T)"). Name must not equal this Block's name or a direct Sub-Block name
-        (BML_GENERIC_BLOCK_NAME_COLLISION / BML_GENERIC_SUBBLOCK_NAME_COLLISION).</documentation>
+        arguments at reference sites (type applications and instance bml:generics). Parameters that
+        remain open after inheritance cannot be aggregated as instances unless bml:generics binds
+        them (BML_OPEN_GENERIC_INSTANCE). Sub-Blocks do not see enclosing generics — forward
+        explicitly (e.g. type="Selector(T)"). Name must not equal this Block's name or a direct
+        Sub-Block name (BML_GENERIC_BLOCK_NAME_COLLISION / BML_GENERIC_SUBBLOCK_NAME_COLLISION).
+        See doc:GenericsModel.</documentation>
     </genericTypes>
     <contracts type="type:TypeReferenceEntity(core:Block)[]">
       <documentation>Contract Block references merged into this Block after the baseType chain

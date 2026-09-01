@@ -23,8 +23,9 @@
   <keywords>BML_GENERIC_CONSTRAINT_VIOLATION</keywords>
 
   <documentation>
-    Emitted when a type argument or defaultType fails the parameter's baseType via satisfiesTypeBound.
-    Remedy: Union arguments must satisfy the bound per alternative.
+    Emitted when a type argument or defaultType fails the parameter's baseType via
+    satisfiesTypeBound — including arguments authored in a type application and in instance
+    bml:generics. Remedy: Union arguments must satisfy the bound per alternative.
   </documentation>
 
   <references>

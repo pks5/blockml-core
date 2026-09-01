@@ -1,0 +1,46 @@
+<!--
+  BlockML Core — BML_OPEN_GENERIC_INSTANCE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_OPEN_GENERIC_INSTANCE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:ann="org.blockml.bml.annotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>BML_OPEN_GENERIC_INSTANCE</name>
+  <type>diag:BML_OPEN_GENERIC_INSTANCE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An unbound open-generic instance diagnostic</is>
+
+  <summary>Emitted when a Block instance whose type still has open genericTypes is aggregated without bml:generics.</summary>
+
+  <keywords>BML_OPEN_GENERIC_INSTANCE</keywords>
+
+  <documentation>
+    Emitted when a Block instance whose type still has open genericTypes after inheritance is used
+    as an aggregation child (composition or instance fill) without bml:generics binding those
+    parameters. Remedy: Author bml:generics="(…)" or
+    &lt;bml:generics&gt;(…)&lt;/bml:generics&gt; with a parenthesized TypeExpression list, or bind
+    the parameters on a derived type via baseType application. Parameters with resolvable
+    defaultType are not open. Abstract Blocks remain uninstantiable even with bml:generics.
+  </documentation>
+
+  <references>
+    <see type="doc:GenericsModel" relation="AuthoringGuide">
+      Instance binding of open genericTypes via bml:generics.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      Placement and syntax of bml:generics.
+    </see>
+    <see type="ann:BmlAnnotation.Generics" relation="Defines">
+      Directive that binds open genericTypes on instances.
+    </see>
+  </references>
+
+</block>

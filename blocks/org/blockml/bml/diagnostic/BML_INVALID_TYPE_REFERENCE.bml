@@ -25,8 +25,10 @@
   <keywords>BML_INVALID_TYPE_REFERENCE</keywords>
 
   <documentation>
-    Emitted when a TypeReference / TypeExpression cannot be parsed or is ill-formed. Remedy:
-    Fix FQN/QName/generic/configuration syntax.
+    Emitted when a TypeReference / TypeExpression cannot be parsed or is ill-formed — including
+    an ill-formed bml:generics value. Remedy: Fix FQN/QName/generic/configuration syntax. Instance
+    bml:generics requires a parenthesized argument list in the same form as a baseType
+    application.
   </documentation>
 
   <references>
@@ -35,6 +37,9 @@
     </see>
     <see type="doc:TypeExpressions" relation="SeeAlso">
       Type expressions.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Parenthesized argument list on type applications and bml:generics.
     </see>
   </references>
 

@@ -8,6 +8,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -29,8 +30,11 @@
     matches, each bound argument satisfies the parameter baseType (satisfiesTypeBound), forwarded
     parameters are declared locally.
 
-    Abstract generic Blocks cannot be instantiated until a derived Block binds all open parameters
-    (PrimitiveEntity(T) → IntegerEntity with baseType PrimitiveEntity(Integer), etc.).
+    Type-level binding uses baseType application: a derived Block must bind or forward every base
+    parameter (PrimitiveEntity(T) → IntegerEntity with baseType PrimitiveEntity(Integer), etc.).
+    Instance-level binding uses bml:generics. A type whose genericTypes remain open after inheritance
+    cannot appear as an aggregation child unless bml:generics binds those parameters. Abstract
+    Blocks remain uninstantiable even with bml:generics.
 
     Declaration — on the Block via &lt;genericTypes&gt; (meta-model GenericTypeDefinition). Parameter
     name = XML element local name (&lt;T baseType="…"/&gt;). Optional defaultType when an application
@@ -46,6 +50,19 @@
     InstanceReference(core:Block), SelectiveGrid(Boolean | type:HoleType). Each (…) argument is a
     TypeExpression. With multiple parameters, labels match generic parameter names. At validate
     time placeholders (T) are substituted; mismatch → BML_GENERIC_CONSTRAINT_VIOLATION.
+
+    Instance syntax — bml:generics on the Block instance (attribute or child element). The value is
+    only the parenthesized argument list; the type name is the instance tag. Parentheses are
+    required. Same TypeExpression grammar as baseType arguments. Authored args win; remaining
+    parameters take defaultType in declaration order. After resolution every parameter must be
+    concrete. Incorrect: &lt;MyBlock someProp="Value"/&gt; when MyBlock still has open T. Correct:
+    &lt;MyBlock bml:generics="(type:Integer)"/&gt; or
+    &lt;TestBlock&gt;&lt;bml:generics&gt;(type:String, myns:MyBlock)&lt;/bml:generics&gt;&lt;/TestBlock&gt;.
+    Open generic aggregated without the directive → BML_OPEN_GENERIC_INSTANCE. bml:generics
+    anywhere other than a Block instance → BML_GENERICS_DIRECTIVE_NOT_ALLOWED. Argument list
+    incompatible with the instance's open genericTypes → BML_GENERICS_ARGUMENT_MISMATCH. Missing
+    required argument with no defaultType → BML_MISSING_GENERIC_TYPE_ARGUMENT. Ill-formed
+    TypeExpression → BML_INVALID_TYPE_REFERENCE.
 
     Orthogonal to {…} ValueType instance configuration (doc:ValueTypeConfiguration) and to
     multiplicity brackets (doc:TypeExpressions).
@@ -81,8 +98,23 @@
     <see type="type:TypeReference" relation="SeeAlso">
       Example open generic TypeReference(B).
     </see>
+    <see type="ann:BmlAnnotation.Generics" relation="Defines">
+      Instance directive that binds open genericTypes.
+    </see>
+    <see type="doc:BmlDirectives" relation="SeeAlso">
+      Placement of bml:generics — Block instances only.
+    </see>
     <see type="diag:BML_GENERIC_CONSTRAINT_VIOLATION" relation="SeeAlso">
       Type argument fails parameter baseType.
+    </see>
+    <see type="diag:BML_OPEN_GENERIC_INSTANCE" relation="SeeAlso">
+      Aggregated open generic without bml:generics.
+    </see>
+    <see type="diag:BML_GENERICS_DIRECTIVE_NOT_ALLOWED" relation="SeeAlso">
+      bml:generics not on a Block instance.
+    </see>
+    <see type="diag:BML_GENERICS_ARGUMENT_MISMATCH" relation="SeeAlso">
+      bml:generics does not match open genericTypes.
     </see>
   </references>
 

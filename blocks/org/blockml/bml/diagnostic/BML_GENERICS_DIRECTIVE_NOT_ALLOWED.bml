@@ -1,0 +1,45 @@
+<!--
+  BlockML Core — BML_GENERICS_DIRECTIVE_NOT_ALLOWED diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_GENERICS_DIRECTIVE_NOT_ALLOWED
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:ann="org.blockml.bml.annotation"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>BML_GENERICS_DIRECTIVE_NOT_ALLOWED</name>
+  <type>diag:BML_GENERICS_DIRECTIVE_NOT_ALLOWED</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>A disallowed bml:generics diagnostic</is>
+
+  <summary>Emitted when bml:generics is authored anywhere other than a Block instance.</summary>
+
+  <keywords>BML_GENERICS_DIRECTIVE_NOT_ALLOWED</keywords>
+
+  <documentation>
+    Emitted when bml:generics appears where it is not permitted. The directive is legal only on
+    Block instances (composition children and instance aggregation fill), as attribute
+    bml:generics="(…)" or child &lt;bml:generics&gt;(…)&lt;/bml:generics&gt;. It is not allowed on
+    Block definitions, composition wrappers, bml:container, or member declarations. Remedy: Move
+    the directive onto the instance whose open genericTypes it binds, or remove it.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlDirectives" relation="AuthoringGuide">
+      bml:generics placement — Block instances only.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Instance binding of open genericTypes.
+    </see>
+    <see type="ann:BmlAnnotation.Generics" relation="Defines">
+      Directive catalogue entry.
+    </see>
+  </references>
+
+</block>

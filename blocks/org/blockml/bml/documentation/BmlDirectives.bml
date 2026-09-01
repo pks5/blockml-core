@@ -11,6 +11,7 @@
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation">
 
   <name>BmlDirectives</name>
@@ -35,6 +36,12 @@
     • bml:version — Block instances; external type version pin
     • bml:bean — Block instances; service bean name for @bean expressions
     • bml:scope — Block instances; bean visibility "local" (default) or "context"
+    • bml:generics — Block instances only; binds open genericTypes. Value is the parenthesized
+      argument list from a baseType generic application (parentheses required). Attribute
+      bml:generics="(type:Integer)" or child
+      &lt;bml:generics&gt;(type:String, myns:MyBlock)&lt;/bml:generics&gt;. Open generic
+      aggregated without it → BML_OPEN_GENERIC_INSTANCE. Elsewhere →
+      BML_GENERICS_DIRECTIVE_NOT_ALLOWED. Incompatible args → BML_GENERICS_ARGUMENT_MISMATCH
     • bml:with — composition, bml:container, Block instances; local variable scope
     • bml:each — bml:container, Block instances; loop
     • bml:if / bml:unless — bml:container, Block instances; conditional include / exclude
@@ -59,6 +66,12 @@
 
     Dynamic instance IDs: combine bml:each with bml:id="${ 'prefix_' + i }" (or equivalent).
 
+    bml:generics — instance-only binding of open genericTypes (doc:GenericsModel). Same TypeExpression
+    grammar as the (…) of a baseType application; the type name is the instance tag, so only the
+    parenthesized list is authored. Parentheses are required. Not allowed on definitions,
+    composition wrappers, bml:container, or member declarations. Abstract Blocks remain uninstantiable
+    even with bml:generics.
+
     bml:xml (serialization — orthogonal to flow control):
     • Element form on core:Block / Definition branch: literal local name, ${ bml:Self }, or
       ${ #this.name } only — other recipes → BML_XML_RENDERING_INVALID
@@ -69,8 +82,8 @@
     Shared XML grammar metadata for serializer, FatBlock, XSD, and similar targets — not a
     serializer-private detail. Meta-driven emit is WIP; Definition blocks already declare shapes.
 
-    Catalogue of directive Sub-Blocks: ann:BmlAnnotation.Id, Version, Bean, Scope, Status, Each, If,
-    Unless, With, Xml, Container. Composition usage: doc:CompositionModel.
+    Catalogue of directive Sub-Blocks: ann:BmlAnnotation.Id, Version, Bean, Scope, Status, Generics,
+    Each, If, Unless, With, Xml, Container. Composition usage: doc:CompositionModel.
   </documentation>
 
   <references>
@@ -97,6 +110,21 @@
     </see>
     <see type="doc:TypeIdentityDerivation" relation="ReadNext">
       Next — type references and Block identity derivation.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Open generic instances bind via bml:generics.
+    </see>
+    <see type="ann:BmlAnnotation.Generics" relation="Defines">
+      Directive catalogue entry for bml:generics.
+    </see>
+    <see type="diag:BML_OPEN_GENERIC_INSTANCE" relation="SeeAlso">
+      Aggregated open generic without bml:generics.
+    </see>
+    <see type="diag:BML_GENERICS_DIRECTIVE_NOT_ALLOWED" relation="SeeAlso">
+      bml:generics not on a Block instance.
+    </see>
+    <see type="diag:BML_GENERICS_ARGUMENT_MISMATCH" relation="SeeAlso">
+      bml:generics does not match open genericTypes.
     </see>
   </references>
 

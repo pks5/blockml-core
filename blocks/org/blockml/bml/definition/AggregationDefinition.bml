@@ -25,7 +25,9 @@
 
     • Plain Block type (for example core:Block[], bricks:Brick[]) — composition ownership of those
       Block types. Children are Block instances: member values, nested aggregations filled without
-      a composition wrapper, and bml:id.
+      a composition wrapper, and bml:id. A child whose type still has open genericTypes after
+      inheritance must bind them with bml:generics (attribute or child element; parenthesized
+      TypeExpression list). Missing → BML_OPEN_GENERIC_INSTANCE. See doc:GenericsModel.
     • TypeReferenceEntity application (for example type:TypeReferenceEntity(core:Block)[]) —
       owned TypeReferenceEntity instances whose value holds an FQN / TypeExpression. Empty children
       whose element QName is not TypeReferenceEntity are syntactic sugar for
@@ -46,7 +48,8 @@
     aggregations export ids for cross-document {EnclosingBlockFQN}::{id} references; protected
     limits reach to the declaring Block and its child Blocks; private limits reach to the declaring
     Block only. Service binding on composition children uses bml:bean and bml:scope on Block
-    instances — not aggregation member fields.</documentation>
+    instances — not aggregation member fields. Open generic children use bml:generics on the
+    instance — not aggregation member fields.</documentation>
 
   <references>
     <see type="doc:MemberAuthoring" relation="AuthoringGuide">
@@ -63,6 +66,9 @@
     </see>
     <see type="type:TypeReferenceEntity" relation="Requires">
       Entity payload for type-reference aggregations (contracts, Library lists).
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Open generic aggregation children bind via bml:generics.
     </see>
   </references>
 

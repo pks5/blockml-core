@@ -47,6 +47,11 @@
     • bml:version — optional exact-version assert on external type references; omitted → TypeRegistry
       / library context; no match → BML_UNKNOWN_VERSION. Same-document Sub-Block refs omit version
     • bml:bean / bml:scope — optional service bean registration (local | context; default local)
+    • bml:generics — required when the instance type still has open genericTypes; parenthesized
+      TypeExpression list matching a baseType application (parentheses required). Attribute or
+      child element. Missing → BML_OPEN_GENERIC_INSTANCE. Not on an instance →
+      BML_GENERICS_DIRECTIVE_NOT_ALLOWED. Incompatible args → BML_GENERICS_ARGUMENT_MISMATCH
+      (doc:GenericsModel)
     • Member attributes / child elements — property and nested aggregation values (literals or
       ${ … } expressions)
 
@@ -98,7 +103,10 @@
       Next — Annotation namespaces and facets (then bml: directives).
     </see>
     <see type="doc:BmlDirectives" relation="SeeAlso">
-      bml:each, bml:if, bml:container, bml:with, bml:xml on composition hosts.
+      bml:each, bml:if, bml:container, bml:with, bml:xml, bml:generics on composition hosts.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Open generic instances in aggregations require bml:generics.
     </see>
   </references>
 

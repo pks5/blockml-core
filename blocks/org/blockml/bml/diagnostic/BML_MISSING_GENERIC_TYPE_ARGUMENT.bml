@@ -20,18 +20,22 @@
   <baseType>core:Diagnostic</baseType>
   <is>A missing-generic-type-argument diagnostic</is>
 
-  <summary>Emitted when a generic application omits a required type argument with no resolvable defaultType.</summary>
+  <summary>Emitted when a generic application or bml:generics omits a required type argument with no resolvable defaultType.</summary>
 
   <keywords>BML_MISSING_GENERIC_TYPE_ARGUMENT</keywords>
 
   <documentation>
-    Emitted when a generic application omits a required type argument with no resolvable defaultType.
-    Remedy: Supply the argument or declare defaultType.
+    Emitted when a generic application or instance bml:generics omits a required type argument with
+    no resolvable defaultType. Remedy: Supply the argument or declare defaultType. An entire missing
+    bml:generics on an open-generic instance is BML_OPEN_GENERIC_INSTANCE, not this code.
   </documentation>
 
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">
-      defaultType and applications.
+      defaultType, type applications, and instance bml:generics.
+    </see>
+    <see type="diag:BML_OPEN_GENERIC_INSTANCE" relation="SeeAlso">
+      Open generic aggregated without bml:generics.
     </see>
   </references>
 

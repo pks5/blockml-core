@@ -36,7 +36,9 @@
     multiplicity, nested generics, and {…} configuration. Parentheses bind the argument:
     SelectiveGrid(Boolean | HoleType) means T = Boolean | HoleType, not SelectiveGrid(Boolean) | HoleType.
     When a parameter constrains baseType to ValueType (or another branch), every union alternative
-    must satisfy satisfiesTypeBound → else BML_GENERIC_CONSTRAINT_VIOLATION.
+    must satisfy satisfiesTypeBound → else BML_GENERIC_CONSTRAINT_VIOLATION. The same parenthesized
+    argument list is authored on Block instances as bml:generics (type name omitted; parentheses
+    required) — see doc:GenericsModel.
 
     Obsolete wrappers → write unions directly:
     • AutoOr&lt;T&gt; → Constant(Text){value: "auto"} | T
@@ -167,7 +169,7 @@
       Four ValueType kinds — named semantic meanings.
     </see>
     <see type="doc:GenericsModel" relation="ReadNext">
-      Next — generic declarations, inheritance binding, and attribute syntax.
+      Next — generic declarations, inheritance binding, instance bml:generics, and attribute syntax.
     </see>
     <see type="doc:ConstantValueType" relation="SeeAlso">
       Singleton union alternatives via Constant(T){value: …}.

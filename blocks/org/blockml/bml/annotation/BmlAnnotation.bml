@@ -23,11 +23,13 @@
 
   <documentation>
     Concrete Annotation for BlockML language directives. preferredAlias is bml. Authoring documents
-    bind xmlns:bml to this FQN. Directives control composition structure, instance identity, service
-    beans, and serialization shape — they are not Block properties and not Definition members.
+    bind xmlns:bml to this FQN. Directives control composition structure, instance identity, generic
+    binding, service beans, and serialization shape — they are not Block properties and not
+    Definition members.
 
-    Attribute directives: id, version, bean, scope, status, each, if, unless, with, xml.
-    Element directives: container.
+    Attribute directives: id, version, bean, scope, status, generics, each, if, unless, with, xml.
+    Element directives: container. Dual authoring (attribute or child element) is documented on
+    generics and xml.
 
     The legacy schema URI http://blockml.org/schema/bml remains an XSD/catalog identifier only —
     BML-semantic xmlns:bml must target this Annotation.
@@ -45,6 +47,9 @@
     </see>
     <see type="doc:CompositionModel" relation="SeeAlso">
       Composition and bml:container as directive hosts.
+    </see>
+    <see type="doc:GenericsModel" relation="SeeAlso">
+      Open generic instances bind via bml:generics.
     </see>
   </references>
 
@@ -151,9 +156,19 @@
     <block>
       <name>Generics</name>
       <baseType>core:Annotation.Attribute</baseType>
-      <is>A lifecycle generics attribute directive</is>
+      <is>A generic type-argument binding directive</is>
 
-      <documentation>Attribute directive bml:generics</documentation>
+      <documentation>Attribute or child-element directive bml:generics — binds open genericTypes
+        on a Block instance. Only on Block instances (composition children and instance aggregation
+        fill). Value is the parenthesized argument list from a baseType generic application — the
+        type name is omitted because the instance tag is the type. Parentheses are required.
+        Attribute form: bml:generics="(type:Integer)". Element form:
+        &lt;bml:generics&gt;(type:String, myns:MyBlock)&lt;/bml:generics&gt;. Arguments are
+        TypeExpressions in declaration order. Authored args win; remaining parameters take
+        defaultType. Open generic instance without this directive → BML_OPEN_GENERIC_INSTANCE.
+        Placement elsewhere → BML_GENERICS_DIRECTIVE_NOT_ALLOWED. Argument list incompatible with
+        the instance's open parameters → BML_GENERICS_ARGUMENT_MISMATCH. See doc:BmlDirectives
+        and doc:GenericsModel.</documentation>
 
       <properties>
         <name override="true" final="true" type="Text">
