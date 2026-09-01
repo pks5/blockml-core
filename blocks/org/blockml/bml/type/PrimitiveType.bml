@@ -21,7 +21,7 @@
     only — they never store concrete values. All values are stored exclusively in Properties.
 
     Numeric branch: Number (Integer, Decimal, Float). Textual branch: Text (TypeReference,
-    PackageReference, MemberReference / PropertyReference / …, Version, URL, URI, FilePath,
+    PackageReference, MemberReference / PropertyReference / …, Version, URL, URI, UUID, FilePath,
     MimeType, …). Temporal
     branch: Temporal (Date, Time, DateTime) — calendar or clock positions. Boolean is its own
     branch — neither textual nor numeric. Duration is its own branch — an elapsed-time magnitude,

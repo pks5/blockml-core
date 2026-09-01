@@ -225,6 +225,7 @@
         <type:DecimalEntity />
         <type:Duration />
         <type:DurationEntity />
+        <type:EmptyStruct />
         <type:EnumType />
         <type:FilePath />
         <type:FilePathEntity />
@@ -256,6 +257,8 @@
         <type:URIEntity />
         <type:URL />
         <type:URLEntity />
+        <type:UUID />
+        <type:UUIDEntity />
         <type:Version />
         <type:VersionEntity />
         <unit:None />

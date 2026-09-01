@@ -1,0 +1,41 @@
+<!--
+  BlockML Core — empty instantiable struct
+
+  FQN: org.blockml.bml.type.EmptyStruct
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>EmptyStruct</name>
+  <type>type:EmptyStruct</type>
+  <baseType>type:StructType</baseType>
+  <is>A StructType with no fields</is>
+
+  <documentation>
+    Instantiable StructType with no fields. Unqualified name EmptyStruct resolves to
+    org.blockml.bml.type.EmptyStruct.
+
+    The only compatible value is an empty object {}. EmptyStruct is a named, reusable unit
+    struct — the named counterpart of an anonymous empty StructType {}. It is not abstract:
+    use it wherever a StructType is required and no fields are needed, including Property
+    types, Capability inputType / outputType, and default generic bindings.
+  </documentation>
+
+  <references>
+    <see type="type:StructType" relation="Extends">
+      EmptyStruct is a concrete StructType with an empty field set.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
+      StructType branch.
+    </see>
+    <see type="doc:TypeExpressions" relation="AuthoringGuide">
+      Anonymous empty StructType {} — unnamed counterpart of EmptyStruct.
+    </see>
+  </references>
+
+</block>

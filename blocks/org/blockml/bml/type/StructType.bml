@@ -35,8 +35,9 @@
     StructTypes usually contain no values themselves; Property values remain stored in the owning
     Property. Default values on StructType property definitions are allowed. Concrete StructTypes
     declare &lt;properties&gt; whose members become struct fields — no special struct syntax.
-    Examples: Size3d, Color, Address, Transform. Parameterized value types (for example Box&lt;T&gt;)
-    are StructTypes that declare &lt;genericTypes&gt; — not a separate ValueType branch.
+    Examples: EmptyStruct (no fields; only {}), Size3d, Color, Address, Transform.
+    Parameterized value types (for example Box&lt;T&gt;) are StructTypes that declare
+    &lt;genericTypes&gt; — not a separate ValueType branch.
 
     Struct property access is exclusively by name (size.x, size.y, size.z). Numeric index access
     on StructType members (size[0]) is not valid — StructType is a typed object with named
@@ -74,6 +75,9 @@
   </documentation>
 
   <references>
+    <see type="type:EmptyStruct" relation="SeeAlso">
+      Instantiable StructType with no fields — named counterpart of {}.
+    </see>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">
       StructType and property access.
     </see>

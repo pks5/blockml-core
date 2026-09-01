@@ -1,0 +1,16 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:type="org.blockml.bml.type">
+
+  <name>UUID</name>
+  <type>type:UUID</type>
+  <baseType>type:Text</baseType>
+  <is>A universally unique identifier string</is>
+
+  <documentation>Textual primitive subtype for UUID values (for example
+    550e8400-e29b-41d4-a716-446655440000). Unqualified name UUID resolves to
+    org.blockml.bml.type.UUID.</documentation>
+</block>

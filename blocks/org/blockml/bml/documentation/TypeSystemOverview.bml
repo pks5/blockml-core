@@ -23,12 +23,12 @@
     They are sibling branches under ValueType (not subtypes of each other):
 
     PrimitiveType — atomic scalar semantics; no stored values on the type itself.
-    Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, Version,
+    Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, UUID, Version,
     TypeReference, PackageReference, InstanceReference, Date, Time, DateTime, Duration.
 
     StructType — custom value objects; structure via properties.
-    Examples: Size3D, Address, Transform. Parameterized types (Box(T)) are StructTypes
-    with genericTypes — not a separate branch.
+    Examples: EmptyStruct (no fields; only {}), Size3D, Address, Transform. Parameterized
+    types (Box(T)) are StructTypes with genericTypes — not a separate branch.
 
     EnumType — closed set of named members; own ValueType branch (not a StructType). Allowed
     members live in the values aggregation; BOM stores id + typeFqn only.
@@ -76,6 +76,9 @@
     </see>
     <see type="type:StructType" relation="SeeAlso">
       Branch base for custom value objects.
+    </see>
+    <see type="type:EmptyStruct" relation="SeeAlso">
+      Instantiable StructType with no fields — only {}.
     </see>
     <see type="type:EnumType" relation="SeeAlso">
       Branch base for finite value sets — sibling of StructType under ValueType.

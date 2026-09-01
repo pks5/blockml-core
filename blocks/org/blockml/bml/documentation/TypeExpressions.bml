@@ -115,7 +115,8 @@
     Boolean | "auto" desugars to Constant form.
 
     Anonymous StructTypes — { field: Type, … } is the type-expression form of a StructType without a
-    declared name, and the mechanism for structured Capability inputs. The grammar is recursive:
+    declared name, and the mechanism for structured Capability inputs. An empty anonymous StructType
+    {} is type-equivalent to the named instantiable type:EmptyStruct. The grammar is recursive:
 
       AnonymousStruct := "{" StructField ("," StructField)* "}"
       StructField     := Identifier ":" TypeExpression
@@ -185,6 +186,9 @@
     </see>
     <see type="type:StructType" relation="SeeAlso">
       Named StructType branch — anonymous { field: Type } is its unnamed type-expression form.
+    </see>
+    <see type="type:EmptyStruct" relation="SeeAlso">
+      Named instantiable empty StructType — counterpart of anonymous {}.
     </see>
     <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
       Per-field name resolution inside anonymous StructTypes — implicit namespace vs xmlns vs FQN.
