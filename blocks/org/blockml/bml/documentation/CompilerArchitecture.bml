@@ -24,9 +24,18 @@
     Framework Utilities / Render Target pipeline → target output. Serializer reads the Urmodell only.
     Validation Stages 1–3 (Parser / Validator / Renderer) — glossary in 06_compiler.md.
     Self-hosting: CLI bootstraps TypeRegistry from framework BML before user projects.
+
+    In this compiler pipeline a Capability body is often a companion template the renderer
+    emits, or a name the renderer maps to a target construct. That is one interpretation
+    (doc:CapabilitySemantics). Hosts — including a future validator that evaluates
+    PrimitiveType.parseValue — may execute a deterministic implementation body. The model
+    does not forbid executable Capability implementations.
   </documentation>
 
   <references>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capability bodies — intent, companion template, or host-evaluable function.
+    </see>
     <see type="doc:RendererFreedom" relation="ReadNext">
       Next reading step — renderer decides manifestation, not BlockML.
     </see>

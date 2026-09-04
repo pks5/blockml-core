@@ -8,8 +8,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>PackageIdentifier</name>
@@ -49,5 +51,34 @@
     <see type="type:TypeIdentifier" relation="ContrastsWith">
       Sibling ValueType for Block type FQNs / TypeExpressions — includes the class segment.
     </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — reverse-domain package syntax, no class segment.
+    </see>
   </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Reverse-domain package string — lowercase dot-separated segments, no class segment,
+        no xmlns prefix, no TypeExpression operators.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!/^[a-z][a-z0-9]*(?:\.[a-z][a-z0-9]*)+$/.test(t)) {
+            throw new Error("not a package identifier: " + raw);
+          }
+          return t;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 </block>

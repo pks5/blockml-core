@@ -8,8 +8,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>DateTime</name>
@@ -58,6 +60,47 @@
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
       min / max instance configuration.
     </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — ISO 8601 combined date-and-time.
+    </see>
   </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        ISO 8601 combined date-and-time. Optional trailing Z or numeric offset. Date and time
+        components must be calendar-valid. min/max configuration is applied after parse.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$/.exec(t);
+          if (!m) throw new Error("not an ISO date-time: " + raw);
+          const y = Number(m[1]);
+          const mo = Number(m[2]);
+          const d = Number(m[3]);
+          const h = Number(m[4]);
+          const mi = Number(m[5]);
+          const s = Number(m[6]);
+          const dt = new Date(Date.UTC(y, mo - 1, d));
+          if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== mo - 1 || dt.getUTCDate() !== d) {
+            throw new Error("impossible date-time date: " + raw);
+          }
+          if (h > 23 || mi > 59 || s > 59) {
+            throw new Error("impossible date-time clock: " + raw);
+          }
+          return t;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
 </block>

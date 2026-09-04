@@ -3,6 +3,9 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>MimeType</name>
@@ -11,5 +14,37 @@
   <is>A MIME media-type string</is>
 
   <documentation>Textual primitive subtype for MIME type values (for example text/plain,
-    application/json). Unqualified name MimeType resolves to org.blockml.bml.type.MimeType.</documentation>
+    application/json). Unqualified name MimeType resolves to     org.blockml.bml.type.MimeType.</documentation>
+
+  <references>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — type/subtype token.
+    </see>
+  </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        MIME type token type/subtype (for example text/plain, application/json). Optional
+        +suffix on the subtype (application/vnd.api+json).
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!/^[A-Za-z0-9][A-Za-z0-9!#$&^_.+-]*\/[A-Za-z0-9][A-Za-z0-9!#$&^_.+-]*$/.test(t)) {
+            throw new Error("not a MIME type: " + raw);
+          }
+          return t;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 </block>

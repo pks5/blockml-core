@@ -97,9 +97,10 @@
         preferred; on Block instances, attribute preferred.</documentation>
     </outputType>
     <implementation type="Implementation" bml:xml="element">
-      <documentation>Optional target-language implementation binding for this capability. Rendered as
-        an implementation child element with required language attribute and CDATA body. Maps to BOM
-        ImplementationBlock.</documentation>
+      <documentation>Optional language-tagged implementation body. Rendered as an implementation
+        child element with required language attribute and CDATA body. Maps to BOM
+        ImplementationBlock. The body may be intent prose, a companion template for a renderer,
+        or a deterministic function a host evaluates — doc:CapabilitySemantics.</documentation>
     </implementation>
   </properties>
 
@@ -124,9 +125,11 @@
       <documentation>Describes the implementation element on a capability member. Rendered as
         implementation with a required language attribute referencing org.blockml.bml.language.*
         and a CDATA source body. Maps to BOM ImplementationBlock { languageFqn, source,
-        embeddedExpressions }. Not a ValueType — structured metadata on the Entity branch. Capability
-        references inside the body use BML Embedded Expression syntax (&lt;$ … $&gt;). Declared as
-        the implementation property on org.blockml.bml.definition.CapabilityDefinition.</documentation>
+        embeddedExpressions }. Not a ValueType — structured metadata on the Entity branch. The
+        body may be intent, a companion template, or a host-evaluable function
+        (doc:CapabilitySemantics). Capability references inside the body use BML Embedded
+        Expression syntax (&lt;$ … $&gt;). Declared as the implementation property on
+        org.blockml.bml.definition.CapabilityDefinition.</documentation>
 
       <bml:xml>implementation</bml:xml>
 
@@ -137,11 +140,12 @@
             Must resolve to a registered Language type; the active Target/renderer must support it.</documentation>
         </language>
         <content type="Text" bml:xml="text">
-          <documentation>Target-language source body. Stored as character data on the host
+          <documentation>Implementation source body. Stored as character data on the host
             &lt;implementation&gt; element (BOM ImplementationBlock.source). Text node and CDATA
             both accepted; authored form stored (authoredCharacterDataForm). Serializer emits CDATA
             when escape requires it or when authored as CDATA (19 D8). May contain embedded BlockML
-            expressions between &lt;$ and $&gt; delimiters.</documentation>
+            expressions between &lt;$ and $&gt; delimiters. Reading (intent / companion template /
+            host-evaluable) is not encoded here — doc:CapabilitySemantics.</documentation>
         </content>
       </properties>
     

@@ -42,9 +42,10 @@
 
     Standard value constraints include Min, Max, MinLength, MaxLength, MinItems, MaxItems, Pattern,
     ValuePresent. Structural examples: RequiresMember, AllowedChildType, NoSelfReference,
-    MustBeReadOnly, RequiresImplementation. Prefer ValueType instance configuration for
+    MustBeReadOnly, RequiresImplementation.     Prefer ValueType instance configuration for
     type-intrinsic thresholds (Text{maxLength: 100}); keep Constraints for contextual/composable
-    rules (doc:ValueTypeConfiguration).
+    rules (doc:ValueTypeConfiguration). Both run after PrimitiveType.parseValue accepts the
+    authored text (doc:ValueTypeParsing).
 
     Suggestions — Property-only metadata: Block instances compatible with the property type for
     editors/renderers. Not validation. Forbidden on EnumType properties → BML_SUGGESTIONS_ON_ENUM.
@@ -75,6 +76,9 @@
     </see>
     <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
       Prefer inline configuration for type-intrinsic thresholds.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Lexical parseValue before constraints.
     </see>
     <see type="doc:GenericsModel" relation="SeeAlso">
       Constraint generic binding from embedding context.

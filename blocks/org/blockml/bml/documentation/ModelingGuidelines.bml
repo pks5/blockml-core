@@ -35,9 +35,11 @@
     • subBlocks and compositions on contract types are ignored
 
     Capabilities:
-    • All behaviour — init, get/set, render, domain operations — express as Capabilities
-    • Prefer PseudoCode or natural language implementations for semantic descriptions
-    • Use Inbound/Outbound/Transformation/Action kinds to describe intent, not compiler behaviour
+    • All behaviour — init, get/set, render, parse, domain operations — express as Capabilities
+    • An implementation may be intent (PseudoCode / natural language), a companion template,
+      or a host-evaluable function — no ranking (doc:CapabilitySemantics)
+    • Prefer PseudoCode or natural language when the body is intent for humans and LLMs
+    • Use Inbound/Outbound/Transformation/Action kinds to describe payload shape
     • Public surface of a Block is Capabilities — Properties are internal configuration
     • Declare throws for Exception types the Capability may raise
       (type:TypeReferenceEntity(core:Exception)[] — Java-style method throws; omit when none)

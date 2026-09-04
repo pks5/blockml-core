@@ -8,7 +8,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>Boolean</name>
@@ -27,6 +30,31 @@
     Sub-Blocks True and False are Constant(Boolean) singletons — use type:Boolean.True /
     type:Boolean.False (or Boolean.True / Boolean.False) as named alternatives to
     Constant(Boolean){true} / Constant(Boolean){false} in type expressions.</documentation>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Accepts true / True / TRUE and false / False / FALSE. Returns the canonical boolean
+        (lowercase true or false as the host boolean).
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): boolean => {
+          const t = raw.trim();
+          if (/^true$/i.test(t)) return true;
+          if (/^false$/i.test(t)) return false;
+          throw new Error("not a boolean: " + raw);
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
   <subBlocks>
     <block>

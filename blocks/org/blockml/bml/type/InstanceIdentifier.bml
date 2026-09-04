@@ -8,7 +8,9 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>InstanceIdentifier</name>
@@ -48,5 +50,34 @@
     <see type="type:AssociationIdentifier" relation="ContrastsWith">
       Path to an AssociationDefinition — not an instance name.
     </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — local id or Type::id syntax, no existence check.
+    </see>
   </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Local id (myId) or qualified Type::id (FQN::id or prefix:Name::id). The type prefix is
+        syntax only — existence is InstanceReference.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(t)) return t;
+          const q = /^(?:[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+|[A-Za-z_][A-Za-z0-9_]*:[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*)::[A-Za-z_][A-Za-z0-9_]*$/.exec(t);
+          if (q) return t;
+          throw new Error("not an instance identifier: " + raw);
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 </block>

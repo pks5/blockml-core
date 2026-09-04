@@ -38,9 +38,10 @@
     Sub-Block FQNs derive as parentFqn + "." + name when omitted in source.
 
     Namespace prefixes in BML (core:, type:, def:, …) map to package segments; the Namespace
-    Resolver stores the resolved FQN string in BOM typeFqn fields. Ill-formed syntax
-    → BML_INVALID_TYPE_REFERENCE. Unknown FQN at validate time → BML_UNKNOWN_TYPE. A type name
-    that need not exist uses TypeIdentifier — not TypeReference.
+    Resolver stores the resolved FQN string in BOM typeFqn fields. Ill-formed syntax is rejected
+    by inherited TypeIdentifier.parseValue. Unknown FQN at validate time → BML_UNKNOWN_TYPE —
+    existence is not part of parseValue (doc:ValueTypeParsing). A type name that need not exist
+    uses TypeIdentifier — not TypeReference.
 
     Generic parameter:
     • B (baseType core:Block) — Block branch constraint for the referenced type
@@ -86,7 +87,10 @@
       parameter baseType constraint attribute.
     </see>
     <see type="type:TypeIdentifier" relation="SeeAlso">
-      Parent ValueType — FQN / TypeExpression syntax without existence.
+      Parent ValueType — parseValue syntax without existence.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Lexical parse vs TypeRegistry existence.
     </see>
     <see type="type:PackageReference" relation="ContrastsWith">
       Sibling ValueType for package strings — no class segment.

@@ -33,6 +33,11 @@
     CapabilityDefinition.throws (type:TypeReferenceEntity(core:Exception)[]) and are not part of
     FunctionMapping.
 
+    Host-language return types in an implementation body (TypeScript number, string, boolean) are
+    FunctionMapping / host encodings of the BML outputType — not a second type system.
+    PrimitiveType.parseValue has outputType bml:Self; a TypeScript number for Integer is mapping,
+    not the Capability signature (doc:ValueTypeParsing).
+
     inputType shapes:
     • Primitive → single positional or named argument
     • Named StructType / anonymous struct { a: Float, b: Float } → arity = field count; names =
@@ -88,6 +93,9 @@
     </see>
     <see type="doc:TypeExpressions" relation="SeeAlso">
       inputType shapes — anonymous StructTypes, multiplicity, and nested multiplicities.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue outputType is bml:Self — host returns are mapping.
     </see>
     <see type="doc:CapabilitySemantics" relation="ReadNext">
       Next — Capability kinds and public behavioural surface.

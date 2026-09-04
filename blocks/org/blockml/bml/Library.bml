@@ -17,6 +17,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:exception="org.blockml.bml.exception"
   xmlns:group="org.blockml.bml.group"
   xmlns:lang="org.blockml.bml.language"
   xmlns:mapping="org.blockml.bml.mapping"
@@ -100,6 +101,7 @@
         <blockml:core.TaskGuide />
         <blockml:core.Diagnostic />
         <blockml:core.Exception />
+        <blockml:exception.InvalidValueException />
         <blockml:core.Capability />
         <blockml:core.Constraint />
         <blockml:core.Definition />
@@ -297,6 +299,7 @@
         <blockml:documentation.TypeExpressions />
         <blockml:documentation.GenericsModel />
         <blockml:documentation.ValueTypeConfiguration />
+        <blockml:documentation.ValueTypeParsing />
         <blockml:documentation.ConstantValueType />
         <blockml:documentation.FunctionMappingModel />
         <blockml:documentation.CapabilitySemantics />
@@ -448,6 +451,7 @@
         <blockml:diagnostic.BML_INVALID_PROPERTY />
         <blockml:diagnostic.BML_INVALID_SINCE_VERSION />
         <blockml:diagnostic.BML_INVALID_TYPE_REFERENCE />
+        <blockml:diagnostic.BML_INVALID_VALUE />
         <blockml:diagnostic.BML_LEGACY_TYPE_SOURCE />
         <blockml:diagnostic.BML_MISSING_AGGREGATION_TYPE />
         <blockml:diagnostic.BML_MISSING_CONSTANT_VALUE />

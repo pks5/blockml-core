@@ -43,9 +43,16 @@
     Platonic mapping: BML holds the Idea (Urbild) stable. The compiler is Manifestor tooling —
     it may represent the Idea internally as it chooses. Full Manifestation is the renderer's and
     runtime's job in a specific World.
+
+    Treating Capability implementations as emit templates (or ignoring them) is the compiler
+    reading of doc:CapabilitySemantics — not a rule that Capability bodies cannot be
+    host-evaluable functions. A renderer or other host may execute a deterministic body.
   </documentation>
 
   <references>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capability implementation readings — compiler emit is one of them.
+    </see>
     <see type="doc:EverythingIsABlock" relation="SeeAlso">
       Semantic layer vs compiler; renderer freedom.
     </see>

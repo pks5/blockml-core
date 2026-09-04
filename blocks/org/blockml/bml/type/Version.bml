@@ -11,6 +11,7 @@
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>Version</name>
@@ -31,6 +32,35 @@
     <see type="doc:LibrarySystem" relation="AuthoringGuide">
       Version on Block and Library definitions.
     </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — MAJOR.MINOR.PATCH.
+    </see>
   </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Semantic version MAJOR.MINOR.PATCH — non-negative integers, no leading plus, no pre-release
+        suffix in this lexical form.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(t)) {
+            throw new Error("not a MAJOR.MINOR.PATCH version: " + raw);
+          }
+          return t;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
 </block>

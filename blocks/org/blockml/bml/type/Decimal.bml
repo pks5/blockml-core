@@ -3,7 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit">
 
@@ -23,11 +26,42 @@
 
     Optional configuration Properties (precision, scale) configure a Property's owned Decimal
     instance via inline type syntax — Decimal{precision: 10, scale: 2} or Decimal{10, 2}.
-    Positional order: precision, scale. See 20_value_type_instance_configuration.md.</documentation>
+    Positional order: precision, scale. See 20_value_type_instance_configuration.md.
+    precision/scale apply after parseValue (doc:ValueTypeParsing).</documentation>
 
   <genericTypes>
     <N baseType="core:Unit" defaultType="unit:None"/>
   </genericTypes>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Decimal literal — optional sign, digits with optional fraction. Exponent form is
+        accepted. precision/scale configuration is applied after parse.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): number => {
+          const t = raw.trim();
+          if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(t)) {
+            throw new Error("not a decimal literal: " + raw);
+          }
+          const n = Number(t);
+          if (!Number.isFinite(n)) {
+            throw new Error("not a finite decimal: " + raw);
+          }
+          return n;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
   <properties>
     <precision type="Integer">

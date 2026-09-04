@@ -12,7 +12,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:lang="org.blockml.bml.language">
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:mapping="org.blockml.bml.mapping">
 
   <name>CapabilitySemantics</name>
   <type>doc:CapabilitySemantics</type>
@@ -20,17 +21,36 @@
   <is>A guide to Capability meaning</is>
 
   <documentation>
-    BlockML describes semantics only. There are no special language concepts for constructor,
-    getter, setter, or render — all behaviour is expressed as ordinary Capabilities: init(),
-    getValue(), setValue(), render(), and domain-specific operations. Package:
-    org.blockml.bml.capability.* (base org.blockml.bml.core.Capability).
+    There are no special language concepts for constructor, getter, setter, or render — all
+    behaviour is expressed as ordinary Capabilities: init(), getValue(), setValue(), render(),
+    parseValue(), and domain-specific operations. Package: org.blockml.bml.capability.* (base
+    org.blockml.bml.core.Capability).
 
-    Capability kinds describe intent — they are not compiler rules or runtime objects:
+    A Capability implementation is a language-tagged body. It may serve one or more of these
+    readings — no ranking, no model restriction to a single use:
+
+    • Intent — PseudoCode or a natural language (English, German, …). Humans and LLMs read the
+      contract; no host is required to execute the body.
+    • Companion template — a target-language body (TypeScript, Java, OpenSCAD, …) that a
+      renderer or companion transpiles or emits. org.blockml.bml.service.Math TypeScript
+      implementations are this reading.
+    • Host-evaluable function — a deterministic body a toolchain (validator, parser, runtime)
+      may execute. The host chooses which language it evaluates; BlockML does not require
+      TypeScript or any other language.
+
+    The compiler/renderer reading — map init() to a constructor, ignore a body, emit a method —
+    remains valid. It is one interpretation in a compiler pipeline, not a rule that the BOM
+    must not contain executable behaviour.
+
+    Capability kinds describe payload shape — they are not compiler rules or runtime objects:
     • Inbound — receives input from outside (setValue, configure); requires inputType; no outputType
     • Outbound — produces output to outside (getValue, emit); requires outputType; no inputType
-    • Transformation — maps input to output (compute, format, render); requires both
+    • Transformation — maps input to output (compute, format, parse); requires both
     • Action — performs a side effect or command (trigger, reset, refresh); no inputType, no outputType
     Async reply via replyTo is a runtime/message pattern — not modeled on the Capability.
+
+    inputType and outputType are ValueTypes. Host encodings (TypeScript number, Java int, …)
+    are FunctionMapping / host concerns — not the BML signature (doc:FunctionMappingModel).
 
     throws lists Exception types the Capability may raise — the BlockML equivalent of a Java
     method throws clause. The aggregation type is type:TypeReferenceEntity(core:Exception)[]
@@ -38,7 +58,8 @@
     sugar such as &lt;io:FileNotFound /&gt; names a type that must extend
     org.blockml.bml.core.Exception. Omitted or empty throws means no declared exceptions. Exception
     instances carry message:Text; domain libraries define concrete exception types. Distinct from
-    org.blockml.bml.core.Diagnostic (validator and parser codes).
+    org.blockml.bml.core.Diagnostic (validator and parser codes). A host that evaluates a body
+    maps a thrown Exception to a Diagnostic when it reports a validate/parse failure.
 
     Unqualified Capability type resolves to org.blockml.bml.capability.*; unqualified inputType /
     outputType resolve to org.blockml.bml.type.* (doc:ImplicitNamespaceResolution). General block
@@ -52,20 +73,17 @@
 
     Each Capability may carry an implementation whose language attribute references a Language FQN
     (org.blockml.bml.language.*). utility Sub-Blocks (baseType Entity) commonly host Transformation
-    implementations — doc:SubBlockModel. Preferred semantic dialect: PseudoCode
-    (doc:PseudoCode). The renderer decides how to realise each Capability in the target system:
+    implementations — doc:SubBlockModel. Preferred dialect for intent: PseudoCode
+    (doc:PseudoCode). A compiler renderer may still map names to target constructs:
 
     init()     → Java constructor · UI5 onInit() · React useEffect()
     getValue() → direct field access · generated getter · reflection
     setValue() → direct field assignment · generated setter
     render()   → SCAD module · JSX component · may be ignored
-
-    Interpretation happens only in the renderer — by reading Capability definitions and member
-    values from the immutable BOM. The BOM never contains implementation concepts such as
-    constructors, getters, setters, runtime values, or executable behaviour.
+    parseValue() → host-evaluable parse of authored text (doc:ValueTypeParsing)
 
     A Block's public surface is Capabilities — internal structure (Properties, Aggregations)
-    is not the outward API; the renderer decides concrete manifestation.
+    is not the outward API.
   </documentation>
 
   <references>
@@ -76,7 +94,13 @@
       utility Sub-Blocks hosting Transformation implementations.
     </see>
     <see type="doc:PseudoCode" relation="SeeAlso">
-      Preferred Capability implementation dialect for semantic prose.
+      Preferred Capability implementation dialect for intent prose.
+    </see>
+    <see type="doc:FunctionMappingModel" relation="SeeAlso">
+      Host-language parameter and return mapping — not BML outputType.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Host-evaluable parseValue on PrimitiveType.
     </see>
     <see type="core:Capability" relation="Extends">
       Capability branch — implementation member and input/output type rules.
@@ -100,7 +124,7 @@
       Capability member shape — inputType, outputType, throws, implementation.
     </see>
     <see type="lang:PseudoCode" relation="SeeAlso">
-      Free-form pseudocode — preferred for semantic descriptions readable by LLMs.
+      Free-form pseudocode — preferred for intent descriptions readable by LLMs.
     </see>
     <see type="doc:Expressions" relation="ReadNext">
       Next reading step — dynamic values and bean calls in expressions.

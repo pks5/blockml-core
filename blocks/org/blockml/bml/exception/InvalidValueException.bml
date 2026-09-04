@@ -1,0 +1,49 @@
+<!--
+  BlockML Core — invalid authored value exception
+
+  FQN: org.blockml.bml.exception.InvalidValueException
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:exception="org.blockml.bml.exception"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>InvalidValueException</name>
+  <type>exception:InvalidValueException</type>
+  <baseType>core:Exception</baseType>
+  <is>An invalid authored value</is>
+  <isNot>A validator diagnostic code</isNot>
+
+  <documentation>
+    Thrown by PrimitiveType.parseValue when authored text is not a lexical value of this
+    ValueType. Inherits message:Text from core:Exception — the instance carries the reason;
+    the type is listed on the Capability throws clause.
+
+    A host that evaluates parseValue maps this Exception to diag:BML_INVALID_VALUE. Existence
+    failures (unknown TypeReference, missing instance) stay validator Diagnostics — they are
+    not this Exception. Type instance configuration and Property constraints run after a
+    successful parse (doc:ValueTypeParsing).
+  </documentation>
+
+  <references>
+    <see type="type:PrimitiveType" relation="Requires">
+      parseValue throws this type.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="AuthoringGuide">
+      Lexical parse vs configuration, constraints, and existence.
+    </see>
+    <see type="diag:BML_INVALID_VALUE" relation="ContrastsWith">
+      Validator code a host emits when this Exception is caught.
+    </see>
+    <see type="core:Exception" relation="Extends">
+      Capability-thrown exception branch.
+    </see>
+  </references>
+
+</block>

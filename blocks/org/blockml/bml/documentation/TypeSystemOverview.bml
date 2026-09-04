@@ -26,6 +26,8 @@
     Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, UUID, Version,
     TypeIdentifier / TypeReference, PackageIdentifier / PackageReference, InstanceIdentifier /
     InstanceReference, MemberIdentifier / PropertyIdentifier / …, Date, Time, DateTime, Duration.
+    PrimitiveType declares parseValue (Text → bml:Self). The TypeScript return is a host encoding;
+    outputType is always bml:Self (doc:ValueTypeParsing).
 
     StructType — custom value objects; structure via properties.
     Examples: EmptyStruct (no fields; only {}), Size3D, Address, Transform. Parameterized
@@ -62,8 +64,10 @@
     must be InstanceReference(T) or InstanceReference(T)[] — bare Block FQNs are invalid.
     ValueTypes never store data — Properties own all concrete values.
 
-    Identifier vs Reference — the validator keys off the declared ValueType of the field, never
-    the property or attribute name (type= vs abc= is irrelevant):
+    Identifier vs Reference — parseValue on Identifier types checks syntax only. Existence is a
+    later validator step on Reference types (doc:ValueTypeParsing). The validator keys off the
+    declared ValueType of the field, never the property or attribute name (type= vs abc= is
+    irrelevant):
     • TypeReference, MemberReference (PropertyReference / AggregationReference / …), and
       InstanceReference — the target must resolve in the current corpus. Unknown TypeReference
       → BML_UNKNOWN_TYPE; unknown MemberReference → BML_UNKNOWN_PROPERTY (or BML_UNKNOWN_TYPE
@@ -86,7 +90,10 @@
       Abstract base for all value blocks used in Property and Capability types.
     </see>
     <see type="type:PrimitiveType" relation="SeeAlso">
-      Branch base for atomic scalar types.
+      Branch base for atomic scalar types — parseValue.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="AuthoringGuide">
+      Lexical parse vs configuration, constraints, and existence.
     </see>
     <see type="type:StructType" relation="SeeAlso">
       Branch base for custom value objects.

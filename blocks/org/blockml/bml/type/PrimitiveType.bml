@@ -8,8 +8,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>PrimitiveType</name>
@@ -27,6 +29,10 @@
     branch: Temporal (Date, Time, DateTime) — calendar or clock positions. Boolean is its own
     branch — neither textual nor numeric. Duration is its own branch — an elapsed-time magnitude,
     not a Temporal subtype.
+
+    Lexical acceptance of authored text is parseValue (Text → bml:Self, throws
+    InvalidValueException). Concrete primitives implement a deterministic host-evaluable body.
+    Configuration, constraints, and Reference existence run after parse — doc:ValueTypeParsing.
 
     When a primitive value must exist as an Entity inside a composition or aggregation, use a
     concrete Entity specialization (for example IntegerEntity) — not by adding a value member to
@@ -54,8 +60,30 @@
     <see type="type:IntegerEntity" relation="SeeAlso">
       Example concrete Entity wrapper for primitive values.
     </see>
+    <see type="doc:ValueTypeParsing" relation="AuthoringGuide">
+      parseValue — lexical Text to bml:Self.
+    </see>
   </references>
 
   <abstract>true</abstract>
+
+  <capabilities>
+    <parseValue
+      type="Transformation"
+      abstract="true"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Lexical parse of authored XML text into a value of this PrimitiveType (bml:Self after
+        inheritance). Throws ex:InvalidValueException when the text is not a value of this type.
+        Does not apply Integer{min,max} or other instance configuration, Property constraints,
+        or TypeRegistry existence. Host TypeScript return types are FunctionMapping — not
+        outputType (doc:ValueTypeParsing).
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+    </parseValue>
+  </capabilities>
 
 </block>

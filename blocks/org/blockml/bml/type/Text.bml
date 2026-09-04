@@ -3,8 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>Text</name>
@@ -34,7 +36,29 @@
     <see type="doc:Expressions" relation="AuthoringGuide">
       Interpolated Text holes, #this lookup, and Restricted Profile.
     </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue identity — every authored string is Text.
+    </see>
   </references>
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Identity — every authored string is a Text value. Length bounds are instance
+        configuration (minLength / maxLength), applied after parse.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => raw
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
   <properties>
     <minLength type="Integer">
       <documentation>Minimum allowed text length (inclusive). Configured via Text{minLength: n}.</documentation>

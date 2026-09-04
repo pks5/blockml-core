@@ -11,6 +11,7 @@
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
+  xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
   <name>Capability</name>
@@ -22,6 +23,11 @@
     Capability branch of BlockML. Declares a capability type. Every capability may
     carry an implementation whose language attribute references a Language FQN.
 
+    The implementation body is not restricted to a compiler-emit template. It may
+    describe intent (PseudoCode or a natural language), supply a companion template
+    for a renderer, or be a deterministic function a host toolchain evaluates.
+    Those readings coexist — doc:CapabilitySemantics.
+
     Exception types a capability may raise are declared on
     org.blockml.bml.definition.CapabilityDefinition.throws
     (type:TypeReferenceEntity(core:Exception)[]) — not on this branch type.
@@ -30,6 +36,9 @@
   <references>
     <see type="def:CapabilityDefinition" relation="Defines">
       Capability member shape — inputType, outputType, throws, implementation.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      Intent, companion template, and host-evaluable readings.
     </see>
     <see type="core:Exception" relation="SeeAlso">
       Exception types listed on Capability throws.
@@ -53,7 +62,9 @@
           element. Unqualified names resolve via implicit namespace org.blockml.bml.language.*.</documentation>
       </language>
       <documentation>Capability implementation body. The language attribute must reference a
-        Language from org.blockml.bml.language.* — unqualified names permitted.</documentation>
+        Language from org.blockml.bml.language.* — unqualified names permitted. The body may
+        be intent prose, a companion template, or a host-evaluable function
+        (doc:CapabilitySemantics).</documentation>
     </implementation>
   </properties>
 </block>

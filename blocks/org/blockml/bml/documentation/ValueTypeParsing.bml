@@ -1,0 +1,78 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.ValueTypeParsing
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:exception="org.blockml.bml.exception"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>ValueTypeParsing</name>
+  <type>doc:ValueTypeParsing</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to ValueType parsing</is>
+
+  <documentation>
+    PrimitiveType declares parseValue — a Transformation from authored Text to bml:Self that
+    throws exception:InvalidValueException. Concrete primitives implement a deterministic
+    TypeScript body (host-evaluable reading of doc:CapabilitySemantics). The BML outputType is
+    always bml:Self — the TypeScript return (number, string, boolean) is FunctionMapping / host
+    encoding, not the Capability signature.
+
+    parseValue is lexical only:
+    • Input is XML attribute or element text, already tokenized by the parser as Text
+    • Success means the text is a value of this PrimitiveType
+    • Failure throws InvalidValueException; a validating host reports diag:BML_INVALID_VALUE
+    • The body sees the type definition, not the Property's configured type instance — no
+      this.min / this.max
+
+    After a successful parse, in this order:
+    1. Type instance configuration — Integer{min: 0, max: 100}, Text{maxLength: 50}
+       (doc:ValueTypeConfiguration)
+    2. Property constraints — Pattern, Min, Max, … (doc:ConstraintsModel)
+    3. Existence checks on Reference types — TypeReference, InstanceReference, MemberReference
+       (doc:TypeSystemOverview). parseValue does not consult the TypeRegistry.
+
+    Inheritance: Text implements identity (every string is Text). Number implements a numeric
+    literal; Integer, Decimal, and Float refine. Temporal leaves parseValue abstract; Date, Time,
+    and DateTime implement ISO forms. Identifier types implement syntax; Reference subtypes inherit
+    that syntax and add existence in the validator.
+
+    parseValue does not cover multiplicity or unions (TypeExpression on the reference, element-wise),
+    StructType field walks, EnumType membership, or Constant(T){value} equality. Those stay
+    validator-side.
+
+    Bootstrap: the compiler still tokenizes framework BML as text. parseValue runs on loaded
+    property values after TypeRegistry bootstrap. Hard-coded bootstrap parsers for Text, Integer,
+    Boolean, and TypeIdentifier remain until a host evaluates these bodies.
+  </documentation>
+
+  <references>
+    <see type="type:PrimitiveType" relation="Defines">
+      Abstract parseValue — Text to bml:Self.
+    </see>
+    <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
+      Host-evaluable Capability implementations.
+    </see>
+    <see type="doc:ValueTypeConfiguration" relation="SeeAlso">
+      Instance configuration after parse.
+    </see>
+    <see type="doc:ConstraintsModel" relation="SeeAlso">
+      Contextual constraints after parse.
+    </see>
+    <see type="doc:FunctionMappingModel" relation="SeeAlso">
+      Host return types are mapping, not outputType.
+    </see>
+    <see type="doc:TypeSystemOverview" relation="ReadNext">
+      ValueType kinds and Identifier vs Reference.
+    </see>
+  </references>
+
+</block>

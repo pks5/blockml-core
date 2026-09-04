@@ -1,0 +1,50 @@
+<!--
+  BlockML Core — BML_INVALID_VALUE diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_VALUE
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:exception="org.blockml.bml.exception"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>BML_INVALID_VALUE</name>
+  <type>diag:BML_INVALID_VALUE</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An invalid-value diagnostic</is>
+
+  <summary>Emitted when a host evaluates PrimitiveType.parseValue and the body throws InvalidValueException.</summary>
+
+  <keywords>BML_INVALID_VALUE</keywords>
+
+  <documentation>
+    Emitted when authored property text fails the lexical parse for the declared PrimitiveType.
+    The Capability throws exception:InvalidValueException; the validator reports this Diagnostic.
+    Remedy: fix the literal to match the type's parseValue contract (doc:ValueTypeParsing).
+
+    Not used for TypeReference existence (BML_UNKNOWN_TYPE), instance existence
+    (BML_UNRESOLVABLE_INSTANCE_REF), type-instance configuration, or Property constraints.
+  </documentation>
+
+  <references>
+    <see type="type:PrimitiveType" relation="Defines">
+      parseValue — lexical acceptance of authored Text.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="AuthoringGuide">
+      Parse vs configuration vs constraints vs existence.
+    </see>
+    <see type="exception:InvalidValueException" relation="ContrastsWith">
+      Capability-thrown exception the host maps to this code.
+    </see>
+    <see type="core:Exception" relation="ContrastsWith">
+      Capability throws types — not validator codes.
+    </see>
+  </references>
+
+</block>

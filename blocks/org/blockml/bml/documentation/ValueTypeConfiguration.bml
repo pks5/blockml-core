@@ -44,6 +44,10 @@
     wrappers. Prefer inline configuration for type-intrinsic thresholds (Text{maxLength: 100});
     keep Constraints for contextual/composable/business rules (Pattern, cross-property, …).
 
+    Configuration runs after PrimitiveType.parseValue accepts the authored text
+    (doc:ValueTypeParsing). parseValue does not read min / max / maxLength — those stay on the
+    Property's owned type instance.
+
     ValueType definitions declare configuration Properties on the type block (e.g. precision and
     scale on Decimal). Values live on Properties of Block instances — never on the ValueType
     definition. There is no new Integer(5) in BlockML; the Property owns value 5 with type Integer.
@@ -76,6 +80,9 @@
     </see>
     <see type="core:ValueType" relation="Extends">
       ValueType branch — types describe nature; Properties own values.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Lexical parse before instance configuration.
     </see>
   </references>
 

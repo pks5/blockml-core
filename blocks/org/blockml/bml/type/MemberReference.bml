@@ -21,7 +21,8 @@
   <is>A path to a Block member</is>
 
   <documentation>Abstract ValueType for references to Block member definitions — properties,
-    aggregations, associations, and capabilities. Extends MemberIdentifier(D) with existence and
+    aggregations, associations, and capabilities. Extends MemberIdentifier(D) (syntax, including
+    inherited parseValue) with existence and
     introduces the owning Block bound B: the owning type and the named member must resolve. Not a
     TypeReference — a member path is not a type FQN.
 
@@ -56,7 +57,10 @@
       references — separate target attributes.
     </see>
     <see type="type:MemberIdentifier" relation="SeeAlso">
-      Parent ValueType — member-path syntax without existence.
+      Parent ValueType — parseValue syntax without existence.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Lexical parse vs member-path resolution.
     </see>
     <see type="def:MemberDefinition" relation="Defines">
       Abstract member meta-model branch bound by D.

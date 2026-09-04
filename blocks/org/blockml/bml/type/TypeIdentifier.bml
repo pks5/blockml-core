@@ -8,8 +8,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>TypeIdentifier</name>
@@ -32,8 +34,9 @@
     Sub-Block FQNs derive as parentFqn + "." + name when omitted in source.
 
     Namespace prefixes in BML (core:, type:, def:, …) map to package segments. Ill-formed syntax
-    → BML_INVALID_TYPE_REFERENCE. An unknown FQN is valid on TypeIdentifier — use TypeReference
-    when the type must resolve (BML_UNKNOWN_TYPE).
+    is rejected by parseValue (host maps to BML_INVALID_VALUE / BML_INVALID_TYPE_REFERENCE). An
+    unknown FQN is valid on TypeIdentifier — use TypeReference when the type must resolve
+    (BML_UNKNOWN_TYPE). Existence is not part of parseValue (doc:ValueTypeParsing).
 
     No generic parameters. TypeReference(B) introduces the branch bound B after resolution.
 
@@ -61,5 +64,157 @@
     <see type="type:MemberIdentifier" relation="SeeAlso">
       Member definition path identifiers — PropertyIdentifier and siblings.
     </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — TypeExpression syntax only, no TypeRegistry.
+    </see>
   </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        TypeExpression syntax: unqualified name, xmlns QName, FQN, bml:Self, generic T,
+        generics (…), instance configuration {…}, multiplicity […], unions |, grouping (…),
+        anonymous StructType { field: Type }. Does not check that named types exist.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const s = raw.trim();
+          if (!s) throw new Error("empty type identifier");
+          let i = 0;
+          function peek() { return s[i]; }
+          function eat() { return s[i++]; }
+          function skip() { while (i < s.length && /\s/.test(s[i])) i++; }
+          function ident() {
+            if (!/[A-Za-z_]/.test(peek() || "")) return false;
+            eat();
+            while (i < s.length && /[A-Za-z0-9_]/.test(s[i])) eat();
+            return true;
+          }
+          function expect(ch) {
+            if (peek() !== ch) throw new Error("expected '" + ch + "' in type identifier: " + raw);
+            eat();
+          }
+          function name() {
+            skip();
+            if (!ident()) throw new Error("expected type name: " + raw);
+            if (peek() === ":") {
+              eat();
+              if (!ident()) throw new Error("expected name after prefix: " + raw);
+              while (peek() === ".") {
+                eat();
+                if (!ident()) throw new Error("expected Sub-Block after '.': " + raw);
+              }
+              return;
+            }
+            while (peek() === ".") {
+              eat();
+              if (!ident()) throw new Error("expected segment after '.': " + raw);
+            }
+          }
+          function typeExpr() {
+            primary();
+            skip();
+            while (peek() === "|") {
+              eat();
+              primary();
+              skip();
+            }
+          }
+          function configOrStruct(fields) {
+            expect("{");
+            skip();
+            if (peek() === "}") { eat(); return; }
+            if (fields) {
+              while (true) {
+                skip();
+                if (!ident()) throw new Error("expected field name: " + raw);
+                skip();
+                expect(":");
+                typeExpr();
+                skip();
+                if (peek() === ",") { eat(); continue; }
+                break;
+              }
+              skip();
+              expect("}");
+              return;
+            }
+            let depth = 1;
+            while (i < s.length && depth > 0) {
+              const c = eat();
+              if (c === "{") depth++;
+              else if (c === "}") depth--;
+            }
+            if (depth !== 0) throw new Error("unclosed configuration: " + raw);
+          }
+          function multiplicity() {
+            expect("[");
+            skip();
+            if (peek() === "]") { eat(); return; }
+            if (!/[\dn]/.test(peek() || "")) throw new Error("expected multiplicity bound: " + raw);
+            while (i < s.length && /[\dn]/.test(s[i])) eat();
+            skip();
+            if (s.slice(i, i + 2) === "..") {
+              i += 2;
+              skip();
+              if (peek() !== "]") {
+                if (!/[\dn]/.test(peek() || "")) throw new Error("expected multiplicity upper bound: " + raw);
+                while (i < s.length && /[\dn]/.test(s[i])) eat();
+                skip();
+              }
+            }
+            expect("]");
+          }
+          function primary() {
+            skip();
+            if (peek() === "(") {
+              eat();
+              typeExpr();
+              skip();
+              expect(")");
+              skip();
+              while (peek() === "[") multiplicity();
+              return;
+            }
+            if (peek() === "{") {
+              configOrStruct(true);
+              return;
+            }
+            name();
+            skip();
+            if (peek() === "(") {
+              eat();
+              skip();
+              if (peek() !== ")") {
+                typeExpr();
+                skip();
+                while (peek() === ",") {
+                  eat();
+                  typeExpr();
+                  skip();
+                }
+              }
+              expect(")");
+              skip();
+            }
+            if (peek() === "{") configOrStruct(false);
+            skip();
+            while (peek() === "[") multiplicity();
+          }
+          typeExpr();
+          skip();
+          if (i !== s.length) throw new Error("trailing junk in type identifier: " + raw);
+          return s;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 </block>

@@ -25,24 +25,24 @@
     is not English.
 
     Why PseudoCode exists:
-    • BlockML describes semantics, not a single target language
-    • Capability implementations need human- and LLM-readable bodies before renderers map them
+    • Capability implementations need a stable intent form that humans and LLMs can read
     • PseudoCode avoids premature binding to Java, TypeScript, SCAD, or Python syntax
-    • Semantic descriptions in PseudoCode stay stable across Worlds and render targets
+    • Intent descriptions in PseudoCode stay stable across Worlds and hosts
 
     When to use PseudoCode:
-    • Documenting intended behaviour on Capabilities during design
-    • Framework and domain blocks where the semantic contract matters more than executable code
-    • Blocks read by LLMs for code generation — PseudoCode is the preferred semantic layer
+    • Documenting intended behaviour on Capabilities during design (intent reading)
+    • Framework and domain blocks where the semantic contract matters more than a host body
+    • Blocks read by LLMs for code generation — PseudoCode is the preferred intent layer
 
     When to use concrete languages:
-    • org.blockml.bml.language.TypeScript, OpenSCAD, Python, … when a target renderer transpiles
-      or emits the implementation directly
+    • org.blockml.bml.language.TypeScript, OpenSCAD, Python, … as a companion template a
+      renderer transpiles or emits, or as a host-evaluable function a toolchain runs
     • Block definitions may restrict permitted languages via the languages aggregation
 
-    Prefer describing semantics in Capability implementation bodies (PseudoCode or natural
-    language blocks like English/German) rather than encoding behaviour in compiler special cases.
-    The renderer interprets; BlockML declares intent.
+    PseudoCode is the preferred intent dialect — not the only allowed implementation form.
+    A Capability may also carry a companion template or a deterministic host-evaluable body
+    (doc:CapabilitySemantics). A compiler renderer mapping names to target constructs remains
+    one valid interpretation, not a model restriction.
   </documentation>
 
   <references>
@@ -62,7 +62,7 @@
       Capability branch — implementation member references Language FQN.
     </see>
     <see type="doc:CapabilitySemantics" relation="SeeAlso">
-      Capability semantics — behaviour expressed as Capabilities, interpreted by renderers.
+      Capability semantics — intent, companion template, and host-evaluable readings.
     </see>
     <see type="doc:WOTFoundation" relation="ReadNext">
       Next reading step — optional philosophical foundation (Idea, Manifestation, Grammar, World).

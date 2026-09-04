@@ -24,7 +24,8 @@
 
   <documentation>
     ValueType for non-owning pointers to concrete Block instances identified by bml:id that must
-    resolve. Extends InstanceIdentifier (syntax) with existence and the branch bound T.
+    resolve. Extends InstanceIdentifier (syntax, including inherited parseValue) with existence
+    and the branch bound T.
     Unqualified name InstanceReference resolves to org.blockml.bml.type.InstanceReference.
 
     Lexical forms:
@@ -60,7 +61,10 @@
       Associations and see instance= targets.
     </see>
     <see type="type:InstanceIdentifier" relation="SeeAlso">
-      Parent ValueType — instance-name syntax without existence.
+      Parent ValueType — parseValue syntax without existence.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Lexical parse vs instance resolution.
     </see>
     <see type="type:TypeReference" relation="SeeAlso">
       Sibling ValueType for Block type FQNs — not instance pointers.

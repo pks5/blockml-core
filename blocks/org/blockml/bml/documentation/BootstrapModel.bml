@@ -60,6 +60,7 @@
     Interpretation context:
     • Framework BML defines what types ARE — TypeRegistry SSOT
     • Renderers interpret what types MEAN for their target — free manifestation
+    • Hosts may also evaluate deterministic Capability implementations (doc:CapabilitySemantics)
     • README references with ReadFirst establish shared vocabulary before diving into definitions
     • After the first ten ReadFirst documentation blocks, most of the core library can be derived
       directly from Block definitions themselves
@@ -69,6 +70,9 @@
   </documentation>
 
   <references>
+    <see type="doc:CapabilitySemantics" relation="SeeAlso">
+      Capability bodies may be intent, companion templates, or host-evaluable functions.
+    </see>
     <see type="doc:CompilerArchitecture" relation="SeeAlso">
       TypeRegistry bootstrap and BML registration.
     </see>

@@ -3,6 +3,9 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <name>UUID</name>
@@ -13,4 +16,35 @@
   <documentation>Textual primitive subtype for UUID values (for example
     550e8400-e29b-41d4-a716-446655440000). Unqualified name UUID resolves to
     org.blockml.bml.type.UUID.</documentation>
+
+  <references>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — 8-4-4-4-12 hex UUID form.
+    </see>
+  </references>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Canonical UUID string 8-4-4-4-12 hexadecimal digits, case-insensitive.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(t)) {
+            throw new Error("not a UUID: " + raw);
+          }
+          return t;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 </block>

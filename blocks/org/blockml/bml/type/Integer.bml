@@ -3,7 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit">
 
@@ -21,11 +24,42 @@
 
     Optional configuration Properties (min, max) configure a Property's owned Integer instance via
     inline type syntax — Integer{min: 0, max: 100}. Positional order: min, max. See
-    20_value_type_instance_configuration.md.</documentation>
+    20_value_type_instance_configuration.md. min/max are applied after parseValue
+    (doc:ValueTypeParsing).</documentation>
 
   <genericTypes>
     <N baseType="core:Unit" defaultType="unit:None"/>
   </genericTypes>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Whole-number literal — optional sign, then digits with no fraction or exponent.
+        min/max configuration is applied after parse.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): number => {
+          const t = raw.trim();
+          if (!/^[+-]?\d+$/.test(t)) {
+            throw new Error("not a whole number: " + raw);
+          }
+          const n = Number(t);
+          if (!Number.isSafeInteger(n)) {
+            throw new Error("integer out of safe range: " + raw);
+          }
+          return n;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
   <properties>
     <min type="Integer">

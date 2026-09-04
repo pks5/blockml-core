@@ -3,7 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit">
 
@@ -20,8 +23,42 @@
 
     Generic parameter N constrains the measurement unit (extends org.blockml.bml.core.Unit).
     Default is org.blockml.bml.unit.None — bare Number / Integer / Decimal / Float are dimensionless.
-    Supply N at reference sites when a unit is required, e.g. Integer(unit:Millimeter).</documentation>
+    Supply N at reference sites when a unit is required, e.g. Integer(unit:Millimeter).
+
+    parseValue accepts a numeric literal (optional sign, digits, optional fraction and exponent).
+    Integer, Decimal, and Float refine the lexical form. min/max and unit are not applied here
+    (doc:ValueTypeParsing).</documentation>
   <abstract>true</abstract>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Numeric literal — optional sign, integer digits, optional fraction, optional exponent.
+        Integer / Decimal / Float override with tighter forms.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): number => {
+          const t = raw.trim();
+          if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(t)) {
+            throw new Error("not a numeric literal: " + raw);
+          }
+          const n = Number(t);
+          if (!Number.isFinite(n)) {
+            throw new Error("not a finite number: " + raw);
+          }
+          return n;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
   <genericTypes>
     <N baseType="core:Unit" defaultType="unit:None"/>

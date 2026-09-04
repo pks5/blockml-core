@@ -3,7 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit">
 
@@ -18,7 +21,40 @@
     org.blockml.bml.type.Float. Extends org.blockml.bml.type.Number. Values are stored in Properties.
 
     Generic parameter N (Unit, default unit:None) is forwarded from Number — e.g.
-    Float(unit:Millimeter). Bare Float is dimensionless.</documentation>
+    Float(unit:Millimeter). Bare Float is dimensionless.
+
+    parseValue accepts a binary-floating literal (same lexical form as Number, including
+    exponent). NaN and infinities are rejected (doc:ValueTypeParsing).</documentation>
+
+  <capabilities>
+    <parseValue
+      override="true"
+      abstract="false"
+      type="Transformation"
+      inputType="Text"
+      outputType="bml:Self">
+      <documentation>
+        Binary floating-point literal — optional sign, digits, optional fraction and exponent.
+        Rejects NaN and infinities.
+      </documentation>
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <implementation language="TypeScript"><![CDATA[
+        (raw: string): number => {
+          const t = raw.trim();
+          if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(t)) {
+            throw new Error("not a float literal: " + raw);
+          }
+          const n = Number(t);
+          if (!Number.isFinite(n)) {
+            throw new Error("not a finite float: " + raw);
+          }
+          return n;
+        }
+      ]]></implementation>
+    </parseValue>
+  </capabilities>
 
   <genericTypes>
     <N baseType="core:Unit" defaultType="unit:None"/>

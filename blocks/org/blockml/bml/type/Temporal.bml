@@ -26,7 +26,10 @@
 
     Duration is a sibling primitive under PrimitiveType, not a Temporal subtype. DateTime minus
     DateTime yields Duration; DateTime plus Duration yields DateTime; DateTime plus DateTime is
-    invalid.</documentation>
+    invalid.
+
+    parseValue stays abstract here — Date, Time, and DateTime implement ISO lexical forms
+    (doc:ValueTypeParsing).</documentation>
   <abstract>true</abstract>
 
   <references>

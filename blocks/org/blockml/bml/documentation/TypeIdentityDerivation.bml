@@ -37,7 +37,9 @@
     • MemberIdentifier / PropertyIdentifier / … — path syntax only
     • InstanceReference — instance must resolve → else BML_UNRESOLVABLE_INSTANCE_REF
     • InstanceIdentifier — id / path syntax only
-    Ill-formed syntax on any of these → BML_INVALID_TYPE_REFERENCE.
+    Ill-formed syntax on any of these → BML_INVALID_TYPE_REFERENCE (and, when a host evaluates
+    parseValue, BML_INVALID_VALUE). Syntax is PrimitiveType.parseValue; existence stays a
+    validator step on Reference types (doc:ValueTypeParsing).
 
     An unresolved Reference is an error, but it does not mean the document is ill-formed. Like
     Java class-not-found, it may be a typo or a missing dependency (library not on the current
@@ -85,6 +87,9 @@
   </documentation>
 
   <references>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue syntax vs Reference existence.
+    </see>
     <see type="type:TypeIdentifier" relation="Defines">
       Identity type on BlockDefinition — FQN being minted, need not exist.
     </see>

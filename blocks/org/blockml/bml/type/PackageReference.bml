@@ -20,7 +20,8 @@
 
   <documentation>
     ValueType for package references — reverse-domain package strings without a type (class)
-    segment that must be known in the corpus. Extends PackageIdentifier (syntax) with existence.
+    segment that must be known in the corpus. Extends PackageIdentifier (syntax, including
+    inherited parseValue) with existence.
     Unqualified name PackageReference resolves to org.blockml.bml.type.PackageReference.
     Sibling of TypeReference under Text — not a TypeReference subtype. No generic parameters.
 
@@ -53,7 +54,10 @@
       Namespace resolution — packages vs type FQNs.
     </see>
     <see type="type:PackageIdentifier" relation="SeeAlso">
-      Parent ValueType — package-string syntax without existence.
+      Parent ValueType — parseValue syntax without existence.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      Lexical parse vs corpus existence.
     </see>
     <see type="type:TypeReference" relation="ContrastsWith">
       Sibling ValueType for Block type FQNs / TypeExpressions — includes the class segment.
