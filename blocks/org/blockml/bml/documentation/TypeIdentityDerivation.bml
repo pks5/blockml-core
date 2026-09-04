@@ -19,7 +19,7 @@
   <is>A guide to type references and Block identity</is>
 
   <documentation>
-    Every type reference in BML — composition tags, type / baseType on definitions, member type
+    Every type name in BML — composition tags, identity type / baseType on definitions, member type
     attributes — may be written in one of four forms. All normalize to a canonical FQN during
     resolution:
     1. Fully qualified name — com.foo.Bar
@@ -27,10 +27,25 @@
     3. Unqualified fallback — Integer at a context-bound site (doc:ImplicitNamespaceResolution)
     4. Sub-Block-relative name — MySubBlock or foo:Bar.MySubBlock
 
-    General block references (baseType, aggregation type, composition tags outside specialized
-    sites) require an explicit FQN or xmlns prefix — no implicit fallback. Unresolvable →
-    BML_UNKNOWN_TYPE. Ambiguous unqualified → BML_AMBIGUOUS_TYPE. Undeclared QName prefix →
-    BML_UNKNOWN_NAMESPACE_PREFIX.
+    Validator — declared ValueType wins, never the field name. type=, baseType=, abc=, or any
+    other name is irrelevant; only whether the field's type is-a TypeReference / TypeIdentifier /
+    MemberReference / … matters:
+    • TypeReference / TypeReferenceEntity — FQN must resolve in TypeRegistry → else BML_UNKNOWN_TYPE
+    • TypeIdentifier (and not TypeReference) — syntax only; unknown FQN is valid
+    • MemberReference / PropertyReference / … — path must resolve → else BML_UNKNOWN_PROPERTY
+      (or BML_UNKNOWN_TYPE if the owning type cannot be resolved)
+    • MemberIdentifier / PropertyIdentifier / … — path syntax only
+    • InstanceReference — instance must resolve → else BML_UNRESOLVABLE_INSTANCE_REF
+    • InstanceIdentifier — id / path syntax only
+    Ill-formed syntax on any of these → BML_INVALID_TYPE_REFERENCE.
+
+    An unresolved Reference is an error, but it does not mean the document is ill-formed. Like
+    Java class-not-found, it may be a typo or a missing dependency (library not on the current
+    classpath). Interpretation is left open.
+
+    Unqualified names on TypeReference fields require an explicit FQN or xmlns prefix — no
+    implicit fallback. Unresolvable → BML_UNKNOWN_TYPE. Ambiguous unqualified → BML_AMBIGUOUS_TYPE.
+    Undeclared QName prefix → BML_UNKNOWN_NAMESPACE_PREFIX.
 
     Sub-Block type references — Java static nested classes: own FQN prefix, optional own
     genericTypes, no enclosing-instance and no outer type-parameter scope (forward explicitly, e.g.
@@ -70,11 +85,11 @@
   </documentation>
 
   <references>
-    <see type="type:TypeIdentifier" relation="SeeAlso">
-      FQN / TypeExpression syntax without existence.
+    <see type="type:TypeIdentifier" relation="Defines">
+      Identity type on BlockDefinition — FQN being minted, need not exist.
     </see>
     <see type="type:TypeReference" relation="Defines">
-      ValueType for FQN / TypeExpression text on type and baseType — must resolve.
+      ValueType for baseType and other FQN / TypeExpression sites that must resolve.
     </see>
     <see type="type:PackageReference" relation="SeeAlso">
       Package strings without a class segment — not type FQNs.

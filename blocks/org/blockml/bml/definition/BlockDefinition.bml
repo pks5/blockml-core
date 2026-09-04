@@ -76,10 +76,13 @@
     </see>
     <see type="type:TypeReferenceEntity" relation="Defines">
       Entity payload for contracts and language aggregations — not
-      type/baseType (those stay scalar TypeReference text).
+      type (TypeIdentifier) or baseType (TypeReference).
+    </see>
+    <see type="type:TypeIdentifier" relation="Defines">
+      ValueType for identity type — FQN being minted, need not exist.
     </see>
     <see type="type:TypeReference" relation="Defines">
-      ValueType for identity type and baseType properties (FQN / TypeExpression text).
+      ValueType for baseType — parent FQN / TypeExpression must resolve.
     </see>
     <see type="group:BlockGroup" relation="Defines">
       Narrows inherited StructuralDefinition.groups to BlockGroup references.
@@ -116,13 +119,13 @@
         (BML_INVALID_BLOCK_NAME). First child of every Block definition document (with type /
         baseType) — definition identity comes before is.</documentation>
     </name>
-    <type type="TypeReference(core:Block)" bml:xml="element">
-      <documentation>Canonical Block type identity — scalar TypeReference (FQN) text, not a
-        TypeReferenceEntity aggregation. Required on root blocks (BML_MISSING_BLOCK_TYPE). Authored
-        as element text — FQN, xmlns QName, or Sub-Block-relative name (for example foo:MyBlock or
-        com.foo.MyBlock). The named type need not exist yet — this property declares identity for the
-        Block being defined. Optional on Sub-Blocks — when omitted, derived as
-        resolve(parent.type) + "." + name; when present, must equal that expected value
+    <type type="TypeIdentifier" bml:xml="element">
+      <documentation>Canonical Block type identity — scalar TypeIdentifier (FQN) text, not a
+        TypeReference and not a TypeReferenceEntity aggregation. Declares the FQN being minted;
+        the named type need not exist in the TypeRegistry. Required on root blocks
+        (BML_MISSING_BLOCK_TYPE). Authored as element text — FQN, xmlns QName, or Sub-Block-relative
+        name (for example foo:MyBlock or com.foo.MyBlock). Optional on Sub-Blocks — when omitted,
+        derived as resolve(parent.type) + "." + name; when present, must equal that expected value
         (BML_SUBBLOCK_TYPE_MISMATCH). Stored in BOM as block.type (FQN string). Immediately after
         name, before is.</documentation>
     </type>

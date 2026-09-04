@@ -20,18 +20,30 @@
   <baseType>core:Diagnostic</baseType>
   <is>An invalid-type-reference diagnostic</is>
 
-  <summary>Emitted when a TypeReference / TypeExpression cannot be parsed or is ill-formed.</summary>
+  <summary>Emitted when a TypeIdentifier, TypeReference, or TypeExpression cannot be parsed or is
+    ill-formed.</summary>
 
   <keywords>BML_INVALID_TYPE_REFERENCE</keywords>
 
   <documentation>
-    Emitted when a TypeReference / TypeExpression cannot be parsed or is ill-formed — including
-    an ill-formed bml:generics value. Remedy: Fix FQN/QName/generic/configuration syntax. Instance
-    bml:generics requires a parenthesized argument list in the same form as a baseType
-    application.
+    Emitted when a TypeIdentifier, TypeReference, or TypeExpression cannot be parsed or is
+    ill-formed — including an ill-formed bml:generics value and ill-formed MemberIdentifier /
+    InstanceIdentifier path or id syntax. This is the syntax check shared by Identifier and
+    Reference, keyed off the declared ValueType of the field (not the field name). Fields
+    typed Identifier (and not a Reference subtype) stop here — an unknown but well-formed
+    name is valid. Fields typed Reference continue to existence checks (BML_UNKNOWN_TYPE,
+    BML_UNKNOWN_PROPERTY, BML_UNRESOLVABLE_INSTANCE_REF). Remedy: Fix
+    FQN/QName/generic/configuration/path syntax. Instance bml:generics requires a
+    parenthesized argument list in the same form as a TypeReference application.
   </documentation>
 
   <references>
+    <see type="type:TypeIdentifier" relation="Defines">
+      Syntax-only type name — this diagnostic is the Identifier check.
+    </see>
+    <see type="type:TypeReference" relation="SeeAlso">
+      Existence-checked specialization — syntax then BML_UNKNOWN_TYPE.
+    </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Type reference forms.
     </see>

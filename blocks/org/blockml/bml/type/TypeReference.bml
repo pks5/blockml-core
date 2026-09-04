@@ -52,9 +52,13 @@
 
     Concrete type arguments must satisfy B's baseType constraint → BML_GENERIC_CONSTRAINT_VIOLATION.
 
-    Primary use — Block-definition identity (`type`, `baseType`) and definition metadata where a
-    type attribute or property holds a Block FQN / TypeExpression string. When a type reference must
-    appear as an Entity in composition or aggregation, use org.blockml.bml.type.TypeReferenceEntity.
+    Any field whose declared type is TypeReference must resolve, regardless of the field name
+    (type=, baseType=, abc=, …). The validator does not special-case XML sites. Identity
+    `type` on BlockDefinition is declared as TypeIdentifier — that is why it is not
+    existence-checked; a field named type whose type were TypeReference would be. When a type
+    reference must appear as an Entity in composition or aggregation, use
+    org.blockml.bml.type.TypeReferenceEntity. Unresolved → BML_UNKNOWN_TYPE: an error, not
+    proof the document is ill-formed (missing library vs typo).
 
     Instance pointers (bml:id / FQN::id) use org.blockml.bml.type.InstanceReference — not
     TypeReference. Package strings without a class segment use org.blockml.bml.type.PackageReference
@@ -73,7 +77,7 @@
       Namespace resolution and type identity.
     </see>
     <see type="def:BlockDefinition" relation="Defines">
-      type and baseType TypeReference properties (Block FQN / TypeExpression text).
+      baseType TypeReference property (parent FQN / TypeExpression — must resolve).
     </see>
     <see type="def:PropertyDefinition" relation="SeeAlso">
       property type attribute (ValueType FQN).

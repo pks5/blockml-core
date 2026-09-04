@@ -27,8 +27,11 @@
 
   <documentation>
     Procedure when the validator reports BML_UNKNOWN_TYPE:
-    1. Locate the failing type reference site (type, baseType, member type, contract, language).
-    2. Confirm the expanded FQN matches a registered BlockDefinition.
+    1. Locate the field whose declared type is TypeReference or TypeReferenceEntity (or a
+       subtype). The XML name of the field does not matter. Fields typed TypeIdentifier
+       (and not TypeReference) do not emit this diagnostic.
+    2. Confirm the expanded FQN matches a registered BlockDefinition — or treat the finding as
+       a missing dependency (library not loaded), not as proof the document is ill-formed.
     3. Check xmlns prefix maps to the intended namespace on this document.
     4. Confirm the defining block is listed in Library blocks when loaded via a library.
     5. Verify dependency libraries and bootstrap order load the defining catalogue first.

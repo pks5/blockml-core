@@ -25,13 +25,21 @@
   <keywords>BML_TYPE_REFERENCE_CONSTRAINT</keywords>
 
   <documentation>
-    Emitted when a TypeReference(B)/MemberReference bound is not satisfied by the referenced
-    type. Remedy: Referenced type must satisfy the branch bound B (and D for MemberReference).
+    Emitted when a TypeReference(B), MemberReference(B, D), or InstanceReference(T) bound is not
+    satisfied by the resolved target. Identifier sites have no branch bound and never emit this
+    diagnostic. Remedy: Referenced type or instance must satisfy the branch bound B / T (and D
+    for MemberReference).
   </documentation>
 
   <references>
     <see type="type:TypeReference" relation="Defines">
-      TypeReference bounds.
+      TypeReference bounds — checked after resolve.
+    </see>
+    <see type="type:MemberReference" relation="SeeAlso">
+      Member path existence and D / B bounds.
+    </see>
+    <see type="type:TypeIdentifier" relation="ContrastsWith">
+      Syntax-only — no branch bound.
     </see>
     <see type="doc:GenericsModel" relation="SeeAlso">
       satisfiesTypeBound.

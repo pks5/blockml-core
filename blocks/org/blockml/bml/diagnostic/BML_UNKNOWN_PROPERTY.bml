@@ -25,11 +25,22 @@
   <keywords>BML_UNKNOWN_PROPERTY</keywords>
 
   <documentation>
-    Emitted when a property name cannot be resolved on the Block (non-expression site). Remedy:
-    Check member name, namespace, and effective members after merge.
+    The validator keys off the declared ValueType of the field, not the field name. Emitted when
+    a value whose type is PropertyReference / MemberReference (or a subtype) cannot be resolved
+    on the Block (non-expression). PropertyIdentifier and MemberIdentifier (and not a Reference
+    subtype) are syntax-only — an unknown but well-formed path is valid. Unresolved is an error,
+    not proof the document is ill-formed — the member may be missing from a not-yet-loaded
+    library. Remedy: Check member name, namespace, effective members after merge, and whether
+    the owning type's library is on the current classpath.
   </documentation>
 
   <references>
+    <see type="type:PropertyReference" relation="Defines">
+      Existence-checked property path — this diagnostic applies here.
+    </see>
+    <see type="type:PropertyIdentifier" relation="ContrastsWith">
+      Syntax-only property path — unknown name is valid.
+    </see>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
       Effective members.
     </see>

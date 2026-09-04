@@ -25,11 +25,21 @@
   <keywords>BML_UNRESOLVABLE_INSTANCE_REF</keywords>
 
   <documentation>
-    Emitted when an InstanceReference cannot be resolved to an instance id in scope. Remedy:
-    Fix bml:id, aggregation visibility, or the reference path.
+    The validator keys off the declared ValueType of the field, not the field name. Emitted when
+    a value whose type is InstanceReference cannot be resolved to an instance id in scope.
+    InstanceIdentifier (and not InstanceReference) is syntax-only — an unknown but well-formed
+    id is valid. Unresolved is an error, not proof the document is ill-formed — the instance
+    may live in a document or library that is not currently loaded. Remedy: Fix bml:id,
+    aggregation visibility, the reference path, or the load set.
   </documentation>
 
   <references>
+    <see type="type:InstanceReference" relation="Defines">
+      Existence-checked instance pointer — this diagnostic applies here.
+    </see>
+    <see type="type:InstanceIdentifier" relation="ContrastsWith">
+      Syntax-only instance name — unknown id is valid.
+    </see>
     <see type="doc:CompositionModel" relation="AuthoringGuide">
       Instance references.
     </see>

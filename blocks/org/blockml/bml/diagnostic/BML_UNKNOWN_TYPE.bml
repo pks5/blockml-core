@@ -12,21 +12,37 @@
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:relation="org.blockml.bml.relation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
 
   <name>BML_UNKNOWN_TYPE</name>
   <type>diag:BML_UNKNOWN_TYPE</type>
   <baseType>core:Diagnostic</baseType>
   <is>An unresolved-type diagnostic</is>
 
-  <summary>Emitted when type, baseType, contract, language, or member type references an unknown or
-    misspelled FQN — or when bootstrap order has not yet loaded the library that defines the type.</summary>
+  <summary>Emitted when a value whose declared type is TypeReference (or TypeReferenceEntity)
+    cannot be resolved in the current TypeRegistry — including a missing dependency library.</summary>
 
-  <keywords>BML_UNKNOWN_TYPE, unknown type, unresolved FQN, TypeRegistry</keywords>
+  <keywords>BML_UNKNOWN_TYPE, unknown type, unresolved FQN, TypeRegistry, TypeReference</keywords>
 
   <documentation>
-    The validator expands the authored type reference to a canonical FQN and looks up the
-    BlockDefinition in TypeRegistry. Failure means the type is not registered at validation time.
+    The validator keys off the declared ValueType of the field — not the property or attribute
+    name and not the XML site. Whether the field is authored as type=, baseType=, abc=, or any
+    other name is irrelevant. If the field's type is TypeReference or TypeReferenceEntity (or a
+    subtype), the authored name is expanded to a canonical FQN and looked up in TypeRegistry.
+    Failure to resolve emits this diagnostic.
+
+    If the field's type is TypeIdentifier (or a TypeIdentifier that is not a TypeReference),
+    existence is not checked — an unknown but well-formed FQN is valid. Ill-formed syntax on
+    either Identifier or Reference → BML_INVALID_TYPE_REFERENCE. Unresolved MemberReference →
+    BML_UNKNOWN_PROPERTY (or this diagnostic when the owning type cannot be resolved).
+    Unresolved InstanceReference → BML_UNRESOLVABLE_INSTANCE_REF.
+
+    This diagnostic is an error, but it does not mean the document is ill-formed or semantically
+    wrong. It is the same class of finding as Java "cannot find symbol" / class not found: the
+    name may be a typo, or a library may simply not be on the current classpath (for example a
+    Maven package not included). Which of those it is remains a question of interpretation.
+
     Common causes: typo in FQN or xmlns prefix, missing Library blocks entry, unloaded dependency
     library, or reference to a Sub-Block type without the full parent-qualified path where required.
   </documentation>
@@ -34,6 +50,12 @@
   <references>
     <see type="task:DebugUnknownType" relation="Resolves">
       Step-by-step fix — namespace, Library blocks, bootstrap order.
+    </see>
+    <see type="type:TypeReference" relation="Defines">
+      Existence-checked type name — this diagnostic applies here.
+    </see>
+    <see type="type:TypeIdentifier" relation="ContrastsWith">
+      Syntax-only type name — unknown FQN is valid.
     </see>
     <see type="doc:LibrarySystem" relation="Prerequisite">
       How libraries register blocks in TypeRegistry.

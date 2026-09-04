@@ -43,9 +43,9 @@
     &lt;blockml:Library bml:version="3.0.0" /&gt;. Explicit TypeReferenceEntity authoring is always
     valid and equivalent.
 
-    Contrast with scalar TypeReference(B) on properties (identity type / baseType, member type
-    attributes) — those remain plain text, not Entity instances. Member path names use
-    MemberIdentifier / PropertyIdentifier / PropertyReference / … — not this Entity.
+    Contrast with scalar TypeReference(B) on properties — those remain plain text, not Entity
+    instances. The field name is irrelevant; the declared ValueType decides. Member path names
+    use MemberIdentifier / PropertyIdentifier / PropertyReference / … — not this Entity.
 
     Replaces the former abstract org.blockml.bml.core.TypeReference aggregation marker and
     FullyQualifiedNameEntity.</documentation>

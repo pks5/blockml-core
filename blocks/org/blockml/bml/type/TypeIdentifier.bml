@@ -8,7 +8,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
-  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
@@ -37,9 +37,10 @@
 
     No generic parameters. TypeReference(B) introduces the branch bound B after resolution.
 
-    Primary use — planned, generated, or foreign type names. Block-definition identity (`type`,
-    `baseType`) and other sites that must name an existing Block use TypeReference — not
-    TypeIdentifier. Package strings without a class segment use PackageIdentifier /
+    Any field whose declared type is TypeIdentifier (and not TypeReference) is syntax-only,
+    regardless of the field name. Block-definition identity (`type`) is one such field —
+    the name is being minted. Fields that must name an existing Block declare TypeReference
+    — not TypeIdentifier. Package strings without a class segment use PackageIdentifier /
     PackageReference. Member paths use the MemberIdentifier branch. Instance pointers use
     InstanceIdentifier / InstanceReference.
   </documentation>
@@ -47,6 +48,9 @@
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Namespace resolution and type identity.
+    </see>
+    <see type="def:BlockDefinition" relation="Defines">
+      Identity type property — FQN being minted.
     </see>
     <see type="type:TypeReference" relation="SeeAlso">
       Existence-checked specialization — FQN must resolve.

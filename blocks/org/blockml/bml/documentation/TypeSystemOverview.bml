@@ -61,6 +61,18 @@
     Capability inputType/outputType). Aggregation type may be any Block FQN. Association type
     must be InstanceReference(T) or InstanceReference(T)[] — bare Block FQNs are invalid.
     ValueTypes never store data — Properties own all concrete values.
+
+    Identifier vs Reference — the validator keys off the declared ValueType of the field, never
+    the property or attribute name (type= vs abc= is irrelevant):
+    • TypeReference, MemberReference (PropertyReference / AggregationReference / …), and
+      InstanceReference — the target must resolve in the current corpus. Unknown TypeReference
+      → BML_UNKNOWN_TYPE; unknown MemberReference → BML_UNKNOWN_PROPERTY (or BML_UNKNOWN_TYPE
+      if the owning type cannot be resolved); unknown InstanceReference →
+      BML_UNRESOLVABLE_INSTANCE_REF. Unresolved is an error, not proof the document is
+      ill-formed — like Java class-not-found, it may be a typo or a missing library.
+    • TypeIdentifier, MemberIdentifier (PropertyIdentifier / …), and InstanceIdentifier —
+      syntax only. Ill-formed → BML_INVALID_TYPE_REFERENCE. An unknown but well-formed name is
+      valid.
   </documentation>
 
   <references>
