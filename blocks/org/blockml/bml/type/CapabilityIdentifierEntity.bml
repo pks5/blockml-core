@@ -1,0 +1,18 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>CapabilityIdentifierEntity</name>
+  <type>type:CapabilityIdentifierEntity</type>
+  <baseType>core:PrimitiveEntity(type:CapabilityIdentifier)</baseType>
+  <is>A Capability member path as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a CapabilityIdentifier primitive. Binds T =
+    CapabilityIdentifier on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value
+    property automatically. Use when a potential capability path must appear as an identifiable
+    Block instance. Existence-checked counterparts use CapabilityReferenceEntity.</documentation>
+</block>

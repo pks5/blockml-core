@@ -1,0 +1,29 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MemberIdentifierEntity</name>
+  <type>type:MemberIdentifierEntity</type>
+  <baseType>core:PrimitiveEntity(type:MemberIdentifier(D))</baseType>
+  <is>A Block member path as an Entity</is>
+
+  <documentation>Open generic Entity wrapping a MemberIdentifier primitive. Forwards D from
+    org.blockml.bml.type.MemberIdentifier onto org.blockml.bml.core.PrimitiveEntity via baseType —
+    inherits the value property automatically as value : MemberIdentifier(D). Use when a member
+    path that need not exist must appear as an identifiable Block instance. Existence-checked
+    counterparts use MemberReferenceEntity. Concrete Identifier Entities (PropertyIdentifierEntity,
+    …) bind D.</documentation>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <D baseType="def:MemberDefinition">
+      <documentation>Member definition kind (path shape) — mirrored from MemberIdentifier.D.</documentation>
+    </D>
+  </genericTypes>
+</block>

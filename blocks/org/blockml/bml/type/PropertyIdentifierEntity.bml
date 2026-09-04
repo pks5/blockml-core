@@ -1,0 +1,18 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PropertyIdentifierEntity</name>
+  <type>type:PropertyIdentifierEntity</type>
+  <baseType>core:PrimitiveEntity(type:PropertyIdentifier)</baseType>
+  <is>A Property member path as an Entity</is>
+
+  <documentation>Concrete Entity wrapping a PropertyIdentifier primitive. Binds T =
+    PropertyIdentifier on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value
+    property automatically. Use when a potential property path must appear as an identifiable
+    Block instance. Existence-checked counterparts use PropertyReferenceEntity.</documentation>
+</block>

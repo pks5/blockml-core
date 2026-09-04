@@ -231,23 +231,37 @@
         <blockml:type.Float />
         <blockml:type.FloatEntity />
         <blockml:type.TypeIdentifier />
+        <blockml:type.TypeIdentifierEntity />
         <blockml:type.TypeReference />
         <blockml:type.TypeReferenceEntity />
         <blockml:type.PackageIdentifier />
+        <blockml:type.PackageIdentifierEntity />
         <blockml:type.PackageReference />
         <blockml:type.PackageReferenceEntity />
         <blockml:type.InstanceIdentifier />
+        <blockml:type.InstanceIdentifierEntity />
         <blockml:type.InstanceReference />
+        <blockml:type.InstanceReferenceEntity />
         <blockml:type.MemberIdentifier />
+        <blockml:type.MemberIdentifierEntity />
         <blockml:type.MemberReference />
+        <blockml:type.MemberReferenceEntity />
         <blockml:type.PropertyIdentifier />
+        <blockml:type.PropertyIdentifierEntity />
         <blockml:type.PropertyReference />
+        <blockml:type.PropertyReferenceEntity />
         <blockml:type.AggregationIdentifier />
+        <blockml:type.AggregationIdentifierEntity />
         <blockml:type.AggregationReference />
+        <blockml:type.AggregationReferenceEntity />
         <blockml:type.AssociationIdentifier />
+        <blockml:type.AssociationIdentifierEntity />
         <blockml:type.AssociationReference />
+        <blockml:type.AssociationReferenceEntity />
         <blockml:type.CapabilityIdentifier />
+        <blockml:type.CapabilityIdentifierEntity />
         <blockml:type.CapabilityReference />
+        <blockml:type.CapabilityReferenceEntity />
         <blockml:type.Integer />
         <blockml:type.IntegerEntity />
         <blockml:type.MimeType />

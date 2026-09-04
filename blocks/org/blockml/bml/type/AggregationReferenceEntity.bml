@@ -1,0 +1,26 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>AggregationReferenceEntity</name>
+  <type>type:AggregationReferenceEntity</type>
+  <baseType>core:PrimitiveEntity(type:AggregationReference(B))</baseType>
+  <is>A path to an Aggregation member as an Entity</is>
+
+  <documentation>Open generic Entity wrapping an AggregationReference primitive. Forwards B from
+    org.blockml.bml.type.AggregationReference onto org.blockml.bml.core.PrimitiveEntity via baseType —
+    inherits the value property automatically as value : AggregationReference(B). Use when a
+    resolved aggregation path must appear as an identifiable Block instance. Syntax-only paths use
+    AggregationIdentifierEntity.</documentation>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Owning Block branch — mirrored from AggregationReference.B. Checked after
+        resolution.</documentation>
+    </B>
+  </genericTypes>
+</block>

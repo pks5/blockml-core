@@ -1,0 +1,26 @@
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>InstanceReferenceEntity</name>
+  <type>type:InstanceReferenceEntity</type>
+  <baseType>core:PrimitiveEntity(type:InstanceReference(T))</baseType>
+  <is>A Block instance pointer as an Entity</is>
+
+  <documentation>Open generic Entity wrapping an InstanceReference primitive. Forwards T from
+    org.blockml.bml.type.InstanceReference onto org.blockml.bml.core.PrimitiveEntity via baseType —
+    inherits the value property automatically as value : InstanceReference(T). Use when a resolved
+    instance pointer must appear as an identifiable Block instance. Syntax-only names use
+    InstanceIdentifierEntity.</documentation>
+
+  <genericTypes>
+    <T baseType="core:Block">
+      <documentation>Target instance branch — mirrored from InstanceReference.T. Checked after
+        resolution.</documentation>
+    </T>
+  </genericTypes>
+</block>
