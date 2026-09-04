@@ -85,7 +85,7 @@
     </see>
 
     <see type="doc:Expressions" relation="ReadFirst">
-      Expression language — ${ }, scope, V1 builtins, FunctionMapping.
+      Expression language — ${ }, #this, interpolated Text, V1 builtins, FunctionMapping.
     </see>
 
     <see type="doc:EmbeddedExpressions" relation="ReadFirst">

@@ -24,8 +24,8 @@
 
   <documentation>
     Emitted when expression raw text fails to parse (parseExpression utility). Remedy: Check
-    ${ } / &lt;$ $&gt; delimiters, quotes, operators, and balanced brackets. Nested embed delimiters
-    are invalid.
+    ${ } / &lt;$ $&gt; delimiters, quotes, operators, and balanced brackets. An unclosed ${ in
+    interpolated Text is this code. Nested embed delimiters are invalid.
   </documentation>
 
   <references>

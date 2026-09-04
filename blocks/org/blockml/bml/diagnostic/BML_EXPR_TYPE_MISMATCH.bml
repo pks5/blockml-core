@@ -23,8 +23,10 @@
   <keywords>BML_EXPR_TYPE_MISMATCH</keywords>
 
   <documentation>
-    Emitted when the expression result type is incompatible with the target member type. Remedy:
-    Align operators/calls with the Property or Capability payload type after inference.
+    Emitted when the expression result type is incompatible with the target member type, or when
+    interpolated Text holes are authored on a member that is not type:Text. Remedy: Align
+    operators/calls with the Property or Capability payload type after inference. Keep
+    interpolation on type:Text (or type:Text[] string leaves) — doc:Expressions.
   </documentation>
 
   <references>

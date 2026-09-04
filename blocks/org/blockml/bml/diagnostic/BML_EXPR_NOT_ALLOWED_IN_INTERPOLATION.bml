@@ -1,0 +1,42 @@
+<!--
+  BlockML Core — BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION diagnostic
+
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:task="org.blockml.bml.task">
+
+  <name>BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION</name>
+  <type>diag:BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION</type>
+  <baseType>core:Diagnostic</baseType>
+  <is>An interpolation-profile diagnostic</is>
+
+  <summary>Emitted when an interpolation hole uses a construct outside the Restricted Profile.</summary>
+
+  <keywords>BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION</keywords>
+
+  <documentation>
+    Emitted when a ${ } hole in interpolated Text uses a construct outside the Restricted Profile.
+    Holes allow property access, literals, + (Text / Number), #strings.*, and #math.* only.
+    Forbidden in holes: @model, @bean, Capability linking / own-calls, and bml:each / bml:with
+    variables. Remedy: keep the hole on the Restricted Profile, or author a whole-value
+    "${ expr }" ExpressionValue when the full language is required (doc:Expressions).
+  </documentation>
+
+  <references>
+    <see type="doc:Expressions" relation="AuthoringGuide">
+      Interpolated Text Restricted Profile and #this lookup.
+    </see>
+    <see type="task:FixExpressionErrors" relation="Resolves">
+      Restrict the hole or switch to a whole-value expression.
+    </see>
+  </references>
+
+</block>

@@ -24,8 +24,9 @@
 
   <documentation>
     Emitted when an identifier is not found in scope, or index access is used on a StructType
-    field. Remedy: Bare property access is current Block only. StructType members are addressed
-    by name (size.x), not size[0].
+    field. Remedy: Property access is the outer Block instance (#this). this without # is a
+    member (#this.this), not the instance. StructType members are addressed by name (size.x),
+    not size[0]. See doc:Expressions.
   </documentation>
 
   <references>

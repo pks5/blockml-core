@@ -58,6 +58,9 @@
     <see type="doc:ConstraintsModel" relation="SeeAlso">
       Constraints and suggestions on properties.
     </see>
+    <see type="doc:Expressions" relation="SeeAlso">
+      Literal, whole-value ${ }, and interpolated Text on type:Text values.
+    </see>
   </references>
 
   <properties>
@@ -70,7 +73,9 @@
     </type>
     <value type="Text" bml:xml="element|attribute">
       <documentation>Default or computed value on the PropertyDefinition declaration inside
-        &lt;properties&gt; — definition syntax only. May be a literal or a ${ … } expression.
+        &lt;properties&gt; — definition syntax only. May be a literal, a whole-value ${ … }
+        expression, or interpolated Text holes when the property type is type:Text
+        (doc:Expressions).
         Element form is preferred (&lt;value&gt;…&lt;/value&gt;); compact attribute form on the
         declaration is also valid (value="…"). Do not specify both on the same declaration.
         Absent value means Optional.empty — not null.

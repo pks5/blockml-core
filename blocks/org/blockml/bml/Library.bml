@@ -1,18 +1,13 @@
-<!--
-  BlockML Library Descriptor
+<!--BlockML Library Descriptor
 
   Name: Library
   Filename: Library.bml
   FQN: org.blockml.bml.Library
 
   BlockML core library — exports framework blocks, value types, and services.
-  Block .bml sources live under blocks/org/blockml/bml/.
--->
-<block
-  xmlns="http://blockml.org/bml"
+  Block .bml sources live under blocks/org/blockml/bml/.-->
+<block xmlns="http://blockml.org/bml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
   xmlns:blockml="org.blockml.bml"
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
@@ -32,13 +27,24 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit"
-  xmlns:validation="org.blockml.bml.validation">
+  xmlns:validation="org.blockml.bml.validation"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd                       ">
 
-  <name>Library</name>
-  <type>blockml:Library</type>
-  <baseType>core:BlockLibrary</baseType>
-  <is>A BlockML core library catalog</is>
-
+  <name>
+    Library
+  </name>
+  <type>
+    blockml:Library
+  </type>
+  <baseType>
+    blockml:core.BlockLibrary
+  </baseType>
+  <is>
+    A BlockML core library catalog
+  </is>
+  <version>
+    3.0.0
+  </version>
   <documentation>
     Publishable BlockML core library (org.blockml.bml.Library). Exports the framework grammar:
     core branches (Block, Annotation, ValueType, Language, Status, Relation, Constraint, Validation, Capability, Exception, Definition, Group),
@@ -52,422 +58,415 @@
     org.blockml.bml.meta.FreeTextKeyword, org.blockml.bml.meta.FreeTextAlias). FreeText* extends
     Fixed* and widens protected members to public attributes. Domain libraries extend FixedKeyword
     and FixedAlias for catalogue-controlled tags and alternative names.
-
+    
     Membership is defined exclusively by this file's blocks list — not by directory layout.
     Version 3.0.0 applies to all exported blocks (framework convention: version only on
     Library.bml).
   </documentation>
-
   <references>
     <see type="blockml:README" relation="ReadFirst">
       Human/LLM reading entry for this library.
     </see>
   </references>
-
-  <version>3.0.0</version>
-
   <language>
-    <English />
+    <blockml:Library.English />
   </language>
-
   <properties>
     <description override="true">
       <value>BlockML core library</value>
     </description>
   </properties>
-
   <aggregations>
     <readMe>
       <composition>
         <blockml:README />
       </composition>
     </readMe>
-    <!-- Optional legacy XSD — omit when all types are exported via blocks -->
+    <!--Optional legacy XSD — omit when all types are exported via blocks-->
     <schemas>
       <composition>
-        <type:FilePathEntity value="blockml-library.xsd" />
+        <blockml:type.FilePathEntity value="blockml-library.xsd" />
       </composition>
     </schemas>
-
     <blocks>
       <composition>
-        <core:Block />
-        <core:Annotation />
-        <core:Bootstrap />
-        <core:ReadMe />
-        <core:Documentation />
-        <core:Keyword />
-        <core:Alias />
-        <core:TaskGuide />
-        <core:Diagnostic />
-        <core:Exception />
-        <core:Capability />
-        <core:Constraint />
-        <core:Definition />
-        <core:Entity />
-        <core:Group />
-        <core:PrimitiveEntity />
-        <core:Language />
-        <core:Mapping />
-        <core:Status />
-        <core:Relation />
-        <core:TypeRelation />
-        <core:Validation />
-        <core:ValueType />
-        <core:Unit />
-        <ann:BmlAnnotation />
-        <def:AggregationDefinition />
-        <def:AssociationDefinition />
-        <def:ConstrainableDefinition />
-        <def:BlockDefinition />
-        <def:SubBlockDefinition />
-        <def:EmbeddedBlockDefinition />
-        <def:RootBlockDefinition />
-        <def:CapabilityDefinition />
-        <def:GenericTypeDefinition />
-        <def:MemberDefinition />
-        <def:PropertyDefinition />
-        <def:StructuralDefinition />
-        <group:BlockGroup />
-        <group:MemberGroup />
-        <cap:Inbound />
-        <cap:Outbound />
-        <cap:Transformation />
-        <cap:Action />
-        <constraint:AllowedChildType />
-        <constraint:AggregationConstraint />
-        <constraint:AssociationConstraint />
-        <constraint:BlockConstraint />
-        <constraint:CapabilityConstraint />
-        <constraint:Max />
-        <constraint:MaxItems />
-        <constraint:MaxLength />
-        <constraint:Min />
-        <constraint:MinItems />
-        <constraint:MinLength />
-        <constraint:MemberConstraint />
-        <constraint:MustBeReadOnly />
-        <constraint:NoSelfReference />
-        <constraint:Pattern />
-        <constraint:PropertyConstraint />
-        <constraint:RequiresImplementation />
-        <constraint:RequiresMember />
-        <constraint:StructuralConstraint />
-        <constraint:ValueConstraint />
-        <constraint:ValuePresent />
-        <lang:BML />
-        <lang:C />
-        <lang:CPP />
-        <lang:MarkupLanguage />
-        <lang:NaturalLanguage />
-        <lang:CSharp />
-        <lang:Chinese />
-        <lang:English />
-        <lang:French />
-        <lang:German />
-        <lang:JSON />
-        <lang:Japanese />
-        <lang:Java />
-        <lang:JavaScript />
-        <lang:Markdown />
-        <lang:OpenSCAD />
-        <lang:PseudoCode />
-        <lang:ProgrammingLanguage />
-        <lang:Python />
-        <lang:Russian />
-        <lang:Spanish />
-        <lang:TypeScript />
-        <lang:Unity />
-        <lang:XML />
-        <lang:YML />
-        <mapping:FunctionMapping />
-        <meta:FixedKeyword />
-        <meta:FixedAlias />
-        <meta:FreeTextKeyword />
-        <meta:FreeTextAlias />
-        <service:Bools />
-        <service:Lists />
-        <service:Math />
-        <service:Numbers />
-        <service:Strings />
-        <relation:AuthoringGuide />
-        <relation:ContrastsWith />
-        <relation:DeepDive />
-        <relation:Defines />
-        <relation:Extends />
-        <relation:Prerequisite />
-        <relation:ReadFirst />
-        <relation:ReadNext />
-        <relation:Requires />
-        <relation:Resolves />
-        <relation:SeeAlso />
-        <relation:TaskIndex />
-        <relation:TaskStep />
-        <relation:ThenContinueWith />
-        <status:Deprecated />
-        <status:Draft />
-        <status:Stable />
-        <status:Stub />
-        <validation:Error />
-        <validation:Information />
-        <validation:Warning />
-        <type:Boolean />
-        <type:BooleanEntity />
-        <type:Color />
-        <type:ColorEntity />
-        <type:Constant />
-        <type:ConstantType />
-        <type:Date />
-        <type:DateEntity />
-        <type:DateTime />
-        <type:DateTimeEntity />
-        <type:Decimal />
-        <type:DecimalEntity />
-        <type:Duration />
-        <type:DurationEntity />
-        <type:EmptyStruct />
-        <type:EnumType />
-        <type:FilePath />
-        <type:FilePathEntity />
-        <type:Float />
-        <type:FloatEntity />
-        <type:TypeReference />
-        <type:TypeReferenceEntity />
-        <type:PackageReference />
-        <type:PackageReferenceEntity />
-        <type:InstanceReference />
-        <type:MemberReference />
-        <type:PropertyReference />
-        <type:AggregationReference />
-        <type:AssociationReference />
-        <type:CapabilityReference />
-        <type:Integer />
-        <type:IntegerEntity />
-        <type:MimeType />
-        <type:MimeTypeEntity />
-        <type:Number />
-        <type:PrimitiveType />
-        <type:StructType />
-        <type:Temporal />
-        <type:Text />
-        <type:TextEntity />
-        <type:Time />
-        <type:TimeEntity />
-        <type:URI />
-        <type:URIEntity />
-        <type:URL />
-        <type:URLEntity />
-        <type:UUID />
-        <type:UUIDEntity />
-        <type:Version />
-        <type:VersionEntity />
-        <unit:None />
-        <unit:Millimeter />
-        <unit:Centimeter />
-        <unit:Meter />
-        <unit:Inch />
-        <unit:Degree />
-        <doc:Introduction />
-        <doc:CoreUseCases />
-        <doc:EverythingIsABlock />
-        <doc:BlockAndInstance />
-        <doc:DefinitionModel />
-        <doc:TypeSystemOverview />
-        <doc:TypeExpressions />
-        <doc:GenericsModel />
-        <doc:ValueTypeConfiguration />
-        <doc:ConstantValueType />
-        <doc:FunctionMappingModel />
-        <doc:CapabilitySemantics />
-        <doc:Expressions />
-        <doc:EmbeddedExpressions />
-        <doc:CompilerArchitecture />
-        <doc:RendererFreedom />
-        <doc:LibrarySystem />
-        <doc:BmlNamespace />
-        <doc:ImplicitNamespaceResolution />
-        <doc:DocumentationModel />
-        <doc:BootstrapModel />
-        <doc:ModelingGuidelines />
-        <doc:ConstraintsModel />
-        <doc:MemberVisibility />
-        <doc:PartialMemberOverrides />
-        <doc:MemberAuthoring />
-        <doc:CompositionModel />
-        <doc:AnnotationModel />
-        <doc:BmlDirectives />
-        <doc:TypeIdentityDerivation />
-        <doc:SubBlockModel />
-        <doc:ContractsModel />
-        <doc:BlockNameConvention />
-        <doc:PseudoCode />
-        <doc:TaskGuideModel />
-        <doc:WOTFoundation />
-        <task:AuthorNewBlock />
-        <task:AddConstraint />
-        <task:DebugUnknownType />
-        <task:FixVisibilityAccess />
-        <task:FixMemberOverride />
-        <task:FixCompositionPlacement />
-        <task:FixTypeIdentity />
-        <task:FixExpressionErrors />
-        <diag:BML_UNKNOWN_TYPE />
-        <diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED />
-        <diag:BML_AMBIGUOUS_TYPE />
-        <diag:BML_BLOCK_NAME_TYPE_MISMATCH />
-        <diag:BML_DEFINITION_TYPE_MISMATCH />
-        <diag:BML_DUPLICATE_EMBEDDED_BLOCK />
-        <diag:BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT />
-        <diag:BML_EMBEDDED_BLOCKS_ON_SUBBLOCK />
-        <diag:BML_FINAL_BASE_TYPE />
-        <diag:BML_FINAL_MEMBER_OVERRIDE />
-        <diag:BML_GENERIC_BLOCK_NAME_COLLISION />
-        <diag:BML_GENERIC_SUBBLOCK_NAME_COLLISION />
-        <diag:BML_INVALID_BLOCK_NAME />
-        <diag:BML_LIBRARY_NESTING_VIOLATION />
-        <diag:BML_MISSING_BASE_TYPE />
-        <diag:BML_MISSING_BLOCK_TYPE />
-        <diag:BML_MISSING_DOCUMENTATION />
-        <diag:BML_MISSING_EMBEDDED_BLOCK_TYPE />
-        <diag:BML_MISSING_IS />
-        <diag:BML_MISSING_IS_NOT />
-        <diag:BML_MISSING_SUBBLOCK_NAME />
-        <diag:BML_MISSING_SUMMARY />
-        <diag:BML_MISSING_VERSION />
-        <diag:BML_NESTED_EMBEDDED_BLOCKS />
-        <diag:BML_OUTSIDE_BML_NAMESPACE />
-        <diag:BML_OVERRIDE_REQUIRED />
-        <diag:BML_OVERRIDE_WITHOUT_PARENT />
-        <diag:BML_PRIVATE_MEMBER_ACCESS />
-        <diag:BML_PRIVATE_SUBBLOCK_ACCESS />
-        <diag:BML_PROTECTED_MEMBER_ACCESS />
-        <diag:BML_PROTECTED_SUBBLOCK_ACCESS />
-        <diag:BML_READONLY_MEMBER_WRITE />
-        <diag:BML_REDUNDANT_AGGREGATION_TYPE />
-        <diag:BML_STANDALONE_COMPOSITION />
-        <diag:BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED />
-        <diag:BML_SUBBLOCK_TYPE_MISMATCH />
-        <diag:BML_UNKNOWN_NAMESPACE_PREFIX />
-        <diag:BML_UNKNOWN_VERSION />
-        <diag:BML_UNQUALIFIED_BLOCK_REFERENCE />
-        <diag:BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE />
-        <diag:BML_VISIBILITY_MISMATCH />
-        <diag:BML_VISIBILITY_NARROWING />
-        <diag:BML_VISIBILITY_ON_ROOT_BLOCK />
-        <diag:BML_XML_DIRECTIVE_NOT_ALLOWED />
-        <diag:BML_XML_RENDERING_INVALID />
-        <diag:BML_AMBIGUOUS_FUNCTION_MAPPING />
-        <diag:BML_CONSTRAINT_TARGET_MISMATCH />
-        <diag:BML_DUPLICATE_FUNCTION_PARAMETER />
-        <diag:BML_GENERIC_CONSTRAINT_VIOLATION />
-        <diag:BML_GENERIC_DEFAULT_CYCLE />
-        <diag:BML_GENERIC_DEFAULT_FORWARD_REF />
-        <diag:BML_GENERIC_DEFAULT_UNRESOLVED />
-        <diag:BML_GENERICS_ARGUMENT_MISMATCH />
-        <diag:BML_GENERICS_DIRECTIVE_NOT_ALLOWED />
-        <diag:BML_INVALID_PROPERTY_TYPE />
-        <diag:BML_MISSING_FUNCTION_MAPPING />
-        <diag:BML_MISSING_FUNCTION_PARAMETER />
-        <diag:BML_MIXED_FUNCTION_ARGUMENTS />
-        <diag:BML_MIXED_TYPE_CONFIGURATION />
-        <diag:BML_TOO_MANY_FUNCTION_PARAMETERS />
-        <diag:BML_TYPE_CONFIGURATION_VIOLATION />
-        <diag:BML_UNKNOWN_FUNCTION_PARAMETER />
-        <diag:BML_UNKNOWN_TYPE_CONFIGURATION />
-        <diag:BML_UNREACHABLE_UNION_ALTERNATIVE />
-        <diag:BML_EXPR_BUILTIN_NOT_V1 />
-        <diag:BML_EXPR_DIVISION_BY_ZERO />
-        <diag:BML_EXPR_LINK_INVALID_SOURCE />
-        <diag:BML_EXPR_LINK_INVALID_TARGET />
-        <diag:BML_EXPR_LINK_PAYLOAD_MISMATCH />
-        <diag:BML_EXPR_MODEL_NO_CONTEXT />
-        <diag:BML_EXPR_PAYLOAD_MISMATCH />
-        <diag:BML_EXPR_SYNTAX_ERROR />
-        <diag:BML_EXPR_TYPE_MISMATCH />
-        <diag:BML_EXPR_UNKNOWN_BEAN />
-        <diag:BML_EXPR_UNKNOWN_BUILTIN />
-        <diag:BML_EXPR_UNKNOWN_PROPERTY />
-        <diag:BML_INVALID_EMBEDDED_EXPRESSION />
-        <diag:BML_PROPERTY_CYCLE />
-        <diag:BML_UNCLOSED_EMBEDDED_EXPRESSION />
-        <diag:BML_CAPABILITY_LINK_MISMATCH />
-        <diag:BML_CARDINALITY_VIOLATION />
-        <diag:BML_CHANGELOG_VERSION_ORDER />
-        <diag:BML_CONSTANT_VALUE_MISMATCH />
-        <diag:BML_CONSTRAINT_INFORMATION />
-        <diag:BML_CONSTRAINT_TYPE_MISMATCH />
-        <diag:BML_CONSTRAINT_UNKNOWN />
-        <diag:BML_CONSTRAINT_VALUE_MISMATCH />
-        <diag:BML_CONSTRAINT_VIOLATION />
-        <diag:BML_CONSTRAINT_WARNING />
-        <diag:BML_CONTRACT_MEMBER_KIND_MISMATCH />
-        <diag:BML_CONTRACT_NOT_ON_ROOT />
-        <diag:BML_DEPRECATED_MEMBER_NAMESPACE_ATTR />
-        <diag:BML_DEPRECATED_TYPE />
-        <diag:BML_DIRECTIVE_NOT_ALLOWED />
-        <diag:BML_DUPLICATE_CONTRACT />
-        <diag:BML_DUPLICATE_DOCUMENTATION />
-        <diag:BML_DUPLICATE_GENERIC />
-        <diag:BML_DUPLICATE_MEMBER_NAME />
-        <diag:BML_DUPLICATE_PROPERTY_VALUE />
-        <diag:BML_DUPLICATE_SUMMARY />
-        <diag:BML_DUPLICATE_TYPE_CONFIGURATION />
-        <diag:BML_EXAMPLE_EMPTY_BODY />
-        <diag:BML_EXAMPLE_MISSING_TITLE />
-        <diag:BML_EXAMPLE_UNKNOWN_LANGUAGE />
-        <diag:BML_EXPRESSION_TYPE_ERROR />
-        <diag:BML_FUNCTION_DUPLICATE_MAIN />
-        <diag:BML_FUNCTION_MISSING_MAIN />
-        <diag:BML_FUNCTION_NO_RUNTIME_IMPL />
-        <diag:BML_IDENTITY_TYPE_CHILD_ELEMENT />
-        <diag:BML_IMPLEMENTATION_UNKNOWN_LANGUAGE />
-        <diag:BML_INVALID_DEFINITION_BRANCH />
-        <diag:BML_INVALID_NAMESPACE_TARGET />
-        <diag:BML_INVALID_PROPERTY />
-        <diag:BML_INVALID_SINCE_VERSION />
-        <diag:BML_INVALID_TYPE_REFERENCE />
-        <diag:BML_LEGACY_TYPE_SOURCE />
-        <diag:BML_MISSING_AGGREGATION_TYPE />
-        <diag:BML_MISSING_CONSTANT_VALUE />
-        <diag:BML_MISSING_GENERIC_TYPE_ARGUMENT />
-        <diag:BML_MISSING_ID />
-        <diag:BML_MISSING_IMPLEMENTATION_LANGUAGE />
-        <diag:BML_NAMESPACE_PREFIX_COLLISION />
-        <diag:BML_NAMESPACE_UNBOUND />
-        <diag:BML_NATIVE_BLOCK_CUSTOM_PROPERTY />
-        <diag:BML_NON_STATIC_INSTANCE_REF />
-        <diag:BML_NO_TARGET />
-        <diag:BML_OPEN_GENERIC_INSTANCE />
-        <diag:BML_PREFER_CONSTANT_TYPE />
-        <diag:BML_PREFER_TYPE_CONFIGURATION />
-        <diag:BML_PRESET_CYCLE />
-        <diag:BML_REDUNDANT_STATUS />
-        <diag:BML_REFERENCE_AMBIGUOUS_TARGET />
-        <diag:BML_REFERENCE_MISSING_TARGET />
-        <diag:BML_REFERENCE_UNKNOWN_MEMBER />
-        <diag:BML_SUGGESTIONS_ON_ENUM />
-        <diag:BML_SUGGESTION_TYPE_MISMATCH />
-        <diag:BML_TYPE_BOUND_NOT_SATISFIED />
-        <diag:BML_TYPE_REFERENCE_CHILD_VALUE />
-        <diag:BML_TYPE_REFERENCE_CONSTRAINT />
-        <diag:BML_TYPE_REFERENCE_MULTIPLICITY />
-        <diag:BML_UNEXPORTED_INSTANCE_REF />
-        <diag:BML_UNKNOWN_BEAN />
-        <diag:BML_UNKNOWN_CAPABILITY />
-        <diag:BML_UNKNOWN_CONTRACT />
-        <diag:BML_UNKNOWN_DIRECTIVE />
-        <diag:BML_UNKNOWN_NATURAL_LANGUAGE />
-        <diag:BML_UNKNOWN_PROPERTY />
-        <diag:BML_UNKNOWN_RELATION />
-        <diag:BML_UNKNOWN_SERVICE />
-        <diag:BML_UNKNOWN_STATUS />
-        <diag:BML_UNKNOWN_TARGET />
-        <diag:BML_UNRESOLVABLE_INSTANCE_REF />
-        <diag:BML_VALIDATION_UNKNOWN />
-        <diag:BML_VERSION_BELOW_LIBRARY />
-        <diag:BML_VERSION_MINOR_DRIFT />
+        <blockml:core.Block />
+        <blockml:core.Annotation />
+        <blockml:core.Bootstrap />
+        <blockml:core.ReadMe />
+        <blockml:core.Documentation />
+        <blockml:core.Keyword />
+        <blockml:core.Alias />
+        <blockml:core.TaskGuide />
+        <blockml:core.Diagnostic />
+        <blockml:core.Exception />
+        <blockml:core.Capability />
+        <blockml:core.Constraint />
+        <blockml:core.Definition />
+        <blockml:core.Entity />
+        <blockml:core.Group />
+        <blockml:core.PrimitiveEntity />
+        <blockml:core.Language />
+        <blockml:core.Mapping />
+        <blockml:core.Status />
+        <blockml:core.Relation />
+        <blockml:core.TypeRelation />
+        <blockml:core.Validation />
+        <blockml:core.ValueType />
+        <blockml:core.Unit />
+        <blockml:annotation.BmlAnnotation />
+        <blockml:definition.AggregationDefinition />
+        <blockml:definition.AssociationDefinition />
+        <blockml:definition.ConstrainableDefinition />
+        <blockml:definition.BlockDefinition />
+        <blockml:definition.SubBlockDefinition />
+        <blockml:definition.EmbeddedBlockDefinition />
+        <blockml:definition.RootBlockDefinition />
+        <blockml:definition.CapabilityDefinition />
+        <blockml:definition.GenericTypeDefinition />
+        <blockml:definition.MemberDefinition />
+        <blockml:definition.PropertyDefinition />
+        <blockml:definition.StructuralDefinition />
+        <blockml:group.BlockGroup />
+        <blockml:group.MemberGroup />
+        <blockml:capability.Inbound />
+        <blockml:capability.Outbound />
+        <blockml:capability.Transformation />
+        <blockml:capability.Action />
+        <blockml:constraint.AllowedChildType />
+        <blockml:constraint.AggregationConstraint />
+        <blockml:constraint.AssociationConstraint />
+        <blockml:constraint.BlockConstraint />
+        <blockml:constraint.CapabilityConstraint />
+        <blockml:constraint.Max />
+        <blockml:constraint.MaxItems />
+        <blockml:constraint.MaxLength />
+        <blockml:constraint.Min />
+        <blockml:constraint.MinItems />
+        <blockml:constraint.MinLength />
+        <blockml:constraint.MemberConstraint />
+        <blockml:constraint.MustBeReadOnly />
+        <blockml:constraint.NoSelfReference />
+        <blockml:constraint.Pattern />
+        <blockml:constraint.PropertyConstraint />
+        <blockml:constraint.RequiresImplementation />
+        <blockml:constraint.RequiresMember />
+        <blockml:constraint.StructuralConstraint />
+        <blockml:constraint.ValueConstraint />
+        <blockml:constraint.ValuePresent />
+        <blockml:language.BML />
+        <blockml:language.C />
+        <blockml:language.CPP />
+        <blockml:language.MarkupLanguage />
+        <blockml:language.NaturalLanguage />
+        <blockml:language.CSharp />
+        <blockml:language.Chinese />
+        <blockml:language.English />
+        <blockml:language.French />
+        <blockml:language.German />
+        <blockml:language.JSON />
+        <blockml:language.Japanese />
+        <blockml:language.Java />
+        <blockml:language.JavaScript />
+        <blockml:language.Markdown />
+        <blockml:language.OpenSCAD />
+        <blockml:language.PseudoCode />
+        <blockml:language.ProgrammingLanguage />
+        <blockml:language.Python />
+        <blockml:language.Russian />
+        <blockml:language.Spanish />
+        <blockml:language.TypeScript />
+        <blockml:language.Unity />
+        <blockml:language.XML />
+        <blockml:language.YML />
+        <blockml:mapping.FunctionMapping />
+        <blockml:meta.FixedKeyword />
+        <blockml:meta.FixedAlias />
+        <blockml:meta.FreeTextKeyword />
+        <blockml:meta.FreeTextAlias />
+        <blockml:service.Bools />
+        <blockml:service.Lists />
+        <blockml:service.Math />
+        <blockml:service.Numbers />
+        <blockml:service.Strings />
+        <blockml:relation.AuthoringGuide />
+        <blockml:relation.ContrastsWith />
+        <blockml:relation.DeepDive />
+        <blockml:relation.Defines />
+        <blockml:relation.Extends />
+        <blockml:relation.Prerequisite />
+        <blockml:relation.ReadFirst />
+        <blockml:relation.ReadNext />
+        <blockml:relation.Requires />
+        <blockml:relation.Resolves />
+        <blockml:relation.SeeAlso />
+        <blockml:relation.TaskIndex />
+        <blockml:relation.TaskStep />
+        <blockml:relation.ThenContinueWith />
+        <blockml:status.Deprecated />
+        <blockml:status.Draft />
+        <blockml:status.Stable />
+        <blockml:status.Stub />
+        <blockml:validation.Error />
+        <blockml:validation.Information />
+        <blockml:validation.Warning />
+        <blockml:type.Boolean />
+        <blockml:type.BooleanEntity />
+        <blockml:type.Color />
+        <blockml:type.ColorEntity />
+        <blockml:type.Constant />
+        <blockml:type.ConstantType />
+        <blockml:type.Date />
+        <blockml:type.DateEntity />
+        <blockml:type.DateTime />
+        <blockml:type.DateTimeEntity />
+        <blockml:type.Decimal />
+        <blockml:type.DecimalEntity />
+        <blockml:type.Duration />
+        <blockml:type.DurationEntity />
+        <blockml:type.EmptyStruct />
+        <blockml:type.EnumType />
+        <blockml:type.FilePath />
+        <blockml:type.FilePathEntity />
+        <blockml:type.Float />
+        <blockml:type.FloatEntity />
+        <blockml:type.TypeReference />
+        <blockml:type.TypeReferenceEntity />
+        <blockml:type.PackageReference />
+        <blockml:type.PackageReferenceEntity />
+        <blockml:type.InstanceReference />
+        <blockml:type.MemberReference />
+        <blockml:type.PropertyReference />
+        <blockml:type.AggregationReference />
+        <blockml:type.AssociationReference />
+        <blockml:type.CapabilityReference />
+        <blockml:type.Integer />
+        <blockml:type.IntegerEntity />
+        <blockml:type.MimeType />
+        <blockml:type.MimeTypeEntity />
+        <blockml:type.Number />
+        <blockml:type.PrimitiveType />
+        <blockml:type.StructType />
+        <blockml:type.Temporal />
+        <blockml:type.Text />
+        <blockml:type.TextEntity />
+        <blockml:type.Time />
+        <blockml:type.TimeEntity />
+        <blockml:type.URI />
+        <blockml:type.URIEntity />
+        <blockml:type.URL />
+        <blockml:type.URLEntity />
+        <blockml:type.UUID />
+        <blockml:type.UUIDEntity />
+        <blockml:type.Version />
+        <blockml:type.VersionEntity />
+        <blockml:unit.None />
+        <blockml:unit.Millimeter />
+        <blockml:unit.Centimeter />
+        <blockml:unit.Meter />
+        <blockml:unit.Inch />
+        <blockml:unit.Degree />
+        <blockml:documentation.Introduction />
+        <blockml:documentation.CoreUseCases />
+        <blockml:documentation.EverythingIsABlock />
+        <blockml:documentation.BlockAndInstance />
+        <blockml:documentation.DefinitionModel />
+        <blockml:documentation.TypeSystemOverview />
+        <blockml:documentation.TypeExpressions />
+        <blockml:documentation.GenericsModel />
+        <blockml:documentation.ValueTypeConfiguration />
+        <blockml:documentation.ConstantValueType />
+        <blockml:documentation.FunctionMappingModel />
+        <blockml:documentation.CapabilitySemantics />
+        <blockml:documentation.Expressions />
+        <blockml:documentation.EmbeddedExpressions />
+        <blockml:documentation.CompilerArchitecture />
+        <blockml:documentation.RendererFreedom />
+        <blockml:documentation.LibrarySystem />
+        <blockml:documentation.BmlNamespace />
+        <blockml:documentation.ImplicitNamespaceResolution />
+        <blockml:documentation.DocumentationModel />
+        <blockml:documentation.BootstrapModel />
+        <blockml:documentation.ModelingGuidelines />
+        <blockml:documentation.ConstraintsModel />
+        <blockml:documentation.MemberVisibility />
+        <blockml:documentation.PartialMemberOverrides />
+        <blockml:documentation.MemberAuthoring />
+        <blockml:documentation.CompositionModel />
+        <blockml:documentation.AnnotationModel />
+        <blockml:documentation.BmlDirectives />
+        <blockml:documentation.TypeIdentityDerivation />
+        <blockml:documentation.SubBlockModel />
+        <blockml:documentation.ContractsModel />
+        <blockml:documentation.BlockNameConvention />
+        <blockml:documentation.PseudoCode />
+        <blockml:documentation.TaskGuideModel />
+        <blockml:documentation.WOTFoundation />
+        <blockml:task.AuthorNewBlock />
+        <blockml:task.AddConstraint />
+        <blockml:task.DebugUnknownType />
+        <blockml:task.FixVisibilityAccess />
+        <blockml:task.FixMemberOverride />
+        <blockml:task.FixCompositionPlacement />
+        <blockml:task.FixTypeIdentity />
+        <blockml:task.FixExpressionErrors />
+        <blockml:diagnostic.BML_UNKNOWN_TYPE />
+        <blockml:diagnostic.BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED />
+        <blockml:diagnostic.BML_AMBIGUOUS_TYPE />
+        <blockml:diagnostic.BML_BLOCK_NAME_TYPE_MISMATCH />
+        <blockml:diagnostic.BML_DEFINITION_TYPE_MISMATCH />
+        <blockml:diagnostic.BML_DUPLICATE_EMBEDDED_BLOCK />
+        <blockml:diagnostic.BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT />
+        <blockml:diagnostic.BML_EMBEDDED_BLOCKS_ON_SUBBLOCK />
+        <blockml:diagnostic.BML_FINAL_BASE_TYPE />
+        <blockml:diagnostic.BML_FINAL_MEMBER_OVERRIDE />
+        <blockml:diagnostic.BML_GENERIC_BLOCK_NAME_COLLISION />
+        <blockml:diagnostic.BML_GENERIC_SUBBLOCK_NAME_COLLISION />
+        <blockml:diagnostic.BML_INVALID_BLOCK_NAME />
+        <blockml:diagnostic.BML_LIBRARY_NESTING_VIOLATION />
+        <blockml:diagnostic.BML_MISSING_BASE_TYPE />
+        <blockml:diagnostic.BML_MISSING_BLOCK_TYPE />
+        <blockml:diagnostic.BML_MISSING_DOCUMENTATION />
+        <blockml:diagnostic.BML_MISSING_EMBEDDED_BLOCK_TYPE />
+        <blockml:diagnostic.BML_MISSING_IS />
+        <blockml:diagnostic.BML_MISSING_IS_NOT />
+        <blockml:diagnostic.BML_MISSING_SUBBLOCK_NAME />
+        <blockml:diagnostic.BML_MISSING_SUMMARY />
+        <blockml:diagnostic.BML_MISSING_VERSION />
+        <blockml:diagnostic.BML_NESTED_EMBEDDED_BLOCKS />
+        <blockml:diagnostic.BML_OUTSIDE_BML_NAMESPACE />
+        <blockml:diagnostic.BML_OVERRIDE_REQUIRED />
+        <blockml:diagnostic.BML_OVERRIDE_WITHOUT_PARENT />
+        <blockml:diagnostic.BML_PRIVATE_MEMBER_ACCESS />
+        <blockml:diagnostic.BML_PRIVATE_SUBBLOCK_ACCESS />
+        <blockml:diagnostic.BML_PROTECTED_MEMBER_ACCESS />
+        <blockml:diagnostic.BML_PROTECTED_SUBBLOCK_ACCESS />
+        <blockml:diagnostic.BML_READONLY_MEMBER_WRITE />
+        <blockml:diagnostic.BML_REDUNDANT_AGGREGATION_TYPE />
+        <blockml:diagnostic.BML_STANDALONE_COMPOSITION />
+        <blockml:diagnostic.BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED />
+        <blockml:diagnostic.BML_SUBBLOCK_TYPE_MISMATCH />
+        <blockml:diagnostic.BML_UNKNOWN_NAMESPACE_PREFIX />
+        <blockml:diagnostic.BML_UNKNOWN_VERSION />
+        <blockml:diagnostic.BML_UNQUALIFIED_BLOCK_REFERENCE />
+        <blockml:diagnostic.BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE />
+        <blockml:diagnostic.BML_VISIBILITY_MISMATCH />
+        <blockml:diagnostic.BML_VISIBILITY_NARROWING />
+        <blockml:diagnostic.BML_VISIBILITY_ON_ROOT_BLOCK />
+        <blockml:diagnostic.BML_XML_DIRECTIVE_NOT_ALLOWED />
+        <blockml:diagnostic.BML_XML_RENDERING_INVALID />
+        <blockml:diagnostic.BML_AMBIGUOUS_FUNCTION_MAPPING />
+        <blockml:diagnostic.BML_CONSTRAINT_TARGET_MISMATCH />
+        <blockml:diagnostic.BML_DUPLICATE_FUNCTION_PARAMETER />
+        <blockml:diagnostic.BML_GENERIC_CONSTRAINT_VIOLATION />
+        <blockml:diagnostic.BML_GENERIC_DEFAULT_CYCLE />
+        <blockml:diagnostic.BML_GENERIC_DEFAULT_FORWARD_REF />
+        <blockml:diagnostic.BML_GENERIC_DEFAULT_UNRESOLVED />
+        <blockml:diagnostic.BML_GENERICS_ARGUMENT_MISMATCH />
+        <blockml:diagnostic.BML_GENERICS_DIRECTIVE_NOT_ALLOWED />
+        <blockml:diagnostic.BML_INVALID_PROPERTY_TYPE />
+        <blockml:diagnostic.BML_MISSING_FUNCTION_MAPPING />
+        <blockml:diagnostic.BML_MISSING_FUNCTION_PARAMETER />
+        <blockml:diagnostic.BML_MIXED_FUNCTION_ARGUMENTS />
+        <blockml:diagnostic.BML_MIXED_TYPE_CONFIGURATION />
+        <blockml:diagnostic.BML_TOO_MANY_FUNCTION_PARAMETERS />
+        <blockml:diagnostic.BML_TYPE_CONFIGURATION_VIOLATION />
+        <blockml:diagnostic.BML_UNKNOWN_FUNCTION_PARAMETER />
+        <blockml:diagnostic.BML_UNKNOWN_TYPE_CONFIGURATION />
+        <blockml:diagnostic.BML_UNREACHABLE_UNION_ALTERNATIVE />
+        <blockml:diagnostic.BML_EXPR_BUILTIN_NOT_V1 />
+        <blockml:diagnostic.BML_EXPR_DIVISION_BY_ZERO />
+        <blockml:diagnostic.BML_EXPR_LINK_INVALID_SOURCE />
+        <blockml:diagnostic.BML_EXPR_LINK_INVALID_TARGET />
+        <blockml:diagnostic.BML_EXPR_LINK_PAYLOAD_MISMATCH />
+        <blockml:diagnostic.BML_EXPR_MODEL_NO_CONTEXT />
+        <blockml:diagnostic.BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION />
+        <blockml:diagnostic.BML_EXPR_PAYLOAD_MISMATCH />
+        <blockml:diagnostic.BML_EXPR_SYNTAX_ERROR />
+        <blockml:diagnostic.BML_EXPR_TYPE_MISMATCH />
+        <blockml:diagnostic.BML_EXPR_UNKNOWN_BEAN />
+        <blockml:diagnostic.BML_EXPR_UNKNOWN_BUILTIN />
+        <blockml:diagnostic.BML_EXPR_UNKNOWN_PROPERTY />
+        <blockml:diagnostic.BML_INVALID_EMBEDDED_EXPRESSION />
+        <blockml:diagnostic.BML_PROPERTY_CYCLE />
+        <blockml:diagnostic.BML_UNCLOSED_EMBEDDED_EXPRESSION />
+        <blockml:diagnostic.BML_CAPABILITY_LINK_MISMATCH />
+        <blockml:diagnostic.BML_CARDINALITY_VIOLATION />
+        <blockml:diagnostic.BML_CHANGELOG_VERSION_ORDER />
+        <blockml:diagnostic.BML_CONSTANT_VALUE_MISMATCH />
+        <blockml:diagnostic.BML_CONSTRAINT_INFORMATION />
+        <blockml:diagnostic.BML_CONSTRAINT_TYPE_MISMATCH />
+        <blockml:diagnostic.BML_CONSTRAINT_UNKNOWN />
+        <blockml:diagnostic.BML_CONSTRAINT_VALUE_MISMATCH />
+        <blockml:diagnostic.BML_CONSTRAINT_VIOLATION />
+        <blockml:diagnostic.BML_CONSTRAINT_WARNING />
+        <blockml:diagnostic.BML_CONTRACT_MEMBER_KIND_MISMATCH />
+        <blockml:diagnostic.BML_CONTRACT_NOT_ON_ROOT />
+        <blockml:diagnostic.BML_DEPRECATED_MEMBER_NAMESPACE_ATTR />
+        <blockml:diagnostic.BML_DEPRECATED_TYPE />
+        <blockml:diagnostic.BML_DIRECTIVE_NOT_ALLOWED />
+        <blockml:diagnostic.BML_DUPLICATE_CONTRACT />
+        <blockml:diagnostic.BML_DUPLICATE_DOCUMENTATION />
+        <blockml:diagnostic.BML_DUPLICATE_GENERIC />
+        <blockml:diagnostic.BML_DUPLICATE_MEMBER_NAME />
+        <blockml:diagnostic.BML_DUPLICATE_PROPERTY_VALUE />
+        <blockml:diagnostic.BML_DUPLICATE_SUMMARY />
+        <blockml:diagnostic.BML_DUPLICATE_TYPE_CONFIGURATION />
+        <blockml:diagnostic.BML_EXAMPLE_EMPTY_BODY />
+        <blockml:diagnostic.BML_EXAMPLE_MISSING_TITLE />
+        <blockml:diagnostic.BML_EXAMPLE_UNKNOWN_LANGUAGE />
+        <blockml:diagnostic.BML_EXPRESSION_TYPE_ERROR />
+        <blockml:diagnostic.BML_FUNCTION_DUPLICATE_MAIN />
+        <blockml:diagnostic.BML_FUNCTION_MISSING_MAIN />
+        <blockml:diagnostic.BML_FUNCTION_NO_RUNTIME_IMPL />
+        <blockml:diagnostic.BML_IDENTITY_TYPE_CHILD_ELEMENT />
+        <blockml:diagnostic.BML_IMPLEMENTATION_UNKNOWN_LANGUAGE />
+        <blockml:diagnostic.BML_INVALID_DEFINITION_BRANCH />
+        <blockml:diagnostic.BML_INVALID_NAMESPACE_TARGET />
+        <blockml:diagnostic.BML_INVALID_PROPERTY />
+        <blockml:diagnostic.BML_INVALID_SINCE_VERSION />
+        <blockml:diagnostic.BML_INVALID_TYPE_REFERENCE />
+        <blockml:diagnostic.BML_LEGACY_TYPE_SOURCE />
+        <blockml:diagnostic.BML_MISSING_AGGREGATION_TYPE />
+        <blockml:diagnostic.BML_MISSING_CONSTANT_VALUE />
+        <blockml:diagnostic.BML_MISSING_GENERIC_TYPE_ARGUMENT />
+        <blockml:diagnostic.BML_MISSING_ID />
+        <blockml:diagnostic.BML_MISSING_IMPLEMENTATION_LANGUAGE />
+        <blockml:diagnostic.BML_NAMESPACE_PREFIX_COLLISION />
+        <blockml:diagnostic.BML_NAMESPACE_UNBOUND />
+        <blockml:diagnostic.BML_NATIVE_BLOCK_CUSTOM_PROPERTY />
+        <blockml:diagnostic.BML_NON_STATIC_INSTANCE_REF />
+        <blockml:diagnostic.BML_NO_TARGET />
+        <blockml:diagnostic.BML_OPEN_GENERIC_INSTANCE />
+        <blockml:diagnostic.BML_PREFER_CONSTANT_TYPE />
+        <blockml:diagnostic.BML_PREFER_TYPE_CONFIGURATION />
+        <blockml:diagnostic.BML_PRESET_CYCLE />
+        <blockml:diagnostic.BML_REDUNDANT_STATUS />
+        <blockml:diagnostic.BML_REFERENCE_AMBIGUOUS_TARGET />
+        <blockml:diagnostic.BML_REFERENCE_MISSING_TARGET />
+        <blockml:diagnostic.BML_REFERENCE_UNKNOWN_MEMBER />
+        <blockml:diagnostic.BML_SUGGESTIONS_ON_ENUM />
+        <blockml:diagnostic.BML_SUGGESTION_TYPE_MISMATCH />
+        <blockml:diagnostic.BML_TYPE_BOUND_NOT_SATISFIED />
+        <blockml:diagnostic.BML_TYPE_REFERENCE_CHILD_VALUE />
+        <blockml:diagnostic.BML_TYPE_REFERENCE_CONSTRAINT />
+        <blockml:diagnostic.BML_TYPE_REFERENCE_MULTIPLICITY />
+        <blockml:diagnostic.BML_UNEXPORTED_INSTANCE_REF />
+        <blockml:diagnostic.BML_UNKNOWN_BEAN />
+        <blockml:diagnostic.BML_UNKNOWN_CAPABILITY />
+        <blockml:diagnostic.BML_UNKNOWN_CONTRACT />
+        <blockml:diagnostic.BML_UNKNOWN_DIRECTIVE />
+        <blockml:diagnostic.BML_UNKNOWN_NATURAL_LANGUAGE />
+        <blockml:diagnostic.BML_UNKNOWN_PROPERTY />
+        <blockml:diagnostic.BML_UNKNOWN_RELATION />
+        <blockml:diagnostic.BML_UNKNOWN_SERVICE />
+        <blockml:diagnostic.BML_UNKNOWN_STATUS />
+        <blockml:diagnostic.BML_UNKNOWN_TARGET />
+        <blockml:diagnostic.BML_UNRESOLVABLE_INSTANCE_REF />
+        <blockml:diagnostic.BML_VALIDATION_UNKNOWN />
+        <blockml:diagnostic.BML_VERSION_BELOW_LIBRARY />
+        <blockml:diagnostic.BML_VERSION_MINOR_DRIFT />
       </composition>
     </blocks>
   </aggregations>
-
 </block>

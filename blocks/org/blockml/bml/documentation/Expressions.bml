@@ -13,18 +13,24 @@
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:mapping="org.blockml.bml.mapping"
   xmlns:service="org.blockml.bml.service"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:task="org.blockml.bml.task"
+  xmlns:type="org.blockml.bml.type">
 
   <name>Expressions</name>
   <type>doc:Expressions</type>
   <baseType>core:Documentation</baseType>
   <is>A guide to BlockML expressions</is>
+  <isNot>A concatenation desugar of interpolated Text</isNot>
+
+  <summary>Expression language, #this lookup, and interpolated Text holes — authored surface
+    and BOM classification, not a toolchain pipeline.</summary>
 
   <documentation>
     The BML Expression Language is extended JSON inside ${ } delimiters. It appears wherever a
     Block member value needs to be dynamic — derived, computed, or bound to a service. Capability
     &lt;implementation&gt; bodies use the same language inside &lt;$ $&gt; embeds
-    (doc:EmbeddedExpressions).
+    (doc:EmbeddedExpressions). On type:Text, restricted ${ } holes may also appear in running
+    text — interpolation, not a whole expression value.
 
     Four additions beyond JSON:
     • Property references — myProp, myProp.x (StructType members by name only; no size[0] on structs)
@@ -37,19 +43,54 @@
     absent/empty is not typed as null.
 
     Expression vs BOM data layer (separate):
-    • BOM stores LiteralValue and ExpressionValue.raw — immutable authored form
-    • parseExpression() → AST + type inference — utility output, not BOM mutation
-    • evaluateExpression() — renderer working model only (Stage 3)
+    • BOM stores LiteralValue, ExpressionValue.raw, and InterpolatedTextValue.raw — immutable
+      authored form
+    • parseExpression() / parseInterpolatedText() → AST + type inference — utility output, not
+      BOM mutation. Interpolation AST is Stage-2 only — not stored in the Canonical BOM
+    • evaluateExpression() / evaluateInterpolatedText() — renderer working model only (Stage 3);
+      evaluateInterpolatedText runs at read time; the Canonical BOM is not rewritten
     Validator checks correctness (members, visibility, types, capabilities) but never executes.
 
+    #this — one lookup everywhere:
+    • #this is the magic bean of the outer Block instance. The binding does not change inside
+      nested compositions.
+    • this without # is not a keyword and not an alias for the instance. It is a member name
+      (#this.this); a Property named this is allowed.
+    • Same rule in whole ${ } values and in interpolation holes:
+      size ≡ #this.size · this ≡ #this.this · this.x ≡ #this.this.x · params.z ≡ #this.params.z
+    • #this.foo() inside &lt;$ $&gt; remains the required form for own-Capability calls
+      (doc:EmbeddedExpressions).
+
+    Text interpolation (authored surface on type:Text — not a whole expression value, not
+    desugared to 'Hello ' + label):
+    myText="Hello this is ${ #this.label } bla bla"
+    Classification is on the entire member value:
+    • "${ expr }" (whole value) → ExpressionValue — full expression language
+    • "Hello ${ expr } world" → InterpolatedTextValue — Restricted Profile
+    • "Hello world" → LiteralValue
+    • \${ → literal ${ (not a hole)
+    • JSON that starts with [ or { stays LiteralValue even when string leaves contain ${
+    InterpolatedTextValue.raw is the entire authored text including holes. The serializer emits
+    raw 1:1, with no extra ${ } wrapper.
+    Top-level interpolation only on type:Text. On type:Text[] the member stays a LiteralValue
+    array; string leaves with unescaped ${ are checked and evaluated as interpolated text.
+
+    Restricted Profile (holes only — same as value-expression property/builtin subset):
+    Allowed: property access (size, #this.size, this, this.x, params.z); literals; + (Text /
+    Number); #strings.*; #math.*.
+    Forbidden → BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION: @model, @bean, Capability linking /
+    own-calls, bml:each / bml:with variables.
+    Unclosed ${ → BML_EXPR_SYNTAX_ERROR. Interpolation on a non-Text member →
+    BML_EXPR_TYPE_MISMATCH. Nested ${ inside a hole is out of scope.
+
     Scope rules:
-    • Bare property access — current Block instance only (no parent/sibling climb); top-down
+    • Property access — outer Block instance via #this (no parent/sibling climb); top-down
     • @bean — walk composition hierarchy; bml:scope=context visible to descendants; local = declaring
       Block only
     • #built-ins — always available; cannot be overridden
     • @model: relative paths need binding context from nearest parent Model-bound Aggregation
     • bml:each / bml:with variables — element + descendants; shadow outer same names
-      (doc:BmlDirectives)
+      (doc:BmlDirectives). Not visible in interpolation holes.
     • &lt;value&gt; expressions — own Properties and #built-ins; topological resolve; cycles →
       BML_PROPERTY_CYCLE
 
@@ -59,14 +100,16 @@
     V1 supported: literals; operators + - * / % == != &lt; &gt; &lt;= &gt;= &amp;&amp; || ! ?:;
     property access myProp / myProp.x / myProp[i] (index only where valid — not StructType fields);
     #math.min/max/abs/floor/ceil/round/pow/sqrt/clamp; #numbers.formatDecimal; #strings.concat/length;
-    #lists.size/get/first/last/sequence; bml:each/if/unless/container/with.
+    #lists.size/get/first/last/sequence; bml:each/if/unless/container/with; interpolated Text holes
+    (Restricted Profile).
     V1 deferred: @bean execution, model bindings, capability linking, most #strings/#bools,
     TypeScript service transpilation.
 
     Diagnostics (selection): BML_EXPR_SYNTAX_ERROR, BML_EXPR_UNKNOWN_PROPERTY,
     BML_EXPR_UNKNOWN_BEAN, BML_EXPR_UNKNOWN_BUILTIN, BML_EXPR_TYPE_MISMATCH,
-    BML_EXPR_PAYLOAD_MISMATCH, BML_EXPR_LINK_*, BML_EXPR_MODEL_NO_CONTEXT,
-    BML_EXPR_BUILTIN_NOT_V1, BML_EXPR_DIVISION_BY_ZERO — plus FunctionMapping codes.
+    BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION, BML_EXPR_PAYLOAD_MISMATCH, BML_EXPR_LINK_*,
+    BML_EXPR_MODEL_NO_CONTEXT, BML_EXPR_BUILTIN_NOT_V1, BML_EXPR_DIVISION_BY_ZERO — plus
+    FunctionMapping codes.
     Formal EBNF / AST shapes remain DeepDive in 10_expression_language.md (parser utility contract).
   </documentation>
 
@@ -101,8 +144,20 @@
     <see type="task:FixExpressionErrors" relation="SeeAlso">
       Cluster task for expression diagnostics.
     </see>
+    <see type="type:Text" relation="SeeAlso">
+      Top-level interpolation surface.
+    </see>
     <see type="diag:BML_EXPR_SYNTAX_ERROR" relation="SeeAlso">
-      Expression parse failure.
+      Expression parse failure, including unclosed interpolation ${.
+    </see>
+    <see type="diag:BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" relation="SeeAlso">
+      Restricted Profile violation in an interpolation hole.
+    </see>
+    <see type="diag:BML_EXPR_TYPE_MISMATCH" relation="SeeAlso">
+      Result type mismatch, including interpolation on a non-Text member.
+    </see>
+    <see type="diag:BML_EXPR_UNKNOWN_PROPERTY" relation="SeeAlso">
+      Unknown property — this is a member, not the instance.
     </see>
   </references>
 

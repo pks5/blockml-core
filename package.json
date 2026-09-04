@@ -19,6 +19,6 @@
       "access": "public"
     },
     "devDependencies": {
-      "@blockml/cli": "^0.8.1"
+      "@blockml/cli": "^0.9.1"
     }
   }

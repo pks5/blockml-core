@@ -18,27 +18,33 @@
   <baseType>core:TaskGuide</baseType>
   <is>A how-to for fixing expression errors</is>
 
-  <summary>Resolve ${ } and &lt;$ $&gt; expression diagnostics — syntax, unknown refs, type/payload
-    mismatches, linking, and model context.</summary>
+  <summary>Resolve ${ }, interpolated Text, and &lt;$ $&gt; expression diagnostics — syntax,
+    unknown refs, type/payload mismatches, Restricted Profile, linking, and model context.</summary>
 
-  <keywords>expression, BML_EXPR_SYNTAX_ERROR, bean, built-in, embedded</keywords>
+  <keywords>expression, interpolation, BML_EXPR_SYNTAX_ERROR, BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION, bean, built-in, embedded</keywords>
 
   <documentation>
     Procedure when an expression-related BML_EXPR_* (or embed) diagnostic is reported:
-    1. Confirm host context — member ${ } vs implementation &lt;$ $&gt; (doc:EmbeddedExpressions).
-    2. Syntax errors — check delimiters, quotes, operators; embeds must not nest &lt;$ $&gt;.
-    3. Unknown property — verify member exists in scope; StructType fields by name only (not [0]).
-    4. Unknown bean / builtin — declare bml:bean Aggregation or use a V1 #built-in.
-    5. Type / payload mismatch — align expression result with member type; map call args via
+    1. Confirm host context — whole-value member ${ } vs interpolated Text holes vs implementation
+       &lt;$ $&gt; (doc:Expressions, doc:EmbeddedExpressions).
+    2. Interpolation holes — Restricted Profile only (property access, literals, +, #strings.*,
+       #math.*). Not desugared to concatenation. @model / @bean / Capability calls / each-with
+       variables → BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION. Unclosed ${ → BML_EXPR_SYNTAX_ERROR.
+       Interpolation on a non-Text member → BML_EXPR_TYPE_MISMATCH. this without # is a member
+       (#this.this), not the instance.
+    3. Syntax errors — check delimiters, quotes, operators; embeds must not nest &lt;$ $&gt;.
+    4. Unknown property — verify member exists in scope; StructType fields by name only (not [0]).
+    5. Unknown bean / builtin — declare bml:bean Aggregation or use a V1 #built-in.
+    6. Type / payload mismatch — align expression result with member type; map call args via
        FunctionMapping (doc:FunctionMappingModel).
-    6. Linking (@bean.capa without parens) — source Outbound, target Inbound, compatible payloads.
-    7. Relative @model: — ensure a parent Aggregation established binding context.
-    8. V1 — avoid deferred @bean execution / model / linking features until implemented.
+    7. Linking (@bean.capa without parens) — source Outbound, target Inbound, compatible payloads.
+    8. Relative @model: — ensure a parent Aggregation established binding context.
+    9. V1 — avoid deferred @bean execution / model / linking features until implemented.
   </documentation>
 
   <references>
     <see type="doc:Expressions" relation="TaskStep">
-      Step 1 — ${ } language, scope, V1 support.
+      Step 1 — ${ } language, #this, interpolation, V1 support.
     </see>
     <see type="doc:EmbeddedExpressions" relation="TaskStep">
       Step 2 — implementation embeds and delimiter rules.
@@ -54,6 +60,9 @@
     </see>
     <see type="diag:BML_EXPR_UNKNOWN_PROPERTY" relation="SeeAlso">
       Unknown property / invalid struct index access.
+    </see>
+    <see type="diag:BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" relation="SeeAlso">
+      Restricted Profile violation in an interpolation hole.
     </see>
   </references>
 

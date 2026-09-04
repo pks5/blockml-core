@@ -35,7 +35,9 @@
     • @bean.someCapability(...) — Transformation Capability on a bound bean
 
     Property access, operators, literals, and nested calls follow the same rules as ${ }
-    expressions unless noted otherwise.
+    expressions unless noted otherwise. #this is the outer Block instance — the same binding as
+    ${ }; it does not rebind in nested compositions. Bare this is a member (#this.this), not the
+    instance. Own-Capability calls in embeds still require #this.foo() (doc:Expressions).
 
     Delimiter rules:
     • Zero, one, or many regions per implementation body; multiline OK
