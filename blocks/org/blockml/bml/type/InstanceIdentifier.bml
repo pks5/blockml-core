@@ -8,8 +8,6 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
-  xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
@@ -21,8 +19,8 @@
   <documentation>
     ValueType for non-owning instance name strings identified by bml:id. Unqualified name
     InstanceIdentifier resolves to org.blockml.bml.type.InstanceIdentifier. Syntax only — the
-    named instance need not exist. InstanceReference extends this type and adds existence plus
-    the branch bound T.
+    named instance need not exist. No generic parameters. InstanceReference(T) extends this type
+    and adds existence plus the branch bound T.
 
     Lexical forms:
     • Local id — myId (visibility-scoped within the enclosing composition)
@@ -32,14 +30,6 @@
     Not a Block type FQN (use TypeIdentifier / TypeReference), not a package string (use
     PackageIdentifier / PackageReference), not a member definition path (use MemberIdentifier /
     AssociationIdentifier), and not a resource URI (use URI).
-
-    Generic parameter:
-    • T (baseType core:Block) — intended target instance branch; checked on InstanceReference
-      after resolution
-
-    In type="..." attributes, write generic applications with round parentheses:
-    • InstanceIdentifier(core:Block) → 0..1 name of a core:Block instance
-    • InstanceIdentifier(bml:Self)[] → 0..n names of instances of the effective Block type
 
     Primary use — planned or future instance pointers. AssociationDefinition type and see
     instance= use InstanceReference — not InstanceIdentifier.
@@ -59,11 +49,4 @@
       Path to an AssociationDefinition — not an instance name.
     </see>
   </references>
-
-  <genericTypes>
-    <T baseType="core:Block">
-      <documentation>Intended target instance branch. Bound T is checked on InstanceReference after
-        resolution — not on this Identifier.</documentation>
-    </T>
-  </genericTypes>
 </block>

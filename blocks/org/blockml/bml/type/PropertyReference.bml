@@ -14,14 +14,14 @@
 
   <name>PropertyReference</name>
   <type>type:PropertyReference</type>
-  <baseType>type:PropertyIdentifier(B)</baseType>
+  <baseType>type:PropertyIdentifier</baseType>
   <is>A path to a Property member</is>
 
-  <documentation>Existence-checked PropertyIdentifier. Value is a canonical property path
-    (com.foo.Bar.properties.width) or a local property name when paired with a Block qualifier.
-    The owning type and property must resolve. Used as the type of see property= and other
-    PropertyDefinition reference sites. A potential property that need not exist uses
-    PropertyIdentifier.
+  <documentation>Existence-checked PropertyIdentifier. Introduces the owning Block bound B.
+    Value is a canonical property path (com.foo.Bar.properties.width) or a local property name
+    when paired with a Block qualifier. The owning type and property must resolve. Used as the
+    type of see property= and other PropertyDefinition reference sites. A potential property
+    that need not exist uses PropertyIdentifier.
   </documentation>
 
   <references>
@@ -38,7 +38,7 @@
 
   <genericTypes>
     <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Owning Block branch. Defaults to core:Block — bare PropertyReference is valid.
+      <documentation>Owning Block branch — introduced on this Reference. Defaults to core:Block — bare PropertyReference is valid.
       </documentation>
     </B>
   </genericTypes>

@@ -8,7 +8,6 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
                       "
-  xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
@@ -28,10 +27,9 @@
     • Local member name when paired with a type qualifier (for example see type="com.foo.Bar"
       property="width" → com.foo.Bar.properties.width)
 
-    Generic parameters:
-    • B (baseType core:Block, default core:Block) — intended owning Block branch; checked on
-      MemberReference after resolution
-    • D (baseType def:MemberDefinition) — member definition kind constraint (path shape)
+    Generic parameter:
+    • D (baseType def:MemberDefinition) — member definition kind (path shape). The owning Block
+      bound B is introduced on MemberReference / PropertyReference / … after resolution — not here.
 
     Concrete Identifier specializations bind D:
     • PropertyIdentifier     → D = def:PropertyDefinition
@@ -65,13 +63,9 @@
   <abstract>true</abstract>
 
   <genericTypes>
-    <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Intended owning Block branch. Defaults to core:Block. Checked on
-        MemberReference after resolution.</documentation>
-    </B>
     <D baseType="def:MemberDefinition">
-      <documentation>Member definition kind. Bound by concrete Identifier children
-        (PropertyIdentifier, …).</documentation>
+      <documentation>Member definition kind (path shape). Bound by concrete Identifier children
+        (PropertyIdentifier, …). Not an existence check.</documentation>
     </D>
   </genericTypes>
 </block>

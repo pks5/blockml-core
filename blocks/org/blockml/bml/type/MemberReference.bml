@@ -17,13 +17,13 @@
 
   <name>MemberReference</name>
   <type>type:MemberReference</type>
-  <baseType>type:MemberIdentifier(B, D)</baseType>
+  <baseType>type:MemberIdentifier(D)</baseType>
   <is>A path to a Block member</is>
 
   <documentation>Abstract ValueType for references to Block member definitions — properties,
-    aggregations, associations, and capabilities. Extends MemberIdentifier(B, D) with existence:
-    the owning type and the named member must resolve. Not a TypeReference — a member path is not
-    a type FQN.
+    aggregations, associations, and capabilities. Extends MemberIdentifier(D) with existence and
+    introduces the owning Block bound B: the owning type and the named member must resolve. Not a
+    TypeReference — a member path is not a type FQN.
 
     Value forms:
     • Canonical definition path — for example com.foo.Bar.properties.width
@@ -31,8 +31,8 @@
       property="width" → com.foo.Bar.properties.width)
 
     Generic parameters:
-    • B (from MemberIdentifier) — owning Block branch for the member's enclosing type
-    • D (baseType def:MemberDefinition) — member definition kind constraint
+    • B (baseType core:Block, default core:Block) — owning Block branch; introduced here
+    • D (from MemberIdentifier) — member definition kind constraint
 
     Concrete Identifier specializations bind D and own the existence-checked Reference:
     • PropertyIdentifier     → PropertyReference
@@ -73,7 +73,7 @@
 
   <genericTypes>
     <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Owning Block branch — forwarded from MemberIdentifier.B. Defaults to core:Block.
+      <documentation>Owning Block branch — introduced on this Reference. Defaults to core:Block.
       </documentation>
     </B>
     <D baseType="def:MemberDefinition">

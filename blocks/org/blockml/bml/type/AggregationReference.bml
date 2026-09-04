@@ -14,7 +14,7 @@
 
   <name>AggregationReference</name>
   <type>type:AggregationReference</type>
-  <baseType>type:AggregationIdentifier(B)</baseType>
+  <baseType>type:AggregationIdentifier</baseType>
   <is>A path to an Aggregation member</is>
 
   <documentation>Existence-checked AggregationIdentifier. Value is a canonical aggregation path

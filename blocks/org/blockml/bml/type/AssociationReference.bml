@@ -14,7 +14,7 @@
 
   <name>AssociationReference</name>
   <type>type:AssociationReference</type>
-  <baseType>type:AssociationIdentifier(B)</baseType>
+  <baseType>type:AssociationIdentifier</baseType>
   <is>A path to an Association member</is>
 
   <documentation>Existence-checked AssociationIdentifier. Value is a canonical association path

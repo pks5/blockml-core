@@ -14,7 +14,7 @@
 
   <name>CapabilityReference</name>
   <type>type:CapabilityReference</type>
-  <baseType>type:CapabilityIdentifier(B)</baseType>
+  <baseType>type:CapabilityIdentifier</baseType>
   <is>A path to a Capability member</is>
 
   <documentation>Existence-checked CapabilityIdentifier. Value is a canonical capability path
