@@ -20,13 +20,14 @@
 
   <name>TypeReference</name>
   <type>type:TypeReference</type>
-  <baseType>type:Text</baseType>
+  <baseType>type:TypeIdentifier</baseType>
   <is>A Block type name reference</is>
 
   <documentation>
     ValueType for type references — fully qualified names (FQNs) and TypeExpressions that name a
-    Block. Unqualified name TypeReference resolves to org.blockml.bml.type.TypeReference. Formerly
-    FullyQualifiedName; the FQN string format is unchanged.
+    Block and must exist in the TypeRegistry. Extends TypeIdentifier (syntax) with existence and
+    the branch bound B. Unqualified name TypeReference resolves to org.blockml.bml.type.TypeReference.
+    Formerly FullyQualifiedName; the FQN string format is unchanged.
 
     FQN format (Java-style reverse-domain, dot-separated):
     • Package segments — lowercase, reverse-domain (for example org.blockml.bml.core,
@@ -37,8 +38,9 @@
     Sub-Block FQNs derive as parentFqn + "." + name when omitted in source.
 
     Namespace prefixes in BML (core:, type:, def:, …) map to package segments; the Namespace
-    Resolver stores the resolved FQN string in BOM typeFqn fields. Unknown FQN at validate time
-    → BML_UNKNOWN_TYPE.
+    Resolver stores the resolved FQN string in BOM typeFqn fields. Ill-formed syntax
+    → BML_INVALID_TYPE_REFERENCE. Unknown FQN at validate time → BML_UNKNOWN_TYPE. A type name
+    that need not exist uses TypeIdentifier — not TypeReference.
 
     Generic parameter:
     • B (baseType core:Block) — Block branch constraint for the referenced type
@@ -57,7 +59,7 @@
     Instance pointers (bml:id / FQN::id) use org.blockml.bml.type.InstanceReference — not
     TypeReference. Package strings without a class segment use org.blockml.bml.type.PackageReference
     — not TypeReference. Member definition paths (property, aggregation, association, capability)
-    use the org.blockml.bml.type.MemberReference branch — not TypeReference.
+    use the org.blockml.bml.type.MemberIdentifier branch — not TypeReference.
   </documentation>
 
   <references>
@@ -78,6 +80,9 @@
     </see>
     <see type="def:GenericTypeDefinition" relation="Defines">
       parameter baseType constraint attribute.
+    </see>
+    <see type="type:TypeIdentifier" relation="SeeAlso">
+      Parent ValueType — FQN / TypeExpression syntax without existence.
     </see>
     <see type="type:PackageReference" relation="ContrastsWith">
       Sibling ValueType for package strings — no class segment.

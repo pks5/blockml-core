@@ -70,8 +70,11 @@
   </documentation>
 
   <references>
+    <see type="type:TypeIdentifier" relation="SeeAlso">
+      FQN / TypeExpression syntax without existence.
+    </see>
     <see type="type:TypeReference" relation="Defines">
-      ValueType for FQN / TypeExpression text on type and baseType.
+      ValueType for FQN / TypeExpression text on type and baseType — must resolve.
     </see>
     <see type="type:PackageReference" relation="SeeAlso">
       Package strings without a class segment — not type FQNs.

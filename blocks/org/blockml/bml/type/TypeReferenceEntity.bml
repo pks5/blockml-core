@@ -44,8 +44,8 @@
     valid and equivalent.
 
     Contrast with scalar TypeReference(B) on properties (identity type / baseType, member type
-    attributes) — those remain plain text, not Entity instances. Member path references use
-    MemberReference / PropertyReference / … — not this Entity.
+    attributes) — those remain plain text, not Entity instances. Member path names use
+    MemberIdentifier / PropertyIdentifier / PropertyReference / … — not this Entity.
 
     Replaces the former abstract org.blockml.bml.core.TypeReference aggregation marker and
     FullyQualifiedNameEntity.</documentation>

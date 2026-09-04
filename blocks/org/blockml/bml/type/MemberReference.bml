@@ -17,12 +17,13 @@
 
   <name>MemberReference</name>
   <type>type:MemberReference</type>
-  <baseType>type:TypeReference(B)</baseType>
+  <baseType>type:MemberIdentifier(B, D)</baseType>
   <is>A path to a Block member</is>
 
   <documentation>Abstract ValueType for references to Block member definitions — properties,
-    aggregations, associations, and capabilities. Extends TypeReference(B); adds D to constrain
-    which MemberDefinition branch the path may target.
+    aggregations, associations, and capabilities. Extends MemberIdentifier(B, D) with existence:
+    the owning type and the named member must resolve. Not a TypeReference — a member path is not
+    a type FQN.
 
     Value forms:
     • Canonical definition path — for example com.foo.Bar.properties.width
@@ -30,18 +31,22 @@
       property="width" → com.foo.Bar.properties.width)
 
     Generic parameters:
-    • B (from TypeReference) — owning Block branch for the member's enclosing type
+    • B (from MemberIdentifier) — owning Block branch for the member's enclosing type
     • D (baseType def:MemberDefinition) — member definition kind constraint
 
-    Concrete specializations bind D:
-    • PropertyReference     → D = def:PropertyDefinition
-    • AggregationReference  → D = def:AggregationDefinition
-    • AssociationReference  → D = def:AssociationDefinition
-    • CapabilityReference   → D = def:CapabilityDefinition
+    Concrete Identifier specializations bind D and own the existence-checked Reference:
+    • PropertyIdentifier     → PropertyReference
+    • AggregationIdentifier  → AggregationReference
+    • AssociationIdentifier  → AssociationReference
+    • CapabilityIdentifier   → CapabilityReference
 
-    Primary use — StructuralDefinition Reference (see) member target attributes. Not for Block type
-    identity (use TypeReference), instance pointers (use InstanceReference), or type-reference
-    aggregations (use TypeReferenceEntity).</documentation>
+    PropertyReference and siblings are cousins of MemberReference under MemberIdentifier — they
+    do not extend MemberReference. MemberReference is the existence layer for an unbound member
+    kind. A member path that need not exist uses MemberIdentifier (or PropertyIdentifier, …).
+
+    Primary use — StructuralDefinition Reference (see) member target attributes via the concrete
+    Reference types. Not for Block type identity (use TypeReference), instance pointers (use
+    InstanceReference), or type-reference aggregations (use TypeReferenceEntity).</documentation>
 
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
@@ -50,8 +55,8 @@
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       references — separate target attributes.
     </see>
-    <see type="type:TypeReference" relation="SeeAlso">
-      Parent ValueType — Block type FQNs only.
+    <see type="type:MemberIdentifier" relation="SeeAlso">
+      Parent ValueType — member-path syntax without existence.
     </see>
     <see type="def:MemberDefinition" relation="Defines">
       Abstract member meta-model branch bound by D.
@@ -60,7 +65,7 @@
       Reference sub-block — property / aggregation / association / capability attributes.
     </see>
     <see type="type:PropertyReference" relation="SeeAlso">
-      Concrete specialization for PropertyDefinition paths.
+      Concrete specialization for PropertyDefinition paths — via PropertyIdentifier.
     </see>
   </references>
 
@@ -68,12 +73,12 @@
 
   <genericTypes>
     <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Owning Block branch — forwarded from TypeReference.B. Defaults to core:Block.
+      <documentation>Owning Block branch — forwarded from MemberIdentifier.B. Defaults to core:Block.
       </documentation>
     </B>
     <D baseType="def:MemberDefinition">
-      <documentation>Member definition kind. Bound by concrete children (PropertyReference, …).
-      </documentation>
+      <documentation>Member definition kind. Bound by concrete Identifier children
+        (PropertyIdentifier, …).</documentation>
     </D>
   </genericTypes>
 </block>

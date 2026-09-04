@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — AssociationDefinition path identifier (syntax only)
+
+  FQN: org.blockml.bml.type.AssociationIdentifier
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>AssociationIdentifier</name>
+  <type>type:AssociationIdentifier</type>
+  <baseType>type:MemberIdentifier(B, def:AssociationDefinition)</baseType>
+  <is>An Association member path</is>
+
+  <documentation>Concrete MemberIdentifier binding D = AssociationDefinition. Value is a canonical
+    association path (com.foo.Bar.associations.basePresets) or a local association name when paired
+    with a type qualifier. Syntax only — the owning type and association need not exist.
+    AssociationReference extends this type and adds existence. Use when addressing a potential
+    association. see association= uses AssociationReference.</documentation>
+
+  <references>
+    <see type="type:MemberIdentifier" relation="SeeAlso">
+      Abstract member path Identifier.
+    </see>
+    <see type="type:AssociationReference" relation="SeeAlso">
+      Existence-checked specialization — association must resolve.
+    </see>
+    <see type="def:AssociationDefinition" relation="Defines">
+      Target member meta-model type.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Intended owning Block branch. Defaults to core:Block. Checked on
+        AssociationReference after resolution.</documentation>
+    </B>
+  </genericTypes>
+</block>

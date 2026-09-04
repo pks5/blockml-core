@@ -17,8 +17,9 @@
     implementation data structures. Renderers may map Text to Java String, TypeScript string,
     Python str, C# string, or any target representation.
 
-    Semantic subtypes extend Text: TypeReference (and MemberReference / PropertyReference / …),
-    PackageReference, Version, URL, URI, UUID, FilePath, MimeType, …
+    Semantic subtypes extend Text: TypeIdentifier / TypeReference, PackageIdentifier /
+    PackageReference, InstanceIdentifier / InstanceReference, MemberIdentifier (PropertyIdentifier /
+    PropertyReference / …), Version, URL, URI, UUID, FilePath, MimeType, …
     Concrete payload values are stored on Properties — not on the Text type itself.
 
     Member values of this type may contain restricted ${ } holes in running text

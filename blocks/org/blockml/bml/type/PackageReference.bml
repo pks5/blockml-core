@@ -15,12 +15,13 @@
 
   <name>PackageReference</name>
   <type>type:PackageReference</type>
-  <baseType>type:Text</baseType>
+  <baseType>type:PackageIdentifier</baseType>
   <is>A Block package name reference</is>
 
   <documentation>
     ValueType for package references — reverse-domain package strings without a type (class)
-    segment. Unqualified name PackageReference resolves to org.blockml.bml.type.PackageReference.
+    segment that must be known in the corpus. Extends PackageIdentifier (syntax) with existence.
+    Unqualified name PackageReference resolves to org.blockml.bml.type.PackageReference.
     Sibling of TypeReference under Text — not a TypeReference subtype. No generic parameters.
 
     Package format (Java-style reverse-domain, dot-separated, all lowercase):
@@ -38,9 +39,10 @@
     that names a package rather than a Block type. When a package reference must appear as an Entity
     in composition or aggregation, use org.blockml.bml.type.PackageReferenceEntity.
 
-    Block type FQNs and TypeExpressions use org.blockml.bml.type.TypeReference — not
-    PackageReference. Instance pointers use InstanceReference. Member definition paths use the
-    MemberReference branch.
+    A package name that need not exist uses PackageIdentifier — not PackageReference. Block type
+    FQNs and TypeExpressions use org.blockml.bml.type.TypeReference — not PackageReference.
+    Instance pointers use InstanceReference. Member definition paths use the MemberIdentifier
+    branch.
   </documentation>
 
   <references>
@@ -49,6 +51,9 @@
     </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Namespace resolution — packages vs type FQNs.
+    </see>
+    <see type="type:PackageIdentifier" relation="SeeAlso">
+      Parent ValueType — package-string syntax without existence.
     </see>
     <see type="type:TypeReference" relation="ContrastsWith">
       Sibling ValueType for Block type FQNs / TypeExpressions — includes the class segment.

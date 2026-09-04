@@ -1,0 +1,53 @@
+<!--
+  BlockML Core — package name identifier value type (package string, syntax only)
+
+  FQN: org.blockml.bml.type.PackageIdentifier
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PackageIdentifier</name>
+  <type>type:PackageIdentifier</type>
+  <baseType>type:Text</baseType>
+  <is>A Block package name</is>
+
+  <documentation>
+    ValueType for package names — reverse-domain package strings without a type (class) segment.
+    Unqualified name PackageIdentifier resolves to org.blockml.bml.type.PackageIdentifier. Syntax
+    only — the named package need not be known in the corpus. PackageReference extends this type
+    and adds existence. No generic parameters.
+
+    Package format (Java-style reverse-domain, dot-separated, all lowercase):
+    • Package segments — lowercase (for example org.blockml.bml.core, com.machineblocks.bml.type)
+    • No class segment — PascalCase type names belong on TypeIdentifier (org.blockml.bml.type.Integer
+      is a type FQN, not a package)
+    • Valid: org.blockml.bml.type · com.example.bml
+    • Invalid as PackageIdentifier: org.blockml.bml.type.Integer · core:Block · Integer
+
+    Namespace prefixes in BML (core:, type:, def:, …) bind to packages; a prefix that targets a
+    Package resolves to that package string (core → org.blockml.bml.core). A prefix that targets an
+    Annotation is not a PackageIdentifier.
+
+    Primary use — planned or foreign package names. Documentation see package= uses
+    PackageReference. Block type FQNs use TypeIdentifier / TypeReference. Instance pointers use
+    InstanceIdentifier / InstanceReference. Member paths use the MemberIdentifier branch.
+  </documentation>
+
+  <references>
+    <see type="doc:BmlNamespace" relation="AuthoringGuide">
+      Package vs Annotation xmlns targets and domain.bml.* layout.
+    </see>
+    <see type="type:PackageReference" relation="SeeAlso">
+      Existence-checked specialization — package must be known.
+    </see>
+    <see type="type:TypeIdentifier" relation="ContrastsWith">
+      Sibling ValueType for Block type FQNs / TypeExpressions — includes the class segment.
+    </see>
+  </references>
+</block>

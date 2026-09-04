@@ -1,0 +1,77 @@
+<!--
+  BlockML Core — member definition path identifier value type (syntax only)
+
+  FQN: org.blockml.bml.type.MemberIdentifier
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>MemberIdentifier</name>
+  <type>type:MemberIdentifier</type>
+  <baseType>type:Text</baseType>
+  <is>A Block member path</is>
+
+  <documentation>Abstract ValueType for member definition path names — properties, aggregations,
+    associations, and capabilities. Syntax only — the named member and owning type need not exist.
+    MemberReference extends this type and adds existence. Concrete Identifier specializations bind
+    D without requiring the path to resolve.
+
+    Value forms:
+    • Canonical definition path — for example com.foo.Bar.properties.width
+    • Local member name when paired with a type qualifier (for example see type="com.foo.Bar"
+      property="width" → com.foo.Bar.properties.width)
+
+    Generic parameters:
+    • B (baseType core:Block, default core:Block) — intended owning Block branch; checked on
+      MemberReference after resolution
+    • D (baseType def:MemberDefinition) — member definition kind constraint (path shape)
+
+    Concrete Identifier specializations bind D:
+    • PropertyIdentifier     → D = def:PropertyDefinition
+    • AggregationIdentifier  → D = def:AggregationDefinition
+    • AssociationIdentifier  → D = def:AssociationDefinition
+    • CapabilityIdentifier   → D = def:CapabilityDefinition
+
+    Existence-checked counterparts (PropertyReference, …) extend the matching Identifier — not
+    MemberReference. MemberReference remains the abstract existence layer for an unbound member
+    kind. Not for Block type identity (use TypeIdentifier / TypeReference) or instance pointers
+    (use InstanceIdentifier / InstanceReference).</documentation>
+
+  <references>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      Definition addressing and see targets.
+    </see>
+    <see type="type:MemberReference" relation="SeeAlso">
+      Existence-checked specialization — member path must resolve.
+    </see>
+    <see type="def:MemberDefinition" relation="Defines">
+      Abstract member meta-model branch bound by D.
+    </see>
+    <see type="type:PropertyIdentifier" relation="SeeAlso">
+      Concrete specialization for PropertyDefinition paths — syntax only.
+    </see>
+    <see type="type:TypeIdentifier" relation="SeeAlso">
+      Sibling ValueType for Block type FQNs only.
+    </see>
+  </references>
+
+  <abstract>true</abstract>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Intended owning Block branch. Defaults to core:Block. Checked on
+        MemberReference after resolution.</documentation>
+    </B>
+    <D baseType="def:MemberDefinition">
+      <documentation>Member definition kind. Bound by concrete Identifier children
+        (PropertyIdentifier, …).</documentation>
+    </D>
+  </genericTypes>
+</block>

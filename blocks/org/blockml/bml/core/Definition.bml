@@ -26,7 +26,7 @@
     org.blockml.bml.definition.StructuralDefinition and org.blockml.bml.definition.BlockDefinition.
 
     Used as a generic constraint and branch marker for definition-element references. Member path
-    ValueTypes (org.blockml.bml.type.MemberReference and children) constrain D to
+    ValueTypes (org.blockml.bml.type.MemberIdentifier and children) constrain D to
     org.blockml.bml.definition.MemberDefinition. Framework core branch types remain baseType markers;
     domain interface-style type bounds use contracts and satisfiesTypeBound — see 17_type_system_bml.md.</documentation>
 

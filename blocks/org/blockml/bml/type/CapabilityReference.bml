@@ -14,16 +14,17 @@
 
   <name>CapabilityReference</name>
   <type>type:CapabilityReference</type>
-  <baseType>type:MemberReference(B, def:CapabilityDefinition)</baseType>
+  <baseType>type:CapabilityIdentifier(B)</baseType>
   <is>A path to a Capability member</is>
 
-  <documentation>Concrete MemberReference binding D = CapabilityDefinition. Value is a canonical
-    capability path (com.foo.Bar.capabilities.render) or a local capability name when paired with a
-    type qualifier. Used as the type of see capability=.</documentation>
+  <documentation>Existence-checked CapabilityIdentifier. Value is a canonical capability path
+    (com.foo.Bar.capabilities.render) or a local capability name when paired with a type qualifier.
+    The owning type and capability must resolve. Used as the type of see capability=. A potential
+    capability that need not exist uses CapabilityIdentifier.</documentation>
 
   <references>
-    <see type="type:MemberReference" relation="SeeAlso">
-      Abstract member path ValueType.
+    <see type="type:CapabilityIdentifier" relation="SeeAlso">
+      Parent ValueType — capability-path syntax without existence.
     </see>
     <see type="def:CapabilityDefinition" relation="Defines">
       Target member meta-model type.

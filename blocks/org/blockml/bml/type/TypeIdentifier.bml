@@ -1,0 +1,61 @@
+<!--
+  BlockML Core — type name identifier value type (FQN / TypeExpression text, syntax only)
+
+  FQN: org.blockml.bml.type.TypeIdentifier
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>TypeIdentifier</name>
+  <type>type:TypeIdentifier</type>
+  <baseType>type:Text</baseType>
+  <is>A Block type name</is>
+
+  <documentation>
+    ValueType for type names — fully qualified names (FQNs) and TypeExpressions that name a Block.
+    Unqualified name TypeIdentifier resolves to org.blockml.bml.type.TypeIdentifier. Syntax only —
+    the named type need not exist in the TypeRegistry. TypeReference extends this type and adds
+    existence plus the branch bound B.
+
+    FQN format (Java-style reverse-domain, dot-separated):
+    • Package segments — lowercase, reverse-domain (for example org.blockml.bml.core,
+      com.machineblocks.bml.type)
+    • Class segment — PascalCase (for example Block, Integer, Wall)
+    • Full form — &lt;package&gt;.&lt;ClassName&gt; (for example org.blockml.bml.type.Integer,
+      com.machineblocks.bml.core.Block)
+    Sub-Block FQNs derive as parentFqn + "." + name when omitted in source.
+
+    Namespace prefixes in BML (core:, type:, def:, …) map to package segments. Ill-formed syntax
+    → BML_INVALID_TYPE_REFERENCE. An unknown FQN is valid on TypeIdentifier — use TypeReference
+    when the type must resolve (BML_UNKNOWN_TYPE).
+
+    No generic parameters. TypeReference(B) introduces the branch bound B after resolution.
+
+    Primary use — planned, generated, or foreign type names. Block-definition identity (`type`,
+    `baseType`) and other sites that must name an existing Block use TypeReference — not
+    TypeIdentifier. Package strings without a class segment use PackageIdentifier /
+    PackageReference. Member paths use the MemberIdentifier branch. Instance pointers use
+    InstanceIdentifier / InstanceReference.
+  </documentation>
+
+  <references>
+    <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
+      Namespace resolution and type identity.
+    </see>
+    <see type="type:TypeReference" relation="SeeAlso">
+      Existence-checked specialization — FQN must resolve.
+    </see>
+    <see type="type:PackageIdentifier" relation="ContrastsWith">
+      Sibling ValueType for package strings — no class segment.
+    </see>
+    <see type="type:MemberIdentifier" relation="SeeAlso">
+      Member definition path identifiers — PropertyIdentifier and siblings.
+    </see>
+  </references>
+</block>

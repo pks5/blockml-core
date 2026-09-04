@@ -1,0 +1,44 @@
+<!--
+  BlockML Core — CapabilityDefinition path identifier (syntax only)
+
+  FQN: org.blockml.bml.type.CapabilityIdentifier
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>CapabilityIdentifier</name>
+  <type>type:CapabilityIdentifier</type>
+  <baseType>type:MemberIdentifier(B, def:CapabilityDefinition)</baseType>
+  <is>A Capability member path</is>
+
+  <documentation>Concrete MemberIdentifier binding D = CapabilityDefinition. Value is a canonical
+    capability path (com.foo.Bar.capabilities.render) or a local capability name when paired with a
+    type qualifier. Syntax only — the owning type and capability need not exist.
+    CapabilityReference extends this type and adds existence. Use when addressing a potential
+    capability. see capability= uses CapabilityReference.</documentation>
+
+  <references>
+    <see type="type:MemberIdentifier" relation="SeeAlso">
+      Abstract member path Identifier.
+    </see>
+    <see type="type:CapabilityReference" relation="SeeAlso">
+      Existence-checked specialization — capability must resolve.
+    </see>
+    <see type="def:CapabilityDefinition" relation="Defines">
+      Target member meta-model type.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Intended owning Block branch. Defaults to core:Block. Checked on
+        CapabilityReference after resolution.</documentation>
+    </B>
+  </genericTypes>
+</block>

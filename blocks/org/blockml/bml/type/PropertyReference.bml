@@ -14,17 +14,19 @@
 
   <name>PropertyReference</name>
   <type>type:PropertyReference</type>
-  <baseType>type:MemberReference(B, def:PropertyDefinition)</baseType>
+  <baseType>type:PropertyIdentifier(B)</baseType>
   <is>A path to a Property member</is>
 
-  <documentation>Concrete MemberReference binding D = PropertyDefinition. Value is a canonical
-    property path (com.foo.Bar.properties.width) or a local property name when paired with a Block
-    qualifier. Used as the type of see property= and other PropertyDefinition reference sites.
+  <documentation>Existence-checked PropertyIdentifier. Value is a canonical property path
+    (com.foo.Bar.properties.width) or a local property name when paired with a Block qualifier.
+    The owning type and property must resolve. Used as the type of see property= and other
+    PropertyDefinition reference sites. A potential property that need not exist uses
+    PropertyIdentifier.
   </documentation>
 
   <references>
-    <see type="type:MemberReference" relation="SeeAlso">
-      Abstract member path ValueType.
+    <see type="type:PropertyIdentifier" relation="SeeAlso">
+      Parent ValueType — property-path syntax without existence.
     </see>
     <see type="def:PropertyDefinition" relation="Defines">
       Target member meta-model type.

@@ -14,16 +14,17 @@
 
   <name>AggregationReference</name>
   <type>type:AggregationReference</type>
-  <baseType>type:MemberReference(B, def:AggregationDefinition)</baseType>
+  <baseType>type:AggregationIdentifier(B)</baseType>
   <is>A path to an Aggregation member</is>
 
-  <documentation>Concrete MemberReference binding D = AggregationDefinition. Value is a canonical
-    aggregation path (com.foo.Bar.aggregations.children) or a local aggregation name when paired
-    with a type qualifier. Used as the type of see aggregation=.</documentation>
+  <documentation>Existence-checked AggregationIdentifier. Value is a canonical aggregation path
+    (com.foo.Bar.aggregations.children) or a local aggregation name when paired with a type
+    qualifier. The owning type and aggregation must resolve. Used as the type of see aggregation=.
+    A potential aggregation that need not exist uses AggregationIdentifier.</documentation>
 
   <references>
-    <see type="type:MemberReference" relation="SeeAlso">
-      Abstract member path ValueType.
+    <see type="type:AggregationIdentifier" relation="SeeAlso">
+      Parent ValueType — aggregation-path syntax without existence.
     </see>
     <see type="def:AggregationDefinition" relation="Defines">
       Target member meta-model type.

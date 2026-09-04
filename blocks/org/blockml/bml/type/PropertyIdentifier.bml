@@ -1,0 +1,45 @@
+<!--
+  BlockML Core — PropertyDefinition path identifier (syntax only)
+
+  FQN: org.blockml.bml.type.PropertyIdentifier
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:type="org.blockml.bml.type">
+
+  <name>PropertyIdentifier</name>
+  <type>type:PropertyIdentifier</type>
+  <baseType>type:MemberIdentifier(B, def:PropertyDefinition)</baseType>
+  <is>A Property member path</is>
+
+  <documentation>Concrete MemberIdentifier binding D = PropertyDefinition. Value is a canonical
+    property path (com.foo.Bar.properties.width) or a local property name when paired with a Block
+    qualifier. Syntax only — the owning type and property need not exist. PropertyReference extends
+    this type and adds existence. Use when addressing a potential property (planned, generated, or
+    foreign). see property= uses PropertyReference.
+  </documentation>
+
+  <references>
+    <see type="type:MemberIdentifier" relation="SeeAlso">
+      Abstract member path Identifier.
+    </see>
+    <see type="type:PropertyReference" relation="SeeAlso">
+      Existence-checked specialization — property must resolve.
+    </see>
+    <see type="def:PropertyDefinition" relation="Defines">
+      Target member meta-model type.
+    </see>
+  </references>
+
+  <genericTypes>
+    <B baseType="core:Block" defaultType="core:Block">
+      <documentation>Intended owning Block branch. Defaults to core:Block — bare PropertyIdentifier
+        is valid. Checked on PropertyReference after resolution.</documentation>
+    </B>
+  </genericTypes>
+</block>

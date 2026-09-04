@@ -230,15 +230,23 @@
         <blockml:type.FilePathEntity />
         <blockml:type.Float />
         <blockml:type.FloatEntity />
+        <blockml:type.TypeIdentifier />
         <blockml:type.TypeReference />
         <blockml:type.TypeReferenceEntity />
+        <blockml:type.PackageIdentifier />
         <blockml:type.PackageReference />
         <blockml:type.PackageReferenceEntity />
+        <blockml:type.InstanceIdentifier />
         <blockml:type.InstanceReference />
+        <blockml:type.MemberIdentifier />
         <blockml:type.MemberReference />
+        <blockml:type.PropertyIdentifier />
         <blockml:type.PropertyReference />
+        <blockml:type.AggregationIdentifier />
         <blockml:type.AggregationReference />
+        <blockml:type.AssociationIdentifier />
         <blockml:type.AssociationReference />
+        <blockml:type.CapabilityIdentifier />
         <blockml:type.CapabilityReference />
         <blockml:type.Integer />
         <blockml:type.IntegerEntity />
