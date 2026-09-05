@@ -246,8 +246,6 @@
         <blockml:type.InstanceReferenceEntity />
         <blockml:type.MemberIdentifier />
         <blockml:type.MemberIdentifierEntity />
-        <blockml:type.MemberReference />
-        <blockml:type.MemberReferenceEntity />
         <blockml:type.PropertyIdentifier />
         <blockml:type.PropertyIdentifierEntity />
         <blockml:type.PropertyReference />

@@ -39,7 +39,7 @@
 
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">
-      TypeReference · InstanceReference · MemberReference.
+      TypeReference · InstanceReference · PropertyReference.
     </see>
     <see type="type:InstanceReference" relation="SeeAlso">
       Existence-checked specialization — instance must resolve.

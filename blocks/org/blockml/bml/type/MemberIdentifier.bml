@@ -21,8 +21,9 @@
 
   <documentation>Abstract ValueType for member definition path names — properties, aggregations,
     associations, and capabilities. Syntax only — the named member and owning type need not exist.
-    MemberReference extends this type and adds existence. Concrete Identifier specializations bind
-    D without requiring the path to resolve.
+    Concrete Identifier specializations bind D without requiring the path to resolve.
+    Existence-checked counterparts (PropertyReference, AggregationReference, AssociationReference,
+    CapabilityReference) extend the matching Identifier and introduce the owning Block bound B.
 
     Value forms:
     • Canonical definition path — for example com.foo.Bar.properties.width
@@ -31,7 +32,7 @@
 
     Generic parameter:
     • D (baseType def:MemberDefinition) — member definition kind (path shape). The owning Block
-      bound B is introduced on MemberReference / PropertyReference / … after resolution — not here.
+      bound B is introduced on PropertyReference / … after resolution — not here.
 
     Concrete Identifier specializations bind D:
     • PropertyIdentifier     → D = def:PropertyDefinition
@@ -39,17 +40,16 @@
     • AssociationIdentifier  → D = def:AssociationDefinition
     • CapabilityIdentifier   → D = def:CapabilityDefinition
 
-    Existence-checked counterparts (PropertyReference, …) extend the matching Identifier — not
-    MemberReference. MemberReference remains the abstract existence layer for an unbound member
-    kind. Not for Block type identity (use TypeIdentifier / TypeReference) or instance pointers
-    (use InstanceIdentifier / InstanceReference).</documentation>
+    There is no collective existence type for an unbound member kind — member sites declare a
+    concrete Reference. Not for Block type identity (use TypeIdentifier / TypeReference) or
+    instance pointers (use InstanceIdentifier / InstanceReference).</documentation>
 
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       Definition addressing and see targets.
     </see>
-    <see type="type:MemberReference" relation="SeeAlso">
-      Existence-checked specialization — member path must resolve.
+    <see type="type:PropertyReference" relation="SeeAlso">
+      Existence-checked PropertyIdentifier — representative of the four member References.
     </see>
     <see type="def:MemberDefinition" relation="Defines">
       Abstract member meta-model branch bound by D.
@@ -76,7 +76,7 @@
       outputType="bml:Self">
       <documentation>
         Local member name or canonical definition path (for example
-        com.foo.Bar.properties.width). Existence is MemberReference.
+        com.foo.Bar.properties.width). Existence is PropertyReference / ….
       </documentation>
       <throws>
         <ex:InvalidValueException />

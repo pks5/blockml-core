@@ -37,8 +37,8 @@
     1. Type instance configuration — Integer{min: 0, max: 100}, Text{maxLength: 50}
        (doc:ValueTypeConfiguration)
     2. Property constraints — Pattern, Min, Max, … (doc:ConstraintsModel)
-    3. Existence checks on Reference types — TypeReference, InstanceReference, MemberReference
-       (doc:TypeSystemOverview). parseValue does not consult the TypeRegistry.
+    3. Existence checks on Reference types — TypeReference, InstanceReference, PropertyReference /
+       … (doc:TypeSystemOverview). parseValue does not consult the TypeRegistry.
 
     Inheritance: Text implements identity (every string is Text). Number implements a numeric
     literal; Integer, Decimal, and Float refine. Temporal leaves parseValue abstract; Date, Time,

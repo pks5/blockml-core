@@ -347,8 +347,8 @@
 
         Nine mutually exclusive target attributes (type, package, instance, file, url, property, aggregation,
         association, capability) instead of one generic target. Type targets use TypeReference;
-        package targets use PackageReference; instance targets use InstanceReference; member targets use typed MemberReference
-        specializations — property : PropertyReference, aggregation : AggregationReference,
+        package targets use PackageReference; instance targets use InstanceReference; member targets
+        declare a concrete kind — property : PropertyReference, aggregation : AggregationReference,
         association : AssociationReference, capability : CapabilityReference — and store the
         canonical definition path in the BOM (for example com.foo.Bar.properties.width).
         Split authoring type="com.foo.Bar" property="width" resolves to that path — type qualifies

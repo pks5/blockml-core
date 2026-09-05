@@ -98,7 +98,7 @@
     <see type="type:InstanceReference" relation="SeeAlso">
       Sibling ValueType for Block instance pointers — association types and see instance=.
     </see>
-    <see type="type:MemberReference" relation="SeeAlso">
+    <see type="type:PropertyReference" relation="SeeAlso">
       Member definition path references — PropertyReference and siblings.
     </see>
     <see type="type:TypeReferenceEntity" relation="SeeAlso">

@@ -26,7 +26,8 @@
 
   <documentation>
     The validator keys off the declared ValueType of the field, not the field name. Emitted when
-    a value whose type is PropertyReference / MemberReference (or a subtype) cannot be resolved
+    a value whose type is PropertyReference (or AggregationReference / AssociationReference /
+    CapabilityReference) cannot be resolved
     on the Block (non-expression). PropertyIdentifier and MemberIdentifier (and not a Reference
     subtype) are syntax-only — an unknown but well-formed path is valid. Unresolved is an error,
     not proof the document is ill-formed — the member may be missing from a not-yet-loaded

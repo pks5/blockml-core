@@ -16,8 +16,8 @@
     org.blockml.bml.type.MemberIdentifier onto org.blockml.bml.core.PrimitiveEntity via baseType —
     inherits the value property automatically as value : MemberIdentifier(D). Use when a member
     path that need not exist must appear as an identifiable Block instance. Existence-checked
-    counterparts use MemberReferenceEntity. Concrete Identifier Entities (PropertyIdentifierEntity,
-    …) bind D.</documentation>
+    counterparts use PropertyReferenceEntity / AggregationReferenceEntity / …. Concrete Identifier
+    Entities (PropertyIdentifierEntity, …) bind D.</documentation>
 
   <abstract>true</abstract>
 

@@ -34,8 +34,9 @@
 
     If the field's type is TypeIdentifier (or a TypeIdentifier that is not a TypeReference),
     existence is not checked — an unknown but well-formed FQN is valid. Ill-formed syntax on
-    either Identifier or Reference → BML_INVALID_TYPE_REFERENCE. Unresolved MemberReference →
-    BML_UNKNOWN_PROPERTY (or this diagnostic when the owning type cannot be resolved).
+    either Identifier or Reference → BML_INVALID_TYPE_REFERENCE. Unresolved PropertyReference /
+    AggregationReference / … → BML_UNKNOWN_PROPERTY (or this diagnostic when the owning type
+    cannot be resolved).
     Unresolved InstanceReference → BML_UNRESOLVABLE_INSTANCE_REF.
 
     This diagnostic is an error, but it does not mean the document is ill-formed or semantically

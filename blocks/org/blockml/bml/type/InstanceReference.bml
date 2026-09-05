@@ -3,7 +3,7 @@
 
   FQN: org.blockml.bml.type.InstanceReference
   See docs/01_bom_core.md — Qualified Block Instance References
-       docs/17_type_system_bml.md — TypeReference · InstanceReference · MemberReference
+       docs/17_type_system_bml.md — TypeReference · InstanceReference · PropertyReference
        docs/02_mbml.md — Associations · references
 -->
 <block
@@ -55,7 +55,7 @@
 
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">
-      TypeReference · InstanceReference · MemberReference.
+      TypeReference · InstanceReference · PropertyReference.
     </see>
     <see type="doc:BlockAndInstance" relation="AuthoringGuide">
       Associations and see instance= targets.

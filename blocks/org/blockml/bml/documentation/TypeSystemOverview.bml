@@ -68,9 +68,9 @@
     later validator step on Reference types (doc:ValueTypeParsing). The validator keys off the
     declared ValueType of the field, never the property or attribute name (type= vs abc= is
     irrelevant):
-    • TypeReference, MemberReference (PropertyReference / AggregationReference / …), and
+    • TypeReference, PropertyReference / AggregationReference / …, and
       InstanceReference — the target must resolve in the current corpus. Unknown TypeReference
-      → BML_UNKNOWN_TYPE; unknown MemberReference → BML_UNKNOWN_PROPERTY (or BML_UNKNOWN_TYPE
+      → BML_UNKNOWN_TYPE; unknown PropertyReference → BML_UNKNOWN_PROPERTY (or BML_UNKNOWN_TYPE
       if the owning type cannot be resolved); unknown InstanceReference →
       BML_UNRESOLVABLE_INSTANCE_REF. Unresolved is an error, not proof the document is
       ill-formed — like Java class-not-found, it may be a typo or a missing library.
