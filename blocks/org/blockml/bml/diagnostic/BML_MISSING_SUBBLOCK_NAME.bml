@@ -19,16 +19,20 @@
   <baseType>core:Diagnostic</baseType>
   <is>A missing Sub-Block-name diagnostic</is>
 
-  <summary>Emitted when a Sub-Block omits the required name element.</summary>
+  <summary>Emitted when a Sub-Block supplies neither a name element tag nor a name child.</summary>
 
   <keywords>BML_MISSING_SUBBLOCK_NAME</keywords>
 
   <documentation>
-    Emitted when a Sub-Block omits the required name element. Remedy: Sub-Blocks use the opposite
-    identity convention from roots: name is required; type is normally derived.
+    Name is required as local identity. Preferred authoring: the element local name under
+    &lt;subBlocks&gt; is the Sub-Block name. Legacy: child &lt;name&gt; under a &lt;block&gt;
+    wrapper (doc:DocumentFormat). Type is normally derived.
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Unqualified name tag under &lt;subBlocks&gt;.
+    </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Sub-Block identity.
     </see>

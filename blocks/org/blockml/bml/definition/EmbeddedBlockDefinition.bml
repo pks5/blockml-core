@@ -25,8 +25,10 @@
     org.blockml.bml.definition.BlockDefinition (subBlocks, identity, members) and overrides
     definition to default EmbeddedBlockDefinition.
 
-    Embedded blocks are full Block documents: mandatory fully qualified &lt;type&gt; is the FQN
-    (not nested under the root). They may declare subBlocks and generics like any Block. They must
+    Embedded blocks are full Block documents. Authoring is the same as the document root
+    (doc:DocumentFormat): preferred type tag (&lt;acme:MyBlock&gt;), legacy &lt;block&gt; plus
+    &lt;type&gt;. The resolved type is the FQN (not nested under the root) and must be fully
+    qualified. They may declare subBlocks and generics like any Block. They must
     not declare &lt;embeddedBlocks&gt; — nesting is forbidden (BML_NESTED_EMBEDDED_BLOCKS). Only the
     document root (RootBlockDefinition) may own embeddedBlocks; compose fat artifacts by listing
     virtual files flat at the root (bundlers flatten nested packages when merging).
@@ -36,6 +38,9 @@
     embeds are invisible.</documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Same tag-as-type authoring as the document root.
+    </see>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">
       Embedded Blocks — root-only Inline Library rules.
     </see>

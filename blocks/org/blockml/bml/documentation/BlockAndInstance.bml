@@ -26,8 +26,8 @@
 
     Block (definition):
     • .bml file · BlockDefinition
-    • Root tag is the type (preferred) or legacy &lt;block&gt; plus &lt;type&gt;
-      (doc:DocumentFormat)
+    • Element tag is the type (root / embed) or the name (Sub-Block); legacy
+      &lt;block&gt; wrappers remain valid (doc:DocumentFormat)
     • FQN · members · composition schema
     • Describes shape and behaviour
     • No runtime · no address
@@ -69,7 +69,7 @@
 
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
-      Document root — type tag preferred; legacy &lt;block&gt; still valid.
+      Type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:MemberAuthoring" relation="AuthoringGuide">
       Definition vs instance member syntax — no &lt;value&gt; / &lt;composition&gt; wrappers on

@@ -73,8 +73,10 @@
       unqualified root, a redundant &lt;name&gt; is not recommended
     • definition — optional; default RootBlockDefinition; unqualified via org.blockml.bml.definition.*
 
-    Sub-Block identity (opposite convention):
-    • name — required (BML_MISSING_SUBBLOCK_NAME)
+    Sub-Block identity (opposite convention — unqualified name-as-tag, doc:DocumentFormat):
+    • name — required (BML_MISSING_SUBBLOCK_NAME). Preferred authoring: the element local name
+      is the Sub-Block name (&lt;MyBlock&gt; under &lt;subBlocks&gt;). Legacy: child &lt;name&gt;
+      under a &lt;block&gt; wrapper. When both are present they must match
     • type — normally omitted; expectedType = resolve(parent.type) + "." + name; when present must
       equal expectedType (full parent path check, not last segment alone) →
       BML_SUBBLOCK_TYPE_MISMATCH
@@ -82,10 +84,19 @@
     • genericTypes / subBlocks — allowed; embeddedBlocks — forbidden
       (BML_EMBEDDED_BLOCKS_ON_SUBBLOCK)
 
+    Embedded Block identity (same authoring as the document root, doc:DocumentFormat):
+    • type — required and fully qualified (BML_MISSING_EMBEDDED_BLOCK_TYPE /
+      BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE); preferred: the element tag is the type
+      (&lt;acme:MyBlock&gt;). Legacy: child &lt;type&gt; under a &lt;block&gt; wrapper. FQN =
+      resolve(type), not nested under the root
+    • name — optional; same matching rule as the document root
+    • definition — default EmbeddedBlockDefinition
+
     Canonical derivation summary:
-    • Root: canonicalType = resolve(type); effectiveName = name ?? lastSegment(canonicalType);
+    • Root / embed: canonicalType = resolve(type); effectiveName = name ?? lastSegment(canonicalType);
       if name present → name == lastSegment(canonicalType)
-    • Sub-Block: effectiveName = name; expectedType = canonicalParentType + "." + name;
+    • Sub-Block: effectiveName = name (element tag or child &lt;name&gt;);
+      expectedType = canonicalParentType + "." + name;
       canonicalType = type ? resolve(type) : expectedType; canonicalType == expectedType
 
     See also doc:SubBlockModel (visibility, embeds, reference scope) and doc:BlockNameConvention.
@@ -108,16 +119,16 @@
       Document-root identity — type required; name optional short form.
     </see>
     <see type="def:SubBlockDefinition" relation="Defines">
-      Sub-Block identity — name required; type derived from parent.
+      Sub-Block identity — name from the element tag; type derived from parent.
     </see>
     <see type="def:EmbeddedBlockDefinition" relation="SeeAlso">
-      Embedded virtual files — FQN from mandatory fully qualified type.
+      Embedded virtual files — same tag-as-type authoring as the document root.
     </see>
     <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
       Context-bound unqualified fallback at specialized sites.
     </see>
     <see type="doc:DocumentFormat" relation="ReadNext">
-      Next — document root tag as type; dual format; XSD is not standard.
+      Next — type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:BlockNameConvention" relation="SeeAlso">
       PascalCase rules for &lt;name&gt;.

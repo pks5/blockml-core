@@ -33,12 +33,12 @@
     • Self-hosting bootstrap — the compiler loads framework BML before user content
 
     BML file extension is .bml. XML is the sole BML serialization for V1 and V2 — a JSON
-    authoring form is not planned as an equivalent format. The document root identifies the
-    Block being defined: preferred form is a type tag (&lt;acme:MyBlock&gt; or unqualified
-    &lt;MyBlock&gt;); the legacy &lt;block&gt; plus &lt;type&gt; form remains valid during a
-    long transition (doc:DocumentFormat). xmlns:xsi and xsi:schemaLocation are omitted by
-    default — XSD is not a standard validation feature. Withdrawn roots such as device /
-    sign / game stay withdrawn.
+    authoring form is not planned as an equivalent format. Every Block definition wrapper —
+    document root, Sub-Block, and embedded Block — identifies the Block by its element tag:
+    preferred type tag (&lt;acme:MyBlock&gt;) or unqualified name tag (&lt;MyBlock&gt;);
+    the legacy &lt;block&gt; form remains valid during a long transition (doc:DocumentFormat).
+    xmlns:xsi and xsi:schemaLocation are omitted by default — XSD is not a standard
+    validation feature. Withdrawn roots such as device / sign / game stay withdrawn.
   </documentation>
 
   <references>
@@ -46,7 +46,7 @@
       Universal semantic unit — sole inheritance root of the BlockML grammar.
     </see>
     <see type="doc:DocumentFormat" relation="SeeAlso">
-      Document root — type tag preferred; legacy &lt;block&gt; still valid.
+      Type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:CoreUseCases" relation="ReadNext">
       Next reading step — structured documentation, domain modeling, and AI workspaces.

@@ -16,20 +16,25 @@
   <name>DocumentFormat</name>
   <type>doc:DocumentFormat</type>
   <baseType>core:Documentation</baseType>
-  <is>A guide to the BML document root format</is>
+  <is>A guide to the BML Block authoring format</is>
 
-  <summary>A .bml document root is the Block type tag. Legacy &lt;block&gt; plus &lt;type&gt;
-    remains valid during a long transition. xmlns:xsi and xsi:schemaLocation are omitted by
-    default — validation is the validator and LSP, not XSD.</summary>
+  <summary>Every Block definition wrapper — document root, Sub-Block, and embedded Block — uses
+    the type or name as its element tag. Legacy &lt;block&gt; remains valid during a long
+    transition. xmlns:xsi and xsi:schemaLocation are omitted by default — validation is the
+    validator and LSP, not XSD.</summary>
 
   <documentation><![CDATA[
-    A `.bml` file is one XML document. The root element identifies the Block being defined.
-    Two authoring formats are valid during a long transition. The type-as-root-tag form is the
-    intended long-term format; the legacy `<block>` form remains valid until it is withdrawn.
+    Every Block definition wrapper is identified by its element tag: the document root, each
+    Sub-Block under `<subBlocks>`, and each embedded Block under `<embeddedBlocks>`. Two
+    authoring formats are valid during a long transition. The type-or-name-as-tag form is the
+    intended long-term format; the legacy `<block>` wrapper remains valid until it is withdrawn.
 
     Existing sources in this library stay in the legacy form until they are migrated.
 
-    ## Qualified root (recommended)
+    Member containers (`<properties>`, `<aggregations>`, …) and instance children are unchanged.
+    Instance serialization already uses the declared type tag (`<core:Block>`, `<myns:Wall>`).
+
+    ## Qualified Blocks — document root and embedded Blocks
 
     Legacy:
 
@@ -46,12 +51,15 @@
           …
         </acme:MyBlock>
 
-    The root QName is the type. Prefixes resolve via xmlns Package bindings
-    (doc:BmlNamespace). Child `<type>` is omitted when the root tag already supplies the type.
+    The element QName is the type. Prefixes resolve via xmlns Package bindings
+    (doc:BmlNamespace). Child `<type>` is omitted when the tag already supplies the type.
     Optional `<name>` must still equal `lastSegment(resolve(type))` when present
     (BML_BLOCK_NAME_TYPE_MISMATCH).
 
-    ## Unqualified root
+    Embedded Blocks use this same authoring as the document root. Their identity is still an
+    independent FQN — `resolve(type)`, not nested under the root (doc:SubBlockModel).
+
+    ## Unqualified Blocks — document root, Sub-Blocks, and optional embeds
 
     Legacy:
 
@@ -67,29 +75,57 @@
           …
         </MyBlock>
 
-    The local name of the root tag is the type (and the effective name). A redundant `<name>`
-    is allowed but not recommended. Unqualified roots follow the same identity rules as
-    unqualified type references (doc:TypeIdentityDerivation / doc:ImplicitNamespaceResolution).
+    The local name of the element is the type (and the effective name). A redundant `<name>`
+    is allowed but not recommended. Unqualified roots and embeds follow the same identity rules
+    as unqualified type references (doc:TypeIdentityDerivation / doc:ImplicitNamespaceResolution).
+    Embeds still require a fully qualified resolved FQN
+    (BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE) — prefer the qualified tag.
+
+    ## Sub-Blocks — unqualified name as the element
+
+    Sub-Blocks always use the unqualified form. The element local name *is* the Sub-Block name.
+    Type stays derived as `resolve(parent.type) + "." + name` (doc:TypeIdentityDerivation).
+
+    Legacy:
+
+        <subBlocks>
+          <block>
+            <name>MyBlock</name>
+            …
+          </block>
+        </subBlocks>
+
+    Preferred:
+
+        <subBlocks>
+          <MyBlock>
+            <!-- <name>MyBlock</name> is optional and not recommended -->
+            …
+          </MyBlock>
+        </subBlocks>
+
+    Child `<name>` may still be authored and must equal the element local name when present
+    (BML_BLOCK_NAME_TYPE_MISMATCH). BML_MISSING_SUBBLOCK_NAME when neither the element tag nor
+    `<name>` supplies the name (legacy `<block>` without `<name>`). Visibility prefixes stay on
+    the logical name and therefore on the tag (`<_Utils>`, `<__Helper>`). Nested Sub-Blocks use
+    the same rule at every depth.
 
     ## Dual format
 
-    Parser, validator, and LSP accept both forms. New documents should use the type-as-root-tag
-    form. Both remain valid until the legacy form is withdrawn.
+    Parser, validator, and LSP accept both forms on the root, on Sub-Blocks, and on embeds.
+    New documents should use the type-or-name-as-tag form. Both remain valid until the legacy
+    form is withdrawn.
 
-    Identity rules (doc:TypeIdentityDerivation) are unchanged:
+    Identity rules (doc:TypeIdentityDerivation):
 
-    • type is required as canonical identity — supplied by the root tag and/or child `<type>`
-    • name remains optional and must match `lastSegment(resolve(type))` when present
-    • BML_MISSING_BLOCK_TYPE when neither the root tag nor `<type>` supplies a type
-      (legacy `<block>` without `<type>`)
-    • when both the root tag and `<type>` supply a type, they must resolve to the same FQN
-
-    A generic `<block>` root is not itself a type. In the legacy form, identity comes from
-    `<type>` (and optional `<name>`). In the preferred form the root tag *is* the type, so
-    `<type>` is omitted.
-
-    Inner members, Sub-Blocks, and instance children are unchanged. Instance serialization
-    already uses the declared type tag (`<core:Block>`, `<myns:Wall>`).
+    • Root and embed — type is required as canonical identity: the element tag and/or child
+      `<type>`. BML_MISSING_BLOCK_TYPE / BML_MISSING_EMBEDDED_BLOCK_TYPE when neither supplies
+      a type. When both supply a type, they must resolve to the same FQN.
+    • Sub-Block — name is required as local identity: the element tag and/or child `<name>`.
+      Type is normally omitted and derived. When `<type>` is present it must equal
+      `parentType + "." + name`.
+    • A generic `<block>` wrapper is not itself a type or name. In the legacy form, identity
+      comes from `<type>` / `<name>`. In the preferred form the element tag *is* that identity.
 
     ## XSD is not a standard feature
 
@@ -108,7 +144,7 @@
       BML vs BOM overview — points here for document root syntax.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
-      Canonical type / name identity — root tag or child &lt;type&gt;.
+      Canonical type / name identity — element tag or child &lt;type&gt; / &lt;name&gt;.
     </see>
     <see type="doc:BmlNamespace" relation="SeeAlso">
       Package xmlns prefixes on qualified roots.
@@ -128,8 +164,20 @@
     <see type="def:RootBlockDefinition" relation="Defines">
       Meta-model shape of a document-root Block.
     </see>
+    <see type="def:SubBlockDefinition" relation="Defines">
+      Nested Sub-Block — unqualified name tag.
+    </see>
+    <see type="def:EmbeddedBlockDefinition" relation="Defines">
+      Embedded Block — same tag-as-type authoring as the document root.
+    </see>
     <see type="diag:BML_MISSING_BLOCK_TYPE" relation="SeeAlso">
       Neither root tag nor &lt;type&gt; supplies identity.
+    </see>
+    <see type="diag:BML_MISSING_SUBBLOCK_NAME" relation="SeeAlso">
+      Neither Sub-Block tag nor &lt;name&gt; supplies the local name.
+    </see>
+    <see type="diag:BML_MISSING_EMBEDDED_BLOCK_TYPE" relation="SeeAlso">
+      Neither embed tag nor &lt;type&gt; supplies identity.
     </see>
     <see type="doc:SubBlockModel" relation="ReadNext">
       Next — Sub-Block visibility, embeds, and composition reference scope.

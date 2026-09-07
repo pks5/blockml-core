@@ -36,9 +36,10 @@
   <documentation>
     Procedure for a new domain Block type:
     1. Choose baseType from the framework or domain branch.
-    2. Author the document root as the type tag (doc:DocumentFormat). Legacy &lt;block&gt;
-       plus &lt;type&gt; remains valid. Declare documentation metadata (is, documentation,
-       optional summary).
+    2. Author the document root as the type tag (doc:DocumentFormat). Nested Sub-Blocks use
+       the unqualified name as the element tag; embeds use the same tag-as-type form as the
+       root. Legacy &lt;block&gt; wrappers remain valid. Declare documentation metadata
+       (is, documentation, optional summary).
     3. Add properties, aggregations, associations, or capabilities.
     4. Add constraints, capabilities, and examples as needed.
     5. Export via Library.bml blocks when the type belongs to a published catalogue.
@@ -46,7 +47,7 @@
 
   <references>
     <see type="doc:DocumentFormat" relation="Prerequisite">
-      Document root — type tag preferred; legacy &lt;block&gt; still valid.
+      Type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:DefinitionModel" relation="Prerequisite">
       Understand is, members, and documentation extensions before authoring.

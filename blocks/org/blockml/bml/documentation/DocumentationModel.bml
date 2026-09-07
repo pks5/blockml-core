@@ -27,8 +27,9 @@
 
     Definition identity first (required at top of every Block document):
     name / type / baseType — FQN identity before prose (baseType omitted only on org.blockml.bml.core.Block).
-    Preferred: the document root tag supplies type (doc:DocumentFormat); <type> remains
-    valid in the legacy <block> form.
+    Preferred: the element tag supplies type on the document root and on embeds, and name
+    on Sub-Blocks (doc:DocumentFormat); <type> / <name> remain valid in the legacy
+    <block> form.
 
     is (always required, after identity) — names the Idea (Urbild): what this Block semantically
       represents. Noun phrase; several words when name/type alone is too thin — not purpose and not
@@ -191,7 +192,7 @@
 
   <references>
     <see type="doc:DocumentFormat" relation="SeeAlso">
-      Document root supplies type; identity fields follow the root tag.
+      Element tag supplies type (root / embed) or name (Sub-Block).
     </see>
     <see type="doc:DefinitionModel" relation="SeeAlso">
       StructuralDefinition documentation model.

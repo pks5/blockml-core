@@ -42,7 +42,7 @@
       Embedded Blocks (Inline Library) and Sub-Block nesting.
     </see>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
-      Document root — type tag preferred; legacy &lt;block&gt; plus &lt;type&gt;.
+      Type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Root Block identity — type required; name optional short form.
@@ -81,9 +81,11 @@
         (BML_NESTED_EMBEDDED_BLOCKS).
 
         Gedankenstütze: each entry is a virtual file — multiple BML documents in one source,
-        including packages outside the root's namespace. Child type is EmbeddedBlockDefinition with
-        mandatory fully qualified &lt;type&gt; (BML_MISSING_EMBEDDED_BLOCK_TYPE,
-        BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE). FQN = resolve(type), not nested under the root FQN.
+        including packages outside the root's namespace. Child type is EmbeddedBlockDefinition.
+        Authoring is the same as the document root (doc:DocumentFormat): preferred type tag,
+        legacy &lt;block&gt; plus fully qualified &lt;type&gt;
+        (BML_MISSING_EMBEDDED_BLOCK_TYPE, BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE). FQN =
+        resolve(type), not nested under the root FQN.
         Sub-Blocks on an embedded block derive FQNs from the embedded type. Embeds may declare
         subBlocks and generics; they must not declare embeddedBlocks. Duplicate FQNs among embeds
         → BML_DUPLICATE_EMBEDDED_BLOCK. Within this document, embeds shadow library/file

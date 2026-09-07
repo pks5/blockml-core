@@ -25,6 +25,9 @@
     derivation: doc:TypeIdentityDerivation. Unqualified nested names: innermost scope first.
 
     Format: same fields as root Blocks; prefer omitting &lt;type&gt; (derived). baseType is required.
+    Preferred authoring uses the unqualified name as the element tag under &lt;subBlocks&gt;
+    (&lt;MyBlock&gt;…&lt;/MyBlock&gt;); child &lt;name&gt; is then optional and not recommended.
+    Legacy &lt;block&gt;&lt;name&gt;MyBlock&lt;/name&gt;… remains valid (doc:DocumentFormat).
     Must not declare embeddedBlocks → BML_EMBEDDED_BLOCKS_ON_SUBBLOCK.
 
     Visibility — same naming convention and access model as members (doc:MemberVisibility):
@@ -39,11 +42,13 @@
 
     Embedded Blocks (Inline Library) — virtual .bml files under root &lt;embeddedBlocks&gt;. Meta-model
     EmbeddedBlockDefinition. Each embed is a full Block document; FQN = resolve(type), not nested
-    under the root. Root-only: forbidden on Sub-Blocks and on embeds themselves
-    (BML_NESTED_EMBEDDED_BLOCKS). type required and fully qualified
-    (BML_MISSING_EMBEDDED_BLOCK_TYPE / BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE). Within the document,
-    embed FQNs shadow library/file definitions; duplicates → BML_DUPLICATE_EMBEDDED_BLOCK;
-    externally invisible. Composition refs to embeds must use fully qualified Block types.
+    under the root. Authoring is the same as the document root: preferred type tag
+    (&lt;acme:MyBlock&gt;), legacy &lt;block&gt; plus &lt;type&gt; (doc:DocumentFormat). Root-only:
+    forbidden on Sub-Blocks and on embeds themselves (BML_NESTED_EMBEDDED_BLOCKS). type required
+    and fully qualified (BML_MISSING_EMBEDDED_BLOCK_TYPE / BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE).
+    Within the document, embed FQNs shadow library/file definitions; duplicates →
+    BML_DUPLICATE_EMBEDDED_BLOCK; externally invisible. Composition refs to embeds must use
+    fully qualified Block types.
 
     Central distinction:
     • SubBlockDefinition — semantically nested type
@@ -77,6 +82,9 @@
     </see>
     <see type="core:Entity" relation="SeeAlso">
       Typical baseType for utility Sub-Blocks.
+    </see>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Sub-Block name tag; embed type tag — same dual format as the document root.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
       FQN derivation and unqualified nested resolution.

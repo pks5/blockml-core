@@ -34,8 +34,9 @@
       optional and must equal lastSegment(resolve(type)) when present
       (BML_BLOCK_NAME_TYPE_MISMATCH). On an unqualified type root, a redundant &lt;name&gt;
       is not recommended
-    • Sub-Blocks — name is required local identity; type is normally derived as
-      parentType + "." + name
+    • Sub-Blocks — name is required local identity, supplied by the element tag
+      (&lt;MyBlock&gt; under &lt;subBlocks&gt;) or legacy child &lt;name&gt;; type is
+      normally derived as parentType + "." + name (doc:DocumentFormat)
     • Visibility prefixes on Sub-Block names (_Utils, __Helper) are allowed; the PascalCase rule
       applies to the logical name after stripping visibility prefixes for collision checks — authored
       names still follow the visibility naming convention (doc:MemberVisibility /
@@ -50,7 +51,7 @@
       name and type identity fields on block definition documents.
     </see>
     <see type="doc:DocumentFormat" relation="SeeAlso">
-      Root tag supplies type; optional &lt;name&gt; is not recommended on unqualified roots.
+      Element tag supplies type (root / embed) or name (Sub-Block).
     </see>
     <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
       How name relates to canonical type on root and Sub-Blocks.

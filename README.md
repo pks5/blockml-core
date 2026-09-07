@@ -8,7 +8,7 @@ Website: [blockml.org](https://blockml.org)
 
 BlockML is a universal declarative language for describing parametric, composable semantic units called **Blocks**. Everything that belongs to a domain's grammar is a Block: domain types, value types, languages, services, constraints, and documentation.
 
-* **BML** (Block Markup Language) is the human- and editor-friendly authoring format — XML files with the extension `.bml`. The preferred document root is the Block type tag; the legacy `<block>` plus `<type>` form remains valid during a long transition. Validation is the BlockML validator and LSP — XSD is not a standard feature.
+* **BML** (Block Markup Language) is the human- and editor-friendly authoring format — XML files with the extension `.bml`. The preferred wrapper for a document root, Sub-Block, or embedded Block is the type or name tag; the legacy `<block>` form remains valid during a long transition. Validation is the BlockML validator and LSP — XSD is not a standard feature.
 * **BOM** (Block Object Model) is its canonical, immutable, lossless representation.
 * The compiler is domain-agnostic; all domain-specific knowledge lives in **renderers**, which decide how a model manifests in a particular target.
 

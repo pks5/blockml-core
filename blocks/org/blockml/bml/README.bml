@@ -158,7 +158,7 @@
     </see>
 
     <see type="doc:DocumentFormat" relation="ReadFirst">
-      Document root — type tag preferred; legacy &lt;block&gt; still valid; XSD not standard.
+      Type/name as element tag on root, Sub-Blocks, and embeds; XSD not standard.
     </see>
 
     <see type="doc:SubBlockModel" relation="ReadFirst">
