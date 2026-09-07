@@ -78,18 +78,18 @@
     </description>
   </properties>
   <aggregations>
-    <readMe>
+    <readMe override="true">
       <composition>
         <blockml:README />
       </composition>
     </readMe>
     <!--Optional legacy XSD — omit when all types are exported via blocks-->
-    <schemas>
+    <schemas override="true">
       <composition>
         <blockml:type.FilePathEntity value="blockml-library.xsd" />
       </composition>
     </schemas>
-    <blocks>
+    <blocks override="true">
       <composition>
         <blockml:core.Block />
         <blockml:core.Annotation />

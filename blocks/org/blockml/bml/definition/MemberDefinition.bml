@@ -100,7 +100,7 @@
   <bml:xml>${ #this.name }</bml:xml>
 
   <properties>
-    <abstract type="Boolean" bml:xml="element|attribute">
+    <abstract override="true" type="Boolean" bml:xml="element|attribute">
       <value>false</value>
       <documentation>Local declaration property — not inherited. When true, this member declaration is
         semantically incomplete and creates an implementation obligation for concrete descendants.
@@ -108,7 +108,7 @@
         attribute form is preferred. Boolean with explicit true or false; empty elements and attribute
         shorthand without value are not permitted. Default false when omitted.</documentation>
     </abstract>
-    <final type="Boolean" bml:xml="element|attribute">
+    <final override="true" type="Boolean" bml:xml="element|attribute">
       <value>false</value>
       <documentation>Local declaration property — not inherited. When true on this declaration, child
         blocks cannot redeclare this member. The validator enforces this effect regardless of whether
