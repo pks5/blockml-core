@@ -2,7 +2,8 @@
   BlockML Definition — root block definition meta-model type
 
   FQN: org.blockml.bml.definition.RootBlockDefinition
-  Describes the parse-time shape of root <block> documents.
+  Describes the parse-time shape of document-root Block documents
+  (preferred type tag or legacy <block>).
   See docs/12_bom_object_model.md — BlockDefinition.
 -->
 <block
@@ -39,6 +40,9 @@
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">
       Embedded Blocks (Inline Library) and Sub-Block nesting.
+    </see>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Document root — type tag preferred; legacy &lt;block&gt; plus &lt;type&gt;.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Root Block identity — type required; name optional short form.

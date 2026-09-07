@@ -47,7 +47,9 @@
     xmlns prefixes are BML-semantic only when they target a Package or an Annotation:
     • Package — type addressing (xmlns:core="org.blockml.bml.core")
     • Annotation — directives (xmlns:bml="org.blockml.bml.annotation.BmlAnnotation")
-    Other URI bindings (schemaLocation keys) are not BML-semantic type namespaces. Undeclared
+    Other URI bindings (schemaLocation keys) are not BML-semantic type namespaces.
+    xmlns:xsi and xsi:schemaLocation are omitted by default — XSD is not a standard
+    feature (doc:DocumentFormat). Undeclared
     prefix → BML_UNKNOWN_NAMESPACE_PREFIX; non-Package/Annotation target →
     BML_INVALID_NAMESPACE_TARGET; colliding prefixes across a bundle →
     BML_NAMESPACE_PREFIX_COLLISION.
@@ -77,6 +79,9 @@
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="SeeAlso">
+      Qualified root tags use Package prefixes; XSD attributes omitted by default.
+    </see>
     <see type="doc:AnnotationModel" relation="SeeAlso">
       Annotation xmlns targets vs Package prefixes.
     </see>

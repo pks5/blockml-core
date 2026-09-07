@@ -21,7 +21,7 @@
 
   <documentation>
     README block for the BlockML core library. Start with references marked relation=ReadFirst —
-    thirty-five documentation blocks in mental learning order. The early entries form the BlockML
+    thirty-six documentation blocks in mental learning order. The early entries form the BlockML
     conceptual core — the core use cases, the type system, and the expression language
     (${ } and &lt;$ $&gt;).
     Later entries cover conventions, authoring rules (visibility, overrides, member authoring,
@@ -155,6 +155,10 @@
 
     <see type="doc:TypeIdentityDerivation" relation="ReadFirst">
       Type references and Block identity — FQN forms, root vs Sub-Block derivation.
+    </see>
+
+    <see type="doc:DocumentFormat" relation="ReadFirst">
+      Document root — type tag preferred; legacy &lt;block&gt; still valid; XSD not standard.
     </see>
 
     <see type="doc:SubBlockModel" relation="ReadFirst">

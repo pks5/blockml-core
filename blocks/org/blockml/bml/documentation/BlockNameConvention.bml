@@ -29,9 +29,11 @@
     or member name starts with an uppercase letter (members use camelCase; visibility prefixes _ /
     __ do not change that rule for the logical name).
 
-    Relationship to type identity (doc:TypeIdentityDerivation):
-    • Root Blocks — type is canonical; name is optional and must equal lastSegment(resolve(type))
-      when present (BML_BLOCK_NAME_TYPE_MISMATCH)
+    Relationship to type identity (doc:TypeIdentityDerivation / doc:DocumentFormat):
+    • Root Blocks — type is canonical (root tag preferred, or child &lt;type&gt;); name is
+      optional and must equal lastSegment(resolve(type)) when present
+      (BML_BLOCK_NAME_TYPE_MISMATCH). On an unqualified type root, a redundant &lt;name&gt;
+      is not recommended
     • Sub-Blocks — name is required local identity; type is normally derived as
       parentType + "." + name
     • Visibility prefixes on Sub-Block names (_Utils, __Helper) are allowed; the PascalCase rule
@@ -46,6 +48,9 @@
   <references>
     <see type="def:BlockDefinition" relation="Defines">
       name and type identity fields on block definition documents.
+    </see>
+    <see type="doc:DocumentFormat" relation="SeeAlso">
+      Root tag supplies type; optional &lt;name&gt; is not recommended on unqualified roots.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
       How name relates to canonical type on root and Sub-Blocks.

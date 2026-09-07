@@ -27,9 +27,10 @@
 
     Every BML-semantic xmlns prefix resolves to either a Package (type addressing) or a concrete
     Annotation (directives). preferredAlias is authoring convention only (bml, scad) — the BOM
-    stores the Annotation FQN, never the XML prefix. Document default xmlns and xsi:schemaLocation
-    use http://blockml.org/bml (→ bml.xsd); legacy schema URIs are obsolete. BML-semantic xmlns:bml
-    must target ann:BmlAnnotation — never a schema URL.
+    stores the Annotation FQN, never the XML prefix. Document default xmlns remains
+    http://blockml.org/bml. xmlns:xsi and xsi:schemaLocation are omitted by default — XSD is
+    not an officially supported standard feature (doc:DocumentFormat). Legacy schema URIs are
+    obsolete. BML-semantic xmlns:bml must target ann:BmlAnnotation — never a schema URL.
 
     Branch shape (core:Annotation):
     • preferredAlias : Text
@@ -77,6 +78,9 @@
     </see>
     <see type="def:PropertyDefinition" relation="SeeAlso">
       Value-field Annotation facets on properties.
+    </see>
+    <see type="doc:DocumentFormat" relation="SeeAlso">
+      Document root format; xsi:schemaLocation omitted by default.
     </see>
     <see type="doc:BmlNamespace" relation="SeeAlso">
       Package vs Annotation xmlns targets and domain.bml.* layout.

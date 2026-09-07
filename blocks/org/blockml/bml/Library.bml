@@ -70,7 +70,7 @@
     </see>
   </references>
   <language>
-    <English />
+    <blockml:language.English />
   </language>
   <properties>
     <description override="true">
@@ -319,6 +319,7 @@
         <blockml:documentation.AnnotationModel />
         <blockml:documentation.BmlDirectives />
         <blockml:documentation.TypeIdentityDerivation />
+        <blockml:documentation.DocumentFormat />
         <blockml:documentation.SubBlockModel />
         <blockml:documentation.ContractsModel />
         <blockml:documentation.BlockNameConvention />

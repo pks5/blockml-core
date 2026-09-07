@@ -25,8 +25,9 @@
 
   <documentation>
     Abstract publishable library unit — groups exported Block and ValueType definitions,
-    optional XSD schemas, dependencies on other libraries, and nested sub-libraries.
-    Replaces the legacy library.xml descriptor.
+    optional legacy XSD schemas, dependencies on other libraries, and nested sub-libraries.
+    Replaces the legacy library.xml descriptor. XSD is not a standard feature
+    (doc:DocumentFormat).
 
     Framework base type in org.blockml.bml.core — not exported via Library blocks.
     Concrete Library.bml files inherit from BlockLibrary and declare aggregations explicitly.
@@ -45,7 +46,7 @@
     • dependencies — other Library blocks this library depends on (typical: inner library
       depends on outer)
     • subLibraries — nested child Library blocks grouped under this library
-    • schemas — optional legacy XSD paths as FilePathEntity instances
+    • schemas — optional legacy XSD paths as FilePathEntity instances; omitted by default
     • blocks — exported Block and ValueType definitions (membership SSOT)
 
     readMe and bootstrap hold TypeReferenceEntity children — empty QName sugar sets value to
@@ -65,6 +66,9 @@
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="SeeAlso">
+      XSD is not a standard feature; schemas stays optional legacy.
+    </see>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">
       Library format — structure and blocks membership.
     </see>

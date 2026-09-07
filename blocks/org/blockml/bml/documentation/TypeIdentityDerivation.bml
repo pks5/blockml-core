@@ -63,9 +63,14 @@
     Block remain errors (BML_GENERIC_*_COLLISION).
 
     Root Block identity:
-    • type — required (BML_MISSING_BLOCK_TYPE); canonical identity
+    • type — required (BML_MISSING_BLOCK_TYPE); canonical identity. Preferred authoring: the
+      document root tag is the type (&lt;acme:MyBlock&gt; / &lt;MyBlock&gt;). Legacy: child
+      &lt;type&gt; under a &lt;block&gt; root. Both forms are valid during the transition
+      (doc:DocumentFormat). When both the root tag and &lt;type&gt; supply a type, they must
+      resolve to the same FQN
     • name — optional; when omitted effectiveName = lastSegment(resolve(type)); when present must
-      equal lastSegment(resolve(type)) → else BML_BLOCK_NAME_TYPE_MISMATCH
+      equal lastSegment(resolve(type)) → else BML_BLOCK_NAME_TYPE_MISMATCH. On the preferred
+      unqualified root, a redundant &lt;name&gt; is not recommended
     • definition — optional; default RootBlockDefinition; unqualified via org.blockml.bml.definition.*
 
     Sub-Block identity (opposite convention):
@@ -111,8 +116,8 @@
     <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
       Context-bound unqualified fallback at specialized sites.
     </see>
-    <see type="doc:SubBlockModel" relation="ReadNext">
-      Next — Sub-Block visibility, embeds, and composition reference scope.
+    <see type="doc:DocumentFormat" relation="ReadNext">
+      Next — document root tag as type; dual format; XSD is not standard.
     </see>
     <see type="doc:BlockNameConvention" relation="SeeAlso">
       PascalCase rules for &lt;name&gt;.

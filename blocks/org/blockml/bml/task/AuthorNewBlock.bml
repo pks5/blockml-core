@@ -21,9 +21,9 @@
   <baseType>core:TaskGuide</baseType>
   <is>A how-to for authoring a new Block</is>
 
-  <summary>Create a root .bml file with is, documentation, type, baseType, version, and member
-    containers as needed. Register the block FQN in Library blocks when publishing a library
-    catalogue.</summary>
+  <summary>Create a root .bml file whose root tag is the type, with is, documentation,
+    baseType, version, and member containers as needed. Register the block FQN in Library
+    blocks when publishing a library catalogue.</summary>
 
   <keywords>
     <meta:FreeTextKeyword term="author" />
@@ -36,13 +36,18 @@
   <documentation>
     Procedure for a new domain Block type:
     1. Choose baseType from the framework or domain branch.
-    2. Declare identity and documentation metadata (is, documentation, optional summary).
+    2. Author the document root as the type tag (doc:DocumentFormat). Legacy &lt;block&gt;
+       plus &lt;type&gt; remains valid. Declare documentation metadata (is, documentation,
+       optional summary).
     3. Add properties, aggregations, associations, or capabilities.
     4. Add constraints, capabilities, and examples as needed.
     5. Export via Library.bml blocks when the type belongs to a published catalogue.
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="Prerequisite">
+      Document root — type tag preferred; legacy &lt;block&gt; still valid.
+    </see>
     <see type="doc:DefinitionModel" relation="Prerequisite">
       Understand is, members, and documentation extensions before authoring.
     </see>

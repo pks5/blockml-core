@@ -32,7 +32,8 @@
     generics and xml.
 
     The legacy schema URI http://blockml.org/schema/bml remains an XSD/catalog identifier only —
-    BML-semantic xmlns:bml must target this Annotation.
+    BML-semantic xmlns:bml must target this Annotation. XSD is not a standard feature;
+    xmlns:xsi and xsi:schemaLocation are omitted by default (doc:DocumentFormat).
   </documentation>
 
   <references>

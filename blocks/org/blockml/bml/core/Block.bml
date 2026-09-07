@@ -45,7 +45,8 @@
 
     Documentation model (on every root block definition — see def:BlockDefinition /
     doc:DocumentationModel):
-    • Definition identity first — &lt;name&gt;, &lt;type&gt;, &lt;baseType&gt; (baseType omitted only here)
+    • Definition identity first — root type tag (preferred) or &lt;name&gt; / &lt;type&gt; /
+      &lt;baseType&gt; (baseType omitted only here; dual document format: doc:DocumentFormat)
     • &lt;is&gt; — always required after identity; clear Urbild designation (what the Block semantically represents)
     • &lt;summary&gt; — required when documentation is too long for a quick scan
     • &lt;language&gt; — optional Definition meta; natural language for documentation prose
@@ -93,6 +94,9 @@
     </see>
     <see type="def:StructuralDefinition" relation="Defines">
       Shared documentation model for structural definition elements.
+    </see>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Document root — type tag preferred; legacy &lt;block&gt; still valid.
     </see>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       Block documentation model — is, documentation, extensions.

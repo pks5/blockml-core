@@ -23,6 +23,8 @@
     Sketch: BML → Parser → Urmodell (immutable Canonical BOM) → Validator pragmatic fork /
     Framework Utilities / Render Target pipeline → target output. Serializer reads the Urmodell only.
     Validation Stages 1–3 (Parser / Validator / Renderer) — glossary in 06_compiler.md.
+    Semantic validation is the validator and the LSP. XSD is not a standard check; the XSD
+    compiler remains available but is not used by default (doc:DocumentFormat).
     Self-hosting: CLI bootstraps TypeRegistry from framework BML before user projects.
 
     In this compiler pipeline a Capability body is often a companion template the renderer
@@ -33,6 +35,9 @@
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="SeeAlso">
+      Dual document root; validation via validator and LSP, not XSD.
+    </see>
     <see type="doc:CapabilitySemantics" relation="SeeAlso">
       Capability bodies — intent, companion template, or host-evaluable function.
     </see>

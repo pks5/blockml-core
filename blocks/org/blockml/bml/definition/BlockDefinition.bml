@@ -2,9 +2,8 @@
   BlockML Definition — block definition meta-model base type
 
   FQN: org.blockml.bml.definition.BlockDefinition
-  Describes the shared parse-time shape of all <block>
-
- definition documents.
+  Describes the shared parse-time shape of all Block definition documents
+  (preferred type-as-root-tag or legacy <block>).
   See docs/12_bom_object_model.md — BlockDefinition · 16_framework_base_types.md — Definition Branch.
 -->
 <block
@@ -53,6 +52,9 @@
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Document root tag as type; dual format during transition.
+    </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Type references and root / Sub-Block identity derivation.
     </see>
@@ -107,24 +109,28 @@
 
   <!--
     Scalar Block metadata. Each property renders as a direct XML child element
-    named after the property. Authored document order (mandatory):
+    named after the property.     Authored document order (mandatory after the root tag):
     name → type → baseType first (definition identity, before is), then is / isNot / version
-    and the rest of the document.
+    and the rest of the document. Preferred: the root tag is the type, so child type is
+    omitted (doc:DocumentFormat). Legacy <block> still authors type as a child.
   -->
   <properties>
     <name type="Text" bml:xml="element">
       <documentation>Short class name (PascalCase). Required on Sub-Blocks. Optional on root blocks —
         when omitted, derived as lastSegment(resolve(type)). When present on a root block, must
         equal lastSegment(resolve(type)) (BML_BLOCK_NAME_TYPE_MISMATCH). Format: [A-Z][a-zA-Z0-9]*
-        (BML_INVALID_BLOCK_NAME). First child of every Block definition document (with type /
-        baseType) — definition identity comes before is.</documentation>
+        (BML_INVALID_BLOCK_NAME). With type / baseType, definition identity comes before is.
+        On the preferred unqualified type root, a redundant name is not recommended
+        (doc:DocumentFormat).</documentation>
     </name>
     <type type="TypeIdentifier" bml:xml="element">
       <documentation>Canonical Block type identity — scalar TypeIdentifier (FQN) text, not a
         TypeReference and not a TypeReferenceEntity aggregation. Declares the FQN being minted;
         the named type need not exist in the TypeRegistry. Required on root blocks
-        (BML_MISSING_BLOCK_TYPE). Authored as element text — FQN, xmlns QName, or Sub-Block-relative
-        name (for example foo:MyBlock or com.foo.MyBlock). Optional on Sub-Blocks — when omitted,
+        (BML_MISSING_BLOCK_TYPE). Preferred authoring: the document root tag is the type
+        (doc:DocumentFormat). Legacy: authored as &lt;type&gt; element text under a &lt;block&gt;
+        root. Either form accepts FQN, xmlns QName, or Sub-Block-relative name (for example
+        foo:MyBlock or com.foo.MyBlock). Optional on Sub-Blocks — when omitted,
         derived as resolve(parent.type) + "." + name; when present, must equal that expected value
         (BML_SUBBLOCK_TYPE_MISMATCH). Stored in BOM as block.type (FQN string). Immediately after
         name, before is.</documentation>

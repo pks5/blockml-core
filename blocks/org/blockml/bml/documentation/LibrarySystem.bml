@@ -35,7 +35,8 @@
     • dependencies — other Library blocks (typical: inner library depends on outer)
     • subLibraries — nested child Library blocks grouped under this library
     • blocks — exported Block and ValueType definitions
-    • schemas — optional legacy XSD paths as FilePathEntity instances during migration
+    • schemas — optional legacy XSD paths as FilePathEntity instances; XSD is not a
+      standard feature (doc:DocumentFormat)
     • version on Library.bml — framework convention: version only on Library for org.blockml.bml.*
 
     Concrete Library.bml &lt;references&gt; — at most two &lt;see&gt; entries:
@@ -61,6 +62,9 @@
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="SeeAlso">
+      XSD is not a standard feature; schemas stays optional legacy.
+    </see>
     <see type="doc:CompilerArchitecture" relation="SeeAlso">
       Library discovery and TypeRegistry bootstrap.
     </see>

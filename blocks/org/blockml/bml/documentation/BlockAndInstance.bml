@@ -26,6 +26,8 @@
 
     Block (definition):
     • .bml file · BlockDefinition
+    • Root tag is the type (preferred) or legacy &lt;block&gt; plus &lt;type&gt;
+      (doc:DocumentFormat)
     • FQN · members · composition schema
     • Describes shape and behaviour
     • No runtime · no address
@@ -66,6 +68,9 @@
   </documentation>
 
   <references>
+    <see type="doc:DocumentFormat" relation="AuthoringGuide">
+      Document root — type tag preferred; legacy &lt;block&gt; still valid.
+    </see>
     <see type="doc:MemberAuthoring" relation="AuthoringGuide">
       Definition vs instance member syntax — no &lt;value&gt; / &lt;composition&gt; wrappers on
       instances.

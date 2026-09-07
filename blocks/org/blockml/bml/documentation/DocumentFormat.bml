@@ -1,0 +1,139 @@
+<!--
+  BlockML Core — bootstrap documentation
+
+  FQN: org.blockml.bml.documentation.DocumentFormat
+-->
+<block
+  xmlns="http://blockml.org/bml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
+                      "
+  xmlns:core="org.blockml.bml.core"
+  xmlns:def="org.blockml.bml.definition"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation">
+
+  <name>DocumentFormat</name>
+  <type>doc:DocumentFormat</type>
+  <baseType>core:Documentation</baseType>
+  <is>A guide to the BML document root format</is>
+
+  <summary>A .bml document root is the Block type tag. Legacy &lt;block&gt; plus &lt;type&gt;
+    remains valid during a long transition. xmlns:xsi and xsi:schemaLocation are omitted by
+    default — validation is the validator and LSP, not XSD.</summary>
+
+  <documentation><![CDATA[
+    A `.bml` file is one XML document. The root element identifies the Block being defined.
+    Two authoring formats are valid during a long transition. The type-as-root-tag form is the
+    intended long-term format; the legacy `<block>` form remains valid until it is withdrawn.
+
+    Existing sources in this library stay in the legacy form until they are migrated.
+
+    ## Qualified root (recommended)
+
+    Legacy:
+
+        <block>
+          <name>MyBlock</name>  <!-- optional -->
+          <type>acme:MyBlock</type>
+          …
+        </block>
+
+    Preferred:
+
+        <acme:MyBlock>
+          <name>MyBlock</name>  <!-- optional -->
+          …
+        </acme:MyBlock>
+
+    The root QName is the type. Prefixes resolve via xmlns Package bindings
+    (doc:BmlNamespace). Child `<type>` is omitted when the root tag already supplies the type.
+    Optional `<name>` must still equal `lastSegment(resolve(type))` when present
+    (BML_BLOCK_NAME_TYPE_MISMATCH).
+
+    ## Unqualified root
+
+    Legacy:
+
+        <block>
+          <name>MyBlock</name>
+          …
+        </block>
+
+    Preferred:
+
+        <MyBlock>
+          <name>MyBlock</name>  <!-- optional, not recommended -->
+          …
+        </MyBlock>
+
+    The local name of the root tag is the type (and the effective name). A redundant `<name>`
+    is allowed but not recommended. Unqualified roots follow the same identity rules as
+    unqualified type references (doc:TypeIdentityDerivation / doc:ImplicitNamespaceResolution).
+
+    ## Dual format
+
+    Parser, validator, and LSP accept both forms. New documents should use the type-as-root-tag
+    form. Both remain valid until the legacy form is withdrawn.
+
+    Identity rules (doc:TypeIdentityDerivation) are unchanged:
+
+    • type is required as canonical identity — supplied by the root tag and/or child `<type>`
+    • name remains optional and must match `lastSegment(resolve(type))` when present
+    • BML_MISSING_BLOCK_TYPE when neither the root tag nor `<type>` supplies a type
+      (legacy `<block>` without `<type>`)
+    • when both the root tag and `<type>` supply a type, they must resolve to the same FQN
+
+    A generic `<block>` root is not itself a type. In the legacy form, identity comes from
+    `<type>` (and optional `<name>`). In the preferred form the root tag *is* the type, so
+    `<type>` is omitted.
+
+    Inner members, Sub-Blocks, and instance children are unchanged. Instance serialization
+    already uses the declared type tag (`<core:Block>`, `<myns:Wall>`).
+
+    ## XSD is not a standard feature
+
+    `xmlns:xsi` and `xsi:schemaLocation` are omitted by default. XML Schema is not an officially
+    supported standard feature. The XSD compiler remains available; it is not used by default.
+    Semantic validation is the validator and the LSP.
+
+    Default `xmlns="http://blockml.org/bml"` and BML-semantic prefixes stay. Other URI bindings
+    (schemaLocation keys) are not BML-semantic type namespaces (doc:BmlNamespace).
+    `Library.schemas` remains an optional legacy catalog of XSD paths during migration
+    (doc:LibrarySystem).
+  ]]></documentation>
+
+  <references>
+    <see type="doc:Introduction" relation="SeeAlso">
+      BML vs BOM overview — points here for document root syntax.
+    </see>
+    <see type="doc:TypeIdentityDerivation" relation="SeeAlso">
+      Canonical type / name identity — root tag or child &lt;type&gt;.
+    </see>
+    <see type="doc:BmlNamespace" relation="SeeAlso">
+      Package xmlns prefixes on qualified roots.
+    </see>
+    <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
+      Unqualified names at context-bound sites.
+    </see>
+    <see type="doc:AnnotationModel" relation="SeeAlso">
+      Default xmlns vs omitted xsi:schemaLocation.
+    </see>
+    <see type="doc:LibrarySystem" relation="SeeAlso">
+      Library.schemas — optional legacy XSD paths.
+    </see>
+    <see type="doc:CompilerArchitecture" relation="SeeAlso">
+      Validator pipeline — not XSD — is the default check.
+    </see>
+    <see type="def:RootBlockDefinition" relation="Defines">
+      Meta-model shape of a document-root Block.
+    </see>
+    <see type="diag:BML_MISSING_BLOCK_TYPE" relation="SeeAlso">
+      Neither root tag nor &lt;type&gt; supplies identity.
+    </see>
+    <see type="doc:SubBlockModel" relation="ReadNext">
+      Next — Sub-Block visibility, embeds, and composition reference scope.
+    </see>
+  </references>
+
+</block>
