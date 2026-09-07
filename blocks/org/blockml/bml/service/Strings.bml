@@ -1,213 +1,164 @@
-<!--
-  BlockML Core Services
+<!--BlockML Core Services
 
   Name: Strings Service
   Filename: Strings.bml
   FQN: org.blockml.bml.service.Strings
-  Expression prefix: #strings.*
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  Expression prefix: #strings.*-->
+<service:Strings xmlns="http://blockml.org/bml"
   xmlns:cap="org.blockml.bml.capability"
   xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language"
   xmlns:service="org.blockml.bml.service"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Strings</name>
-  <type>service:Strings</type>
-  <baseType>core:Entity</baseType>
-  <is>A text expression service</is>
-
-  <documentation>Built-in strings service. Expression prefix #strings.* — concat, length,
-    substring, and related text utilities.</documentation>
+  <baseType>
+    core:Entity
+  </baseType>
+  <is>
+    A text expression service
+  </is>
+  <documentation>
+    Built-in strings service. Expression prefix #strings.* — concat, length,
+    substring, and related text utilities.
+  </documentation>
   <capabilities>
-
-    <!-- #strings.trim(s) -->
-    <trim
-      type="Transformation"
-      inputType="Text"
-      outputType="Text">
+    <!--#strings.trim(s)-->
+    <trim type="cap:Transformation" inputType="type:Text" outputType="type:Text">
       <documentation>
         Removes leading and trailing whitespace from s.
         Examples:
         #strings.trim(' hello ') → "hello"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string): string => s.trim()
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string): string => s.trim()]]>
+      </implementation>
     </trim>
-
-    <!-- #strings.toUpperCase(s) -->
-    <toUpperCase
-      type="Transformation"
-      inputType="Text"
-      outputType="Text">
+    <!--#strings.toUpperCase(s)-->
+    <toUpperCase type="cap:Transformation" inputType="type:Text" outputType="type:Text">
       <documentation>
         Converts s to uppercase.
         Examples:
         #strings.toUpperCase('abc') → "ABC"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string): string => s.toUpperCase()
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string): string => s.toUpperCase()]]>
+      </implementation>
     </toUpperCase>
-
-    <!-- #strings.toLowerCase(s) -->
-    <toLowerCase
-      type="Transformation"
-      inputType="Text"
-      outputType="Text">
+    <!--#strings.toLowerCase(s)-->
+    <toLowerCase type="cap:Transformation" inputType="type:Text" outputType="type:Text">
       <documentation>
         Converts s to lowercase.
         Examples:
         #strings.toLowerCase('ABC') → "abc"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string): string => s.toLowerCase()
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string): string => s.toLowerCase()]]>
+      </implementation>
     </toLowerCase>
-
-    <!-- #strings.concat(a, b, ...) -->
-    <concat
-      type="Transformation"
-      inputType="Text[]"
-      outputType="Text">
+    <!--#strings.concat(a, b, ...)-->
+    <concat type="cap:Transformation" inputType="type:Text[]" outputType="type:Text">
       <documentation>
         Concatenates all string arguments.
         Examples:
         #strings.concat('a', 'b', 'c') → "abc"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (...parts: string[]): string => parts.join('')
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(...parts: string[]): string => parts.join('')]]>
+      </implementation>
     </concat>
-
-    <!-- #strings.length(s) -->
-    <length
-      type="Transformation"
-      inputType="Text"
-      outputType="Integer">
+    <!--#strings.length(s)-->
+    <length type="cap:Transformation" inputType="type:Text" outputType="type:Integer">
       <documentation>
         Returns the length of s.
         Examples:
         #strings.length('hello') → 5
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string): number => s.length
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string): number => s.length]]>
+      </implementation>
     </length>
-
-    <!-- #strings.contains(s, fragment) -->
-    <contains
-      type="Transformation"
-      inputType="{ s: Text, fragment: Text }"
-      outputType="Boolean">
+    <!--#strings.contains(s, fragment)-->
+    <contains type="cap:Transformation" inputType="{ s: type:Text, fragment: type:Text }" outputType="type:Boolean">
       <documentation>
         Returns true if s contains fragment.
         Examples:
         #strings.contains('hello', 'ell') → true
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string, fragment: string): boolean => s.includes(fragment)
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string, fragment: string): boolean => s.includes(fragment)]]>
+      </implementation>
     </contains>
-
-    <!-- #strings.startsWith(s, prefix) -->
-    <startsWith
-      type="Transformation"
-      inputType="{ s: Text, prefix: Text }"
-      outputType="Boolean">
+    <!--#strings.startsWith(s, prefix)-->
+    <startsWith type="cap:Transformation" inputType="{ s: type:Text, prefix: type:Text }" outputType="type:Boolean">
       <documentation>
         Returns true if s starts with prefix.
         Examples:
         #strings.startsWith('hello', 'he') → true
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string, prefix: string): boolean => s.startsWith(prefix)
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string, prefix: string): boolean => s.startsWith(prefix)]]>
+      </implementation>
     </startsWith>
-
-    <!-- #strings.endsWith(s, suffix) -->
-    <endsWith
-      type="Transformation"
-      inputType="{ s: Text, suffix: Text }"
-      outputType="Boolean">
+    <!--#strings.endsWith(s, suffix)-->
+    <endsWith type="cap:Transformation" inputType="{ s: type:Text, suffix: type:Text }" outputType="type:Boolean">
       <documentation>
         Returns true if s ends with suffix.
         Examples:
         #strings.endsWith('hello', 'lo') → true
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string, suffix: string): boolean => s.endsWith(suffix)
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string, suffix: string): boolean => s.endsWith(suffix)]]>
+      </implementation>
     </endsWith>
-
-    <!-- #strings.indexOf(s, fragment) -->
-    <indexOf
-      type="Transformation"
-      inputType="{ s: Text, fragment: Text }"
-      outputType="Integer">
+    <!--#strings.indexOf(s, fragment)-->
+    <indexOf type="cap:Transformation" inputType="{ s: type:Text, fragment: type:Text }" outputType="type:Integer">
       <documentation>
         Returns the index of fragment in s, or -1 if not found.
         Examples:
         #strings.indexOf('hello', 'll') → 2
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string, fragment: string): number => s.indexOf(fragment)
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string, fragment: string): number => s.indexOf(fragment)]]>
+      </implementation>
     </indexOf>
-
-    <!-- #strings.substring(s, start, end) -->
-    <substring
-      type="Transformation"
-      inputType="{ s: Text, start: Integer, end: Integer }"
-      outputType="Text">
+    <!--#strings.substring(s, start, end)-->
+    <substring type="cap:Transformation" inputType="{ s: type:Text, start: type:Integer, end: type:Integer }" outputType="type:Text">
       <documentation>
         Returns the substring of s from start (inclusive) to end (exclusive).
         Examples:
         #strings.substring('hello', 1, 4) → "ell"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (s: string, start: number, end: number): string => s.substring(start, end)
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(s: string, start: number, end: number): string => s.substring(start, end)]]>
+      </implementation>
     </substring>
-
-    <!-- #strings.replace(s, target, replacement) -->
-    <replace
-      type="Transformation"
-      inputType="{ s: Text, target: Text, replacement: Text }"
-      outputType="Text">
+    <!--#strings.replace(s, target, replacement)-->
+    <replace type="cap:Transformation" inputType="{ s: type:Text, target: type:Text, replacement: type:Text }" outputType="type:Text">
       <documentation>
         Replaces the first occurrence of target in s with replacement.
         Examples:
         #strings.replace('a-b-c', '-', '_') → "a_b-c"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="lang:TypeScript">
+        <![CDATA[
         (s: string, target: string, replacement: string): string =>
             s.replace(target, replacement)
-      ]]></implementation>
+        ]]>
+      </implementation>
     </replace>
-
-    <!-- #strings.replaceAll(s, target, replacement) -->
-    <replaceAll
-      type="Transformation"
-      inputType="{ s: Text, target: Text, replacement: Text }"
-      outputType="Text">
+    <!--#strings.replaceAll(s, target, replacement)-->
+    <replaceAll type="cap:Transformation" inputType="{ s: type:Text, target: type:Text, replacement: type:Text }" outputType="type:Text">
       <documentation>
         Replaces all occurrences of target in s with replacement.
         Examples:
         #strings.replaceAll('a-b-c', '-', '_') → "a_b_c"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="lang:TypeScript">
+        <![CDATA[
         (s: string, target: string, replacement: string): string =>
             s.split(target).join(replacement)
-      ]]></implementation>
+        ]]>
+      </implementation>
     </replaceAll>
-
   </capabilities>
-
-</block>
+</service:Strings>

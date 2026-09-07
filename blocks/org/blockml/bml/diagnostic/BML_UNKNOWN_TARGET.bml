@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_UNKNOWN_TARGET diagnostic
+<!--BlockML Core — BML_UNKNOWN_TARGET diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_TARGET
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_TARGET-->
+<diag:BML_UNKNOWN_TARGET xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_UNKNOWN_TARGET</name>
-  <type>diag:BML_UNKNOWN_TARGET</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-render-target diagnostic</is>
-
-  <summary>Emitted when a configured render target name is not registered.</summary>
-
-  <keywords>BML_UNKNOWN_TARGET</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-render-target diagnostic
+  </is>
+  <summary>
+    Emitted when a configured render target name is not registered.
+  </summary>
   <documentation>
     Emitted when a configured render target name is not registered. Remedy: Register the target
     package or fix targets[] configuration.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_TARGET" />
+  </keywords>
   <references>
     <see type="doc:CompilerArchitecture" relation="AuthoringGuide">
       Targets.
     </see>
   </references>
-
-</block>
+</diag:BML_UNKNOWN_TARGET>

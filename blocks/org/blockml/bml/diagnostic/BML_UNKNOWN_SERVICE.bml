@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_UNKNOWN_SERVICE diagnostic
+<!--BlockML Core — BML_UNKNOWN_SERVICE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_SERVICE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_SERVICE-->
+<diag:BML_UNKNOWN_SERVICE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_UNKNOWN_SERVICE</name>
-  <type>diag:BML_UNKNOWN_SERVICE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-service diagnostic</is>
-
-  <summary>Emitted when a #service builtin namespace is unknown.</summary>
-
-  <keywords>BML_UNKNOWN_SERVICE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-service diagnostic
+  </is>
+  <summary>
+    Emitted when a #service builtin namespace is unknown.
+  </summary>
   <documentation>
     Emitted when a #service builtin namespace is unknown. Remedy: Use registered services (#math,
     #strings, #lists, #numbers, #bools).
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_SERVICE" />
+  </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">
       Built-ins.
@@ -37,5 +33,4 @@
       Fix builtin service name.
     </see>
   </references>
-
-</block>
+</diag:BML_UNKNOWN_SERVICE>

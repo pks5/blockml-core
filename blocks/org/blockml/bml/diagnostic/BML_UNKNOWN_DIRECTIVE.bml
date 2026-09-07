@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_UNKNOWN_DIRECTIVE diagnostic
+<!--BlockML Core — BML_UNKNOWN_DIRECTIVE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_DIRECTIVE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_DIRECTIVE-->
+<diag:BML_UNKNOWN_DIRECTIVE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,23 +9,24 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_UNKNOWN_DIRECTIVE</name>
-  <type>diag:BML_UNKNOWN_DIRECTIVE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-directive diagnostic</is>
-
-  <summary>Emitted when an unknown bml: directive name is used.</summary>
-
-  <keywords>BML_UNKNOWN_DIRECTIVE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-directive diagnostic
+  </is>
+  <summary>
+    Emitted when an unknown bml: directive name is used.
+  </summary>
   <documentation>
     Emitted when an unknown bml: directive name is used. Remedy: Use directives declared on org.blockml.bml.annotation.BmlAnnotation.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_DIRECTIVE" />
+  </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">
       Directive catalogue.
     </see>
   </references>
-
-</block>
+</diag:BML_UNKNOWN_DIRECTIVE>

@@ -1,8 +1,4 @@
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+<type:Number xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
@@ -10,41 +6,44 @@
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit">
 
-  <name>Number</name>
-  <type>type:Number</type>
-  <baseType>type:PrimitiveType</baseType>
-  <is>A numeric value</is>
-
-  <documentation>Abstract numeric primitive branch under org.blockml.bml.type.PrimitiveType.
+  <baseType>
+    type:PrimitiveType
+  </baseType>
+  <is>
+    A numeric value
+  </is>
+  <documentation>
+    Abstract numeric primitive branch under org.blockml.bml.type.PrimitiveType.
     Concrete types: Integer (whole numbers), Decimal (default for non-integer numeric values),
     Float (binary floating-point — only when IEEE754 semantics are explicitly required).
     Abstract numeric branch — not resolvable via Property.type implicit namespace; use Integer, Decimal, or Float explicitly.
     Numeric types describe semantics only; values are stored in Properties.
-
+    
     Generic parameter N constrains the measurement unit (extends org.blockml.bml.core.Unit).
     Default is org.blockml.bml.unit.None — bare Number / Integer / Decimal / Float are dimensionless.
     Supply N at reference sites when a unit is required, e.g. Integer(unit:Millimeter).
-
+    
     parseValue accepts a numeric literal (optional sign, digits, optional fraction and exponent).
     Integer, Decimal, and Float refine the lexical form. min/max and unit are not applied here
-    (doc:ValueTypeParsing).</documentation>
-  <abstract>true</abstract>
-
+    (doc:ValueTypeParsing).
+  </documentation>
+  <abstract>
+    true
+  </abstract>
+  <genericTypes>
+    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None" />
+  </genericTypes>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Numeric literal — optional sign, integer digits, optional fraction, optional exponent.
         Integer / Decimal / Float override with tighter forms.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): number => {
           const t = raw.trim();
           if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(t)) {
@@ -56,11 +55,8 @@
           }
           return n;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-  <genericTypes>
-    <N baseType="core:Unit" defaultType="unit:None"/>
-  </genericTypes>
-</block>
+</type:Number>

@@ -1,43 +1,30 @@
-<!--
-  BlockML Core — calendar date primitive type
+<!--BlockML Core — calendar date primitive type
 
-  FQN: org.blockml.bml.type.Date
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.Date-->
+<type:Date xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Date</name>
-  <type>type:Date</type>
-  <baseType>type:Temporal</baseType>
-  <is>A calendar date</is>
-
-  <documentation>BOM Core primitive ValueType for a calendar day without a time of day. Unqualified
+  <baseType>
+    type:Temporal
+  </baseType>
+  <is>
+    A calendar date
+  </is>
+  <documentation>
+    BOM Core primitive ValueType for a calendar day without a time of day. Unqualified
     name Date resolves to org.blockml.bml.type.Date. Extends org.blockml.bml.type.Temporal. Payload
     values are stored on Properties — not on the Date type itself.
-
+    
     Authored values use ISO 8601 calendar-date form YYYY-MM-DD (for example 2024-08-29). Date is a
     position on the calendar, not an elapsed span — use Duration for lengths of time.
-
+    
     Optional configuration Properties (min, max) configure a Property's owned Date instance via
-    inline type syntax — Date{min: "2020-01-01", max: "2030-12-31"}. Positional order: min, max.</documentation>
-
-  <properties>
-    <min type="Date">
-      <documentation>Minimum allowed date (inclusive). Configured via Date{min: d}.</documentation>
-    </min>
-    <max type="Date">
-      <documentation>Maximum allowed date (inclusive). Configured via Date{max: d}.</documentation>
-    </max>
-  </properties>
-
+    inline type syntax — Date{min: "2020-01-01", max: "2030-12-31"}. Positional order: min, max.
+  </documentation>
   <references>
     <see type="type:Temporal" relation="Extends">
       Abstract temporal position branch.
@@ -61,22 +48,29 @@
       parseValue — ISO 8601 calendar date YYYY-MM-DD.
     </see>
   </references>
-
+  <properties>
+    <min type="type:Date">
+      <documentation>
+        Minimum allowed date (inclusive). Configured via Date{min: d}.
+      </documentation>
+    </min>
+    <max type="type:Date">
+      <documentation>
+        Maximum allowed date (inclusive). Configured via Date{max: d}.
+      </documentation>
+    </max>
+  </properties>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         ISO 8601 calendar date YYYY-MM-DD. Rejects impossible days (for example 2024-02-30).
         min/max configuration is applied after parse.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(t);
@@ -90,8 +84,8 @@
           }
           return t;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-</block>
+</type:Date>

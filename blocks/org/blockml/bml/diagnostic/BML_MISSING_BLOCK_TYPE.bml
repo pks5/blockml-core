@@ -1,38 +1,34 @@
-<!--
-  BlockML Core — BML_MISSING_BLOCK_TYPE diagnostic
+<!--BlockML Core — BML_MISSING_BLOCK_TYPE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_BLOCK_TYPE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_BLOCK_TYPE-->
+<diag:BML_MISSING_BLOCK_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MISSING_BLOCK_TYPE</name>
-  <type>diag:BML_MISSING_BLOCK_TYPE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing root-type diagnostic</is>
-
-  <summary>Emitted when the document-root Block supplies neither a type root tag nor a
-    type element.</summary>
-
-  <keywords>BML_MISSING_BLOCK_TYPE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing root-type diagnostic
+  </is>
+  <summary>
+    Emitted when the document-root Block supplies neither a type root tag nor a
+    type element.
+  </summary>
   <documentation>
     On root blocks, type is the canonical identity. Preferred authoring: the document root tag
-    is the type. Legacy: child &lt;type&gt; under a &lt;block&gt; root (doc:DocumentFormat).
+    is the type. Legacy: child &lt;type> under a &lt;block> root (doc:DocumentFormat).
     name is optional and must match lastSegment(resolve(type)) when present.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_BLOCK_TYPE" />
+  </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
-      Root tag or child &lt;type&gt; supplies identity.
+      Root tag or child &lt;type> supplies identity.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Root Block identity.
@@ -41,5 +37,4 @@
       Add or correct root type.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_BLOCK_TYPE>

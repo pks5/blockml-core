@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_DUPLICATE_CONTRACT diagnostic
+<!--BlockML Core — BML_DUPLICATE_CONTRACT diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_CONTRACT
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_CONTRACT-->
+<diag:BML_DUPLICATE_CONTRACT xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_DUPLICATE_CONTRACT</name>
-  <type>diag:BML_DUPLICATE_CONTRACT</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A duplicate-contract diagnostic</is>
-
-  <summary>Emitted when the same contract FQN appears more than once in &lt;contracts&gt;.</summary>
-
-  <keywords>BML_DUPLICATE_CONTRACT</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A duplicate-contract diagnostic
+  </is>
+  <summary>
+    Emitted when the same contract FQN appears more than once in &lt;contracts>.
+  </summary>
   <documentation>
-    Emitted when the same contract FQN appears more than once in &lt;contracts&gt;. Remedy: List
+    Emitted when the same contract FQN appears more than once in &lt;contracts>. Remedy: List
     each contract at most once.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_CONTRACT" />
+  </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">
       contracts aggregation.
     </see>
   </references>
-
-</block>
+</diag:BML_DUPLICATE_CONTRACT>

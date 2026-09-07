@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_FINAL_MEMBER_OVERRIDE diagnostic
+<!--BlockML Core — BML_FINAL_MEMBER_OVERRIDE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_FINAL_MEMBER_OVERRIDE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_FINAL_MEMBER_OVERRIDE-->
+<diag:BML_FINAL_MEMBER_OVERRIDE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_FINAL_MEMBER_OVERRIDE</name>
-  <type>diag:BML_FINAL_MEMBER_OVERRIDE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A final-member override diagnostic</is>
-
-  <summary>Emitted when a child attempts to override a final member, or to override a private member.</summary>
-
-  <keywords>BML_FINAL_MEMBER_OVERRIDE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A final-member override diagnostic
+  </is>
+  <summary>
+    Emitted when a child attempts to override a final member, or to override a private member.
+  </summary>
   <documentation>
-    final=&quot;true&quot; seals a declaration. Private members are also non-overridable. Remove the override or change the parent declaration.
+    final="true" seals a declaration. Private members are also non-overridable. Remove the override or change the parent declaration.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_FINAL_MEMBER_OVERRIDE" />
+  </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
       final and private cannot be overridden.
@@ -38,5 +34,4 @@
       Stop overriding sealed or private members.
     </see>
   </references>
-
-</block>
+</diag:BML_FINAL_MEMBER_OVERRIDE>

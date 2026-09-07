@@ -1,27 +1,23 @@
-<!--
-  BlockML Core — primitive type branch
+<!--BlockML Core — primitive type branch
 
-  FQN: org.blockml.bml.type.PrimitiveType
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.PrimitiveType-->
+<type:PrimitiveType xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>PrimitiveType</name>
-  <type>type:PrimitiveType</type>
-  <baseType>core:ValueType</baseType>
-  <is>An atomic scalar ValueType</is>
-
-  <documentation>Abstract branch for built-in scalar ValueTypes. PrimitiveTypes describe semantics
+  <baseType>
+    core:ValueType
+  </baseType>
+  <is>
+    An atomic scalar ValueType
+  </is>
+  <documentation>
+    Abstract branch for built-in scalar ValueTypes. PrimitiveTypes describe semantics
     only — they never store concrete values. All values are stored exclusively in Properties.
-
+    
     Numeric branch: Number (Integer, Decimal, Float). Textual branch: Text (TypeIdentifier /
     TypeReference, PackageIdentifier / PackageReference, InstanceIdentifier / InstanceReference,
     MemberIdentifier / PropertyIdentifier / PropertyReference / …, Version, URL, URI, UUID, FilePath,
@@ -29,18 +25,21 @@
     branch: Temporal (Date, Time, DateTime) — calendar or clock positions. Boolean is its own
     branch — neither textual nor numeric. Duration is its own branch — an elapsed-time magnitude,
     not a Temporal subtype.
-
+    
     Lexical acceptance of authored text is parseValue (Text → bml:Self, throws
     InvalidValueException). Concrete primitives implement a deterministic host-evaluable body.
     Configuration, constraints, and Reference existence run after parse — doc:ValueTypeParsing.
-
+    
     When a primitive value must exist as an Entity inside a composition or aggregation, use a
     concrete Entity specialization (for example IntegerEntity) — not by adding a value member to
     the PrimitiveType.
-
-    Invalid: &lt;type:Integer value="5"/&gt; — PrimitiveTypes cannot carry values.
-    Valid: &lt;property name="count" type="Integer"&gt;&lt;value&gt;5&lt;/value&gt;&lt;/property&gt;</documentation>
-
+    
+    Invalid: &lt;type:Integer value="5"/> — PrimitiveTypes cannot carry values.
+    Valid: &lt;property name="count" type="Integer">&lt;value>5&lt;/value>&lt;/property>
+  </documentation>
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
       PrimitiveType branch.
@@ -64,15 +63,11 @@
       parseValue — lexical Text to bml:Self.
     </see>
   </references>
-
-  <abstract>true</abstract>
-
   <capabilities>
-    <parseValue
-      type="Transformation"
-      abstract="true"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue abstract="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Lexical parse of authored XML text into a value of this PrimitiveType (bml:Self after
         inheritance). Throws ex:InvalidValueException when the text is not a value of this type.
@@ -80,10 +75,6 @@
         or TypeRegistry existence. Host TypeScript return types are FunctionMapping — not
         outputType (doc:ValueTypeParsing).
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
     </parseValue>
   </capabilities>
-
-</block>
+</type:PrimitiveType>

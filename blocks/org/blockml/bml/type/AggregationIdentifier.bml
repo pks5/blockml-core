@@ -1,28 +1,24 @@
-<!--
-  BlockML Core — AggregationDefinition path identifier (syntax only)
+<!--BlockML Core — AggregationDefinition path identifier (syntax only)
 
-  FQN: org.blockml.bml.type.AggregationIdentifier
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.AggregationIdentifier-->
+<type:AggregationIdentifier xmlns="http://blockml.org/bml"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
-  <name>AggregationIdentifier</name>
-  <type>type:AggregationIdentifier</type>
-  <baseType>type:MemberIdentifier(def:AggregationDefinition)</baseType>
-  <is>An Aggregation member path</is>
-
-  <documentation>Concrete MemberIdentifier binding D = AggregationDefinition. Value is a canonical
+  <baseType>
+    type:MemberIdentifier(def:AggregationDefinition)
+  </baseType>
+  <is>
+    An Aggregation member path
+  </is>
+  <documentation>
+    Concrete MemberIdentifier binding D = AggregationDefinition. Value is a canonical
     aggregation path (com.foo.Bar.aggregations.children) or a local aggregation name when paired
     with a type qualifier. Syntax only — the owning type and aggregation need not exist.
     AggregationReference extends this type and adds existence. Use when addressing a potential
     aggregation. see aggregation= uses AggregationReference. AggregationReference(B) introduces
-    the owning Block bound after resolution.</documentation>
-
+    the owning Block bound after resolution.
+  </documentation>
   <references>
     <see type="type:MemberIdentifier" relation="SeeAlso">
       Abstract member path Identifier.
@@ -34,4 +30,4 @@
       Target member meta-model type.
     </see>
   </references>
-</block>
+</type:AggregationIdentifier>

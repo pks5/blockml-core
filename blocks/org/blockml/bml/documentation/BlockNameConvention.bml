@@ -1,51 +1,45 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.BlockNameConvention
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.BlockNameConvention-->
+<doc:BlockNameConvention xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation">
 
-  <name>BlockNameConvention</name>
-  <type>doc:BlockNameConvention</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to Block name formatting</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to Block name formatting
+  </is>
   <documentation>
-    &lt;name&gt; is a class name — PascalCase, letters and digits only:
-
+    &lt;name> is a class name — PascalCase, letters and digits only:
+    
     Format: [A-Z][a-zA-Z0-9]*
     Valid: Wall, StandardBrick, Calibrator, NfcPlayer
     Invalid: my-wall, wall_v2, 2Wall, My Wall
     Error: BML_INVALID_BLOCK_NAME
-
+    
     PascalCase ensures composition instance tags with xmlns prefixes are unambiguous — no Property
     or member name starts with an uppercase letter (members use camelCase; visibility prefixes _ /
     __ do not change that rule for the logical name).
-
+    
     Relationship to type identity (doc:TypeIdentityDerivation / doc:DocumentFormat):
-    • Root Blocks — type is canonical (root tag preferred, or child &lt;type&gt;); name is
+    • Root Blocks — type is canonical (root tag preferred, or child &lt;type>); name is
       optional and must equal lastSegment(resolve(type)) when present
-      (BML_BLOCK_NAME_TYPE_MISMATCH). On an unqualified type root, a redundant &lt;name&gt;
+      (BML_BLOCK_NAME_TYPE_MISMATCH). On an unqualified type root, a redundant &lt;name>
       is not recommended
     • Sub-Blocks — name is required local identity, supplied by the element tag
-      (&lt;MyBlock&gt; under &lt;subBlocks&gt;) or legacy child &lt;name&gt;; type is
+      (&lt;MyBlock> under &lt;subBlocks>) or legacy child &lt;name>; type is
       normally derived as parentType + "." + name (doc:DocumentFormat)
     • Visibility prefixes on Sub-Block names (_Utils, __Helper) are allowed; the PascalCase rule
       applies to the logical name after stripping visibility prefixes for collision checks — authored
       names still follow the visibility naming convention (doc:MemberVisibility /
       doc:SubBlockModel)
-
+    
     Prefer distinctive Sub-Block names that differ from the enclosing root Block name to avoid
     ambiguous short tags (doc:SubBlockModel — naming vs parent).
   </documentation>
-
   <references>
     <see type="def:BlockDefinition" relation="Defines">
       name and type identity fields on block definition documents.
@@ -66,5 +60,4 @@
       Next — PseudoCode as semantic capability implementation dialect.
     </see>
   </references>
-
-</block>
+</doc:BlockNameConvention>

@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED diagnostic
+<!--BlockML Core — BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED-->
+<diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED</name>
-  <type>diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unimplemented abstract-member diagnostic</is>
-
-  <summary>Emitted when a concrete Block still has an abstract member obligation from the inheritance/contract merge.</summary>
-
-  <keywords>BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unimplemented abstract-member diagnostic
+  </is>
+  <summary>
+    Emitted when a concrete Block still has an abstract member obligation from the inheritance/contract merge.
+  </summary>
   <documentation>
-    Implement with override=&quot;true&quot; and a locally complete declaration (abstract defaults to false). To keep abstract, redeclare with abstract=&quot;true&quot;.
+    Implement with override="true" and a locally complete declaration (abstract defaults to false). To keep abstract, redeclare with abstract="true".
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED" />
+  </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">
       Abstract → implementation.
@@ -35,5 +31,4 @@
       Complete or re-abstract the inherited member.
     </see>
   </references>
-
-</block>
+</diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED>

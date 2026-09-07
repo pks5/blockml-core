@@ -1,28 +1,24 @@
-<!--
-  BlockML Core — PseudoCode implementation language
+<!--BlockML Core — PseudoCode implementation language
 
-  FQN: org.blockml.bml.language.PseudoCode
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.language.PseudoCode-->
+<lang:PseudoCode xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>PseudoCode</name>
-  <type>lang:PseudoCode</type>
-  <baseType>lang:ProgrammingLanguage(L)</baseType>
-  <is>The PseudoCode programming language</is>
-
-  <documentation>ProgrammingLanguage for free-form pseudocode implementations. The code must be
+  <baseType>
+    lang:ProgrammingLanguage(L)
+  </baseType>
+  <is>
+    The PseudoCode programming language
+  </is>
+  <documentation>
+    ProgrammingLanguage for free-form pseudocode implementations. The code must be
     internally consistent but is otherwise unconstrained — an LLM may interpret it. Forwards
     ProgrammingLanguage.L (NaturalLanguage, default English) — declare a content language only when
     the pseudocode prose is not English, directly on this language (PseudoCode(German)); bare
-    PseudoCode is PseudoCode(English).</documentation>
-
+    PseudoCode is PseudoCode(English).
+  </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
   </genericTypes>
-</block>
+</lang:PseudoCode>

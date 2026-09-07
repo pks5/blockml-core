@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_MISSING_IMPLEMENTATION_LANGUAGE diagnostic
+<!--BlockML Core — BML_MISSING_IMPLEMENTATION_LANGUAGE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_IMPLEMENTATION_LANGUAGE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_IMPLEMENTATION_LANGUAGE-->
+<diag:BML_MISSING_IMPLEMENTATION_LANGUAGE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_MISSING_IMPLEMENTATION_LANGUAGE</name>
-  <type>diag:BML_MISSING_IMPLEMENTATION_LANGUAGE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-implementation-language diagnostic</is>
-
-  <summary>Emitted when &lt;implementation&gt; omits required language.</summary>
-
-  <keywords>BML_MISSING_IMPLEMENTATION_LANGUAGE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-implementation-language diagnostic
+  </is>
+  <summary>
+    Emitted when &lt;implementation> omits required language.
+  </summary>
   <documentation>
-    Emitted when &lt;implementation&gt; omits required language. Remedy: Set language to an org.blockml.bml.language.*
+    Emitted when &lt;implementation> omits required language. Remedy: Set language to an org.blockml.bml.language.*
     FQN.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_IMPLEMENTATION_LANGUAGE" />
+  </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
       implementation.
@@ -37,5 +33,4 @@
       implementation child.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_IMPLEMENTATION_LANGUAGE>

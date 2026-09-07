@@ -1,27 +1,21 @@
-<!--
-  BlockML Core — BML_GENERICS_ARGUMENT_MISMATCH diagnostic
+<!--BlockML Core — BML_GENERICS_ARGUMENT_MISMATCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_GENERICS_ARGUMENT_MISMATCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_GENERICS_ARGUMENT_MISMATCH-->
+<diag:BML_GENERICS_ARGUMENT_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation">
 
-  <name>BML_GENERICS_ARGUMENT_MISMATCH</name>
-  <type>diag:BML_GENERICS_ARGUMENT_MISMATCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A bml:generics argument-mismatch diagnostic</is>
-
-  <summary>Emitted when bml:generics does not match the instance's open genericTypes.</summary>
-
-  <keywords>BML_GENERICS_ARGUMENT_MISMATCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A bml:generics argument-mismatch diagnostic
+  </is>
+  <summary>
+    Emitted when bml:generics does not match the instance's open genericTypes.
+  </summary>
   <documentation>
     Emitted when bml:generics is present on a Block instance but the argument list is not compatible
     with that instance's open genericTypes: the type has no open parameters, the argument count
@@ -32,7 +26,9 @@
     required argument omitted with no defaultType → BML_MISSING_GENERIC_TYPE_ARGUMENT.
     Ill-formed TypeExpression syntax → BML_INVALID_TYPE_REFERENCE.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_GENERICS_ARGUMENT_MISMATCH" />
+  </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">
       Instance bml:generics syntax and resolution.
@@ -53,5 +49,4 @@
       Ill-formed TypeExpression in the directive value.
     </see>
   </references>
-
-</block>
+</diag:BML_GENERICS_ARGUMENT_MISMATCH>

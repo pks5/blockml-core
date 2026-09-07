@@ -1,33 +1,29 @@
-<!--
-  BlockML Core — BML_EXPR_UNKNOWN_BUILTIN diagnostic
+<!--BlockML Core — BML_EXPR_UNKNOWN_BUILTIN diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_EXPR_UNKNOWN_BUILTIN
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_UNKNOWN_BUILTIN-->
+<diag:BML_EXPR_UNKNOWN_BUILTIN xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_EXPR_UNKNOWN_BUILTIN</name>
-  <type>diag:BML_EXPR_UNKNOWN_BUILTIN</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-builtin diagnostic</is>
-
-  <summary>Emitted when #name is not a registered built-in service Capability.</summary>
-
-  <keywords>BML_EXPR_UNKNOWN_BUILTIN</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-builtin diagnostic
+  </is>
+  <summary>
+    Emitted when #name is not a registered built-in service Capability.
+  </summary>
   <documentation>
     Emitted when #name is not a registered built-in service Capability. Remedy: Use documented
     #math / #strings / #lists / #numbers / #bools names. Unknown or misspelled builtins fail
     validation.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_UNKNOWN_BUILTIN" />
+  </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">
       Built-in calls.
@@ -36,5 +32,4 @@
       Use a registered V1 builtin.
     </see>
   </references>
-
-</block>
+</diag:BML_EXPR_UNKNOWN_BUILTIN>

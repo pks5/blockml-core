@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.ConstraintsModel
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.ConstraintsModel-->
+<doc:ConstraintsModel xmlns="http://blockml.org/bml"
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
@@ -16,13 +10,14 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:validation="org.blockml.bml.validation">
 
-  <name>ConstraintsModel</name>
-  <type>doc:ConstraintsModel</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to constraints and suggestions</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to constraints and suggestions
+  </is>
   <documentation>
-    Constraints are reusable validation rules attached via a single &lt;constraints&gt; container on
+    Constraints are reusable validation rules attached via a single &lt;constraints> container on
     ConstrainableDefinition elements (Blocks and members). There is no target= property — the
     embedding context binds the constraint automatically. Constraint branches declare genericTypes;
     the compiler binds T from context (never authored):
@@ -33,28 +28,27 @@
     Wrong branch for context → BML_CONSTRAINT_TARGET_MISMATCH. Unknown constraint type →
     BML_CONSTRAINT_UNKNOWN. Generic T incompatible → BML_CONSTRAINT_TYPE_MISMATCH. Instance property
     incompatible with T → BML_CONSTRAINT_VALUE_MISMATCH.
-
+    
     Validation property (optional) references org.blockml.bml.validation.*:
     • Error → BML_CONSTRAINT_VIOLATION (fail compile)
     • Warning → BML_CONSTRAINT_WARNING
     • Information → BML_CONSTRAINT_INFORMATION
     Omitted validation → constraint is metadata only (not value-enforced by the BlockML validator).
-
+    
     Standard value constraints include Min, Max, MinLength, MaxLength, MinItems, MaxItems, Pattern,
     ValuePresent. Structural examples: RequiresMember, AllowedChildType, NoSelfReference,
     MustBeReadOnly, RequiresImplementation.     Prefer ValueType instance configuration for
     type-intrinsic thresholds (Text{maxLength: 100}); keep Constraints for contextual/composable
     rules (doc:ValueTypeConfiguration). Both run after PrimitiveType.parseValue accepts the
     authored text (doc:ValueTypeParsing).
-
+    
     Suggestions — Property-only metadata: Block instances compatible with the property type for
     editors/renderers. Not validation. Forbidden on EnumType properties → BML_SUGGESTIONS_ON_ENUM.
     Incompatible suggestion instance → BML_SUGGESTION_TYPE_MISMATCH (PrimitiveType properties use
     matching *Entity wrappers).
-
+    
     Procedure: task:AddConstraint.
   </documentation>
-
   <references>
     <see type="def:ConstrainableDefinition" relation="Defines">
       Shared constraints container on Blocks and members.
@@ -99,5 +93,4 @@
       Next — member and Sub-Block visibility (README learning order).
     </see>
   </references>
-
-</block>
+</doc:ConstraintsModel>

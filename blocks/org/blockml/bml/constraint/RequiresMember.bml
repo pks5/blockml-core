@@ -1,34 +1,30 @@
-<!--
-  BlockML Core — requires member block constraint
+<!--BlockML Core — requires member block constraint
 
-  FQN: org.blockml.bml.constraint.RequiresMember
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.constraint.RequiresMember-->
+<constraint:RequiresMember xmlns="http://blockml.org/bml"
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition">
 
-  <name>RequiresMember</name>
-  <type>constraint:RequiresMember</type>
-  <baseType>constraint:BlockConstraint</baseType>
-  <is>A rule that a member must exist</is>
-
-  <documentation>Block-level structural constraint. T binds to the effective block definition type.
+  <baseType>
+    constraint:BlockConstraint
+  </baseType>
+  <is>
+    A rule that a member must exist
+  </is>
+  <documentation>
+    Block-level structural constraint. T binds to the effective block definition type.
     When validation is set, the validator requires a member with the given local name in the
-    effective member set of the Block. Reference implementation for BlockConstraint branch.</documentation>
-
+    effective member set of the Block. Reference implementation for BlockConstraint branch.
+  </documentation>
   <genericTypes>
-    <T baseType="def:BlockDefinition"/>
+    <T baseType="def:BlockDefinition" />
   </genericTypes>
-
   <properties>
-    <name type="Text">
-      <documentation>Required member local name (namespace + localName identity).</documentation>
+    <name type="org.blockml.bml.type.Text">
+      <documentation>
+        Required member local name (namespace + localName identity).
+      </documentation>
     </name>
   </properties>
-
-</block>
+</constraint:RequiresMember>

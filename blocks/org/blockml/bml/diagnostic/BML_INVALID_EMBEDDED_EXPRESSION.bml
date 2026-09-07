@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_INVALID_EMBEDDED_EXPRESSION diagnostic
+<!--BlockML Core — BML_INVALID_EMBEDDED_EXPRESSION diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_INVALID_EMBEDDED_EXPRESSION
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_EMBEDDED_EXPRESSION-->
+<diag:BML_INVALID_EMBEDDED_EXPRESSION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_INVALID_EMBEDDED_EXPRESSION</name>
-  <type>diag:BML_INVALID_EMBEDDED_EXPRESSION</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An invalid-embedded-expression diagnostic</is>
-
-  <summary>Emitted when an &lt;$ $&gt; region contains invalid BlockML Expression content.</summary>
-
-  <keywords>BML_INVALID_EMBEDDED_EXPRESSION</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An invalid-embedded-expression diagnostic
+  </is>
+  <summary>
+    Emitted when an &lt;$ $> region contains invalid BlockML Expression content.
+  </summary>
   <documentation>
-    Emitted when an &lt;$ $&gt; region contains invalid BlockML Expression content. Remedy: Use
+    Emitted when an &lt;$ $> region contains invalid BlockML Expression content. Remedy: Use
     #this.capa(...), #built-ins, @bean calls, and the shared expression grammar inside embeds.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_EMBEDDED_EXPRESSION" />
+  </keywords>
   <references>
     <see type="doc:EmbeddedExpressions" relation="AuthoringGuide">
       Supported embed references.
@@ -38,5 +34,4 @@
       Fix embed expression content.
     </see>
   </references>
-
-</block>
+</diag:BML_INVALID_EMBEDDED_EXPRESSION>

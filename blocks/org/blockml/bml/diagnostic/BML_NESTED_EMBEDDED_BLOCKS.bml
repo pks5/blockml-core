@@ -1,33 +1,29 @@
-<!--
-  BlockML Core — BML_NESTED_EMBEDDED_BLOCKS diagnostic
+<!--BlockML Core — BML_NESTED_EMBEDDED_BLOCKS diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_NESTED_EMBEDDED_BLOCKS
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_NESTED_EMBEDDED_BLOCKS-->
+<diag:BML_NESTED_EMBEDDED_BLOCKS xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_NESTED_EMBEDDED_BLOCKS</name>
-  <type>diag:BML_NESTED_EMBEDDED_BLOCKS</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A nested-embeddedBlocks diagnostic</is>
-
-  <summary>Emitted when an embedded Block itself declares embeddedBlocks.</summary>
-
-  <keywords>BML_NESTED_EMBEDDED_BLOCKS</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A nested-embeddedBlocks diagnostic
+  </is>
+  <summary>
+    Emitted when an embedded Block itself declares embeddedBlocks.
+  </summary>
   <documentation>
     Emitted when an embedded Block itself declares embeddedBlocks. Remedy: Compose artifacts
     by listing virtual files flat at the root. Bundlers flatten when merging packages.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_NESTED_EMBEDDED_BLOCKS" />
+  </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">
       No nested embeds.
@@ -39,5 +35,4 @@
       Sole owner of embeddedBlocks.
     </see>
   </references>
-
-</block>
+</diag:BML_NESTED_EMBEDDED_BLOCKS>

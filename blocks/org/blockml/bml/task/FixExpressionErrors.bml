@@ -1,38 +1,32 @@
-<!--
-  BlockML Core — fix expression errors task
+<!--BlockML Core — fix expression errors task
 
-  FQN: org.blockml.bml.task.FixExpressionErrors
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.task.FixExpressionErrors-->
+<task:FixExpressionErrors xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>FixExpressionErrors</name>
-  <type>task:FixExpressionErrors</type>
-  <baseType>core:TaskGuide</baseType>
-  <is>A how-to for fixing expression errors</is>
-
-  <summary>Resolve ${ }, interpolated Text, and &lt;$ $&gt; expression diagnostics — syntax,
-    unknown refs, type/payload mismatches, Restricted Profile, linking, and model context.</summary>
-
-  <keywords>expression, interpolation, BML_EXPR_SYNTAX_ERROR, BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION, bean, built-in, embedded</keywords>
-
+  <baseType>
+    core:TaskGuide
+  </baseType>
+  <is>
+    A how-to for fixing expression errors
+  </is>
+  <summary>
+    Resolve ${ }, interpolated Text, and &lt;$ $> expression diagnostics — syntax,
+    unknown refs, type/payload mismatches, Restricted Profile, linking, and model context.
+  </summary>
   <documentation>
     Procedure when an expression-related BML_EXPR_* (or embed) diagnostic is reported:
     1. Confirm host context — whole-value member ${ } vs interpolated Text holes vs implementation
-       &lt;$ $&gt; (doc:Expressions, doc:EmbeddedExpressions).
+       &lt;$ $> (doc:Expressions, doc:EmbeddedExpressions).
     2. Interpolation holes — Restricted Profile only (property access, literals, +, #strings.*,
        #math.*). Not desugared to concatenation. @model / @bean / Capability calls / each-with
        variables → BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION. Unclosed ${ → BML_EXPR_SYNTAX_ERROR.
        Interpolation on a non-Text member → BML_EXPR_TYPE_MISMATCH. this without # is a member
        (#this.this), not the instance.
-    3. Syntax errors — check delimiters, quotes, operators; embeds must not nest &lt;$ $&gt;.
+    3. Syntax errors — check delimiters, quotes, operators; embeds must not nest &lt;$ $>.
     4. Unknown property — verify member exists in scope; StructType fields by name only (not [0]).
     5. Unknown bean / builtin — declare bml:bean Aggregation or use a V1 #built-in.
     6. Type / payload mismatch — align expression result with member type; map call args via
@@ -41,7 +35,15 @@
     8. Relative @model: — ensure a parent Aggregation established binding context.
     9. V1 — avoid deferred @bean execution / model / linking features until implemented.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="expression" />
+    <org.blockml.bml.meta.FreeTextKeyword term="interpolation" />
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_SYNTAX_ERROR" />
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
+    <org.blockml.bml.meta.FreeTextKeyword term="bean" />
+    <org.blockml.bml.meta.FreeTextKeyword term="built-in" />
+    <org.blockml.bml.meta.FreeTextKeyword term="embedded" />
+  </keywords>
   <references>
     <see type="doc:Expressions" relation="TaskStep">
       Step 1 — ${ } language, #this, interpolation, V1 support.
@@ -65,5 +67,4 @@
       Restricted Profile violation in an interpolation hole.
     </see>
   </references>
-
-</block>
+</task:FixExpressionErrors>

@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_REFERENCE_AMBIGUOUS_TARGET diagnostic
+<!--BlockML Core — BML_REFERENCE_AMBIGUOUS_TARGET diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_REFERENCE_AMBIGUOUS_TARGET
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_REFERENCE_AMBIGUOUS_TARGET-->
+<diag:BML_REFERENCE_AMBIGUOUS_TARGET xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_REFERENCE_AMBIGUOUS_TARGET</name>
-  <type>diag:BML_REFERENCE_AMBIGUOUS_TARGET</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An ambiguous-reference diagnostic</is>
-
-  <summary>Emitted when a documentation &lt;see&gt; target is ambiguous.</summary>
-
-  <keywords>BML_REFERENCE_AMBIGUOUS_TARGET</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An ambiguous-reference diagnostic
+  </is>
+  <summary>
+    Emitted when a documentation &lt;see> target is ambiguous.
+  </summary>
   <documentation>
-    Emitted when a documentation &lt;see&gt; target is ambiguous. Remedy: Use exactly one target
+    Emitted when a documentation &lt;see> target is ambiguous. Remedy: Use exactly one target
     kind or a disambiguating split form.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_REFERENCE_AMBIGUOUS_TARGET" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       see target attributes.
     </see>
   </references>
-
-</block>
+</diag:BML_REFERENCE_AMBIGUOUS_TARGET>

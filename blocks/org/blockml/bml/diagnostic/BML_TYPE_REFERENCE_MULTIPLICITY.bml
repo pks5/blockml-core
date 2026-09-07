@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_TYPE_REFERENCE_MULTIPLICITY diagnostic
+<!--BlockML Core — BML_TYPE_REFERENCE_MULTIPLICITY diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_TYPE_REFERENCE_MULTIPLICITY
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_TYPE_REFERENCE_MULTIPLICITY-->
+<diag:BML_TYPE_REFERENCE_MULTIPLICITY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_TYPE_REFERENCE_MULTIPLICITY</name>
-  <type>diag:BML_TYPE_REFERENCE_MULTIPLICITY</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A TypeReference-multiplicity diagnostic</is>
-
-  <summary>Emitted when multiplicity is applied illegally to a TypeReference site that forbids it.</summary>
-
-  <keywords>BML_TYPE_REFERENCE_MULTIPLICITY</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A TypeReference-multiplicity diagnostic
+  </is>
+  <summary>
+    Emitted when multiplicity is applied illegally to a TypeReference site that forbids it.
+  </summary>
   <documentation>
     Emitted when multiplicity is applied illegally to a TypeReference site that forbids it. Remedy:
     Check the site's type attribute rules — some TypeReference usages are singular only.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_TYPE_REFERENCE_MULTIPLICITY" />
+  </keywords>
   <references>
     <see type="type:TypeReference" relation="Defines">
       TypeReference rules.
@@ -37,5 +33,4 @@
       Multiplicity.
     </see>
   </references>
-
-</block>
+</diag:BML_TYPE_REFERENCE_MULTIPLICITY>

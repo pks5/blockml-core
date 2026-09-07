@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_EXPR_PAYLOAD_MISMATCH diagnostic
+<!--BlockML Core — BML_EXPR_PAYLOAD_MISMATCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_EXPR_PAYLOAD_MISMATCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_PAYLOAD_MISMATCH-->
+<diag:BML_EXPR_PAYLOAD_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_EXPR_PAYLOAD_MISMATCH</name>
-  <type>diag:BML_EXPR_PAYLOAD_MISMATCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An expression payload-mismatch diagnostic</is>
-
-  <summary>Emitted when call syntax does not match declared inputType after FunctionMapping.</summary>
-
-  <keywords>BML_EXPR_PAYLOAD_MISMATCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An expression payload-mismatch diagnostic
+  </is>
+  <summary>
+    Emitted when call syntax does not match declared inputType after FunctionMapping.
+  </summary>
   <documentation>
     Emitted when call syntax does not match declared inputType after FunctionMapping. Remedy:
     Adjust positional/named/object-literal arguments to the Capability inputType shape.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_PAYLOAD_MISMATCH" />
+  </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
       Call forms and mapping.
@@ -35,5 +31,4 @@
       Fix call payload.
     </see>
   </references>
-
-</block>
+</diag:BML_EXPR_PAYLOAD_MISMATCH>

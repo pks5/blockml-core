@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_NAMESPACE_PREFIX_COLLISION diagnostic
+<!--BlockML Core — BML_NAMESPACE_PREFIX_COLLISION diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_NAMESPACE_PREFIX_COLLISION
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_NAMESPACE_PREFIX_COLLISION-->
+<diag:BML_NAMESPACE_PREFIX_COLLISION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_NAMESPACE_PREFIX_COLLISION</name>
-  <type>diag:BML_NAMESPACE_PREFIX_COLLISION</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A namespace-prefix-collision diagnostic</is>
-
-  <summary>Emitted when the same prefix maps to conflicting namespaces when merging bindings (e.g. FatBlock).</summary>
-
-  <keywords>BML_NAMESPACE_PREFIX_COLLISION</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A namespace-prefix-collision diagnostic
+  </is>
+  <summary>
+    Emitted when the same prefix maps to conflicting namespaces when merging bindings (e.g. FatBlock).
+  </summary>
   <documentation>
     Emitted when the same prefix maps to conflicting namespaces when merging bindings (e.g. FatBlock).
     Remedy: Align xmlns prefixes across the bundle.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_NAMESPACE_PREFIX_COLLISION" />
+  </keywords>
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">
       xmlns bindings.
@@ -37,5 +33,4 @@
       bml:xml emit bindings.
     </see>
   </references>
-
-</block>
+</diag:BML_NAMESPACE_PREFIX_COLLISION>

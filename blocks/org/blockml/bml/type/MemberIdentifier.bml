@@ -1,49 +1,48 @@
-<!--
-  BlockML Core — member definition path identifier value type (syntax only)
+<!--BlockML Core — member definition path identifier value type (syntax only)
 
-  FQN: org.blockml.bml.type.MemberIdentifier
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.MemberIdentifier-->
+<type:MemberIdentifier xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>MemberIdentifier</name>
-  <type>type:MemberIdentifier</type>
-  <baseType>type:Text</baseType>
-  <is>A Block member path</is>
-
-  <documentation>Abstract ValueType for member definition path names — properties, aggregations,
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A Block member path
+  </is>
+  <documentation>
+    Abstract ValueType for member definition path names — properties, aggregations,
     associations, and capabilities. Syntax only — the named member and owning type need not exist.
     Concrete Identifier specializations bind D without requiring the path to resolve.
     Existence-checked counterparts (PropertyReference, AggregationReference, AssociationReference,
     CapabilityReference) extend the matching Identifier and introduce the owning Block bound B.
-
+    
     Value forms:
     • Canonical definition path — for example com.foo.Bar.properties.width
     • Local member name when paired with a type qualifier (for example see type="com.foo.Bar"
       property="width" → com.foo.Bar.properties.width)
-
+    
     Generic parameter:
     • D (baseType def:MemberDefinition) — member definition kind (path shape). The owning Block
       bound B is introduced on PropertyReference / … after resolution — not here.
-
+    
     Concrete Identifier specializations bind D:
     • PropertyIdentifier     → D = def:PropertyDefinition
     • AggregationIdentifier  → D = def:AggregationDefinition
     • AssociationIdentifier  → D = def:AssociationDefinition
     • CapabilityIdentifier   → D = def:CapabilityDefinition
-
+    
     There is no collective existence type for an unbound member kind — member sites declare a
     concrete Reference. Not for Block type identity (use TypeIdentifier / TypeReference) or
-    instance pointers (use InstanceIdentifier / InstanceReference).</documentation>
-
+    instance pointers (use InstanceIdentifier / InstanceReference).
+  </documentation>
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       Definition addressing and see targets.
@@ -64,24 +63,20 @@
       parseValue — member path or local name syntax, no existence check.
     </see>
   </references>
-
-  <abstract>true</abstract>
-
+  <genericTypes>
+    <D baseType="def:MemberDefinition" />
+  </genericTypes>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Local member name or canonical definition path (for example
         com.foo.Bar.properties.width). Existence is PropertyReference / ….
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(t)) return t;
@@ -89,14 +84,8 @@
           if (/^[A-Za-z_][A-Za-z0-9_]*:[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+$/.test(t)) return t;
           throw new Error("not a member identifier: " + raw);
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-  <genericTypes>
-    <D baseType="def:MemberDefinition">
-      <documentation>Member definition kind (path shape). Bound by concrete Identifier children
-        (PropertyIdentifier, …). Not an existence check.</documentation>
-    </D>
-  </genericTypes>
-</block>
+</type:MemberIdentifier>

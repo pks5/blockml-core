@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_IDENTITY_TYPE_CHILD_ELEMENT diagnostic
+<!--BlockML Core — BML_IDENTITY_TYPE_CHILD_ELEMENT diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_IDENTITY_TYPE_CHILD_ELEMENT
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_IDENTITY_TYPE_CHILD_ELEMENT-->
+<diag:BML_IDENTITY_TYPE_CHILD_ELEMENT xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_IDENTITY_TYPE_CHILD_ELEMENT</name>
-  <type>diag:BML_IDENTITY_TYPE_CHILD_ELEMENT</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An identity-type child-element diagnostic</is>
-
-  <summary>Emitted when type/baseType identity fields are authored as illegal child shapes.</summary>
-
-  <keywords>BML_IDENTITY_TYPE_CHILD_ELEMENT</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An identity-type child-element diagnostic
+  </is>
+  <summary>
+    Emitted when type/baseType identity fields are authored as illegal child shapes.
+  </summary>
   <documentation>
     Emitted when type/baseType identity fields are authored as illegal child shapes. Remedy:
     Author type/baseType as TypeReference text (element or attribute) per MemberDefinition placement.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_IDENTITY_TYPE_CHILD_ELEMENT" />
+  </keywords>
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Identity fields.
     </see>
   </references>
-
-</block>
+</diag:BML_IDENTITY_TYPE_CHILD_ELEMENT>

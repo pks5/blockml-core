@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_CAPABILITY_LINK_MISMATCH diagnostic
+<!--BlockML Core — BML_CAPABILITY_LINK_MISMATCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_CAPABILITY_LINK_MISMATCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_CAPABILITY_LINK_MISMATCH-->
+<diag:BML_CAPABILITY_LINK_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_CAPABILITY_LINK_MISMATCH</name>
-  <type>diag:BML_CAPABILITY_LINK_MISMATCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A capability-link mismatch diagnostic</is>
-
-  <summary>Emitted when capability linking pairs incompatible Capability kinds or payloads.</summary>
-
-  <keywords>BML_CAPABILITY_LINK_MISMATCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A capability-link mismatch diagnostic
+  </is>
+  <summary>
+    Emitted when capability linking pairs incompatible Capability kinds or payloads.
+  </summary>
   <documentation>
     Emitted when capability linking pairs incompatible Capability kinds or payloads. Remedy:
     Use Outbound→Inbound (or valid Transformation pairing) with compatible inputType/outputType.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_CAPABILITY_LINK_MISMATCH" />
+  </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
       Capability kinds.
@@ -40,5 +36,4 @@
       Fix linking.
     </see>
   </references>
-
-</block>
+</diag:BML_CAPABILITY_LINK_MISMATCH>

@@ -1,45 +1,40 @@
-<!--
-  BlockML Core — type name identifier value type (FQN / TypeExpression text, syntax only)
+<!--BlockML Core — type name identifier value type (FQN / TypeExpression text, syntax only)
 
-  FQN: org.blockml.bml.type.TypeIdentifier
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.TypeIdentifier-->
+<type:TypeIdentifier xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>TypeIdentifier</name>
-  <type>type:TypeIdentifier</type>
-  <baseType>type:Text</baseType>
-  <is>A Block type name</is>
-
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A Block type name
+  </is>
   <documentation>
     ValueType for type names — fully qualified names (FQNs) and TypeExpressions that name a Block.
     Unqualified name TypeIdentifier resolves to org.blockml.bml.type.TypeIdentifier. Syntax only —
     the named type need not exist in the TypeRegistry. TypeReference extends this type and adds
     existence plus the branch bound B.
-
+    
     FQN format (Java-style reverse-domain, dot-separated):
     • Package segments — lowercase, reverse-domain (for example org.blockml.bml.core,
       com.machineblocks.bml.type)
     • Class segment — PascalCase (for example Block, Integer, Wall)
-    • Full form — &lt;package&gt;.&lt;ClassName&gt; (for example org.blockml.bml.type.Integer,
+    • Full form — &lt;package>.&lt;ClassName> (for example org.blockml.bml.type.Integer,
       com.machineblocks.bml.core.Block)
     Sub-Block FQNs derive as parentFqn + "." + name when omitted in source.
-
+    
     Namespace prefixes in BML (core:, type:, def:, …) map to package segments. Ill-formed syntax
     is rejected by parseValue (host maps to BML_INVALID_VALUE / BML_INVALID_TYPE_REFERENCE). An
     unknown FQN is valid on TypeIdentifier — use TypeReference when the type must resolve
     (BML_UNKNOWN_TYPE). Existence is not part of parseValue (doc:ValueTypeParsing).
-
+    
     No generic parameters. TypeReference(B) introduces the branch bound B after resolution.
-
+    
     Any field whose declared type is TypeIdentifier (and not TypeReference) is syntax-only,
     regardless of the field name. Block-definition identity (`type`) is one such field —
     the name is being minted. Fields that must name an existing Block declare TypeReference
@@ -47,7 +42,6 @@
     PackageReference. Member paths use the MemberIdentifier branch. Instance pointers use
     InstanceIdentifier / InstanceReference.
   </documentation>
-
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Namespace resolution and type identity.
@@ -68,23 +62,18 @@
       parseValue — TypeExpression syntax only, no TypeRegistry.
     </see>
   </references>
-
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         TypeExpression syntax: unqualified name, xmlns QName, FQN, bml:Self, generic T,
         generics (…), instance configuration {…}, multiplicity […], unions |, grouping (…),
         anonymous StructType { field: Type }. Does not check that named types exist.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const s = raw.trim();
           if (!s) throw new Error("empty type identifier");
@@ -214,7 +203,8 @@
           if (i !== s.length) throw new Error("trailing junk in type identifier: " + raw);
           return s;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-</block>
+</type:TypeIdentifier>

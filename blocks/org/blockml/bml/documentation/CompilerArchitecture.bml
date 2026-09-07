@@ -1,39 +1,33 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.CompilerArchitecture
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.CompilerArchitecture-->
+<doc:CompilerArchitecture xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation">
 
-  <name>CompilerArchitecture</name>
-  <type>doc:CompilerArchitecture</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to the compiler pipeline</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to the compiler pipeline
+  </is>
   <documentation>
     Overview only — normative Urmodell / Pragmatic / BomBuilder rules live in docs/01_bom_core.md;
     pipeline stages and packages in docs/06_compiler.md; system layout in docs/00_system.md.
-
+    
     Sketch: BML → Parser → Urmodell (immutable Canonical BOM) → Validator pragmatic fork /
     Framework Utilities / Render Target pipeline → target output. Serializer reads the Urmodell only.
     Validation Stages 1–3 (Parser / Validator / Renderer) — glossary in 06_compiler.md.
     Semantic validation is the validator and the LSP. XSD is not a standard check; the XSD
     compiler remains available but is not used by default (doc:DocumentFormat).
     Self-hosting: CLI bootstraps TypeRegistry from framework BML before user projects.
-
+    
     In this compiler pipeline a Capability body is often a companion template the renderer
     emits, or a name the renderer maps to a target construct. That is one interpretation
     (doc:CapabilitySemantics). Hosts — including a future validator that evaluates
     PrimitiveType.parseValue — may execute a deterministic implementation body. The model
     does not forbid executable Capability implementations.
   </documentation>
-
   <references>
     <see type="doc:DocumentFormat" relation="SeeAlso">
       Dual document root; validation via validator and LSP, not XSD.
@@ -45,5 +39,4 @@
       Next reading step — renderer decides manifestation, not BlockML.
     </see>
   </references>
-
-</block>
+</doc:CompilerArchitecture>

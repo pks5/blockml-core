@@ -1,30 +1,25 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.ModelingGuidelines
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.ModelingGuidelines-->
+<doc:ModelingGuidelines xmlns="http://blockml.org/bml"
   xmlns:cap="org.blockml.bml.capability"
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation">
 
-  <name>ModelingGuidelines</name>
-  <type>doc:ModelingGuidelines</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to modeling patterns</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to modeling patterns
+  </is>
   <documentation>
     Inheritance (baseType):
     • Single inheritance — each Block has exactly one baseType (mandatory except org.blockml.bml.core.Block)
     • Use for branch membership (ValueType, Language, domain base) and shared member fragments
     • Framework branches inherit via org.blockml.bml.core.ValueType, Language, or domain bases
     • final on Block or member prevents further override → BML_FINAL_BASE_TYPE / BML_FINAL_MEMBER_OVERRIDE
-
+    
     Contracts:
     • Reusable partial Block definitions — not pure interfaces; may include default implementations
     • Use when multiple Blocks share a member fragment without sharing a common baseType ancestor
@@ -33,7 +28,7 @@
     • Contract may supply partial members (e.g. id type only); concrete Block completes defaults,
       constraints, and documentation
     • subBlocks and compositions on contract types are ignored
-
+    
     Capabilities:
     • All behaviour — init, get/set, render, parse, domain operations — express as Capabilities
     • An implementation may be intent (PseudoCode / natural language), a companion template,
@@ -43,23 +38,22 @@
     • Public surface of a Block is Capabilities — Properties are internal configuration
     • Declare throws for Exception types the Capability may raise
       (type:TypeReferenceEntity(core:Exception)[] — Java-style method throws; omit when none)
-
+    
     Constraints:
     • Declare on Properties via constraints aggregation — Constraint Block instances
     • Generic binding is automatic: Min/Max bind T from property type; MinItems/MaxItems from
       collection element type; MinLength/MaxLength from Text element type
     • Use for validation rules expressible as reusable Constraint blocks (Min, Max, Pattern, …)
     • Suggestions (optional Block instances of property type) guide editors — not validation
-
-    General: keep &lt;is&gt; stable; put cross-links in references; prefer explicit baseType over
+    
+    General: keep &lt;is> stable; put cross-links in references; prefer explicit baseType over
     implicit defaults; document partial members in contracts clearly.
-
+    
     Documentation formatting: block documentation is Markdown(English) by default — structure longer
     prose with paragraphs, headings, lists, and inline code instead of one unbroken text; keep
     summary plain text. Human-friendly formatting is a central part of BlockML
     (doc:DocumentationModel).
   </documentation>
-
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">
       Contracts and validation by branch.
@@ -95,5 +89,4 @@
       Contracts merge order and satisfiesTypeBound.
     </see>
   </references>
-
-</block>
+</doc:ModelingGuidelines>

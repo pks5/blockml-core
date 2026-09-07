@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — author new block task
+<!--BlockML Core — author new block task
 
-  FQN: org.blockml.bml.task.AuthorNewBlock
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.task.AuthorNewBlock-->
+<task:AuthorNewBlock xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
@@ -16,15 +10,28 @@
   xmlns:relation="org.blockml.bml.relation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>AuthorNewBlock</name>
-  <type>task:AuthorNewBlock</type>
-  <baseType>core:TaskGuide</baseType>
-  <is>A how-to for authoring a new Block</is>
-
-  <summary>Create a root .bml file whose root tag is the type, with is, documentation,
+  <baseType>
+    core:TaskGuide
+  </baseType>
+  <is>
+    A how-to for authoring a new Block
+  </is>
+  <summary>
+    Create a root .bml file whose root tag is the type, with is, documentation,
     baseType, version, and member containers as needed. Register the block FQN in Library
-    blocks when publishing a library catalogue.</summary>
-
+    blocks when publishing a library catalogue.
+  </summary>
+  <documentation>
+    Procedure for a new domain Block type:
+    1. Choose baseType from the framework or domain branch.
+    2. Author the document root as the type tag (doc:DocumentFormat). Nested Sub-Blocks use
+       the unqualified name as the element tag; embeds use the same tag-as-type form as the
+       root. Legacy &lt;block> wrappers remain valid. Declare documentation metadata
+       (is, documentation, optional summary).
+    3. Add properties, aggregations, associations, or capabilities.
+    4. Add constraints, capabilities, and examples as needed.
+    5. Export via Library.bml blocks when the type belongs to a published catalogue.
+  </documentation>
   <keywords>
     <meta:FreeTextKeyword term="author" />
     <meta:FreeTextKeyword term="new block" />
@@ -32,19 +39,6 @@
     <meta:FreeTextKeyword term="scaffold" />
     <meta:FreeTextKeyword term="root block" />
   </keywords>
-
-  <documentation>
-    Procedure for a new domain Block type:
-    1. Choose baseType from the framework or domain branch.
-    2. Author the document root as the type tag (doc:DocumentFormat). Nested Sub-Blocks use
-       the unqualified name as the element tag; embeds use the same tag-as-type form as the
-       root. Legacy &lt;block&gt; wrappers remain valid. Declare documentation metadata
-       (is, documentation, optional summary).
-    3. Add properties, aggregations, associations, or capabilities.
-    4. Add constraints, capabilities, and examples as needed.
-    5. Export via Library.bml blocks when the type belongs to a published catalogue.
-  </documentation>
-
   <references>
     <see type="doc:DocumentFormat" relation="Prerequisite">
       Type/name as element tag on root, Sub-Blocks, and embeds.
@@ -68,5 +62,4 @@
       Step 5 — add the block FQN to Library blocks for export.
     </see>
   </references>
-
-</block>
+</task:AuthorNewBlock>

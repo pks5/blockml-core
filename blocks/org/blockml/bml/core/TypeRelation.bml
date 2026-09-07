@@ -1,33 +1,32 @@
-<!--
-  BlockML Core — type-target-constrained relation branch
+<!--BlockML Core — type-target-constrained relation branch
 
-  FQN: org.blockml.bml.core.TypeRelation
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.core.TypeRelation-->
+<core:TypeRelation xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:relation="org.blockml.bml.relation"
   xmlns:type="org.blockml.bml.type">
 
-  <name>TypeRelation</name>
-  <type>core:TypeRelation</type>
-  <baseType>core:Relation</baseType>
-  <is>A type-target-only Relation</is>
-
-  <documentation>Abstract Relation subtype that may be used only on &lt;see type="…"&gt; entries —
+  <baseType>
+    core:Relation
+  </baseType>
+  <is>
+    A type-target-only Relation
+  </is>
+  <documentation>
+    Abstract Relation subtype that may be used only on &lt;see type="…"> entries —
     never on instance, file, url, property, aggregation, association, or capability targets.
-
+    
     Generic T is the allowed target Block branch. The resolved type of see type= must satisfy
     satisfiesTypeBound(resolve(type), T) — otherwise BML_TYPE_BOUND_NOT_SATISFIED. Default
     T = core:Block — any Block type reference is allowed until a concrete subtype binds T more
     narrowly (e.g. ThenContinueWith binds T = core:Bootstrap).
-
+    
     Plain Relation (SeeAlso, AuthoringGuide, …) remains unrestricted across target kinds.
-    TypeRelation is for relations whose semantics require a Block type identity target.</documentation>
-
+    TypeRelation is for relations whose semantics require a Block type identity target.
+  </documentation>
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="core:Relation" relation="Extends">
       Unrestricted relation branch — TypeRelation adds type-target + T bound.
@@ -39,14 +38,7 @@
       see type= target ValueType — only allowed target kind for TypeRelation.
     </see>
   </references>
-
-  <abstract>true</abstract>
-
   <genericTypes>
-    <T baseType="core:Block" defaultType="core:Block">
-      <documentation>Allowed see type= target branch. Each use of this relation requires
-        satisfiesTypeBound(resolve(type), T). Defaults to core:Block.</documentation>
-    </T>
+    <T baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
   </genericTypes>
-
-</block>
+</core:TypeRelation>

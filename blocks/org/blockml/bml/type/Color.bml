@@ -1,27 +1,23 @@
-<!--
-  BlockML Core — color primitive type
+<!--BlockML Core — color primitive type
 
-  FQN: org.blockml.bml.type.Color
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.Color-->
+<type:Color xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:lang="org.blockml.bml.language"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Color</name>
-  <type>type:Color</type>
-  <baseType>type:Text</baseType>
-  <is>A color value string</is>
-
-  <documentation>Textual primitive subtype for color values. Unqualified name Color resolves to
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A color value string
+  </is>
+  <documentation>
+    Textual primitive subtype for color values. Unqualified name Color resolves to
     org.blockml.bml.type.Color.
-
+    
     Accepted forms (case-insensitive for function names and named colors):
     • Hex — CSS lengths #RGB, #RGBA, #RRGGBB, #RRGGBBAA (for example #afafaf, #a3d4e200)
     • rgb / RGB — rgb(255,12,230)
@@ -29,15 +25,11 @@
     • Named color — free-text name in language L (for example red, Blue); the base Color type
       does not validate named colors against a catalogue. A subtype may later constrain L to a
       fixed set of names.
-
+    
     Generic parameter L (NaturalLanguage, default English) names the language of free-text color
     names. Bare Color resolves to English; supply Color(lang:German) only when named colors are
-    expected in another language.</documentation>
-
-  <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
-  </genericTypes>
-
+    expected in another language.
+  </documentation>
   <references>
     <see type="lang:NaturalLanguage" relation="Defines">
       L bound — language of free-text color names (default English).
@@ -52,22 +44,20 @@
       parseValue — hex, rgb/rgba, or named color token.
     </see>
   </references>
-
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+  </genericTypes>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Hex #RGB / #RGBA / #RRGGBB / #RRGGBBAA, rgb()/rgba() with 0–255 channels and optional
         0–1 alpha, or a named-color token (letters only — catalogue is not checked).
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="lang:TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           if (/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(t)) {
@@ -89,7 +79,8 @@
           if (/^[A-Za-z][A-Za-z -]*$/.test(t)) return t;
           throw new Error("not a color: " + raw);
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-</block>
+</type:Color>

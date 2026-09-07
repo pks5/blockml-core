@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_DUPLICATE_DOCUMENTATION diagnostic
+<!--BlockML Core — BML_DUPLICATE_DOCUMENTATION diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_DOCUMENTATION
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_DOCUMENTATION-->
+<diag:BML_DUPLICATE_DOCUMENTATION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_DUPLICATE_DOCUMENTATION</name>
-  <type>diag:BML_DUPLICATE_DOCUMENTATION</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A duplicate-documentation diagnostic</is>
-
-  <summary>Emitted when documentation entries collide on (namespace, languageFqn).</summary>
-
-  <keywords>BML_DUPLICATE_DOCUMENTATION</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A duplicate-documentation diagnostic
+  </is>
+  <summary>
+    Emitted when documentation entries collide on (namespace, languageFqn).
+  </summary>
   <documentation>
     Emitted when documentation entries collide on (namespace, languageFqn). Remedy: Keep one
     documentation entry per namespace/language pair.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_DOCUMENTATION" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       documentation i18n/facets.
     </see>
   </references>
-
-</block>
+</diag:BML_DUPLICATE_DOCUMENTATION>

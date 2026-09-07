@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_INVALID_DEFINITION_BRANCH diagnostic
+<!--BlockML Core — BML_INVALID_DEFINITION_BRANCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_INVALID_DEFINITION_BRANCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_DEFINITION_BRANCH-->
+<diag:BML_INVALID_DEFINITION_BRANCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_INVALID_DEFINITION_BRANCH</name>
-  <type>diag:BML_INVALID_DEFINITION_BRANCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An invalid-definition-branch diagnostic</is>
-
-  <summary>Emitted when a definition meta-model type is used outside the Definition branch expectations.</summary>
-
-  <keywords>BML_INVALID_DEFINITION_BRANCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An invalid-definition-branch diagnostic
+  </is>
+  <summary>
+    Emitted when a definition meta-model type is used outside the Definition branch expectations.
+  </summary>
   <documentation>
     Emitted when a definition meta-model type is used outside the Definition branch expectations.
     Remedy: Use Root/Sub/Embedded/Member definition types appropriately.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_DEFINITION_BRANCH" />
+  </keywords>
   <references>
     <see type="doc:DefinitionModel" relation="AuthoringGuide">
       Definition branch.
@@ -37,5 +33,4 @@
       definition property.
     </see>
   </references>
-
-</block>
+</diag:BML_INVALID_DEFINITION_BRANCH>

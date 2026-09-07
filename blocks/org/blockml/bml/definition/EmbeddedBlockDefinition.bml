@@ -1,42 +1,38 @@
-<!--
-  BlockML Definition — embedded block definition meta-model type
+<!--BlockML Definition — embedded block definition meta-model type
 
   FQN: org.blockml.bml.definition.EmbeddedBlockDefinition
   Describes the parse-time shape of virtual .bml documents in root <embeddedBlocks>.
-  See docs/12_bom_object_model.md — Embedded Blocks.
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  See docs/12_bom_object_model.md — Embedded Blocks.-->
+<def:EmbeddedBlockDefinition xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
 
-  <name>EmbeddedBlockDefinition</name>
-  <type>def:EmbeddedBlockDefinition</type>
-  <baseType>def:BlockDefinition</baseType>
-  <is>The shape of an embedded Block document</is>
-
-  <documentation>Meta-model type for embedded Block documents — virtual .bml files inlined under
-    the document root's &lt;embeddedBlocks&gt; aggregation. Extends
+  <baseType>
+    def:BlockDefinition
+  </baseType>
+  <is>
+    The shape of an embedded Block document
+  </is>
+  <documentation>
+    Meta-model type for embedded Block documents — virtual .bml files inlined under
+    the document root's &lt;embeddedBlocks> aggregation. Extends
     org.blockml.bml.definition.BlockDefinition (subBlocks, identity, members) and overrides
     definition to default EmbeddedBlockDefinition.
-
+    
     Embedded blocks are full Block documents. Authoring is the same as the document root
-    (doc:DocumentFormat): preferred type tag (&lt;acme:MyBlock&gt;), legacy &lt;block&gt; plus
-    &lt;type&gt;. The resolved type is the FQN (not nested under the root) and must be fully
+    (doc:DocumentFormat): preferred type tag (&lt;acme:MyBlock>), legacy &lt;block> plus
+    &lt;type>. The resolved type is the FQN (not nested under the root) and must be fully
     qualified. They may declare subBlocks and generics like any Block. They must
-    not declare &lt;embeddedBlocks&gt; — nesting is forbidden (BML_NESTED_EMBEDDED_BLOCKS). Only the
+    not declare &lt;embeddedBlocks> — nesting is forbidden (BML_NESTED_EMBEDDED_BLOCKS). Only the
     document root (RootBlockDefinition) may own embeddedBlocks; compose fat artifacts by listing
     virtual files flat at the root (bundlers flatten nested packages when merging).
-
+    
     Within the BomDocument, each embedded FQN shadows the corresponding library or file-based
     BlockDefinition. Duplicate FQNs among embeds → BML_DUPLICATE_EMBEDDED_BLOCK. Externally,
-    embeds are invisible.</documentation>
-
+    embeds are invisible.
+  </documentation>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
       Same tag-as-type authoring as the document root.
@@ -54,15 +50,15 @@
       Nested Sub-Block shape — sibling specialization.
     </see>
   </references>
-
   <properties>
-    <definition override="true" type="TypeReference(def:EmbeddedBlockDefinition)">
-      <value>def:EmbeddedBlockDefinition</value>
-      <documentation>Definition meta-model type for this embedded Block document. Omitted =
+    <definition override="true" type="org.blockml.bml.type.TypeReference(def:EmbeddedBlockDefinition)">
+      <documentation>
+        Definition meta-model type for this embedded Block document. Omitted =
         org.blockml.bml.definition.EmbeddedBlockDefinition. Must extend EmbeddedBlockDefinition
         (BML_DEFINITION_TYPE_MISMATCH otherwise). Unqualified names at this site resolve via
-        org.blockml.bml.definition.*. Addressable as &lt;embeddedFQN&gt;.definition.</documentation>
+        org.blockml.bml.definition.*. Addressable as &lt;embeddedFQN>.definition.
+      </documentation>
+      <value>def:EmbeddedBlockDefinition</value>
     </definition>
   </properties>
-
-</block>
+</def:EmbeddedBlockDefinition>

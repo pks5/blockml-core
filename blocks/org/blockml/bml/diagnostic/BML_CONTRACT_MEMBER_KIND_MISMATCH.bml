@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_CONTRACT_MEMBER_KIND_MISMATCH diagnostic
+<!--BlockML Core — BML_CONTRACT_MEMBER_KIND_MISMATCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_CONTRACT_MEMBER_KIND_MISMATCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_CONTRACT_MEMBER_KIND_MISMATCH-->
+<diag:BML_CONTRACT_MEMBER_KIND_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_CONTRACT_MEMBER_KIND_MISMATCH</name>
-  <type>diag:BML_CONTRACT_MEMBER_KIND_MISMATCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A contract member-kind mismatch diagnostic</is>
-
-  <summary>Emitted when a contract member kind does not match the merging member kind.</summary>
-
-  <keywords>BML_CONTRACT_MEMBER_KIND_MISMATCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A contract member-kind mismatch diagnostic
+  </is>
+  <summary>
+    Emitted when a contract member kind does not match the merging member kind.
+  </summary>
   <documentation>
     Emitted when a contract member kind does not match the merging member kind. Remedy: Property
     overrides property, aggregation overrides aggregation, etc.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONTRACT_MEMBER_KIND_MISMATCH" />
+  </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">
       Contract merge.
@@ -40,5 +36,4 @@
       Align member kinds.
     </see>
   </references>
-
-</block>
+</diag:BML_CONTRACT_MEMBER_KIND_MISMATCH>

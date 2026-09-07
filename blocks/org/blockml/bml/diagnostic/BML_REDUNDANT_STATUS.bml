@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_REDUNDANT_STATUS diagnostic
+<!--BlockML Core — BML_REDUNDANT_STATUS diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_REDUNDANT_STATUS
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_REDUNDANT_STATUS-->
+<diag:BML_REDUNDANT_STATUS xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_REDUNDANT_STATUS</name>
-  <type>diag:BML_REDUNDANT_STATUS</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A redundant-status diagnostic</is>
-
-  <summary>Warning: explicit status duplicates the effective/default status unnecessarily.</summary>
-
-  <keywords>BML_REDUNDANT_STATUS</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A redundant-status diagnostic
+  </is>
+  <summary>
+    Warning: explicit status duplicates the effective/default status unnecessarily.
+  </summary>
   <documentation>
     Warning: explicit status duplicates the effective/default status unnecessarily. Omit redundant
     status unless documenting intent.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_REDUNDANT_STATUS" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       status.
     </see>
   </references>
-
-</block>
+</diag:BML_REDUNDANT_STATUS>

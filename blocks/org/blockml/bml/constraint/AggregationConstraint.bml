@@ -1,31 +1,25 @@
-<!--
-  BlockML Constraint — aggregation structural constraint branch
+<!--BlockML Constraint — aggregation structural constraint branch
 
-  FQN: org.blockml.bml.constraint.AggregationConstraint
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.constraint.AggregationConstraint-->
+<constraint:AggregationConstraint xmlns="http://blockml.org/bml"
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:def="org.blockml.bml.definition">
 
-  <name>AggregationConstraint</name>
-  <type>constraint:AggregationConstraint</type>
-  <baseType>constraint:MemberConstraint</baseType>
-  <is>A rule for Aggregation members</is>
-
-  <documentation>Abstract branch for constraints on Aggregation members. Generic T binds to the
-    effective AggregationDefinition. Valid only under an Aggregation's &lt;constraints&gt; container
-    (BML_CONSTRAINT_TARGET_MISMATCH otherwise).</documentation>
-
-  <abstract>true</abstract>
-
+  <baseType>
+    constraint:MemberConstraint
+  </baseType>
+  <is>
+    A rule for Aggregation members
+  </is>
+  <documentation>
+    Abstract branch for constraints on Aggregation members. Generic T binds to the
+    effective AggregationDefinition. Valid only under an Aggregation's &lt;constraints> container
+    (BML_CONSTRAINT_TARGET_MISMATCH otherwise).
+  </documentation>
+  <abstract>
+    true
+  </abstract>
   <genericTypes>
-    <T baseType="def:AggregationDefinition">
-      <documentation>Bound to the effective AggregationDefinition of the enclosing Aggregation member.</documentation>
-    </T>
+    <T baseType="def:AggregationDefinition" />
   </genericTypes>
-
-</block>
+</constraint:AggregationConstraint>

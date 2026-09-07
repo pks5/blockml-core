@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_CONSTRAINT_UNKNOWN diagnostic
+<!--BlockML Core — BML_CONSTRAINT_UNKNOWN diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_CONSTRAINT_UNKNOWN
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_CONSTRAINT_UNKNOWN-->
+<diag:BML_CONSTRAINT_UNKNOWN xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_CONSTRAINT_UNKNOWN</name>
-  <type>diag:BML_CONSTRAINT_UNKNOWN</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-constraint diagnostic</is>
-
-  <summary>Emitted when a constraint type is not in TypeRegistry or not a Constraint subtype.</summary>
-
-  <keywords>BML_CONSTRAINT_UNKNOWN</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-constraint diagnostic
+  </is>
+  <summary>
+    Emitted when a constraint type is not in TypeRegistry or not a Constraint subtype.
+  </summary>
   <documentation>
     Emitted when a constraint type is not in TypeRegistry or not a Constraint subtype. Remedy:
     Export the constraint via Library.blocks and use a valid Constraint FQN.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTRAINT_UNKNOWN" />
+  </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">
       Constraint catalogue.
@@ -37,5 +33,4 @@
       Related type-registry debugging.
     </see>
   </references>
-
-</block>
+</diag:BML_CONSTRAINT_UNKNOWN>

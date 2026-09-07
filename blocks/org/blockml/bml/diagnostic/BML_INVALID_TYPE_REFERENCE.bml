@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_INVALID_TYPE_REFERENCE diagnostic
+<!--BlockML Core — BML_INVALID_TYPE_REFERENCE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_INVALID_TYPE_REFERENCE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_TYPE_REFERENCE-->
+<diag:BML_INVALID_TYPE_REFERENCE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,16 +9,16 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_INVALID_TYPE_REFERENCE</name>
-  <type>diag:BML_INVALID_TYPE_REFERENCE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An invalid-type-reference diagnostic</is>
-
-  <summary>Emitted when a TypeIdentifier, TypeReference, or TypeExpression cannot be parsed or is
-    ill-formed.</summary>
-
-  <keywords>BML_INVALID_TYPE_REFERENCE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An invalid-type-reference diagnostic
+  </is>
+  <summary>
+    Emitted when a TypeIdentifier, TypeReference, or TypeExpression cannot be parsed or is
+    ill-formed.
+  </summary>
   <documentation>
     Emitted when a TypeIdentifier, TypeReference, or TypeExpression cannot be parsed or is
     ill-formed — including an ill-formed bml:generics value and ill-formed MemberIdentifier /
@@ -36,7 +30,9 @@
     FQN/QName/generic/configuration/path syntax. Instance bml:generics requires a
     parenthesized argument list in the same form as a TypeReference application.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_TYPE_REFERENCE" />
+  </keywords>
   <references>
     <see type="type:TypeIdentifier" relation="Defines">
       Syntax-only type name — this diagnostic is the Identifier check.
@@ -54,5 +50,4 @@
       Parenthesized argument list on type applications and bml:generics.
     </see>
   </references>
-
-</block>
+</diag:BML_INVALID_TYPE_REFERENCE>

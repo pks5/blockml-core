@@ -1,33 +1,29 @@
-<!--
-  BlockML Core — BML_PROPERTY_CYCLE diagnostic
+<!--BlockML Core — BML_PROPERTY_CYCLE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_PROPERTY_CYCLE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_PROPERTY_CYCLE-->
+<diag:BML_PROPERTY_CYCLE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_PROPERTY_CYCLE</name>
-  <type>diag:BML_PROPERTY_CYCLE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A property-expression-cycle diagnostic</is>
-
-  <summary>Emitted when &lt;value&gt; expressions form a cyclic dependency among Properties.</summary>
-
-  <keywords>BML_PROPERTY_CYCLE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A property-expression-cycle diagnostic
+  </is>
+  <summary>
+    Emitted when &lt;value> expressions form a cyclic dependency among Properties.
+  </summary>
   <documentation>
-    Emitted when &lt;value&gt; expressions form a cyclic dependency among Properties. Remedy:
+    Emitted when &lt;value> expressions form a cyclic dependency among Properties. Remedy:
     value expressions may reference own Block Properties and #built-ins only; resolve via topological
     sort.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_PROPERTY_CYCLE" />
+  </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">
       value expression scope rules.
@@ -36,5 +32,4 @@
       Break the property dependency cycle.
     </see>
   </references>
-
-</block>
+</diag:BML_PROPERTY_CYCLE>

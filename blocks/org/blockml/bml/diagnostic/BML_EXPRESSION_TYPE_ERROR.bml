@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_EXPRESSION_TYPE_ERROR diagnostic
+<!--BlockML Core — BML_EXPRESSION_TYPE_ERROR diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_EXPRESSION_TYPE_ERROR
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_EXPRESSION_TYPE_ERROR-->
+<diag:BML_EXPRESSION_TYPE_ERROR xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_EXPRESSION_TYPE_ERROR</name>
-  <type>diag:BML_EXPRESSION_TYPE_ERROR</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An expression-type-error diagnostic</is>
-
-  <summary>Legacy/alias style expression type error — prefer BML_EXPR_TYPE_MISMATCH where applicable.</summary>
-
-  <keywords>BML_EXPRESSION_TYPE_ERROR</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An expression-type-error diagnostic
+  </is>
+  <summary>
+    Legacy/alias style expression type error — prefer BML_EXPR_TYPE_MISMATCH where applicable.
+  </summary>
   <documentation>
     Legacy/alias style expression type error — prefer BML_EXPR_TYPE_MISMATCH where applicable.
     Align expression result type with the target member type.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPRESSION_TYPE_ERROR" />
+  </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">
       Expression typing.
@@ -37,5 +33,4 @@
       Fix expression types.
     </see>
   </references>
-
-</block>
+</diag:BML_EXPRESSION_TYPE_ERROR>

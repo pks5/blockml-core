@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_REFERENCE_MISSING_TARGET diagnostic
+<!--BlockML Core — BML_REFERENCE_MISSING_TARGET diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_REFERENCE_MISSING_TARGET
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_REFERENCE_MISSING_TARGET-->
+<diag:BML_REFERENCE_MISSING_TARGET xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_REFERENCE_MISSING_TARGET</name>
-  <type>diag:BML_REFERENCE_MISSING_TARGET</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-reference-target diagnostic</is>
-
-  <summary>Emitted when a &lt;see&gt; entry has no target attribute.</summary>
-
-  <keywords>BML_REFERENCE_MISSING_TARGET</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-reference-target diagnostic
+  </is>
+  <summary>
+    Emitted when a &lt;see> entry has no target attribute.
+  </summary>
   <documentation>
-    Emitted when a &lt;see&gt; entry has no target attribute. Remedy: Provide type, instance,
+    Emitted when a &lt;see> entry has no target attribute. Remedy: Provide type, instance,
     file, url, or member path target.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_REFERENCE_MISSING_TARGET" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       see targets.
     </see>
   </references>
-
-</block>
+</diag:BML_REFERENCE_MISSING_TARGET>

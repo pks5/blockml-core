@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_INVALID_NAMESPACE_TARGET diagnostic
+<!--BlockML Core — BML_INVALID_NAMESPACE_TARGET diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_INVALID_NAMESPACE_TARGET
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_INVALID_NAMESPACE_TARGET-->
+<diag:BML_INVALID_NAMESPACE_TARGET xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_INVALID_NAMESPACE_TARGET</name>
-  <type>diag:BML_INVALID_NAMESPACE_TARGET</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An invalid-namespace-target diagnostic</is>
-
-  <summary>Emitted when xmlns targets neither a Package nor an Annotation.</summary>
-
-  <keywords>BML_INVALID_NAMESPACE_TARGET</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An invalid-namespace-target diagnostic
+  </is>
+  <summary>
+    Emitted when xmlns targets neither a Package nor an Annotation.
+  </summary>
   <documentation>
     Emitted when xmlns targets neither a Package nor an Annotation. Remedy: Bind prefixes to
     package FQNs or Annotation FQNs only.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_NAMESPACE_TARGET" />
+  </keywords>
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">
       Package vs Annotation xmlns.
     </see>
   </references>
-
-</block>
+</diag:BML_INVALID_NAMESPACE_TARGET>

@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_DEPRECATED_MEMBER_NAMESPACE_ATTR diagnostic
+<!--BlockML Core — BML_DEPRECATED_MEMBER_NAMESPACE_ATTR diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_DEPRECATED_MEMBER_NAMESPACE_ATTR
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_DEPRECATED_MEMBER_NAMESPACE_ATTR-->
+<diag:BML_DEPRECATED_MEMBER_NAMESPACE_ATTR xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_DEPRECATED_MEMBER_NAMESPACE_ATTR</name>
-  <type>diag:BML_DEPRECATED_MEMBER_NAMESPACE_ATTR</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A deprecated namespace-attribute diagnostic</is>
-
-  <summary>Emitted when a legacy namespace= attribute appears on a member element.</summary>
-
-  <keywords>BML_DEPRECATED_MEMBER_NAMESPACE_ATTR</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A deprecated namespace-attribute diagnostic
+  </is>
+  <summary>
+    Emitted when a legacy namespace= attribute appears on a member element.
+  </summary>
   <documentation>
     Emitted when a legacy namespace= attribute appears on a member element. Remedy: Use XML element
     QName / xmlns prefixes for member namespaces — no namespace attribute.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_DEPRECATED_MEMBER_NAMESPACE_ATTR" />
+  </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="SeeAlso">
       Member identity.
@@ -37,5 +33,4 @@
       xmlns conventions.
     </see>
   </references>
-
-</block>
+</diag:BML_DEPRECATED_MEMBER_NAMESPACE_ATTR>

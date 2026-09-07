@@ -1,33 +1,29 @@
-<!--
-  BlockML Core — BML_BLOCK_NAME_TYPE_MISMATCH diagnostic
+<!--BlockML Core — BML_BLOCK_NAME_TYPE_MISMATCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_BLOCK_NAME_TYPE_MISMATCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_BLOCK_NAME_TYPE_MISMATCH-->
+<diag:BML_BLOCK_NAME_TYPE_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_BLOCK_NAME_TYPE_MISMATCH</name>
-  <type>diag:BML_BLOCK_NAME_TYPE_MISMATCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A name/type mismatch diagnostic</is>
-
-  <summary>Emitted when an explicit root name does not equal lastSegment(resolve(type)).</summary>
-
-  <keywords>BML_BLOCK_NAME_TYPE_MISMATCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A name/type mismatch diagnostic
+  </is>
+  <summary>
+    Emitted when an explicit root name does not equal lastSegment(resolve(type)).
+  </summary>
   <documentation>
     Emitted when an explicit root name does not equal lastSegment(resolve(type)). Remedy: Root
     design principle: type is canonical; name is a redundant short form of the last type segment.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_BLOCK_NAME_TYPE_MISMATCH" />
+  </keywords>
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Root name vs type rule.
@@ -39,5 +35,4 @@
       Align name with type last segment.
     </see>
   </references>
-
-</block>
+</diag:BML_BLOCK_NAME_TYPE_MISMATCH>

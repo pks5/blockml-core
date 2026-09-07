@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_VISIBILITY_NARROWING diagnostic
+<!--BlockML Core — BML_VISIBILITY_NARROWING diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_VISIBILITY_NARROWING
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_VISIBILITY_NARROWING-->
+<diag:BML_VISIBILITY_NARROWING xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_VISIBILITY_NARROWING</name>
-  <type>diag:BML_VISIBILITY_NARROWING</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A visibility-narrowing diagnostic</is>
-
-  <summary>Emitted when an override reduces visibility (e.g. public → protected, or protected → private).</summary>
-
-  <keywords>BML_VISIBILITY_NARROWING</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A visibility-narrowing diagnostic
+  </is>
+  <summary>
+    Emitted when an override reduces visibility (e.g. public → protected, or protected → private).
+  </summary>
   <documentation>
     Override matching uses normalizedLogicalName. Widening (protected → public) is allowed; narrowing is forbidden. Private members cannot be overridden at all.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_VISIBILITY_NARROWING" />
+  </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">
       Visibility on override — widen only.
@@ -38,5 +34,4 @@
       Widen or keep visibility on override.
     </see>
   </references>
-
-</block>
+</diag:BML_VISIBILITY_NARROWING>

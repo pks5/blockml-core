@@ -1,46 +1,46 @@
-<!--
-  BlockML Core — fix type identity task
+<!--BlockML Core — fix type identity task
 
-  FQN: org.blockml.bml.task.FixTypeIdentity
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.task.FixTypeIdentity-->
+<task:FixTypeIdentity xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>FixTypeIdentity</name>
-  <type>task:FixTypeIdentity</type>
-  <baseType>core:TaskGuide</baseType>
-  <is>A how-to for fixing type identity errors</is>
-
-  <summary>Resolve root/Sub-Block/embedded identity mismatches, ambiguous or unqualified references,
-    and definition-role errors.</summary>
-
-  <keywords>type identity, Sub-Block, embedded, BML_SUBBLOCK_TYPE_MISMATCH, BML_AMBIGUOUS_TYPE</keywords>
-
+  <baseType>
+    core:TaskGuide
+  </baseType>
+  <is>
+    A how-to for fixing type identity errors
+  </is>
+  <summary>
+    Resolve root/Sub-Block/embedded identity mismatches, ambiguous or unqualified references,
+    and definition-role errors.
+  </summary>
   <documentation>
     Procedure when type identity or reference resolution fails:
     1. Classify the Block role — root, Sub-Block, or embedded virtual file.
-    2. Root — require type from the element tag (preferred) or child &lt;type&gt; (legacy
-       &lt;block&gt;); optional name must equal lastSegment(resolve(type)).
-    3. Sub-Block — require name from the element tag (preferred &lt;MyBlock&gt;) or child
-       &lt;name&gt; (legacy &lt;block&gt;); omit type or match parentType + "." + name from the
+    2. Root — require type from the element tag (preferred) or child &lt;type> (legacy
+       &lt;block>); optional name must equal lastSegment(resolve(type)).
+    3. Sub-Block — require name from the element tag (preferred &lt;MyBlock>) or child
+       &lt;name> (legacy &lt;block>); omit type or match parentType + "." + name from the
        immediate enclosing block; never declare embeddedBlocks.
-    4. Embedded — same authoring as the root: type from the element tag or child &lt;type&gt;;
+    4. Embedded — same authoring as the root: type from the element tag or child &lt;type>;
        type must be fully qualified; FQN is not nested under the root; no nested embeds.
     5. Unqualified names — use nested resolution (innermost first) or context-bound implicit
        namespace; grandchildren need a relative path; otherwise qualify with xmlns/FQN.
     6. Ambiguous short Sub-Block names that match the root — rename or use qualified references.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="type identity" />
+    <org.blockml.bml.meta.FreeTextKeyword term="Sub-Block" />
+    <org.blockml.bml.meta.FreeTextKeyword term="embedded" />
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_SUBBLOCK_TYPE_MISMATCH" />
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_AMBIGUOUS_TYPE" />
+  </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="TaskStep">
-      Step 1 — element tag vs legacy &lt;block&gt; on root, Sub-Block, and embed.
+      Step 1 — element tag vs legacy &lt;block> on root, Sub-Block, and embed.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="TaskStep">
       Step 2 — four reference forms and canonical derivation summary.
@@ -64,5 +64,4 @@
       Related task when the type is simply not registered.
     </see>
   </references>
-
-</block>
+</task:FixTypeIdentity>

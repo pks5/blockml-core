@@ -1,27 +1,23 @@
-<!--
-  BlockML Core — AggregationDefinition path reference
+<!--BlockML Core — AggregationDefinition path reference
 
-  FQN: org.blockml.bml.type.AggregationReference
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.AggregationReference-->
+<type:AggregationReference xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
-  <name>AggregationReference</name>
-  <type>type:AggregationReference</type>
-  <baseType>type:AggregationIdentifier</baseType>
-  <is>A path to an Aggregation member</is>
-
-  <documentation>Existence-checked AggregationIdentifier. Value is a canonical aggregation path
+  <baseType>
+    type:AggregationIdentifier
+  </baseType>
+  <is>
+    A path to an Aggregation member
+  </is>
+  <documentation>
+    Existence-checked AggregationIdentifier. Value is a canonical aggregation path
     (com.foo.Bar.aggregations.children) or a local aggregation name when paired with a type
     qualifier. The owning type and aggregation must resolve. Used as the type of see aggregation=.
-    A potential aggregation that need not exist uses AggregationIdentifier.</documentation>
-
+    A potential aggregation that need not exist uses AggregationIdentifier.
+  </documentation>
   <references>
     <see type="type:AggregationIdentifier" relation="SeeAlso">
       Parent ValueType — aggregation-path syntax without existence.
@@ -33,10 +29,7 @@
       see aggregation attribute.
     </see>
   </references>
-
   <genericTypes>
-    <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Owning Block branch. Defaults to core:Block.</documentation>
-    </B>
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
   </genericTypes>
-</block>
+</type:AggregationReference>

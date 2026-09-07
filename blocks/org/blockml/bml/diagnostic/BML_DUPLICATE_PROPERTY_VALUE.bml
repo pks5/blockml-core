@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_DUPLICATE_PROPERTY_VALUE diagnostic
+<!--BlockML Core — BML_DUPLICATE_PROPERTY_VALUE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_PROPERTY_VALUE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_DUPLICATE_PROPERTY_VALUE-->
+<diag:BML_DUPLICATE_PROPERTY_VALUE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_DUPLICATE_PROPERTY_VALUE</name>
-  <type>diag:BML_DUPLICATE_PROPERTY_VALUE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A duplicate-property-value diagnostic</is>
-
-  <summary>Emitted when property value facets collide on the same annotation namespace.</summary>
-
-  <keywords>BML_DUPLICATE_PROPERTY_VALUE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A duplicate-property-value diagnostic
+  </is>
+  <summary>
+    Emitted when property value facets collide on the same annotation namespace.
+  </summary>
   <documentation>
     Emitted when property value facets collide on the same annotation namespace. Remedy: One
     value entry per namespace; facets multiply along Annotation namespaces.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_PROPERTY_VALUE" />
+  </keywords>
   <references>
     <see type="def:PropertyDefinition" relation="Defines">
       Property value facets.
@@ -37,5 +33,4 @@
       Annotation namespaces and value-facet rules.
     </see>
   </references>
-
-</block>
+</diag:BML_DUPLICATE_PROPERTY_VALUE>

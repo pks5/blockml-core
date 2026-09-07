@@ -1,78 +1,72 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.BlockAndInstance
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.BlockAndInstance-->
+<doc:BlockAndInstance xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation">
 
-  <name>BlockAndInstance</name>
-  <type>doc:BlockAndInstance</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to Block vs instance</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to Block vs instance
+  </is>
   <documentation>
     The closest familiar model: a Block is a declarative semantic Class; a Block Instance is an
     Object. This is a semantic analogy — not a mandate for runtime OOP. The compiler may represent
     definitions and instances as plain data; the parser nonetheless distinguishes block documents
     (classes) from composition children (objects).
-
+    
     Block (definition):
     • .bml file · BlockDefinition
     • Element tag is the type (root / embed) or the name (Sub-Block); legacy
-      &lt;block&gt; wrappers remain valid (doc:DocumentFormat)
+      &lt;block> wrappers remain valid (doc:DocumentFormat)
     • FQN · members · composition schema
     • Describes shape and behaviour
     • No runtime · no address
-
+    
     Block Instance (in composition):
     • Element such as ac:Wall with bml:id and member values
     • typeFqn + bml:id + member values
     • One concrete occurrence
     • May become a Thing in Runtime (WOT vocabulary)
-
+    
     Composition:
     • Aggregations hold Block Instances as children
     • Instance identity uses bml:id (not the type FQN)
     • Nested paths compose with :: (wall::bottom::inner)
     • bml:version pins external references to exact library versions
-
+    
     Instance serialization (authoring) — definition fields are not instance wrappers:
-    • On Block definitions — Property default uses the value field (&lt;value&gt; preferred);
-      Aggregation default uses &lt;composition&gt; nested inside the aggregation member
-    • On Block instances — NEVER wrap a Property in &lt;value&gt; and NEVER wrap Aggregation
-      children in &lt;composition&gt;. The Property is a Block attribute or the Property element's
-      direct content (myProperty="…" or &lt;myProperty&gt;…&lt;/myProperty&gt;). Aggregation children
+    • On Block definitions — Property default uses the value field (&lt;value> preferred);
+      Aggregation default uses &lt;composition> nested inside the aggregation member
+    • On Block instances — NEVER wrap a Property in &lt;value> and NEVER wrap Aggregation
+      children in &lt;composition>. The Property is a Block attribute or the Property element's
+      direct content (myProperty="…" or &lt;myProperty>…&lt;/myProperty>). Aggregation children
       sit directly inside the aggregation element (or bml:container for shared directives)
     • Exception: a member whose name is value (PrimitiveEntity, TypeReferenceEntity, …) uses
       value="…" as ordinary instance syntax for that member — not as a PropertyDefinition wrapper
     • readOnly effective members must not be authored on instances → BML_READONLY_MEMBER_WRITE
     • Empty child meaning depends on aggregation type (instance vs TypeReferenceEntity sugar) —
       doc:MemberAuthoring / doc:CompositionModel / doc:SubBlockModel
-
+    
     Context-dependent interpretation:
     • ValueTypes as type-classes for Property values and Capability input/output
     • Languages as meta-classes for implementation contracts
     • Sub-Blocks in the same .bml file as nested classes (derived types, inner scope)
     • Presets as named default bindings on a class
-
+    
     Relationships: Library contains Blocks; Block has Members, Presets, Compositions; Catalog
     contains top-level composite Blocks.
   </documentation>
-
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
       Type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:MemberAuthoring" relation="AuthoringGuide">
-      Definition vs instance member syntax — no &lt;value&gt; / &lt;composition&gt; wrappers on
+      Definition vs instance member syntax — no &lt;value> / &lt;composition> wrappers on
       instances.
     </see>
     <see type="doc:CompositionModel" relation="SeeAlso">
@@ -91,5 +85,4 @@
       Next reading step — how definitions describe types and support reflection.
     </see>
   </references>
-
-</block>
+</doc:BlockAndInstance>

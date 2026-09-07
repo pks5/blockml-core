@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_FUNCTION_MISSING_MAIN diagnostic
+<!--BlockML Core — BML_FUNCTION_MISSING_MAIN diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_FUNCTION_MISSING_MAIN
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_FUNCTION_MISSING_MAIN-->
+<diag:BML_FUNCTION_MISSING_MAIN xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_FUNCTION_MISSING_MAIN</name>
-  <type>diag:BML_FUNCTION_MISSING_MAIN</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-main-function diagnostic</is>
-
-  <summary>Emitted when an OpenSCAD utility implementation lacks a main function matching the Capability name.</summary>
-
-  <keywords>BML_FUNCTION_MISSING_MAIN</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-main-function diagnostic
+  </is>
+  <summary>
+    Emitted when an OpenSCAD utility implementation lacks a main function matching the Capability name.
+  </summary>
   <documentation>
     Emitted when an OpenSCAD utility implementation lacks a main function matching the Capability
-    name. Remedy: Add function &lt;capabilityName&gt;(...) as the main entry.
+    name. Remedy: Add function &lt;capabilityName>(...) as the main entry.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_FUNCTION_MISSING_MAIN" />
+  </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">
       utility Sub-Blocks.
     </see>
   </references>
-
-</block>
+</diag:BML_FUNCTION_MISSING_MAIN>

@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_FUNCTION_NO_RUNTIME_IMPL diagnostic
+<!--BlockML Core — BML_FUNCTION_NO_RUNTIME_IMPL diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_FUNCTION_NO_RUNTIME_IMPL
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_FUNCTION_NO_RUNTIME_IMPL-->
+<diag:BML_FUNCTION_NO_RUNTIME_IMPL xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,21 +9,23 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_FUNCTION_NO_RUNTIME_IMPL</name>
-  <type>diag:BML_FUNCTION_NO_RUNTIME_IMPL</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-runtime-implementation diagnostic</is>
-
-  <summary>Emitted when a Capability requires a runtime implementation that is not provided for the target.</summary>
-
-  <keywords>BML_FUNCTION_NO_RUNTIME_IMPL</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-runtime-implementation diagnostic
+  </is>
+  <summary>
+    Emitted when a Capability requires a runtime implementation that is not provided for the target.
+  </summary>
   <documentation>
     Emitted when a Capability requires a runtime implementation that is not provided for the
     target. Remedy: Supply an implementation language/body supported by the renderer, or mark
     appropriately.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_FUNCTION_NO_RUNTIME_IMPL" />
+  </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
       Implementations.
@@ -38,5 +34,4 @@
       utility implementations.
     </see>
   </references>
-
-</block>
+</diag:BML_FUNCTION_NO_RUNTIME_IMPL>

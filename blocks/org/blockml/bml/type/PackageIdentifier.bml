@@ -1,46 +1,40 @@
-<!--
-  BlockML Core — package name identifier value type (package string, syntax only)
+<!--BlockML Core — package name identifier value type (package string, syntax only)
 
-  FQN: org.blockml.bml.type.PackageIdentifier
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.PackageIdentifier-->
+<type:PackageIdentifier xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>PackageIdentifier</name>
-  <type>type:PackageIdentifier</type>
-  <baseType>type:Text</baseType>
-  <is>A Block package name</is>
-
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A Block package name
+  </is>
   <documentation>
     ValueType for package names — reverse-domain package strings without a type (class) segment.
     Unqualified name PackageIdentifier resolves to org.blockml.bml.type.PackageIdentifier. Syntax
     only — the named package need not be known in the corpus. PackageReference extends this type
     and adds existence. No generic parameters.
-
+    
     Package format (Java-style reverse-domain, dot-separated, all lowercase):
     • Package segments — lowercase (for example org.blockml.bml.core, com.machineblocks.bml.type)
     • No class segment — PascalCase type names belong on TypeIdentifier (org.blockml.bml.type.Integer
       is a type FQN, not a package)
     • Valid: org.blockml.bml.type · com.example.bml
     • Invalid as PackageIdentifier: org.blockml.bml.type.Integer · core:Block · Integer
-
+    
     Namespace prefixes in BML (core:, type:, def:, …) bind to packages; a prefix that targets a
     Package resolves to that package string (core → org.blockml.bml.core). A prefix that targets an
     Annotation is not a PackageIdentifier.
-
+    
     Primary use — planned or foreign package names. Documentation see package= uses
     PackageReference. Block type FQNs use TypeIdentifier / TypeReference. Instance pointers use
     InstanceIdentifier / InstanceReference. Member paths use the MemberIdentifier branch.
   </documentation>
-
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">
       Package vs Annotation xmlns targets and domain.bml.* layout.
@@ -55,22 +49,17 @@
       parseValue — reverse-domain package syntax, no class segment.
     </see>
   </references>
-
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Reverse-domain package string — lowercase dot-separated segments, no class segment,
         no xmlns prefix, no TypeExpression operators.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           if (!/^[a-z][a-z0-9]*(?:\.[a-z][a-z0-9]*)+$/.test(t)) {
@@ -78,7 +67,8 @@
           }
           return t;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-</block>
+</type:PackageIdentifier>

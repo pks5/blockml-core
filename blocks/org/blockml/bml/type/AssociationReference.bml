@@ -1,27 +1,23 @@
-<!--
-  BlockML Core — AssociationDefinition path reference
+<!--BlockML Core — AssociationDefinition path reference
 
-  FQN: org.blockml.bml.type.AssociationReference
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.AssociationReference-->
+<type:AssociationReference xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
-  <name>AssociationReference</name>
-  <type>type:AssociationReference</type>
-  <baseType>type:AssociationIdentifier</baseType>
-  <is>A path to an Association member</is>
-
-  <documentation>Existence-checked AssociationIdentifier. Value is a canonical association path
+  <baseType>
+    type:AssociationIdentifier
+  </baseType>
+  <is>
+    A path to an Association member
+  </is>
+  <documentation>
+    Existence-checked AssociationIdentifier. Value is a canonical association path
     (com.foo.Bar.associations.basePresets) or a local association name when paired with a type
     qualifier. The owning type and association must resolve. Used as the type of see association=.
-    A potential association that need not exist uses AssociationIdentifier.</documentation>
-
+    A potential association that need not exist uses AssociationIdentifier.
+  </documentation>
   <references>
     <see type="type:AssociationIdentifier" relation="SeeAlso">
       Parent ValueType — association-path syntax without existence.
@@ -33,10 +29,7 @@
       see association attribute.
     </see>
   </references>
-
   <genericTypes>
-    <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Owning Block branch. Defaults to core:Block.</documentation>
-    </B>
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
   </genericTypes>
-</block>
+</type:AssociationReference>

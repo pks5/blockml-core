@@ -1,34 +1,30 @@
-<!--
-  BlockML Core — BML_MISSING_EMBEDDED_BLOCK_TYPE diagnostic
+<!--BlockML Core — BML_MISSING_EMBEDDED_BLOCK_TYPE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_EMBEDDED_BLOCK_TYPE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_EMBEDDED_BLOCK_TYPE-->
+<diag:BML_MISSING_EMBEDDED_BLOCK_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MISSING_EMBEDDED_BLOCK_TYPE</name>
-  <type>diag:BML_MISSING_EMBEDDED_BLOCK_TYPE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing embedded-type diagnostic</is>
-
-  <summary>Emitted when an embedded Block supplies neither a type tag nor a type child.</summary>
-
-  <keywords>BML_MISSING_EMBEDDED_BLOCK_TYPE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing embedded-type diagnostic
+  </is>
+  <summary>
+    Emitted when an embedded Block supplies neither a type tag nor a type child.
+  </summary>
   <documentation>
     Type is required and fully qualified. Preferred authoring: the element tag is the type,
-    same as the document root. Legacy: child &lt;type&gt; under a &lt;block&gt; wrapper
+    same as the document root. Legacy: child &lt;type> under a &lt;block> wrapper
     (doc:DocumentFormat). FQN = resolve(type), not nested under the root.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_EMBEDDED_BLOCK_TYPE" />
+  </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
       Same tag-as-type authoring as the document root.
@@ -43,5 +39,4 @@
       Add fully qualified embedded type.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_EMBEDDED_BLOCK_TYPE>

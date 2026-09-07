@@ -1,37 +1,33 @@
-<!--
-  BlockML Core — BML_MISSING_SUBBLOCK_NAME diagnostic
+<!--BlockML Core — BML_MISSING_SUBBLOCK_NAME diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_SUBBLOCK_NAME
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_SUBBLOCK_NAME-->
+<diag:BML_MISSING_SUBBLOCK_NAME xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MISSING_SUBBLOCK_NAME</name>
-  <type>diag:BML_MISSING_SUBBLOCK_NAME</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing Sub-Block-name diagnostic</is>
-
-  <summary>Emitted when a Sub-Block supplies neither a name element tag nor a name child.</summary>
-
-  <keywords>BML_MISSING_SUBBLOCK_NAME</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing Sub-Block-name diagnostic
+  </is>
+  <summary>
+    Emitted when a Sub-Block supplies neither a name element tag nor a name child.
+  </summary>
   <documentation>
     Name is required as local identity. Preferred authoring: the element local name under
-    &lt;subBlocks&gt; is the Sub-Block name. Legacy: child &lt;name&gt; under a &lt;block&gt;
+    &lt;subBlocks> is the Sub-Block name. Legacy: child &lt;name> under a &lt;block>
     wrapper (doc:DocumentFormat). Type is normally derived.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_SUBBLOCK_NAME" />
+  </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">
-      Unqualified name tag under &lt;subBlocks&gt;.
+      Unqualified name tag under &lt;subBlocks>.
     </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Sub-Block identity.
@@ -43,5 +39,4 @@
       Add Sub-Block name.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_SUBBLOCK_NAME>

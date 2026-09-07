@@ -1,33 +1,29 @@
-<!--
-  BlockML Core — BML_MIXED_TYPE_CONFIGURATION diagnostic
+<!--BlockML Core — BML_MIXED_TYPE_CONFIGURATION diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MIXED_TYPE_CONFIGURATION
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MIXED_TYPE_CONFIGURATION-->
+<diag:BML_MIXED_TYPE_CONFIGURATION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MIXED_TYPE_CONFIGURATION</name>
-  <type>diag:BML_MIXED_TYPE_CONFIGURATION</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A mixed type-configuration diagnostic</is>
-
-  <summary>Emitted when named and positional ValueType instance configuration are mixed in one {...} block.</summary>
-
-  <keywords>BML_MIXED_TYPE_CONFIGURATION</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A mixed type-configuration diagnostic
+  </is>
+  <summary>
+    Emitted when named and positional ValueType instance configuration are mixed in one {...} block.
+  </summary>
   <documentation>
     Emitted when named and positional ValueType instance configuration are mixed in one {...}
     block. Remedy: Use either named key: value pairs or positional values by property declaration
     order — not both.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MIXED_TYPE_CONFIGURATION" />
+  </keywords>
   <references>
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">
       Named vs positional configuration.
@@ -36,5 +32,4 @@
       Shared declaration-order principle.
     </see>
   </references>
-
-</block>
+</diag:BML_MIXED_TYPE_CONFIGURATION>

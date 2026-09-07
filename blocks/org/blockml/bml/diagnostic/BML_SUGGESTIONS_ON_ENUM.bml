@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_SUGGESTIONS_ON_ENUM diagnostic
+<!--BlockML Core — BML_SUGGESTIONS_ON_ENUM diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_SUGGESTIONS_ON_ENUM
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_SUGGESTIONS_ON_ENUM-->
+<diag:BML_SUGGESTIONS_ON_ENUM xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_SUGGESTIONS_ON_ENUM</name>
-  <type>diag:BML_SUGGESTIONS_ON_ENUM</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A suggestions-on-enum diagnostic</is>
-
-  <summary>Emitted when &lt;suggestions&gt; appears on an EnumType-typed property.</summary>
-
-  <keywords>BML_SUGGESTIONS_ON_ENUM</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A suggestions-on-enum diagnostic
+  </is>
+  <summary>
+    Emitted when &lt;suggestions> appears on an EnumType-typed property.
+  </summary>
   <documentation>
-    Emitted when &lt;suggestions&gt; appears on an EnumType-typed property. Remedy: Enum values
+    Emitted when &lt;suggestions> appears on an EnumType-typed property. Remedy: Enum values
     come from the EnumType values aggregation — remove suggestions.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_SUGGESTIONS_ON_ENUM" />
+  </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">
       Suggestions rules.
@@ -37,5 +33,4 @@
       suggestions aggregation.
     </see>
   </references>
-
-</block>
+</diag:BML_SUGGESTIONS_ON_ENUM>

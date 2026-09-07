@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — add constraint task
+<!--BlockML Core — add constraint task
 
-  FQN: org.blockml.bml.task.AddConstraint
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.task.AddConstraint-->
+<task:AddConstraint xmlns="http://blockml.org/bml"
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
@@ -15,17 +9,17 @@
   xmlns:relation="org.blockml.bml.relation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>AddConstraint</name>
-  <type>task:AddConstraint</type>
-  <baseType>core:TaskGuide</baseType>
-  <is>A how-to for attaching Constraints</is>
-
-  <summary>Declare a constraints container on a ConstrainableDefinition element and add a Constraint
+  <baseType>
+    core:TaskGuide
+  </baseType>
+  <is>
+    A how-to for attaching Constraints
+  </is>
+  <summary>
+    Declare a constraints container on a ConstrainableDefinition element and add a Constraint
     reference as a direct child. The embedding context binds the constraint target automatically —
-    no target property in BML.</summary>
-
-  <keywords>constraint, validation, Min, Max, Pattern, member constraint</keywords>
-
+    no target property in BML.
+  </summary>
   <documentation>
     Procedure for adding a constraint:
     1. Confirm the definition element extends ConstrainableDefinition (Block or member).
@@ -34,7 +28,14 @@
     4. Optionally attach a validation reference on the constraint instance for rule enforcement.
     5. Run the validator — BML_CONSTRAINT_TARGET_MISMATCH when branch compatibility fails.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="constraint" />
+    <org.blockml.bml.meta.FreeTextKeyword term="validation" />
+    <org.blockml.bml.meta.FreeTextKeyword term="Min" />
+    <org.blockml.bml.meta.FreeTextKeyword term="Max" />
+    <org.blockml.bml.meta.FreeTextKeyword term="Pattern" />
+    <org.blockml.bml.meta.FreeTextKeyword term="member constraint" />
+  </keywords>
   <references>
     <see type="doc:DefinitionModel" relation="Prerequisite">
       Understand member containers and definition metadata first.
@@ -52,5 +53,4 @@
       Step 4 — optionally wire validation for enforced rules.
     </see>
   </references>
-
-</block>
+</task:AddConstraint>

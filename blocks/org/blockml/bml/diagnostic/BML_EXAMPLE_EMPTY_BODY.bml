@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_EXAMPLE_EMPTY_BODY diagnostic
+<!--BlockML Core — BML_EXAMPLE_EMPTY_BODY diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_EXAMPLE_EMPTY_BODY
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_EXAMPLE_EMPTY_BODY-->
+<diag:BML_EXAMPLE_EMPTY_BODY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_EXAMPLE_EMPTY_BODY</name>
-  <type>diag:BML_EXAMPLE_EMPTY_BODY</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An empty-example diagnostic</is>
-
-  <summary>Emitted when an example entry has an empty body.</summary>
-
-  <keywords>BML_EXAMPLE_EMPTY_BODY</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An empty-example diagnostic
+  </is>
+  <summary>
+    Emitted when an example entry has an empty body.
+  </summary>
   <documentation>
     Emitted when an example entry has an empty body. Remedy: Provide CDATA/text content for the
     example.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXAMPLE_EMPTY_BODY" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       examples.
     </see>
   </references>
-
-</block>
+</diag:BML_EXAMPLE_EMPTY_BODY>

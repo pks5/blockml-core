@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_VALIDATION_UNKNOWN diagnostic
+<!--BlockML Core — BML_VALIDATION_UNKNOWN diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_VALIDATION_UNKNOWN
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_VALIDATION_UNKNOWN-->
+<diag:BML_VALIDATION_UNKNOWN xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_VALIDATION_UNKNOWN</name>
-  <type>diag:BML_VALIDATION_UNKNOWN</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-validation diagnostic</is>
-
-  <summary>Emitted when constraint validation= does not resolve to a Validation block.</summary>
-
-  <keywords>BML_VALIDATION_UNKNOWN</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-validation diagnostic
+  </is>
+  <summary>
+    Emitted when constraint validation= does not resolve to a Validation block.
+  </summary>
   <documentation>
     Emitted when constraint validation= does not resolve to a Validation block. Remedy: Use Error,
     Warning, or Information.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_VALIDATION_UNKNOWN" />
+  </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">
       Validation property.
@@ -37,5 +33,4 @@
       validation implicit NS.
     </see>
   </references>
-
-</block>
+</diag:BML_VALIDATION_UNKNOWN>

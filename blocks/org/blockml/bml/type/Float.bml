@@ -1,8 +1,4 @@
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+<type:Float xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
@@ -10,37 +6,38 @@
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit">
 
-  <name>Float</name>
-  <type>type:Float</type>
-  <baseType>type:Number(N)</baseType>
-  <is>A binary floating-point number</is>
-
-  <documentation>BOM Core primitive ValueType for binary floating-point numbers. Not the default
+  <baseType>
+    type:Number(N)
+  </baseType>
+  <is>
+    A binary floating-point number
+  </is>
+  <documentation>
+    BOM Core primitive ValueType for binary floating-point numbers. Not the default
     floating-point type — use Decimal unless binary IEEE754 semantics are explicitly required
     (GPU, OpenGL, native C APIs, binary protocols). Unqualified name Float resolves to
     org.blockml.bml.type.Float. Extends org.blockml.bml.type.Number. Values are stored in Properties.
-
+    
     Generic parameter N (Unit, default unit:None) is forwarded from Number — e.g.
     Float(unit:Millimeter). Bare Float is dimensionless.
-
+    
     parseValue accepts a binary-floating literal (same lexical form as Number, including
-    exponent). NaN and infinities are rejected (doc:ValueTypeParsing).</documentation>
-
+    exponent). NaN and infinities are rejected (doc:ValueTypeParsing).
+  </documentation>
+  <genericTypes>
+    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None" />
+  </genericTypes>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Binary floating-point literal — optional sign, digits, optional fraction and exponent.
         Rejects NaN and infinities.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): number => {
           const t = raw.trim();
           if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(t)) {
@@ -52,11 +49,8 @@
           }
           return n;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-  <genericTypes>
-    <N baseType="core:Unit" defaultType="unit:None"/>
-  </genericTypes>
-</block>
+</type:Float>

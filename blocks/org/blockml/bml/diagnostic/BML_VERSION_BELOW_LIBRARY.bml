@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_VERSION_BELOW_LIBRARY diagnostic
+<!--BlockML Core — BML_VERSION_BELOW_LIBRARY diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_VERSION_BELOW_LIBRARY
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_VERSION_BELOW_LIBRARY-->
+<diag:BML_VERSION_BELOW_LIBRARY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_VERSION_BELOW_LIBRARY</name>
-  <type>diag:BML_VERSION_BELOW_LIBRARY</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A version-below-library diagnostic</is>
-
-  <summary>Emitted when a Block version is below its exporting library.version policy.</summary>
-
-  <keywords>BML_VERSION_BELOW_LIBRARY</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A version-below-library diagnostic
+  </is>
+  <summary>
+    Emitted when a Block version is below its exporting library.version policy.
+  </summary>
   <documentation>
     Emitted when a Block version is below its exporting library.version policy. Remedy: Raise
     the Block version or align with library versioning conventions.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_VERSION_BELOW_LIBRARY" />
+  </keywords>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">
       Version resolution.
     </see>
   </references>
-
-</block>
+</diag:BML_VERSION_BELOW_LIBRARY>

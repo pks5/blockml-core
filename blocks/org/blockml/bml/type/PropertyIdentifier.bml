@@ -1,29 +1,24 @@
-<!--
-  BlockML Core — PropertyDefinition path identifier (syntax only)
+<!--BlockML Core — PropertyDefinition path identifier (syntax only)
 
-  FQN: org.blockml.bml.type.PropertyIdentifier
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.PropertyIdentifier-->
+<type:PropertyIdentifier xmlns="http://blockml.org/bml"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
-  <name>PropertyIdentifier</name>
-  <type>type:PropertyIdentifier</type>
-  <baseType>type:MemberIdentifier(def:PropertyDefinition)</baseType>
-  <is>A Property member path</is>
-
-  <documentation>Concrete MemberIdentifier binding D = PropertyDefinition. Value is a canonical
+  <baseType>
+    type:MemberIdentifier(def:PropertyDefinition)
+  </baseType>
+  <is>
+    A Property member path
+  </is>
+  <documentation>
+    Concrete MemberIdentifier binding D = PropertyDefinition. Value is a canonical
     property path (com.foo.Bar.properties.width) or a local property name when paired with a Block
     qualifier. Syntax only — the owning type and property need not exist. PropertyReference extends
     this type and adds existence. Use when addressing a potential property (planned, generated, or
     foreign). see property= uses PropertyReference. PropertyReference(B) introduces the owning
     Block bound after resolution.
   </documentation>
-
   <references>
     <see type="type:MemberIdentifier" relation="SeeAlso">
       Abstract member path Identifier.
@@ -35,4 +30,4 @@
       Target member meta-model type.
     </see>
   </references>
-</block>
+</type:PropertyIdentifier>

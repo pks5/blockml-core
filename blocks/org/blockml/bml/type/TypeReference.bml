@@ -1,58 +1,53 @@
-<!--
-  BlockML Core — type reference value type (FQN / TypeExpression text)
+<!--BlockML Core — type reference value type (FQN / TypeExpression text)
 
   FQN: org.blockml.bml.type.TypeReference
   See docs/01_bom_core.md — Object Identity · FQN Convention
        docs/00_system.md — FQN (Fully Qualified Name)
        docs/17_type_system_bml.md — Generics · BML attribute syntax
        docs/16_framework_base_types.md — Definition Branch · StructuralDefinition
-       docs/02_mbml.md — Namespace resolution · Block Definition
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+       docs/02_mbml.md — Namespace resolution · Block Definition-->
+<type:TypeReference xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
-  <name>TypeReference</name>
-  <type>type:TypeReference</type>
-  <baseType>type:TypeIdentifier</baseType>
-  <is>A Block type name reference</is>
-
+  <baseType>
+    type:TypeIdentifier
+  </baseType>
+  <is>
+    A Block type name reference
+  </is>
   <documentation>
     ValueType for type references — fully qualified names (FQNs) and TypeExpressions that name a
     Block and must exist in the TypeRegistry. Extends TypeIdentifier (syntax) with existence and
     the branch bound B. Unqualified name TypeReference resolves to org.blockml.bml.type.TypeReference.
     Formerly FullyQualifiedName; the FQN string format is unchanged.
-
+    
     FQN format (Java-style reverse-domain, dot-separated):
     • Package segments — lowercase, reverse-domain (for example org.blockml.bml.core,
       com.machineblocks.bml.type)
     • Class segment — PascalCase (for example Block, Integer, Wall)
-    • Full form — &lt;package&gt;.&lt;ClassName&gt; (for example org.blockml.bml.type.Integer,
+    • Full form — &lt;package>.&lt;ClassName> (for example org.blockml.bml.type.Integer,
       com.machineblocks.bml.core.Block)
     Sub-Block FQNs derive as parentFqn + "." + name when omitted in source.
-
+    
     Namespace prefixes in BML (core:, type:, def:, …) map to package segments; the Namespace
     Resolver stores the resolved FQN string in BOM typeFqn fields. Ill-formed syntax is rejected
     by inherited TypeIdentifier.parseValue. Unknown FQN at validate time → BML_UNKNOWN_TYPE —
     existence is not part of parseValue (doc:ValueTypeParsing). A type name that need not exist
     uses TypeIdentifier — not TypeReference.
-
+    
     Generic parameter:
     • B (baseType core:Block) — Block branch constraint for the referenced type
-
+    
     In type="..." attributes, write generic applications with round parentheses — not angle
     brackets (XML-safe, readable):
     • TypeReference(core:Block) → B = core.Block
     • TypeReference(core:Language) → B = core.Language
-
+    
     Concrete type arguments must satisfy B's baseType constraint → BML_GENERIC_CONSTRAINT_VIOLATION.
-
+    
     Any field whose declared type is TypeReference must resolve, regardless of the field name
     (type=, baseType=, abc=, …). The validator does not special-case XML sites. Identity
     `type` on BlockDefinition is declared as TypeIdentifier — that is why it is not
@@ -60,13 +55,12 @@
     reference must appear as an Entity in composition or aggregation, use
     org.blockml.bml.type.TypeReferenceEntity. Unresolved → BML_UNKNOWN_TYPE: an error, not
     proof the document is ill-formed (missing library vs typo).
-
+    
     Instance pointers (bml:id / FQN::id) use org.blockml.bml.type.InstanceReference — not
     TypeReference. Package strings without a class segment use org.blockml.bml.type.PackageReference
     — not TypeReference. Member definition paths (property, aggregation, association, capability)
     use the org.blockml.bml.type.MemberIdentifier branch — not TypeReference.
   </documentation>
-
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">
       Generics and TypeReference syntax.
@@ -105,11 +99,7 @@
       Entity wrapper for TypeReference values in composition or aggregation.
     </see>
   </references>
-
   <genericTypes>
-    <B baseType="core:Block">
-      <documentation>Block branch constraint for the referenced type. Concrete arguments must
-        satisfy satisfiesTypeBound(resolve(value), B).</documentation>
-    </B>
+    <B baseType="core:Block" />
   </genericTypes>
-</block>
+</type:TypeReference>

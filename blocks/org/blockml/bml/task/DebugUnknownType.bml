@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — debug unknown type task
+<!--BlockML Core — debug unknown type task
 
-  FQN: org.blockml.bml.task.DebugUnknownType
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.task.DebugUnknownType-->
+<task:DebugUnknownType xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,16 +9,16 @@
   xmlns:relation="org.blockml.bml.relation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>DebugUnknownType</name>
-  <type>task:DebugUnknownType</type>
-  <baseType>core:TaskGuide</baseType>
-  <is>A how-to for fixing unknown types</is>
-
-  <summary>Verify FQN spelling, xmlns prefix resolution, Library blocks membership, and bootstrap
-    load order so the referenced type is registered in TypeRegistry before validation.</summary>
-
-  <keywords>BML_UNKNOWN_TYPE, unknown type, unresolved FQN, TypeRegistry, bootstrap</keywords>
-
+  <baseType>
+    core:TaskGuide
+  </baseType>
+  <is>
+    A how-to for fixing unknown types
+  </is>
+  <summary>
+    Verify FQN spelling, xmlns prefix resolution, Library blocks membership, and bootstrap
+    load order so the referenced type is registered in TypeRegistry before validation.
+  </summary>
   <documentation>
     Procedure when the validator reports BML_UNKNOWN_TYPE:
     1. Locate the field whose declared type is TypeReference or TypeReferenceEntity (or a
@@ -36,7 +30,13 @@
     4. Confirm the defining block is listed in Library blocks when loaded via a library.
     5. Verify dependency libraries and bootstrap order load the defining catalogue first.
   </documentation>
-
+  <keywords>
+    <blockml:meta.FreeTextKeyword term="BML_UNKNOWN_TYPE" />
+    <blockml:meta.FreeTextKeyword term="unknown type" />
+    <blockml:meta.FreeTextKeyword term="unresolved FQN" />
+    <blockml:meta.FreeTextKeyword term="TypeRegistry" />
+    <blockml:meta.FreeTextKeyword term="bootstrap" />
+  </keywords>
   <references>
     <see type="diag:BML_UNKNOWN_TYPE" relation="SeeAlso">
       Diagnostic block for this error code — entry point from validator output.
@@ -57,5 +57,4 @@
       Related — identity mismatches when the type exists but the form is wrong.
     </see>
   </references>
-
-</block>
+</task:DebugUnknownType>

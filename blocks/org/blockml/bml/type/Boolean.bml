@@ -1,82 +1,79 @@
-<!--
-  BlockML Core — boolean primitive
+<!--BlockML Core — boolean primitive
 
-  FQN: org.blockml.bml.type.Boolean
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.Boolean-->
+<type:Boolean xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Boolean</name>
-  <type>type:Boolean</type>
-  <baseType>type:PrimitiveType</baseType>
-  <is>A true-or-false value</is>
-
-  <documentation>BOM Core primitive ValueType for true/false values. Unqualified name Boolean
+  <baseType>
+    type:PrimitiveType
+  </baseType>
+  <is>
+    A true-or-false value
+  </is>
+  <documentation>
+    BOM Core primitive ValueType for true/false values. Unqualified name Boolean
     resolves to org.blockml.bml.type.Boolean. Boolean is neither textual nor numeric — its own
     primitive branch. Values are stored in Properties — not on the Boolean type itself.
-
+    
     Authoring accepts case variants of the literals: true / True / TRUE and false / False / FALSE.
     Preferred form is lowercase true and false. The BOM always stores the canonical boolean
     (lowercase true or false) — never the authored casing.
-
+    
     Sub-Blocks True and False are Constant(Boolean) singletons — use type:Boolean.True /
     type:Boolean.False (or Boolean.True / Boolean.False) as named alternatives to
-    Constant(Boolean){true} / Constant(Boolean){false} in type expressions.</documentation>
-
+    Constant(Boolean){true} / Constant(Boolean){false} in type expressions.
+  </documentation>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Accepts true / True / TRUE and false / False / FALSE. Returns the canonical boolean
         (lowercase true or false as the host boolean).
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): boolean => {
           const t = raw.trim();
           if (/^true$/i.test(t)) return true;
           if (/^false$/i.test(t)) return false;
           throw new Error("not a boolean: " + raw);
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
   <subBlocks>
-    <block>
-
-      <name>True</name>
-      <baseType>type:Constant(Boolean){true}</baseType>
-      <is>The boolean constant true</is>
-
-      <documentation>Singleton Constant for the literal true.
+    <True>
+      <baseType>
+        type:Constant(type:Boolean){ true }
+      </baseType>
+      <is>
+        The boolean constant true
+      </is>
+      <documentation>
+        Singleton Constant for the literal true.
         FQN: org.blockml.bml.type.Boolean.True.
-        Equivalent to Constant(Boolean){true} / Constant(Boolean){value: true}.</documentation>
-    </block>
-    <block>
-
-      <name>False</name>
-      <baseType>type:Constant(Boolean){false}</baseType>
-      <is>The boolean constant false</is>
-
-      <documentation>Singleton Constant for the literal false.
+        Equivalent to Constant(Boolean){true} / Constant(Boolean){value: true}.
+      </documentation>
+    </True>
+    <False>
+      <baseType>
+        type:Constant(type:Boolean){ false }
+      </baseType>
+      <is>
+        The boolean constant false
+      </is>
+      <documentation>
+        Singleton Constant for the literal false.
         FQN: org.blockml.bml.type.Boolean.False.
-        Equivalent to Constant(Boolean){false} / Constant(Boolean){value: false}.</documentation>
-    </block>
+        Equivalent to Constant(Boolean){false} / Constant(Boolean){value: false}.
+      </documentation>
+    </False>
   </subBlocks>
-
-</block>
+</type:Boolean>

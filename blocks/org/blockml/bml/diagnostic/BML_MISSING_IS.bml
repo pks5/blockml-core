@@ -1,37 +1,32 @@
-<!--
-  BlockML Core — BML_MISSING_IS diagnostic
+<!--BlockML Core — BML_MISSING_IS diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_IS
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_IS-->
+<diag:BML_MISSING_IS xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MISSING_IS</name>
-  <type>diag:BML_MISSING_IS</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-is diagnostic</is>
-
-  <summary>Emitted when a Block definition omits the required is Urbild designation.</summary>
-
-  <keywords>BML_MISSING_IS</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-is diagnostic
+  </is>
+  <summary>
+    Emitted when a Block definition omits the required is Urbild designation.
+  </summary>
   <documentation>
     Emitted when a Block definition omits the required is Urbild designation. Remedy: is is always
     required after identity fields — a clear noun phrase for what the Block semantically represents.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_IS" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       Definition identity first — then is.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_IS>

@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_MISSING_AGGREGATION_TYPE diagnostic
+<!--BlockML Core — BML_MISSING_AGGREGATION_TYPE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_AGGREGATION_TYPE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_AGGREGATION_TYPE-->
+<diag:BML_MISSING_AGGREGATION_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_MISSING_AGGREGATION_TYPE</name>
-  <type>diag:BML_MISSING_AGGREGATION_TYPE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-aggregation-type diagnostic</is>
-
-  <summary>Emitted when a new aggregation declaration omits required type.</summary>
-
-  <keywords>BML_MISSING_AGGREGATION_TYPE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-aggregation-type diagnostic
+  </is>
+  <summary>
+    Emitted when a new aggregation declaration omits required type.
+  </summary>
   <documentation>
     Emitted when a new aggregation declaration omits required type. Remedy: Provide type on new
     aggregations; inherited overrides may omit unchanged type.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_AGGREGATION_TYPE" />
+  </keywords>
   <references>
     <see type="doc:CompositionModel" relation="AuthoringGuide">
       Aggregation declarations.
@@ -37,5 +33,4 @@
       Omit unchanged type.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_AGGREGATION_TYPE>

@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_EXPR_LINK_INVALID_TARGET diagnostic
+<!--BlockML Core — BML_EXPR_LINK_INVALID_TARGET diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_EXPR_LINK_INVALID_TARGET
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_EXPR_LINK_INVALID_TARGET-->
+<diag:BML_EXPR_LINK_INVALID_TARGET xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_EXPR_LINK_INVALID_TARGET</name>
-  <type>diag:BML_EXPR_LINK_INVALID_TARGET</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An invalid capability-link target diagnostic</is>
-
-  <summary>Emitted when capability linking targets a Capability that is not Inbound.</summary>
-
-  <keywords>BML_EXPR_LINK_INVALID_TARGET</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An invalid capability-link target diagnostic
+  </is>
+  <summary>
+    Emitted when capability linking targets a Capability that is not Inbound.
+  </summary>
   <documentation>
     Emitted when capability linking targets a Capability that is not Inbound. Remedy: Link targets
     must be Inbound (or compatible Transformation pairing rules).
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_LINK_INVALID_TARGET" />
+  </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
       Inbound capabilities.
@@ -35,5 +31,4 @@
       Link to an Inbound target.
     </see>
   </references>
-
-</block>
+</diag:BML_EXPR_LINK_INVALID_TARGET>

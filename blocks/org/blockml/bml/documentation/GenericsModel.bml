@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.GenericsModel
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.GenericsModel-->
+<doc:GenericsModel xmlns="http://blockml.org/bml"
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
@@ -15,11 +9,12 @@
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
-  <name>GenericsModel</name>
-  <type>doc:GenericsModel</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to generics</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to generics
+  </is>
   <documentation>
     Generic parameters belong exclusively to the Block that declares them — never inherited
     implicitly. When a generic Block is used as baseType, the derived Block must account for every
@@ -29,15 +24,15 @@
     inherited definition. Validator checks: every base parameter accounted for, argument count
     matches, each bound argument satisfies the parameter baseType (satisfiesTypeBound), forwarded
     parameters are declared locally.
-
+    
     Type-level binding uses baseType application: a derived Block must bind or forward every base
     parameter (PrimitiveEntity(T) → IntegerEntity with baseType PrimitiveEntity(Integer), etc.).
     Instance-level binding uses bml:generics. A type whose genericTypes remain open after inheritance
     cannot appear as an aggregation child unless bml:generics binds those parameters. Abstract
     Blocks remain uninstantiable even with bml:generics.
-
-    Declaration — on the Block via &lt;genericTypes&gt; (meta-model GenericTypeDefinition). Parameter
-    name = XML element local name (&lt;T baseType="…"/&gt;). Optional defaultType when an application
+    
+    Declaration — on the Block via &lt;genericTypes> (meta-model GenericTypeDefinition). Parameter
+    name = XML element local name (&lt;T baseType="…"/>). Optional defaultType when an application
     omits the argument:
     1. Concrete TypeExpression (e.g. type:Decimal)
     2. Earlier sibling parameter name only (declaration-order DAG; no forward refs/cycles)
@@ -45,43 +40,42 @@
     parameter must ground to a concrete TypeExpression → each binding satisfies baseType.
     Diagnostics: BML_GENERIC_DEFAULT_FORWARD_REF, BML_GENERIC_DEFAULT_CYCLE,
     BML_GENERIC_DEFAULT_UNRESOLVED, BML_GENERIC_CONSTRAINT_VIOLATION.
-
+    
     BML attribute syntax — round parentheses: Box(Integer), TypeReference(core:Block),
     InstanceReference(core:Block), SelectiveGrid(Boolean | type:HoleType). Each (…) argument is a
     TypeExpression. With multiple parameters, labels match generic parameter names. At validate
     time placeholders (T) are substituted; mismatch → BML_GENERIC_CONSTRAINT_VIOLATION.
-
+    
     Instance syntax — bml:generics on the Block instance (attribute or child element). The value is
     only the parenthesized argument list; the type name is the instance tag. Parentheses are
     required. Same TypeExpression grammar as baseType arguments. Authored args win; remaining
     parameters take defaultType in declaration order. After resolution every parameter must be
-    concrete. Incorrect: &lt;MyBlock someProp="Value"/&gt; when MyBlock still has open T. Correct:
-    &lt;MyBlock bml:generics="(type:Integer)"/&gt; or
-    &lt;TestBlock&gt;&lt;bml:generics&gt;(type:String, myns:MyBlock)&lt;/bml:generics&gt;&lt;/TestBlock&gt;.
+    concrete. Incorrect: &lt;MyBlock someProp="Value"/> when MyBlock still has open T. Correct:
+    &lt;MyBlock bml:generics="(type:Integer)"/> or
+    &lt;TestBlock>&lt;bml:generics>(type:String, myns:MyBlock)&lt;/bml:generics>&lt;/TestBlock>.
     Open generic aggregated without the directive → BML_OPEN_GENERIC_INSTANCE. bml:generics
     anywhere other than a Block instance → BML_GENERICS_DIRECTIVE_NOT_ALLOWED. Argument list
     incompatible with the instance's open genericTypes → BML_GENERICS_ARGUMENT_MISMATCH. Missing
     required argument with no defaultType → BML_MISSING_GENERIC_TYPE_ARGUMENT. Ill-formed
     TypeExpression → BML_INVALID_TYPE_REFERENCE.
-
+    
     Orthogonal to {…} ValueType instance configuration (doc:ValueTypeConfiguration) and to
     multiplicity brackets (doc:TypeExpressions).
-
+    
     Sub-Blocks / embeds may declare own genericTypes (Java static nested class model) — they do not
     see enclosing generics; forward explicitly (Item(T)). Name collisions on the same declaring
     Block with Block name or direct Sub-Block → BML_GENERIC_BLOCK_NAME_COLLISION /
     BML_GENERIC_SUBBLOCK_NAME_COLLISION.
-
+    
     Constraint generics — Constraint branches declare genericTypes but arguments are never authored;
-    the compiler binds T from the &lt;constraints&gt; embedding context (Property → ValueType,
+    the compiler binds T from the &lt;constraints> embedding context (Property → ValueType,
     Aggregation → AggregationDefinition, Block → BlockDefinition, …). Branch ↔ context mismatch →
     BML_CONSTRAINT_TARGET_MISMATCH. Validation property (Error/Warning/Information) controls
     enforcement; omitted → metadata only.
   </documentation>
-
   <references>
     <see type="def:GenericTypeDefinition" relation="Defines">
-      Meta-model for one &lt;genericTypes&gt; parameter entry.
+      Meta-model for one &lt;genericTypes> parameter entry.
     </see>
     <see type="def:BlockDefinition" relation="Defines">
       genericTypes aggregation on block documents.
@@ -117,5 +111,4 @@
       bml:generics does not match open genericTypes.
     </see>
   </references>
-
-</block>
+</doc:GenericsModel>

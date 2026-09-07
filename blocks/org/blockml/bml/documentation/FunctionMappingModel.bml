@@ -1,43 +1,38 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.FunctionMappingModel
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.FunctionMappingModel-->
+<doc:FunctionMappingModel xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:mapping="org.blockml.bml.mapping">
 
-  <name>FunctionMappingModel</name>
-  <type>doc:FunctionMappingModel</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to FunctionMapping</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to FunctionMapping
+  </is>
   <documentation>
     FunctionMapping translates between function-parameter lists and Capability inputType /
     outputType. Concrete Mapping: org.blockml.bml.mapping.FunctionMapping.
-
+    
     Two application sites (opposite directions):
     1. Expression calls — function syntax → FunctionMapping → Capability inputType
     2. Capability implementation — inputType → FunctionMapping → target-language parameters
        (and reverse for returns)
-
+    
     Capabilities have no separate parameter list — only inputType / outputType. FunctionMapping
     matters when a Capability is invoked as a function (built-ins, utility Sub-Blocks, expression
     calls). Messaging transport ignores struct shape. Declared exception types live on
     CapabilityDefinition.throws (type:TypeReferenceEntity(core:Exception)[]) and are not part of
     FunctionMapping.
-
+    
     Host-language return types in an implementation body (TypeScript number, string, boolean) are
     FunctionMapping / host encodings of the BML outputType — not a second type system.
     PrimitiveType.parseValue has outputType bml:Self; a TypeScript number for Integer is mapping,
     not the Capability signature (doc:ValueTypeParsing).
-
+    
     inputType shapes:
     • Primitive → single positional or named argument
     • Named StructType / anonymous struct { a: Float, b: Float } → arity = field count; names =
@@ -48,18 +43,18 @@
     unions, and nested anonymous structs included ({ list: core:ValueType[], index: Integer }). Arity
     and named keys come from the field list; the field types themselves do not change the mapping
     (doc:TypeExpressions — Anonymous StructTypes).
-
+    
     Nested collection inputType — for a grouped, nested multiplicity such as (core:ValueType[])[]
     (doc:TypeExpressions — Nested multiplicities) the collection rule above applies to the outermost
     collection. A positional/variadic function representation may therefore map each function
     argument to one element of the outer collection:
-
+    
       inputType="(core:ValueType[])[]"
       #lists.concat([1, 2], [3, 4], ["a"])  →  [[1, 2], [3, 4], ["a"]]
-
+    
     The inner collections stay ordinary typed values and are validated recursively against
     core:ValueType[] — nesting changes the shape of the logical input value, not the mapping rules.
-
+    
     Canonical call forms normalize to the same logical input value (positional, named name=expr,
     or object literal). Default FunctionMapping (when no explicit mapping is declared):
     • Positional-only — arg i → field i in declaration order
@@ -68,19 +63,18 @@
     • Too few / too many / unknown / duplicate → BML_MISSING_FUNCTION_PARAMETER,
       BML_TOO_MANY_FUNCTION_PARAMETERS, BML_UNKNOWN_FUNCTION_PARAMETER,
       BML_DUPLICATE_FUNCTION_PARAMETER
-
+    
     Declaration order — same contract as StructType positional literals and ValueType instance
     configuration {…} positional args (doc:ValueTypeConfiguration). Member access in expressions
     remains by name (point.x) — not numeric index on StructTypes.
-
+    
     Custom FunctionMapping on an implementation may reorder/rename parameters or reject forms.
     Required custom mapping absent → BML_MISSING_FUNCTION_MAPPING (reserved until custom mappings
     ship). Ambiguous custom mapping → BML_AMBIGUOUS_FUNCTION_MAPPING.
-
+    
     Default mapping properties on mapping:FunctionMapping: supportsPositional=true,
     supportsNamed=true, supportsMixed=false.
   </documentation>
-
   <references>
     <see type="mapping:FunctionMapping" relation="Defines">
       Default function-parameter mapping block and flags.
@@ -107,5 +101,4 @@
       Mixed positional and named arguments.
     </see>
   </references>
-
-</block>
+</doc:FunctionMappingModel>

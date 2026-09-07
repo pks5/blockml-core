@@ -1,26 +1,22 @@
-<!--
-  BlockML Core — Java implementation language
+<!--BlockML Core — Java implementation language
 
-  FQN: org.blockml.bml.language.Java
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.language.Java-->
+<lang:Java xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>Java</name>
-  <type>lang:Java</type>
-  <baseType>lang:ProgrammingLanguage(L)</baseType>
-  <is>The Java programming language</is>
-
-  <documentation>ProgrammingLanguage for Java method implementations on Capabilities. Forwards
+  <baseType>
+    lang:ProgrammingLanguage(L)
+  </baseType>
+  <is>
+    The Java programming language
+  </is>
+  <documentation>
+    ProgrammingLanguage for Java method implementations on Capabilities. Forwards
     ProgrammingLanguage.L (NaturalLanguage, default English) for the content language of identifiers
-    and comments — bare Java is Java(English).</documentation>
-
+    and comments — bare Java is Java(English).
+  </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
   </genericTypes>
-</block>
+</lang:Java>

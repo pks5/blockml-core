@@ -1,39 +1,32 @@
-<!--
-  BlockML Core — MarkupLanguage branch (structured markup languages)
+<!--BlockML Core — MarkupLanguage branch (structured markup languages)
 
-  FQN: org.blockml.bml.language.MarkupLanguage
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.language.MarkupLanguage-->
+<lang:MarkupLanguage xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>MarkupLanguage</name>
-  <type>lang:MarkupLanguage</type>
-  <baseType>core:Language</baseType>
-  <is>A structured markup language</is>
-
-  <documentation>Abstract branch for markup languages — XML and other structured document formats
+  <baseType>
+    core:Language
+  </baseType>
+  <is>
+    A structured markup language
+  </is>
+  <documentation>
+    Abstract branch for markup languages — XML and other structured document formats
     used as capability implementation bodies and, for Markdown, as documentation prose. Generic
     parameter L (NaturalLanguage, default English) names the content/text language inside the markup
     (element text, comments, human-facing labels, prose).
-
+    
     Concrete sub-types forward L via baseType MarkupLanguage(L) and redeclare it locally, so the
     parameter stays open on the sub-type — Markdown(German) is authorable and Markdown(NaturalLanguage)
     is usable as a type bound. Because L defaults to English, a bare sub-type name needs no argument:
     Markdown ≡ Markdown(English). Binding L in baseType instead (MarkupLanguage(lang:German)) fixes
-    the content language for that sub-type and closes the parameter.</documentation>
-
-  <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
-  </genericTypes>
-
-  <abstract>true</abstract>
-
+    the content language for that sub-type and closes the parameter.
+  </documentation>
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="lang:NaturalLanguage" relation="Defines">
       L bound — content/text language inside markup (default English).
@@ -48,5 +41,7 @@
       Language branch and generics.
     </see>
   </references>
-
-</block>
+  <genericTypes>
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+  </genericTypes>
+</lang:MarkupLanguage>

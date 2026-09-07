@@ -1,50 +1,44 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.PseudoCode
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.PseudoCode-->
+<doc:PseudoCode xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>PseudoCode</name>
-  <type>doc:PseudoCode</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to PseudoCode semantics</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to PseudoCode semantics
+  </is>
   <documentation>
     PseudoCode (org.blockml.bml.language.PseudoCode) is a ProgrammingLanguage for free-form
     pseudocode Capability implementations. The code must be internally consistent but is
     otherwise unconstrained — an LLM may interpret it. Content/text language follows
     ProgrammingLanguage.L (NaturalLanguage, default English) — declare L only when the prose
     is not English.
-
+    
     Why PseudoCode exists:
     • Capability implementations need a stable intent form that humans and LLMs can read
     • PseudoCode avoids premature binding to Java, TypeScript, SCAD, or Python syntax
     • Intent descriptions in PseudoCode stay stable across Worlds and hosts
-
+    
     When to use PseudoCode:
     • Documenting intended behaviour on Capabilities during design (intent reading)
     • Framework and domain blocks where the semantic contract matters more than a host body
     • Blocks read by LLMs for code generation — PseudoCode is the preferred intent layer
-
+    
     When to use concrete languages:
     • org.blockml.bml.language.TypeScript, OpenSCAD, Python, … as a companion template a
       renderer transpiles or emits, or as a host-evaluable function a toolchain runs
     • Block definitions may restrict permitted languages via the languages aggregation
-
+    
     PseudoCode is the preferred intent dialect — not the only allowed implementation form.
     A Capability may also carry a companion template or a deterministic host-evaluable body
     (doc:CapabilitySemantics). A compiler renderer mapping names to target constructs remains
     one valid interpretation, not a model restriction.
   </documentation>
-
   <references>
     <see type="doc:CapabilitySemantics" relation="SeeAlso">
       Capability implementation languages.
@@ -68,5 +62,4 @@
       Next reading step — optional philosophical foundation (Idea, Manifestation, Grammar, World).
     </see>
   </references>
-
-</block>
+</doc:PseudoCode>

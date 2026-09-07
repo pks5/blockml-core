@@ -1,32 +1,28 @@
-<!--
-  BlockML Core — BML_XML_DIRECTIVE_NOT_ALLOWED diagnostic
+<!--BlockML Core — BML_XML_DIRECTIVE_NOT_ALLOWED diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_XML_DIRECTIVE_NOT_ALLOWED
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_XML_DIRECTIVE_NOT_ALLOWED-->
+<diag:BML_XML_DIRECTIVE_NOT_ALLOWED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_XML_DIRECTIVE_NOT_ALLOWED</name>
-  <type>diag:BML_XML_DIRECTIVE_NOT_ALLOWED</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A disallowed bml:xml diagnostic</is>
-
-  <summary>Emitted when bml:xml is authored where the grammar/branch does not allow it (e.g. block-level on ordinary ValueType).</summary>
-
-  <keywords>BML_XML_DIRECTIVE_NOT_ALLOWED</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A disallowed bml:xml diagnostic
+  </is>
+  <summary>
+    Emitted when bml:xml is authored where the grammar/branch does not allow it (e.g. block-level on ordinary ValueType).
+  </summary>
   <documentation>
-    Block-level &lt;bml:xml&gt; is for core:Block and Definition-branch types. Member bml:xml belongs on Definition-branch member declarations. Hybrid Stage 1/2 checks apply.
+    Block-level &lt;bml:xml> is for core:Block and Definition-branch types. Member bml:xml belongs on Definition-branch member declarations. Hybrid Stage 1/2 checks apply.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_XML_DIRECTIVE_NOT_ALLOWED" />
+  </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">
       bml:xml placement rules.
@@ -35,5 +31,4 @@
       Definition branch serialization metadata.
     </see>
   </references>
-
-</block>
+</diag:BML_XML_DIRECTIVE_NOT_ALLOWED>

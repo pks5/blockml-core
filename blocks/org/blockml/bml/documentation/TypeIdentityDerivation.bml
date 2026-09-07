@@ -1,23 +1,18 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.TypeIdentityDerivation
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.TypeIdentityDerivation-->
+<doc:TypeIdentityDerivation xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
-  <name>TypeIdentityDerivation</name>
-  <type>doc:TypeIdentityDerivation</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to type references and Block identity</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to type references and Block identity
+  </is>
   <documentation>
     Every type name in BML — composition tags, identity type / baseType on definitions, member type
     attributes — may be written in one of four forms. All normalize to a canonical FQN during
@@ -26,7 +21,7 @@
     2. QName (xmlns prefix) — foo:Bar with xmlns:foo="com.foo"
     3. Unqualified fallback — Integer at a context-bound site (doc:ImplicitNamespaceResolution)
     4. Sub-Block-relative name — MySubBlock or foo:Bar.MySubBlock
-
+    
     Validator — declared ValueType wins, never the field name. type=, baseType=, abc=, or any
     other name is irrelevant; only whether the field's type is-a TypeReference / TypeIdentifier /
     PropertyReference / … matters:
@@ -40,20 +35,20 @@
     Ill-formed syntax on any of these → BML_INVALID_TYPE_REFERENCE (and, when a host evaluates
     parseValue, BML_INVALID_VALUE). Syntax is PrimitiveType.parseValue; existence stays a
     validator step on Reference types (doc:ValueTypeParsing).
-
+    
     An unresolved Reference is an error, but it does not mean the document is ill-formed. Like
     Java class-not-found, it may be a typo or a missing dependency (library not on the current
     classpath). Interpretation is left open.
-
+    
     Unqualified names on TypeReference fields require an explicit FQN or xmlns prefix — no
     implicit fallback. Unresolvable → BML_UNKNOWN_TYPE. Ambiguous unqualified → BML_AMBIGUOUS_TYPE.
     Undeclared QName prefix → BML_UNKNOWN_NAMESPACE_PREFIX.
-
+    
     Sub-Block type references — Java static nested classes: own FQN prefix, optional own
     genericTypes, no enclosing-instance and no outer type-parameter scope (forward explicitly, e.g.
     Item(T)). Reference unqualified when in scope, as FQN, or as QName. The local part of a QName may
     include a relative Sub-Block path (foo:Bar.MySubBlock).
-
+    
     Unqualified nested type resolution (innermost scope first, then enclosing chain):
     On the current Block, in order: (1) own Block name, (2) own genericTypes, (3) own direct
     Sub-Blocks. Then repeat for the immediate enclosing Block up to the document root. Grandchildren
@@ -61,47 +56,46 @@
     Selector.Range or Grid.Selector.Range. After the nested walk fails, context-bound implicit
     namespace / FQN / xmlns rules apply. Generic / Sub-Block name collisions on the same declaring
     Block remain errors (BML_GENERIC_*_COLLISION).
-
+    
     Root Block identity:
     • type — required (BML_MISSING_BLOCK_TYPE); canonical identity. Preferred authoring: the
-      document root tag is the type (&lt;acme:MyBlock&gt; / &lt;MyBlock&gt;). Legacy: child
-      &lt;type&gt; under a &lt;block&gt; root. Both forms are valid during the transition
-      (doc:DocumentFormat). When both the root tag and &lt;type&gt; supply a type, they must
+      document root tag is the type (&lt;acme:MyBlock> / &lt;MyBlock>). Legacy: child
+      &lt;type> under a &lt;block> root. Both forms are valid during the transition
+      (doc:DocumentFormat). When both the root tag and &lt;type> supply a type, they must
       resolve to the same FQN
     • name — optional; when omitted effectiveName = lastSegment(resolve(type)); when present must
       equal lastSegment(resolve(type)) → else BML_BLOCK_NAME_TYPE_MISMATCH. On the preferred
-      unqualified root, a redundant &lt;name&gt; is not recommended
+      unqualified root, a redundant &lt;name> is not recommended
     • definition — optional; default RootBlockDefinition; unqualified via org.blockml.bml.definition.*
-
+    
     Sub-Block identity (opposite convention — unqualified name-as-tag, doc:DocumentFormat):
     • name — required (BML_MISSING_SUBBLOCK_NAME). Preferred authoring: the element local name
-      is the Sub-Block name (&lt;MyBlock&gt; under &lt;subBlocks&gt;). Legacy: child &lt;name&gt;
-      under a &lt;block&gt; wrapper. When both are present they must match
+      is the Sub-Block name (&lt;MyBlock> under &lt;subBlocks>). Legacy: child &lt;name>
+      under a &lt;block> wrapper. When both are present they must match
     • type — normally omitted; expectedType = resolve(parent.type) + "." + name; when present must
       equal expectedType (full parent path check, not last segment alone) →
       BML_SUBBLOCK_TYPE_MISMATCH
     • definition — default SubBlockDefinition
     • genericTypes / subBlocks — allowed; embeddedBlocks — forbidden
       (BML_EMBEDDED_BLOCKS_ON_SUBBLOCK)
-
+    
     Embedded Block identity (same authoring as the document root, doc:DocumentFormat):
     • type — required and fully qualified (BML_MISSING_EMBEDDED_BLOCK_TYPE /
       BML_UNQUALIFIED_EMBEDDED_BLOCK_TYPE); preferred: the element tag is the type
-      (&lt;acme:MyBlock&gt;). Legacy: child &lt;type&gt; under a &lt;block&gt; wrapper. FQN =
+      (&lt;acme:MyBlock>). Legacy: child &lt;type> under a &lt;block> wrapper. FQN =
       resolve(type), not nested under the root
     • name — optional; same matching rule as the document root
     • definition — default EmbeddedBlockDefinition
-
+    
     Canonical derivation summary:
     • Root / embed: canonicalType = resolve(type); effectiveName = name ?? lastSegment(canonicalType);
       if name present → name == lastSegment(canonicalType)
-    • Sub-Block: effectiveName = name (element tag or child &lt;name&gt;);
+    • Sub-Block: effectiveName = name (element tag or child &lt;name>);
       expectedType = canonicalParentType + "." + name;
       canonicalType = type ? resolve(type) : expectedType; canonicalType == expectedType
-
+    
     See also doc:SubBlockModel (visibility, embeds, reference scope) and doc:BlockNameConvention.
   </documentation>
-
   <references>
     <see type="doc:ValueTypeParsing" relation="SeeAlso">
       parseValue syntax vs Reference existence.
@@ -131,8 +125,7 @@
       Next — type/name as element tag on root, Sub-Blocks, and embeds.
     </see>
     <see type="doc:BlockNameConvention" relation="SeeAlso">
-      PascalCase rules for &lt;name&gt;.
+      PascalCase rules for &lt;name>.
     </see>
   </references>
-
-</block>
+</doc:TypeIdentityDerivation>

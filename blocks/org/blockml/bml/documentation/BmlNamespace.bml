@@ -1,38 +1,33 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.BmlNamespace
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.BmlNamespace-->
+<doc:BmlNamespace xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BmlNamespace</name>
-  <type>doc:BmlNamespace</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to the BML namespace</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to the BML namespace
+  </is>
   <documentation>
     Every BML definition — Blocks, Libraries, Types, Languages, Services, Capabilities, and all
     other BlockML definitions — must reside below the owning domain's bml package.
-
+    
     General form:
-    • &lt;domain&gt;.bml.*
-
+    • &lt;domain>.bml.*
+    
     Examples:
     • org.blockml.bml.*
     • com.machineblocks.bml.*
     • com.example.bml.*
-
+    
     No BML Block, Library, or other BlockML definition may exist outside the domain's bml
     namespace (BML_OUTSIDE_BML_NAMESPACE). Physical source layout mirrors the FQN:
     blocks/org/blockml/bml/core/Block.bml defines org.blockml.bml.core.Block.
-
+    
     Typical BlockML branches (all under org.blockml.bml.*):
     • org.blockml.bml.core.* — framework base types (Block, Annotation, ValueType, Status, Capability, Exception, Library, …)
     • org.blockml.bml.annotation.* — concrete Annotations (BmlAnnotation)
@@ -43,7 +38,7 @@
     • org.blockml.bml.definition.* — Definition meta-model (orthogonal to Annotations)
     • org.blockml.bml.documentation.* — bootstrap documentation blocks
     • org.blockml.bml.status.* / constraint.* / validation.* / relation.* / unit.* — matching branches
-
+    
     xmlns prefixes are BML-semantic only when they target a Package or an Annotation:
     • Package — type addressing (xmlns:core="org.blockml.bml.core")
     • Annotation — directives (xmlns:bml="org.blockml.bml.annotation.BmlAnnotation")
@@ -53,7 +48,7 @@
     prefix → BML_UNKNOWN_NAMESPACE_PREFIX; non-Package/Annotation target →
     BML_INVALID_NAMESPACE_TARGET; colliding prefixes across a bundle →
     BML_NAMESPACE_PREFIX_COLLISION.
-
+    
     XML prefix convention (required authoring practice — BOM stores FQNs; compiler does not
     rewrite aliases). Rule of thumb: a bare short prefix always means BlockML. Domain mirrors of
     the same segment use a domain token in front (MachineBlocks → mb):
@@ -64,20 +59,19 @@
     • bricks / cal / scad — collective or annotation packages (descriptive OK when no collision)
     Do not steal framework aliases (xmlns:core="com.machineblocks.bml.core" is wrong). Do not use
     legacy bcore / btype. Other domains use their own short token (ac → acore / atype / aunit).
-
+    
     Member and facet QNames: optional XML prefix on member element names supplies the member
     namespace (resolved via xmlns; unprefixed → default empty namespace). Prefixed member QNames
     that are Annotation Member directives (name="*") resolve to that Annotation — see
     doc:AnnotationModel. There is no namespace= attribute on members.
-
-    Domain libraries follow the same &lt;domain&gt;.bml.* rule
+    
+    Domain libraries follow the same &lt;domain>.bml.* rule
     (com.machineblocks.bml.core / bricks / type / annotation.*, …).
-
+    
     npm workspace packages (@blockml/core, @blockml/parser, …) are deployment units — not
     identical to FQN namespaces. TypeScript toolchain code ships in package src/ directories;
     it is not a BML definition and does not receive a domain.bml FQN.
   </documentation>
-
   <references>
     <see type="doc:DocumentFormat" relation="SeeAlso">
       Qualified root tags use Package prefixes; XSD attributes omitted by default.
@@ -95,5 +89,4 @@
       ValueType for package strings without a type segment.
     </see>
   </references>
-
-</block>
+</doc:BmlNamespace>

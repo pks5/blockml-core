@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_LEGACY_TYPE_SOURCE diagnostic
+<!--BlockML Core — BML_LEGACY_TYPE_SOURCE diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_LEGACY_TYPE_SOURCE
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_LEGACY_TYPE_SOURCE-->
+<diag:BML_LEGACY_TYPE_SOURCE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_LEGACY_TYPE_SOURCE</name>
-  <type>diag:BML_LEGACY_TYPE_SOURCE</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A legacy-type-source diagnostic</is>
-
-  <summary>Emitted when a type still comes from a legacy XSD/YAML source during migration.</summary>
-
-  <keywords>BML_LEGACY_TYPE_SOURCE</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A legacy-type-source diagnostic
+  </is>
+  <summary>
+    Emitted when a type still comes from a legacy XSD/YAML source during migration.
+  </summary>
   <documentation>
     Emitted when a type still comes from a legacy XSD/YAML source during migration. Remedy: Migrate
     to BML TypeRegistry definitions.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_LEGACY_TYPE_SOURCE" />
+  </keywords>
   <references>
     <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
       BML type SSOT.
@@ -37,5 +33,4 @@
       TypeRegistry bootstrap.
     </see>
   </references>
-
-</block>
+</diag:BML_LEGACY_TYPE_SOURCE>

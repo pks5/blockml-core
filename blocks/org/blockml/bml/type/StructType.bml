@@ -1,5 +1,4 @@
-<!--
-  BlockML Core — struct type branch (product types)
+<!--BlockML Core — struct type branch (product types)
 
   FQN: org.blockml.bml.type.StructType
   See docs/17_type_system_bml.md — StructType · Struct Property Access
@@ -7,52 +6,48 @@
        docs/12_bom_object_model.md — Member Declaration Order · Type Descriptors
        docs/16_framework_base_types.md — ValueType branch
        docs/02_mbml.md — Member declaration order
-       docs/04_types.md — Anonymous Object inputType
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+       docs/04_types.md — Anonymous Object inputType-->
+<type:StructType xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:mapping="org.blockml.bml.mapping"
   xmlns:type="org.blockml.bml.type">
 
-  <name>StructType</name>
-  <type>type:StructType</type>
-  <baseType>core:ValueType</baseType>
-  <is>A composite named-field ValueType</is>
-
+  <baseType>
+    core:ValueType
+  </baseType>
+  <is>
+    A composite named-field ValueType
+  </is>
   <documentation>
     Abstract ValueType branch for composite value objects — complex values described by normal
     Properties. Unqualified name StructType resolves to org.blockml.bml.type.StructType.
-
+    
     One of four language-level ValueType kinds (PrimitiveType · StructType · EnumType ·
     ConstantType). StructType is a dedicated branch — EnumType is a sibling under ValueType,
     not a subtype of StructType.
     StructTypes describe the structure of a value — their properties define the data layout.
     StructTypes usually contain no values themselves; Property values remain stored in the owning
     Property. Default values on StructType property definitions are allowed. Concrete StructTypes
-    declare &lt;properties&gt; whose members become struct fields — no special struct syntax.
+    declare &lt;properties> whose members become struct fields — no special struct syntax.
     Examples: EmptyStruct (no fields; only {}), Size3d, Color, Address, Transform.
-    Parameterized value types (for example Box&lt;T&gt;) are StructTypes that declare
-    &lt;genericTypes&gt; — not a separate ValueType branch.
-
+    Parameterized value types (for example Box&lt;T>) are StructTypes that declare
+    &lt;genericTypes> — not a separate ValueType branch.
+    
     Struct property access is exclusively by name (size.x, size.y, size.z). Numeric index access
     on StructType members (size[0]) is not valid — StructType is a typed object with named
     properties only. Positional function-parameter syntax (#tool.capa("x", "y")) is handled by
     FunctionMapping at call sites, not by general StructType semantics.
-
+    
     Field declaration order remains significant for:
     • Positional array literals (size="[4, 2, 3]") — values map to properties by declaration order
     • FunctionMapping positional parameter order for capability calls
     • Compatibility — existing field order must not change across versions; new fields may be
       appended only at the end
-
+    
     Named object literals (size="{ x: 4, y: 2, z: 3 }") and attribute syntax on StructType
-    instances (&lt;Size3d x="4" y="2" z="3"/&gt;) are type-equivalent authoring forms.
-
+    instances (&lt;Size3d x="4" y="2" z="3"/>) are type-equivalent authoring forms.
+    
     Anonymous StructTypes — { field: Type, … } is a StructType without a declared name, written
     directly in a type expression; it is the mechanism for structured Capability inputs. Each field
     is Identifier ":" TypeExpression, so a field type is a full type expression and not merely an
@@ -65,15 +60,17 @@
     significant exactly as for named StructTypes. Rejecting a qualified field type while accepting an
     unqualified one is a parser / mapper limitation, not a type-expression ambiguity.
     See doc:TypeExpressions — Anonymous StructTypes.
-
+    
     Used wherever BlockML declares or validates structured values:
-    • Property &lt;type&gt; references (for example type="com.machineblocks.bml.type.Size3d")
+    • Property &lt;type> references (for example type="com.machineblocks.bml.type.Size3d")
     • Block instances of the StructType as composition children or property payloads
     • Capability inputType / outputType — named StructType or anonymous struct expressions
-    • Generic type applications (for example Box&lt;Integer&gt;) on StructTypes with
-      &lt;genericTypes&gt;
+    • Generic type applications (for example Box&lt;Integer>) on StructTypes with
+      &lt;genericTypes>
   </documentation>
-
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="type:EmptyStruct" relation="SeeAlso">
       Instantiable StructType with no fields — named counterpart of {}.
@@ -94,7 +91,4 @@
       Positional parameter mapping at capability call sites.
     </see>
   </references>
-
-  <abstract>true</abstract>
-
-</block>
+</type:StructType>

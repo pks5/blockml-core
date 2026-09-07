@@ -1,29 +1,24 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.EverythingIsABlock
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.EverythingIsABlock-->
+<doc:EverythingIsABlock xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language"
   xmlns:type="org.blockml.bml.type">
 
-  <name>EverythingIsABlock</name>
-  <type>doc:EverythingIsABlock</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to Everything-is-a-Block</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to Everything-is-a-Block
+  </is>
   <documentation>
     BlockML describes everything that belongs to a World's grammar as Blocks. There is one root
     (org.blockml.bml.core.Block), one parser, and one TypeRegistry bootstrap path — branch-specific
     rules come from the baseType chain, not from parallel ontologies.
-
+    
     Everything is a Block means:
     • Composable domain types (Wall, StandardBrick, Set) are Blocks
     • ValueTypes (Integer, Size3D, Decimal) are Blocks — type definitions, not runtime values
@@ -31,16 +26,15 @@
     • Definition meta-model types (PropertyDefinition, StructuralDefinition sub-blocks) are Blocks
     • Documentation blocks (this branch) are Blocks
     • Libraries, Services, Constraints, Capabilities, Exceptions — all Blocks
-
+    
     Two layers must be distinguished:
     • Authoring ontology (BML / WOT): Block = named definable unit with FQN and baseType chain
     • Compiler internals: free representation — plain data, split indexes; no mandatory uniform
       runtime Block class hierarchy
-
+    
     One root · one registry · one parser. ValueTypes never store data — Properties own all concrete
     values. The type describes nature; the Property owns the value.
   </documentation>
-
   <references>
     <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
       Type system layers.
@@ -79,5 +73,4 @@
       Next reading step — definition vs instance vs composition.
     </see>
   </references>
-
-</block>
+</doc:EverythingIsABlock>

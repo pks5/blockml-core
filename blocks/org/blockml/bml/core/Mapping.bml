@@ -1,29 +1,24 @@
-<!--
-  BlockML Core — mapping branch
+<!--BlockML Core — mapping branch
 
-  FQN: org.blockml.bml.core.Mapping
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.core.Mapping-->
+<core:Mapping xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:mapping="org.blockml.bml.mapping">
 
-  <name>Mapping</name>
-  <type>core:Mapping</type>
-  <baseType>core:Block</baseType>
-  <is>A value-transfer Mapping</is>
-
+  <baseType>
+    core:Block
+  </baseType>
+  <is>
+    A value-transfer Mapping
+  </is>
   <documentation>
     Abstract branch for explicit value mapping between representations. Mapping is not a property
     of StructType — it belongs at the site where a function-like representation is used.
-
+    
     Concrete mappings extend this branch and declare how authored syntax maps to BlockML types and
     how BlockML types map to target-language signatures.
-
+    
     Component responsibilities:
     • Parser — stores authored syntax only; no mapping in Canonical BOM
     • Expression parser — AST with positional, named, object, and array literal arguments
@@ -32,7 +27,9 @@
     • Renderer — may emit authored form, evaluate FunctionMapping, or interpret mapping for the
       target system; Canonical BOM stays unchanged
   </documentation>
-
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">
       Function parameter mapping rules.
@@ -41,7 +38,4 @@
       Concrete mapping for function-like call syntax.
     </see>
   </references>
-
-  <abstract>true</abstract>
-
-</block>
+</core:Mapping>

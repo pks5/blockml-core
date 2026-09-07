@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_SUGGESTION_TYPE_MISMATCH diagnostic
+<!--BlockML Core — BML_SUGGESTION_TYPE_MISMATCH diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_SUGGESTION_TYPE_MISMATCH
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_SUGGESTION_TYPE_MISMATCH-->
+<diag:BML_SUGGESTION_TYPE_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_SUGGESTION_TYPE_MISMATCH</name>
-  <type>diag:BML_SUGGESTION_TYPE_MISMATCH</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A suggestion-type-mismatch diagnostic</is>
-
-  <summary>Emitted when a suggestion instance is incompatible with the property type.</summary>
-
-  <keywords>BML_SUGGESTION_TYPE_MISMATCH</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A suggestion-type-mismatch diagnostic
+  </is>
+  <summary>
+    Emitted when a suggestion instance is incompatible with the property type.
+  </summary>
   <documentation>
     Emitted when a suggestion instance is incompatible with the property type. Remedy: Use compatible
     ValueType/Entity instances; primitives need matching *Entity wrappers.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_SUGGESTION_TYPE_MISMATCH" />
+  </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">
       Suggestion compatibility.
@@ -37,5 +33,4 @@
       suggestions.
     </see>
   </references>
-
-</block>
+</diag:BML_SUGGESTION_TYPE_MISMATCH>

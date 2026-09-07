@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_CHANGELOG_VERSION_ORDER diagnostic
+<!--BlockML Core — BML_CHANGELOG_VERSION_ORDER diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_CHANGELOG_VERSION_ORDER
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_CHANGELOG_VERSION_ORDER-->
+<diag:BML_CHANGELOG_VERSION_ORDER xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,24 +9,25 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_CHANGELOG_VERSION_ORDER</name>
-  <type>diag:BML_CHANGELOG_VERSION_ORDER</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A changelog version-order diagnostic</is>
-
-  <summary>Emitted when changelog entries are not in oldest-first version order.</summary>
-
-  <keywords>BML_CHANGELOG_VERSION_ORDER</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A changelog version-order diagnostic
+  </is>
+  <summary>
+    Emitted when changelog entries are not in oldest-first version order.
+  </summary>
   <documentation>
-    Emitted when changelog entries are not in oldest-first version order. Remedy: Order &lt;change&gt;
+    Emitted when changelog entries are not in oldest-first version order. Remedy: Order &lt;change>
     entries ascending by version.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_CHANGELOG_VERSION_ORDER" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       changelog rules.
     </see>
   </references>
-
-</block>
+</diag:BML_CHANGELOG_VERSION_ORDER>

@@ -1,27 +1,23 @@
-<!--
-  BlockML Core — CapabilityDefinition path reference
+<!--BlockML Core — CapabilityDefinition path reference
 
-  FQN: org.blockml.bml.type.CapabilityReference
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.CapabilityReference-->
+<type:CapabilityReference xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">
 
-  <name>CapabilityReference</name>
-  <type>type:CapabilityReference</type>
-  <baseType>type:CapabilityIdentifier</baseType>
-  <is>A path to a Capability member</is>
-
-  <documentation>Existence-checked CapabilityIdentifier. Value is a canonical capability path
+  <baseType>
+    type:CapabilityIdentifier
+  </baseType>
+  <is>
+    A path to a Capability member
+  </is>
+  <documentation>
+    Existence-checked CapabilityIdentifier. Value is a canonical capability path
     (com.foo.Bar.capabilities.render) or a local capability name when paired with a type qualifier.
     The owning type and capability must resolve. Used as the type of see capability=. A potential
-    capability that need not exist uses CapabilityIdentifier.</documentation>
-
+    capability that need not exist uses CapabilityIdentifier.
+  </documentation>
   <references>
     <see type="type:CapabilityIdentifier" relation="SeeAlso">
       Parent ValueType — capability-path syntax without existence.
@@ -33,10 +29,7 @@
       see capability attribute.
     </see>
   </references>
-
   <genericTypes>
-    <B baseType="core:Block" defaultType="core:Block">
-      <documentation>Owning Block branch. Defaults to core:Block.</documentation>
-    </B>
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
   </genericTypes>
-</block>
+</type:CapabilityReference>

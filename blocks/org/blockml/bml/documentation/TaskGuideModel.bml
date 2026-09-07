@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — task guide documentation
+<!--BlockML Core — task guide documentation
 
-  FQN: org.blockml.bml.documentation.TaskGuideModel
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.TaskGuideModel-->
+<doc:TaskGuideModel xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,14 +9,15 @@
   xmlns:relation="org.blockml.bml.relation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>TaskGuideModel</name>
-  <type>doc:TaskGuideModel</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to TaskGuide blocks</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to TaskGuide blocks
+  </is>
   <documentation>
     Task-oriented paths complement ReadFirst learning paths on ReadMe entry points:
-
+    
     ReadFirst (relation)     — mental learning order on ReadMe / README blocks
     TaskIndex (relation)   — catalog of accomplishable tasks on ReadMe
     TaskGuide (branch)     — org.blockml.bml.task.* procedural how-to blocks
@@ -30,20 +25,19 @@
     Prerequisite (relation)— understand before starting a TaskGuide
     Diagnostic (branch)    — org.blockml.bml.diagnostic.* validator code documentation
     Resolves (relation)    — Diagnostic → TaskGuide fix procedure
-
-    One mechanism: all navigation uses &lt;references&gt; and &lt;see&gt; with typed relation
+    
+    One mechanism: all navigation uses &lt;references> and &lt;see> with typed relation
     attributes — no separate task aggregation on ReadMe. Automated process SPOE uses
     Library.bootstrap (core:Bootstrap), separate from reading/task catalog on ReadMe.
-
+    
     Tooling (future):
     • filter relation=ReadFirst → learn context bundle
     • filter relation=TaskIndex → task menu
     • load Diagnostic by code → follow Resolves → TaskStep chain
-
+    
     org.blockml.bml.README lists TaskIndex entries after ReadFirst entries. Future Bootstrap
     subtypes (AgentBootstrap, CIBootstrap) supply automation SPOE members — not reading paths.
   </documentation>
-
   <references>
     <see type="task:FixVisibilityAccess" relation="SeeAlso">
       Example cluster task — visibility diagnostics.
@@ -88,5 +82,4 @@
       Standard entry point — TaskIndex entries list available tasks.
     </see>
   </references>
-
-</block>
+</doc:TaskGuideModel>

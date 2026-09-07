@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_UNKNOWN_CAPABILITY diagnostic
+<!--BlockML Core — BML_UNKNOWN_CAPABILITY diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_CAPABILITY
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_CAPABILITY-->
+<diag:BML_UNKNOWN_CAPABILITY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_UNKNOWN_CAPABILITY</name>
-  <type>diag:BML_UNKNOWN_CAPABILITY</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-capability diagnostic</is>
-
-  <summary>Emitted when a Capability reference cannot be resolved on the target Block.</summary>
-
-  <keywords>BML_UNKNOWN_CAPABILITY</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-capability diagnostic
+  </is>
+  <summary>
+    Emitted when a Capability reference cannot be resolved on the target Block.
+  </summary>
   <documentation>
     Emitted when a Capability reference cannot be resolved on the target Block. Remedy: Check
     Capability name and inheritance/contract merge.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_CAPABILITY" />
+  </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">
       Capabilities.
@@ -37,5 +33,4 @@
       Registry resolution.
     </see>
   </references>
-
-</block>
+</diag:BML_UNKNOWN_CAPABILITY>

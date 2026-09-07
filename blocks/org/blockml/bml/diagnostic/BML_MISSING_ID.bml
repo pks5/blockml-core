@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_MISSING_ID diagnostic
+<!--BlockML Core — BML_MISSING_ID diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_ID
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_ID-->
+<diag:BML_MISSING_ID xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_MISSING_ID</name>
-  <type>diag:BML_MISSING_ID</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-instance-id diagnostic</is>
-
-  <summary>Emitted when bml:id is required (referenced instance or bml:each) but absent.</summary>
-
-  <keywords>BML_MISSING_ID</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-instance-id diagnostic
+  </is>
+  <summary>
+    Emitted when bml:id is required (referenced instance or bml:each) but absent.
+  </summary>
   <documentation>
     Emitted when bml:id is required (referenced instance or bml:each) but absent. Remedy: Add
     bml:id (literal or expression).
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_ID" />
+  </keywords>
   <references>
     <see type="doc:CompositionModel" relation="AuthoringGuide">
       Instance identity.
@@ -37,5 +33,4 @@
       bml:id / each.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_ID>

@@ -1,37 +1,32 @@
-<!--
-  BlockML Core — BML_MISSING_IS_NOT diagnostic
+<!--BlockML Core — BML_MISSING_IS_NOT diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_IS_NOT
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_IS_NOT-->
+<diag:BML_MISSING_IS_NOT xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>BML_MISSING_IS_NOT</name>
-  <type>diag:BML_MISSING_IS_NOT</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-isNot diagnostic</is>
-
-  <summary>Warning/required when confusion risk exists and isNot is omitted on a Block.</summary>
-
-  <keywords>BML_MISSING_IS_NOT</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-isNot diagnostic
+  </is>
+  <summary>
+    Warning/required when confusion risk exists and isNot is omitted on a Block.
+  </summary>
   <documentation>
     Warning/required when confusion risk exists and isNot is omitted on a Block. isNot is block-level
     negative space for disambiguation. Missing when required → this code.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_IS_NOT" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       isNot rules.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_IS_NOT>

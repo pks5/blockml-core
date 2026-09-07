@@ -1,62 +1,56 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.EmbeddedExpressions
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.EmbeddedExpressions-->
+<doc:EmbeddedExpressions xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>EmbeddedExpressions</name>
-  <type>doc:EmbeddedExpressions</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to embedded expressions in implementations</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to embedded expressions in implementations
+  </is>
   <documentation>
     BML Embedded Expressions are language-neutral Capability references inside a Capability
-    &lt;implementation&gt; body. Delimiters: opening &lt;$ · closing $&gt;.
-
+    &lt;implementation> body. Delimiters: opening &lt;$ · closing $>.
+    
     The implementation CDATA is source text of the language named by language= (OpenSCAD,
-    TypeScript, …). Regions wrapped in &lt;$ … $&gt; are BlockML Expression Language fragments. The
+    TypeScript, …). Regions wrapped in &lt;$ … $> are BlockML Expression Language fragments. The
     renderer replaces each embedded region (including delimiters) with equivalent target-language
     syntax; surrounding text is copied unchanged. Embedded Expressions are not a separate
-    implementation language and not a replacement for &lt;implementation&gt;.
-
+    implementation language and not a replacement for &lt;implementation>.
+    
     Supported call forms inside embeds (at least):
     • #this.someCapability(...) — own Block Capability (required for self-refs; bare foo(...) not
       supported here)
     • #math.max(...) / #strings.concat(...) — built-in services (same registry as ${ })
     • @bean.someCapability(...) — Transformation Capability on a bound bean
-
+    
     Property access, operators, literals, and nested calls follow the same rules as ${ }
     expressions unless noted otherwise. #this is the outer Block instance — the same binding as
     ${ }; it does not rebind in nested compositions. Bare this is a member (#this.this), not the
     instance. Own-Capability calls in embeds still require #this.foo() (doc:Expressions).
-
+    
     Delimiter rules:
     • Zero, one, or many regions per implementation body; multiline OK
-    • Whitespace immediately after &lt;$ and before $&gt; is ignored
+    • Whitespace immediately after &lt;$ and before $> is ignored
     • Nested delimiters forbidden
     • Unclosed &lt;$ → BML_UNCLOSED_EMBEDDED_EXPRESSION
     • Invalid embed content → BML_INVALID_EMBEDDED_EXPRESSION
-    • Literal &lt;$ or $&gt; in implementation source must not appear outside a valid pair
-
+    • Literal &lt;$ or $> in implementation source must not appear outside a valid pair
+    
     Contrast with ${ } (member values):
-    • Host: BML attributes / &lt;value&gt; / directives vs implementation CDATA
+    • Host: BML attributes / &lt;value> / directives vs implementation CDATA
     • Own Capability: myCapa(...) or link vs #this.myCapa(...) only
     • BOM: ExpressionValue.raw on members vs EmbeddedExpression { raw, start, end } on
       ImplementationBlock
-
+    
     See doc:Expressions for ${ } language, layers, V1 scope, and scope rules; doc:SubBlockModel
     for utility Sub-Block implementations that commonly host embeds.
   </documentation>
-
   <references>
     <see type="doc:Expressions" relation="SeeAlso">
       ${ } expression language — shared grammar and V1 scope.
@@ -80,5 +74,4 @@
       Next — parser / validator / renderer pipeline.
     </see>
   </references>
-
-</block>
+</doc:EmbeddedExpressions>

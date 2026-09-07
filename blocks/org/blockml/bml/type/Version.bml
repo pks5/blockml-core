@@ -1,33 +1,29 @@
-<!--
-  BlockML Core — semantic version primitive type
+<!--BlockML Core — semantic version primitive type
 
-  FQN: org.blockml.bml.type.Version
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.Version-->
+<type:Version xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Version</name>
-  <type>type:Version</type>
-  <baseType>type:Text</baseType>
-  <is>A version number</is>
-
-  <documentation>Textual primitive subtype for semantic version numbers (semver). Values use
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A version number
+  </is>
+  <documentation>
+    Textual primitive subtype for semantic version numbers (semver). Values use
     MAJOR.MINOR.PATCH form (for example 1.0.0, 1.3.2). Unqualified name Version resolves to
     org.blockml.bml.type.Version.
-
-    Used wherever BlockML tracks or compares definition and reference versions: &lt;version&gt; on
-    Block and Library definitions, &lt;since&gt; on members, changelog entries, and bml:version on
+    
+    Used wherever BlockML tracks or compares definition and reference versions: &lt;version> on
+    Block and Library definitions, &lt;since> on members, changelog entries, and bml:version on
     composition instances. Concrete version strings are stored in Properties — not on the Version
-    type itself.</documentation>
-
+    type itself.
+  </documentation>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">
       Version on Block and Library definitions.
@@ -36,22 +32,17 @@
       parseValue — MAJOR.MINOR.PATCH.
     </see>
   </references>
-
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Semantic version MAJOR.MINOR.PATCH — non-negative integers, no leading plus, no pre-release
         suffix in this lexical form.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           if (!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(t)) {
@@ -59,8 +50,8 @@
           }
           return t;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-</block>
+</type:Version>

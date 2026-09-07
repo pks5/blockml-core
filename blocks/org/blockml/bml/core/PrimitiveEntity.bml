@@ -1,37 +1,36 @@
-<!--
-  BlockML Core — primitive value as Entity
+<!--BlockML Core — primitive value as Entity
 
-  FQN: org.blockml.bml.core.PrimitiveEntity
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.core.PrimitiveEntity-->
+<core:PrimitiveEntity xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 
-  <name>PrimitiveEntity</name>
-  <type>core:PrimitiveEntity</type>
-  <baseType>core:Entity</baseType>
-  <is>A primitive value as an Entity</is>
-
-  <documentation>Abstract generic Entity for primitive values that must appear as Block instances
+  <baseType>
+    core:Entity
+  </baseType>
+  <is>
+    A primitive value as an Entity
+  </is>
+  <documentation>
+    Abstract generic Entity for primitive values that must appear as Block instances
     inside a composition or aggregation. Follows the general generic resolution rule: T belongs
     exclusively to this Block and is never inherited. Derived Blocks bind or forward T explicitly
     through baseType (for example baseType = PrimitiveEntity(Integer) binds T = Integer and yields
-    value : Integer). On instances that member is authored as value="…" (or &lt;value&gt;…&lt;/value&gt;
+    value : Integer). On instances that member is authored as value="…" (or &lt;value>…&lt;/value>
     as the member itself) because the Property is named value — not because of the
-    PropertyDefinition value field. Do not wrap other instance Properties in &lt;value&gt;; see
+    PropertyDefinition value field. Do not wrap other instance Properties in &lt;value>; see
     doc:MemberAuthoring.
-
+    
     Cannot be instantiated directly — concrete specializations (IntegerEntity, TextEntity,
     DecimalEntity, …) bind all generic parameters and become normal, instantiable Blocks.
-
+    
     Properties continue to store primitive values directly — PrimitiveEntity exists only when the
-    primitive value itself must become an Entity with identity, documentation, or metadata.</documentation>
-
+    primitive value itself must become an Entity with identity, documentation, or metadata.
+  </documentation>
+  <abstract>
+    true
+  </abstract>
   <references>
     <see type="doc:TypeSystemOverview" relation="AuthoringGuide">
       PrimitiveEntity and generic resolution.
@@ -40,19 +39,17 @@
       Member named value on instances vs PropertyDefinition value wrapper.
     </see>
   </references>
-
-  <abstract>true</abstract>
-
   <genericTypes>
     <T baseType="type:PrimitiveType" />
   </genericTypes>
-
   <properties>
     <value type="T">
-      <documentation>The primitive value owned by this Entity instance. Instance syntax is
-        value="…" or &lt;value&gt;…&lt;/value&gt; on the Entity because this member's name is value
+      <documentation>
+        The primitive value owned by this Entity instance. Instance syntax is
+        value="…" or &lt;value>…&lt;/value> on the Entity because this member's name is value
         — that is ordinary instance authoring, not a PropertyDefinition wrapper. See
-        doc:MemberAuthoring.</documentation>
+        doc:MemberAuthoring.
+      </documentation>
     </value>
   </properties>
-</block>
+</core:PrimitiveEntity>

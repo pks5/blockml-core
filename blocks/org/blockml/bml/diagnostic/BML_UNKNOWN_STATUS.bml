@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_UNKNOWN_STATUS diagnostic
+<!--BlockML Core — BML_UNKNOWN_STATUS diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_STATUS
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_STATUS-->
+<diag:BML_UNKNOWN_STATUS xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_UNKNOWN_STATUS</name>
-  <type>diag:BML_UNKNOWN_STATUS</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-status diagnostic</is>
-
-  <summary>Emitted when status does not resolve to org.blockml.bml.status.*.</summary>
-
-  <keywords>BML_UNKNOWN_STATUS</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-status diagnostic
+  </is>
+  <summary>
+    Emitted when status does not resolve to org.blockml.bml.status.*.
+  </summary>
   <documentation>
     Emitted when status does not resolve to org.blockml.bml.status.*. Remedy: Use Draft, Stable,
     Deprecated, Stub (or library Status blocks).
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_STATUS" />
+  </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">
       status.
@@ -37,5 +33,4 @@
       status implicit NS.
     </see>
   </references>
-
-</block>
+</diag:BML_UNKNOWN_STATUS>

@@ -1,49 +1,36 @@
-<!--
-  BlockML Core — duration primitive type
+<!--BlockML Core — duration primitive type
 
-  FQN: org.blockml.bml.type.Duration
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.Duration-->
+<type:Duration xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Duration</name>
-  <type>type:Duration</type>
-  <baseType>type:PrimitiveType</baseType>
-  <is>A length of time</is>
-
-  <documentation>BOM Core primitive ValueType for an elapsed length of time. Unqualified name
+  <baseType>
+    type:PrimitiveType
+  </baseType>
+  <is>
+    A length of time
+  </is>
+  <documentation>
+    BOM Core primitive ValueType for an elapsed length of time. Unqualified name
     Duration resolves to org.blockml.bml.type.Duration. Duration is its own primitive branch under
     PrimitiveType — not a Temporal subtype. Temporal types name a position (Date, Time, DateTime);
     Duration names a magnitude. Payload values are stored on Properties — not on the Duration type
     itself.
-
+    
     Authored values use ISO 8601 duration form PnYnMnDTnHnMnS, with optional week form PnW (for
     example P3D, PT1H30M, P1Y2M3DT4H5M6S, P2W). DateTime minus DateTime yields Duration; DateTime
     plus Duration yields DateTime.
-
+    
     Duration is not a Number subtype. Calendar components such as years and months do not have a
     fixed SI length.
-
+    
     Optional configuration Properties (min, max) configure a Property's owned Duration instance via
-    inline type syntax — Duration{min: "PT0S", max: "P1Y"}. Positional order: min, max.</documentation>
-
-  <properties>
-    <min type="Duration">
-      <documentation>Minimum allowed duration (inclusive). Configured via Duration{min: d}.</documentation>
-    </min>
-    <max type="Duration">
-      <documentation>Maximum allowed duration (inclusive). Configured via Duration{max: d}.</documentation>
-    </max>
-  </properties>
-
+    inline type syntax — Duration{min: "PT0S", max: "P1Y"}. Positional order: min, max.
+  </documentation>
   <references>
     <see type="type:Temporal" relation="ContrastsWith">
       Calendar or clock position — Date, Time, and DateTime.
@@ -64,22 +51,29 @@
       parseValue — ISO 8601 duration PnYnMnDTnHnMnS or PnW.
     </see>
   </references>
-
+  <properties>
+    <min type="type:Duration">
+      <documentation>
+        Minimum allowed duration (inclusive). Configured via Duration{min: d}.
+      </documentation>
+    </min>
+    <max type="type:Duration">
+      <documentation>
+        Maximum allowed duration (inclusive). Configured via Duration{max: d}.
+      </documentation>
+    </max>
+  </properties>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         ISO 8601 duration: PnYnMnDTnHnMnS or week form PnW. At least one component required.
         min/max configuration is applied after parse.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           if (/^P\d+W$/.test(t)) return t;
@@ -88,8 +82,8 @@
           }
           return t;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-</block>
+</type:Duration>

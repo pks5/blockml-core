@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_TYPE_REFERENCE_CONSTRAINT diagnostic
+<!--BlockML Core — BML_TYPE_REFERENCE_CONSTRAINT diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_TYPE_REFERENCE_CONSTRAINT
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_TYPE_REFERENCE_CONSTRAINT-->
+<diag:BML_TYPE_REFERENCE_CONSTRAINT xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,15 +9,15 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_TYPE_REFERENCE_CONSTRAINT</name>
-  <type>diag:BML_TYPE_REFERENCE_CONSTRAINT</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A TypeReference constraint diagnostic</is>
-
-  <summary>Emitted when a TypeReference(B) or InstanceReference(T) bound is not satisfied by the referenced type.</summary>
-
-  <keywords>BML_TYPE_REFERENCE_CONSTRAINT</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A TypeReference constraint diagnostic
+  </is>
+  <summary>
+    Emitted when a TypeReference(B) or InstanceReference(T) bound is not satisfied by the referenced type.
+  </summary>
   <documentation>
     Emitted when a TypeReference(B), PropertyReference(B) (or Aggregation / Association /
     Capability Reference), or InstanceReference(T) bound is not satisfied by the resolved target.
@@ -31,7 +25,9 @@
     or instance must satisfy the branch bound B / T (and the owning-Block bound B on member
     References).
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_TYPE_REFERENCE_CONSTRAINT" />
+  </keywords>
   <references>
     <see type="type:TypeReference" relation="Defines">
       TypeReference bounds — checked after resolve.
@@ -46,5 +42,4 @@
       satisfiesTypeBound.
     </see>
   </references>
-
-</block>
+</diag:BML_TYPE_REFERENCE_CONSTRAINT>

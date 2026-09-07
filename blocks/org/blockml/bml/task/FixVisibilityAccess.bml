@@ -1,28 +1,22 @@
-<!--
-  BlockML Core — fix visibility access task
+<!--BlockML Core — fix visibility access task
 
-  FQN: org.blockml.bml.task.FixVisibilityAccess
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.task.FixVisibilityAccess-->
+<task:FixVisibilityAccess xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:task="org.blockml.bml.task">
 
-  <name>FixVisibilityAccess</name>
-  <type>task:FixVisibilityAccess</type>
-  <baseType>core:TaskGuide</baseType>
-  <is>A how-to for fixing visibility errors</is>
-
-  <summary>Resolve private/protected member or Sub-Block access errors, visibility mismatches,
-    narrowing on override, and duplicate visibility-prefix variants.</summary>
-
-  <keywords>visibility, private, protected, BML_PRIVATE_MEMBER_ACCESS, BML_VISIBILITY_NARROWING</keywords>
-
+  <baseType>
+    core:TaskGuide
+  </baseType>
+  <is>
+    A how-to for fixing visibility errors
+  </is>
+  <summary>
+    Resolve private/protected member or Sub-Block access errors, visibility mismatches,
+    narrowing on override, and duplicate visibility-prefix variants.
+  </summary>
   <documentation>
     Procedure when the validator reports a visibility-related BML_* code:
     1. Identify whether the site is a member or a Sub-Block (same naming convention).
@@ -31,9 +25,15 @@
        immediate composition owner for protected) or widen the declaration if appropriate.
     4. For override narrowing — keep or widen visibility; never narrow; private cannot be overridden.
     5. For duplicate variants — keep exactly one normalizedLogicalName with one visibility.
-    6. For root-level &lt;visibility&gt; on a root Block — remove it (Sub-Blocks only).
+    6. For root-level &lt;visibility> on a root Block — remove it (Sub-Blocks only).
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="visibility" />
+    <org.blockml.bml.meta.FreeTextKeyword term="private" />
+    <org.blockml.bml.meta.FreeTextKeyword term="protected" />
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_PRIVATE_MEMBER_ACCESS" />
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_VISIBILITY_NARROWING" />
+  </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="TaskStep">
       Step 1 — member access rules and formal D/C/I/O table.
@@ -51,5 +51,4 @@
       Narrowing on override.
     </see>
   </references>
-
-</block>
+</task:FixVisibilityAccess>

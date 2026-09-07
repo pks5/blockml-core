@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — bootstrap documentation
+<!--BlockML Core — bootstrap documentation
 
-  FQN: org.blockml.bml.documentation.CapabilitySemantics
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.documentation.CapabilitySemantics-->
+<doc:CapabilitySemantics xmlns="http://blockml.org/bml"
   xmlns:cap="org.blockml.bml.capability"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
@@ -15,20 +9,21 @@
   xmlns:lang="org.blockml.bml.language"
   xmlns:mapping="org.blockml.bml.mapping">
 
-  <name>CapabilitySemantics</name>
-  <type>doc:CapabilitySemantics</type>
-  <baseType>core:Documentation</baseType>
-  <is>A guide to Capability meaning</is>
-
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to Capability meaning
+  </is>
   <documentation>
     There are no special language concepts for constructor, getter, setter, or render — all
     behaviour is expressed as ordinary Capabilities: init(), getValue(), setValue(), render(),
     parseValue(), and domain-specific operations. Package: org.blockml.bml.capability.* (base
     org.blockml.bml.core.Capability).
-
+    
     A Capability implementation is a language-tagged body. It may serve one or more of these
     readings — no ranking, no model restriction to a single use:
-
+    
     • Intent — PseudoCode or a natural language (English, German, …). Humans and LLMs read the
       contract; no host is required to execute the body.
     • Companion template — a target-language body (TypeScript, Java, OpenSCAD, …) that a
@@ -37,55 +32,54 @@
     • Host-evaluable function — a deterministic body a toolchain (validator, parser, runtime)
       may execute. The host chooses which language it evaluates; BlockML does not require
       TypeScript or any other language.
-
+    
     The compiler/renderer reading — map init() to a constructor, ignore a body, emit a method —
     remains valid. It is one interpretation in a compiler pipeline, not a rule that the BOM
     must not contain executable behaviour.
-
+    
     Capability kinds describe payload shape — they are not compiler rules or runtime objects:
     • Inbound — receives input from outside (setValue, configure); requires inputType; no outputType
     • Outbound — produces output to outside (getValue, emit); requires outputType; no inputType
     • Transformation — maps input to output (compute, format, parse); requires both
     • Action — performs a side effect or command (trigger, reset, refresh); no inputType, no outputType
     Async reply via replyTo is a runtime/message pattern — not modeled on the Capability.
-
+    
     inputType and outputType are ValueTypes. Host encodings (TypeScript number, Java int, …)
     are FunctionMapping / host concerns — not the BML signature (doc:FunctionMappingModel).
-
+    
     throws lists Exception types the Capability may raise — the BlockML equivalent of a Java
     method throws clause. The aggregation type is type:TypeReferenceEntity(core:Exception)[]
     (def:CapabilityDefinition). Children are type references, not Exception instances — empty-QName
-    sugar such as &lt;io:FileNotFound /&gt; names a type that must extend
+    sugar such as &lt;io:FileNotFound /> names a type that must extend
     org.blockml.bml.core.Exception. Omitted or empty throws means no declared exceptions. Exception
     instances carry message:Text; domain libraries define concrete exception types. Distinct from
     org.blockml.bml.core.Diagnostic (validator and parser codes). A host that evaluates a body
     maps a thrown Exception to a Diagnostic when it reports a validate/parse failure.
-
+    
     Unqualified Capability type resolves to org.blockml.bml.capability.*; unqualified inputType /
     outputType resolve to org.blockml.bml.type.* (doc:ImplicitNamespaceResolution). General block
     references (aggregation type, association type, baseType) have no implicit namespace.
-
-    Authoring: declare under &lt;capabilities&gt; with a camelCase name (visibility prefixes apply —
+    
+    Authoring: declare under &lt;capabilities> with a camelCase name (visibility prefixes apply —
     doc:MemberVisibility). In a Composition the Capability value is the address or binding —
     attribute on the child Block instance, like a Property value. Private Capabilities (__name)
     cannot be bound from outside the declaring Block; protected (_name) follow the formal access
     rule including derived Blocks and the direct composition owner.
-
+    
     Each Capability may carry an implementation whose language attribute references a Language FQN
     (org.blockml.bml.language.*). utility Sub-Blocks (baseType Entity) commonly host Transformation
     implementations — doc:SubBlockModel. Preferred dialect for intent: PseudoCode
     (doc:PseudoCode). A compiler renderer may still map names to target constructs:
-
+    
     init()     → Java constructor · UI5 onInit() · React useEffect()
     getValue() → direct field access · generated getter · reflection
     setValue() → direct field assignment · generated setter
     render()   → SCAD module · JSX component · may be ignored
     parseValue() → host-evaluable parse of authored text (doc:ValueTypeParsing)
-
+    
     A Block's public surface is Capabilities — internal structure (Properties, Aggregations)
     is not the outward API.
   </documentation>
-
   <references>
     <see type="doc:ImplicitNamespaceResolution" relation="SeeAlso">
       Unqualified Capability type vs inputType / outputType sites.
@@ -130,5 +124,4 @@
       Next reading step — dynamic values and bean calls in expressions.
     </see>
   </references>
-
-</block>
+</doc:CapabilitySemantics>

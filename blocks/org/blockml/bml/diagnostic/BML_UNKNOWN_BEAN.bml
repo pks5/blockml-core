@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_UNKNOWN_BEAN diagnostic
+<!--BlockML Core — BML_UNKNOWN_BEAN diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_BEAN
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_BEAN-->
+<diag:BML_UNKNOWN_BEAN xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,20 +9,22 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_UNKNOWN_BEAN</name>
-  <type>diag:BML_UNKNOWN_BEAN</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>An unknown-bean-name diagnostic</is>
-
-  <summary>Emitted when a bean name cannot be resolved (alias of expression bean errors in some pipelines).</summary>
-
-  <keywords>BML_UNKNOWN_BEAN</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    An unknown-bean-name diagnostic
+  </is>
+  <summary>
+    Emitted when a bean name cannot be resolved (alias of expression bean errors in some pipelines).
+  </summary>
   <documentation>
     Emitted when a bean name cannot be resolved (alias of expression bean errors in some pipelines).
     Remedy: Declare bml:bean on the instance; prefer BML_EXPR_UNKNOWN_BEAN for expression sites.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_BEAN" />
+  </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">
       Bean scope.
@@ -40,5 +36,4 @@
       Fix bean declaration.
     </see>
   </references>
-
-</block>
+</diag:BML_UNKNOWN_BEAN>

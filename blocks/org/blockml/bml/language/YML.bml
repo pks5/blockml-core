@@ -1,26 +1,22 @@
-<!--
-  BlockML Core — YML implementation language
+<!--BlockML Core — YML implementation language
 
-  FQN: org.blockml.bml.language.YML
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.language.YML-->
+<lang:YML xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>YML</name>
-  <type>lang:YML</type>
-  <baseType>lang:MarkupLanguage(L)</baseType>
-  <is>The YAML markup language</is>
-
-  <documentation>MarkupLanguage for YAML document implementations on Capabilities — configuration,
+  <baseType>
+    lang:MarkupLanguage(L)
+  </baseType>
+  <is>
+    The YAML markup language
+  </is>
+  <documentation>
+    MarkupLanguage for YAML document implementations on Capabilities — configuration,
     structured data, or templates. Forwards MarkupLanguage.L (NaturalLanguage, default English) for
-    the content/text language inside the document — bare YML is YML(English).</documentation>
-
+    the content/text language inside the document — bare YML is YML(English).
+  </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
   </genericTypes>
-</block>
+</lang:YML>

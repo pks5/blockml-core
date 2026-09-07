@@ -1,13 +1,7 @@
-<!--
-  BlockML Core — BML_MISSING_GENERIC_TYPE_ARGUMENT diagnostic
+<!--BlockML Core — BML_MISSING_GENERIC_TYPE_ARGUMENT diagnostic
 
-  FQN: org.blockml.bml.diagnostic.BML_MISSING_GENERIC_TYPE_ARGUMENT
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.diagnostic.BML_MISSING_GENERIC_TYPE_ARGUMENT-->
+<diag:BML_MISSING_GENERIC_TYPE_ARGUMENT xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
@@ -15,21 +9,23 @@
   xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
-  <name>BML_MISSING_GENERIC_TYPE_ARGUMENT</name>
-  <type>diag:BML_MISSING_GENERIC_TYPE_ARGUMENT</type>
-  <baseType>core:Diagnostic</baseType>
-  <is>A missing-generic-type-argument diagnostic</is>
-
-  <summary>Emitted when a generic application or bml:generics omits a required type argument with no resolvable defaultType.</summary>
-
-  <keywords>BML_MISSING_GENERIC_TYPE_ARGUMENT</keywords>
-
+  <baseType>
+    core:Diagnostic
+  </baseType>
+  <is>
+    A missing-generic-type-argument diagnostic
+  </is>
+  <summary>
+    Emitted when a generic application or bml:generics omits a required type argument with no resolvable defaultType.
+  </summary>
   <documentation>
     Emitted when a generic application or instance bml:generics omits a required type argument with
     no resolvable defaultType. Remedy: Supply the argument or declare defaultType. An entire missing
     bml:generics on an open-generic instance is BML_OPEN_GENERIC_INSTANCE, not this code.
   </documentation>
-
+  <keywords>
+    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_GENERIC_TYPE_ARGUMENT" />
+  </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">
       defaultType, type applications, and instance bml:generics.
@@ -38,5 +34,4 @@
       Open generic aggregated without bml:generics.
     </see>
   </references>
-
-</block>
+</diag:BML_MISSING_GENERIC_TYPE_ARGUMENT>

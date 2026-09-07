@@ -1,16 +1,10 @@
-<!--
-  BlockML Core Services
+<!--BlockML Core Services
 
   Name: Lists Service
   Filename: Lists.bml
   FQN: org.blockml.bml.service.Lists
-  Expression prefix: #lists.*
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  Expression prefix: #lists.*-->
+<service:Lists xmlns="http://blockml.org/bml"
   xmlns:cap="org.blockml.bml.capability"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
@@ -18,14 +12,16 @@
   xmlns:service="org.blockml.bml.service"
   xmlns:type="org.blockml.bml.type">
 
-  <name>Lists</name>
-  <type>service:Lists</type>
-  <baseType>core:Entity</baseType>
-  <is>A list expression service</is>
-
-  <documentation>Built-in lists service. Expression prefix #lists.* — list construction,
+  <baseType>
+    core:Entity
+  </baseType>
+  <is>
+    A list expression service
+  </is>
+  <documentation>
+    Built-in lists service. Expression prefix #lists.* — list construction,
     indexing, and aggregation utilities.
-
+    
     Inputs typed core:ValueType[] are compatible with a collection of any element type, because
     collections are compared per element type and every ValueType is assignable to ValueType:
     Integer[] &lt;: Number[] &lt;: PrimitiveType[] &lt;: ValueType[], Text[] &lt;: ValueType[]. Elements are
@@ -34,21 +30,18 @@
     sequence returns Integer[], where [1, "text", 3] would be invalid. Element access (first, last,
     get) declares core:ValueType as output — the element type of its core:ValueType[] input; the
     concrete ValueType of the returned element follows the list element at runtime.
-
+    
     Multi-argument capabilities use an anonymous StructType whose field types are full
     TypeExpressions — { list: core:ValueType[], index: Integer } on get is one anonymous StructType
     with a qualified, multiplicity-carrying list field and an unqualified index field. concat takes a
     nested multiplicity instead — (core:ValueType[])[], a collection of lists, where every call
     argument becomes one element of the outer collection.
     See doc:TypeExpressions — Collection compatibility · Heterogeneous collections ·
-    Nested multiplicities · Anonymous StructTypes.</documentation>
+    Nested multiplicities · Anonymous StructTypes.
+  </documentation>
   <capabilities>
-
-    <!-- #lists.size(list) -->
-    <size
-      type="Transformation"
-      inputType="core:ValueType[]"
-      outputType="Integer">
+    <!--#lists.size(list)-->
+    <size type="cap:Transformation" inputType="core:ValueType[]" outputType="type:Integer">
       <documentation>
         Returns the number of elements in list.
         core:ValueType[] accepts Integer[], Text[], … and heterogeneous element types alike.
@@ -56,46 +49,34 @@
         #lists.size([1, 2, 3]) → 3
         #lists.size([1, "text", true]) → 3
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (list: unknown[]): number => list.length
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(list: unknown[]): number => list.length]]>
+      </implementation>
     </size>
-
-    <!-- #lists.isEmpty(list) -->
-    <isEmpty
-      type="Transformation"
-      inputType="core:ValueType[]"
-      outputType="Boolean">
+    <!--#lists.isEmpty(list)-->
+    <isEmpty type="cap:Transformation" inputType="core:ValueType[]" outputType="type:Boolean">
       <documentation>
         Returns true if list has no elements.
         Examples:
         #lists.isEmpty([]) → true
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (list: unknown[]): boolean => list.length === 0
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(list: unknown[]): boolean => list.length === 0]]>
+      </implementation>
     </isEmpty>
-
-    <!-- #lists.contains(list, element) -->
-    <contains
-      type="Transformation"
-      inputType="{ list: core:ValueType[], element: core:ValueType }"
-      outputType="Boolean">
+    <!--#lists.contains(list, element)-->
+    <contains type="cap:Transformation" inputType="{ list: core:ValueType[], element: core:ValueType }" outputType="type:Boolean">
       <documentation>
         Returns true if list contains element.
         Examples:
         #lists.contains([1, 2, 3], 2) → true
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (list: unknown[], element: unknown): boolean => list.includes(element)
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(list: unknown[], element: unknown): boolean => list.includes(element)]]>
+      </implementation>
     </contains>
-
-    <!-- #lists.first(list) -->
-    <first
-      type="Transformation"
-      inputType="core:ValueType[]"
-      outputType="core:ValueType">
+    <!--#lists.first(list)-->
+    <first type="cap:Transformation" inputType="core:ValueType[]" outputType="core:ValueType">
       <documentation>
         Returns the first element of list.
         The declared output type is the input's element type — the concrete ValueType of the
@@ -104,16 +85,12 @@
         #lists.first([10, 20, 30]) → 10
         #lists.first(["a", "b"]) → "a"
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (list: unknown[]): unknown => list[0]
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(list: unknown[]): unknown => list[0]]]>
+      </implementation>
     </first>
-
-    <!-- #lists.last(list) -->
-    <last
-      type="Transformation"
-      inputType="core:ValueType[]"
-      outputType="core:ValueType">
+    <!--#lists.last(list)-->
+    <last type="cap:Transformation" inputType="core:ValueType[]" outputType="core:ValueType">
       <documentation>
         Returns the last element of list.
         The declared output type is the input's element type — the concrete ValueType of the
@@ -121,16 +98,12 @@
         Examples:
         #lists.last([10, 20, 30]) → 30
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (list: unknown[]): unknown => list[list.length - 1]
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(list: unknown[]): unknown => list[list.length - 1]]]>
+      </implementation>
     </last>
-
-    <!-- #lists.get(list, index) -->
-    <get
-      type="Transformation"
-      inputType="{ list: core:ValueType[], index: Integer }"
-      outputType="core:ValueType">
+    <!--#lists.get(list, index)-->
+    <get type="cap:Transformation" inputType="{ list: core:ValueType[], index: type:Integer }" outputType="core:ValueType">
       <documentation>
         Returns the element at index in list.
         The declared output type is the list's element type — the concrete ValueType of the
@@ -138,16 +111,12 @@
         Examples:
         #lists.get([10, 20, 30], 1) → 20
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (list: unknown[], index: number): unknown => list[index]
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(list: unknown[], index: number): unknown => list[index]]]>
+      </implementation>
     </get>
-
-    <!-- #lists.concat(a, b, ...) -->
-    <concat
-      type="Transformation"
-      inputType="(core:ValueType[])[]"
-      outputType="core:ValueType[]">
+    <!--#lists.concat(a, b, ...)-->
+    <concat type="cap:Transformation" inputType="(core:ValueType[])[]" outputType="core:ValueType[]">
       <documentation>
         Concatenates all list arguments into a single list.
         The input is a nested multiplicity — (core:ValueType[])[] is a collection of
@@ -161,23 +130,17 @@
         #lists.concat([1, 2], [3, 4]) → [1, 2, 3, 4]
         #lists.concat([1, 2], ["a"]) → [1, 2, "a"]
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
-        (...lists: unknown[][]): unknown[] => lists.flat()
-      ]]></implementation>
+      <implementation language="lang:TypeScript">
+        <![CDATA[(...lists: unknown[][]): unknown[] => lists.flat()]]>
+      </implementation>
     </concat>
-
-    <!--
-      #lists.sequence(start, end)  or  #lists.sequence(start, end, step)
+    <!--#lists.sequence(start, end)  or  #lists.sequence(start, end, step)
       Generates a numeric sequence from start to end (inclusive) with optional step.
-      When step is omitted, defaults to 1 (or -1 when start &gt; end).
-    -->
-    <sequence
-      type="Transformation"
-      inputType="{ start: Integer, end: Integer, step: Integer }"
-      outputType="Integer[]">
+      When step is omitted, defaults to 1 (or -1 when start &gt; end).-->
+    <sequence type="cap:Transformation" inputType="{ start: type:Integer, end: type:Integer, step: type:Integer }" outputType="type:Integer[]">
       <documentation>
         Generates a sequence of integers from start to end (inclusive).
-        step defaults to 1 when start &lt;= end, -1 when start &gt; end.
+        step defaults to 1 when start &lt;= end, -1 when start > end.
         The Integer[] result is assignable to Number[] and core:ValueType[] — collections are
         compatible per element type.
         Examples:
@@ -185,7 +148,8 @@
         #lists.sequence(0, 10, 2) → [0, 2, 4, 6, 8, 10]
         #lists.sequence(5, 1) → [5, 4, 3, 2, 1]
       </documentation>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="lang:TypeScript">
+        <![CDATA[
         (start: number, end: number, step?: number): number[] => {
           const s = step ?? (start <= end ? 1 : -1);
           const result: number[] = [];
@@ -196,9 +160,8 @@
           }
           return result;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </sequence>
-
   </capabilities>
-
-</block>
+</service:Lists>

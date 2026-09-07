@@ -1,42 +1,36 @@
-<!--
-  BlockML Core — Block instance name identifier value type (syntax only)
+<!--BlockML Core — Block instance name identifier value type (syntax only)
 
-  FQN: org.blockml.bml.type.InstanceIdentifier
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.InstanceIdentifier-->
+<type:InstanceIdentifier xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>InstanceIdentifier</name>
-  <type>type:InstanceIdentifier</type>
-  <baseType>type:Text</baseType>
-  <is>A Block instance name</is>
-
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A Block instance name
+  </is>
   <documentation>
     ValueType for non-owning instance name strings identified by bml:id. Unqualified name
     InstanceIdentifier resolves to org.blockml.bml.type.InstanceIdentifier. Syntax only — the
     named instance need not exist. No generic parameters. InstanceReference(T) extends this type
     and adds existence plus the branch bound T.
-
+    
     Lexical forms:
     • Local id — myId (visibility-scoped within the enclosing composition)
     • Qualified — {EnclosingBlockFQN}::{instanceId} (e.g. com.foo.Bar::myId)
     • Prefixed qualified — foo:Bar::myId (xmlns QName of the enclosing Block document, then :: and id)
-
+    
     Not a Block type FQN (use TypeIdentifier / TypeReference), not a package string (use
     PackageIdentifier / PackageReference), not a member definition path (use MemberIdentifier /
     AssociationIdentifier), and not a resource URI (use URI).
-
+    
     Primary use — planned or future instance pointers. AssociationDefinition type and see
     instance= use InstanceReference — not InstanceIdentifier.
   </documentation>
-
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">
       TypeReference · InstanceReference · PropertyReference.
@@ -54,22 +48,17 @@
       parseValue — local id or Type::id syntax, no existence check.
     </see>
   </references>
-
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         Local id (myId) or qualified Type::id (FQN::id or prefix:Name::id). The type prefix is
         syntax only — existence is InstanceReference.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(t)) return t;
@@ -77,7 +66,8 @@
           if (q) return t;
           throw new Error("not an instance identifier: " + raw);
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-</block>
+</type:InstanceIdentifier>

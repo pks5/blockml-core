@@ -1,26 +1,22 @@
-<!--
-  BlockML Core — C# implementation language
+<!--BlockML Core — C# implementation language
 
-  FQN: org.blockml.bml.language.CSharp
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.language.CSharp-->
+<lang:CSharp xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language">
 
-  <name>CSharp</name>
-  <type>lang:CSharp</type>
-  <baseType>lang:ProgrammingLanguage(L)</baseType>
-  <is>The C# programming language</is>
-
-  <documentation>ProgrammingLanguage for C# method implementations on Capabilities. Forwards
+  <baseType>
+    lang:ProgrammingLanguage(L)
+  </baseType>
+  <is>
+    The C# programming language
+  </is>
+  <documentation>
+    ProgrammingLanguage for C# method implementations on Capabilities. Forwards
     ProgrammingLanguage.L (NaturalLanguage, default English) for the content language of identifiers
-    and comments — bare CSharp is CSharp(English).</documentation>
-
+    and comments — bare CSharp is CSharp(English).
+  </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="lang:English"/>
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
   </genericTypes>
-</block>
+</lang:CSharp>

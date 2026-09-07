@@ -1,46 +1,33 @@
-<!--
-  BlockML Core — date-and-time primitive type
+<!--BlockML Core — date-and-time primitive type
 
-  FQN: org.blockml.bml.type.DateTime
--->
-<block
-  xmlns="http://blockml.org/bml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://blockml.org/bml https://blockml.org/schemas/bml.xsd
-                      "
+  FQN: org.blockml.bml.type.DateTime-->
+<type:DateTime xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
-  <name>DateTime</name>
-  <type>type:DateTime</type>
-  <baseType>type:Temporal</baseType>
-  <is>A date and time</is>
-
-  <documentation>BOM Core primitive ValueType for a combined date and time of day. Unqualified name
+  <baseType>
+    type:Temporal
+  </baseType>
+  <is>
+    A date and time
+  </is>
+  <documentation>
+    BOM Core primitive ValueType for a combined date and time of day. Unqualified name
     DateTime resolves to org.blockml.bml.type.DateTime. Extends org.blockml.bml.type.Temporal. Payload
     values are stored on Properties — not on the DateTime type itself.
-
+    
     Authored values use ISO 8601 combined date-and-time form (for example 2024-08-29T14:30:00,
     2024-08-29T14:30:00Z, 2024-08-29T16:30:00+02:00). A trailing Z denotes UTC; a numeric offset
     denotes a local civil time with that offset. DateTime is a position on the timeline, not an
     elapsed span — use Duration for lengths of time.
-
+    
     Optional configuration Properties (min, max) configure a Property's owned DateTime instance via
     inline type syntax — DateTime{min: "2024-01-01T00:00:00Z", max: "2024-12-31T23:59:59Z"}.
-    Positional order: min, max.</documentation>
-
-  <properties>
-    <min type="DateTime">
-      <documentation>Minimum allowed date-time (inclusive). Configured via DateTime{min: dt}.</documentation>
-    </min>
-    <max type="DateTime">
-      <documentation>Maximum allowed date-time (inclusive). Configured via DateTime{max: dt}.</documentation>
-    </max>
-  </properties>
-
+    Positional order: min, max.
+  </documentation>
   <references>
     <see type="type:Temporal" relation="Extends">
       Abstract temporal position branch.
@@ -64,22 +51,29 @@
       parseValue — ISO 8601 combined date-and-time.
     </see>
   </references>
-
+  <properties>
+    <min type="type:DateTime">
+      <documentation>
+        Minimum allowed date-time (inclusive). Configured via DateTime{min: dt}.
+      </documentation>
+    </min>
+    <max type="type:DateTime">
+      <documentation>
+        Maximum allowed date-time (inclusive). Configured via DateTime{max: dt}.
+      </documentation>
+    </max>
+  </properties>
   <capabilities>
-    <parseValue
-      override="true"
-      abstract="false"
-      type="Transformation"
-      inputType="Text"
-      outputType="bml:Self">
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
       <documentation>
         ISO 8601 combined date-and-time. Optional trailing Z or numeric offset. Date and time
         components must be calendar-valid. min/max configuration is applied after parse.
       </documentation>
-      <throws>
-        <ex:InvalidValueException />
-      </throws>
-      <implementation language="TypeScript"><![CDATA[
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
         (raw: string): string => {
           const t = raw.trim();
           const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$/.exec(t);
@@ -99,8 +93,8 @@
           }
           return t;
         }
-      ]]></implementation>
+        ]]>
+      </implementation>
     </parseValue>
   </capabilities>
-
-</block>
+</type:DateTime>
