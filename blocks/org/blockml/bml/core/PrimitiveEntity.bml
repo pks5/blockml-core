@@ -40,7 +40,12 @@
     </see>
   </references>
   <genericTypes>
-    <T baseType="type:PrimitiveType" />
+    <T baseType="type:PrimitiveType">
+      <documentation>
+        PrimitiveType carried as this Entity's value. Derived Blocks bind T in baseType
+        (e.g. PrimitiveEntity(Integer) → value : Integer).
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <value type="T">

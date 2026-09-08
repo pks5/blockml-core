@@ -31,6 +31,11 @@
     </see>
   </references>
   <genericTypes>
-    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block">
+      <documentation>
+        Owning Block branch — introduced on this Reference. Defaults to core:Block —
+        bare PropertyReference is valid.
+      </documentation>
+    </B>
   </genericTypes>
 </type:PropertyReference>

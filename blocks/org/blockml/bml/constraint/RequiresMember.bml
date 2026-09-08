@@ -18,7 +18,12 @@
     effective member set of the Block. Reference implementation for BlockConstraint branch.
   </documentation>
   <genericTypes>
-    <T baseType="def:BlockDefinition" />
+    <T baseType="def:BlockDefinition">
+      <documentation>
+        Bound to the effective block definition meta-model type (BlockDefinition and its
+        subtypes).
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <name type="org.blockml.bml.type.Text">

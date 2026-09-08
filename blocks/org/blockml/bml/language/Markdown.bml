@@ -43,6 +43,11 @@
     </see>
   </references>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content language of the Markdown body. Forwarded from
+        org.blockml.bml.language.MarkupLanguage — bare Markdown is Markdown(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:Markdown>

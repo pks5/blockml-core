@@ -17,6 +17,11 @@
     and comments — bare Python is Python(English).
   </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content language of identifiers and comments. Forwarded from
+        org.blockml.bml.language.ProgrammingLanguage — bare Python is Python(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:Python>

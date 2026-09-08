@@ -16,7 +16,11 @@
     T binds to org.blockml.bml.type.Text. The value property holds the regex pattern.
   </documentation>
   <genericTypes>
-    <T baseType="type:Text" />
+    <T baseType="type:Text">
+      <documentation>
+        Bound to Text — the enclosing Property must be type:Text.
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <value type="type:Text">

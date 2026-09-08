@@ -18,6 +18,11 @@
     is BML(English).
   </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content/text language inside the BML body. Forwarded from
+        org.blockml.bml.language.MarkupLanguage — bare BML is BML(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:BML>

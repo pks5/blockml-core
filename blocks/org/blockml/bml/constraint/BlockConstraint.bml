@@ -22,6 +22,11 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="def:BlockDefinition" />
+    <T baseType="def:BlockDefinition">
+      <documentation>
+        Bound to the effective block definition meta-model type (BlockDefinition and its
+        SubBlockDefinition, RootBlockDefinition, or EmbeddedBlockDefinition subtypes).
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:BlockConstraint>

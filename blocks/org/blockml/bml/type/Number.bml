@@ -31,7 +31,13 @@
     true
   </abstract>
   <genericTypes>
-    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None" />
+    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None">
+      <documentation>
+        Measurement unit. Default unit:None — bare Number is dimensionless. Supply N
+        when a unit is required (e.g. Number(unit:Millimeter)). Integer, Decimal, and
+        Float forward N.
+      </documentation>
+    </N>
   </genericTypes>
   <capabilities>
     <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">

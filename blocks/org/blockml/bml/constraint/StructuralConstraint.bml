@@ -21,6 +21,10 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="core:Definition" />
+    <T baseType="core:Definition">
+      <documentation>
+        Bound automatically from the &lt;constraints> embedding context.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:StructuralConstraint>

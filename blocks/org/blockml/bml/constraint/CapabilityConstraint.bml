@@ -20,6 +20,10 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="def:CapabilityDefinition" />
+    <T baseType="def:CapabilityDefinition">
+      <documentation>
+        Bound to the effective CapabilityDefinition of the enclosing Capability member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:CapabilityConstraint>

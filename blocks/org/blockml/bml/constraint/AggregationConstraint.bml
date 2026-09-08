@@ -20,6 +20,11 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="def:AggregationDefinition" />
+    <T baseType="def:AggregationDefinition">
+      <documentation>
+        Bound to the effective AggregationDefinition of the enclosing Aggregation
+        member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:AggregationConstraint>

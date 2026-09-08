@@ -45,7 +45,12 @@
     </see>
   </references>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Language of free-text color names. Default English — bare Color is
+        Color(English).
+      </documentation>
+    </L>
   </genericTypes>
   <capabilities>
     <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">

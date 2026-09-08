@@ -18,6 +18,11 @@
     Unity(English).
   </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content language of identifiers and comments. Forwarded from
+        org.blockml.bml.language.CSharp — bare Unity is Unity(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:Unity>

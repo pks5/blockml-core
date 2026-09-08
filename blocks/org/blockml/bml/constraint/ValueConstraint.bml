@@ -21,6 +21,10 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="core:ValueType" />
+    <T baseType="core:ValueType">
+      <documentation>
+        Bound automatically to the effective ValueType of the enclosing Property.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:ValueConstraint>

@@ -17,6 +17,11 @@
     the content/text language inside the document — bare JSON is JSON(English).
   </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content/text language inside the JSON body. Forwarded from
+        org.blockml.bml.language.MarkupLanguage — bare JSON is JSON(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:JSON>

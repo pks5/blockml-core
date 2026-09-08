@@ -25,7 +25,12 @@
     exponent). NaN and infinities are rejected (doc:ValueTypeParsing).
   </documentation>
   <genericTypes>
-    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None" />
+    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None">
+      <documentation>
+        Measurement unit, forwarded from Number. Default unit:None — bare Float is
+        dimensionless (e.g. Float(unit:Millimeter)).
+      </documentation>
+    </N>
   </genericTypes>
   <capabilities>
     <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">

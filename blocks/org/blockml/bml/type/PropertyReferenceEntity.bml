@@ -16,6 +16,11 @@
     PropertyIdentifierEntity.
   </documentation>
   <genericTypes>
-    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block">
+      <documentation>
+        Owning Block branch — mirrored from PropertyReference.B. Checked after
+        resolution.
+      </documentation>
+    </B>
   </genericTypes>
 </type:PropertyReferenceEntity>

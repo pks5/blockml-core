@@ -64,7 +64,12 @@
     </see>
   </references>
   <genericTypes>
-    <D baseType="def:MemberDefinition" />
+    <D baseType="def:MemberDefinition">
+      <documentation>
+        Member definition kind (path shape). Bound by concrete Identifier children
+        (PropertyIdentifier, …). Not an existence check.
+      </documentation>
+    </D>
   </genericTypes>
   <capabilities>
     <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">

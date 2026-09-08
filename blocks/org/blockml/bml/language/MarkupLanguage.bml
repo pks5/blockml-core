@@ -42,6 +42,11 @@
     </see>
   </references>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content/text language inside the markup (element text, comments, prose). Default
+        English — bare MarkupLanguage is MarkupLanguage(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:MarkupLanguage>

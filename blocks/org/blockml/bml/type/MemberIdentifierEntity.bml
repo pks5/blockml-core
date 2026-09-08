@@ -21,6 +21,10 @@
     true
   </abstract>
   <genericTypes>
-    <D baseType="def:MemberDefinition" />
+    <D baseType="def:MemberDefinition">
+      <documentation>
+        Member definition kind (path shape) — mirrored from MemberIdentifier.D.
+      </documentation>
+    </D>
   </genericTypes>
 </type:MemberIdentifierEntity>

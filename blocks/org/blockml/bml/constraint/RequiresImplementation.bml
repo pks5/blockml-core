@@ -18,6 +18,10 @@
     binding on concrete Blocks. Reference implementation for CapabilityConstraint branch.
   </documentation>
   <genericTypes>
-    <T baseType="def:CapabilityDefinition" />
+    <T baseType="def:CapabilityDefinition">
+      <documentation>
+        Bound to the effective CapabilityDefinition of the enclosing Capability member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:RequiresImplementation>

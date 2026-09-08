@@ -100,6 +100,11 @@
     </see>
   </references>
   <genericTypes>
-    <B baseType="core:Block" />
+    <B baseType="core:Block">
+      <documentation>
+        Block branch constraint for the referenced type. Concrete arguments must satisfy
+        satisfiesTypeBound(resolve(value), B).
+      </documentation>
+    </B>
   </genericTypes>
 </type:TypeReference>

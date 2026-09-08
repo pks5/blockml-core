@@ -90,7 +90,12 @@
     </see>
   </references>
   <genericTypes>
-    <B baseType="core:Block" />
+    <B baseType="core:Block">
+      <documentation>
+        The Block type this BlockDefinition describes. Conceptually BlockDefinition of
+        com.foo.Bar when B binds to com.foo.Bar.
+      </documentation>
+    </B>
   </genericTypes>
   <properties>
     <name bml:xml="element" type="type:Text">

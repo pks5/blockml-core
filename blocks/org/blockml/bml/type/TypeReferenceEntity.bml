@@ -73,6 +73,12 @@
     </see>
   </references>
   <genericTypes>
-    <B baseType="core:Block" />
+    <B baseType="core:Block">
+      <documentation>
+        Block branch constraint for the referenced type. Mirrored from TypeReference.B —
+        each instance value must name a type that satisfies
+        satisfiesTypeBound(resolve(value), B).
+      </documentation>
+    </B>
   </genericTypes>
 </type:TypeReferenceEntity>

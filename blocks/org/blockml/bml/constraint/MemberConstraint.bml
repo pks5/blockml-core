@@ -20,6 +20,10 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="def:MemberDefinition" />
+    <T baseType="def:MemberDefinition">
+      <documentation>
+        Bound to the effective member definition type of the enclosing member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:MemberConstraint>

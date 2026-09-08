@@ -74,6 +74,11 @@
     </see>
   </references>
   <genericTypes>
-    <T baseType="core:Block" />
+    <T baseType="core:Block">
+      <documentation>
+        Target instance branch constraint. Concrete association arguments must satisfy
+        satisfiesTypeBound(resolve(targetInstance.typeFqn), T).
+      </documentation>
+    </T>
   </genericTypes>
 </type:InstanceReference>

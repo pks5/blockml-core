@@ -16,7 +16,12 @@
     T binds to the property collection type (e.g. String[]). The value property is Integer — the minimum item count.
   </documentation>
   <genericTypes>
-    <T baseType="core:ValueType" />
+    <T baseType="core:ValueType">
+      <documentation>
+        Bound to the effective collection ValueType of the enclosing Property (e.g.
+        Text[]).
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <value type="type:Integer">

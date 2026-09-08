@@ -46,6 +46,11 @@
     </see>
   </references>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content/text language of formal code (identifiers, comments, prose). Default
+        English — bare ProgrammingLanguage is ProgrammingLanguage(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:ProgrammingLanguage>

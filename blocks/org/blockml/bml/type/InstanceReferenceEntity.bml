@@ -16,6 +16,11 @@
     InstanceIdentifierEntity.
   </documentation>
   <genericTypes>
-    <T baseType="core:Block" />
+    <T baseType="core:Block">
+      <documentation>
+        Target instance branch — mirrored from InstanceReference.T. Checked after
+        resolution.
+      </documentation>
+    </T>
   </genericTypes>
 </type:InstanceReferenceEntity>

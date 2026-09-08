@@ -18,6 +18,11 @@
     enclosing Block's own type. Reference implementation for AssociationConstraint branch.
   </documentation>
   <genericTypes>
-    <T baseType="def:AssociationDefinition" />
+    <T baseType="def:AssociationDefinition">
+      <documentation>
+        Bound to the effective AssociationDefinition of the enclosing Association
+        member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:NoSelfReference>

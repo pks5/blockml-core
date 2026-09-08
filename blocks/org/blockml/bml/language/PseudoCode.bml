@@ -19,6 +19,12 @@
     PseudoCode is PseudoCode(English).
   </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content language of the pseudocode prose. Forwarded from
+        org.blockml.bml.language.ProgrammingLanguage — bare PseudoCode is
+        PseudoCode(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:PseudoCode>

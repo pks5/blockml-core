@@ -39,6 +39,11 @@
     </see>
   </references>
   <genericTypes>
-    <T baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
+    <T baseType="core:Block" defaultType="org.blockml.bml.core.Block">
+      <documentation>
+        Allowed see type= target branch. Each use of this relation requires
+        satisfiesTypeBound(resolve(type), T). Defaults to core:Block.
+      </documentation>
+    </T>
   </genericTypes>
 </core:TypeRelation>

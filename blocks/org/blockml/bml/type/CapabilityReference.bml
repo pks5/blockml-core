@@ -30,6 +30,10 @@
     </see>
   </references>
   <genericTypes>
-    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block">
+      <documentation>
+        Owning Block branch. Defaults to core:Block.
+      </documentation>
+    </B>
   </genericTypes>
 </type:CapabilityReference>

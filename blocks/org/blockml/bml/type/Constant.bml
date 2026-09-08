@@ -58,7 +58,12 @@
     </see>
   </references>
   <genericTypes>
-    <T baseType="core:ValueType" />
+    <T baseType="core:ValueType">
+      <documentation>
+        Underlying ValueType of the singleton domain. Mandatory at every reference site
+        — Constant(T){value: …}; bare Constant is invalid.
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <value type="T">

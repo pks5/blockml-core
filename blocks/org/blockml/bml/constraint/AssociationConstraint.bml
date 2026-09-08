@@ -20,6 +20,11 @@
     true
   </abstract>
   <genericTypes>
-    <T baseType="def:AssociationDefinition" />
+    <T baseType="def:AssociationDefinition">
+      <documentation>
+        Bound to the effective AssociationDefinition of the enclosing Association
+        member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:AssociationConstraint>

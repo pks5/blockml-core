@@ -28,7 +28,12 @@
     precision/scale apply after parseValue (doc:ValueTypeParsing).
   </documentation>
   <genericTypes>
-    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None" />
+    <N baseType="core:Unit" defaultType="org.blockml.bml.unit.None">
+      <documentation>
+        Measurement unit, forwarded from Number. Default unit:None — bare Decimal is
+        dimensionless (e.g. Decimal(unit:Meter)).
+      </documentation>
+    </N>
   </genericTypes>
   <properties>
     <precision type="type:Integer">

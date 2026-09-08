@@ -16,6 +16,11 @@
     AssociationIdentifierEntity.
   </documentation>
   <genericTypes>
-    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block" />
+    <B baseType="core:Block" defaultType="org.blockml.bml.core.Block">
+      <documentation>
+        Owning Block branch — mirrored from AssociationReference.B. Checked after
+        resolution.
+      </documentation>
+    </B>
   </genericTypes>
 </type:AssociationReferenceEntity>

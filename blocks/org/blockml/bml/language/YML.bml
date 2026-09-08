@@ -17,6 +17,11 @@
     the content/text language inside the document — bare YML is YML(English).
   </documentation>
   <genericTypes>
-    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English" />
+    <L baseType="lang:NaturalLanguage" defaultType="org.blockml.bml.language.English">
+      <documentation>
+        Content/text language inside the YAML body. Forwarded from
+        org.blockml.bml.language.MarkupLanguage — bare YML is YML(English).
+      </documentation>
+    </L>
   </genericTypes>
 </lang:YML>

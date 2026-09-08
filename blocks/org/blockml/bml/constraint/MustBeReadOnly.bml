@@ -18,6 +18,10 @@
     derived). Reference implementation for PropertyConstraint branch.
   </documentation>
   <genericTypes>
-    <T baseType="def:PropertyDefinition" />
+    <T baseType="def:PropertyDefinition">
+      <documentation>
+        Bound to the effective PropertyDefinition of the enclosing Property member.
+      </documentation>
+    </T>
   </genericTypes>
 </constraint:MustBeReadOnly>

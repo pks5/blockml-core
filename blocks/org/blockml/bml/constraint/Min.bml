@@ -17,7 +17,12 @@
     and Decimal properties. The value property must match T.
   </documentation>
   <genericTypes>
-    <T baseType="type:Number" />
+    <T baseType="type:Number">
+      <documentation>
+        Bound to the effective Number type of the enclosing Property (Integer, Float, or
+        Decimal). The constraint value must match T.
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <value type="T">

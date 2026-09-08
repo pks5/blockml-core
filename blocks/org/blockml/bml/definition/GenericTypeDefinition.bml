@@ -26,8 +26,9 @@
     defaultType supplies the binding when a generic application or bml:generics omits the
     corresponding type argument: a concrete TypeExpression, or the name of an earlier sibling
     generic parameter (declaration-order only; cycles and forward references forbidden). Must
-    satisfy baseType after resolution. See 17_type_system_bml.md — defaultType. Parameter name
-    must differ from the Block name and every Sub-Block name.
+    satisfy baseType after resolution. See 17_type_system_bml.md — defaultType. Optional
+    documentation on the entry describes the parameter itself (not the enclosing Block). Parameter
+    name must differ from the Block name and every Sub-Block name.
   </documentation>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">
@@ -35,6 +36,12 @@
     </see>
     <see type="doc:TypeExpressions" relation="SeeAlso">
       Generic application as a type expression.
+    </see>
+    <see type="def:StructuralDefinition.Documentation" relation="Defines">
+      Shared documentation prose shape — reused as an optional child of each genericTypes entry.
+    </see>
+    <see type="doc:DocumentationModel" relation="AuthoringGuide">
+      Markdown default, language=, facets — same content model as on StructuralDefinition.
     </see>
   </references>
   <properties>
@@ -66,6 +73,31 @@
         explicit type argument.
       </documentation>
     </defaultType>
+    <documentation bml:xml="element" type="def:StructuralDefinition.Documentation">
+      <documentation>
+        Technical documentation prose for this generic type parameter — what the
+        parameter means, which branch it constrains, and when a defaultType or a forwarded
+        binding applies. Explain the parameter's role at reference sites (type application,
+        baseType forwarding, instance bml:generics), not the enclosing Block's overall story.
+        
+        Optional. Omitted when name, baseType, and defaultType already make the role obvious —
+        BML_MISSING_DOCUMENTATION does not apply to genericTypes entries. Does not replace the
+        enclosing Block's required documentation, which may still mention the parameter when
+        describing the type as a whole.
+        
+        Authored as a documentation child of the genericTypes entry element
+        (&lt;T baseType="core:Block">&lt;documentation>…&lt;/documentation>&lt;/T>). Same
+        org.blockml.bml.definition.StructuralDefinition.Documentation shape as on blocks and
+        members: Markdown(English) by default; language= only for another natural language or
+        Markdown(L); optional Annotation facets (e.g. scad:document). May repeat for i18n
+        (language=) and facets. Duplicate (namespace, languageFqn) →
+        BML_DUPLICATE_DOCUMENTATION. See doc:DocumentationModel.
+        
+        Addressable as com.foo.Bar.genericTypes.T.documentation (default NS + effective
+        language). Lives on this GenericType entry — not in the enclosing Block's
+        documentations[].
+      </documentation>
+    </documentation>
   </properties>
   <bml:xml>${ #this.name }</bml:xml>
 </def:GenericTypeDefinition>

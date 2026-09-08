@@ -16,7 +16,12 @@
     T binds to the property type for scalar String properties, or to the element type when the property is a collection (e.g. String[]). The value property is always Integer — the maximum length threshold.
   </documentation>
   <genericTypes>
-    <T baseType="core:ValueType" />
+    <T baseType="core:ValueType">
+      <documentation>
+        Bound to the property ValueType for scalar Text, or to the element type when the
+        property is a collection.
+      </documentation>
+    </T>
   </genericTypes>
   <properties>
     <value type="type:Integer">
