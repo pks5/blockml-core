@@ -1,0 +1,17 @@
+<type:PackageSelectorEntity xmlns="http://blockml.org/bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:type="org.blockml.bml.type">
+
+  <baseType>
+    core:PrimitiveEntity(type:PackageSelector)
+  </baseType>
+  <is>
+    A package selector as an Entity
+  </is>
+  <documentation>
+    Concrete Entity wrapping a PackageSelector primitive. Binds T = PackageSelector
+    on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
+    Use when a package selector must appear as an identifiable Block instance.
+    Concrete package names use PackageIdentifierEntity.
+  </documentation>
+</type:PackageSelectorEntity>

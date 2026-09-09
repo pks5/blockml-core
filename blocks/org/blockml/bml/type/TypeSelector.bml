@@ -1,0 +1,138 @@
+<!--BlockML Core — type name selector value type
+
+  FQN: org.blockml.bml.type.TypeSelector-->
+<type:TypeSelector xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
+  xmlns:type="org.blockml.bml.type">
+
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A type name selector
+  </is>
+  <documentation>
+    ValueType for type selectors — FQN-style patterns that match one or more Block types.
+    Unqualified name TypeSelector resolves to org.blockml.bml.type.TypeSelector. Syntax only —
+    matched types need not exist in the TypeRegistry. A concrete type name is the most specific
+    selector: TypeIdentifier &lt;: TypeSelector. No generic parameters.
+    
+    Package segments follow PackageSelector (lowercase concrete segments, * / ** path wildcards,
+    in-segment *). The last segment is the type. ** is not allowed in type position — it describes
+    package depth, not type depth. When the type segment is concrete or partly written, the type
+    name starts with an uppercase letter:
+    • * — any type
+    • Block — exact type Block
+    • Blo* / *Block / B*Type — character wildcards inside the type name
+    
+    Valid: org.blockml.bml.core.Block · org.blockml.bml.core.* · org.blockml.bml.core.Blo* ·
+    org.blockml.*.Block · org.blockml.**.*Type. Invalid: org.blockml.bml.core.block (type not
+    uppercase) · org.blockml.bml.Core.Block (uppercase package segment) · a type-position **.
+    
+    Common forms:
+    • org.blockml.bml.core.* — every type directly in that package
+    • org.blockml.bml.*.* — every type in every direct child package of org.blockml.bml
+    • org.blockml.bml.**.* — every type in every package descendant of org.blockml.bml
+    • org.blockml.bml.**.*Type — those descendant types whose name ends with Type
+    • org.*.bml.**.Block — Block types under matching package paths
+    
+    TypeExpressions (generics, unions, configuration, multiplicity) stay on TypeIdentifier.
+    Existence-checked type names use TypeReference. Package-only patterns use PackageSelector.
+  </documentation>
+  <references>
+    <see type="type:Text" relation="Extends">
+      TypeSelector is a textual primitive subtype.
+    </see>
+    <see type="type:TypeIdentifier" relation="SeeAlso">
+      Concrete type name / TypeExpression — most specific TypeSelector.
+    </see>
+    <see type="type:PackageSelector" relation="ContrastsWith">
+      Sibling selector for package strings — no type segment.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — type selector syntax, no TypeRegistry.
+    </see>
+  </references>
+  <capabilities>
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <documentation>
+        FQN-style type selector — PackageSelector package segments plus a type segment (* or
+        uppercase-starting name with in-segment *). Type-position ** is rejected.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!t || t.startsWith(".") || t.endsWith(".") || t.includes("..")) {
+            throw new Error("not a type selector: " + raw);
+          }
+          const segs = t.split(".");
+          const typeSeg = segs[segs.length - 1];
+          for (let i = 0; i < segs.length - 1; i++) {
+            const seg = segs[i];
+            if (seg === "*" || seg === "**") continue;
+            if (seg.includes("**")) {
+              throw new Error("not a type selector: " + raw);
+            }
+            const concrete = seg.replace(/\*/g, "");
+            if (!concrete || !/^[a-z][a-z0-9]*$/.test(concrete)) {
+              throw new Error("not a type selector: " + raw);
+            }
+          }
+          if (typeSeg === "**" || typeSeg.includes("**")) {
+            throw new Error("not a type selector: " + raw);
+          }
+          if (typeSeg !== "*") {
+            const concrete = typeSeg.replace(/\*/g, "");
+            if (!concrete || !/^[A-Z][A-Za-z0-9_]*$/.test(concrete)) {
+              throw new Error("not a type selector: " + raw);
+            }
+          }
+          return t;
+        }
+        ]]>
+      </implementation>
+    </parseValue>
+    <matches type="org.blockml.bml.capability.Transformation" inputType="{ selector: bml:Self, candidate: type:TypeIdentifier }" outputType="type:Boolean">
+      <documentation>
+        True when candidate is a concrete FQN-style type name matched by selector. Package
+        segments follow PackageSelector matching; the last segment matches the type name.
+        TypeExpressions that are not a dotted FQN do not match.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (selector: string, candidate: string): boolean => {
+          const pattern = selector.trim().split(".");
+          const value = candidate.trim().split(".");
+          if (!pattern[0] || !value[0] || /[(){}[\]|<>,:]/.test(candidate)) return false;
+          function nameOk(p, n) {
+            let re = "^";
+            for (const ch of p) re += ch === "*" ? ".*" : ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            return new RegExp(re + "$").test(n);
+          }
+          function rec(i, j) {
+            if (i === pattern.length) return j === value.length;
+            const p = pattern[i];
+            if (p === "**") {
+              if (j >= value.length) return false;
+              for (let n = 1; n <= value.length - j; n++) {
+                if (rec(i + 1, j + n)) return true;
+              }
+              return false;
+            }
+            if (j >= value.length) return false;
+            if (p === "*" || nameOk(p, value[j])) return rec(i + 1, j + 1);
+            return false;
+          }
+          return rec(0, 0);
+        }
+        ]]>
+      </implementation>
+    </matches>
+  </capabilities>
+</type:TypeSelector>

@@ -19,7 +19,7 @@
     
     PrimitiveType — atomic scalar semantics; no stored values on the type itself.
     Examples: Boolean, Integer, Decimal, Float, Text, Color (Text subtype), URL, UUID, Version,
-    TypeIdentifier / TypeReference, PackageIdentifier / PackageReference, InstanceIdentifier /
+    TypeSelector / TypeIdentifier / TypeReference, PackageSelector / PackageIdentifier / PackageReference, InstanceIdentifier /
     InstanceReference, MemberIdentifier / PropertyIdentifier / …, Date, Time, DateTime, Duration.
     PrimitiveType declares parseValue (Text → bml:Self). The TypeScript return is a host encoding;
     outputType is always bml:Self (doc:ValueTypeParsing).

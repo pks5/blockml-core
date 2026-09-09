@@ -38,7 +38,8 @@
     Inheritance: Text implements identity (every string is Text). Number implements a numeric
     literal; Integer, Decimal, and Float refine. Temporal leaves parseValue abstract; Date, Time,
     and DateTime implement ISO forms. Identifier types implement syntax; Reference subtypes inherit
-    that syntax and add existence in the validator. URI requires an RFC 3986 scheme; URL is an
+    that syntax and add existence in the validator. PackageSelector / TypeSelector accept wildcard
+    patterns of which Identifier is the concrete form. URI requires an RFC 3986 scheme; URL is an
     absolute http/https web address; FilePath is a non-empty path without NUL or line breaks
     (existence on disk is not part of parseValue).
     

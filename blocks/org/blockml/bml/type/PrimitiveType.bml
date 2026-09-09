@@ -18,8 +18,8 @@
     Abstract branch for built-in scalar ValueTypes. PrimitiveTypes describe semantics
     only — they never store concrete values. All values are stored exclusively in Properties.
     
-    Numeric branch: Number (Integer, Decimal, Float). Textual branch: Text (TypeIdentifier /
-    TypeReference, PackageIdentifier / PackageReference, InstanceIdentifier / InstanceReference,
+    Numeric branch: Number (Integer, Decimal, Float). Textual branch: Text (TypeSelector /
+    TypeIdentifier / TypeReference, PackageSelector / PackageIdentifier / PackageReference, InstanceIdentifier / InstanceReference,
     MemberIdentifier / PropertyIdentifier / PropertyReference / …, Version, URL, URI, UUID, FilePath,
     MimeType, …). Temporal
     branch: Temporal (Date, Time, DateTime) — calendar or clock positions. Boolean is its own

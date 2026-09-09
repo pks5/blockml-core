@@ -224,10 +224,14 @@
         <type:FilePathEntity />
         <type:Float />
         <type:FloatEntity />
+        <type:TypeSelector />
+        <type:TypeSelectorEntity />
         <type:TypeIdentifier />
         <type:TypeIdentifierEntity />
         <type:TypeReference />
         <type:TypeReferenceEntity />
+        <type:PackageSelector />
+        <type:PackageSelectorEntity />
         <type:PackageIdentifier />
         <type:PackageIdentifierEntity />
         <type:PackageReference />

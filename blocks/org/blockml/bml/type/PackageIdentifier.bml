@@ -9,16 +9,17 @@
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
-    type:Text
+    type:PackageSelector
   </baseType>
   <is>
     A Block package name
   </is>
   <documentation>
     ValueType for package names — reverse-domain package strings without a type (class) segment.
-    Unqualified name PackageIdentifier resolves to org.blockml.bml.type.PackageIdentifier. Syntax
-    only — the named package need not be known in the corpus. PackageReference extends this type
-    and adds existence. No generic parameters.
+    Unqualified name PackageIdentifier resolves to org.blockml.bml.type.PackageIdentifier. The
+    most specific PackageSelector: a concrete package name with no wildcards
+    (PackageIdentifier &lt;: PackageSelector). Syntax only — the named package need not be known
+    in the corpus. PackageReference extends this type and adds existence. No generic parameters.
     
     Package format (Java-style reverse-domain, dot-separated, all lowercase):
     • Package segments — lowercase (for example org.blockml.bml.core, com.machineblocks.bml.type)
@@ -36,6 +37,9 @@
     InstanceIdentifier / InstanceReference. Member paths use the MemberIdentifier branch.
   </documentation>
   <references>
+    <see type="type:PackageSelector" relation="Extends">
+      Parent selector — wildcards; a PackageIdentifier is a valid PackageSelector.
+    </see>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">
       Package vs Annotation xmlns targets and domain.bml.* layout.
     </see>

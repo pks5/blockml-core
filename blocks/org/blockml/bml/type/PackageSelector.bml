@@ -1,0 +1,124 @@
+<!--BlockML Core — package name selector value type
+
+  FQN: org.blockml.bml.type.PackageSelector-->
+<type:PackageSelector xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
+  xmlns:type="org.blockml.bml.type">
+
+  <baseType>
+    type:Text
+  </baseType>
+  <is>
+    A package name selector
+  </is>
+  <documentation>
+    ValueType for package selectors — reverse-domain package patterns that match one or more
+    packages. Unqualified name PackageSelector resolves to org.blockml.bml.type.PackageSelector.
+    Syntax only — matched packages need not be known in the corpus. A concrete package name is
+    the most specific selector: PackageIdentifier &lt;: PackageSelector. No generic parameters.
+    
+    Segments are dot-separated. Concrete package segments are lowercase. Wildcards:
+    • * as a whole segment — exactly one arbitrary segment
+    • ** as a whole segment — one or more arbitrary segments (1..n, not 0..n)
+    • * inside a segment — zero or more characters inside that segment only
+    • ** inside a segment — not allowed (a.foo**.b and a.**foo.b are invalid)
+    
+    Neither a.* nor a.** includes package a itself:
+    • a — exact package a
+    • a.* — every direct child package of a (a.b yes; a and a.b.c no)
+    • a.** — every package descendant of a (a.b, a.b.c yes; a no)
+    • a.*.b — exactly one segment between a and b (a.c.b yes; a.b and a.c.d.b no)
+    • a.**.b — one or more segments between a and b (a.c.b, a.c.d.b yes; a.b no)
+    • a.fo*.b — character wildcard inside one segment (a.foo.b, a.foobar.b yes; a.x.foo.b no)
+    
+    Valid: org.blockml.bml.core · org.blockml.bml.* · org.blockml.** · org.blockml.bml.co* ·
+    org.*.bml.*. Invalid: org.blockml.bml.Core · org.Blockml.bml.core (uppercase package
+    segment).
+    
+    Type-name patterns use TypeSelector. Existence-checked package names use PackageReference.
+  </documentation>
+  <references>
+    <see type="type:Text" relation="Extends">
+      PackageSelector is a textual primitive subtype.
+    </see>
+    <see type="type:PackageIdentifier" relation="SeeAlso">
+      Concrete package name — most specific PackageSelector.
+    </see>
+    <see type="type:TypeSelector" relation="ContrastsWith">
+      Sibling selector for type FQNs — last segment is the type.
+    </see>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — package selector syntax, no corpus lookup.
+    </see>
+  </references>
+  <capabilities>
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <documentation>
+        Reverse-domain package selector — lowercase concrete segments, * / ** path wildcards,
+        in-segment * character wildcards. No class segment, no xmlns prefix.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!t || t.startsWith(".") || t.endsWith(".") || t.includes("..")) {
+            throw new Error("not a package selector: " + raw);
+          }
+          const segs = t.split(".");
+          for (const seg of segs) {
+            if (seg === "*" || seg === "**") continue;
+            if (seg.includes("**")) {
+              throw new Error("not a package selector: " + raw);
+            }
+            const concrete = seg.replace(/\*/g, "");
+            if (!concrete || !/^[a-z][a-z0-9]*$/.test(concrete)) {
+              throw new Error("not a package selector: " + raw);
+            }
+          }
+          return t;
+        }
+        ]]>
+      </implementation>
+    </parseValue>
+    <matches type="org.blockml.bml.capability.Transformation" inputType="{ selector: bml:Self, candidate: type:PackageIdentifier }" outputType="type:Boolean">
+      <documentation>
+        True when candidate is a concrete package name matched by selector. * consumes one
+        segment, ** consumes one or more, in-segment * stays inside that segment.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (selector: string, candidate: string): boolean => {
+          const pattern = selector.trim().split(".");
+          const value = candidate.trim().split(".");
+          if (!pattern[0] || !value[0]) return false;
+          function nameOk(p, n) {
+            let re = "^";
+            for (const ch of p) re += ch === "*" ? ".*" : ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            return new RegExp(re + "$").test(n);
+          }
+          function rec(i, j) {
+            if (i === pattern.length) return j === value.length;
+            const p = pattern[i];
+            if (p === "**") {
+              if (j >= value.length) return false;
+              for (let n = 1; n <= value.length - j; n++) {
+                if (rec(i + 1, j + n)) return true;
+              }
+              return false;
+            }
+            if (j >= value.length) return false;
+            if (p === "*" || nameOk(p, value[j])) return rec(i + 1, j + 1);
+            return false;
+          }
+          return rec(0, 0);
+        }
+        ]]>
+      </implementation>
+    </matches>
+  </capabilities>
+</type:PackageSelector>

@@ -9,16 +9,18 @@
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
-    type:Text
+    type:TypeSelector
   </baseType>
   <is>
     A Block type name
   </is>
   <documentation>
     ValueType for type names — fully qualified names (FQNs) and TypeExpressions that name a Block.
-    Unqualified name TypeIdentifier resolves to org.blockml.bml.type.TypeIdentifier. Syntax only —
-    the named type need not exist in the TypeRegistry. TypeReference extends this type and adds
-    existence plus the branch bound B.
+    Unqualified name TypeIdentifier resolves to org.blockml.bml.type.TypeIdentifier. The most
+    specific TypeSelector: a concrete type name with no wildcards (TypeIdentifier &lt;:
+    TypeSelector). TypeExpressions (generics, unions, configuration, multiplicity) remain valid
+    here and are not TypeSelector patterns. Syntax only — the named type need not exist in the
+    TypeRegistry. TypeReference extends this type and adds existence plus the branch bound B.
     
     FQN format (Java-style reverse-domain, dot-separated):
     • Package segments — lowercase, reverse-domain (for example org.blockml.bml.core,
@@ -43,6 +45,9 @@
     InstanceIdentifier / InstanceReference.
   </documentation>
   <references>
+    <see type="type:TypeSelector" relation="Extends">
+      Parent selector — wildcards; a TypeIdentifier FQN is a valid TypeSelector.
+    </see>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">
       Namespace resolution and type identity.
     </see>
