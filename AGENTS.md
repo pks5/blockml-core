@@ -18,16 +18,34 @@ npx blockml <command>
 
 Do not install or upgrade `@blockml/cli` unless asked. If the CLI is missing, run `npm ci` first. If `@blockml/cli` is not a project dependency, report that and stop.
 
-Run `npx blockml --help` for commands, workflow, and flags. Run `npx blockml <command> --help` before first use of a command (search, inspect, graph, new, validate, compile, transform).
+Run `npx blockml --help` for commands, workflow, and flags. Run `npx blockml <command> --help` before first use of a command (search, scan, inspect, graph, new, validate, compile, transform).
 
-Search answers where something is. Inspect answers: give me this Block already resolved. Graph answers how it connects.
+Search answers where something is. Scan answers which packages or types match selectors. Inspect answers: give me this Block already resolved. Graph answers how it connects.
 
 Generic grep, find, and file reads remain allowed. They are not the first way into the model.
+
+## Scan
+
+Use `blockml scan` to list every package or type in the corpus that matches Core selectors. It is set membership, not full-text search: complete unranked identifiers, no score, no `--limit`.
+
+```bash
+npx blockml scan --help
+npx blockml scan type org.blockml.bml.core.Block
+npx blockml scan type 'org.blockml.bml.core.**'
+npx blockml scan package 'org.blockml.bml.*' --json
+```
+
+- `scan type` — TypeSelector tokens → type FQNs. `pkg.*` is types directly in that package. `pkg.**` is types in that package and all descendants. `pkg.**.Name` is `Name` only in child packages (not `pkg.Name`).
+- `scan package` — PackageSelector tokens → package identifiers. `pkg.*` / `pkg.**` do not include `pkg` itself.
+- Multiple selectors are OR. An exact PackageIdentifier or TypeIdentifier is the most specific selector.
+- Quote tokens that contain `*` or `**` so the shell does not expand them.
+- Corpus is the same as `validate --all` (live TypeRegistry). Invalid selector or missing `package|type` / selectors → exit 2.
+- Then `inspect` a found FQN. Use `search` when you have words, not a selector.
 
 ## Workflow
 
 ```text
-task → search → FQNs → inspect (graph if structure) → targeted BML read → smallest BML edit → validate
+task → search or scan → FQNs → inspect (graph if structure) → targeted BML read → smallest BML edit → validate
      → update companions to match (compile and/or edit)
 ```
 
