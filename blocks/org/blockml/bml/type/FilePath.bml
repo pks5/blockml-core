@@ -1,4 +1,7 @@
 <type:FilePath xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -8,7 +11,35 @@
     A filesystem path string
   </is>
   <documentation>
-    Textual primitive subtype for file path values. Unqualified name FilePath resolves
-    to org.blockml.bml.type.FilePath.
+    Textual primitive subtype for file path values (for example
+    blockml-library.xsd). Unqualified name FilePath resolves
+    to org.blockml.bml.type.FilePath. Existence on disk is not part of parseValue.
   </documentation>
+  <references>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — non-empty path, no NUL or line breaks.
+    </see>
+  </references>
+  <capabilities>
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <documentation>
+        Non-empty filesystem path after trim. Rejects NUL and line breaks. Drive letters,
+        relative and absolute POSIX/Windows forms are accepted. Existence is not checked.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!t || /[\0\n\r]/.test(t)) {
+            throw new Error("not a file path: " + raw);
+          }
+          return t;
+        }
+        ]]>
+      </implementation>
+    </parseValue>
+  </capabilities>
 </type:FilePath>

@@ -1,4 +1,7 @@
 <type:URI xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -8,7 +11,35 @@
     A resource identifier string
   </is>
   <documentation>
-    Textual primitive subtype for URI values. Unqualified name URI resolves to
+    Textual primitive subtype for URI values (for example
+    http://blockml.org/bml, urn:isbn:0451450523). Unqualified name URI resolves to
     org.blockml.bml.type.URI.
   </documentation>
+  <references>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — RFC 3986 absolute URI with scheme.
+    </see>
+  </references>
+  <capabilities>
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <documentation>
+        RFC 3986 absolute URI — scheme, colon, and non-empty remainder, no whitespace.
+        Relative references are not URIs.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          if (!/^[A-Za-z][A-Za-z0-9+.-]*:[^\s]+$/.test(t)) {
+            throw new Error("not a URI: " + raw);
+          }
+          return t;
+        }
+        ]]>
+      </implementation>
+    </parseValue>
+  </capabilities>
 </type:URI>

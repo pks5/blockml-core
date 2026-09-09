@@ -1,4 +1,7 @@
 <type:URL xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -8,7 +11,41 @@
     A web address string
   </is>
   <documentation>
-    Textual primitive subtype for URL values. Unqualified name URL resolves to
+    Textual primitive subtype for URL values (for example
+    https://blockml.org/schemas/bml.xsd). Unqualified name URL resolves to
     org.blockml.bml.type.URL.
   </documentation>
+  <references>
+    <see type="doc:ValueTypeParsing" relation="SeeAlso">
+      parseValue — absolute http or https web address.
+    </see>
+  </references>
+  <capabilities>
+    <parseValue override="true" type="org.blockml.bml.capability.Transformation" inputType="type:Text" outputType="bml:Self">
+      <throws>
+        <ex:InvalidValueException />
+      </throws>
+      <documentation>
+        Absolute web address with http or https scheme. Host WHATWG URL parse; other schemes
+        (urn, mailto, file) are URI, not URL.
+      </documentation>
+      <implementation language="org.blockml.bml.language.TypeScript">
+        <![CDATA[
+        (raw: string): string => {
+          const t = raw.trim();
+          let u;
+          try {
+            u = new URL(t);
+          } catch {
+            throw new Error("not a URL: " + raw);
+          }
+          if (u.protocol !== "http:" && u.protocol !== "https:") {
+            throw new Error("not a URL: " + raw);
+          }
+          return t;
+        }
+        ]]>
+      </implementation>
+    </parseValue>
+  </capabilities>
 </type:URL>
