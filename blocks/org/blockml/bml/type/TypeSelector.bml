@@ -19,24 +19,23 @@
     matched types need not exist in the TypeRegistry. A concrete type name is the most specific
     selector: TypeIdentifier &lt;: TypeSelector. No generic parameters.
     
-    Package segments follow PackageSelector (lowercase concrete segments, * / ** path wildcards,
-    in-segment *). The last segment is the type. ** is not allowed in type position — it describes
-    package depth, not type depth. When the type segment is concrete or partly written, the type
-    name starts with an uppercase letter:
-    • * — any type
-    • Block — exact type Block
-    • Blo* / *Block / B*Type — character wildcards inside the type name
+    Package segments follow PackageSelector (written segments start lowercase; * / ** path
+    wildcards; in-segment *). The last segment is the type unless it is a trailing **.
+    Written type names start with an uppercase letter. ** is not allowed inside a type name
+    (Foo** / **Service are invalid).
     
-    Valid: org.blockml.bml.core.Block · org.blockml.bml.core.* · org.blockml.bml.core.Blo* ·
-    org.blockml.*.Block · org.blockml.**.*Type. Invalid: org.blockml.bml.core.block (type not
-    uppercase) · org.blockml.bml.Core.Block (uppercase package segment) · a type-position **.
+    Type-position forms:
+    • * — every type directly in the matched package (a.b.c.* matches a.b.c.XYZ, not a.b.c.d.XYZ)
+    • Block / XY* / *Service / F*Service — exact type or in-segment character wildcards
+    • trailing ** — every type in that package and in all descendant packages
+      (a.b.c.** matches a.b.c.XYZ and a.b.c.d.e.SomeType). This is the shorthand for
+      a.b.c.* plus a.b.c.**.* — unlike PackageSelector, where a.b.c.** does not include a.b.c
+    • **.XYZ — XYZ only in genuine child packages (a.b.c.**.XYZ matches a.b.c.d.XYZ, not a.b.c.XYZ)
     
-    Common forms:
-    • org.blockml.bml.core.* — every type directly in that package
-    • org.blockml.bml.*.* — every type in every direct child package of org.blockml.bml
-    • org.blockml.bml.**.* — every type in every package descendant of org.blockml.bml
-    • org.blockml.bml.**.*Type — those descendant types whose name ends with Type
-    • org.*.bml.**.Block — Block types under matching package paths
+    Valid: org.blockml.bml.core.Block · org.blockml.bml.core.* · org.blockml.bml.core.** ·
+    org.blockml.bml.core.Blo* · org.blockml.*.Block · org.blockml.**.Block ·
+    org.blockml.**.*Type. Invalid: org.blockml.bml.core.block · org.blockml.bml.Core.Block ·
+    org.blockml.bml.core.Foo**.
     
     TypeExpressions (generics, unions, configuration, multiplicity) stay on TypeIdentifier.
     Existence-checked type names use TypeReference. Package-only patterns use PackageSelector.
@@ -61,8 +60,9 @@
         <ex:InvalidValueException />
       </throws>
       <documentation>
-        FQN-style type selector — PackageSelector package segments plus a type segment (* or
-        uppercase-starting name with in-segment *). Type-position ** is rejected.
+        FQN-style type selector — PackageSelector package segments plus a type segment (* ,
+        uppercase-starting name with in-segment *, or trailing ** for this package and all
+        descendants). ** inside a type name is rejected.
       </documentation>
       <implementation language="org.blockml.bml.language.TypeScript">
         <![CDATA[
@@ -84,10 +84,10 @@
               throw new Error("not a type selector: " + raw);
             }
           }
-          if (typeSeg === "**" || typeSeg.includes("**")) {
-            throw new Error("not a type selector: " + raw);
-          }
-          if (typeSeg !== "*") {
+          if (typeSeg !== "*" && typeSeg !== "**") {
+            if (typeSeg.includes("**")) {
+              throw new Error("not a type selector: " + raw);
+            }
             const concrete = typeSeg.replace(/\*/g, "");
             if (!concrete || !/^[A-Z][A-Za-z0-9_]*$/.test(concrete)) {
               throw new Error("not a type selector: " + raw);
@@ -100,9 +100,10 @@
     </parseValue>
     <matches type="org.blockml.bml.capability.Transformation" inputType="{ selector: bml:Self, candidate: type:TypeIdentifier }" outputType="type:Boolean">
       <documentation>
-        True when candidate is a concrete FQN-style type name matched by selector. Package
-        segments follow PackageSelector matching; the last segment matches the type name.
-        TypeExpressions that are not a dotted FQN do not match.
+        True when candidate is a concrete FQN-style type name matched by selector. * consumes
+        one segment; ** consumes one or more (so trailing a.b.c.** includes types in a.b.c and
+        descendants; a.b.c.**.XYZ requires a child package). TypeExpressions that are not a
+        dotted FQN do not match.
       </documentation>
       <implementation language="org.blockml.bml.language.TypeScript">
         <![CDATA[

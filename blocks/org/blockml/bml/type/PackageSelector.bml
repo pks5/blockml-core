@@ -25,7 +25,8 @@
     • * inside a segment — zero or more characters inside that segment only
     • ** inside a segment — not allowed (a.foo**.b and a.**foo.b are invalid)
     
-    Neither a.* nor a.** includes package a itself:
+    Neither a.* nor a.** includes package a itself — unlike TypeSelector, where trailing **
+    includes types in the starting package:
     • a — exact package a
     • a.* — every direct child package of a (a.b yes; a and a.b.c no)
     • a.** — every package descendant of a (a.b, a.b.c yes; a no)
@@ -47,7 +48,7 @@
       Concrete package name — most specific PackageSelector.
     </see>
     <see type="type:TypeSelector" relation="ContrastsWith">
-      Sibling selector for type FQNs — last segment is the type.
+      Sibling selector for type FQNs — trailing ** includes types in the starting package.
     </see>
     <see type="doc:ValueTypeParsing" relation="SeeAlso">
       parseValue — package selector syntax, no corpus lookup.
