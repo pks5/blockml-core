@@ -22,7 +22,7 @@
     status unless documenting intent.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_REDUNDANT_STATUS" />
+    <org.blockml.bml.meta.Keyword value="BML_REDUNDANT_STATUS" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

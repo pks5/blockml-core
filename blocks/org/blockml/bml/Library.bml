@@ -46,11 +46,11 @@
     status blocks, the Definition meta-model branch (org.blockml.bml.definition.*), the language
     annotation (org.blockml.bml.annotation.BmlAnnotation), bootstrap
     documentation blocks (org.blockml.bml.documentation.*), how-to blocks (org.blockml.bml.documentation.howto.*),
-    diagnostic blocks (org.blockml.bml.diagnostic.*), and definition metadata entities
-    (org.blockml.bml.meta.FixedKeyword, org.blockml.bml.meta.FixedAlias,
-    org.blockml.bml.meta.FreeTextKeyword, org.blockml.bml.meta.FreeTextAlias). FreeText* extends
-    Fixed* and widens protected members to public attributes. Domain libraries extend FixedKeyword
-    and FixedAlias for catalogue-controlled tags and alternative names.
+    diagnostic blocks (org.blockml.bml.diagnostic.*), and definition metadata
+    (org.blockml.bml.meta.Keyword, org.blockml.bml.meta.Alias, org.blockml.bml.meta.FixedKeyword,
+    org.blockml.bml.meta.FixedAlias). Keyword and Alias are PrimitiveEntity(Text) — ad-hoc
+    instances and comma-separated value sugar. Fixed* freeze value and companion members as
+    readOnly; domain libraries extend them for catalogue-controlled tags and alternative names.
     
     Membership is defined exclusively by this file's blocks list — not by directory layout.
     Version 3.0.0 applies to all exported blocks (framework convention: version only on
@@ -88,15 +88,12 @@
         <core:Bootstrap />
         <core:ReadMe />
         <core:Documentation />
-        <core:Keyword />
-        <core:Alias />
         <core:Diagnostic />
         <core:Exception />
         <exception:InvalidValueException />
         <core:Capability />
         <core:Constraint />
         <core:Definition />
-        <core:Entity />
         <core:Group />
         <core:PrimitiveEntity />
         <core:Language />
@@ -173,10 +170,10 @@
         <lang:XML />
         <lang:YML />
         <mapping:FunctionMapping />
+        <meta:Keyword />
+        <meta:Alias />
         <meta:FixedKeyword />
         <meta:FixedAlias />
-        <meta:FreeTextKeyword />
-        <meta:FreeTextAlias />
         <service:Bools />
         <service:Lists />
         <service:Math />

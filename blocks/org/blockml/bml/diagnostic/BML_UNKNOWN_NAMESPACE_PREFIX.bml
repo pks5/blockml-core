@@ -21,7 +21,7 @@
     Declare xmlns:prefix for Packages (type addressing) or Annotations (directives/facets). Prefixes are authoring aliases — BOM stores canonical FQNs/namespaces.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_NAMESPACE_PREFIX" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_NAMESPACE_PREFIX" />
   </keywords>
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">

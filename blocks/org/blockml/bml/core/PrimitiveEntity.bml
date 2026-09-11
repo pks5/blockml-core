@@ -1,32 +1,42 @@
-<!--BlockML Core — primitive value as Entity
+<!--BlockML Core — primitive value as a Block instance
 
   FQN: org.blockml.bml.core.PrimitiveEntity-->
 <core:PrimitiveEntity xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
-    A primitive value as an Entity
+    A primitive value as a Block instance
   </is>
   <documentation>
-    Abstract generic Entity for primitive values that must appear as Block instances
-    inside a composition or aggregation. Follows the general generic resolution rule: T belongs
-    exclusively to this Block and is never inherited. Derived Blocks bind or forward T explicitly
-    through baseType (for example baseType = PrimitiveEntity(Integer) binds T = Integer and yields
-    value : Integer). On instances that member is authored as value="…" (or &lt;value>…&lt;/value>
-    as the member itself) because the Property is named value — not because of the
-    PropertyDefinition value field. Do not wrap other instance Properties in &lt;value>; see
-    doc:MemberAuthoring.
+    Abstract generic Block for primitive values that must appear as instances inside a
+    composition or aggregation. Direct child of Block — not a domain root branch. Follows the
+    general generic resolution rule: T belongs exclusively to this Block and is never inherited.
+    Derived Blocks bind or forward T explicitly through baseType (for example baseType =
+    PrimitiveEntity(Integer) binds T = Integer and yields value : Integer). On instances that
+    member is authored as value="…" (or &lt;value>…&lt;/value> as the member itself) because the
+    Property is named value — not because of the PropertyDefinition value field. Do not wrap
+    other instance Properties in &lt;value>; see doc:MemberAuthoring.
     
     Cannot be instantiated directly — concrete specializations (IntegerEntity, TextEntity,
-    DecimalEntity, …) bind all generic parameters and become normal, instantiable Blocks.
+    DecimalEntity, Keyword, …) bind all generic parameters and become normal, instantiable Blocks.
     
     Properties continue to store primitive values directly — PrimitiveEntity exists only when the
-    primitive value itself must become an Entity with identity, documentation, or metadata.
+    primitive value itself must become a Block instance with identity, documentation, or metadata.
+    
+    Comma-separated value sugar — character content or a comma list on an aggregation whose
+    payload is a concrete PrimitiveEntity specialization expands to instances of that payload
+    type, one trimmed token per instance, each token assigned to value. Example:
+    &lt;keywords>a, b&lt;/keywords> → two meta:Keyword instances with value="a" and value="b"
+    when the aggregation type is meta:Keyword[]. The sugar never instantiates an abstract
+    PrimitiveEntity, nor a FixedKeyword / FixedAlias catalogue type. Distinct from empty-QName
+    sugar on TypeReferenceEntity (an empty child whose QName is not the wrapper becomes
+    value="QName").
   </documentation>
   <abstract>
     true
@@ -38,11 +48,20 @@
     <see type="doc:MemberAuthoring" relation="SeeAlso">
       Member named value on instances vs PropertyDefinition value wrapper.
     </see>
+    <see type="meta:Keyword" relation="SeeAlso">
+      PrimitiveEntity(Text) for search tags — comma sugar target on keywords.
+    </see>
+    <see type="meta:Alias" relation="SeeAlso">
+      PrimitiveEntity(Text) for alternative type names — comma sugar target on aliases.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="SeeAlso">
+      Empty-QName sugar — not comma-separated value sugar.
+    </see>
   </references>
   <genericTypes>
     <T baseType="type:PrimitiveType">
       <documentation>
-        PrimitiveType carried as this Entity's value. Derived Blocks bind T in baseType
+        PrimitiveType carried as this instance's value. Derived Blocks bind T in baseType
         (e.g. PrimitiveEntity(Integer) → value : Integer).
       </documentation>
     </T>
@@ -50,8 +69,8 @@
   <properties>
     <value type="T">
       <documentation>
-        The primitive value owned by this Entity instance. Instance syntax is
-        value="…" or &lt;value>…&lt;/value> on the Entity because this member's name is value
+        The primitive value owned by this instance. Instance syntax is
+        value="…" or &lt;value>…&lt;/value> on the Block because this member's name is value
         — that is ordinary instance authoring, not a PropertyDefinition wrapper. See
         doc:MemberAuthoring.
       </documentation>

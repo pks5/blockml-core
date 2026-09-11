@@ -23,7 +23,7 @@
     compose fat artifacts.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EMBEDDED_BLOCKS_ON_SUBBLOCK" />
+    <org.blockml.bml.meta.Keyword value="BML_EMBEDDED_BLOCKS_ON_SUBBLOCK" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

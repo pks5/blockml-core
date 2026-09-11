@@ -68,7 +68,7 @@
     rule including derived Blocks and the direct composition owner.
     
     Each Capability may carry an implementation whose language attribute references a Language FQN
-    (org.blockml.bml.language.*). utility Sub-Blocks (baseType Entity) commonly host Transformation
+    (org.blockml.bml.language.*). utility Sub-Blocks (baseType Block) commonly host Transformation
     implementations — doc:SubBlockModel. Preferred dialect for intent: PseudoCode
     (doc:PseudoCode). A compiler renderer may still map names to target constructs:
     

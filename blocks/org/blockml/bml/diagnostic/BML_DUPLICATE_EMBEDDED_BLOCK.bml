@@ -21,7 +21,7 @@
     the BomDocument, embed FQNs must be unique. Externally, embeds remain invisible.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_EMBEDDED_BLOCK" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_EMBEDDED_BLOCK" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

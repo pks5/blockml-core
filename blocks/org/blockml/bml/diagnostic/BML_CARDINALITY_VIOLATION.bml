@@ -24,7 +24,7 @@
     required-single notations (1..1, 1..n) are invalid on associations.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CARDINALITY_VIOLATION" />
+    <org.blockml.bml.meta.Keyword value="BML_CARDINALITY_VIOLATION" />
   </keywords>
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">

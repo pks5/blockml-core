@@ -22,7 +22,7 @@
     com.machineblocks.bml.*.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_OUTSIDE_BML_NAMESPACE" />
+    <org.blockml.bml.meta.Keyword value="BML_OUTSIDE_BML_NAMESPACE" />
   </keywords>
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">

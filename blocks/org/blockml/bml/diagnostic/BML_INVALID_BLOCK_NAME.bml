@@ -21,7 +21,7 @@
     PascalCase keeps composition tags with xmlns prefixes unambiguous — member names use camelCase.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_BLOCK_NAME" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_BLOCK_NAME" />
   </keywords>
   <references>
     <see type="doc:BlockNameConvention" relation="AuthoringGuide">

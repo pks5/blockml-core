@@ -20,7 +20,7 @@
     In this context ${ … } forms are fixed tag recipes, not open Expression Language. Other roots, calls, or operators are invalid.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_XML_RENDERING_INVALID" />
+    <org.blockml.bml.meta.Keyword value="BML_XML_RENDERING_INVALID" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

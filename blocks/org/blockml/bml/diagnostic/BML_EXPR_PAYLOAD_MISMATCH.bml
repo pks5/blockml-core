@@ -21,7 +21,7 @@
     Adjust positional/named/object-literal arguments to the Capability inputType shape.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_PAYLOAD_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_PAYLOAD_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

@@ -22,7 +22,7 @@
     QName / xmlns prefixes for member namespaces — no namespace attribute.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DEPRECATED_MEMBER_NAMESPACE_ATTR" />
+    <org.blockml.bml.meta.Keyword value="BML_DEPRECATED_MEMBER_NAMESPACE_ATTR" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="SeeAlso">

@@ -6,7 +6,7 @@
     core:PrimitiveEntity(type:CapabilityReference(B))
   </baseType>
   <is>
-    A path to a Capability member as an Entity
+    A path to a Capability member as a PrimitiveEntity
   </is>
   <documentation>
     Open generic Entity wrapping a CapabilityReference primitive. Forwards B from

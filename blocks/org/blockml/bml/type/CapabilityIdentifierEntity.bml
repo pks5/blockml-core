@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:CapabilityIdentifier)
   </baseType>
   <is>
-    A Capability member path as an Entity
+    A Capability member path as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a CapabilityIdentifier primitive. Binds T =
+    Concrete PrimitiveEntity wrapping a CapabilityIdentifier primitive. Binds T =
     CapabilityIdentifier on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value
     property automatically. Use when a potential capability path must appear as an identifiable
     Block instance. Existence-checked counterparts use CapabilityReferenceEntity.

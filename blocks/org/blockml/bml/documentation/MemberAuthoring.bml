@@ -110,6 +110,8 @@
     Instance Property → attribute on the Block, or direct Property element content
     Instance Aggregation → named aggregation element containing child Block instances
     (bml:container for grouping). Always open the aggregation; there is no default aggregation.
+    A PrimitiveEntity aggregation may also take comma-separated character content that expands to
+    instances with value set per token (core:PrimitiveEntity) — not a PropertyDefinition wrapper.
     
     Capabilities on instances follow the Property pattern: attribute or child element, no extra
     wrapper. readOnly effective members must not be authored on instances
@@ -118,14 +120,14 @@
     (doc:CapabilitySemantics).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="value" />
-    <org.blockml.bml.meta.FreeTextKeyword term="composition" />
-    <org.blockml.bml.meta.FreeTextKeyword term="property" />
-    <org.blockml.bml.meta.FreeTextKeyword term="aggregation" />
-    <org.blockml.bml.meta.FreeTextKeyword term="instance" />
-    <org.blockml.bml.meta.FreeTextKeyword term="definition" />
-    <org.blockml.bml.meta.FreeTextKeyword term="member authoring" />
-    <org.blockml.bml.meta.FreeTextKeyword term="default aggregation" />
+    <org.blockml.bml.meta.Keyword value="value" />
+    <org.blockml.bml.meta.Keyword value="composition" />
+    <org.blockml.bml.meta.Keyword value="property" />
+    <org.blockml.bml.meta.Keyword value="aggregation" />
+    <org.blockml.bml.meta.Keyword value="instance" />
+    <org.blockml.bml.meta.Keyword value="definition" />
+    <org.blockml.bml.meta.Keyword value="member authoring" />
+    <org.blockml.bml.meta.Keyword value="default aggregation" />
   </keywords>
   <references>
     <see type="doc:BlockAndInstance" relation="SeeAlso">
@@ -153,7 +155,7 @@
       Annotation value facets — not instance value wrappers.
     </see>
     <see type="core:PrimitiveEntity" relation="SeeAlso">
-      Entity whose instance member is actually named value.
+      Block whose instance member is actually named value.
     </see>
     <see type="type:TypeReferenceEntity" relation="SeeAlso">
       Instance value="…" because the member name is value — not a wrapper.

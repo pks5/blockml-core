@@ -22,7 +22,7 @@
     package or fix targets[] configuration.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_TARGET" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_TARGET" />
   </keywords>
   <references>
     <see type="doc:CompilerArchitecture" relation="AuthoringGuide">

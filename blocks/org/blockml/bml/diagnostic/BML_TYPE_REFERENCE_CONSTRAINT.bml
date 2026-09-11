@@ -25,7 +25,7 @@
     References).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_TYPE_REFERENCE_CONSTRAINT" />
+    <org.blockml.bml.meta.Keyword value="BML_TYPE_REFERENCE_CONSTRAINT" />
   </keywords>
   <references>
     <see type="type:TypeReference" relation="Defines">

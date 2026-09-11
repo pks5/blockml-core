@@ -20,7 +20,7 @@
     Trim excess arguments or adjust inputType / FunctionMapping.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_TOO_MANY_FUNCTION_PARAMETERS" />
+    <org.blockml.bml.meta.Keyword value="BML_TOO_MANY_FUNCTION_PARAMETERS" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

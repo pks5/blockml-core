@@ -22,7 +22,7 @@
     aggregations; inherited overrides may omit unchanged type.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_AGGREGATION_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_AGGREGATION_TYPE" />
   </keywords>
   <references>
     <see type="doc:CompositionModel" relation="AuthoringGuide">

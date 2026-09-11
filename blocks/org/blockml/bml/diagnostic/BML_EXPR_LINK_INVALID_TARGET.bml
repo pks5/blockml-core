@@ -21,7 +21,7 @@
     must be Inbound (or compatible Transformation pairing rules).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_LINK_INVALID_TARGET" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_LINK_INVALID_TARGET" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

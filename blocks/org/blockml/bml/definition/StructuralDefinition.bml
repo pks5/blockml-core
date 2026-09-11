@@ -12,6 +12,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -132,16 +133,16 @@
     </final>
   </properties>
   <aggregations>
-    <keywords type="core:Keyword[]">
+    <keywords type="meta:Keyword[]">
       <documentation>
-        Optional search and discovery tags for RAG indexing. Each child is a
-        org.blockml.bml.core.Keyword Entity instance — domain catalogue blocks extending
-        org.blockml.bml.meta.FixedKeyword (fixed block reference, for example
-        &lt;vocab:Inheritance />), or org.blockml.bml.meta.FreeTextKeyword for ad-hoc terms
-        (for example &lt;meta:FreeTextKeyword term="inheritance" />). Comma-separated plain text on
-        &lt;keywords> is shorthand that expands to FreeTextKeyword instances only — one term per
-        trimmed token. Addressable as com.foo.Bar.keywords on blocks and
-        com.foo.Bar.properties.width.keywords on members.
+        Optional search and discovery tags for RAG indexing. Each child is an
+        org.blockml.bml.meta.Keyword instance — ad-hoc tags
+        (&lt;meta:Keyword value="inheritance" />) or domain catalogue blocks extending
+        org.blockml.bml.meta.FixedKeyword (empty reference, for example
+        &lt;vocab:Inheritance />). Comma-separated character content on &lt;keywords> is
+        PrimitiveEntity value sugar and expands to Keyword instances — one value per trimmed
+        token — not to FixedKeyword catalogue blocks. Addressable as com.foo.Bar.keywords on
+        blocks and com.foo.Bar.properties.width.keywords on members.
       </documentation>
     </keywords>
     <groups bml:xml="element" type="type:TypeReferenceEntity(core:Group)[]">

@@ -23,7 +23,7 @@
     Export the constraint via Library.blocks and use a valid Constraint FQN.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTRAINT_UNKNOWN" />
+    <org.blockml.bml.meta.Keyword value="BML_CONSTRAINT_UNKNOWN" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

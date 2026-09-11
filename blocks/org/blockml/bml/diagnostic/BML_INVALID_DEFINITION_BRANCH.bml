@@ -22,7 +22,7 @@
     Remedy: Use Root/Sub/Embedded/Member definition types appropriately.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_DEFINITION_BRANCH" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_DEFINITION_BRANCH" />
   </keywords>
   <references>
     <see type="doc:DefinitionModel" relation="AuthoringGuide">

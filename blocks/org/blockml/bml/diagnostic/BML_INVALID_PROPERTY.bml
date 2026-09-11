@@ -22,7 +22,7 @@
     property type, value placement, and facets.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_PROPERTY" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_PROPERTY" />
   </keywords>
   <references>
     <see type="def:PropertyDefinition" relation="Defines">

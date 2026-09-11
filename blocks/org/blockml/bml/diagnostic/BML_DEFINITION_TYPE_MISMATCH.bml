@@ -20,7 +20,7 @@
     Defaults: RootBlockDefinition, SubBlockDefinition, EmbeddedBlockDefinition. Unqualified names resolve via org.blockml.bml.definition.*.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DEFINITION_TYPE_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_DEFINITION_TYPE_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">

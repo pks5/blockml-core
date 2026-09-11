@@ -30,8 +30,8 @@
     `type:TypeReferenceEntity(core:Exception)[]` — empty-QName sugar such as `<io:FileNotFound />`.
     
     Distinct from `org.blockml.bml.core.Diagnostic`, which catalogues validator and parser codes
-    rather than Capability-thrown failures. Distinct from `org.blockml.bml.core.Entity`, which
-    is the branch for instances nested in composition or aggregation.
+    rather than Capability-thrown failures. Distinct from `org.blockml.bml.core.PrimitiveEntity`,
+    which wraps a primitive so it can sit in an aggregation.
     ]]>
   </documentation>
   <abstract>
@@ -47,8 +47,8 @@
     <see type="core:Diagnostic" relation="ContrastsWith">
       Validator and parser diagnostic codes — not Capability-thrown exceptions.
     </see>
-    <see type="core:Entity" relation="ContrastsWith">
-      Composable instance branch — Exception is not nested as an aggregation child.
+    <see type="core:PrimitiveEntity" relation="ContrastsWith">
+      Primitive wrapper for aggregation children — Exception is a signature type, not a payload.
     </see>
     <see type="core:Block" relation="Extends">
       Core root branch — direct child of Block.

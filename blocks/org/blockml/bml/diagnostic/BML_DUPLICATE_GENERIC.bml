@@ -21,7 +21,7 @@
     Emitted when two genericTypes entries share the same parameter name. Remedy: Rename one parameter.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_GENERIC" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_GENERIC" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

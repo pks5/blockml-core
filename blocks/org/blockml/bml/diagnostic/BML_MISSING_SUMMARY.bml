@@ -21,7 +21,7 @@
     omitted. summary sits between is and documentation for LLM/human orientation.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_SUMMARY" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_SUMMARY" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

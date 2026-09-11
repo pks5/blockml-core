@@ -21,7 +21,7 @@
     inheritance is mandatory except on the sole root org.blockml.bml.core.Block.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_BASE_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_BASE_TYPE" />
   </keywords>
   <references>
     <see type="doc:ModelingGuidelines" relation="AuthoringGuide">

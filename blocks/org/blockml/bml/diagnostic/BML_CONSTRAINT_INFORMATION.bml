@@ -23,7 +23,7 @@
     compilation continues.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTRAINT_INFORMATION" />
+    <org.blockml.bml.meta.Keyword value="BML_CONSTRAINT_INFORMATION" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

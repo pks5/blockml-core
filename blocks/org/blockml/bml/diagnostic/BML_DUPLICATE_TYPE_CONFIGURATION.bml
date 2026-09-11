@@ -22,7 +22,7 @@
     each configuration key once.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_TYPE_CONFIGURATION" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_TYPE_CONFIGURATION" />
   </keywords>
   <references>
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">

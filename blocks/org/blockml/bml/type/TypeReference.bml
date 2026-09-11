@@ -52,7 +52,7 @@
     (type=, baseType=, abc=, …). The validator does not special-case XML sites. Identity
     `type` on BlockDefinition is declared as TypeIdentifier — that is why it is not
     existence-checked; a field named type whose type were TypeReference would be. When a type
-    reference must appear as an Entity in composition or aggregation, use
+    reference must appear as a PrimitiveEntity in composition or aggregation, use
     org.blockml.bml.type.TypeReferenceEntity. Unresolved → BML_UNKNOWN_TYPE: an error, not
     proof the document is ill-formed (missing library vs typo).
     

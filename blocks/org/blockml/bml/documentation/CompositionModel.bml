@@ -5,7 +5,8 @@
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:type="org.blockml.bml.type">
 
   <baseType>
     core:Documentation
@@ -62,6 +63,11 @@
     Recursive composition: every Block instance may contain aggregation members directly — complex
     object structures nest wherever instances appear.
     
+    PrimitiveEntity value sugar: character content or a comma list on an aggregation whose payload
+    is a concrete PrimitiveEntity specialization expands to instances of that type, one trimmed
+    token per instance assigned to value (core:PrimitiveEntity). Distinct from empty-QName sugar
+    on TypeReferenceEntity.
+    
     Sibling value sharing: use bml:with on a common ancestor (composition or bml:container). Variables
     are visible to the element and all descendants — no separate registry. Full expression grammar
     lives in doc:Expressions; V1 implements property references, #built-in calls, and bml: directives
@@ -104,6 +110,12 @@
     </see>
     <see type="doc:GenericsModel" relation="SeeAlso">
       Open generic instances in aggregations require bml:generics.
+    </see>
+    <see type="core:PrimitiveEntity" relation="SeeAlso">
+      Comma-separated value sugar on PrimitiveEntity aggregations.
+    </see>
+    <see type="type:TypeReferenceEntity" relation="SeeAlso">
+      Empty-QName sugar — not comma-separated value sugar.
     </see>
   </references>
 </doc:CompositionModel>

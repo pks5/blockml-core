@@ -22,7 +22,7 @@
     Deprecated, Stub (or library Status blocks).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_STATUS" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_STATUS" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

@@ -21,7 +21,7 @@
     Omit unchanged type on aggregation overrides. Declare type only when refining or replacing the inherited type. Authored redundant type is ignored.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_REDUNDANT_AGGREGATION_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_REDUNDANT_AGGREGATION_TYPE" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">

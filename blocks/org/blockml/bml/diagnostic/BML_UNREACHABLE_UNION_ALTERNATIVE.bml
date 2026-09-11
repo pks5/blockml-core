@@ -20,7 +20,7 @@
     narrower/sentinel alternatives on the left. Advisory like unreachable code — compile succeeds.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNREACHABLE_UNION_ALTERNATIVE" />
+    <org.blockml.bml.meta.Keyword value="BML_UNREACHABLE_UNION_ALTERNATIVE" />
   </keywords>
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">

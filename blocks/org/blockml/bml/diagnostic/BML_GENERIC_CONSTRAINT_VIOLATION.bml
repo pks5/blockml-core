@@ -21,7 +21,7 @@
     bml:generics. Remedy: Union arguments must satisfy the bound per alternative.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_GENERIC_CONSTRAINT_VIOLATION" />
+    <org.blockml.bml.meta.Keyword value="BML_GENERIC_CONSTRAINT_VIOLATION" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

@@ -22,7 +22,7 @@
     org.blockml.bml.* exports.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_VERSION" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_VERSION" />
   </keywords>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">

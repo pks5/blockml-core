@@ -23,7 +23,7 @@
     continues unless elevated by policy.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTRAINT_WARNING" />
+    <org.blockml.bml.meta.Keyword value="BML_CONSTRAINT_WARNING" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

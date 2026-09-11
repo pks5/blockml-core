@@ -23,7 +23,7 @@
     Block only.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PRIVATE_SUBBLOCK_ACCESS" />
+    <org.blockml.bml.meta.Keyword value="BML_PRIVATE_SUBBLOCK_ACCESS" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

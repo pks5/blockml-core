@@ -22,7 +22,7 @@
     name. Remedy: Add function &lt;capabilityName>(...) as the main entry.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_FUNCTION_MISSING_MAIN" />
+    <org.blockml.bml.meta.Keyword value="BML_FUNCTION_MISSING_MAIN" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

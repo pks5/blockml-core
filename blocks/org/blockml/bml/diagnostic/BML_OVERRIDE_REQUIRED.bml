@@ -21,7 +21,7 @@
     Every redeclaration layer that merges with an inherited or contract member must set override="true" again — including contract completion. Override is not inherited.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_OVERRIDE_REQUIRED" />
+    <org.blockml.bml.meta.Keyword value="BML_OVERRIDE_REQUIRED" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">

@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:UUID)
   </baseType>
   <is>
-    A UUID as an Entity
+    A UUID as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a UUID primitive. Binds T = UUID on
+    Concrete PrimitiveEntity wrapping a UUID primitive. Binds T = UUID on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
   </documentation>
 </type:UUIDEntity>

@@ -21,7 +21,7 @@
     &lt;composition> must always be nested inside an aggregation member on Block definitions. On instances, open aggregations directly without a composition wrapper. Do not use &lt;value> as a parallel wrapper on instance Properties — both are definition fields (doc:MemberAuthoring).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_STANDALONE_COMPOSITION" />
+    <org.blockml.bml.meta.Keyword value="BML_STANDALONE_COMPOSITION" />
   </keywords>
   <references>
     <see type="doc:MemberAuthoring" relation="AuthoringGuide">

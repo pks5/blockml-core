@@ -21,7 +21,7 @@
     Protected Sub-Blocks (_Name) are visible inside the enclosing Block definition and derived Blocks — not from arbitrary external documents.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PROTECTED_SUBBLOCK_ACCESS" />
+    <org.blockml.bml.meta.Keyword value="BML_PROTECTED_SUBBLOCK_ACCESS" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

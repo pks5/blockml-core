@@ -21,7 +21,7 @@
     Collision checking uses normalizedLogicalName with visibility prefixes stripped. A logical member or Sub-Block exists exactly once with exactly one visibility.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

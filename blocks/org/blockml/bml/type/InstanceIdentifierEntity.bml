@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:InstanceIdentifier)
   </baseType>
   <is>
-    A Block instance name as an Entity
+    A Block instance name as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping an InstanceIdentifier primitive. Binds T =
+    Concrete PrimitiveEntity wrapping an InstanceIdentifier primitive. Binds T =
     InstanceIdentifier on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value
     property automatically. Use when an instance name that need not exist must appear as an
     identifiable Block instance. Existence-checked counterparts use InstanceReferenceEntity.

@@ -20,7 +20,7 @@
     unbound parameter at a reference site must resolve via authored args or defaults.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_GENERIC_DEFAULT_UNRESOLVED" />
+    <org.blockml.bml.meta.Keyword value="BML_GENERIC_DEFAULT_UNRESOLVED" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

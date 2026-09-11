@@ -23,7 +23,7 @@
     Sub-Blocks may use local names. Elsewhere require FQN / xmlns-qualified names.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNQUALIFIED_BLOCK_REFERENCE" />
+    <org.blockml.bml.meta.Keyword value="BML_UNQUALIFIED_BLOCK_REFERENCE" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

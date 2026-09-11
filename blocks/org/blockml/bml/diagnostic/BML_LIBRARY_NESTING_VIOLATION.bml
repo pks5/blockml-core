@@ -20,7 +20,7 @@
     Typical pattern: inner lists outer in dependencies; outer lists inner in subLibraries. Membership is defined by Library.blocks.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_LIBRARY_NESTING_VIOLATION" />
+    <org.blockml.bml.meta.Keyword value="BML_LIBRARY_NESTING_VIOLATION" />
   </keywords>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">

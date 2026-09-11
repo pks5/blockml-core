@@ -23,7 +23,7 @@
     not size[0]. See doc:Expressions.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_UNKNOWN_PROPERTY" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_UNKNOWN_PROPERTY" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

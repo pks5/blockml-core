@@ -33,11 +33,11 @@
     5. Export via Library.bml blocks when the type belongs to a published catalogue.
   </documentation>
   <keywords>
-    <meta:FreeTextKeyword term="author" />
-    <meta:FreeTextKeyword term="new block" />
-    <meta:FreeTextKeyword term="create type" />
-    <meta:FreeTextKeyword term="scaffold" />
-    <meta:FreeTextKeyword term="root block" />
+    <meta:Keyword value="author" />
+    <meta:Keyword value="new block" />
+    <meta:Keyword value="create type" />
+    <meta:Keyword value="scaffold" />
+    <meta:Keyword value="root block" />
   </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="Prerequisite">

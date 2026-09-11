@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:Date)
   </baseType>
   <is>
-    A calendar date as an Entity
+    A calendar date as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a Date primitive. Binds T = Date on
+    Concrete PrimitiveEntity wrapping a Date primitive. Binds T = Date on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Use when a date must appear as an identifiable Block instance.
   </documentation>

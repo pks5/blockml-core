@@ -20,7 +20,7 @@
     final="true" on a block definition prevents other definitions from extending it. Choose a non-final base or unseal the parent if you control it.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_FINAL_BASE_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_FINAL_BASE_TYPE" />
   </keywords>
   <references>
     <see type="doc:ModelingGuidelines" relation="AuthoringGuide">

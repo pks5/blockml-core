@@ -23,7 +23,7 @@
     bml:generics on an open-generic instance is BML_OPEN_GENERIC_INSTANCE, not this code.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_GENERIC_TYPE_ARGUMENT" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_GENERIC_TYPE_ARGUMENT" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

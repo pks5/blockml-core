@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:FilePath)
   </baseType>
   <is>
-    A filesystem path as an Entity
+    A filesystem path as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a FilePath primitive. Binds T = FilePath on
+    Concrete PrimitiveEntity wrapping a FilePath primitive. Binds T = FilePath on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
   </documentation>
 </type:FilePathEntity>

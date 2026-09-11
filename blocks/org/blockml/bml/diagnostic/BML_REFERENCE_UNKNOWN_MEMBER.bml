@@ -23,7 +23,7 @@
     canonical member path or owning type.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_REFERENCE_UNKNOWN_MEMBER" />
+    <org.blockml.bml.meta.Keyword value="BML_REFERENCE_UNKNOWN_MEMBER" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

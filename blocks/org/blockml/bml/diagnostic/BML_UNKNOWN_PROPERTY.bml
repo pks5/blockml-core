@@ -29,7 +29,7 @@
     the owning type's library is on the current classpath.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_PROPERTY" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_PROPERTY" />
   </keywords>
   <references>
     <see type="type:PropertyReference" relation="Defines">

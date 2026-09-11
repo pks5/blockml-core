@@ -22,7 +22,7 @@
     kind or a disambiguating split form.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_REFERENCE_AMBIGUOUS_TARGET" />
+    <org.blockml.bml.meta.Keyword value="BML_REFERENCE_AMBIGUOUS_TARGET" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

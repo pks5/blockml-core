@@ -21,7 +21,7 @@
     mixed forms.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MIXED_FUNCTION_ARGUMENTS" />
+    <org.blockml.bml.meta.Keyword value="BML_MIXED_FUNCTION_ARGUMENTS" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

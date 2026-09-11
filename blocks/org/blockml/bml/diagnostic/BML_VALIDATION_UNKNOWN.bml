@@ -22,7 +22,7 @@
     Warning, or Information.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_VALIDATION_UNKNOWN" />
+    <org.blockml.bml.meta.Keyword value="BML_VALIDATION_UNKNOWN" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

@@ -23,7 +23,7 @@
     appropriately.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_FUNCTION_NO_RUNTIME_IMPL" />
+    <org.blockml.bml.meta.Keyword value="BML_FUNCTION_NO_RUNTIME_IMPL" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

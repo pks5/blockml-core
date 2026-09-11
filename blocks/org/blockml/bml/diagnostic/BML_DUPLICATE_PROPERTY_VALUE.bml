@@ -22,7 +22,7 @@
     value entry per namespace; facets multiply along Annotation namespaces.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_PROPERTY_VALUE" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_PROPERTY_VALUE" />
   </keywords>
   <references>
     <see type="def:PropertyDefinition" relation="Defines">

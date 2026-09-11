@@ -22,7 +22,7 @@
     properties; domain-specific.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_NATIVE_BLOCK_CUSTOM_PROPERTY" />
+    <org.blockml.bml.meta.Keyword value="BML_NATIVE_BLOCK_CUSTOM_PROPERTY" />
   </keywords>
   <references>
     <see type="doc:ModelingGuidelines" relation="SeeAlso">

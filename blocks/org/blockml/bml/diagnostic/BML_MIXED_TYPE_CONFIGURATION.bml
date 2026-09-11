@@ -21,7 +21,7 @@
     order — not both.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MIXED_TYPE_CONFIGURATION" />
+    <org.blockml.bml.meta.Keyword value="BML_MIXED_TYPE_CONFIGURATION" />
   </keywords>
   <references>
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">

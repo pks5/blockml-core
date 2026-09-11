@@ -22,7 +22,7 @@
     Check the site's type attribute rules — some TypeReference usages are singular only.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_TYPE_REFERENCE_MULTIPLICITY" />
+    <org.blockml.bml.meta.Keyword value="BML_TYPE_REFERENCE_MULTIPLICITY" />
   </keywords>
   <references>
     <see type="type:TypeReference" relation="Defines">

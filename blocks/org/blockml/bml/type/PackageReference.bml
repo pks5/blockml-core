@@ -32,7 +32,7 @@
     Annotation is not a PackageReference.
     
     Primary use — documentation see package= on StructuralDefinition.Reference, and any property
-    that names a package rather than a Block type. When a package reference must appear as an Entity
+    that names a package rather than a Block type. When a package reference must appear as a PrimitiveEntity
     in composition or aggregation, use org.blockml.bml.type.PackageReferenceEntity.
     
     A package name that need not exist uses PackageIdentifier — not PackageReference. Block type

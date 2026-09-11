@@ -21,7 +21,7 @@
     Block definition (root and Sub-Blocks) requires ≥1 default-namespace documentation entry.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_DOCUMENTATION" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_DOCUMENTATION" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

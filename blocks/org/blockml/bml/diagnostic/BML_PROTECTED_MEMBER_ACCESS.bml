@@ -21,7 +21,7 @@
     Protected members (_name) allow access when C=D, C inherits from D, C is the immediate composition owner O, or C inherits from instance type I. Outer composition ancestors do not receive protected configuration access.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PROTECTED_MEMBER_ACCESS" />
+    <org.blockml.bml.meta.Keyword value="BML_PROTECTED_MEMBER_ACCESS" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

@@ -21,7 +21,7 @@
     negative space for disambiguation. Missing when required → this code.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_IS_NOT" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_IS_NOT" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

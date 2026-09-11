@@ -22,7 +22,7 @@
     …}.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_CONSTANT_VALUE" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_CONSTANT_VALUE" />
   </keywords>
   <references>
     <see type="doc:ConstantValueType" relation="AuthoringGuide">

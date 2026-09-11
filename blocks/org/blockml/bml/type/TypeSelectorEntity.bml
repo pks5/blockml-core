@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:TypeSelector)
   </baseType>
   <is>
-    A type selector as an Entity
+    A type selector as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a TypeSelector primitive. Binds T = TypeSelector
+    Concrete PrimitiveEntity wrapping a TypeSelector primitive. Binds T = TypeSelector
     on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Use when a type selector must appear as an identifiable Block instance.
     Concrete type names use TypeIdentifierEntity.

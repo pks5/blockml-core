@@ -22,7 +22,7 @@
     Use a Language FQN or unqualified name at the language attribute site.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_IMPLEMENTATION_UNKNOWN_LANGUAGE" />
+    <org.blockml.bml.meta.Keyword value="BML_IMPLEMENTATION_UNKNOWN_LANGUAGE" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

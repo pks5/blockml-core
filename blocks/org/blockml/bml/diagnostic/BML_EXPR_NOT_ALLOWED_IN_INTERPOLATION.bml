@@ -24,7 +24,7 @@
     "${ expr }" ExpressionValue when the full language is required (doc:Expressions).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

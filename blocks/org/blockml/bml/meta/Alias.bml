@@ -1,0 +1,69 @@
+<!--BlockML Core — alias PrimitiveEntity
+
+  FQN: org.blockml.bml.meta.Alias-->
+<meta:Alias xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:meta="org.blockml.bml.meta"
+  xmlns:type="org.blockml.bml.type">
+
+  <baseType>
+    core:PrimitiveEntity(type:Text)
+  </baseType>
+  <is>
+    An alternative Block type name
+  </is>
+  <documentation>
+    Instantiable PrimitiveEntity(Text) for alternative Block type names in an aliases
+    aggregation on org.blockml.bml.definition.BlockDefinition only (root blocks and Sub-Blocks).
+    Not a core root branch. Ad-hoc names are Alias instances (for example
+    &lt;meta:Alias value="Sub-Block" />). Comma-separated character content on &lt;aliases> is
+    PrimitiveEntity value sugar and expands to Alias instances — one value per trimmed token —
+    not to FixedAlias catalogue blocks. Not XML namespace prefix aliases. Not search tags —
+    use org.blockml.bml.meta.Keyword for those.
+    
+    Domain libraries define catalogue alias blocks extending org.blockml.bml.meta.FixedAlias.
+    Those types set value on the definition; references are empty fixed blocks (for example
+    &lt;vocab:SubBlockAlias />). Type FQN is the catalogue identity; value, language, and
+    legacy resolve from the alias definition.
+  </documentation>
+  <references>
+    <see type="core:PrimitiveEntity" relation="Extends">
+      Alias is PrimitiveEntity(Text) — value is the alternative name.
+    </see>
+    <see type="meta:FixedAlias" relation="SeeAlso">
+      Abstract catalogue freeze — value and companions are readOnly.
+    </see>
+    <see type="meta:Keyword" relation="ContrastsWith">
+      Parallel PrimitiveEntity(Text) for search and discovery tags — not alternative type names.
+    </see>
+  </references>
+  <properties>
+    <value override="true" type="type:Text">
+      <documentation>
+        Required alternative name text — PrimitiveEntity.value. Authored as value="…" on
+        ad-hoc Alias instances. Catalogue descendants of FixedAlias set this on the type
+        definition. Not Block definition &lt;name>.
+      </documentation>
+      <constraints>
+        <constraint:ValuePresent validation="Error" />
+      </constraints>
+    </value>
+    <language bml:xml="attribute" type="type:TypeReference(lang:NaturalLanguage)">
+      <documentation>
+        Optional NaturalLanguage when this alias is written in a language other than the
+        effective language of the enclosing block definition. Unqualified names resolve via
+        org.blockml.bml.language.*. Omitted = inherit effective language.
+      </documentation>
+    </language>
+    <legacy bml:xml="attribute" type="type:Boolean">
+      <documentation>
+        When true, marks a deprecated or legacy name — prefer the canonical Block name and
+        &lt;is> in new prose. Default false when omitted.
+      </documentation>
+      <value>false</value>
+    </legacy>
+  </properties>
+</meta:Alias>

@@ -24,7 +24,7 @@
     the directive onto the instance whose open genericTypes it binds, or remove it.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_GENERICS_DIRECTIVE_NOT_ALLOWED" />
+    <org.blockml.bml.meta.Keyword value="BML_GENERICS_DIRECTIVE_NOT_ALLOWED" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

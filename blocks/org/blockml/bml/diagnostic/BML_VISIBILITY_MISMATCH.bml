@@ -21,7 +21,7 @@
     Optional visibility on members and Sub-Blocks must agree with public / _protected / __private naming. When omitted, visibility is derived from the name.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_VISIBILITY_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_VISIBILITY_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

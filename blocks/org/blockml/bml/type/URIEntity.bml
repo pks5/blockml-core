@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:URI)
   </baseType>
   <is>
-    A resource identifier as an Entity
+    A resource identifier as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a URI primitive. Binds T = URI on
+    Concrete PrimitiveEntity wrapping a URI primitive. Binds T = URI on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
   </documentation>
 </type:URIEntity>

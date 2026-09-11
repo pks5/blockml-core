@@ -23,7 +23,7 @@
     a constraint whose T binds from the embedding context type.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTRAINT_TYPE_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_CONSTRAINT_TYPE_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

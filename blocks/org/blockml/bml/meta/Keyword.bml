@@ -1,0 +1,66 @@
+<!--BlockML Core — keyword PrimitiveEntity
+
+  FQN: org.blockml.bml.meta.Keyword-->
+<meta:Keyword xmlns="http://blockml.org/bml"
+  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
+  xmlns:constraint="org.blockml.bml.constraint"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:lang="org.blockml.bml.language"
+  xmlns:meta="org.blockml.bml.meta"
+  xmlns:type="org.blockml.bml.type">
+
+  <baseType>
+    core:PrimitiveEntity(type:Text)
+  </baseType>
+  <is>
+    A search and discovery tag
+  </is>
+  <documentation>
+    Instantiable PrimitiveEntity(Text) for search and discovery tags in a keywords aggregation
+    on org.blockml.bml.definition.StructuralDefinition. Not a core root branch. Ad-hoc tags are
+    Keyword instances (for example &lt;meta:Keyword value="inheritance" />). Comma-separated
+    character content on &lt;keywords> is PrimitiveEntity value sugar and expands to Keyword
+    instances — one value per trimmed token — not to FixedKeyword catalogue blocks.
+    
+    Domain libraries define catalogue keyword blocks extending org.blockml.bml.meta.FixedKeyword
+    (for example org.example.keyword.Inheritance). Those types set value on the definition;
+    references are empty fixed blocks (for example &lt;vocab:Inheritance />). Type FQN is the
+    catalogue identity; value, language, and weight resolve from the keyword definition.
+    Distinct from org.blockml.bml.meta.Alias (alternative Block type names on BlockDefinition).
+  </documentation>
+  <references>
+    <see type="core:PrimitiveEntity" relation="Extends">
+      Keyword is PrimitiveEntity(Text) — value is the search tag.
+    </see>
+    <see type="meta:FixedKeyword" relation="SeeAlso">
+      Abstract catalogue freeze — value and companions are readOnly.
+    </see>
+    <see type="meta:Alias" relation="ContrastsWith">
+      Parallel PrimitiveEntity(Text) for alternative Block type names — not search tags.
+    </see>
+  </references>
+  <properties>
+    <value override="true" type="type:Text">
+      <documentation>
+        Required search tag text — PrimitiveEntity.value. Authored as value="…" on ad-hoc
+        Keyword instances. Catalogue descendants of FixedKeyword set this on the type definition.
+      </documentation>
+      <constraints>
+        <constraint:ValuePresent validation="Error" />
+      </constraints>
+    </value>
+    <language bml:xml="attribute" type="type:TypeReference(lang:NaturalLanguage)">
+      <documentation>
+        Optional NaturalLanguage when this tag is written in a language other than the
+        effective language of blocks that reference it. Unqualified names resolve via
+        org.blockml.bml.language.*. Omitted = inherit effective language at resolution time.
+      </documentation>
+    </language>
+    <weight bml:xml="attribute" type="type:Integer">
+      <documentation>
+        Optional RAG ranking hint — higher values rank stronger in discovery indexes.
+        Omitted = default weight.
+      </documentation>
+    </weight>
+  </properties>
+</meta:Keyword>

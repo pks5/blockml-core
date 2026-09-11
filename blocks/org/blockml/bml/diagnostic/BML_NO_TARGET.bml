@@ -22,7 +22,7 @@
     targets[] in bom.config / CLI.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_NO_TARGET" />
+    <org.blockml.bml.meta.Keyword value="BML_NO_TARGET" />
   </keywords>
   <references>
     <see type="doc:CompilerArchitecture" relation="AuthoringGuide">

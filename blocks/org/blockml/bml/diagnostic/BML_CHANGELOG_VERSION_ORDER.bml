@@ -22,7 +22,7 @@
     entries ascending by version.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CHANGELOG_VERSION_ORDER" />
+    <org.blockml.bml.meta.Keyword value="BML_CHANGELOG_VERSION_ORDER" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

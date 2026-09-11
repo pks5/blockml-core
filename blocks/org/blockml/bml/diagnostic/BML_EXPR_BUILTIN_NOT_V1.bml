@@ -21,7 +21,7 @@
     #math / #numbers / #strings / #lists subset — see doc:Expressions V1 scope.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_BUILTIN_NOT_V1" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_BUILTIN_NOT_V1" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

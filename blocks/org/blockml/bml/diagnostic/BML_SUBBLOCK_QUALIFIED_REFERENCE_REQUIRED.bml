@@ -23,7 +23,7 @@
     forms.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED" />
+    <org.blockml.bml.meta.Keyword value="BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

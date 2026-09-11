@@ -22,7 +22,7 @@
     interpolated Text is this code. Nested embed delimiters are invalid.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_SYNTAX_ERROR" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_SYNTAX_ERROR" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

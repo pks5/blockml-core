@@ -22,7 +22,7 @@
     per library convention (framework often versions only Library.bml).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_VERSION_MINOR_DRIFT" />
+    <org.blockml.bml.meta.Keyword value="BML_VERSION_MINOR_DRIFT" />
   </keywords>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">

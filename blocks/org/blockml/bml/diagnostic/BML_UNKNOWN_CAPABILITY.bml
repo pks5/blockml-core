@@ -23,7 +23,7 @@
     Capability name and inheritance/contract merge.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_CAPABILITY" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_CAPABILITY" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

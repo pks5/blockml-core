@@ -21,7 +21,7 @@
     &lt;$ must close with $>. Nested embeds are forbidden.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNCLOSED_EMBEDDED_EXPRESSION" />
+    <org.blockml.bml.meta.Keyword value="BML_UNCLOSED_EMBEDDED_EXPRESSION" />
   </keywords>
   <references>
     <see type="doc:EmbeddedExpressions" relation="AuthoringGuide">

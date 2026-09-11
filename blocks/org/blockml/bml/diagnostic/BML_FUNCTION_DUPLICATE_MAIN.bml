@@ -22,7 +22,7 @@
     the Capability name. Remedy: Keep exactly one main function named like the Capability.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_FUNCTION_DUPLICATE_MAIN" />
+    <org.blockml.bml.meta.Keyword value="BML_FUNCTION_DUPLICATE_MAIN" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

@@ -6,7 +6,7 @@
     core:PrimitiveEntity(type:AssociationReference(B))
   </baseType>
   <is>
-    A path to an Association member as an Entity
+    A path to an Association member as a PrimitiveEntity
   </is>
   <documentation>
     Open generic Entity wrapping an AssociationReference primitive. Forwards B from

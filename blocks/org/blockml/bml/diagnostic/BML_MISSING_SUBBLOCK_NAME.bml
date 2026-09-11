@@ -23,7 +23,7 @@
     wrapper (doc:DocumentFormat). Type is normally derived.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_SUBBLOCK_NAME" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_SUBBLOCK_NAME" />
   </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">

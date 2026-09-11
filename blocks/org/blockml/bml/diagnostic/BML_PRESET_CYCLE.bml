@@ -22,6 +22,6 @@
     This diagnostic is emitted by domain validators; Core only catalogues the code.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PRESET_CYCLE" />
+    <org.blockml.bml.meta.Keyword value="BML_PRESET_CYCLE" />
   </keywords>
 </diag:BML_PRESET_CYCLE>

@@ -20,7 +20,7 @@
     Remedy: Configuration keys must match effective Properties of the referenced ValueType.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_TYPE_CONFIGURATION" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_TYPE_CONFIGURATION" />
   </keywords>
   <references>
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">

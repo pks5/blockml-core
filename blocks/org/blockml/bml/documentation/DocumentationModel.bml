@@ -36,7 +36,7 @@
     summary (required when documentation is too long) — short prose expansion between is and
       documentation; inherited from StructuralDefinition on blocks and members. Missing when
       required → BML_MISSING_SUMMARY.
-    keywords aggregation (optional) — core.Keyword[]; domain FixedKeyword catalogue blocks, meta.FreeTextKeyword; shorthand → FreeTextKeyword only.
+    keywords aggregation (optional) — meta.Keyword[]; ad-hoc Keyword instances or domain FixedKeyword catalogue blocks; comma shorthand → Keyword only.
     language (optional Definition meta — def:BlockDefinition.language) — natural language for
       documentation prose; inherits enclosing Library document language, then the English default
       authored on org.blockml.bml.core.Block.
@@ -46,7 +46,7 @@
       block language. Omitted → BML_MISSING_DOCUMENTATION.
     isNot (required when confusion risk exists, blocks only) — what this Block is not; block-level
       disambiguation. Reflection: bml:Self.isNot. Missing when required → BML_MISSING_IS_NOT.
-    aliases aggregation (optional, blocks only) — core.Alias[]; domain FixedAlias catalogue blocks, meta.FreeTextAlias; shorthand → FreeTextAlias only.
+    aliases aggregation (optional, blocks only) — meta.Alias[]; ad-hoc Alias instances or domain FixedAlias catalogue blocks; comma shorthand → Alias only.
     Member elements carry their own summary, keywords, and documentation for individual Properties, Aggregations, etc.
     
     Optional extensions (wherever documentation is permitted):

@@ -22,7 +22,7 @@
     Rename one member or fix visibility-prefix duplicates.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_MEMBER_NAME" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_MEMBER_NAME" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

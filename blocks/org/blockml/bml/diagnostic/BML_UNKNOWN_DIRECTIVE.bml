@@ -21,7 +21,7 @@
     Emitted when an unknown bml: directive name is used. Remedy: Use directives declared on org.blockml.bml.annotation.BmlAnnotation.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_DIRECTIVE" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_DIRECTIVE" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

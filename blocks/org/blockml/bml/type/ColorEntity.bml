@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:Color)
   </baseType>
   <is>
-    A color value as an Entity
+    A color value as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a Color primitive. Binds T = Color on
+    Concrete PrimitiveEntity wrapping a Color primitive. Binds T = Color on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Bare Color uses L = English for free-text color names.
   </documentation>

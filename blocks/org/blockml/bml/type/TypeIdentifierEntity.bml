@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:TypeIdentifier)
   </baseType>
   <is>
-    A type name as an Entity
+    A type name as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a TypeIdentifier primitive. Binds T = TypeIdentifier
+    Concrete PrimitiveEntity wrapping a TypeIdentifier primitive. Binds T = TypeIdentifier
     on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Use when a type name that need not exist must appear as an identifiable Block instance.
     Existence-checked counterparts use TypeReferenceEntity.

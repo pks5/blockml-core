@@ -23,7 +23,7 @@
     (doc:DocumentFormat). FQN = resolve(type), not nested under the root.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_EMBEDDED_BLOCK_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_EMBEDDED_BLOCK_TYPE" />
   </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">

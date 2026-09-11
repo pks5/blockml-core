@@ -21,7 +21,7 @@
     required after identity fields — a clear noun phrase for what the Block semantically represents.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_IS" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_IS" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

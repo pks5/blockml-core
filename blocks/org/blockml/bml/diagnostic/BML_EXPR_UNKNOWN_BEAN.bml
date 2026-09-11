@@ -21,7 +21,7 @@
     the instance with bml:bean (and optional bml:scope). V1 defers bean execution.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_UNKNOWN_BEAN" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_UNKNOWN_BEAN" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

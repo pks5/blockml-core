@@ -30,8 +30,8 @@
     InvalidValueException). Concrete primitives implement a deterministic host-evaluable body.
     Configuration, constraints, and Reference existence run after parse — doc:ValueTypeParsing.
     
-    When a primitive value must exist as an Entity inside a composition or aggregation, use a
-    concrete Entity specialization (for example IntegerEntity) — not by adding a value member to
+    When a primitive value must exist as a PrimitiveEntity inside a composition or aggregation, use a
+    concrete PrimitiveEntity specialization (for example IntegerEntity) — not by adding a value member to
     the PrimitiveType.
     
     Invalid: &lt;type:Integer value="5"/> — PrimitiveTypes cannot carry values.
@@ -57,7 +57,7 @@
       Elapsed-time magnitude — sibling of Temporal under PrimitiveType.
     </see>
     <see type="type:IntegerEntity" relation="SeeAlso">
-      Example concrete Entity wrapper for primitive values.
+      Example concrete PrimitiveEntity wrapper for primitive values.
     </see>
     <see type="doc:ValueTypeParsing" relation="AuthoringGuide">
       parseValue — lexical Text to bml:Self.

@@ -24,7 +24,7 @@
       uses the baseType chain only
     • contracts — domain cross-cutting member mixins and type-bound identifiers (implements) via
       satisfiesTypeBound
-    Framework core branch types (ValueType, Entity, Language, Constraint, …) remain baseType markers
+    Framework core branch types (ValueType, Language, Constraint, …) remain baseType markers
     only — not duplicated as interface contracts in org.blockml.bml.*.
     
     Semantics:

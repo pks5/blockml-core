@@ -22,7 +22,7 @@
     each contract at most once.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_CONTRACT" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_CONTRACT" />
   </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">

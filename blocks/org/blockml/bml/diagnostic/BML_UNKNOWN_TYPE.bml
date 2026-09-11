@@ -42,11 +42,11 @@
     library, or reference to a Sub-Block type without the full parent-qualified path where required.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_TYPE" />
-    <org.blockml.bml.meta.FreeTextKeyword term="unknown type" />
-    <org.blockml.bml.meta.FreeTextKeyword term="unresolved FQN" />
-    <org.blockml.bml.meta.FreeTextKeyword term="TypeRegistry" />
-    <org.blockml.bml.meta.FreeTextKeyword term="TypeReference" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_TYPE" />
+    <org.blockml.bml.meta.Keyword value="unknown type" />
+    <org.blockml.bml.meta.Keyword value="unresolved FQN" />
+    <org.blockml.bml.meta.Keyword value="TypeRegistry" />
+    <org.blockml.bml.meta.Keyword value="TypeReference" />
   </keywords>
   <references>
     <see type="howto:DebugUnknownType" relation="Resolves">

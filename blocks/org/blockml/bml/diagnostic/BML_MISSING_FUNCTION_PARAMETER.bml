@@ -20,7 +20,7 @@
     missing positional or named argument, or an object literal with all required fields.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_FUNCTION_PARAMETER" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_FUNCTION_PARAMETER" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

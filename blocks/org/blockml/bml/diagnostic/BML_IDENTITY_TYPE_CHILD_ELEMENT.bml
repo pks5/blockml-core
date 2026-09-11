@@ -22,7 +22,7 @@
     Author type/baseType as TypeReference text (element or attribute) per MemberDefinition placement.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_IDENTITY_TYPE_CHILD_ELEMENT" />
+    <org.blockml.bml.meta.Keyword value="BML_IDENTITY_TYPE_CHILD_ELEMENT" />
   </keywords>
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">

@@ -6,7 +6,7 @@
     core:PrimitiveEntity(type:AggregationReference(B))
   </baseType>
   <is>
-    A path to an Aggregation member as an Entity
+    A path to an Aggregation member as a PrimitiveEntity
   </is>
   <documentation>
     Open generic Entity wrapping an AggregationReference primitive. Forwards B from

@@ -10,6 +10,7 @@
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:group="org.blockml.bml.group"
   xmlns:lang="org.blockml.bml.language"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
 
@@ -29,9 +30,9 @@
     Declares identity first (name, type, baseType, version), then semantic and discovery fields
     (is, isNot, aliases), generic parameters, contracts, and
     member declaration containers (properties, aggregations, associations, capabilities). Inherits
-    summary and keywords aggregation (core.Keyword[]) from
+    summary and keywords aggregation (meta.Keyword[]) from
     org.blockml.bml.definition.StructuralDefinition. isNot is block-level only; aliases aggregation
-    (core.Alias[]) lists domain Alias blocks or org.blockml.bml.meta.FreeTextAlias instances. Omitted when unnecessary. Type modifiers abstract and final are inherited from
+    (meta.Alias[]) lists ad-hoc Alias instances or domain FixedAlias catalogue blocks. Omitted when unnecessary. Type modifiers abstract and final are inherited from
     org.blockml.bml.definition.StructuralDefinition. Every definition element is addressable via
     its canonical structural path within the Block FQN (for example com.foo.Bar.properties.width).
     Member declaration order in BML is preserved in BOM and is significant for StructType
@@ -129,7 +130,7 @@
         Parent type TypeReference / TypeExpression. Required on all definitions
         except the sole inheritance root (org.blockml.bml.core.Block), which omits &lt;baseType>
         entirely (BML_MISSING_BASE_TYPE elsewhere). Authored as element text — FQN or xmlns QName,
-        including generic applications that bind type parameters (for example core:Entity or
+        including generic applications that bind type parameters (for example
         core:PrimitiveEntity(type:Integer)). This is the site where generic applications on the
         parent are resolved. Stored in BOM as block.baseType (FQN string). Immediately after type,
         before is.
@@ -178,15 +179,14 @@
     </definition>
   </properties>
   <aggregations>
-    <aliases type="core:Alias[]">
+    <aliases type="meta:Alias[]">
       <documentation>
-        Alternative names for this Block type. Each child is a org.blockml.bml.core.Alias
-        Entity instance — domain catalogue blocks extending org.blockml.bml.meta.FixedAlias (fixed
-        block reference, for example &lt;vocab:SubBlockAlias />), or org.blockml.bml.meta.FreeTextAlias
-        for ad-hoc names (for example &lt;meta:FreeTextAlias name="Sub-Block" />). Block-level only.
-        Comma-separated plain text
-        on &lt;aliases> is shorthand that expands to FreeTextAlias instances only. Addressable as
-        com.foo.Bar.aliases.
+        Alternative names for this Block type. Each child is an org.blockml.bml.meta.Alias
+        instance — ad-hoc names (&lt;meta:Alias value="Sub-Block" />) or domain catalogue
+        blocks extending org.blockml.bml.meta.FixedAlias (empty reference, for example
+        &lt;vocab:SubBlockAlias />). Block-level only. Comma-separated character content on
+        &lt;aliases> is PrimitiveEntity value sugar and expands to Alias instances — not to
+        FixedAlias catalogue blocks. Addressable as com.foo.Bar.aliases.
       </documentation>
     </aliases>
     <language type="type:TypeReferenceEntity(lang:NaturalLanguage)">

@@ -22,7 +22,7 @@
     thresholds. E.g. Text{maxLength: 100} instead of MaxLength constraint when intrinsic.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PREFER_TYPE_CONFIGURATION" />
+    <org.blockml.bml.meta.Keyword value="BML_PREFER_TYPE_CONFIGURATION" />
   </keywords>
   <references>
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">

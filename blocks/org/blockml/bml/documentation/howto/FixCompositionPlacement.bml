@@ -30,10 +30,10 @@
     5. Instance ID reachability — follows aggregation member visibility (doc:MemberVisibility).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="composition" />
-    <org.blockml.bml.meta.FreeTextKeyword term="aggregation" />
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_STANDALONE_COMPOSITION" />
-    <org.blockml.bml.meta.FreeTextKeyword term="bml:container" />
+    <org.blockml.bml.meta.Keyword value="composition" />
+    <org.blockml.bml.meta.Keyword value="aggregation" />
+    <org.blockml.bml.meta.Keyword value="BML_STANDALONE_COMPOSITION" />
+    <org.blockml.bml.meta.Keyword value="bml:container" />
   </keywords>
   <references>
     <see type="doc:MemberAuthoring" relation="HowToStep">

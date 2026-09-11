@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:Version)
   </baseType>
   <is>
-    A version number as an Entity
+    A version number as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a Version primitive. Binds T = Version on
+    Concrete PrimitiveEntity wrapping a Version primitive. Binds T = Version on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
   </documentation>
 </type:VersionEntity>

@@ -22,7 +22,7 @@
     validation.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_UNKNOWN_BUILTIN" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_UNKNOWN_BUILTIN" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

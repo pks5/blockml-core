@@ -6,7 +6,7 @@
     core:PrimitiveEntity(type:InstanceReference(T))
   </baseType>
   <is>
-    A Block instance pointer as an Entity
+    A Block instance pointer as a PrimitiveEntity
   </is>
   <documentation>
     Open generic Entity wrapping an InstanceReference primitive. Forwards T from

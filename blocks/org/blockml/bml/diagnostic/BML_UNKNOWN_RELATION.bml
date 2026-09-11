@@ -22,7 +22,7 @@
     Relation blocks (SeeAlso, ReadFirst, …).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_RELATION" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_RELATION" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

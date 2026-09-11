@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:PackageSelector)
   </baseType>
   <is>
-    A package selector as an Entity
+    A package selector as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a PackageSelector primitive. Binds T = PackageSelector
+    Concrete PrimitiveEntity wrapping a PackageSelector primitive. Binds T = PackageSelector
     on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Use when a package selector must appear as an identifiable Block instance.
     Concrete package names use PackageIdentifierEntity.

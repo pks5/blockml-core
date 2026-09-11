@@ -22,7 +22,7 @@
     Remedy: Declare xmlns for that namespace; do not invent prefixes at emit time.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_NAMESPACE_UNBOUND" />
+    <org.blockml.bml.meta.Keyword value="BML_NAMESPACE_UNBOUND" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

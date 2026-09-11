@@ -22,7 +22,7 @@
     Remedy: Align xmlns prefixes across the bundle.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_NAMESPACE_PREFIX_COLLISION" />
+    <org.blockml.bml.meta.Keyword value="BML_NAMESPACE_PREFIX_COLLISION" />
   </keywords>
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">

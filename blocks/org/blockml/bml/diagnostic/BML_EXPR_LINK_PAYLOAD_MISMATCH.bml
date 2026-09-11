@@ -21,7 +21,7 @@
     Outbound/Inbound (or Transformation) payloads are compatible.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_LINK_PAYLOAD_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_LINK_PAYLOAD_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

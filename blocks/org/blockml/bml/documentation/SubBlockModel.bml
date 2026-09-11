@@ -58,7 +58,7 @@
     Naming vs parent: a Sub-Block should not share the root Block's name (…Calibrator.Calibrator);
     bare short tags become ambiguous → BML_SUBBLOCK_QUALIFIED_REFERENCE_REQUIRED.
     
-    utility Sub-Blocks — baseType org.blockml.bml.core.Entity bind Transformation Capability
+    utility Sub-Blocks — baseType org.blockml.bml.core.Block bind Transformation Capability
     implementations (language = org.blockml.bml.language.*). V1: OpenSCAD (main function name =
     Capability name; helpers allowed; compiler prefixes with block FQN) and TypeScript (compile-time
     literal eval when args are literals). One implementation child per Capability; language required.
@@ -74,7 +74,7 @@
     <see type="def:EmbeddedBlockDefinition" relation="Defines">
       Virtual .bml entries under embeddedBlocks.
     </see>
-    <see type="core:Entity" relation="SeeAlso">
+    <see type="core:Block" relation="SeeAlso">
       Typical baseType for utility Sub-Blocks.
     </see>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">

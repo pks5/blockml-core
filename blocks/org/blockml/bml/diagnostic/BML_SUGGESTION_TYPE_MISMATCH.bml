@@ -19,10 +19,10 @@
   </summary>
   <documentation>
     Emitted when a suggestion instance is incompatible with the property type. Remedy: Use compatible
-    ValueType/Entity instances; primitives need matching *Entity wrappers.
+    ValueType / PrimitiveEntity instances; primitives need matching *Entity wrappers.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_SUGGESTION_TYPE_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_SUGGESTION_TYPE_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

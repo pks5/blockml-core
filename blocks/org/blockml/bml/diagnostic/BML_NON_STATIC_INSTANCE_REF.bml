@@ -22,7 +22,7 @@
     id. Remedy: Use a literal static bml:id for cross-document {FQN}::{id} references.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_NON_STATIC_INSTANCE_REF" />
+    <org.blockml.bml.meta.Keyword value="BML_NON_STATIC_INSTANCE_REF" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

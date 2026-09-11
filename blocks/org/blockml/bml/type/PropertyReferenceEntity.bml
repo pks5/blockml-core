@@ -6,7 +6,7 @@
     core:PrimitiveEntity(type:PropertyReference(B))
   </baseType>
   <is>
-    A path to a Property member as an Entity
+    A path to a Property member as a PrimitiveEntity
   </is>
   <documentation>
     Open generic Entity wrapping a PropertyReference primitive. Forwards B from

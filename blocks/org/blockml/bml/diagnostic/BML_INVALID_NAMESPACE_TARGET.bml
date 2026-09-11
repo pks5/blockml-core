@@ -22,7 +22,7 @@
     package FQNs or Annotation FQNs only.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_NAMESPACE_TARGET" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_NAMESPACE_TARGET" />
   </keywords>
   <references>
     <see type="doc:BmlNamespace" relation="AuthoringGuide">

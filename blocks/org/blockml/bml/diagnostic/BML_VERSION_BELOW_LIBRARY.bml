@@ -22,7 +22,7 @@
     the Block version or align with library versioning conventions.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_VERSION_BELOW_LIBRARY" />
+    <org.blockml.bml.meta.Keyword value="BML_VERSION_BELOW_LIBRARY" />
   </keywords>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">

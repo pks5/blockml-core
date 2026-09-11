@@ -36,13 +36,13 @@
     9. V1 — avoid deferred @bean execution / model / linking features until implemented.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="expression" />
-    <org.blockml.bml.meta.FreeTextKeyword term="interpolation" />
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_SYNTAX_ERROR" />
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
-    <org.blockml.bml.meta.FreeTextKeyword term="bean" />
-    <org.blockml.bml.meta.FreeTextKeyword term="built-in" />
-    <org.blockml.bml.meta.FreeTextKeyword term="embedded" />
+    <org.blockml.bml.meta.Keyword value="expression" />
+    <org.blockml.bml.meta.Keyword value="interpolation" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_SYNTAX_ERROR" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
+    <org.blockml.bml.meta.Keyword value="bean" />
+    <org.blockml.bml.meta.Keyword value="built-in" />
+    <org.blockml.bml.meta.Keyword value="embedded" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="HowToStep">

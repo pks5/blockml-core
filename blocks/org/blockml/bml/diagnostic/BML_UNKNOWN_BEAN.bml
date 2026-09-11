@@ -23,7 +23,7 @@
     Remedy: Declare bml:bean on the instance; prefer BML_EXPR_UNKNOWN_BEAN for expression sites.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_BEAN" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_BEAN" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

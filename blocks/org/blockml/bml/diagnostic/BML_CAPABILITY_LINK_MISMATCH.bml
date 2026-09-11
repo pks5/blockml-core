@@ -23,7 +23,7 @@
     Use Outbound→Inbound (or valid Transformation pairing) with compatible inputType/outputType.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CAPABILITY_LINK_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_CAPABILITY_LINK_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

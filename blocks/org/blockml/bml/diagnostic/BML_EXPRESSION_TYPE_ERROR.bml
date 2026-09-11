@@ -23,7 +23,7 @@
     Align expression result type with the target member type.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPRESSION_TYPE_ERROR" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPRESSION_TYPE_ERROR" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

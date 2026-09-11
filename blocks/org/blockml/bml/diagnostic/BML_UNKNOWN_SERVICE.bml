@@ -23,7 +23,7 @@
     #strings, #lists, #numbers, #bools).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_SERVICE" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_SERVICE" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

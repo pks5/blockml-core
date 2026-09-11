@@ -23,7 +23,7 @@
     the contract Block and fix the FQN/QName.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNKNOWN_CONTRACT" />
+    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_CONTRACT" />
   </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">

@@ -20,7 +20,7 @@
     Block-level &lt;bml:xml> is for core:Block and Definition-branch types. Member bml:xml belongs on Definition-branch member declarations. Hybrid Stage 1/2 checks apply.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_XML_DIRECTIVE_NOT_ALLOWED" />
+    <org.blockml.bml.meta.Keyword value="BML_XML_DIRECTIVE_NOT_ALLOWED" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

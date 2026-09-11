@@ -22,7 +22,7 @@
     a direct Sub-Block name.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_GENERIC_BLOCK_NAME_COLLISION" />
+    <org.blockml.bml.meta.Keyword value="BML_GENERIC_BLOCK_NAME_COLLISION" />
   </keywords>
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">

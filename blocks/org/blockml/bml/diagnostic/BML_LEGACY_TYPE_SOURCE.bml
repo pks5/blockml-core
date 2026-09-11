@@ -22,7 +22,7 @@
     to BML TypeRegistry definitions.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_LEGACY_TYPE_SOURCE" />
+    <org.blockml.bml.meta.Keyword value="BML_LEGACY_TYPE_SOURCE" />
   </keywords>
   <references>
     <see type="doc:TypeSystemOverview" relation="AuthoringGuide">

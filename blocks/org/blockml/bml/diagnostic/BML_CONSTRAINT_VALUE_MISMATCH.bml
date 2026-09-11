@@ -23,7 +23,7 @@
     the constraint parameter value types (e.g. Min.value).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTRAINT_VALUE_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_CONSTRAINT_VALUE_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

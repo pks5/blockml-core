@@ -22,7 +22,7 @@
     per namespace/language pair.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DUPLICATE_SUMMARY" />
+    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_SUMMARY" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

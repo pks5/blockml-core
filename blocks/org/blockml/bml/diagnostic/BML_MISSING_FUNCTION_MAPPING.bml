@@ -21,7 +21,7 @@
     V1 built-ins.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_MISSING_FUNCTION_MAPPING" />
+    <org.blockml.bml.meta.Keyword value="BML_MISSING_FUNCTION_MAPPING" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

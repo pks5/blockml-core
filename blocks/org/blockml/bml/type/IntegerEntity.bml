@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:Integer)
   </baseType>
   <is>
-    A whole number as an Entity
+    A whole number as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping an Integer primitive. Binds T = Integer on
+    Concrete PrimitiveEntity wrapping an Integer primitive. Binds T = Integer on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Use when an integer must appear as an identifiable Block instance.
   </documentation>

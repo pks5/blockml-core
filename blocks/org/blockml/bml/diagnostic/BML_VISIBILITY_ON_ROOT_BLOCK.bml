@@ -21,7 +21,7 @@
     Root Blocks must not declare &lt;visibility>. Sub-Blocks inside &lt;subBlocks> may declare optional visibility matching their name prefix.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_VISIBILITY_ON_ROOT_BLOCK" />
+    <org.blockml.bml.meta.Keyword value="BML_VISIBILITY_ON_ROOT_BLOCK" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

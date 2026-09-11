@@ -22,7 +22,7 @@
     replacement type; status may be warning-level depending on policy.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_DEPRECATED_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_DEPRECATED_TYPE" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="SeeAlso">

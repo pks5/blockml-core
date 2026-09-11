@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:PackageReference)
   </baseType>
   <is>
-    A package name reference as an Entity
+    A package name reference as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a PackageReference primitive. Binds T = PackageReference
+    Concrete PrimitiveEntity wrapping a PackageReference primitive. Binds T = PackageReference
     on org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
     Use when a package reference must appear as an identifiable Block instance.
   </documentation>

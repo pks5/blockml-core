@@ -6,10 +6,10 @@
     core:PrimitiveEntity(type:Float)
   </baseType>
   <is>
-    A floating-point number as an Entity
+    A floating-point number as a PrimitiveEntity
   </is>
   <documentation>
-    Concrete Entity wrapping a Float primitive. Binds T = Float on
+    Concrete PrimitiveEntity wrapping a Float primitive. Binds T = Float on
     org.blockml.bml.core.PrimitiveEntity via baseType — inherits the value property automatically.
   </documentation>
 </type:FloatEntity>

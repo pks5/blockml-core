@@ -22,7 +22,7 @@
     T extends G via baseType chain or lists G in contracts[].
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_TYPE_BOUND_NOT_SATISFIED" />
+    <org.blockml.bml.meta.Keyword value="BML_TYPE_BOUND_NOT_SATISFIED" />
   </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">

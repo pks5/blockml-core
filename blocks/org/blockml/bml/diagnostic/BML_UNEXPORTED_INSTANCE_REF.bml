@@ -22,7 +22,7 @@
     Remedy: Use a public aggregation for cross-document ids, or reference from an allowed scope.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_UNEXPORTED_INSTANCE_REF" />
+    <org.blockml.bml.meta.Keyword value="BML_UNEXPORTED_INSTANCE_REF" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

@@ -22,7 +22,7 @@
     AutoOr/FalseOr/NoneOr and bare literal unions to Constant form.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PREFER_CONSTANT_TYPE" />
+    <org.blockml.bml.meta.Keyword value="BML_PREFER_CONSTANT_TYPE" />
   </keywords>
   <references>
     <see type="doc:ConstantValueType" relation="AuthoringGuide">

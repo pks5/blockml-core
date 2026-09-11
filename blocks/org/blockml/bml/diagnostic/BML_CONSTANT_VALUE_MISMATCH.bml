@@ -22,7 +22,7 @@
     checks. Remedy: Use the exact singleton literal allowed by the Constant configuration.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONSTANT_VALUE_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_CONSTANT_VALUE_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:ConstantValueType" relation="AuthoringGuide">

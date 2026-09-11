@@ -26,7 +26,7 @@
     (BML_UNRESOLVABLE_INSTANCE_REF), type-instance configuration, or Property constraints.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_VALUE" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_VALUE" />
   </keywords>
   <references>
     <see type="type:PrimitiveType" relation="Defines">

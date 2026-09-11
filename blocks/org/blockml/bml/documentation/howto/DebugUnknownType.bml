@@ -31,11 +31,11 @@
     5. Verify dependency libraries and bootstrap order load the defining catalogue first.
   </documentation>
   <keywords>
-    <blockml:meta.FreeTextKeyword term="BML_UNKNOWN_TYPE" />
-    <blockml:meta.FreeTextKeyword term="unknown type" />
-    <blockml:meta.FreeTextKeyword term="unresolved FQN" />
-    <blockml:meta.FreeTextKeyword term="TypeRegistry" />
-    <blockml:meta.FreeTextKeyword term="bootstrap" />
+    <blockml:meta.Keyword value="BML_UNKNOWN_TYPE" />
+    <blockml:meta.Keyword value="unknown type" />
+    <blockml:meta.Keyword value="unresolved FQN" />
+    <blockml:meta.Keyword value="TypeRegistry" />
+    <blockml:meta.Keyword value="bootstrap" />
   </keywords>
   <references>
     <see type="diag:BML_UNKNOWN_TYPE" relation="SeeAlso">

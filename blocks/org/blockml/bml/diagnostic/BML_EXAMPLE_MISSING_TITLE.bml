@@ -21,7 +21,7 @@
     Emitted when an example omits the required title. Remedy: Add title= on the example entry.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXAMPLE_MISSING_TITLE" />
+    <org.blockml.bml.meta.Keyword value="BML_EXAMPLE_MISSING_TITLE" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

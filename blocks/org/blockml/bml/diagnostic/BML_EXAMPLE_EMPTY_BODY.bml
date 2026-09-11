@@ -22,7 +22,7 @@
     example.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXAMPLE_EMPTY_BODY" />
+    <org.blockml.bml.meta.Keyword value="BML_EXAMPLE_EMPTY_BODY" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

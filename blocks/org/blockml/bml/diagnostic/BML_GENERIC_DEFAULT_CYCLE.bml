@@ -20,7 +20,7 @@
     already prevent most cycles; this is defense in depth.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_GENERIC_DEFAULT_CYCLE" />
+    <org.blockml.bml.meta.Keyword value="BML_GENERIC_DEFAULT_CYCLE" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

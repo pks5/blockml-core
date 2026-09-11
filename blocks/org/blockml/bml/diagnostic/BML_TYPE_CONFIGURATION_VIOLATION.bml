@@ -21,7 +21,7 @@
     defaults.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_TYPE_CONFIGURATION_VIOLATION" />
+    <org.blockml.bml.meta.Keyword value="BML_TYPE_CONFIGURATION_VIOLATION" />
   </keywords>
   <references>
     <see type="doc:ValueTypeConfiguration" relation="AuthoringGuide">

@@ -21,7 +21,7 @@
     #this.capa(...), #built-ins, @bean calls, and the shared expression grammar inside embeds.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_EMBEDDED_EXPRESSION" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_EMBEDDED_EXPRESSION" />
   </keywords>
   <references>
     <see type="doc:EmbeddedExpressions" relation="AuthoringGuide">

@@ -23,7 +23,7 @@
     overrides property, aggregation overrides aggregation, etc.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_CONTRACT_MEMBER_KIND_MISMATCH" />
+    <org.blockml.bml.meta.Keyword value="BML_CONTRACT_MEMBER_KIND_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">

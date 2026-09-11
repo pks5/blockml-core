@@ -7,7 +7,7 @@
     core:PrimitiveEntity(type:MemberIdentifier(D))
   </baseType>
   <is>
-    A Block member path as an Entity
+    A Block member path as a PrimitiveEntity
   </is>
   <documentation>
     Open generic Entity wrapping a MemberIdentifier primitive. Forwards D from

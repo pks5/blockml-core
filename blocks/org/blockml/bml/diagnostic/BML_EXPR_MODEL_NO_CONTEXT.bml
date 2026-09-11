@@ -22,7 +22,7 @@
     model runtime.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_EXPR_MODEL_NO_CONTEXT" />
+    <org.blockml.bml.meta.Keyword value="BML_EXPR_MODEL_NO_CONTEXT" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

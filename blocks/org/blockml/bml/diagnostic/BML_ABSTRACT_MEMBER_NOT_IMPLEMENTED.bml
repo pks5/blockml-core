@@ -21,7 +21,7 @@
     Implement with override="true" and a locally complete declaration (abstract defaults to false). To keep abstract, redeclare with abstract="true".
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED" />
+    <org.blockml.bml.meta.Keyword value="BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">

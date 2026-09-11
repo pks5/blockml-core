@@ -22,7 +22,7 @@
     format.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_INVALID_SINCE_VERSION" />
+    <org.blockml.bml.meta.Keyword value="BML_INVALID_SINCE_VERSION" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

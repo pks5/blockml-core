@@ -28,11 +28,11 @@
     6. For root-level &lt;visibility> on a root Block — remove it (Sub-Blocks only).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="visibility" />
-    <org.blockml.bml.meta.FreeTextKeyword term="private" />
-    <org.blockml.bml.meta.FreeTextKeyword term="protected" />
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_PRIVATE_MEMBER_ACCESS" />
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_VISIBILITY_NARROWING" />
+    <org.blockml.bml.meta.Keyword value="visibility" />
+    <org.blockml.bml.meta.Keyword value="private" />
+    <org.blockml.bml.meta.Keyword value="protected" />
+    <org.blockml.bml.meta.Keyword value="BML_PRIVATE_MEMBER_ACCESS" />
+    <org.blockml.bml.meta.Keyword value="BML_VISIBILITY_NARROWING" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="HowToStep">

@@ -21,7 +21,7 @@
     final="true" seals a declaration. Private members are also non-overridable. Remove the override or change the parent declaration.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.FreeTextKeyword term="BML_FINAL_MEMBER_OVERRIDE" />
+    <org.blockml.bml.meta.Keyword value="BML_FINAL_MEMBER_OVERRIDE" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">

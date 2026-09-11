@@ -1,4 +1,4 @@
-<!--BlockML Core — type reference as Entity
+<!--BlockML Core — type reference as PrimitiveEntity
 
   FQN: org.blockml.bml.type.TypeReferenceEntity
   See docs/17_type_system_bml.md — TypeReferenceEntity · Empty child sugar-->
@@ -13,14 +13,14 @@
     core:PrimitiveEntity(type:TypeReference(B))
   </baseType>
   <is>
-    A type name reference as an Entity
+    A type name reference as a PrimitiveEntity
   </is>
   <documentation>
-    Open generic Entity wrapping a TypeReference (FQN / TypeExpression) primitive.
+    Open generic PrimitiveEntity wrapping a TypeReference (FQN / TypeExpression) primitive.
     Forwards B from org.blockml.bml.type.TypeReference onto org.blockml.bml.core.PrimitiveEntity via
     baseType — inherits the value property automatically as value : TypeReference(B).
     
-    Use on aggregation type attributes when children are type references stored as Entity instances:
+    Use on aggregation type attributes when children are type references stored as PrimitiveEntity instances:
     • type:TypeReferenceEntity(core:Block)[] — contracts, Library blocks
     • type:TypeReferenceEntity(core:Exception)[] — CapabilityDefinition.throws
     • type:TypeReferenceEntity(core:Group)[] — StructuralDefinition.groups (narrowed on subtypes)
@@ -39,9 +39,10 @@
     &lt;blockml:Library bml:version="3.0.0" />. Explicit TypeReferenceEntity authoring is always
     valid and equivalent.
     
-    Contrast with scalar TypeReference(B) on properties — those remain plain text, not Entity
-    instances. The field name is irrelevant; the declared ValueType decides. Member path names
-    use MemberIdentifier / PropertyIdentifier / PropertyReference / … — not this Entity.
+    Contrast with scalar TypeReference(B) on properties — those remain plain text, not
+    PrimitiveEntity instances. The field name is irrelevant; the declared ValueType decides. Member
+    path names use MemberIdentifier / PropertyIdentifier / PropertyReference / … — not this
+    PrimitiveEntity.
     
     Replaces the former abstract org.blockml.bml.core.TypeReference aggregation marker and
     FullyQualifiedNameEntity.
@@ -54,13 +55,13 @@
       TypeReferenceEntity aggregation composition.
     </see>
     <see type="type:TypeReference" relation="SeeAlso">
-      Scalar FQN / TypeExpression ValueType wrapped by this Entity.
+      Scalar FQN / TypeExpression ValueType wrapped by this PrimitiveEntity.
     </see>
     <see type="core:PrimitiveEntity" relation="SeeAlso">
       Abstract generic base — value property inherited after binding T.
     </see>
     <see type="doc:MemberAuthoring" relation="SeeAlso">
-      value="…" on this Entity is the member named value — not a PropertyDefinition wrapper.
+      value="…" on this PrimitiveEntity is the member named value — not a PropertyDefinition wrapper.
     </see>
     <see type="def:BlockDefinition" relation="Defines">
       contracts and language aggregations.
