@@ -7,7 +7,7 @@
   xmlns:doc="org.blockml.bml.documentation">
 
   <baseType>
-    core:Entity
+    core:Block
   </baseType>
   <is>
     A thrown exceptional condition
@@ -17,7 +17,9 @@
   </isnot>
   <documentation>
     <![CDATA[
-    Abstract branch for exception types that a Capability may declare it can raise.
+    Abstract core root branch for exception types that a Capability may declare it can raise.
+    Direct child of Block — not an Entity. Exceptions are signature types, not composable
+    aggregation children.
     
     Corresponds to Java exception classes used in a method `throws` clause: the type is listed
     on the Capability signature; instances carry a human-readable message.
@@ -28,7 +30,8 @@
     `type:TypeReferenceEntity(core:Exception)[]` — empty-QName sugar such as `<io:FileNotFound />`.
     
     Distinct from `org.blockml.bml.core.Diagnostic`, which catalogues validator and parser codes
-    rather than Capability-thrown failures.
+    rather than Capability-thrown failures. Distinct from `org.blockml.bml.core.Entity`, which
+    is the branch for instances nested in composition or aggregation.
     ]]>
   </documentation>
   <abstract>
@@ -44,8 +47,11 @@
     <see type="core:Diagnostic" relation="ContrastsWith">
       Validator and parser diagnostic codes — not Capability-thrown exceptions.
     </see>
-    <see type="core:Entity" relation="Extends">
-      Exception instances are Entities with identity and a message payload.
+    <see type="core:Entity" relation="ContrastsWith">
+      Composable instance branch — Exception is not nested as an aggregation child.
+    </see>
+    <see type="core:Block" relation="Extends">
+      Core root branch — direct child of Block.
     </see>
   </references>
   <properties>

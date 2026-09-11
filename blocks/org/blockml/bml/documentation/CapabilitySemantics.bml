@@ -51,9 +51,10 @@
     method throws clause. The aggregation type is type:TypeReferenceEntity(core:Exception)[]
     (def:CapabilityDefinition). Children are type references, not Exception instances — empty-QName
     sugar such as &lt;io:FileNotFound /> names a type that must extend
-    org.blockml.bml.core.Exception. Omitted or empty throws means no declared exceptions. Exception
-    instances carry message:Text; domain libraries define concrete exception types. Distinct from
-    org.blockml.bml.core.Diagnostic (validator and parser codes). A host that evaluates a body
+    org.blockml.bml.core.Exception (a Block root branch, not an Entity). Omitted or empty
+    throws means no declared exceptions. Exception instances carry message:Text; domain
+    libraries define concrete exception types. Distinct from org.blockml.bml.core.Diagnostic
+    (validator and parser codes). A host that evaluates a body
     maps a thrown Exception to a Diagnostic when it reports a validate/parse failure.
     
     Unqualified Capability type resolves to org.blockml.bml.capability.*; unqualified inputType /
