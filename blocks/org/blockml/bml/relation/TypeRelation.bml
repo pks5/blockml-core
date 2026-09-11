@@ -1,7 +1,7 @@
-<!--BlockML Core — type-target-constrained relation branch
+<!--BlockML Core — type-target-constrained relation
 
-  FQN: org.blockml.bml.core.TypeRelation-->
-<core:TypeRelation xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.relation.TypeRelation-->
+<relation:TypeRelation xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:relation="org.blockml.bml.relation"
   xmlns:type="org.blockml.bml.type">
@@ -15,6 +15,7 @@
   <documentation>
     Abstract Relation subtype that may be used only on &lt;see type="…"> entries —
     never on instance, file, url, property, aggregation, association, or capability targets.
+    Not a core root branch — lives with the other relation types in org.blockml.bml.relation.*.
     
     Generic T is the allowed target Block branch. The resolved type of see type= must satisfy
     satisfiesTypeBound(resolve(type), T) — otherwise BML_TYPE_BOUND_NOT_SATISFIED. Default
@@ -46,4 +47,4 @@
       </documentation>
     </T>
   </genericTypes>
-</core:TypeRelation>
+</relation:TypeRelation>

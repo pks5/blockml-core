@@ -18,6 +18,10 @@
     • Single inheritance — each Block has exactly one baseType (mandatory except org.blockml.bml.core.Block)
     • Use for branch membership (ValueType, Language, domain base) and shared member fragments
     • Framework branches inherit via org.blockml.bml.core.ValueType, Language, or domain bases
+    • Package org.blockml.bml.core — every root Block in this package must inherit directly from
+      core:Block (Block itself omits baseType). Specializations of those branches live in sibling
+      packages (type, relation, meta, documentation, …). Nested Sub-Blocks in core are exempt —
+      they may extend any ancestor (for example Annotation.Directive and its descendants).
     • final on Block or member prevents further override → BML_FINAL_BASE_TYPE / BML_FINAL_MEMBER_OVERRIDE
     
     Contracts:
@@ -78,6 +82,12 @@
     </see>
     <see type="doc:ConstraintsModel" relation="ReadNext">
       Next reading step — constraints and suggestions.
+    </see>
+    <see type="core:Block" relation="SeeAlso">
+      Sole inheritance root — required baseType of every core package root Block.
+    </see>
+    <see type="doc:LibrarySystem" relation="SeeAlso">
+      Core package holds only direct Block children as root Blocks.
     </see>
     <see type="doc:MemberVisibility" relation="SeeAlso">
       Member and Sub-Block visibility rules.

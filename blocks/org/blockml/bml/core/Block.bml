@@ -18,6 +18,8 @@
     
     Role and constraints:
     • Sole inheritance root — omits &lt;baseType>; all other definitions must declare a non-empty parent FQN
+    • Package org.blockml.bml.core — every root Block in this package must inherit directly from
+      this type. Nested Sub-Blocks in core are exempt (doc:ModelingGuidelines)
     • Abstract — not used directly as a composition instance type
     • Further members defined by sub-types — Properties, Aggregations,
       Associations, and Capabilities via the baseType chain
@@ -95,6 +97,9 @@
     </see>
     <see type="doc:DefinitionModel" relation="AuthoringGuide">
       Root type exception and Definition branch.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="AuthoringGuide">
+      Core package: root Blocks must be direct children of Block; Sub-Blocks exempt.
     </see>
     <see type="doc:EverythingIsABlock" relation="AuthoringGuide">
       Everything is a Block — type system overview.

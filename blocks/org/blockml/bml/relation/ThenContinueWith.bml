@@ -6,7 +6,7 @@
   xmlns:relation="org.blockml.bml.relation">
 
   <baseType>
-    core:TypeRelation(core:Bootstrap)
+    relation:TypeRelation(core:Bootstrap)
   </baseType>
   <is>
     A after-reading-continue Relation
@@ -23,7 +23,7 @@
     automation entry.
   </documentation>
   <references>
-    <see type="core:TypeRelation" relation="Extends">
+    <see type="relation:TypeRelation" relation="Extends">
       Type-target Relation — ThenContinueWith binds T = core:Bootstrap.
     </see>
     <see type="relation:ReadFirst" relation="SeeAlso">

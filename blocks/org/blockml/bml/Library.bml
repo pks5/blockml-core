@@ -52,6 +52,9 @@
     instances and comma-separated value sugar. Fixed* freeze value and companion members as
     readOnly; domain libraries extend them for catalogue-controlled tags and alternative names.
     
+    Root Blocks in org.blockml.bml.core must inherit directly from core:Block; nested Sub-Blocks
+    in that package are exempt (doc:ModelingGuidelines).
+    
     Membership is defined exclusively by this file's blocks list — not by directory layout.
     Version 3.0.0 applies to all exported blocks (framework convention: version only on
     Library.bml).
@@ -100,7 +103,6 @@
         <core:Mapping />
         <core:Status />
         <core:Relation />
-        <core:TypeRelation />
         <core:Validation />
         <core:ValueType />
         <core:Unit />
@@ -190,6 +192,7 @@
         <relation:Requires />
         <relation:Resolves />
         <relation:SeeAlso />
+        <relation:TypeRelation />
         <relation:HowToIndex />
         <relation:HowToStep />
         <relation:ThenContinueWith />

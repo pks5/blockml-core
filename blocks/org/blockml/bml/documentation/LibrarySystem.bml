@@ -49,6 +49,11 @@
     &lt;domain>.bml.* — no Block, Library, or other BlockML definition may exist outside
     the domain's bml namespace. See doc:BmlNamespace.
     
+    Package org.blockml.bml.core holds only root-branch types: every root Block in that package
+    has baseType core:Block (except Block, which has none). Specializations belong in sibling
+    packages. Nested Sub-Blocks under a core root are not subject to this rule
+    (doc:ModelingGuidelines).
+    
     Version resolution:
     effectiveBlockVersion = own version if present, else library.version if exported via blocks,
     else error BML_MISSING_VERSION. bml:version on TypeReferenceEntity sugar (readMe, bootstrap,
@@ -76,6 +81,9 @@
     </see>
     <see type="relation:ThenContinueWith" relation="SeeAlso">
       Library &lt;see> after ReadFirst when bootstrap is present.
+    </see>
+    <see type="doc:ModelingGuidelines" relation="SeeAlso">
+      Core package root Blocks must inherit directly from core:Block; Sub-Blocks exempt.
     </see>
     <see type="doc:BmlNamespace" relation="ReadNext">
       Next — mandatory domain.bml namespace for all BML definitions.

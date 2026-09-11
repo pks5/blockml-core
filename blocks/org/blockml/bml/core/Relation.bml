@@ -21,8 +21,8 @@
     (procedural guides), and Resolves (diagnostic to fix how-to). Unqualified names on relation=
     resolve via implicit namespace org.blockml.bml.relation.*.
     
-    TypeRelation is the constrained subtype for relations that may only target see type= and whose
-    target must satisfy a generic Block branch T (default core:Block).
+    org.blockml.bml.relation.TypeRelation is the constrained subtype for relations that may only
+    target see type= and whose target must satisfy a generic Block branch T (default core:Block).
   </documentation>
   <abstract>
     true
