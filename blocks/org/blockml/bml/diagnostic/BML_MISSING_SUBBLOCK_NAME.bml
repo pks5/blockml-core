@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -35,7 +35,7 @@
     <see type="doc:SubBlockModel" relation="SeeAlso">
       Sub-Block format.
     </see>
-    <see type="task:FixTypeIdentity" relation="Resolves">
+    <see type="howto:FixTypeIdentity" relation="Resolves">
       Add Sub-Block name.
     </see>
   </references>

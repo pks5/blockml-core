@@ -1,14 +1,14 @@
-<!--BlockML Core — fix composition placement task
+<!--BlockML Core — fix composition placement how-to
 
-  FQN: org.blockml.bml.task.FixCompositionPlacement-->
-<task:FixCompositionPlacement xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.FixCompositionPlacement-->
+<howto:FixCompositionPlacement xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for fixing composition placement
@@ -36,20 +36,20 @@
     <org.blockml.bml.meta.FreeTextKeyword term="bml:container" />
   </keywords>
   <references>
-    <see type="doc:MemberAuthoring" relation="TaskStep">
+    <see type="doc:MemberAuthoring" relation="HowToStep">
       Step 0 — definition fields vs instance payloads for Properties and Aggregations.
     </see>
-    <see type="doc:CompositionModel" relation="TaskStep">
+    <see type="doc:CompositionModel" relation="HowToStep">
       Step 1 — unified container concept and placement rules.
     </see>
-    <see type="doc:BmlDirectives" relation="TaskStep">
+    <see type="doc:BmlDirectives" relation="HowToStep">
       Step 2 — bml:container, bml:with, bml:each on composition.
     </see>
-    <see type="doc:PartialMemberOverrides" relation="TaskStep">
+    <see type="doc:PartialMemberOverrides" relation="HowToStep">
       Step 3 — inherited aggregation overrides.
     </see>
     <see type="diag:BML_STANDALONE_COMPOSITION" relation="SeeAlso">
       Diagnostic for composition outside an aggregation member.
     </see>
   </references>
-</task:FixCompositionPlacement>
+</howto:FixCompositionPlacement>

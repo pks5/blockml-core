@@ -1,7 +1,7 @@
-<!--BlockML Core — task step relation
+<!--BlockML Core — how-to step relation
 
-  FQN: org.blockml.bml.relation.TaskStep-->
-<relation:TaskStep xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.relation.HowToStep-->
+<relation:HowToStep xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:relation="org.blockml.bml.relation">
 
@@ -12,9 +12,9 @@
     A next-step Relation
   </is>
   <documentation>
-    Use on &lt;see> entries inside org.blockml.bml.task.* TaskGuide blocks.
+    Use on &lt;see> entries inside org.blockml.bml.documentation.howto.* HowTo blocks.
     Document order in &lt;references> is step order — same convention as ReadFirst on README.
     Target may be a Block, repository markdown file, or external URL. Distinct from Prerequisite
-    (before starting the task) and Requires (hard dependency on the current definition).
+    (before starting the how-to) and Requires (hard dependency on the current definition).
   </documentation>
-</relation:TaskStep>
+</relation:HowToStep>

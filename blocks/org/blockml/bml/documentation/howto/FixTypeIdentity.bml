@@ -1,14 +1,14 @@
-<!--BlockML Core — fix type identity task
+<!--BlockML Core — fix type identity how-to
 
-  FQN: org.blockml.bml.task.FixTypeIdentity-->
-<task:FixTypeIdentity xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.FixTypeIdentity-->
+<howto:FixTypeIdentity xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for fixing type identity errors
@@ -39,19 +39,19 @@
     <org.blockml.bml.meta.FreeTextKeyword term="BML_AMBIGUOUS_TYPE" />
   </keywords>
   <references>
-    <see type="doc:DocumentFormat" relation="TaskStep">
+    <see type="doc:DocumentFormat" relation="HowToStep">
       Step 1 — element tag vs legacy &lt;block> on root, Sub-Block, and embed.
     </see>
-    <see type="doc:TypeIdentityDerivation" relation="TaskStep">
+    <see type="doc:TypeIdentityDerivation" relation="HowToStep">
       Step 2 — four reference forms and canonical derivation summary.
     </see>
-    <see type="doc:SubBlockModel" relation="TaskStep">
+    <see type="doc:SubBlockModel" relation="HowToStep">
       Step 3 — Sub-Block vs Embedded vs Root rules.
     </see>
-    <see type="doc:ImplicitNamespaceResolution" relation="TaskStep">
+    <see type="doc:ImplicitNamespaceResolution" relation="HowToStep">
       Step 4 — context-bound unqualified sites.
     </see>
-    <see type="doc:BlockNameConvention" relation="TaskStep">
+    <see type="doc:BlockNameConvention" relation="HowToStep">
       Step 5 — PascalCase name format.
     </see>
     <see type="diag:BML_SUBBLOCK_TYPE_MISMATCH" relation="SeeAlso">
@@ -60,8 +60,8 @@
     <see type="diag:BML_AMBIGUOUS_TYPE" relation="SeeAlso">
       Ambiguous unqualified type name.
     </see>
-    <see type="task:DebugUnknownType" relation="SeeAlso">
-      Related task when the type is simply not registered.
+    <see type="howto:DebugUnknownType" relation="SeeAlso">
+      Related how-to when the type is simply not registered.
     </see>
   </references>
-</task:FixTypeIdentity>
+</howto:FixTypeIdentity>

@@ -174,15 +174,15 @@
     names resolve via implicit namespace org.blockml.bml.relation.*. Omitted =
     org.blockml.bml.relation.SeeAlso. Standard blocks: SeeAlso, ReadFirst, ReadNext,
     ThenContinueWith, Extends, Requires, ContrastsWith, AuthoringGuide, Defines, DeepDive,
-    TaskIndex, TaskStep, Prerequisite, Resolves. README curates with ReadFirst; documentation
+    HowToIndex, HowToStep, Prerequisite, Resolves. README curates with ReadFirst; documentation
     blocks chain with ReadNext.
     
     README / ReadMe blocks (baseType org.blockml.bml.core.ReadMe) are library reading entry points
     for humans and LLMs (Library.readMe). Curated reading order is expressed via references with
-    relation=ReadFirst; available tasks via relation=TaskIndex — not via separate aggregations on
+    relation=ReadFirst; available how-tos via relation=HowToIndex — not via separate aggregations on
     ReadMe. Documentation blocks (org.blockml.bml.documentation.*) inherit from
-    org.blockml.bml.core.Documentation. TaskGuide blocks (org.blockml.bml.task.*) inherit from
-    org.blockml.bml.core.TaskGuide. Diagnostic blocks (org.blockml.bml.diagnostic.*) inherit from
+    org.blockml.bml.core.Documentation. HowTo blocks (org.blockml.bml.documentation.howto.*) inherit from
+    org.blockml.bml.documentation.howto.HowTo. Diagnostic blocks (org.blockml.bml.diagnostic.*) inherit from
     org.blockml.bml.core.Diagnostic.
     ]]>
   </documentation>
@@ -230,10 +230,10 @@
       Structured project documentation use case — BlockML as structured alternative to Markdown.
     </see>
     <see type="doc:BootstrapModel" relation="ReadNext">
-      Next reading step — README.bml, ReadFirst, TaskIndex, bootstrap context.
+      Next reading step — README.bml, ReadFirst, HowToIndex, bootstrap context.
     </see>
-    <see type="doc:TaskGuideModel" relation="SeeAlso">
-      Task-oriented paths — TaskGuide blocks and task relations.
+    <see type="doc:HowToModel" relation="SeeAlso">
+      How-to paths — HowTo blocks and how-to relations.
     </see>
   </references>
 </doc:DocumentationModel>

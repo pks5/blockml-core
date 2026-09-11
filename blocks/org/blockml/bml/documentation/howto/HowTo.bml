@@ -1,0 +1,43 @@
+<!--BlockML Core — procedural how-to documentation branch
+
+  FQN: org.blockml.bml.documentation.howto.HowTo-->
+<howto:HowTo xmlns="http://blockml.org/bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:howto="org.blockml.bml.documentation.howto">
+
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A how-to procedure
+  </is>
+  <isnot>
+    An executable workflow Task
+  </isnot>
+  <documentation>
+    Abstract branch for org.blockml.bml.documentation.howto.* blocks — step-by-step
+    procedures distinct from concept documentation in org.blockml.bml.documentation.*
+    (outside this subpackage). HowTo is a Documentation subtype, not a core root
+    branch. HowTo blocks carry the normal documentation model (is, summary, keywords,
+    documentation, references). Ordered procedure steps use relation=HowToStep on
+    &lt;see> entries; prerequisites use relation=Prerequisite. How-to catalogs on
+    README / ReadMe blocks list available procedures via relation=HowToIndex.
+    Tooling filters by relation to build learn paths (ReadFirst), how-to paths
+    (HowToStep), or error fix paths (Diagnostic blocks with relation=Resolves).
+  </documentation>
+  <abstract>
+    true
+  </abstract>
+  <references>
+    <see type="core:Documentation" relation="SeeAlso">
+      Concept documentation blocks — mental model; HowTo blocks are procedural complements.
+    </see>
+    <see type="core:ReadMe" relation="SeeAlso">
+      Library reading entry — HowToIndex entries on README list available how-tos.
+    </see>
+    <see type="doc:HowToModel" relation="AuthoringGuide">
+      HowTo blocks, how-to relations, and diagnostic fix paths.
+    </see>
+  </references>
+</howto:HowTo>

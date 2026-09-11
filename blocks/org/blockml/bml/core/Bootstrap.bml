@@ -21,7 +21,7 @@
     Library (readMe aggregation). A Library may omit bootstrap (0..1) when it has no automated
     startup SPOE; it must never declare more than one Bootstrap.
     
-    Human/LLM orientation (curated ReadFirst reading order, TaskIndex catalog) lives on ReadMe
+    Human/LLM orientation (curated ReadFirst reading order, HowToIndex catalog) lives on ReadMe
     blocks — not on Bootstrap.
   </documentation>
   <abstract>

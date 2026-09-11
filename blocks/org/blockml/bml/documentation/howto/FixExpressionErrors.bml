@@ -1,14 +1,14 @@
-<!--BlockML Core — fix expression errors task
+<!--BlockML Core — fix expression errors how-to
 
-  FQN: org.blockml.bml.task.FixExpressionErrors-->
-<task:FixExpressionErrors xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.FixExpressionErrors-->
+<howto:FixExpressionErrors xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for fixing expression errors
@@ -45,16 +45,16 @@
     <org.blockml.bml.meta.FreeTextKeyword term="embedded" />
   </keywords>
   <references>
-    <see type="doc:Expressions" relation="TaskStep">
+    <see type="doc:Expressions" relation="HowToStep">
       Step 1 — ${ } language, #this, interpolation, V1 support.
     </see>
-    <see type="doc:EmbeddedExpressions" relation="TaskStep">
+    <see type="doc:EmbeddedExpressions" relation="HowToStep">
       Step 2 — implementation embeds and delimiter rules.
     </see>
-    <see type="doc:FunctionMappingModel" relation="TaskStep">
+    <see type="doc:FunctionMappingModel" relation="HowToStep">
       Step 3 — call argument mapping diagnostics.
     </see>
-    <see type="doc:BmlDirectives" relation="TaskStep">
+    <see type="doc:BmlDirectives" relation="HowToStep">
       Step 4 — each/with variable scopes.
     </see>
     <see type="diag:BML_EXPR_SYNTAX_ERROR" relation="SeeAlso">
@@ -67,4 +67,4 @@
       Restricted Profile violation in an interpolation hole.
     </see>
   </references>
-</task:FixExpressionErrors>
+</howto:FixExpressionErrors>

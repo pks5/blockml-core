@@ -13,8 +13,8 @@
   </is>
   <documentation>
     Use on &lt;see> entries in org.blockml.bml.diagnostic.* blocks to link a
-    validator code to a procedural fix guide. Target should reference an org.blockml.bml.task.*
-    TaskGuide block. Enables error-driven navigation: reported BML_* code → Diagnostic block →
-    Resolves → TaskGuide with TaskStep entries.
+    validator code to a procedural fix guide. Target should reference an org.blockml.bml.documentation.howto.*
+    HowTo block. Enables error-driven navigation: reported BML_* code → Diagnostic block →
+    Resolves → HowTo with HowToStep entries.
   </documentation>
 </relation:Resolves>

@@ -17,8 +17,8 @@
     additional relation blocks. Implicit default when omitted on &lt;see>:
     org.blockml.bml.relation.SeeAlso. Standard relations include ReadFirst (README learning path),
     ReadNext (forward edge between documentation blocks), ThenContinueWith (Library bootstrap after
-    reading — TypeRelation(core:Bootstrap)), TaskIndex (task catalog), TaskStep and Prerequisite
-    (procedural guides), and Resolves (diagnostic to fix task). Unqualified names on relation=
+    reading — TypeRelation(core:Bootstrap)), HowToIndex (how-to catalog), HowToStep and Prerequisite
+    (procedural guides), and Resolves (diagnostic to fix how-to). Unqualified names on relation=
     resolve via implicit namespace org.blockml.bml.relation.*.
     
     TypeRelation is the constrained subtype for relations that may only target see type= and whose

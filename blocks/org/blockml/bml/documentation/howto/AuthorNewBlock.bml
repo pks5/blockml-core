@@ -1,17 +1,17 @@
-<!--BlockML Core — author new block task
+<!--BlockML Core — author new block how-to
 
-  FQN: org.blockml.bml.task.AuthorNewBlock-->
-<task:AuthorNewBlock xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.AuthorNewBlock-->
+<howto:AuthorNewBlock xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:meta="org.blockml.bml.meta"
   xmlns:relation="org.blockml.bml.relation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for authoring a new Block
@@ -46,20 +46,20 @@
     <see type="doc:DefinitionModel" relation="Prerequisite">
       Understand is, members, and documentation extensions before authoring.
     </see>
-    <see type="def:RootBlockDefinition" relation="TaskStep">
+    <see type="def:RootBlockDefinition" relation="HowToStep">
       Step 1 — inspect the root block definition meta-model shape.
     </see>
-    <see type="doc:DocumentationModel" relation="TaskStep">
+    <see type="doc:DocumentationModel" relation="HowToStep">
       Step 2 — identity order, is, documentation, type references.
     </see>
-    <see type="core:Block" relation="TaskStep">
+    <see type="core:Block" relation="HowToStep">
       Step 3 — pick baseType and declare member containers.
     </see>
-    <see type="doc:ModelingGuidelines" relation="TaskStep">
+    <see type="doc:ModelingGuidelines" relation="HowToStep">
       Step 4 — choose baseType vs contracts and model members consistently.
     </see>
-    <see type="blockml:Library" relation="TaskStep">
+    <see type="blockml:Library" relation="HowToStep">
       Step 5 — add the block FQN to Library blocks for export.
     </see>
   </references>
-</task:AuthorNewBlock>
+</howto:AuthorNewBlock>

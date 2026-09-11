@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -29,7 +29,7 @@
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">
       Validation severity.
     </see>
-    <see type="task:AddConstraint" relation="Resolves">
+    <see type="howto:AddConstraint" relation="Resolves">
       Adjust constraint or value.
     </see>
   </references>

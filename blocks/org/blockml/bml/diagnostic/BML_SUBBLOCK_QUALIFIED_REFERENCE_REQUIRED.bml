@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -32,7 +32,7 @@
     <see type="doc:BlockNameConvention" relation="SeeAlso">
       Name formatting.
     </see>
-    <see type="task:FixTypeIdentity" relation="Resolves">
+    <see type="howto:FixTypeIdentity" relation="Resolves">
       Rename Sub-Block or use qualified reference.
     </see>
   </references>

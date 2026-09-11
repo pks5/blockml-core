@@ -5,7 +5,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -29,7 +29,7 @@
     <see type="doc:Expressions" relation="AuthoringGuide">
       Property access and scope rules.
     </see>
-    <see type="task:FixExpressionErrors" relation="Resolves">
+    <see type="howto:FixExpressionErrors" relation="Resolves">
       Correct property path or scope.
     </see>
   </references>

@@ -19,7 +19,7 @@
     
     Sequence on Library.bml: ReadFirst → ReadMe (required), then ThenContinueWith → Bootstrap when
     the library declares a bootstrap aggregation. Distinct from ReadNext (narrative learning chain)
-    and from TaskIndex / TaskStep (task catalog). Signals: after reading, continue with the
+    and from HowToIndex / HowToStep (how-to catalog). Signals: after reading, continue with the
     automation entry.
   </documentation>
   <references>

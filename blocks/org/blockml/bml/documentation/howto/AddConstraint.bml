@@ -1,16 +1,16 @@
-<!--BlockML Core — add constraint task
+<!--BlockML Core — add constraint how-to
 
-  FQN: org.blockml.bml.task.AddConstraint-->
-<task:AddConstraint xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.AddConstraint-->
+<howto:AddConstraint xmlns="http://blockml.org/bml"
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:relation="org.blockml.bml.relation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for attaching Constraints
@@ -40,17 +40,17 @@
     <see type="doc:DefinitionModel" relation="Prerequisite">
       Understand member containers and definition metadata first.
     </see>
-    <see type="def:ConstrainableDefinition" relation="TaskStep">
+    <see type="def:ConstrainableDefinition" relation="HowToStep">
       Step 1 — confirm the target element supports a constraints container.
     </see>
-    <see type="doc:ConstraintsModel" relation="TaskStep">
+    <see type="doc:ConstraintsModel" relation="HowToStep">
       Step 2 — choose constraint branch and target binding rules.
     </see>
-    <see type="constraint:Min" relation="TaskStep">
+    <see type="constraint:Min" relation="HowToStep">
       Step 3 — pick a concrete constraint block (Min, Max, Pattern, RequiresMember, …).
     </see>
-    <see type="core:Validation" relation="TaskStep">
+    <see type="core:Validation" relation="HowToStep">
       Step 4 — optionally wire validation for enforced rules.
     </see>
   </references>
-</task:AddConstraint>
+</howto:AddConstraint>

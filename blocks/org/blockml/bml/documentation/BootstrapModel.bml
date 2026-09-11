@@ -41,16 +41,16 @@
     DeepDive / Extends / SeeAlso on concrete Libraries.
     
     Curated reading order lives in &lt;references> on the ReadMe block — each entry uses
-    relation=ReadFirst with a context note. Available tasks use relation=TaskIndex on the same
+    relation=ReadFirst with a context note. Available how-tos use relation=HowToIndex on the same
     references container. One mechanism for all cross-links; tooling filters by relation. No
     separate reading-order aggregation on ReadMe itself.
     
-    Task-oriented paths:
-    • org.blockml.bml.core.TaskGuide — procedural org.blockml.bml.task.* blocks
-    • relation=TaskStep — ordered steps inside a TaskGuide (document order)
-    • relation=Prerequisite — before starting a task
+    How-to paths:
+    • org.blockml.bml.documentation.howto.HowTo — procedural org.blockml.bml.documentation.howto.* blocks
+    • relation=HowToStep — ordered steps inside a HowTo (document order)
+    • relation=Prerequisite — before starting a how-to
     • org.blockml.bml.core.Diagnostic — org.blockml.bml.diagnostic.* validator codes
-    • relation=Resolves — Diagnostic → TaskGuide fix procedure
+    • relation=Resolves — Diagnostic → HowTo fix procedure
     
     Interpretation context:
     • Framework BML defines what types ARE — TypeRegistry SSOT
@@ -94,11 +94,11 @@
     <see type="relation:ReadFirst" relation="Defines">
       Relation block for curated reading path entries on ReadMe references.
     </see>
-    <see type="relation:TaskIndex" relation="Defines">
-      Relation block for task catalog entries on ReadMe blocks.
+    <see type="relation:HowToIndex" relation="Defines">
+      Relation block for how-to catalog entries on ReadMe blocks.
     </see>
-    <see type="doc:TaskGuideModel" relation="SeeAlso">
-      TaskGuide blocks, task relations, and diagnostic fix paths.
+    <see type="doc:HowToModel" relation="SeeAlso">
+      HowTo blocks, how-to relations, and diagnostic fix paths.
     </see>
     <see type="doc:Introduction" relation="ReadFirst">
       First ReadFirst entry on org.blockml.bml.README — BlockML goals and overview.

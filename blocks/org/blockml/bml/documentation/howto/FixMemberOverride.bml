@@ -1,14 +1,14 @@
-<!--BlockML Core — fix member override task
+<!--BlockML Core — fix member override how-to
 
-  FQN: org.blockml.bml.task.FixMemberOverride-->
-<task:FixMemberOverride xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.FixMemberOverride-->
+<howto:FixMemberOverride xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for fixing member override errors
@@ -37,20 +37,20 @@
     <org.blockml.bml.meta.FreeTextKeyword term="BML_OVERRIDE_REQUIRED" />
   </keywords>
   <references>
-    <see type="doc:PartialMemberOverrides" relation="TaskStep">
+    <see type="doc:PartialMemberOverrides" relation="HowToStep">
       Step 1 — merge semantics and abstract/final/override.
     </see>
-    <see type="doc:ContractsModel" relation="TaskStep">
+    <see type="doc:ContractsModel" relation="HowToStep">
       Step 2 — contract member completion requires override.
     </see>
-    <see type="doc:MemberVisibility" relation="TaskStep">
+    <see type="doc:MemberVisibility" relation="HowToStep">
       Step 3 — private/final interaction with overrides.
     </see>
     <see type="diag:BML_OVERRIDE_REQUIRED" relation="SeeAlso">
-      Example diagnostic resolved by this task.
+      Example diagnostic resolved by this how-to.
     </see>
     <see type="diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED" relation="SeeAlso">
       Abstract obligation on concrete Block.
     </see>
   </references>
-</task:FixMemberOverride>
+</howto:FixMemberOverride>

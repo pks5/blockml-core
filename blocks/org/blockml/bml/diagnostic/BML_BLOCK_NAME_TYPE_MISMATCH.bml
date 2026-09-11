@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -31,7 +31,7 @@
     <see type="doc:BlockNameConvention" relation="SeeAlso">
       PascalCase name format.
     </see>
-    <see type="task:FixTypeIdentity" relation="Resolves">
+    <see type="howto:FixTypeIdentity" relation="Resolves">
       Align name with type last segment.
     </see>
   </references>

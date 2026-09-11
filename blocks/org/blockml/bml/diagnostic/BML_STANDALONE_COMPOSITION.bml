@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -30,7 +30,7 @@
     <see type="doc:CompositionModel" relation="AuthoringGuide">
       Placement rules for composition.
     </see>
-    <see type="task:FixCompositionPlacement" relation="Resolves">
+    <see type="howto:FixCompositionPlacement" relation="Resolves">
       Nest composition under an aggregation member.
     </see>
   </references>

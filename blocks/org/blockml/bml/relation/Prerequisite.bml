@@ -12,8 +12,8 @@
     A do-this-first Relation
   </is>
   <documentation>
-    Use on &lt;see> entries at the start of a TaskGuide &lt;references> container
-    — before TaskStep entries. Distinct from Requires (dependency of the current definition) and
-    ReadFirst (library-wide learning path). Prerequisite scopes to one task procedure.
+    Use on &lt;see> entries at the start of a HowTo &lt;references> container
+    — before HowToStep entries. Distinct from Requires (dependency of the current definition) and
+    ReadFirst (library-wide learning path). Prerequisite scopes to one how-to procedure.
   </documentation>
 </relation:Prerequisite>

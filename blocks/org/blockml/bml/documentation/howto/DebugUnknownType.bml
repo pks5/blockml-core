@@ -1,16 +1,16 @@
-<!--BlockML Core — debug unknown type task
+<!--BlockML Core — debug unknown type how-to
 
-  FQN: org.blockml.bml.task.DebugUnknownType-->
-<task:DebugUnknownType xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.DebugUnknownType-->
+<howto:DebugUnknownType xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:relation="org.blockml.bml.relation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for fixing unknown types
@@ -41,20 +41,20 @@
     <see type="diag:BML_UNKNOWN_TYPE" relation="SeeAlso">
       Diagnostic block for this error code — entry point from validator output.
     </see>
-    <see type="doc:ImplicitNamespaceResolution" relation="TaskStep">
+    <see type="doc:ImplicitNamespaceResolution" relation="HowToStep">
       Step 1 — verify xmlns prefix and implicit namespace resolution at the reference site.
     </see>
-    <see type="doc:LibrarySystem" relation="TaskStep">
+    <see type="doc:LibrarySystem" relation="HowToStep">
       Step 2 — confirm Library blocks exports the defining type.
     </see>
-    <see type="doc:TypeIdentityDerivation" relation="TaskStep">
+    <see type="doc:TypeIdentityDerivation" relation="HowToStep">
       Step 3 — check type reference forms (FQN, QName, Sub-Block-relative, nested resolution).
     </see>
-    <see type="doc:BootstrapModel" relation="TaskStep">
+    <see type="doc:BootstrapModel" relation="HowToStep">
       Step 4 — confirm TypeRegistry bootstrap loaded dependencies before this document.
     </see>
-    <see type="task:FixTypeIdentity" relation="SeeAlso">
+    <see type="howto:FixTypeIdentity" relation="SeeAlso">
       Related — identity mismatches when the type exists but the form is wrong.
     </see>
   </references>
-</task:DebugUnknownType>
+</howto:DebugUnknownType>

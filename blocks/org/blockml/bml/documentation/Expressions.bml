@@ -7,7 +7,7 @@
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:mapping="org.blockml.bml.mapping"
   xmlns:service="org.blockml.bml.service"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -138,7 +138,7 @@
     <see type="core:Capability" relation="SeeAlso">
       Bean calls target Capability definitions.
     </see>
-    <see type="task:FixExpressionErrors" relation="SeeAlso">
+    <see type="howto:FixExpressionErrors" relation="SeeAlso">
       Cluster task for expression diagnostics.
     </see>
     <see type="type:Text" relation="SeeAlso">

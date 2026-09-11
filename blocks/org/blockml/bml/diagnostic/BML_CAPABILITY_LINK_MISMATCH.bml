@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -32,7 +32,7 @@
     <see type="doc:Expressions" relation="SeeAlso">
       Call vs link.
     </see>
-    <see type="task:FixExpressionErrors" relation="Resolves">
+    <see type="howto:FixExpressionErrors" relation="Resolves">
       Fix linking.
     </see>
   </references>

@@ -1,14 +1,14 @@
-<!--BlockML Core — fix visibility access task
+<!--BlockML Core — fix visibility access how-to
 
-  FQN: org.blockml.bml.task.FixVisibilityAccess-->
-<task:FixVisibilityAccess xmlns="http://blockml.org/bml"
+  FQN: org.blockml.bml.documentation.howto.FixVisibilityAccess-->
+<howto:FixVisibilityAccess xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
-    core:TaskGuide
+    howto:HowTo
   </baseType>
   <is>
     A how-to for fixing visibility errors
@@ -35,20 +35,20 @@
     <org.blockml.bml.meta.FreeTextKeyword term="BML_VISIBILITY_NARROWING" />
   </keywords>
   <references>
-    <see type="doc:MemberVisibility" relation="TaskStep">
+    <see type="doc:MemberVisibility" relation="HowToStep">
       Step 1 — member access rules and formal D/C/I/O table.
     </see>
-    <see type="doc:SubBlockModel" relation="TaskStep">
+    <see type="doc:SubBlockModel" relation="HowToStep">
       Step 2 — Sub-Block visibility and reference scope.
     </see>
-    <see type="doc:PartialMemberOverrides" relation="TaskStep">
+    <see type="doc:PartialMemberOverrides" relation="HowToStep">
       Step 3 — visibility widening on override.
     </see>
     <see type="diag:BML_PRIVATE_MEMBER_ACCESS" relation="SeeAlso">
-      Example diagnostic resolved by this task.
+      Example diagnostic resolved by this how-to.
     </see>
     <see type="diag:BML_VISIBILITY_NARROWING" relation="SeeAlso">
       Narrowing on override.
     </see>
   </references>
-</task:FixVisibilityAccess>
+</howto:FixVisibilityAccess>

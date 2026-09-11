@@ -6,7 +6,6 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>

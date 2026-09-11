@@ -6,7 +6,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:relation="org.blockml.bml.relation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:ReadMe
@@ -25,7 +25,7 @@
     
     Library.bml points here via the required readMe aggregation (&lt;blockml:README />).
     Tooling filters references where relation=ReadFirst to build a curated learning context bundle;
-    relation=TaskIndex lists accomplishable procedural tasks for humans, agents, and CI. Automated
+    relation=HowToIndex lists accomplishable procedural how-tos for humans, agents, and CI. Automated
     process SPOE uses Library.bootstrap (core:Bootstrap) — not this ReadMe.
   </documentation>
   <references>
@@ -138,32 +138,32 @@
     <see type="doc:WOTFoundation" relation="ReadFirst">
       Optional background — Idea, Manifestation, Grammar, World (Web of Things).
     </see>
-    <see type="task:AuthorNewBlock" relation="TaskIndex">
+    <see type="howto:AuthorNewBlock" relation="HowToIndex">
       Author a new Block definition from scratch.
     </see>
-    <see type="task:AddConstraint" relation="TaskIndex">
+    <see type="howto:AddConstraint" relation="HowToIndex">
       Attach a Constraint to a Block or member definition.
     </see>
-    <see type="task:DebugUnknownType" relation="TaskIndex">
+    <see type="howto:DebugUnknownType" relation="HowToIndex">
       Fix BML_UNKNOWN_TYPE — unresolved type reference.
     </see>
-    <see type="task:FixVisibilityAccess" relation="TaskIndex">
+    <see type="howto:FixVisibilityAccess" relation="HowToIndex">
       Fix visibility — private/protected access, narrowing, mismatches.
     </see>
-    <see type="task:FixMemberOverride" relation="TaskIndex">
+    <see type="howto:FixMemberOverride" relation="HowToIndex">
       Fix member overrides — override/abstract/final/readOnly.
     </see>
-    <see type="task:FixCompositionPlacement" relation="TaskIndex">
+    <see type="howto:FixCompositionPlacement" relation="HowToIndex">
       Fix composition placement — nest under aggregation members.
     </see>
-    <see type="task:FixTypeIdentity" relation="TaskIndex">
+    <see type="howto:FixTypeIdentity" relation="HowToIndex">
       Fix type identity — root/Sub-Block/embedded and unqualified refs.
     </see>
-    <see type="task:FixExpressionErrors" relation="TaskIndex">
+    <see type="howto:FixExpressionErrors" relation="HowToIndex">
       Fix expression errors — ${ }, embeds, beans, builtins, linking.
     </see>
-    <see type="doc:TaskGuideModel" relation="SeeAlso">
-      TaskGuide blocks, task relations, and error-driven fix paths.
+    <see type="doc:HowToModel" relation="SeeAlso">
+      HowTo blocks, how-to relations, and error-driven fix paths.
     </see>
     <see type="core:ReadMe" relation="Defines">
       Abstract ReadMe role marker — README is the core-library reading entry.

@@ -1,0 +1,88 @@
+<!--BlockML Core — how-to documentation
+
+  FQN: org.blockml.bml.documentation.HowToModel-->
+<doc:HowToModel xmlns="http://blockml.org/bml"
+  xmlns:blockml="org.blockml.bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <baseType>
+    core:Documentation
+  </baseType>
+  <is>
+    A guide to HowTo blocks
+  </is>
+  <documentation>
+    How-to paths complement ReadFirst learning paths on ReadMe entry points:
+    
+    ReadFirst (relation)     — mental learning order on ReadMe / README blocks
+    HowToIndex (relation)    — catalog of accomplishable how-tos on ReadMe
+    HowTo (branch)           — org.blockml.bml.documentation.howto.* procedural blocks
+    HowToStep (relation)     — ordered steps inside a HowTo (document order = step order)
+    Prerequisite (relation)  — understand before starting a HowTo
+    Diagnostic (branch)      — org.blockml.bml.diagnostic.* validator code documentation
+    Resolves (relation)      — Diagnostic → HowTo fix procedure
+    
+    HowTo extends Documentation and lives in the documentation.howto subpackage — not
+    in core. Core holds root branches only. HowTo is not an executable workflow Task.
+    
+    One mechanism: all navigation uses &lt;references> and &lt;see> with typed relation
+    attributes — no separate how-to aggregation on ReadMe. Automated process SPOE uses
+    Library.bootstrap (core:Bootstrap), separate from reading/how-to catalog on ReadMe.
+    
+    Tooling (future):
+    • filter relation=ReadFirst → learn context bundle
+    • filter relation=HowToIndex → how-to menu
+    • load Diagnostic by code → follow Resolves → HowToStep chain
+    
+    org.blockml.bml.README lists HowToIndex entries after ReadFirst entries. Future Bootstrap
+    subtypes (AgentBootstrap, CIBootstrap) supply automation SPOE members — not reading paths.
+  </documentation>
+  <references>
+    <see type="howto:FixVisibilityAccess" relation="SeeAlso">
+      Example cluster how-to — visibility diagnostics.
+    </see>
+    <see type="howto:FixMemberOverride" relation="SeeAlso">
+      Example cluster how-to — override/merge diagnostics.
+    </see>
+    <see type="howto:FixCompositionPlacement" relation="SeeAlso">
+      Example cluster how-to — composition placement.
+    </see>
+    <see type="howto:FixTypeIdentity" relation="SeeAlso">
+      Example cluster how-to — type identity diagnostics.
+    </see>
+    <see type="howto:HowTo" relation="Defines">
+      Abstract base for org.blockml.bml.documentation.howto.* procedural blocks.
+    </see>
+    <see type="core:Diagnostic" relation="Defines">
+      Abstract base for org.blockml.bml.diagnostic.* error code blocks.
+    </see>
+    <see type="relation:HowToIndex" relation="Defines">
+      Catalog relation on README — lists available how-tos.
+    </see>
+    <see type="relation:HowToStep" relation="Defines">
+      Ordered step relation inside HowTo references.
+    </see>
+    <see type="relation:Prerequisite" relation="Defines">
+      Before-you-start relation on HowTo blocks.
+    </see>
+    <see type="relation:Resolves" relation="Defines">
+      Diagnostic → HowTo fix link.
+    </see>
+    <see type="howto:AuthorNewBlock" relation="SeeAlso">
+      Example how-to — author a new Block definition.
+    </see>
+    <see type="diag:BML_UNKNOWN_TYPE" relation="SeeAlso">
+      Example diagnostic — links to DebugUnknownType how-to via Resolves.
+    </see>
+    <see type="doc:BootstrapModel" relation="SeeAlso">
+      Bootstrap role, README, and ReadFirst learning paths.
+    </see>
+    <see type="blockml:README" relation="SeeAlso">
+      Standard entry point — HowToIndex entries list available how-tos.
+    </see>
+  </references>
+</doc:HowToModel>

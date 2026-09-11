@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -30,7 +30,7 @@
     <see type="doc:MemberVisibility" relation="SeeAlso">
       Private override prohibition.
     </see>
-    <see type="task:FixMemberOverride" relation="Resolves">
+    <see type="howto:FixMemberOverride" relation="Resolves">
       Stop overriding sealed or private members.
     </see>
   </references>

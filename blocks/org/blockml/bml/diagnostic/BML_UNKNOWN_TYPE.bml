@@ -6,7 +6,7 @@
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:relation="org.blockml.bml.relation"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -49,7 +49,7 @@
     <org.blockml.bml.meta.FreeTextKeyword term="TypeReference" />
   </keywords>
   <references>
-    <see type="task:DebugUnknownType" relation="Resolves">
+    <see type="howto:DebugUnknownType" relation="Resolves">
       Step-by-step fix — namespace, Library blocks, bootstrap order.
     </see>
     <see type="type:TypeReference" relation="Defines">

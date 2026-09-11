@@ -7,7 +7,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:validation="org.blockml.bml.validation">
 
   <baseType>
@@ -80,7 +80,7 @@
     <see type="doc:ModelingGuidelines" relation="SeeAlso">
       When to use constraints in modeling.
     </see>
-    <see type="task:AddConstraint" relation="SeeAlso">
+    <see type="howto:AddConstraint" relation="SeeAlso">
       Procedural how-to for attaching constraints.
     </see>
     <see type="diag:BML_CONSTRAINT_TARGET_MISMATCH" relation="SeeAlso">

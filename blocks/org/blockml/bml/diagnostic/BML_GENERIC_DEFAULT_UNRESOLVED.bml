@@ -4,8 +4,7 @@
 <diag:BML_GENERIC_DEFAULT_UNRESOLVED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:doc="org.blockml.bml.documentation">
 
   <baseType>
     core:Diagnostic

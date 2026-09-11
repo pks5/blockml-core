@@ -1,0 +1,21 @@
+<!--BlockML Core — how-to index relation
+
+  FQN: org.blockml.bml.relation.HowToIndex-->
+<relation:HowToIndex xmlns="http://blockml.org/bml"
+  xmlns:core="org.blockml.bml.core"
+  xmlns:relation="org.blockml.bml.relation">
+
+  <baseType>
+    core:Relation
+  </baseType>
+  <is>
+    A listed-how-to Relation
+  </is>
+  <documentation>
+    Use on &lt;see> entries in README / ReadMe blocks to list accomplishable how-tos.
+    Distinct from ReadFirst (mental learning order) and SeeAlso (optional peer link). Tooling
+    filters relation=HowToIndex to build a how-to menu for humans, agents, or CI. Target should
+    reference an org.blockml.bml.documentation.howto.* HowTo block. Not a catalog of executable
+    workflow Tasks.
+  </documentation>
+</relation:HowToIndex>

@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -29,7 +29,7 @@
     <see type="doc:SubBlockModel" relation="AuthoringGuide">
       Sub-Block visibility and access diagnostics.
     </see>
-    <see type="task:FixVisibilityAccess" relation="Resolves">
+    <see type="howto:FixVisibilityAccess" relation="Resolves">
       Qualify access or widen Sub-Block visibility.
     </see>
   </references>

@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -27,7 +27,7 @@
     <see type="doc:MemberVisibility" relation="AuthoringGuide">
       Protected access and composition-owner rule.
     </see>
-    <see type="task:FixVisibilityAccess" relation="Resolves">
+    <see type="howto:FixVisibilityAccess" relation="Resolves">
       Fix private/protected member or Sub-Block access.
     </see>
   </references>

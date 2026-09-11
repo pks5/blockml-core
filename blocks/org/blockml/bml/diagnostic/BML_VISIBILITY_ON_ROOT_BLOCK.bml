@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic
@@ -30,7 +30,7 @@
     <see type="doc:MemberVisibility" relation="SeeAlso">
       Member vs Sub-Block visibility.
     </see>
-    <see type="task:FixVisibilityAccess" relation="Resolves">
+    <see type="howto:FixVisibilityAccess" relation="Resolves">
       Remove root visibility or move to Sub-Block.
     </see>
   </references>

@@ -6,7 +6,7 @@
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -161,7 +161,7 @@
     <see type="diag:BML_STANDALONE_COMPOSITION" relation="SeeAlso">
       composition outside an aggregation member on a definition.
     </see>
-    <see type="task:FixCompositionPlacement" relation="SeeAlso">
+    <see type="howto:FixCompositionPlacement" relation="SeeAlso">
       Procedure when composition is placed on an instance or left standalone.
     </see>
     <see type="doc:PartialMemberOverrides" relation="SeeAlso">

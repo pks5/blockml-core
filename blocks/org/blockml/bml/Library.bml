@@ -24,7 +24,7 @@
   xmlns:relation="org.blockml.bml.relation"
   xmlns:service="org.blockml.bml.service"
   xmlns:status="org.blockml.bml.status"
-  xmlns:task="org.blockml.bml.task"
+  xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type"
   xmlns:unit="org.blockml.bml.unit"
   xmlns:validation="org.blockml.bml.validation">
@@ -45,7 +45,7 @@
     concrete value types and constraints, implementation languages, built-in services, lifecycle
     status blocks, the Definition meta-model branch (org.blockml.bml.definition.*), the language
     annotation (org.blockml.bml.annotation.BmlAnnotation), bootstrap
-    documentation blocks (org.blockml.bml.documentation.*), task guides (org.blockml.bml.task.*),
+    documentation blocks (org.blockml.bml.documentation.*), how-to blocks (org.blockml.bml.documentation.howto.*),
     diagnostic blocks (org.blockml.bml.diagnostic.*), and definition metadata entities
     (org.blockml.bml.meta.FixedKeyword, org.blockml.bml.meta.FixedAlias,
     org.blockml.bml.meta.FreeTextKeyword, org.blockml.bml.meta.FreeTextAlias). FreeText* extends
@@ -90,7 +90,6 @@
         <core:Documentation />
         <core:Keyword />
         <core:Alias />
-        <core:TaskGuide />
         <core:Diagnostic />
         <core:Exception />
         <exception:InvalidValueException />
@@ -194,8 +193,8 @@
         <relation:Requires />
         <relation:Resolves />
         <relation:SeeAlso />
-        <relation:TaskIndex />
-        <relation:TaskStep />
+        <relation:HowToIndex />
+        <relation:HowToStep />
         <relation:ThenContinueWith />
         <status:Deprecated />
         <status:Draft />
@@ -320,16 +319,17 @@
         <doc:ContractsModel />
         <doc:BlockNameConvention />
         <doc:PseudoCode />
-        <doc:TaskGuideModel />
+        <doc:HowToModel />
         <doc:WOTFoundation />
-        <task:AuthorNewBlock />
-        <task:AddConstraint />
-        <task:DebugUnknownType />
-        <task:FixVisibilityAccess />
-        <task:FixMemberOverride />
-        <task:FixCompositionPlacement />
-        <task:FixTypeIdentity />
-        <task:FixExpressionErrors />
+        <howto:HowTo />
+        <howto:AuthorNewBlock />
+        <howto:AddConstraint />
+        <howto:DebugUnknownType />
+        <howto:FixVisibilityAccess />
+        <howto:FixMemberOverride />
+        <howto:FixCompositionPlacement />
+        <howto:FixTypeIdentity />
+        <howto:FixExpressionErrors />
         <diag:BML_UNKNOWN_TYPE />
         <diag:BML_ABSTRACT_MEMBER_NOT_IMPLEMENTED />
         <diag:BML_AMBIGUOUS_TYPE />
