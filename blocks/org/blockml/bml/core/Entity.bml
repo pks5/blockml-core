@@ -14,10 +14,11 @@
   </is>
   <documentation>
     Abstract branch for Entities — Blocks that represent instances with identity in
-    composition or aggregation. PrimitiveEntity wrappers extend Entity. Domain blocks
-    and built-in expression services (org.blockml.bml.service.*) do not — services are
-    ordinary Blocks (a package role), not an Entity subtype. Entity is not a ValueType;
-    use Property with a ValueType for typed payloads.
+    composition or aggregation. PrimitiveEntity wrappers extend Entity. Domain blocks,
+    built-in expression services (org.blockml.bml.service.*), and definition records
+    (Change, Example, Reference, Composition, Implementation) do not — those are
+    ordinary Blocks. Entity is not a ValueType; use Property with a ValueType for typed
+    payloads.
   </documentation>
   <abstract>
     true

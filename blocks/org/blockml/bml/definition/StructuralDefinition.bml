@@ -251,7 +251,7 @@
     </Documentation>
     <Change>
       <baseType>
-        core:Entity
+        core:Block
       </baseType>
       <is>
         A single changelog entry
@@ -290,7 +290,7 @@
     </Change>
     <Example>
       <baseType>
-        core:Entity
+        core:Block
       </baseType>
       <is>
         A titled usage example
@@ -353,7 +353,7 @@
     </Example>
     <Reference>
       <baseType>
-        core:Entity
+        core:Block
       </baseType>
       <is>
         A documentation cross-reference

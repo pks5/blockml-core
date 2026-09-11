@@ -65,8 +65,8 @@
     <see type="type:TypeReferenceEntity" relation="Requires">
       Entity payload for throws type-reference children.
     </see>
-    <see type="core:Entity" relation="ContrastsWith">
-      Implementation sub-block branch — structured language binding, not a ValueType.
+    <see type="core:ValueType" relation="ContrastsWith">
+      Implementation is a Block Sub-Block — structured language binding, not a ValueType.
     </see>
     <see type="def:MemberDefinition" relation="Extends">
       Parent type — override/abstract/final are local declaration properties on MemberDefinition;
@@ -120,7 +120,7 @@
   <subBlocks>
     <Implementation>
       <baseType>
-        core:Entity
+        core:Block
       </baseType>
       <is>
         A Capability code body
@@ -129,7 +129,8 @@
         Describes the implementation element on a capability member. Rendered as
         implementation with a required language attribute referencing org.blockml.bml.language.*
         and a CDATA source body. Maps to BOM ImplementationBlock { languageFqn, source,
-        embeddedExpressions }. Not a ValueType — structured metadata on the Entity branch. The
+        embeddedExpressions }. Not a ValueType — structured metadata on the Capability member
+        (an ordinary Block Sub-Block). The
         body may be intent, a companion template, or a host-evaluable function
         (doc:CapabilitySemantics). Capability references inside the body use BML Embedded
         Expression syntax (&lt;$ … $>). Declared as the implementation property on

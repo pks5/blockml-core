@@ -99,7 +99,7 @@
   <subBlocks>
     <Composition>
       <baseType>
-        core:Entity
+        core:Block
       </baseType>
       <is>
         A nested composition template
