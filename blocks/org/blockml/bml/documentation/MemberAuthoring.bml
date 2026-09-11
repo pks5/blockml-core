@@ -86,10 +86,13 @@
     member — never standalone (BML_STANDALONE_COMPOSITION).
     
     AGGREGATIONS — Block instance. Child Block instances are placed directly inside the
-    Aggregation element. There is no composition wrapper:
+    named Aggregation element. There is no composition wrapper and no default aggregation —
+    the aggregation must always be opened by member name:
     &lt;myns:MyBlock>&lt;content>&lt;myns:Child/>&lt;/content>&lt;/myns:MyBlock>
-    Incorrect:
+    Incorrect — composition wrapper on an instance:
     &lt;myns:MyBlock>&lt;content>&lt;composition>&lt;myns:Child/>&lt;/composition>&lt;/content>&lt;/myns:MyBlock>
+    Incorrect — implicit fill (bare child under the instance, aggregation not opened):
+    &lt;myns:MyBlock>&lt;myns:Child/>&lt;/myns:MyBlock>
     The same rule applies recursively — a Block instance nested inside a definition composition
     still fills its own aggregations without a composition wrapper:
     &lt;aggregations>&lt;myAggr>&lt;composition>
@@ -105,7 +108,8 @@
     Definition Property → value attribute or &lt;value> wrapper on the PropertyDefinition
     Definition Aggregation → &lt;composition> wrapper on the AggregationDefinition
     Instance Property → attribute on the Block, or direct Property element content
-    Instance Aggregation → direct child Block instances (bml:container for grouping)
+    Instance Aggregation → named aggregation element containing child Block instances
+    (bml:container for grouping). Always open the aggregation; there is no default aggregation.
     
     Capabilities on instances follow the Property pattern: attribute or child element, no extra
     wrapper. readOnly effective members must not be authored on instances
@@ -121,6 +125,7 @@
     <org.blockml.bml.meta.FreeTextKeyword term="instance" />
     <org.blockml.bml.meta.FreeTextKeyword term="definition" />
     <org.blockml.bml.meta.FreeTextKeyword term="member authoring" />
+    <org.blockml.bml.meta.FreeTextKeyword term="default aggregation" />
   </keywords>
   <references>
     <see type="doc:BlockAndInstance" relation="SeeAlso">

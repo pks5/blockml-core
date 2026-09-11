@@ -32,7 +32,7 @@
       member identity (id + EnumType), not a struct payload.
     • A ConstantType defines a singleton value domain.
     
-    Concrete EnumTypes declare allowed members as Block instances in the default values
+    Concrete EnumTypes declare allowed members as Block instances in the values
     aggregation — no special enum syntax. Examples: Direction, Face, StudType, BaseCutout,
     Align.
     
@@ -88,9 +88,9 @@
     </see>
   </references>
   <aggregations>
-    <values type="(bml:Self)[]" default="true">
+    <values type="(bml:Self)[]">
       <documentation>
-        Default composition aggregation for enum member Block instances. Each child is a Block
+        Catalog aggregation for enum member Block instances. Each child is a Block
         instance of this EnumType with mandatory bml:id (the reference token stored in BOM).
         Optional properties declared on the EnumType may be set per member — catalog metadata,
         analogous to fields on a Java enum constant. Valid property values for this EnumType come

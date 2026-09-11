@@ -45,7 +45,9 @@
     • On Block instances — NEVER wrap a Property in &lt;value> and NEVER wrap Aggregation
       children in &lt;composition>. The Property is a Block attribute or the Property element's
       direct content (myProperty="…" or &lt;myProperty>…&lt;/myProperty>). Aggregation children
-      sit directly inside the aggregation element (or bml:container for shared directives)
+      sit directly inside the named aggregation element (or bml:container for shared
+      directives). The aggregation must always be opened by name — there is no default
+      aggregation. Bare child Block instances directly under the parent instance are invalid.
     • Exception: a member whose name is value (PrimitiveEntity, TypeReferenceEntity, …) uses
       value="…" as ordinary instance syntax for that member — not as a PropertyDefinition wrapper
     • readOnly effective members must not be authored on instances → BML_READONLY_MEMBER_WRITE
@@ -70,7 +72,7 @@
       instances.
     </see>
     <see type="doc:CompositionModel" relation="SeeAlso">
-      Aggregation fill — definition composition vs instance children.
+      Aggregation fill — named member on instances; no default aggregation.
     </see>
     <see type="doc:PartialMemberOverrides" relation="SeeAlso">
       readOnly — instance authoring forbidden.

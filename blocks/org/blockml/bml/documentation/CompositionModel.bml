@@ -16,10 +16,12 @@
   <documentation>
     A Composition fills an Aggregation with concrete child Block instances. On Block definitions,
     &lt;composition> is nested inside the aggregation member. On Block instances, aggregations are
-    filled directly by member name — no &lt;composition> wrapper. Do not treat composition as a
-    general-purpose container; the parallel Property mistake is wrapping instance values in
-    &lt;value> — both are definition fields, not instance wrappers (doc:MemberAuthoring). The
-    composition aggregation="…" attribute is removed.
+    filled directly by member name — no &lt;composition> wrapper and no default aggregation.
+    The aggregation element must always be opened; bare child Block instances directly under
+    the parent instance are invalid. Do not treat composition as a general-purpose container;
+    the parallel Property mistake is wrapping instance values in &lt;value> — both are
+    definition fields, not instance wrappers (doc:MemberAuthoring). The composition
+    aggregation="…" attribute is removed.
     
     Unified container concept — one idea, two forms:
     • composition — initial fill of an aggregation inside a Block definition only
@@ -33,7 +35,8 @@
     • New aggregation declaration → type required
     • Inherited aggregation override → override="true" required; type may be omitted (identical
       restated type → BML_REDUNDANT_AGGREGATION_TYPE)
-    • Block instances open aggregations directly — recursive nested structure is first-class
+    • Block instances must always open aggregations by member name — there is no default
+      aggregation. Recursive nested structure is first-class
     
     Child elements inside composition (or instance aggregation content) are Block instances:
     • Tag name — Block type (FQN / xmlns QName)
@@ -70,7 +73,7 @@
   </documentation>
   <references>
     <see type="def:AggregationDefinition" relation="Defines">
-      Aggregation member — composition property and default flag.
+      Aggregation member — composition property; no default aggregation.
     </see>
     <see type="def:AggregationDefinition" property="composition" relation="Defines">
       Nested composition template on aggregation declarations.

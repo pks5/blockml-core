@@ -34,9 +34,11 @@
     the member namespace — resolved via xmlns to BOM namespace; unprefixed elements use the default
     namespace (empty string). Member identity is (resolvedNamespace, localName). Maps to BOM
     AggregationDefinition (kind: "aggregation") with type expression, cardinality (from type
-    multiplicity), optional default flag, and optional nested composition template. Standalone
-    composition is never allowed — &lt;composition> must be nested inside the aggregation member
-    (BML_STANDALONE_COMPOSITION). Scalar member fields (type, default) follow
+    multiplicity), and optional nested composition template. There is no default aggregation —
+    on Block instances the aggregation member element must always be opened by name; bare child
+    Block instances directly under the parent instance are invalid. Standalone composition is
+    never allowed — &lt;composition> must be nested inside the aggregation member
+    (BML_STANDALONE_COMPOSITION). Scalar member field (type) follows
     org.blockml.bml.definition.MemberDefinition placement rules — element preferred on aggregation
     declarations. Structured composition remains a child element.
     Composition instance ID reachability for bml:id references is controlled by this aggregation
@@ -81,24 +83,15 @@
         preferred.
       </documentation>
     </type>
-    <default bml:xml="element|attribute">
-      <documentation>
-        When true, marks this aggregation as the primary aggregation of the enclosing
-        Block for tooling and render targets. Does not change composition placement —
-        &lt;composition> remains nested inside the aggregation member. At most one
-        default="true" aggregation per Block. Maps to BOM AggregationDefinition.default. Default
-        false.
-      </documentation>
-      <value>false</value>
-    </default>
     <composition bml:xml="element" type="def:AggregationDefinition.Composition">
       <documentation>
         Optional nested composition template filling this aggregation on the Block
         definition only. Rendered as a composition child element inside the aggregation member
         element. Maps to BOM AggregationDefinition.composition (CompositionTemplate). May be omitted
         on override declarations that only refine metadata. Not an instance wrapper — on Block
-        instances, aggregation children sit directly inside the aggregation element with no
-        composition wrapper, including when that instance is nested inside another composition.
+        instances, aggregation children sit directly inside the named aggregation element with
+        no composition wrapper and no default aggregation, including when that instance is
+        nested inside another composition.
         See doc:MemberAuthoring and doc:CompositionModel.
       </documentation>
     </composition>
