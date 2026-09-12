@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.documentation.TypeSystemOverview-->
 <doc:TypeSystemOverview xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">

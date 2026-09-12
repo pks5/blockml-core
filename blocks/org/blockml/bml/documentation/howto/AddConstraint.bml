@@ -6,7 +6,6 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:relation="org.blockml.bml.relation"
   xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>

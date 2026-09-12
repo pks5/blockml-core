@@ -3,11 +3,9 @@
   FQN: org.blockml.bml.diagnostic.BML_UNKNOWN_CAPABILITY-->
 <diag:BML_UNKNOWN_CAPABILITY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto"
-  xmlns:type="org.blockml.bml.type">
+  xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>
     core:Diagnostic

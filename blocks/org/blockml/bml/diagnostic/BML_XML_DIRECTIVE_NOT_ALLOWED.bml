@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.diagnostic.BML_XML_DIRECTIVE_NOT_ALLOWED-->
 <diag:BML_XML_DIRECTIVE_NOT_ALLOWED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation">
 

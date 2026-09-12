@@ -3,10 +3,8 @@
   FQN: org.blockml.bml.documentation.howto.DebugUnknownType-->
 <howto:DebugUnknownType xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:relation="org.blockml.bml.relation"
   xmlns:howto="org.blockml.bml.documentation.howto">
 
   <baseType>

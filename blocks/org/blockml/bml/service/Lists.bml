@@ -7,7 +7,6 @@
 <service:Lists xmlns="http://blockml.org/bml"
   xmlns:cap="org.blockml.bml.capability"
   xmlns:core="org.blockml.bml.core"
-  xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language"
   xmlns:service="org.blockml.bml.service"
   xmlns:type="org.blockml.bml.type">

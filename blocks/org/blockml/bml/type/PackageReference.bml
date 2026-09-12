@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.type.PackageReference-->
 <type:PackageReference xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:type="org.blockml.bml.type">

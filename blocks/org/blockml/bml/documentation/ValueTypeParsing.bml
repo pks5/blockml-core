@@ -3,9 +3,7 @@
   FQN: org.blockml.bml.documentation.ValueTypeParsing-->
 <doc:ValueTypeParsing xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:exception="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>

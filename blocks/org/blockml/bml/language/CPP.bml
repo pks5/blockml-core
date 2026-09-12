@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.language.CPP-->
 <lang:CPP xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language">
 
   <baseType>

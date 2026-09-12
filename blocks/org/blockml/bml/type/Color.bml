@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.type.Color-->
 <type:Color xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:lang="org.blockml.bml.language"

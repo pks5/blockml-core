@@ -1,6 +1,4 @@
 <type:Text xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
-  xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"
   xmlns:type="org.blockml.bml.type">

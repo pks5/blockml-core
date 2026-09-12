@@ -8,7 +8,6 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:def="org.blockml.bml.definition"
-  xmlns:lang="org.blockml.bml.language"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>

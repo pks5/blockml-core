@@ -5,10 +5,8 @@
   (preferred unqualified name tag or legacy <block>).
   See docs/12_bom_object_model.md — BlockDefinition.-->
 <def:SubBlockDefinition xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
-  xmlns:doc="org.blockml.bml.documentation"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
+  xmlns:doc="org.blockml.bml.documentation">
 
   <baseType>
     def:BlockDefinition

@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.type.Temporal-->
 <type:Temporal xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">
 

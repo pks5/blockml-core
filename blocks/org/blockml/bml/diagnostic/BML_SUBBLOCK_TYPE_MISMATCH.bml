@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.diagnostic.BML_SUBBLOCK_TYPE_MISMATCH-->
 <diag:BML_SUBBLOCK_TYPE_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:howto="org.blockml.bml.documentation.howto">

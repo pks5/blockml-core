@@ -10,7 +10,6 @@
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
-  xmlns:doc="org.blockml.bml.documentation"
   xmlns:lang="org.blockml.bml.language"
   xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">

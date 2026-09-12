@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.diagnostic.BML_UNQUALIFIED_BLOCK_REFERENCE-->
 <diag:BML_UNQUALIFIED_BLOCK_REFERENCE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:howto="org.blockml.bml.documentation.howto">

@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.type.TypeIdentifier-->
 <type:TypeIdentifier xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:ex="org.blockml.bml.exception"

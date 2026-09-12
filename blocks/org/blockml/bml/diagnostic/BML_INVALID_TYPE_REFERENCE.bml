@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.diagnostic.BML_INVALID_TYPE_REFERENCE-->
 <diag:BML_INVALID_TYPE_REFERENCE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">

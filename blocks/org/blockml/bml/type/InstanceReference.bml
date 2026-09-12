@@ -5,7 +5,6 @@
        docs/17_type_system_bml.md — TypeReference · InstanceReference · PropertyReference
        docs/02_mbml.md — Associations · references-->
 <type:InstanceReference xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:def="org.blockml.bml.definition"

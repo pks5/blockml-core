@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.constraint.RequiresMember-->
 <constraint:RequiresMember xmlns="http://blockml.org/bml"
   xmlns:constraint="org.blockml.bml.constraint"
-  xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition">
 
   <baseType>

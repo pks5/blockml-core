@@ -5,7 +5,6 @@
   Framework base type — lives in core, not exported via any Library blocks catalog.
   Concrete Library blocks (Library.bml) inherit from BlockLibrary.-->
 <core:BlockLibrary xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"

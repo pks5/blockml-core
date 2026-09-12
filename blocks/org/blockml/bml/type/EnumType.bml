@@ -7,7 +7,6 @@
        docs/01_bom_core.md — EnumType property values
        docs/16_framework_base_types.md — ValueType branch-->
 <type:EnumType xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type">

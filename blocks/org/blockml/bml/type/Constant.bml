@@ -8,8 +8,7 @@
   xmlns:constraint="org.blockml.bml.constraint"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:type="org.blockml.bml.type"
-  xmlns:validation="org.blockml.bml.validation">
+  xmlns:type="org.blockml.bml.type">
 
   <baseType>
     type:ConstantType

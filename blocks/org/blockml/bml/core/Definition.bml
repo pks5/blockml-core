@@ -4,7 +4,6 @@
 
   Abstract base type for all BlockML definition elements.-->
 <core:Definition xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core">
 
   <baseType>

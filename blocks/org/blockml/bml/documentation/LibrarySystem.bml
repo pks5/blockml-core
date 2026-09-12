@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.documentation.LibrarySystem-->
 <doc:LibrarySystem xmlns="http://blockml.org/bml"
   xmlns:blockml="org.blockml.bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:relation="org.blockml.bml.relation">

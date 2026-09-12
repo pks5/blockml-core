@@ -5,7 +5,6 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:relation="org.blockml.bml.relation"
   xmlns:howto="org.blockml.bml.documentation.howto"
   xmlns:type="org.blockml.bml.type">
 

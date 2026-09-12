@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.type.TypeReferenceEntity
   See docs/17_type_system_bml.md — TypeReferenceEntity · Empty child sugar-->
 <type:TypeReferenceEntity xmlns="http://blockml.org/bml"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:type="org.blockml.bml.type"

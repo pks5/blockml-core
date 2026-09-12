@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.diagnostic.BML_GENERIC_SUBBLOCK_NAME_COLLISION-->
 <diag:BML_GENERIC_SUBBLOCK_NAME_COLLISION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation">
 

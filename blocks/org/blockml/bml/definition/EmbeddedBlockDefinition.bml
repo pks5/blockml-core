@@ -4,10 +4,8 @@
   Describes the parse-time shape of virtual .bml documents in root <embeddedBlocks>.
   See docs/12_bom_object_model.md — Embedded Blocks.-->
 <def:EmbeddedBlockDefinition xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
-  xmlns:doc="org.blockml.bml.documentation"
-  xmlns:bml="org.blockml.bml.annotation.BmlAnnotation">
+  xmlns:doc="org.blockml.bml.documentation">
 
   <baseType>
     def:BlockDefinition

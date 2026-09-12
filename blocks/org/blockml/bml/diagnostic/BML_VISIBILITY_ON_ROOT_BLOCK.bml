@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.diagnostic.BML_VISIBILITY_ON_ROOT_BLOCK-->
 <diag:BML_VISIBILITY_ON_ROOT_BLOCK xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:howto="org.blockml.bml.documentation.howto">

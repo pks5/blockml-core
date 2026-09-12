@@ -3,10 +3,7 @@
   FQN: org.blockml.bml.diagnostic.BML_PRESET_CYCLE-->
 <diag:BML_PRESET_CYCLE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
-  xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation"
-  xmlns:type="org.blockml.bml.type">
+  xmlns:diag="org.blockml.bml.diagnostic">
 
   <baseType>
     core:Diagnostic

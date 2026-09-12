@@ -2,7 +2,6 @@
 
   FQN: org.blockml.bml.language.PseudoCode-->
 <lang:PseudoCode xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
   xmlns:lang="org.blockml.bml.language">
 
   <baseType>

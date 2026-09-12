@@ -2,8 +2,7 @@
 
   FQN: org.blockml.bml.core.ValueType-->
 <core:ValueType xmlns="http://blockml.org/bml"
-  xmlns:core="org.blockml.bml.core"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:core="org.blockml.bml.core">
 
   <baseType>
     core:Block

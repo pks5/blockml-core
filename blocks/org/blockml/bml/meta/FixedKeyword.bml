@@ -3,7 +3,6 @@
   FQN: org.blockml.bml.meta.FixedKeyword-->
 <meta:FixedKeyword xmlns="http://blockml.org/bml"
   xmlns:bml="org.blockml.bml.annotation.BmlAnnotation"
-  xmlns:core="org.blockml.bml.core"
   xmlns:meta="org.blockml.bml.meta">
 
   <baseType>

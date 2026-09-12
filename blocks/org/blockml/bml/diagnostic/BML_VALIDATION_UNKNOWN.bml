@@ -3,10 +3,8 @@
   FQN: org.blockml.bml.diagnostic.BML_VALIDATION_UNKNOWN-->
 <diag:BML_VALIDATION_UNKNOWN xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation"
-  xmlns:type="org.blockml.bml.type">
+  xmlns:doc="org.blockml.bml.documentation">
 
   <baseType>
     core:Diagnostic
