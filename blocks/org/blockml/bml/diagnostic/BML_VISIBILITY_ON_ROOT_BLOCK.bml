@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Root Blocks must not declare &lt;visibility>. Sub-Blocks inside &lt;subBlocks> may declare optional visibility matching their name prefix.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_VISIBILITY_ON_ROOT_BLOCK" />
+    <meta:Keyword value="BML_VISIBILITY_ON_ROOT_BLOCK" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

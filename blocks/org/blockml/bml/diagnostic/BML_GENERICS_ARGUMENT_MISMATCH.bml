@@ -5,7 +5,8 @@
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -27,7 +28,7 @@
     Ill-formed TypeExpression syntax → BML_INVALID_TYPE_REFERENCE.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_GENERICS_ARGUMENT_MISMATCH" />
+    <meta:Keyword value="BML_GENERICS_ARGUMENT_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

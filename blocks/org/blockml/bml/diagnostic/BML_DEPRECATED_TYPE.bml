@@ -4,7 +4,8 @@
 <diag:BML_DEPRECATED_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     replacement type; status may be warning-level depending on policy.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DEPRECATED_TYPE" />
+    <meta:Keyword value="BML_DEPRECATED_TYPE" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="SeeAlso">

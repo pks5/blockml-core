@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Override matching uses normalizedLogicalName. Widening (protected → public) is allowed; narrowing is forbidden. Private members cannot be overridden at all.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_VISIBILITY_NARROWING" />
+    <meta:Keyword value="BML_VISIBILITY_NARROWING" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

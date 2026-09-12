@@ -4,7 +4,8 @@
 <diag:BML_MISSING_IS xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     required after identity fields — a clear noun phrase for what the Block semantically represents.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_MISSING_IS" />
+    <meta:Keyword value="BML_MISSING_IS" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

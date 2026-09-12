@@ -4,7 +4,8 @@
 <diag:BML_DEPRECATED_MEMBER_NAMESPACE_ATTR xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     QName / xmlns prefixes for member namespaces — no namespace attribute.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DEPRECATED_MEMBER_NAMESPACE_ATTR" />
+    <meta:Keyword value="BML_DEPRECATED_MEMBER_NAMESPACE_ATTR" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="SeeAlso">

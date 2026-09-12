@@ -4,7 +4,8 @@
 <howto:FixMemberOverride xmlns="http://blockml.org/bml"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     howto:HowTo
@@ -29,11 +30,11 @@
     7. Aggregation fill-only override → omit unchanged type (BML_REDUNDANT_AGGREGATION_TYPE).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="override" />
-    <org.blockml.bml.meta.Keyword value="abstract" />
-    <org.blockml.bml.meta.Keyword value="final" />
-    <org.blockml.bml.meta.Keyword value="readOnly" />
-    <org.blockml.bml.meta.Keyword value="BML_OVERRIDE_REQUIRED" />
+    <meta:Keyword value="override" />
+    <meta:Keyword value="abstract" />
+    <meta:Keyword value="final" />
+    <meta:Keyword value="readOnly" />
+    <meta:Keyword value="BML_OVERRIDE_REQUIRED" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="HowToStep">

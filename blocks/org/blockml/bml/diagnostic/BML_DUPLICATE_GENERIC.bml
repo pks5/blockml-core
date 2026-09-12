@@ -4,7 +4,8 @@
 <diag:BML_DUPLICATE_GENERIC xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,7 +20,7 @@
     Emitted when two genericTypes entries share the same parameter name. Remedy: Rename one parameter.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_GENERIC" />
+    <meta:Keyword value="BML_DUPLICATE_GENERIC" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

@@ -4,7 +4,8 @@
 <diag:BML_DEFINITION_TYPE_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,7 +20,7 @@
     Defaults: RootBlockDefinition, SubBlockDefinition, EmbeddedBlockDefinition. Unqualified names resolve via org.blockml.bml.definition.*.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DEFINITION_TYPE_MISMATCH" />
+    <meta:Keyword value="BML_DEFINITION_TYPE_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:TypeIdentityDerivation" relation="AuthoringGuide">

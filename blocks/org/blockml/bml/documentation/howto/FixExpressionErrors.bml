@@ -4,7 +4,8 @@
 <howto:FixExpressionErrors xmlns="http://blockml.org/bml"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     howto:HowTo
@@ -35,13 +36,13 @@
     9. V1 — avoid deferred @bean execution / model / linking features until implemented.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="expression" />
-    <org.blockml.bml.meta.Keyword value="interpolation" />
-    <org.blockml.bml.meta.Keyword value="BML_EXPR_SYNTAX_ERROR" />
-    <org.blockml.bml.meta.Keyword value="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
-    <org.blockml.bml.meta.Keyword value="bean" />
-    <org.blockml.bml.meta.Keyword value="built-in" />
-    <org.blockml.bml.meta.Keyword value="embedded" />
+    <meta:Keyword value="expression" />
+    <meta:Keyword value="interpolation" />
+    <meta:Keyword value="BML_EXPR_SYNTAX_ERROR" />
+    <meta:Keyword value="BML_EXPR_NOT_ALLOWED_IN_INTERPOLATION" />
+    <meta:Keyword value="bean" />
+    <meta:Keyword value="built-in" />
+    <meta:Keyword value="embedded" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="HowToStep">

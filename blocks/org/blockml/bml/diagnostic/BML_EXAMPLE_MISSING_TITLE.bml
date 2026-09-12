@@ -4,7 +4,8 @@
 <diag:BML_EXAMPLE_MISSING_TITLE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,7 +20,7 @@
     Emitted when an example omits the required title. Remedy: Add title= on the example entry.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_EXAMPLE_MISSING_TITLE" />
+    <meta:Keyword value="BML_EXAMPLE_MISSING_TITLE" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

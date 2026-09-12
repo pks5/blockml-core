@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     value entry per namespace; facets multiply along Annotation namespaces.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_PROPERTY_VALUE" />
+    <meta:Keyword value="BML_DUPLICATE_PROPERTY_VALUE" />
   </keywords>
   <references>
     <see type="def:PropertyDefinition" relation="Defines">

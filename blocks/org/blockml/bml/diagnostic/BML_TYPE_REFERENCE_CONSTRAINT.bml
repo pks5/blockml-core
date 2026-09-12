@@ -5,6 +5,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -24,7 +25,7 @@
     References).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_TYPE_REFERENCE_CONSTRAINT" />
+    <meta:Keyword value="BML_TYPE_REFERENCE_CONSTRAINT" />
   </keywords>
   <references>
     <see type="type:TypeReference" relation="Defines">

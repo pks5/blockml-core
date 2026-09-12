@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     A genuinely new member must not set override="true". Check namespace + normalizedLogicalName identity and contract merge order.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_OVERRIDE_WITHOUT_PARENT" />
+    <meta:Keyword value="BML_OVERRIDE_WITHOUT_PARENT" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">

@@ -4,7 +4,8 @@
 <diag:BML_TYPE_BOUND_NOT_SATISFIED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     T extends G via baseType chain or lists G in contracts[].
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_TYPE_BOUND_NOT_SATISFIED" />
+    <meta:Keyword value="BML_TYPE_BOUND_NOT_SATISFIED" />
   </keywords>
   <references>
     <see type="doc:ContractsModel" relation="AuthoringGuide">

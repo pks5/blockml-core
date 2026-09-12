@@ -4,7 +4,8 @@
 <diag:BML_MISSING_FUNCTION_PARAMETER xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     missing positional or named argument, or an object literal with all required fields.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_MISSING_FUNCTION_PARAMETER" />
+    <meta:Keyword value="BML_MISSING_FUNCTION_PARAMETER" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

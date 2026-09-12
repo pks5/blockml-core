@@ -4,7 +4,8 @@
 <diag:BML_UNKNOWN_RELATION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Relation blocks (SeeAlso, ReadFirst, …).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_RELATION" />
+    <meta:Keyword value="BML_UNKNOWN_RELATION" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

@@ -4,7 +4,8 @@
 <diag:BML_MISSING_IS_NOT xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     negative space for disambiguation. Missing when required → this code.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_MISSING_IS_NOT" />
+    <meta:Keyword value="BML_MISSING_IS_NOT" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

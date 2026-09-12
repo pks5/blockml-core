@@ -6,7 +6,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     howto:HowTo
@@ -28,12 +29,12 @@
     5. Run the validator — BML_CONSTRAINT_TARGET_MISMATCH when branch compatibility fails.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="constraint" />
-    <org.blockml.bml.meta.Keyword value="validation" />
-    <org.blockml.bml.meta.Keyword value="Min" />
-    <org.blockml.bml.meta.Keyword value="Max" />
-    <org.blockml.bml.meta.Keyword value="Pattern" />
-    <org.blockml.bml.meta.Keyword value="member constraint" />
+    <meta:Keyword value="constraint" />
+    <meta:Keyword value="validation" />
+    <meta:Keyword value="Min" />
+    <meta:Keyword value="Max" />
+    <meta:Keyword value="Pattern" />
+    <meta:Keyword value="member constraint" />
   </keywords>
   <references>
     <see type="doc:DefinitionModel" relation="Prerequisite">

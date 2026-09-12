@@ -4,7 +4,8 @@
 <diag:BML_UNKNOWN_DIRECTIVE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,7 +20,7 @@
     Emitted when an unknown bml: directive name is used. Remedy: Use directives declared on org.blockml.bml.annotation.BmlAnnotation.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_UNKNOWN_DIRECTIVE" />
+    <meta:Keyword value="BML_UNKNOWN_DIRECTIVE" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     come from the EnumType values aggregation — remove suggestions.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_SUGGESTIONS_ON_ENUM" />
+    <meta:Keyword value="BML_SUGGESTIONS_ON_ENUM" />
   </keywords>
   <references>
     <see type="doc:ConstraintsModel" relation="AuthoringGuide">

@@ -4,7 +4,8 @@
 <diag:BML_CHANGELOG_VERSION_ORDER xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     entries ascending by version.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_CHANGELOG_VERSION_ORDER" />
+    <meta:Keyword value="BML_CHANGELOG_VERSION_ORDER" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

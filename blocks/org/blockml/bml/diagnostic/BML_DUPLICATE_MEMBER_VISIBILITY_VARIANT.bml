@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Collision checking uses normalizedLogicalName with visibility prefixes stripped. A logical member or Sub-Block exists exactly once with exactly one visibility.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT" />
+    <meta:Keyword value="BML_DUPLICATE_MEMBER_VISIBILITY_VARIANT" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

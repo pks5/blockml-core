@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -22,7 +23,7 @@
     interpolated Text is this code. Nested embed delimiters are invalid.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_EXPR_SYNTAX_ERROR" />
+    <meta:Keyword value="BML_EXPR_SYNTAX_ERROR" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

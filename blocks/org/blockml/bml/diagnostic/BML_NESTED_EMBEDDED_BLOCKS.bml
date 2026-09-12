@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     by listing virtual files flat at the root. Bundlers flatten when merging packages.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_NESTED_EMBEDDED_BLOCKS" />
+    <meta:Keyword value="BML_NESTED_EMBEDDED_BLOCKS" />
   </keywords>
   <references>
     <see type="doc:SubBlockModel" relation="AuthoringGuide">

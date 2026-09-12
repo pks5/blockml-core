@@ -4,7 +4,8 @@
 <diag:BML_DIRECTIVE_NOT_ALLOWED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     placement rules for each directive.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DIRECTIVE_NOT_ALLOWED" />
+    <meta:Keyword value="BML_DIRECTIVE_NOT_ALLOWED" />
   </keywords>
   <references>
     <see type="doc:BmlDirectives" relation="AuthoringGuide">

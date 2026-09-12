@@ -4,7 +4,8 @@
 <howto:FixTypeIdentity xmlns="http://blockml.org/bml"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     howto:HowTo
@@ -31,11 +32,11 @@
     6. Ambiguous short Sub-Block names that match the root — rename or use qualified references.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="type identity" />
-    <org.blockml.bml.meta.Keyword value="Sub-Block" />
-    <org.blockml.bml.meta.Keyword value="embedded" />
-    <org.blockml.bml.meta.Keyword value="BML_SUBBLOCK_TYPE_MISMATCH" />
-    <org.blockml.bml.meta.Keyword value="BML_AMBIGUOUS_TYPE" />
+    <meta:Keyword value="type identity" />
+    <meta:Keyword value="Sub-Block" />
+    <meta:Keyword value="embedded" />
+    <meta:Keyword value="BML_SUBBLOCK_TYPE_MISMATCH" />
+    <meta:Keyword value="BML_AMBIGUOUS_TYPE" />
   </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="HowToStep">

@@ -4,7 +4,8 @@
 <diag:BML_TOO_MANY_FUNCTION_PARAMETERS xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Trim excess arguments or adjust inputType / FunctionMapping.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_TOO_MANY_FUNCTION_PARAMETERS" />
+    <meta:Keyword value="BML_TOO_MANY_FUNCTION_PARAMETERS" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

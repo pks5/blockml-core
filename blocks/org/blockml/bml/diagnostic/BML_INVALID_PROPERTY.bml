@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:def="org.blockml.bml.definition"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     property type, value placement, and facets.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_INVALID_PROPERTY" />
+    <meta:Keyword value="BML_INVALID_PROPERTY" />
   </keywords>
   <references>
     <see type="def:PropertyDefinition" relation="Defines">

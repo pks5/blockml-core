@@ -3,7 +3,8 @@
   FQN: org.blockml.bml.diagnostic.BML_PRESET_CYCLE-->
 <diag:BML_PRESET_CYCLE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
-  xmlns:diag="org.blockml.bml.diagnostic">
+  xmlns:diag="org.blockml.bml.diagnostic"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,6 +20,6 @@
     This diagnostic is emitted by domain validators; Core only catalogues the code.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_PRESET_CYCLE" />
+    <meta:Keyword value="BML_PRESET_CYCLE" />
   </keywords>
 </diag:BML_PRESET_CYCLE>

@@ -5,7 +5,8 @@
   xmlns:ann="org.blockml.bml.annotation"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -25,7 +26,7 @@
     defaultType are not open. Abstract Blocks remain uninstantiable even with bml:generics.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_OPEN_GENERIC_INSTANCE" />
+    <meta:Keyword value="BML_OPEN_GENERIC_INSTANCE" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Omit unchanged type on aggregation overrides. Declare type only when refining or replacing the inherited type. Authored redundant type is ignored.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_REDUNDANT_AGGREGATION_TYPE" />
+    <meta:Keyword value="BML_REDUNDANT_AGGREGATION_TYPE" />
   </keywords>
   <references>
     <see type="doc:PartialMemberOverrides" relation="AuthoringGuide">

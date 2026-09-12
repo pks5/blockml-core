@@ -4,7 +4,8 @@
 <diag:BML_CONSTRAINT_TARGET_MISMATCH xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     AggregationDefinition, …).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_CONSTRAINT_TARGET_MISMATCH" />
+    <meta:Keyword value="BML_CONSTRAINT_TARGET_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

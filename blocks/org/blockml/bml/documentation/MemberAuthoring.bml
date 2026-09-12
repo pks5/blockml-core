@@ -7,6 +7,7 @@
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -120,14 +121,14 @@
     (doc:CapabilitySemantics).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="value" />
-    <org.blockml.bml.meta.Keyword value="composition" />
-    <org.blockml.bml.meta.Keyword value="property" />
-    <org.blockml.bml.meta.Keyword value="aggregation" />
-    <org.blockml.bml.meta.Keyword value="instance" />
-    <org.blockml.bml.meta.Keyword value="definition" />
-    <org.blockml.bml.meta.Keyword value="member authoring" />
-    <org.blockml.bml.meta.Keyword value="default aggregation" />
+    <meta:Keyword value="value" />
+    <meta:Keyword value="composition" />
+    <meta:Keyword value="property" />
+    <meta:Keyword value="aggregation" />
+    <meta:Keyword value="instance" />
+    <meta:Keyword value="definition" />
+    <meta:Keyword value="member authoring" />
+    <meta:Keyword value="default aggregation" />
   </keywords>
   <references>
     <see type="doc:BlockAndInstance" relation="SeeAlso">

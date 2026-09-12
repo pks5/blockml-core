@@ -5,6 +5,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -29,7 +30,7 @@
     parenthesized argument list in the same form as a TypeReference application.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_INVALID_TYPE_REFERENCE" />
+    <meta:Keyword value="BML_INVALID_TYPE_REFERENCE" />
   </keywords>
   <references>
     <see type="type:TypeIdentifier" relation="Defines">

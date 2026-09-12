@@ -6,6 +6,7 @@
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
   xmlns:exception="org.blockml.bml.exception"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -26,7 +27,7 @@
     (BML_UNRESOLVABLE_INSTANCE_REF), type-instance configuration, or Property constraints.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_INVALID_VALUE" />
+    <meta:Keyword value="BML_INVALID_VALUE" />
   </keywords>
   <references>
     <see type="type:PrimitiveType" relation="Defines">

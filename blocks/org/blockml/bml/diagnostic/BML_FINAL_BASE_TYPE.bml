@@ -4,7 +4,8 @@
 <diag:BML_FINAL_BASE_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,7 +20,7 @@
     final="true" on a block definition prevents other definitions from extending it. Choose a non-final base or unseal the parent if you control it.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_FINAL_BASE_TYPE" />
+    <meta:Keyword value="BML_FINAL_BASE_TYPE" />
   </keywords>
   <references>
     <see type="doc:ModelingGuidelines" relation="AuthoringGuide">

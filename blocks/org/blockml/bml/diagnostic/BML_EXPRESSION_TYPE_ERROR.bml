@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     Align expression result type with the target member type.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_EXPRESSION_TYPE_ERROR" />
+    <meta:Keyword value="BML_EXPRESSION_TYPE_ERROR" />
   </keywords>
   <references>
     <see type="doc:Expressions" relation="AuthoringGuide">

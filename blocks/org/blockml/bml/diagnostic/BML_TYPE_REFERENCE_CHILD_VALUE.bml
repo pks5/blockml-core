@@ -5,6 +5,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -21,7 +22,7 @@
     QName children expand to value=; do not mix illegal child shapes.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_TYPE_REFERENCE_CHILD_VALUE" />
+    <meta:Keyword value="BML_TYPE_REFERENCE_CHILD_VALUE" />
   </keywords>
   <references>
     <see type="type:TypeReferenceEntity" relation="Defines">

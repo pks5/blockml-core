@@ -4,7 +4,8 @@
 <diag:BML_DUPLICATE_SUMMARY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     per namespace/language pair.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_DUPLICATE_SUMMARY" />
+    <meta:Keyword value="BML_DUPLICATE_SUMMARY" />
   </keywords>
   <references>
     <see type="doc:DocumentationModel" relation="AuthoringGuide">

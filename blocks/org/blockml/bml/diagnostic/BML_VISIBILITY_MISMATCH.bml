@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     Optional visibility on members and Sub-Blocks must agree with public / _protected / __private naming. When omitted, visibility is derived from the name.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_VISIBILITY_MISMATCH" />
+    <meta:Keyword value="BML_VISIBILITY_MISMATCH" />
   </keywords>
   <references>
     <see type="doc:MemberVisibility" relation="AuthoringGuide">

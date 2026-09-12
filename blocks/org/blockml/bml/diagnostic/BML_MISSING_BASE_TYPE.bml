@@ -4,7 +4,8 @@
 <diag:BML_MISSING_BASE_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     inheritance is mandatory except on the sole root org.blockml.bml.core.Block.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_MISSING_BASE_TYPE" />
+    <meta:Keyword value="BML_MISSING_BASE_TYPE" />
   </keywords>
   <references>
     <see type="doc:ModelingGuidelines" relation="AuthoringGuide">

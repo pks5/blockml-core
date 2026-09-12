@@ -4,7 +4,8 @@
 <diag:BML_PREFER_CONSTANT_TYPE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     AutoOr/FalseOr/NoneOr and bare literal unions to Constant form.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_PREFER_CONSTANT_TYPE" />
+    <meta:Keyword value="BML_PREFER_CONSTANT_TYPE" />
   </keywords>
   <references>
     <see type="doc:ConstantValueType" relation="AuthoringGuide">

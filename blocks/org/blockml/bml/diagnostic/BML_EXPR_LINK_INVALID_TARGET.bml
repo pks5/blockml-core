@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -21,7 +22,7 @@
     must be Inbound (or compatible Transformation pairing rules).
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_EXPR_LINK_INVALID_TARGET" />
+    <meta:Keyword value="BML_EXPR_LINK_INVALID_TARGET" />
   </keywords>
   <references>
     <see type="doc:CapabilitySemantics" relation="AuthoringGuide">

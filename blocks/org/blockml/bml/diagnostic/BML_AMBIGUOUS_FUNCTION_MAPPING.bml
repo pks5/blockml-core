@@ -4,7 +4,8 @@
 <diag:BML_AMBIGUOUS_FUNCTION_MAPPING xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     mappings ship, treat as reserved.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_AMBIGUOUS_FUNCTION_MAPPING" />
+    <meta:Keyword value="BML_AMBIGUOUS_FUNCTION_MAPPING" />
   </keywords>
   <references>
     <see type="doc:FunctionMappingModel" relation="AuthoringGuide">

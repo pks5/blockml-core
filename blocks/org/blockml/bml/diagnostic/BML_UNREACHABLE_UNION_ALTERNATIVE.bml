@@ -4,7 +4,8 @@
 <diag:BML_UNREACHABLE_UNION_ALTERNATIVE xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     narrower/sentinel alternatives on the left. Advisory like unreachable code — compile succeeds.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_UNREACHABLE_UNION_ALTERNATIVE" />
+    <meta:Keyword value="BML_UNREACHABLE_UNION_ALTERNATIVE" />
   </keywords>
   <references>
     <see type="doc:TypeExpressions" relation="AuthoringGuide">

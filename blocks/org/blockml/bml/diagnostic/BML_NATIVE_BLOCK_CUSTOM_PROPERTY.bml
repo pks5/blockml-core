@@ -4,7 +4,8 @@
 <diag:BML_NATIVE_BLOCK_CUSTOM_PROPERTY xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     properties; domain-specific.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_NATIVE_BLOCK_CUSTOM_PROPERTY" />
+    <meta:Keyword value="BML_NATIVE_BLOCK_CUSTOM_PROPERTY" />
   </keywords>
   <references>
     <see type="doc:ModelingGuidelines" relation="SeeAlso">

@@ -5,7 +5,8 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
-  xmlns:howto="org.blockml.bml.documentation.howto">
+  xmlns:howto="org.blockml.bml.documentation.howto"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -22,7 +23,7 @@
     wrapper (doc:DocumentFormat). Type is normally derived.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_MISSING_SUBBLOCK_NAME" />
+    <meta:Keyword value="BML_MISSING_SUBBLOCK_NAME" />
   </keywords>
   <references>
     <see type="doc:DocumentFormat" relation="AuthoringGuide">

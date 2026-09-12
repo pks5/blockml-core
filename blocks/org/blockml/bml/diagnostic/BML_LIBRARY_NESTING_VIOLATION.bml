@@ -4,7 +4,8 @@
 <diag:BML_LIBRARY_NESTING_VIOLATION xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -19,7 +20,7 @@
     Typical pattern: inner lists outer in dependencies; outer lists inner in subLibraries. Membership is defined by Library.blocks.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_LIBRARY_NESTING_VIOLATION" />
+    <meta:Keyword value="BML_LIBRARY_NESTING_VIOLATION" />
   </keywords>
   <references>
     <see type="doc:LibrarySystem" relation="AuthoringGuide">

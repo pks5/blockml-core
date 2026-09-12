@@ -4,7 +4,8 @@
 <diag:BML_GENERIC_DEFAULT_UNRESOLVED xmlns="http://blockml.org/bml"
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
-  xmlns:doc="org.blockml.bml.documentation">
+  xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta">
 
   <baseType>
     core:Diagnostic
@@ -20,7 +21,7 @@
     unbound parameter at a reference site must resolve via authored args or defaults.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_GENERIC_DEFAULT_UNRESOLVED" />
+    <meta:Keyword value="BML_GENERIC_DEFAULT_UNRESOLVED" />
   </keywords>
   <references>
     <see type="doc:GenericsModel" relation="AuthoringGuide">

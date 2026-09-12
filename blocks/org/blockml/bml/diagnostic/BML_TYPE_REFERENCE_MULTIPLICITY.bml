@@ -5,6 +5,7 @@
   xmlns:core="org.blockml.bml.core"
   xmlns:diag="org.blockml.bml.diagnostic"
   xmlns:doc="org.blockml.bml.documentation"
+  xmlns:meta="org.blockml.bml.meta"
   xmlns:type="org.blockml.bml.type">
 
   <baseType>
@@ -21,7 +22,7 @@
     Check the site's type attribute rules — some TypeReference usages are singular only.
   </documentation>
   <keywords>
-    <org.blockml.bml.meta.Keyword value="BML_TYPE_REFERENCE_MULTIPLICITY" />
+    <meta:Keyword value="BML_TYPE_REFERENCE_MULTIPLICITY" />
   </keywords>
   <references>
     <see type="type:TypeReference" relation="Defines">
