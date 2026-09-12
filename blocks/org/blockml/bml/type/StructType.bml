@@ -39,14 +39,16 @@
     properties only. Positional function-parameter syntax (#tool.capa("x", "y")) is handled by
     FunctionMapping at call sites, not by general StructType semantics.
     
+    A StructType value is a named-field map only. Named object literals
+    (size="{ x: 4, y: 2, z: 3 }") and attribute syntax on StructType instances
+    (&lt;Size3d x="4" y="2" z="3"/>) are type-equivalent authoring forms. An array is not
+    converted to a StructType by property declaration order — size="[4, 2, 3]" is not a
+    Size3d value.
+    
     Field declaration order remains significant for:
-    • Positional array literals (size="[4, 2, 3]") — values map to properties by declaration order
     • FunctionMapping positional parameter order for capability calls
     • Compatibility — existing field order must not change across versions; new fields may be
       appended only at the end
-    
-    Named object literals (size="{ x: 4, y: 2, z: 3 }") and attribute syntax on StructType
-    instances (&lt;Size3d x="4" y="2" z="3"/>) are type-equivalent authoring forms.
     
     Anonymous StructTypes — { field: Type, … } is a StructType without a declared name, written
     directly in a type expression; it is the mechanism for structured Capability inputs. Each field

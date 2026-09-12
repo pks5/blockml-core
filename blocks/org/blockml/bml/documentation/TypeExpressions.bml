@@ -135,7 +135,8 @@
     
     So { list: core:ValueType[], index: Integer } is one anonymous StructType with field list of type
     core:ValueType[] and field index of type Integer. Field declaration order is significant — same
-    contract as named StructTypes (doc:FunctionMappingModel).
+    contract as named StructTypes (doc:FunctionMappingModel). That order does not convert an
+    array literal into a StructType value.
     
     Braces are disambiguated by position: a { opening a type expression starts an anonymous
     StructType whose field values are TypeExpressions; a { directly following a type reference is

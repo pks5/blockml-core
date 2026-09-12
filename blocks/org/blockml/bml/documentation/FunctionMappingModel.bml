@@ -64,9 +64,10 @@
       BML_TOO_MANY_FUNCTION_PARAMETERS, BML_UNKNOWN_FUNCTION_PARAMETER,
       BML_DUPLICATE_FUNCTION_PARAMETER
     
-    Declaration order — same contract as StructType positional literals and ValueType instance
-    configuration {…} positional args (doc:ValueTypeConfiguration). Member access in expressions
-    remains by name (point.x) — not numeric index on StructTypes.
+    Declaration order — same contract as ValueType instance configuration {…} positional args
+    (doc:ValueTypeConfiguration). This order is FunctionMapping at call sites, not a general
+    array-to-StructType conversion. Member access in expressions remains by name (point.x) —
+    not numeric index on StructTypes.
     
     Custom FunctionMapping on an implementation may reorder/rename parameters or reject forms.
     Required custom mapping absent → BML_MISSING_FUNCTION_MAPPING (reserved until custom mappings

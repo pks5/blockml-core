@@ -36,7 +36,7 @@
     org.blockml.bml.definition.StructuralDefinition. Every definition element is addressable via
     its canonical structural path within the Block FQN (for example com.foo.Bar.properties.width).
     Member declaration order in BML is preserved in BOM and is significant for StructType
-    positional mapping and render targets.
+    field order (FunctionMapping, compatibility) and render targets.
     
     Declares definition (meta-model role selector) and subBlocks (recursive nested type hierarchy).
     Specialized as three sibling kinds that each override definition with a tighter TypeReference and
@@ -238,7 +238,8 @@
     <properties type="def:PropertyDefinition[]">
       <documentation>
         Property member declarations. Mapped to members[] in XML document order.
-        Order is significant for StructType field indices and positional array literals.
+        Order is significant for StructType field order — FunctionMapping positional
+        parameters and compatibility — not for converting an array into a StructType value.
       </documentation>
     </properties>
     <aggregations type="def:AggregationDefinition[]">

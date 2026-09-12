@@ -32,8 +32,9 @@
     Property is a Block attribute or the Property element's direct content
     (myProperty="…" / &lt;myProperty>…&lt;/myProperty>) — see doc:MemberAuthoring. Structured
     children (groups, suggestions) remain elements. Every Property behaves as Optional — it has a
-    value or has no value; there is no null. Declaration order among properties is significant for
-    StructType positional mapping and Capability parameter order.
+    value or has no value; there is no null.     Declaration order among properties is significant for FunctionMapping
+    positional parameters and StructType compatibility. An array is not mapped onto
+    StructType fields by this order.
     
     Value-field Annotation facets: nested under this property element, an Annotation-prefixed
     value element (e.g. scad:value from Annotation.Value) multiplies the value field along the
